@@ -50,20 +50,7 @@ class _SignUpDescriptionState extends State<SignUpDescription> {
                   fontColor: UtilConstants.blackColor,
                 ),
                 const SizedBox(height: 20),
-                Container(
-                  alignment: Alignment.center,
-                  height: 60,
-                  width: 500,
-                  decoration: BoxDecoration(
-                      color: UtilConstants.primaryColor,
-                      borderRadius: BorderRadius.circular(25)),
-                  child: const CustomText(
-                    "Get Started",
-                    fontColor: UtilConstants.whiteColor,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                const CustomButton(),
                 const SizedBox(height: 220),
                 const CustomText(
                   "Already have an account?",
@@ -75,6 +62,30 @@ class _SignUpDescriptionState extends State<SignUpDescription> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  const CustomButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      height: 60,
+      width: 500,
+      decoration: BoxDecoration(
+          color: UtilConstants.primaryColor,
+          borderRadius: BorderRadius.circular(25)),
+      child: const CustomText(
+        "Get Started",
+        fontColor: UtilConstants.whiteColor,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
       ),
     );
   }
