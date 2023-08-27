@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 class CustomIconContainer extends StatelessWidget {
   final String imgPath;
+  final MediaQueryData mediaQueryData;
   const CustomIconContainer({
     super.key,
     required this.imgPath,
+    required this.mediaQueryData,
   });
 
   @override

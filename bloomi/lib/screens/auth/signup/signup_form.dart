@@ -16,14 +16,16 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Scaffold(
-      body: SafeArea(
-          child: SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: EdgeInsets.symmetric(
+                horizontal: mediaQueryData.size.height * 0.02),
             child: Column(
               children: [
+                SizedBox(height: mediaQueryData.size.height * 0.01),
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: InkWell(
@@ -34,42 +36,46 @@ class _SignUpState extends State<SignUp> {
                     child: const Icon(Icons.arrow_back_ios_new_outlined),
                   ),
                 ),
-                const SizedBox(height: 72),
-                const CustomText(
+                SizedBox(height: mediaQueryData.size.height * 0.09),
+                CustomText(
                   "SignUp",
-                  fontSize: 32,
+                  fontSize: mediaQueryData.size.height * 0.04,
                   fontWeight: FontWeight.w600,
                 ),
                 Image.asset(
                   UtilConstants.counsellingImagePath,
-                  width: 300,
-                  height: 150,
+                  width: mediaQueryData.size.height * 0.38,
+                  height: mediaQueryData.size.height * 0.19,
                 ),
-                const SizedBox(height: 30),
-                const CustomTextFeild(
+                SizedBox(height: mediaQueryData.size.height * 0.08),
+                CustomTextFeild(
                   lable: "Enter your full name",
+                  mediaQueryData: mediaQueryData,
                 ),
-                const SizedBox(height: 15),
-                const CustomTextFeild(
+                SizedBox(height: mediaQueryData.size.height * 0.02),
+                CustomTextFeild(
                   lable: "Enter your email",
+                  mediaQueryData: mediaQueryData,
                 ),
-                const SizedBox(height: 15),
-                const CustomTextFeild(
+                SizedBox(height: mediaQueryData.size.height * 0.02),
+                CustomTextFeild(
                   lable: "Create password",
                   obscure: true,
+                  mediaQueryData: mediaQueryData,
                 ),
-                const SizedBox(height: 15),
-                const CustomTextFeild(
+                SizedBox(height: mediaQueryData.size.height * 0.02),
+                CustomTextFeild(
                   lable: "Confirm password",
                   obscure: true,
+                  mediaQueryData: mediaQueryData,
                 ),
-                const SizedBox(height: 56),
-                const CustomButton("Register")
+                SizedBox(height: mediaQueryData.size.height * 0.10),
+                CustomButton("Register", mediaQueryData: mediaQueryData)
               ],
             ),
           ),
         ),
-      )),
+      ),
     );
   }
 }

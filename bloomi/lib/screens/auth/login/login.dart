@@ -19,14 +19,17 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: EdgeInsets.symmetric(
+                horizontal: mediaQueryData.size.height * 0.02),
             child: Column(
               children: [
+                SizedBox(height: mediaQueryData.size.height * 0.01),
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: InkWell(
@@ -37,67 +40,79 @@ class _LoginState extends State<Login> {
                     child: const Icon(Icons.arrow_back_ios_new_outlined),
                   ),
                 ),
-                const SizedBox(height: 72),
-                const CustomText(
-                  "Login",
-                  fontSize: 32,
-                  fontWeight: FontWeight.w600,
-                ),
-                Image.asset(
-                  UtilConstants.counsellingImagePath,
-                  width: 300,
-                  height: 150,
-                ),
-                const SizedBox(height: 30),
-                const CustomTextFeild(
-                  lable: "Enter your email",
-                ),
-                const SizedBox(height: 20),
-                const CustomTextFeild(
-                  lable: "Enter password",
-                  obscure: true,
-                ),
-                const SizedBox(height: 10),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: InkWell(
-                    onTap: () {
-                      UtilFunction.navigateForward(
-                          context, const ForgotPassword());
-                    },
-                    child: const CustomText(
-                      "forgot password?",
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
+                SizedBox(
+                  width: 580,
+                  child: Column(
+                    children: [
+                      SizedBox(height: mediaQueryData.size.height * 0.09),
+                      CustomText(
+                        "Login",
+                        fontSize: mediaQueryData.size.height * 0.04,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      Image.asset(
+                        UtilConstants.counsellingImagePath,
+                        width: mediaQueryData.size.height * 0.38,
+                        height: mediaQueryData.size.height * 0.19,
+                      ),
+                      SizedBox(height: mediaQueryData.size.height * 0.04),
+                      CustomTextFeild(
+                        lable: "Enter your email",
+                        mediaQueryData: mediaQueryData,
+                      ),
+                      SizedBox(height: mediaQueryData.size.height * 0.025),
+                      CustomTextFeild(
+                        lable: "Enter password",
+                        obscure: true,
+                        mediaQueryData: mediaQueryData,
+                      ),
+                      SizedBox(height: mediaQueryData.size.height * 0.01),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: InkWell(
+                          onTap: () {
+                            UtilFunction.navigateForward(
+                                context, const ForgotPassword());
+                          },
+                          child: CustomText(
+                            "forgot password?",
+                            fontSize: mediaQueryData.size.height * 0.019,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: mediaQueryData.size.height * 0.07),
+                      InkWell(
+                        onTap: () {
+                          UtilFunction.navigateForward(
+                              context, const CounselorSelect());
+                        },
+                        child: CustomButton("Login",
+                            mediaQueryData: mediaQueryData),
+                      ),
+                      SizedBox(height: mediaQueryData.size.height * 0.04),
+                      CustomText(
+                        "Or login with social account",
+                        fontSize: mediaQueryData.size.height * 0.018,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      SizedBox(height: mediaQueryData.size.height * 0.025),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          CustomIconContainer(
+                            imgPath: UtilConstants.googleImagePath,
+                            mediaQueryData: mediaQueryData,
+                          ),
+                          CustomIconContainer(
+                            imgPath: UtilConstants.facebookImagePath,
+                            mediaQueryData: mediaQueryData,
+                          ),
+                        ],
+                      )
+                    ],
                   ),
                 ),
-                const SizedBox(height: 50),
-                InkWell(
-                  onTap: () {
-                    UtilFunction.navigateForward(
-                        context, const CounselorSelect());
-                  },
-                  child: const CustomButton("Login"),
-                ),
-                const SizedBox(height: 33),
-                const CustomText(
-                  "Or login with social account",
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-                const SizedBox(height: 20),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    CustomIconContainer(
-                      imgPath: UtilConstants.googleImagePath,
-                    ),
-                    CustomIconContainer(
-                      imgPath: UtilConstants.facebookImagePath,
-                    ),
-                  ],
-                )
               ],
             ),
           ),
