@@ -17,62 +17,60 @@ class SignUpDescription extends StatefulWidget {
 class _SignUpDescriptionState extends State<SignUpDescription> {
   @override
   Widget build(BuildContext context) {
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                const SizedBox(height: 20),
-                const Align(
-                  alignment: Alignment.bottomLeft,
-                  child: CustomText(
-                    "Join Bloomi",
-                    fontColor: UtilConstants.primaryColor,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Popins",
+            padding: EdgeInsets.symmetric(
+                horizontal: mediaQueryData.size.height * 0.025),
+            child: Center(
+              child: Column(
+                children: [
+                  SizedBox(height: mediaQueryData.size.height * 0.05),
+                  Container(
+                    height: mediaQueryData.size.height * 0.34,
+                    width: mediaQueryData.size.height * 0.63,
+                    decoration: BoxDecoration(
+                        color: UtilConstants.lightBrownColor,
+                        borderRadius: BorderRadius.circular(
+                            mediaQueryData.size.height * 0.012)),
+                    child: const CustomImage(
+                      imgPath: UtilConstants.counsellingImagePath,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                Container(
-                  height: 270,
-                  width: 500,
-                  decoration: BoxDecoration(
-                      color: UtilConstants.lightBrownColor,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: const CustomImage(
-                    imgPath: UtilConstants.counsellingImagePath,
+                  SizedBox(height: mediaQueryData.size.height * 0.025),
+                  SizedBox(
+                    width: 580,
+                    child: CustomText(
+                      "Create an account to seamlessly connect with a Counsellor,Explore Bloomi for better student-counselor education connections",
+                      fontSize: mediaQueryData.size.height * 0.025,
+                      textAlign: TextAlign.left,
+                      fontColor: UtilConstants.blackColor,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                const CustomText(
-                  "Create an account to seamlessly connect with a Counsellor,Explore Bloomi for better student-counselor education connections",
-                  fontSize: 20,
-                  textAlign: TextAlign.left,
-                  fontColor: UtilConstants.blackColor,
-                ),
-                const SizedBox(height: 20),
-                InkWell(
-                  onTap: () {
-                    UtilFunction.navigateForward(context, const SignUp());
-                  },
-                  child: const CustomButton("Get Started"),
-                ),
-                const SizedBox(height: 220),
-                InkWell(
-                  onTap: () {
-                    UtilFunction.navigateForward(context, const Login());
-                  },
-                  child: const CustomText(
-                    "Already have an account?",
-                    fontColor: UtilConstants.primaryColor,
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
+                  SizedBox(height: mediaQueryData.size.height * 0.025),
+                  InkWell(
+                    onTap: () {
+                      UtilFunction.navigateForward(context, const SignUp());
+                    },
+                    child: CustomButton("Get Started",
+                        mediaQueryData: mediaQueryData),
                   ),
-                )
-              ],
+                  SizedBox(height: mediaQueryData.size.height * 0.34),
+                  InkWell(
+                    onTap: () {
+                      UtilFunction.navigateForward(context, const Login());
+                    },
+                    child: CustomText(
+                      "Already have an account?",
+                      fontColor: UtilConstants.primaryColor,
+                      fontSize: mediaQueryData.size.height * 0.022,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),

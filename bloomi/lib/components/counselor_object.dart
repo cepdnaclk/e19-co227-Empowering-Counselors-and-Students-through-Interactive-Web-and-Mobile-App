@@ -3,45 +3,50 @@ import 'package:bloomi/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
 class CounselorObject extends StatelessWidget {
+  final MediaQueryData mediaQueryData;
   const CounselorObject({
     super.key,
+    required this.mediaQueryData,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: mediaQueryData.size.height * 0.12,
+      width: 780,
       decoration: BoxDecoration(
           color: UtilConstants.lightgreyColor,
-          borderRadius: BorderRadius.circular(10)),
+          borderRadius:
+              BorderRadius.circular(mediaQueryData.size.height * 0.01)),
       child: Row(
         children: [
-          const SizedBox(width: 20),
+          SizedBox(width: mediaQueryData.size.height * 0.025),
           SizedBox(
-            width: 80,
-            height: 80,
+            width: mediaQueryData.size.height * 0.1,
+            height: mediaQueryData.size.height * 0.1,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(40),
+              borderRadius:
+                  BorderRadius.circular(mediaQueryData.size.height * 0.05),
               child: Image.asset(
                 UtilConstants.profImagePath,
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          const SizedBox(width: 20),
-          const Column(
+          SizedBox(width: mediaQueryData.size.width * 0.1),
+          Column(
             children: [
-              SizedBox(height: 20),
+              SizedBox(height: mediaQueryData.size.height * 0.025),
               CustomText(
                 "Prof. UnKnow",
-                fontSize: 18,
+                fontSize: mediaQueryData.size.height * 0.025,
                 fontColor: UtilConstants.blackColor,
                 fontWeight: FontWeight.w400,
               ),
-              SizedBox(height: 10),
+              SizedBox(height: mediaQueryData.size.height * 0.013),
               CustomText(
                 "Deparment of computer engineering",
-                fontSize: 14,
+                fontSize: mediaQueryData.size.height * 0.014,
                 fontColor: UtilConstants.blackColor,
                 fontWeight: FontWeight.w400,
               ),
