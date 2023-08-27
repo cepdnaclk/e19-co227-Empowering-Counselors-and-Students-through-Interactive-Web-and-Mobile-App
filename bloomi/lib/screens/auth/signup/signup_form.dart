@@ -1,4 +1,5 @@
 import 'package:bloomi/components/custom_text.dart';
+import 'package:bloomi/components/custom_textfeild.dart';
 import 'package:bloomi/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -38,22 +39,6 @@ class _SignUpState extends State<SignUp> {
           ),
         ),
       )),
-    );
-  }
-}
-
-class CustomTextFeild extends StatelessWidget {
-  const CustomTextFeild({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        labelText: "Enter your full name",
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-      ),
     );
   }
 }
