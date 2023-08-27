@@ -56,7 +56,7 @@ class _SignUpDescriptionState extends State<SignUpDescription> {
                 const CustomText(
                   "Already have an account?",
                   fontColor: UtilConstants.primaryColor,
-                  fontSize: 20,
+                  fontSize: 17,
                   fontWeight: FontWeight.bold,
                 )
               ],

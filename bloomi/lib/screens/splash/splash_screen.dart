@@ -3,6 +3,7 @@ import 'package:bloomi/components/custom_image.dart';
 import 'package:bloomi/components/custom_text.dart';
 import 'package:bloomi/screens/auth/signup/sign_discription.dart';
 import 'package:bloomi/utils/util_constant.dart';
+import 'package:bloomi/utils/util_function.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,10 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const SignUpDescription()),
-      );
+      UtilFunction.navigateForward(context, const SignUpDescription());
     });
   }
 
