@@ -30,7 +30,7 @@ class _SignUpDescriptionState extends State<SignUpDescription> {
                   SizedBox(height: mediaQueryData.size.height * 0.05),
                   Container(
                     height: mediaQueryData.size.height * 0.3,
-                    width: mediaQueryData.size.height * 0.63,
+                    width: mediaQueryData.size.height * 0.69,
                     decoration: BoxDecoration(
                         color: UtilConstants.lightBrownColor,
                         borderRadius: BorderRadius.circular(
