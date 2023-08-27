@@ -9,6 +9,7 @@ class UtilConstants {
   static Color greenColor = Colors.green.shade300;
   static Color lightRedColor = Colors.red.shade300;
   static Color lightBrownColor = Colors.brown.shade100;
+  static Color lightgreyColor = Colors.grey.shade300;
 
   //--------------------Gradient Shader--------------------
   static Shader get gradientShader => LinearGradient(
@@ -19,4 +20,6 @@ class UtilConstants {
 
   static const String primaryImagePath = "assets/images/logo.png";
   static const String counsellingImagePath = "assets/images/counselling.png";
+  static const String googleImagePath = "assets/images/google.png";
+  static const String facebookImagePath = "assets/images/facebook.png";
 }

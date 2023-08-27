@@ -29,7 +29,7 @@ class _SignUpDescriptionState extends State<SignUpDescription> {
                   alignment: Alignment.bottomLeft,
                   child: CustomText(
                     "Join Bloomi",
-                    fontColor: UtilConstants.blackColor,
+                    fontColor: UtilConstants.primaryColor,
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     fontFamily: "Popins",

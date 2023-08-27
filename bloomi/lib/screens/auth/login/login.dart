@@ -1,6 +1,8 @@
 import 'package:bloomi/components/custom_button.dart';
 import 'package:bloomi/components/custom_text.dart';
 import 'package:bloomi/components/custom_textfeild.dart';
+import 'package:bloomi/components/customicon_container.dart';
+import 'package:bloomi/screens/auth/forgotPassword/forgot_password.dart';
 import 'package:bloomi/screens/auth/signup/sign_discription.dart';
 import 'package:bloomi/utils/util_constant.dart';
 import 'package:bloomi/utils/util_function.dart';
@@ -55,8 +57,40 @@ class _LoginState extends State<Login> {
                   obscure: true,
                 ),
                 const SizedBox(height: 10),
-                const SizedBox(height: 86),
-                const CustomButton("Login")
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: InkWell(
+                    onTap: () {
+                      UtilFunction.navigateForward(
+                          context, const ForgotPassword());
+                    },
+                    child: const CustomText(
+                      "forgot password?",
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 50),
+                const CustomButton("Login"),
+                const SizedBox(height: 33),
+                const CustomText(
+                  "Or login with social account",
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+                const SizedBox(height: 20),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    CustomIconContainer(
+                      imgPath: UtilConstants.googleImagePath,
+                    ),
+                    CustomIconContainer(
+                      imgPath: UtilConstants.facebookImagePath,
+                    ),
+                  ],
+                )
               ],
             ),
           ),

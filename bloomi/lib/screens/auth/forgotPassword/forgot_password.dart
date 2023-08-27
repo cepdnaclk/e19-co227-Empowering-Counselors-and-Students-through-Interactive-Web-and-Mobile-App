@@ -6,14 +6,14 @@ import 'package:bloomi/utils/util_constant.dart';
 import 'package:bloomi/utils/util_function.dart';
 import 'package:flutter/material.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class ForgotPassword extends StatefulWidget {
+  const ForgotPassword({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<ForgotPassword> createState() => _ForgotPasswordState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +34,9 @@ class _SignUpState extends State<SignUp> {
                     child: const Icon(Icons.arrow_back_ios_new_outlined),
                   ),
                 ),
-                const SizedBox(height: 72),
+                const SizedBox(height: 92),
                 const CustomText(
-                  "SignUp",
+                  "Forgot Password",
                   fontSize: 32,
                   fontWeight: FontWeight.w600,
                 ),
@@ -45,26 +45,20 @@ class _SignUpState extends State<SignUp> {
                   width: 300,
                   height: 150,
                 ),
-                const SizedBox(height: 30),
-                const CustomTextFeild(
-                  lable: "Enter your full name",
+                const SizedBox(height: 100),
+                const CustomText(
+                  "Please, enter your email address. You will receive a link to create a new password via email.",
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  fontColor: UtilConstants.blackColor,
+                  textAlign: TextAlign.left,
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 16),
                 const CustomTextFeild(
                   lable: "Enter your email",
                 ),
-                const SizedBox(height: 15),
-                const CustomTextFeild(
-                  lable: "Create password",
-                  obscure: true,
-                ),
-                const SizedBox(height: 15),
-                const CustomTextFeild(
-                  lable: "Confirm password",
-                  obscure: true,
-                ),
-                const SizedBox(height: 56),
-                const CustomButton("Register")
+                const SizedBox(height: 53),
+                const CustomButton("Send"),
               ],
             ),
           ),
