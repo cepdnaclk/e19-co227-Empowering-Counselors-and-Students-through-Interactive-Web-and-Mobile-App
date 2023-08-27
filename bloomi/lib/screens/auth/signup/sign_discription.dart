@@ -1,6 +1,7 @@
 import 'package:bloomi/components/custom_button.dart';
 import 'package:bloomi/components/custom_image.dart';
 import 'package:bloomi/components/custom_text.dart';
+import 'package:bloomi/screens/auth/login/login.dart';
 import 'package:bloomi/screens/auth/signup/signup_form.dart';
 import 'package:bloomi/utils/util_constant.dart';
 import 'package:bloomi/utils/util_function.dart';
@@ -60,11 +61,16 @@ class _SignUpDescriptionState extends State<SignUpDescription> {
                   child: const CustomButton("Get Started"),
                 ),
                 const SizedBox(height: 220),
-                const CustomText(
-                  "Already have an account?",
-                  fontColor: UtilConstants.primaryColor,
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
+                InkWell(
+                  onTap: () {
+                    UtilFunction.navigateForward(context, const Login());
+                  },
+                  child: const CustomText(
+                    "Already have an account?",
+                    fontColor: UtilConstants.primaryColor,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
                 )
               ],
             ),

@@ -6,14 +6,14 @@ import 'package:bloomi/utils/util_constant.dart';
 import 'package:bloomi/utils/util_function.dart';
 import 'package:flutter/material.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<Login> createState() => _LoginState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 const SizedBox(height: 72),
                 const CustomText(
-                  "SignUp",
+                  "Login",
                   fontSize: 32,
                   fontWeight: FontWeight.w600,
                 ),
@@ -47,24 +47,16 @@ class _SignUpState extends State<SignUp> {
                 ),
                 const SizedBox(height: 30),
                 const CustomTextFeild(
-                  lable: "Enter your full name",
-                ),
-                const SizedBox(height: 20),
-                const CustomTextFeild(
                   lable: "Enter your email",
                 ),
                 const SizedBox(height: 20),
                 const CustomTextFeild(
-                  lable: "Create password",
+                  lable: "Enter password",
                   obscure: true,
                 ),
-                const SizedBox(height: 20),
-                const CustomTextFeild(
-                  lable: "Confirm password",
-                  obscure: true,
-                ),
+                const SizedBox(height: 10),
                 const SizedBox(height: 86),
-                const CustomButton("Register")
+                const CustomButton("Login")
               ],
             ),
           ),
