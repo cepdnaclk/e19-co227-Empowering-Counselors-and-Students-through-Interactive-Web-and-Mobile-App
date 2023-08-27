@@ -3,7 +3,9 @@ import 'package:bloomi/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({
+  final String text;
+  const CustomButton(
+    this.text, {
     super.key,
   });
 
@@ -16,8 +18,8 @@ class CustomButton extends StatelessWidget {
       decoration: BoxDecoration(
           color: UtilConstants.primaryColor,
           borderRadius: BorderRadius.circular(25)),
-      child: const CustomText(
-        "Get Started",
+      child: CustomText(
+        text,
         fontColor: UtilConstants.whiteColor,
         fontSize: 20,
         fontWeight: FontWeight.bold,

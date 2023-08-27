@@ -51,7 +51,7 @@ class _SignUpDescriptionState extends State<SignUpDescription> {
                   fontColor: UtilConstants.blackColor,
                 ),
                 const SizedBox(height: 20),
-                const CustomButton(),
+                const CustomButton("Get Started"),
                 const SizedBox(height: 220),
                 const CustomText(
                   "Already have an account?",
