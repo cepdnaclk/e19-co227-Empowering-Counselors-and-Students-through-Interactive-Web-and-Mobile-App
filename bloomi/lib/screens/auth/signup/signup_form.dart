@@ -25,7 +25,7 @@ class _SignUpState extends State<SignUp> {
                 horizontal: mediaQueryData.size.height * 0.02),
             child: Column(
               children: [
-                SizedBox(height: mediaQueryData.size.height * 0.01),
+                SizedBox(height: mediaQueryData.size.height * 0.05),
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: InkWell(
@@ -36,7 +36,7 @@ class _SignUpState extends State<SignUp> {
                     child: const Icon(Icons.arrow_back_ios_new_outlined),
                   ),
                 ),
-                SizedBox(height: mediaQueryData.size.height * 0.09),
+                SizedBox(height: mediaQueryData.size.height * 0.05),
                 CustomText(
                   "SignUp",
                   fontSize: mediaQueryData.size.height * 0.04,

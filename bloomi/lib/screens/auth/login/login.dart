@@ -44,7 +44,7 @@ class _LoginState extends State<Login> {
                   width: 580,
                   child: Column(
                     children: [
-                      SizedBox(height: mediaQueryData.size.height * 0.09),
+                      SizedBox(height: mediaQueryData.size.height * 0.07),
                       CustomText(
                         "Login",
                         fontSize: mediaQueryData.size.height * 0.04,

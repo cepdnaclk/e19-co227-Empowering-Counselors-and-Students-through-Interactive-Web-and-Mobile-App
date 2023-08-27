@@ -47,8 +47,8 @@ class _SplashScreenState extends State<SplashScreen> {
               SizedBox(height: mediaQueryData.size.height * 0.22),
               Pulse(
                 child: CustomImage(
-                  width: mediaQueryData.size.height * 0.4,
-                  height: mediaQueryData.size.height * 0.3,
+                  width: mediaQueryData.size.height * 0.35,
+                  height: mediaQueryData.size.height * 0.24,
                 ),
               ),
               ShaderMask(
@@ -63,8 +63,8 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
               SizedBox(height: mediaQueryData.size.height * 0.3),
               CustomText(
-                "from\nUniversity of Peradeniya",
-                fontSize: mediaQueryData.size.height * 0.025,
+                "From\nUniversity of Peradeniya",
+                fontSize: mediaQueryData.size.height * 0.02,
                 fontColor: UtilConstants.whiteColor,
                 fontWeight: FontWeight.w400,
               )

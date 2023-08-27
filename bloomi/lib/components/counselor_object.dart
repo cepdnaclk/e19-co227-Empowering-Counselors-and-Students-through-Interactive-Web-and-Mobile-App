@@ -20,10 +20,10 @@ class CounselorObject extends StatelessWidget {
               BorderRadius.circular(mediaQueryData.size.height * 0.01)),
       child: Row(
         children: [
-          SizedBox(width: mediaQueryData.size.height * 0.025),
+          SizedBox(width: mediaQueryData.size.height * 0.017),
           SizedBox(
-            width: mediaQueryData.size.height * 0.1,
-            height: mediaQueryData.size.height * 0.1,
+            width: mediaQueryData.size.height * 0.08,
+            height: mediaQueryData.size.height * 0.08,
             child: ClipRRect(
               borderRadius:
                   BorderRadius.circular(mediaQueryData.size.height * 0.05),
@@ -33,7 +33,7 @@ class CounselorObject extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: mediaQueryData.size.width * 0.1),
+          SizedBox(width: mediaQueryData.size.width * 0.08),
           Column(
             children: [
               SizedBox(height: mediaQueryData.size.height * 0.025),
