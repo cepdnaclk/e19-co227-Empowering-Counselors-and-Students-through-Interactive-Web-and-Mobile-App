@@ -1,4 +1,4 @@
-import 'package:bloomi/components/CustomButton.dart';
+import 'package:bloomi/components/custom_image.dart';
 import 'package:bloomi/components/custom_text.dart';
 import 'package:bloomi/utils/util_constant.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +32,16 @@ class _SignUpDescriptionState extends State<SignUpDescription> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const CustomButton(),
+                Container(
+                  height: 270,
+                  width: 500,
+                  decoration: BoxDecoration(
+                      color: UtilConstants.lightBrownColor,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: const CustomImage(
+                    imgPath: UtilConstants.counsellingImagePath,
+                  ),
+                ),
                 const SizedBox(height: 20),
                 const CustomText(
                   "Create an account to seamlessly connect with a Counsellor,Explore Bloomi for better student-counselor education connections",
