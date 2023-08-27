@@ -76,7 +76,7 @@ class _LoginState extends State<Login> {
                 InkWell(
                   onTap: () {
                     UtilFunction.navigateForward(
-                        context, const CounsillerSelect());
+                        context, const CounselorSelect());
                   },
                   child: const CustomButton("Login"),
                 ),

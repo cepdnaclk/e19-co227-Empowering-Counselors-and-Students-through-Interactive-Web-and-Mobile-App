@@ -22,4 +22,5 @@ class UtilConstants {
   static const String counsellingImagePath = "assets/images/counselling.png";
   static const String googleImagePath = "assets/images/google.png";
   static const String facebookImagePath = "assets/images/facebook.png";
+  static const String profImagePath = "assets/images/prof.webp";
 }
