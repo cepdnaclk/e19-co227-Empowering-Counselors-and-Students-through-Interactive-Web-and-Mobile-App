@@ -33,7 +33,9 @@ class _SignUpState extends State<SignUp> {
                   height: 150,
                 ),
                 const SizedBox(height: 30),
-                const CustomTextFeild()
+                const CustomTextFeild(
+                  lable: "Enter your full name",
+                )
               ],
             ),
           ),
