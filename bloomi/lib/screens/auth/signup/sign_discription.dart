@@ -29,7 +29,7 @@ class _SignUpDescriptionState extends State<SignUpDescription> {
                 children: [
                   SizedBox(height: mediaQueryData.size.height * 0.05),
                   Container(
-                    height: mediaQueryData.size.height * 0.34,
+                    height: mediaQueryData.size.height * 0.3,
                     width: mediaQueryData.size.height * 0.63,
                     decoration: BoxDecoration(
                         color: UtilConstants.lightBrownColor,
@@ -44,7 +44,7 @@ class _SignUpDescriptionState extends State<SignUpDescription> {
                     width: 580,
                     child: CustomText(
                       "Create an account to seamlessly connect with a Counsellor,Explore Bloomi for better student-counselor education connections",
-                      fontSize: mediaQueryData.size.height * 0.025,
+                      fontSize: mediaQueryData.size.height * 0.02,
                       textAlign: TextAlign.left,
                       fontColor: UtilConstants.blackColor,
                     ),
@@ -57,7 +57,7 @@ class _SignUpDescriptionState extends State<SignUpDescription> {
                     child: CustomButton("Get Started",
                         mediaQueryData: mediaQueryData),
                   ),
-                  SizedBox(height: mediaQueryData.size.height * 0.34),
+                  SizedBox(height: mediaQueryData.size.height * 0.3),
                   InkWell(
                     onTap: () {
                       UtilFunction.navigateForward(context, const Login());
