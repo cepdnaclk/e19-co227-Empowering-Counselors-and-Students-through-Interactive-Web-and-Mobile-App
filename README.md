@@ -6,7 +6,7 @@ Title: BLOOMi
 
 # BLOOMi
 
-### Empowering Counselors and Students through Interactive Web and Mobile App
+## Empowering Counselors and Students through Interactive Web and Mobile App
 
 Welcome to BLOOMi, where the future of educational counseling begins!
 
