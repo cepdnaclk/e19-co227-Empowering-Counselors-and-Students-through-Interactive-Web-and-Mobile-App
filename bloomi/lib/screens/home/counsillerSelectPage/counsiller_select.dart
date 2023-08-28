@@ -15,38 +15,43 @@ class CounselorSelect extends StatefulWidget {
 class _CounselorSelectState extends State<CounselorSelect> {
   @override
   Widget build(BuildContext context) {
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: EdgeInsets.symmetric(
+                  horizontal: mediaQueryData.size.height * 0.03),
               child: Column(
                 children: [
-                  const SizedBox(height: 100),
-                  const CustomText(
+                  SizedBox(height: mediaQueryData.size.height * 0.12),
+                  CustomText(
                     "Choose your Counselor",
-                    fontSize: 24,
+                    fontSize: mediaQueryData.size.height * 0.03,
                     fontColor: UtilConstants.blackColor,
                     fontWeight: FontWeight.w400,
                   ),
-                  const SizedBox(height: 60),
+                  SizedBox(height: mediaQueryData.size.height * 0.06),
                   InkWell(
                     onTap: () {
                       UtilFunction.navigateForward(context, const HomeNabBar());
                     },
-                    child: const CounselorObject(),
+                    child: CounselorObject(mediaQueryData: mediaQueryData),
                   ),
-                  const SizedBox(height: 30),
-                  const CounselorObject(),
-                  const SizedBox(height: 30),
-                  const CounselorObject(),
-                  const SizedBox(height: 30),
-                  const CounselorObject(),
-                  const SizedBox(height: 30),
-                  const CounselorObject(),
-                  const SizedBox(height: 30),
-                  const CounselorObject(),
+                  SizedBox(height: mediaQueryData.size.height * 0.038),
+                  CounselorObject(mediaQueryData: mediaQueryData),
+                  SizedBox(height: mediaQueryData.size.height * 0.038),
+                  CounselorObject(mediaQueryData: mediaQueryData),
+                  SizedBox(height: mediaQueryData.size.height * 0.038),
+                  CounselorObject(mediaQueryData: mediaQueryData),
+                  SizedBox(height: mediaQueryData.size.height * 0.038),
+                  CounselorObject(mediaQueryData: mediaQueryData),
+                  SizedBox(height: mediaQueryData.size.height * 0.038),
+                  CounselorObject(mediaQueryData: mediaQueryData),
+                  SizedBox(height: mediaQueryData.size.height * 0.038),
+                  CounselorObject(mediaQueryData: mediaQueryData),
+                  SizedBox(height: mediaQueryData.size.height * 0.038),
                 ],
               ),
             ),

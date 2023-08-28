@@ -24,8 +24,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Scaffold(
       body: Container(
+        width: mediaQueryData.size.width,
+        height: mediaQueryData.size.height,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -41,23 +44,27 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 180),
+              SizedBox(height: mediaQueryData.size.height * 0.22),
               Pulse(
-                child: const CustomImage(),
+                child: CustomImage(
+                  width: mediaQueryData.size.height * 0.35,
+                  height: mediaQueryData.size.height * 0.24,
+                ),
               ),
               ShaderMask(
                 shaderCallback: (Rect bounds) {
                   return UtilConstants.gradientShader;
                 },
-                child: const CustomText(
+                child: CustomText(
                   "BLOOMi",
                   fontWeight: FontWeight.w400,
+                  fontSize: mediaQueryData.size.height * 0.05,
                 ), // Wrap CustomText with ShaderMask
               ),
-              const SizedBox(height: 290),
-              const CustomText(
-                "from\nUniversity of Peradeniya",
-                fontSize: 20,
+              SizedBox(height: mediaQueryData.size.height * 0.3),
+              CustomText(
+                "From\nUniversity of Peradeniya",
+                fontSize: mediaQueryData.size.height * 0.02,
                 fontColor: UtilConstants.whiteColor,
                 fontWeight: FontWeight.w400,
               )
