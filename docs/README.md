@@ -1,39 +1,29 @@
----
-layout: home
-permalink: index.html
 
-# Please update this with your repository name and title
-repository-name: eYY-XXX-project-template
-title:
----
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
+# Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App
 
 ---
 
-<!-- 
-This is a sample image, to show how to add images to your page. To learn more options, please refer [this](https://projects.ce.pdn.ac.lk/docs/faq/how-to-add-an-image/)
+![](https://github.com/cepdnaclk/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App/blob/main/docs/counselling.jpeg)
 
-![Sample Image](./images/sample.png)
- -->
 
 ## Team
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
+-  E/19/087 Dissanayaka M.A.S.R. [email](mailto:e19087@eng.pdn.ac.lk)
+-  E/19/260 Neranji W.K.G.A.G. [email](mailto:e19260@eng.pdn.ac.lk)
+-  E/19/465 Dilshan R.M.S. [email](mailto:e19465@eng.pdn.ac.lk)
+-  E/19/017 Amanda W. S. [email](mailto:e19017@eng.pdn.ac.lk)
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Other Sub Topics](#other-sub-topics)
-3. [Links](#links)
+. [Links](#links)
 
 ---
 
 ## Introduction
 
- description of the real world problem and solution, impact
+Welcome to **BLOOMi**! *BLOOMi* is a comprehensive project focused on the development and deployment of a mobile app and web app designed to empower both counselors and students. The project aims to enhance the counseling process through an interactive digital platform. By leveraging the capabilities of these apps, counselors can effectively engage with students, providing guidance and support in a more dynamic and accessible manner. Simultaneously, students benefit from a user-friendly interface that facilitates communication, resource-sharing, and personalized assistance. Through its innovative approach, *Bloomi* fosters an environment conducive to improved counseling experiences and enriched student development.
 
 ## Other Sub Topics
 
