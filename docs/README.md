@@ -29,7 +29,7 @@ Welcome to **BLOOMi**! *BLOOMi* is a comprehensive project focused on the develo
 ## Links
 
 - [Project Repository](https://github.com/cepdnaclk/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App){:target="_blank"}
-- [Project Page]([https://cepdnaclk.github.io/{{ page.repository-name}}](https://cepdnaclk.github.io/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App/)){:target="_blank"}
+- [Project Page](https://cepdnaclk.github.io/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App/){:target="_blank"}
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
