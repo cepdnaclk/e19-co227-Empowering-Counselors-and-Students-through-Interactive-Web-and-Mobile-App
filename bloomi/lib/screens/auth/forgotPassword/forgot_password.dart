@@ -64,6 +64,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       CustomTextFeild(
                         lable: "Enter your email",
                         mediaQueryData: mediaQueryData,
+                        keyboardType: TextInputType.emailAddress,
                       ),
                       SizedBox(height: mediaQueryData.size.height * 0.07),
                       CustomButton("Send", mediaQueryData: mediaQueryData),

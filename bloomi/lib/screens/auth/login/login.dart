@@ -59,12 +59,14 @@ class _LoginState extends State<Login> {
                       CustomTextFeild(
                         lable: "Enter your email",
                         mediaQueryData: mediaQueryData,
+                        keyboardType: TextInputType.emailAddress,
                       ),
                       SizedBox(height: mediaQueryData.size.height * 0.025),
                       CustomTextFeild(
                         lable: "Enter password",
                         obscure: true,
                         mediaQueryData: mediaQueryData,
+                        keyboardType: TextInputType.visiblePassword,
                       ),
                       SizedBox(height: mediaQueryData.size.height * 0.01),
                       Align(

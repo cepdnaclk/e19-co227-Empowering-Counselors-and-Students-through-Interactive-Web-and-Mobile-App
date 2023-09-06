@@ -1,4 +1,6 @@
 import 'package:bloomi/screens/splash/splash_screen.dart';
+import 'screens/home/home/navbar.dart';
+import 'screens/home/Appointment/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -28,6 +30,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const SplashScreen(),
+      routes: <String, WidgetBuilder>{
+        '/navbar': (context) => HomeNabBar(),
+        '/dashboard': (context) => Dashboard(),
+      },
     );
   }
 }
