@@ -51,23 +51,27 @@ class _SignUpState extends State<SignUp> {
                 CustomTextFeild(
                   lable: "Enter your full name",
                   mediaQueryData: mediaQueryData,
+                  keyboardType: TextInputType.text,
                 ),
                 SizedBox(height: mediaQueryData.size.height * 0.02),
                 CustomTextFeild(
                   lable: "Enter your email",
                   mediaQueryData: mediaQueryData,
+                  keyboardType: TextInputType.emailAddress,
                 ),
                 SizedBox(height: mediaQueryData.size.height * 0.02),
                 CustomTextFeild(
                   lable: "Create password",
                   obscure: true,
                   mediaQueryData: mediaQueryData,
+                  keyboardType: TextInputType.visiblePassword,
                 ),
                 SizedBox(height: mediaQueryData.size.height * 0.02),
                 CustomTextFeild(
                   lable: "Confirm password",
                   obscure: true,
                   mediaQueryData: mediaQueryData,
+                  keyboardType: TextInputType.visiblePassword,
                 ),
                 SizedBox(height: mediaQueryData.size.height * 0.10),
                 CustomButton("Register", mediaQueryData: mediaQueryData)

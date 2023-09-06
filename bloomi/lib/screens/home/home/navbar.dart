@@ -1,4 +1,5 @@
 import 'package:bloomi/components/custom_text.dart';
+import 'package:bloomi/screens/home/Appointment/dashboard.dart';
 import 'package:flutter/material.dart';
 
 class HomeNabBar extends StatefulWidget {
@@ -15,7 +16,7 @@ class _HomeNabBarState extends State<HomeNabBar> {
   final List<Widget> _destinations = [
     const Center(child: CustomText("Tab 1")),
     const Center(child: CustomText("Tab 2")),
-    const Center(child: CustomText("Tab 3")),
+    Dashboard(),
   ];
 
   @override

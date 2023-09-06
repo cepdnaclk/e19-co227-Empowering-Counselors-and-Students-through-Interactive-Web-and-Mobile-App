@@ -9,6 +9,7 @@ class CustomTextFeild extends StatelessWidget {
     required this.lable,
     this.obscure = false,
     required this.mediaQueryData,
+    required TextInputType keyboardType,
   });
 
   @override
@@ -24,6 +25,7 @@ class CustomTextFeild extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
         ),
+        keyboardType: TextInputType.text,
       ),
     );
   }
