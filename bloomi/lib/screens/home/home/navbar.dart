@@ -16,7 +16,7 @@ class _HomeNabBarState extends State<HomeNabBar> {
   final List<Widget> _destinations = [
     const Center(child: CustomText("Tab 1")),
     const Center(child: CustomText("Tab 2")),
-    Dashboard(),
+    const Dashboard(),
   ];
 
   @override
