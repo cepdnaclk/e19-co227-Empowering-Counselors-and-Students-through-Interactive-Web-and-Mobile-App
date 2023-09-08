@@ -22,7 +22,7 @@ class CustomButton extends StatelessWidget {
       decoration: BoxDecoration(
           color: UtilConstants.primaryColor,
           borderRadius:
-              BorderRadius.circular(mediaQueryData.size.height * 0.03)),
+              BorderRadius.circular(mediaQueryData.size.height * 0.01)),
       child: CustomText(
         text,
         fontColor: UtilConstants.whiteColor,

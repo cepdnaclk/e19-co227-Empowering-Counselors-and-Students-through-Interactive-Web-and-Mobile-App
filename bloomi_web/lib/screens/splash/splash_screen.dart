@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:bloomi_web/components/custom_image.dart';
 import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/screens/auth/signup/sign_discription.dart';
+import 'package:bloomi_web/screens/auth/signup/signup_form.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      UtilFunction.navigateForward(context, const SignUpDescription());
+      UtilFunction.navigateForward(context, const SignUp());
     });
   }
 

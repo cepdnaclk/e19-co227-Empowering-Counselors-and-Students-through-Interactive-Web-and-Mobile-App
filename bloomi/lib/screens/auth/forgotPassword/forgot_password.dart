@@ -37,41 +37,38 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     child: const Icon(Icons.arrow_back_ios_new_outlined),
                   ),
                 ),
-                SizedBox(
-                  width: 580,
-                  child: Column(
-                    children: [
-                      SizedBox(height: mediaQueryData.size.height * 0.128),
-                      CustomText(
-                        "Forgot Password",
-                        fontSize: mediaQueryData.size.height * 0.04,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      Image.asset(
-                        UtilConstants.counsellingImagePath,
-                        width: mediaQueryData.size.height * 0.38,
-                        height: mediaQueryData.size.height * 0.19,
-                      ),
-                      SizedBox(height: mediaQueryData.size.height * 0.128),
-                      CustomText(
-                        "Please, enter your email address. You will receive a link to create a new password via email.",
-                        fontSize: mediaQueryData.size.height * 0.018,
-                        fontWeight: FontWeight.w600,
-                        fontColor: UtilConstants.blackColor,
-                        textAlign: TextAlign.left,
-                      ),
-                      SizedBox(height: mediaQueryData.size.height * 0.019),
-                      CustomTextFeild(
-                        lable: "Enter your email",
+                Column(
+                  children: [
+                    SizedBox(height: mediaQueryData.size.height * 0.05),
+                    CustomText(
+                      "Forgot Password",
+                      fontSize: mediaQueryData.size.height * 0.04,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    Image.asset(
+                      UtilConstants.counsellingImagePath,
+                      width: mediaQueryData.size.height * 0.38,
+                      height: mediaQueryData.size.height * 0.19,
+                    ),
+                    SizedBox(height: mediaQueryData.size.height * 0.05),
+                    CustomText(
+                      "Please, enter your email address. You will receive a link to create a new password via email.",
+                      fontSize: mediaQueryData.size.height * 0.018,
+                      fontWeight: FontWeight.w600,
+                      fontColor: UtilConstants.blackColor,
+                      textAlign: TextAlign.left,
+                    ),
+                    SizedBox(height: mediaQueryData.size.height * 0.019),
+                    CustomTextFeild(
+                      lable: "Enter your email",
+                      mediaQueryData: mediaQueryData,
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                    SizedBox(height: mediaQueryData.size.height * 0.07),
+                    CustomButton("Send",
                         mediaQueryData: mediaQueryData,
-                        keyboardType: TextInputType.emailAddress,
-                      ),
-                      SizedBox(height: mediaQueryData.size.height * 0.07),
-                      CustomButton("Send",
-                          mediaQueryData: mediaQueryData,
-                          width: mediaQueryData.size.width * 0.4),
-                    ],
-                  ),
+                        width: mediaQueryData.size.width),
+                  ],
                 ),
               ],
             ),

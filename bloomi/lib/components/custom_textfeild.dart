@@ -15,7 +15,7 @@ class CustomTextFeild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 580,
+      width: mediaQueryData.size.height,
       height: mediaQueryData.size.height * 0.063,
       child: TextField(
         obscureText: obscure,

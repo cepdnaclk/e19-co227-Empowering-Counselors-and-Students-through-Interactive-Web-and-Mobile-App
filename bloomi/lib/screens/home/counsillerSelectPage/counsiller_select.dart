@@ -25,7 +25,7 @@ class _CounselorSelectState extends State<CounselorSelect> {
                   horizontal: mediaQueryData.size.height * 0.03),
               child: Column(
                 children: [
-                  SizedBox(height: mediaQueryData.size.height * 0.12),
+                  SizedBox(height: mediaQueryData.size.height * 0.09),
                   CustomText(
                     "Choose your Counselor",
                     fontSize: mediaQueryData.size.height * 0.03,
@@ -41,17 +41,6 @@ class _CounselorSelectState extends State<CounselorSelect> {
                   ),
                   SizedBox(height: mediaQueryData.size.height * 0.038),
                   CounselorObject(mediaQueryData: mediaQueryData),
-                  SizedBox(height: mediaQueryData.size.height * 0.038),
-                  CounselorObject(mediaQueryData: mediaQueryData),
-                  SizedBox(height: mediaQueryData.size.height * 0.038),
-                  CounselorObject(mediaQueryData: mediaQueryData),
-                  SizedBox(height: mediaQueryData.size.height * 0.038),
-                  CounselorObject(mediaQueryData: mediaQueryData),
-                  SizedBox(height: mediaQueryData.size.height * 0.038),
-                  CounselorObject(mediaQueryData: mediaQueryData),
-                  SizedBox(height: mediaQueryData.size.height * 0.038),
-                  CounselorObject(mediaQueryData: mediaQueryData),
-                  SizedBox(height: mediaQueryData.size.height * 0.038),
                 ],
               ),
             ),
