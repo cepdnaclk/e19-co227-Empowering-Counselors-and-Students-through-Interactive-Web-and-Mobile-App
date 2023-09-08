@@ -1,9 +1,7 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:flutter/material.dart';
-import 'package:bloomi/components/custom_text.dart';
 import 'package:bloomi/utils/util_constant.dart';
+import 'package:flutter/material.dart';
+
 import 'new_appointment.dart';
-import 'package:bloomi/screens/home/home/navbar.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -194,146 +192,148 @@ class _DashboardState extends State<Dashboard> {
 
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 163, 220, 248),
-      body: GestureDetector(
-        onTap: _closeDropdown,
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                children: [
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Dashboard",
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.blueGrey,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  const Spacer(), // Added Spacer to push the Container to the right
-                  Container(
-                    alignment: Alignment.topRight,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0),
-                      child: Image.asset(
-                        UtilConstants.profImagePath,
-                        width: 60,
-                        height: 60,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 30,
-                ),
-                child: TextField(
-                  onChanged: (value) => _runFilter(value),
-                  onTap: () {
-                    setState(() {
-                      _isSearchBarTapped =
-                          true; // Update flag when search bar is tapped
-                    });
-                  },
-                  decoration: const InputDecoration(
-                      labelText: 'Search your records',
-                      suffixIcon: Icon(Icons.search)),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Expanded(
-                  child: _isSearchBarTapped
-                      ? _foundUsers.isNotEmpty
-                          ? ListView.builder(
-                              itemCount: _foundUsers.length,
-                              itemBuilder: (context, index) => Card(
-                                key: ValueKey(_foundUsers[index]["id"]),
-                                color: Colors.amberAccent,
-                                elevation: 4,
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                child: ListTile(
-                                  leading: Text(
-                                    _foundUsers[index]["id"].toString(),
-                                    style: const TextStyle(fontSize: 24),
-                                  ),
-                                  title: Text(_foundUsers[index]['name']),
-                                  subtitle: Text(
-                                      '${_foundUsers[index]["age"].toString()} years old'),
-                                ),
-                              ),
-                            )
-                          : const Text(
-                              'No results found',
-                              style: TextStyle(fontSize: 24),
-                            )
-                      : Container()),
-              const Text(
-                "Your Next Appointment",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blueGrey,
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 10,
-                  bottom: 30,
-                  left: 20,
-                  right: 20,
-                ),
-                child: Card(
-                  elevation: 2,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 20,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Title',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: _closeDropdown,
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    const Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Dashboard",
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.blueGrey,
+                          fontWeight: FontWeight.bold,
                         ),
-                        SizedBox(
-                            height: 8,
-                            child: Divider(
-                              thickness: 1,
-                            )),
-                        Text('Full Name:'),
-                        SizedBox(height: 4),
-                        Text('Email:'),
-                        SizedBox(height: 4),
-                        Text('Counsellor:'),
-                        SizedBox(height: 4),
-                        Text('Date:'),
-                        SizedBox(height: 4),
-                        Text('Time:'),
-                      ],
+                      ),
+                    ),
+                    const Spacer(), // Added Spacer to push the Container to the right
+                    Container(
+                      alignment: Alignment.topRight,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0),
+                        child: Image.asset(
+                          UtilConstants.profImagePath,
+                          width: 60,
+                          height: 60,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                  ),
+                  child: TextField(
+                    onChanged: (value) => _runFilter(value),
+                    onTap: () {
+                      setState(() {
+                        _isSearchBarTapped =
+                            true; // Update flag when search bar is tapped
+                      });
+                    },
+                    decoration: const InputDecoration(
+                        labelText: 'Search your records',
+                        suffixIcon: Icon(Icons.search)),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Expanded(
+                    child: _isSearchBarTapped
+                        ? _foundUsers.isNotEmpty
+                            ? ListView.builder(
+                                itemCount: _foundUsers.length,
+                                itemBuilder: (context, index) => Card(
+                                  key: ValueKey(_foundUsers[index]["id"]),
+                                  color: Colors.amberAccent,
+                                  elevation: 4,
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 10),
+                                  child: ListTile(
+                                    leading: Text(
+                                      _foundUsers[index]["id"].toString(),
+                                      style: const TextStyle(fontSize: 24),
+                                    ),
+                                    title: Text(_foundUsers[index]['name']),
+                                    subtitle: Text(
+                                        '${_foundUsers[index]["age"].toString()} years old'),
+                                  ),
+                                ),
+                              )
+                            : const Text(
+                                'No results found',
+                                style: TextStyle(fontSize: 24),
+                              )
+                        : Container()),
+                const Text(
+                  "Your Next Appointment",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blueGrey,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(
+                    top: 10,
+                    bottom: 30,
+                    left: 20,
+                    right: 20,
+                  ),
+                  child: Card(
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 20,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Title',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                              height: 8,
+                              child: Divider(
+                                thickness: 1,
+                              )),
+                          Text('Full Name:'),
+                          SizedBox(height: 4),
+                          Text('Email:'),
+                          SizedBox(height: 4),
+                          Text('Counsellor:'),
+                          SizedBox(height: 4),
+                          Text('Date:'),
+                          SizedBox(height: 4),
+                          Text('Time:'),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

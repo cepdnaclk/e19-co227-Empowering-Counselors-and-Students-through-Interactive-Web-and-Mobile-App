@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   final String text;
   final MediaQueryData mediaQueryData;
+  final double width;
   const CustomButton(
     this.text, {
     super.key,
     required this.mediaQueryData,
+    required this.width,
   });
 
   @override
@@ -16,7 +18,7 @@ class CustomButton extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       height: mediaQueryData.size.height * 0.07,
-      width: 580,
+      width: width,
       decoration: BoxDecoration(
           color: UtilConstants.primaryColor,
           borderRadius:
