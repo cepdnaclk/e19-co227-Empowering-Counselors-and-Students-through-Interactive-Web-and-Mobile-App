@@ -89,8 +89,11 @@ class _LoginState extends State<Login> {
                           UtilFunction.navigateForward(
                               context, const CounselorSelect());
                         },
-                        child: CustomButton("Login",
-                            mediaQueryData: mediaQueryData),
+                        child: CustomButton(
+                          "Login",
+                          mediaQueryData: mediaQueryData,
+                          width: mediaQueryData.size.width * 0.4,
+                        ),
                       ),
                       SizedBox(height: mediaQueryData.size.height * 0.04),
                       CustomText(

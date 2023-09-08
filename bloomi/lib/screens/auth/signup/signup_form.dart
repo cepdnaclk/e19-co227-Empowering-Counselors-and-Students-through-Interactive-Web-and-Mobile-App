@@ -74,7 +74,11 @@ class _SignUpState extends State<SignUp> {
                   keyboardType: TextInputType.visiblePassword,
                 ),
                 SizedBox(height: mediaQueryData.size.height * 0.10),
-                CustomButton("Register", mediaQueryData: mediaQueryData)
+                CustomButton(
+                  "Register",
+                  mediaQueryData: mediaQueryData,
+                  width: mediaQueryData.size.width * 0.4,
+                )
               ],
             ),
           ),
