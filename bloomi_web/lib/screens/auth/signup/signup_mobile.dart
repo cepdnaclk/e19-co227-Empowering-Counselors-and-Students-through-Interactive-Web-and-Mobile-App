@@ -34,116 +34,123 @@ class SignUpMobile extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: mediaQueryData.size.width * 0.06),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                  height: mediaQueryData.size.height * 0.15),
-                              Container(
-                                padding: EdgeInsets.all(
-                                    mediaQueryData.size.width * 0.04),
-                                margin: EdgeInsets.only(
-                                    top: mediaQueryData.size.height * 0.01),
-                                decoration: BoxDecoration(
-                                  color: UtilConstants.lightgreyColor,
-                                  borderRadius: BorderRadius.circular(
-                                      mediaQueryData.size.height * 0.03),
-                                ),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                        height:
-                                            mediaQueryData.size.height * 0.08),
-                                    CustomTextFeild(
-                                      hintText: "Enter your name",
-                                      lable: "Name",
+                          child: Column(children: [
+                            SizedBox(height: mediaQueryData.size.height * 0.15),
+                            Container(
+                              padding: EdgeInsets.all(
+                                  mediaQueryData.size.width * 0.04),
+                              margin: EdgeInsets.only(
+                                  top: mediaQueryData.size.height * 0.01),
+                              decoration: BoxDecoration(
+                                color: UtilConstants.lightgreyColor,
+                                borderRadius: BorderRadius.circular(
+                                    mediaQueryData.size.height * 0.03),
+                              ),
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    width: mediaQueryData.size.width * 0.3,
+                                    child: CustomText(
+                                      "SignUp",
+                                      fontSize:
+                                          mediaQueryData.size.height * 0.04,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          mediaQueryData.size.height * 0.05),
+                                  CustomTextFeild(
+                                    hintText: "Enter your name",
+                                    lable: "Name",
+                                    mediaQueryData: mediaQueryData,
+                                    keyboardType: TextInputType.text,
+                                    width: (mediaQueryData.size.width < 500)
+                                        ? mediaQueryData.size.width
+                                        : 400,
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          mediaQueryData.size.height * 0.02),
+                                  CustomTextFeild(
+                                    hintText: "Enter your email",
+                                    lable: "Email",
+                                    mediaQueryData: mediaQueryData,
+                                    keyboardType: TextInputType.emailAddress,
+                                    width: (mediaQueryData.size.width < 500)
+                                        ? mediaQueryData.size.width
+                                        : 400,
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          mediaQueryData.size.height * 0.02),
+                                  CustomTextFeild(
+                                    hintText: "Enter your password",
+                                    lable: "Password",
+                                    obscure: true,
+                                    mediaQueryData: mediaQueryData,
+                                    keyboardType: TextInputType.visiblePassword,
+                                    width: (mediaQueryData.size.width < 500)
+                                        ? mediaQueryData.size.width
+                                        : 400,
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          mediaQueryData.size.height * 0.02),
+                                  CustomTextFeild(
+                                    hintText: "Confirm your password",
+                                    lable: "Confirm Password",
+                                    obscure: true,
+                                    mediaQueryData: mediaQueryData,
+                                    keyboardType: TextInputType.visiblePassword,
+                                    width: (mediaQueryData.size.width < 500)
+                                        ? mediaQueryData.size.width
+                                        : 400,
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          mediaQueryData.size.height * 0.07),
+                                  InkWell(
+                                    onTap: () {
+                                      UtilFunction.navigateForward(
+                                          context, const Home());
+                                    },
+                                    child: CustomButton(
+                                      "Register",
                                       mediaQueryData: mediaQueryData,
-                                      keyboardType: TextInputType.text,
                                       width: (mediaQueryData.size.width < 500)
                                           ? mediaQueryData.size.width
                                           : 400,
                                     ),
-                                    SizedBox(
-                                        height:
-                                            mediaQueryData.size.height * 0.02),
-                                    CustomTextFeild(
-                                      hintText: "Enter your email",
-                                      lable: "Email",
-                                      mediaQueryData: mediaQueryData,
-                                      keyboardType: TextInputType.emailAddress,
-                                      width: (mediaQueryData.size.width < 500)
-                                          ? mediaQueryData.size.width
-                                          : 400,
-                                    ),
-                                    SizedBox(
-                                        height:
-                                            mediaQueryData.size.height * 0.02),
-                                    CustomTextFeild(
-                                      hintText: "Enter your password",
-                                      lable: "Password",
-                                      obscure: true,
-                                      mediaQueryData: mediaQueryData,
-                                      keyboardType:
-                                          TextInputType.visiblePassword,
-                                      width: (mediaQueryData.size.width < 500)
-                                          ? mediaQueryData.size.width
-                                          : 400,
-                                    ),
-                                    SizedBox(
-                                        height:
-                                            mediaQueryData.size.height * 0.02),
-                                    CustomTextFeild(
-                                      hintText: "Confirm your password",
-                                      lable: "Confirm Password",
-                                      obscure: true,
-                                      mediaQueryData: mediaQueryData,
-                                      keyboardType:
-                                          TextInputType.visiblePassword,
-                                      width: (mediaQueryData.size.width < 500)
-                                          ? mediaQueryData.size.width
-                                          : 400,
-                                    ),
-                                    SizedBox(
-                                        height:
-                                            mediaQueryData.size.height * 0.07),
-                                    InkWell(
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          mediaQueryData.size.height * 0.02),
+                                  Container(
+                                    width: (mediaQueryData.size.width < 500)
+                                        ? mediaQueryData.size.width
+                                        : 400,
+                                    alignment: Alignment.centerRight,
+                                    child: InkWell(
                                       onTap: () {
                                         UtilFunction.navigateForward(
-                                            context, const Home());
+                                            context, const Login());
                                       },
-                                      child: CustomButton(
-                                        "Register",
-                                        mediaQueryData: mediaQueryData,
-                                        width: (mediaQueryData.size.width < 500)
-                                            ? mediaQueryData.size.width
-                                            : 400,
+                                      child: CustomText(
+                                        "Already have an account?",
+                                        fontSize:
+                                            mediaQueryData.size.height * 0.02,
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
-                                    SizedBox(
-                                        height:
-                                            mediaQueryData.size.height * 0.02),
-                                    Container(
-                                      width: (mediaQueryData.size.width < 500)
-                                          ? mediaQueryData.size.width
-                                          : 400,
-                                      alignment: Alignment.centerRight,
-                                      child: InkWell(
-                                        onTap: () {
-                                          UtilFunction.navigateForward(
-                                              context, const Login());
-                                        },
-                                        child: CustomText(
-                                          "Already have an account?",
-                                          fontSize:
-                                              mediaQueryData.size.height * 0.02,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                            SizedBox(
+                              height: mediaQueryData.size.height * 0.1,
+                            ),
+                          ]),
                         ),
                       ],
                     ),

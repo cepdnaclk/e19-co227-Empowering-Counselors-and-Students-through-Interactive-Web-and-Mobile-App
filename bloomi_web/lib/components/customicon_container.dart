@@ -16,10 +16,13 @@ class CustomIconContainer extends StatelessWidget {
       padding: EdgeInsets.all(
           (mediaQueryData.size.height + mediaQueryData.size.width) * 0.007),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(mediaQueryData.size.width * 0.01),
+          borderRadius: BorderRadius.circular(
+              (mediaQueryData.size.height + mediaQueryData.size.width) * 0.01),
           color: UtilConstants.whiteColor),
       child: Image.asset(
         imgPath,
+        width: mediaQueryData.size.width * 0.03,
+        height: mediaQueryData.size.height * 0.03,
       ),
     );
   }

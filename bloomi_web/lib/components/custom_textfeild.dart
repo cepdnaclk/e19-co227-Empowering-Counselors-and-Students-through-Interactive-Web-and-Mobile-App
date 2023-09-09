@@ -25,10 +25,10 @@ class CustomTextFeild extends StatelessWidget {
         obscureText: obscure,
         decoration: InputDecoration(
           labelText: lable,
-          // hintText: hintText,
+          hintText: hintText,
           labelStyle: TextStyle(
-              fontSize: mediaQueryData.size.height * 0.02,
-              fontWeight: FontWeight.w200),
+              fontSize: mediaQueryData.size.height * 0.023,
+              fontWeight: FontWeight.w400),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),

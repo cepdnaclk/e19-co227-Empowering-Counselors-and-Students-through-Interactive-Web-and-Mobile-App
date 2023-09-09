@@ -10,8 +10,8 @@ import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 
-class LoginMobile extends StatelessWidget {
-  const LoginMobile({
+class ForgotPasswordMobile extends StatelessWidget {
+  const ForgotPasswordMobile({
     Key? key,
     required this.mediaQueryData,
   }) : super(key: key);
@@ -38,7 +38,7 @@ class LoginMobile extends StatelessWidget {
                           child: Column(
                             children: [
                               SizedBox(
-                                  height: mediaQueryData.size.height * 0.1),
+                                  height: mediaQueryData.size.height * 0.15),
                               Container(
                                 padding: EdgeInsets.all(
                                     mediaQueryData.size.width * 0.04),
@@ -51,18 +51,6 @@ class LoginMobile extends StatelessWidget {
                                 ),
                                 child: Column(
                                   children: [
-                                    SizedBox(
-                                        height:
-                                            mediaQueryData.size.height * 0.08),
-                                    SizedBox(
-                                      width: mediaQueryData.size.width * 0.3,
-                                      child: CustomText(
-                                        "Login",
-                                        fontSize:
-                                            mediaQueryData.size.height * 0.04,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
                                     SizedBox(
                                         height:
                                             mediaQueryData.size.height * 0.08),
@@ -91,7 +79,7 @@ class LoginMobile extends StatelessWidget {
                                     ),
                                     SizedBox(
                                         height:
-                                            mediaQueryData.size.height * 0.05),
+                                            mediaQueryData.size.height * 0.07),
                                     InkWell(
                                       onTap: () {
                                         UtilFunction.navigateForward(
@@ -158,12 +146,9 @@ class LoginMobile extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-                                    ),
+                                    )
                                   ],
                                 ),
-                              ),
-                              SizedBox(
-                                height: mediaQueryData.size.height * 0.1,
                               ),
                             ],
                           ),
