@@ -18,10 +18,10 @@ class Footer extends StatelessWidget {
         color: UtilConstants.primaryColor,
         child: Center(
           child: CustomText(
-            "© 2023 BLOOMi. All rights reserved.",
+            "© 2023 BLOOMi\nAll rights reserved",
             fontColor: UtilConstants.whiteColor,
-            fontSize: mediaQueryData.size.height * 0.02,
-            fontWeight: FontWeight.bold,
+            fontSize: mediaQueryData.size.height * 0.015,
+            fontWeight: FontWeight.w300,
           ),
         ));
   }

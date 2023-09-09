@@ -1,4 +1,4 @@
-import 'package:bloomi_web/components/custom_text.dart';
+import 'package:bloomi_web/components/custom_navbar_widget.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -49,24 +49,48 @@ class _HomeNavBarState extends State<HomeNavBar> {
                                   : _isHovering[0] = false;
                             });
                           },
-                          child: CustomText("Home",
-                              fontSize: mediaQueryData.size.width * 0.014,
-                              fontWeight: FontWeight.w300,
-                              fontColor: _isHovering[0]
-                                  ? UtilConstants.lightRedColor
-                                  : UtilConstants.primaryColor)),
+                          child: CustomNavBarWidget("Home",
+                              mediaQueryData: mediaQueryData,
+                              isHovering: _isHovering[0])),
                       SizedBox(width: mediaQueryData.size.width * 0.03),
-                      CustomText("Appointment",
-                          fontSize: mediaQueryData.size.width * 0.014,
-                          fontWeight: FontWeight.w300),
+                      InkWell(
+                          onTap: () {},
+                          onHover: (value) {
+                            setState(() {
+                              value
+                                  ? _isHovering[1] = true
+                                  : _isHovering[1] = false;
+                            });
+                          },
+                          child: CustomNavBarWidget("Apoinment",
+                              mediaQueryData: mediaQueryData,
+                              isHovering: _isHovering[1])),
                       SizedBox(width: mediaQueryData.size.width * 0.03),
-                      CustomText("Contact",
-                          fontSize: mediaQueryData.size.width * 0.014,
-                          fontWeight: FontWeight.w300),
+                      InkWell(
+                          onTap: () {},
+                          onHover: (value) {
+                            setState(() {
+                              value
+                                  ? _isHovering[2] = true
+                                  : _isHovering[2] = false;
+                            });
+                          },
+                          child: CustomNavBarWidget("Contact",
+                              mediaQueryData: mediaQueryData,
+                              isHovering: _isHovering[2])),
                       SizedBox(width: mediaQueryData.size.width * 0.03),
-                      CustomText("Profile",
-                          fontSize: mediaQueryData.size.width * 0.014,
-                          fontWeight: FontWeight.w300),
+                      InkWell(
+                          onTap: () {},
+                          onHover: (value) {
+                            setState(() {
+                              value
+                                  ? _isHovering[3] = true
+                                  : _isHovering[3] = false;
+                            });
+                          },
+                          child: CustomNavBarWidget("Profile",
+                              mediaQueryData: mediaQueryData,
+                              isHovering: _isHovering[3])),
                     ],
                   ),
                 ],
