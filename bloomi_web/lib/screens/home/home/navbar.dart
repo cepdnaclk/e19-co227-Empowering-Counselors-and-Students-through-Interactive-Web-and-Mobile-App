@@ -1,49 +1,79 @@
 import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/screens/home/Appointment/dashboard.dart';
+import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
-class HomeNabBar extends StatefulWidget {
-  const HomeNabBar({Key? key}) : super(key: key);
+class HomeNavBar extends StatefulWidget {
+  const HomeNavBar({Key? key}) : super(key: key);
 
   @override
-  State<HomeNabBar> createState() => _HomeNabBarState();
+  State<HomeNavBar> createState() => _HomeNavBarState();
 }
 
-class _HomeNabBarState extends State<HomeNabBar> {
-  int _currentIndex = 0; // To track the currently selected tab index
-
-  // List of destinations for the bottom navigation bar
-  final List<Widget> _destinations = [
-    const Center(child: CustomText("Tab 1")),
-    const Center(child: CustomText("Tab 2")),
-    const Dashboard(),
+class _HomeNavBarState extends State<HomeNavBar> {
+  final List _isHovering = [
+    false,
+    false,
+    false,
+    false,
   ];
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _destinations[_currentIndex], // Display the currently selected tab
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index; // Update the selected tab index
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Tab 1",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: "Tab 2",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Tab 3",
-          ),
-        ],
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    return Container(
+      color: UtilConstants.lightgreyColor,
+      child: Padding(
+        padding: EdgeInsets.all(mediaQueryData.size.width * 0.01),
+        child: Row(
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  Container(
+                    width: mediaQueryData.size.width * 0.66,
+                    height: mediaQueryData.size.height * 0.05,
+                    alignment: Alignment.centerLeft,
+                    child: Image.asset(
+                      UtilConstants.primaryImagePath,
+                      width: mediaQueryData.size.width * 0.05,
+                      height: mediaQueryData.size.height * 0.05,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      InkWell(
+                          onTap: () {},
+                          onHover: (value) {
+                            setState(() {
+                              value
+                                  ? _isHovering[0] = true
+                                  : _isHovering[0] = false;
+                            });
+                          },
+                          child: CustomText("Home",
+                              fontSize: mediaQueryData.size.width * 0.014,
+                              fontWeight: FontWeight.w300,
+                              fontColor: _isHovering[0]
+                                  ? UtilConstants.lightRedColor
+                                  : UtilConstants.primaryColor)),
+                      SizedBox(width: mediaQueryData.size.width * 0.03),
+                      CustomText("Appointment",
+                          fontSize: mediaQueryData.size.width * 0.014,
+                          fontWeight: FontWeight.w300),
+                      SizedBox(width: mediaQueryData.size.width * 0.03),
+                      CustomText("Contact",
+                          fontSize: mediaQueryData.size.width * 0.014,
+                          fontWeight: FontWeight.w300),
+                      SizedBox(width: mediaQueryData.size.width * 0.03),
+                      CustomText("Profile",
+                          fontSize: mediaQueryData.size.width * 0.014,
+                          fontWeight: FontWeight.w300),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

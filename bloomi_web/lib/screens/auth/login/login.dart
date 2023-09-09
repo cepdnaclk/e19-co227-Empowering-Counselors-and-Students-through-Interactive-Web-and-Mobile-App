@@ -4,7 +4,7 @@ import 'package:bloomi_web/components/custom_textfeild.dart';
 import 'package:bloomi_web/components/customicon_container.dart';
 import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/screens/auth/forgotPassword/forgot_password.dart';
-import 'package:bloomi_web/screens/home/counsillerSelectPage/counsiller_select.dart';
+import 'package:bloomi_web/screens/home/home/home.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +81,7 @@ class _LoginState extends State<Login> {
                                 InkWell(
                                   onTap: () {
                                     UtilFunction.navigateForward(
-                                        context, const CounselorSelect());
+                                        context, const Home());
                                   },
                                   child: CustomButton(
                                     "Login",

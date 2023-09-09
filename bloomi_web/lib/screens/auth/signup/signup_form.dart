@@ -3,6 +3,7 @@ import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/custom_textfeild.dart';
 import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/screens/auth/login/login.dart';
+import 'package:bloomi_web/screens/home/home/home.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
@@ -88,10 +89,16 @@ class _SignUpState extends State<SignUp> {
                               width: mediaQueryData.size.width * 0.3,
                             ),
                             SizedBox(height: mediaQueryData.size.height * 0.10),
-                            CustomButton(
-                              "Register",
-                              mediaQueryData: mediaQueryData,
-                              width: mediaQueryData.size.width * 0.3,
+                            InkWell(
+                              onTap: () {
+                                UtilFunction.navigateForward(
+                                    context, const Home());
+                              },
+                              child: CustomButton(
+                                "Register",
+                                mediaQueryData: mediaQueryData,
+                                width: mediaQueryData.size.width * 0.3,
+                              ),
                             ),
                             SizedBox(height: mediaQueryData.size.height * 0.02),
                             Container(
