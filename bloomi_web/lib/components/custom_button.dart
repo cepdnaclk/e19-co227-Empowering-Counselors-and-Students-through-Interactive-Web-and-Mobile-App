@@ -26,7 +26,7 @@ class CustomButton extends StatelessWidget {
       child: CustomText(
         text,
         fontColor: UtilConstants.whiteColor,
-        fontSize: mediaQueryData.size.height * 0.025,
+        fontSize: mediaQueryData.size.height * 0.023,
         fontWeight: FontWeight.bold,
       ),
     );

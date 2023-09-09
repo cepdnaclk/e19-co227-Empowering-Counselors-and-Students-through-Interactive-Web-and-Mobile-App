@@ -27,8 +27,8 @@ class CustomTextFeild extends StatelessWidget {
           labelText: lable,
           hintText: hintText,
           labelStyle: TextStyle(
-            fontSize: mediaQueryData.size.height * 0.025,
-          ),
+              fontSize: mediaQueryData.size.height * 0.023,
+              fontWeight: FontWeight.w400),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
