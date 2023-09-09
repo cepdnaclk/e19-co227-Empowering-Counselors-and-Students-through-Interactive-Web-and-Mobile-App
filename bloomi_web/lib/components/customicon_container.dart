@@ -15,8 +15,6 @@ class CustomIconContainer extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(
           (mediaQueryData.size.height + mediaQueryData.size.width) * 0.007),
-      width: mediaQueryData.size.width * 0.07,
-      height: mediaQueryData.size.height * 0.07,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(mediaQueryData.size.width * 0.01),
           color: UtilConstants.whiteColor),

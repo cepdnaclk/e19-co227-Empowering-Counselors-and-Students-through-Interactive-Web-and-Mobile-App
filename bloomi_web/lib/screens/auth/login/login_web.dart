@@ -1,3 +1,4 @@
+import 'package:bloomi_web/components/background_color_gradient.dart';
 import 'package:bloomi_web/components/custom_button.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/custom_textfeild.dart';
@@ -20,127 +21,141 @@ class LoginWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Stack(
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: mediaQueryData.size.width * 0.1),
-            child: Column(
-              children: [
-                SizedBox(height: mediaQueryData.size.height * 0.1),
-                Row(
+          const BackgroundColorGradient(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: mediaQueryData.size.width * 0.1),
+                child: Column(
                   children: [
-                    Column(
+                    SizedBox(height: mediaQueryData.size.height * 0.1),
+                    Row(
                       children: [
-                        Image.asset(
-                          UtilConstants.counsellingImagePath,
-                          width: mediaQueryData.size.width * 0.3,
-                          height: mediaQueryData.size.height * 0.5,
+                        Column(
+                          children: [
+                            Image.asset(
+                              UtilConstants.counsellingImagePath,
+                              width: mediaQueryData.size.width * 0.3,
+                              height: mediaQueryData.size.height * 0.5,
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    SizedBox(width: mediaQueryData.size.width * 0.14),
-                    Column(
-                      children: [
-                        Container(
-                          padding:
-                              EdgeInsets.all(mediaQueryData.size.width * 0.03),
-                          margin: EdgeInsets.only(
-                              top: mediaQueryData.size.height * 0.05),
-                          decoration: BoxDecoration(
-                            color: UtilConstants.lightgreyColor,
-                            borderRadius: BorderRadius.circular(
-                                mediaQueryData.size.height * 0.03),
-                          ),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                  height: mediaQueryData.size.height * 0.07),
-                              CustomTextFeild(
-                                hintText: "Enter your email",
-                                lable: "Email",
-                                mediaQueryData: mediaQueryData,
-                                keyboardType: TextInputType.emailAddress,
-                                width: mediaQueryData.size.width * 0.3,
+                        SizedBox(width: mediaQueryData.size.width * 0.14),
+                        Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(
+                                  mediaQueryData.size.width * 0.03),
+                              margin: EdgeInsets.only(
+                                  top: mediaQueryData.size.height * 0.05),
+                              decoration: BoxDecoration(
+                                color: UtilConstants.lightgreyColor,
+                                borderRadius: BorderRadius.circular(
+                                    mediaQueryData.size.height * 0.03),
                               ),
-                              SizedBox(
-                                  height: mediaQueryData.size.height * 0.02),
-                              CustomTextFeild(
-                                hintText: "Enter your password",
-                                lable: "Password",
-                                obscure: true,
-                                mediaQueryData: mediaQueryData,
-                                keyboardType: TextInputType.visiblePassword,
-                                width: mediaQueryData.size.width * 0.3,
-                              ),
-                              SizedBox(
-                                  height: mediaQueryData.size.height * 0.04),
-                              InkWell(
-                                onTap: () {
-                                  UtilFunction.navigateForward(
-                                      context, const Home());
-                                },
-                                child: CustomButton(
-                                  "Login",
-                                  mediaQueryData: mediaQueryData,
-                                  width: mediaQueryData.size.width * 0.3,
-                                ),
-                              ),
-                              SizedBox(
-                                  height: mediaQueryData.size.height * 0.01),
-                              Container(
-                                width: mediaQueryData.size.width * 0.3,
-                                alignment: Alignment.centerRight,
-                                child: InkWell(
-                                  onTap: () {
-                                    UtilFunction.navigateForward(
-                                        context, const ForgotPassword());
-                                  },
-                                  child: CustomText(
-                                    "forgot password?",
-                                    fontSize:
-                                        mediaQueryData.size.height * 0.019,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                  height: mediaQueryData.size.height * 0.07),
-                              CustomText(
-                                "Or login with social account",
-                                fontSize: mediaQueryData.size.height * 0.018,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              SizedBox(
-                                  height: mediaQueryData.size.height * 0.025),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                              child: Column(
                                 children: [
-                                  CustomIconContainer(
-                                    imgPath: UtilConstants.googleImagePath,
+                                  SizedBox(
+                                      height:
+                                          mediaQueryData.size.height * 0.07),
+                                  CustomTextFeild(
+                                    hintText: "Enter your email",
+                                    lable: "Email",
                                     mediaQueryData: mediaQueryData,
+                                    keyboardType: TextInputType.emailAddress,
+                                    width: mediaQueryData.size.width * 0.3,
                                   ),
                                   SizedBox(
-                                      width: mediaQueryData.size.width * 0.04),
-                                  CustomIconContainer(
-                                    imgPath: UtilConstants.facebookImagePath,
+                                      height:
+                                          mediaQueryData.size.height * 0.02),
+                                  CustomTextFeild(
+                                    hintText: "Enter your password",
+                                    lable: "Password",
+                                    obscure: true,
                                     mediaQueryData: mediaQueryData,
+                                    keyboardType: TextInputType.visiblePassword,
+                                    width: mediaQueryData.size.width * 0.3,
                                   ),
+                                  SizedBox(
+                                      height:
+                                          mediaQueryData.size.height * 0.04),
+                                  InkWell(
+                                    onTap: () {
+                                      UtilFunction.navigateForward(
+                                          context, const Home());
+                                    },
+                                    child: CustomButton(
+                                      "Login",
+                                      mediaQueryData: mediaQueryData,
+                                      width: mediaQueryData.size.width * 0.3,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          mediaQueryData.size.height * 0.01),
+                                  Container(
+                                    width: mediaQueryData.size.width * 0.3,
+                                    alignment: Alignment.centerRight,
+                                    child: InkWell(
+                                      onTap: () {
+                                        UtilFunction.navigateForward(
+                                            context, const ForgotPassword());
+                                      },
+                                      child: CustomText(
+                                        "forgot password?",
+                                        fontSize:
+                                            mediaQueryData.size.height * 0.019,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          mediaQueryData.size.height * 0.07),
+                                  CustomText(
+                                    "Or login with social account",
+                                    fontSize:
+                                        mediaQueryData.size.height * 0.018,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          mediaQueryData.size.height * 0.025),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      CustomIconContainer(
+                                        imgPath: UtilConstants.googleImagePath,
+                                        mediaQueryData: mediaQueryData,
+                                      ),
+                                      SizedBox(
+                                          width:
+                                              mediaQueryData.size.width * 0.04),
+                                      CustomIconContainer(
+                                        imgPath:
+                                            UtilConstants.facebookImagePath,
+                                        mediaQueryData: mediaQueryData,
+                                      ),
+                                    ],
+                                  )
                                 ],
-                              )
-                            ],
-                          ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+              Footer(mediaQueryData: mediaQueryData),
+            ],
           ),
-          Footer(mediaQueryData: mediaQueryData),
         ],
       ),
     );
