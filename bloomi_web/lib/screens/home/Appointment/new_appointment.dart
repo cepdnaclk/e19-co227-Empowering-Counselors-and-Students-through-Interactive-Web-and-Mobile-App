@@ -53,15 +53,19 @@ class _AppointmentState extends State<Appointment> {
                 ),
                 SizedBox(height: mediaQueryData.size.height * 0.08),
                 CustomTextFeild(
-                  lable: "Enter your full name",
+                  hintText: "Enter your full name",
+                  lable: "Full Name",
                   mediaQueryData: mediaQueryData,
                   keyboardType: TextInputType.text,
+                  width: mediaQueryData.size.width * 0.4,
                 ),
                 SizedBox(height: mediaQueryData.size.height * 0.02),
                 CustomTextFeild(
-                  lable: "Enter your email",
+                  hintText: "Enter your email",
+                  lable: "Email",
                   mediaQueryData: mediaQueryData,
                   keyboardType: TextInputType.emailAddress,
+                  width: mediaQueryData.size.width * 0.4,
                 ),
                 SizedBox(width: 580, height: mediaQueryData.size.height * 0.02),
                 SizedBox(

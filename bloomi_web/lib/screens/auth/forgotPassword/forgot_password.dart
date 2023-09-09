@@ -1,7 +1,7 @@
 import 'package:bloomi_web/components/custom_button.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/custom_textfeild.dart';
-import 'package:bloomi_web/screens/auth/signup/sign_discription.dart';
+import 'package:bloomi_web/screens/auth/login/login.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +31,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   alignment: Alignment.bottomLeft,
                   child: InkWell(
                     onTap: () {
-                      UtilFunction.navigateBackward(
-                          context, const SignUpDescription());
+                      UtilFunction.navigateBackward(context, const Login());
                     },
                     child: const Icon(Icons.arrow_back_ios_new_outlined),
                   ),
@@ -62,9 +61,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       ),
                       SizedBox(height: mediaQueryData.size.height * 0.019),
                       CustomTextFeild(
-                        lable: "Enter your email",
+                        hintText: "Enter your email",
+                        lable: "Email",
                         mediaQueryData: mediaQueryData,
                         keyboardType: TextInputType.emailAddress,
+                        width: mediaQueryData.size.width * 0.4,
                       ),
                       SizedBox(height: mediaQueryData.size.height * 0.07),
                       CustomButton("Send",

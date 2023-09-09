@@ -13,12 +13,16 @@ class CustomIconContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 92,
-      height: 64,
+      padding: EdgeInsets.all(
+          (mediaQueryData.size.height + mediaQueryData.size.width) * 0.007),
+      width: mediaQueryData.size.width * 0.07,
+      height: mediaQueryData.size.height * 0.07,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(24),
-          color: UtilConstants.lightgreyColor),
-      child: Image.asset(imgPath),
+          borderRadius: BorderRadius.circular(mediaQueryData.size.width * 0.01),
+          color: UtilConstants.whiteColor),
+      child: Image.asset(
+        imgPath,
+      ),
     );
   }
 }
