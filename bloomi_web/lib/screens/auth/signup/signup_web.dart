@@ -1,4 +1,3 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:bloomi_web/components/background_color_gradient.dart';
 import 'package:bloomi_web/components/custom_image_column.dart';
 import 'package:bloomi_web/components/custom_text_link_web.dart';
@@ -6,22 +5,19 @@ import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
-import 'package:bloomi_web/controllers/auth_controller.dart';
+import 'package:bloomi_web/providers/auth/signup_provider.dart';
 import 'package:bloomi_web/screens/auth/login/login.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SignUpWeb extends StatelessWidget {
-  SignUpWeb({
+  const SignUpWeb({
     super.key,
     required this.mediaQueryData,
   });
 
   final MediaQueryData mediaQueryData;
-  final TextEditingController _name = TextEditingController();
-  final TextEditingController _password = TextEditingController();
-  final TextEditingController _conformFassword = TextEditingController();
-  final TextEditingController _email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -62,54 +58,55 @@ class SignUpWeb extends StatelessWidget {
                                       height:
                                           mediaQueryData.size.height * 0.05),
                                   FormInputWeb("Name",
-                                      textEditingController: _name,
+                                      textEditingController:
+                                          Provider.of<SignupProvider>(context)
+                                              .name,
                                       mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.02),
                                   FormInputWeb("Email",
-                                      textEditingController: _email,
+                                      textEditingController:
+                                          Provider.of<SignupProvider>(context)
+                                              .email,
                                       mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.02),
                                   FormInputWeb("Password",
-                                      textEditingController: _password,
+                                      textEditingController:
+                                          Provider.of<SignupProvider>(context)
+                                              .password,
                                       mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.02),
                                   FormInputWeb("Conform Password",
-                                      textEditingController: _conformFassword,
+                                      textEditingController:
+                                          Provider.of<SignupProvider>(context)
+                                              .conformFassword,
                                       mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.10),
-                                  InkWell(
-                                    onTap: () {
-                                      if (_email.text.isNotEmpty &&
-                                          _password.text.isNotEmpty) {
-                                        AuthController.signUpUser(
-                                            _email.text, _password.text);
-                                      } else {
-                                        AwesomeDialog(
-                                          width:
-                                              mediaQueryData.size.width * 0.35,
-                                          context: context,
-                                          dialogType: DialogType.noHeader,
-                                          animType: AnimType.scale,
-                                          title: 'ERROR',
-                                          desc:
-                                              'Please file the all feilds properly',
-                                          btnCancelOnPress: () {},
-                                          btnOkOnPress: () {},
-                                        ).show();
-                                      }
+                                  Consumer<SignupProvider>(
+                                    builder: (context, value, child) {
+                                      return InkWell(
+                                        onTap: () {
+                                          Provider.of<SignupProvider>(context,
+                                                  listen: false)
+                                              .signUpUser(
+                                                  value.email.text,
+                                                  value.password.text,
+                                                  mediaQueryData,
+                                                  context);
+                                        },
+                                        child: FormButtonWeb(
+                                          "Register",
+                                          mediaQueryData: mediaQueryData,
+                                        ),
+                                      );
                                     },
-                                    child: FormButtonWeb(
-                                      "Register",
-                                      mediaQueryData: mediaQueryData,
-                                    ),
                                   ),
                                   SizedBox(
                                       height:
