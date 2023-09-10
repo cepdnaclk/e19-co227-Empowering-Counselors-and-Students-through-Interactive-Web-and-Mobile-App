@@ -3,21 +3,17 @@ import 'package:bloomi_web/utils/util_method.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
-class SignupProvider extends ChangeNotifier {
-  final TextEditingController _name = TextEditingController();
+class LoginProvider extends ChangeNotifier {
   final TextEditingController _password = TextEditingController();
-  final TextEditingController _conformFassword = TextEditingController();
   final TextEditingController _email = TextEditingController();
 
-  //-----------------Getters-----------------
-  TextEditingController get name => _name;
+  //------------------GETTERS--------------------
   TextEditingController get password => _password;
-  TextEditingController get conformFassword => _conformFassword;
   TextEditingController get email => _email;
 
-  //-----------------Setters-----------------
-  void setName(String name) {
-    _name.text = name;
+  //------------------SETTERS--------------------
+  void setEmail(String email) {
+    _email.text = email;
     notifyListeners();
   }
 
@@ -26,22 +22,12 @@ class SignupProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setConformPassword(String conformPassword) {
-    _conformFassword.text = conformPassword;
-    notifyListeners();
-  }
-
-  void setEmail(String email) {
-    _email.text = email;
-    notifyListeners();
-  }
-
-  //----------------------Functions---------------------
-  Future<void> signUpUser(String email, String password,
+  //------------------Function--------------------
+  Future<void> signInUser(String email, String password,
       MediaQueryData mediaQueryData, BuildContext context) async {
     try {
       if (email.isNotEmpty && password.isNotEmpty) {
-        AuthController.signUpUser(email, password);
+        AuthController.signInUser(email, password);
       } else {
         UtilMethod.customDialogBox(
             mediaQueryData, context, "Error", "Please fill all the fields");

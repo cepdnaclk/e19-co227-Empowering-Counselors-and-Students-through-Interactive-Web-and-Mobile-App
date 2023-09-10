@@ -1,4 +1,5 @@
 import 'package:bloomi_web/firebase_options.dart';
+import 'package:bloomi_web/providers/auth/login_provider.dart';
 import 'package:bloomi_web/providers/auth/signup_provider.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/screens/splash/splash_screen.dart';
@@ -16,6 +17,7 @@ Future<void> main() async {
     providers: [
       ChangeNotifierProvider(create: (_) => NavigationProvider()),
       ChangeNotifierProvider(create: (_) => SignupProvider()),
+      ChangeNotifierProvider(create: (_) => LoginProvider()),
     ],
     child: const MyApp(),
   ));

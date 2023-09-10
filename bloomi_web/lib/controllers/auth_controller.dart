@@ -49,4 +49,16 @@ class AuthController {
       Logger().e(e);
     }
   }
+
+  static Future<void> signInUser(String email, String password) async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      Logger().i(credential.user);
+    } on FirebaseAuthException catch (e) {
+      Logger().e(e);
+    }
+  }
 }
