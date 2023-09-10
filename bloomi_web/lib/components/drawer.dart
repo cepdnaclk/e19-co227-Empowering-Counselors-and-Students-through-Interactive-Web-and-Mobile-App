@@ -1,4 +1,5 @@
 import 'package:bloomi_web/components/custom_text.dart';
+import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -76,7 +77,7 @@ class MyDrawer extends StatelessWidget {
                   leading: const Icon(Icons.logout),
                   title: const Text('Logout'),
                   onTap: () {
-                    // Handle Home button tap
+                    AuthController.signOutUser();
                   },
                 ),
               ],
@@ -121,7 +122,7 @@ class MyDrawer extends StatelessWidget {
                   leading: const Icon(Icons.logout),
                   title: const Text('Logout'),
                   onTap: () {
-                    // Handle Home button tap
+                    AuthController.signOutUser();
                   },
                 ),
               ],

@@ -37,4 +37,16 @@ class AuthController {
       Logger().e(e);
     }
   }
+
+  //-----------------------To SignUp user---------------------
+  static Future<void> signOutUser() async {
+    try {
+      //sign out user
+      await FirebaseAuth.instance.signOut();
+    } on FirebaseAuthException catch (e) {
+      Logger().e(e);
+    } catch (e) {
+      Logger().e(e);
+    }
+  }
 }
