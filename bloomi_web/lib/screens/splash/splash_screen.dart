@@ -1,9 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:bloomi_web/components/custom_image.dart';
 import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/screens/auth/signup/signup_form.dart';
+import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,7 +17,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
-      UtilFunction.navigateForward(context, const SignUp());
+      //----------------------To check user auth state----------------------
+      AuthController.initializeUser(context);
     });
   }
 
