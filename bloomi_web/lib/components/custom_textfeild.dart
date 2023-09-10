@@ -23,6 +23,9 @@ class CustomTextFeild extends StatelessWidget {
       width: width,
       height: mediaQueryData.size.height * 0.063,
       child: TextField(
+        style: TextStyle(
+          fontSize: mediaQueryData.size.height * 0.02,
+        ),
         controller: textEditingController,
         obscureText: obscure,
         decoration: InputDecoration(

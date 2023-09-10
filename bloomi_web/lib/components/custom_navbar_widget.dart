@@ -17,7 +17,7 @@ class CustomNavBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomText(text,
-        fontSize: mediaQueryData.size.width * 0.014,
+        fontSize: mediaQueryData.size.width * 0.0145,
         fontWeight: FontWeight.w300,
         fontColor: isHovering
             ? UtilConstants.lightRedColor

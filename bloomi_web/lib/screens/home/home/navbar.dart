@@ -1,5 +1,4 @@
-import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/components/drawer.dart';
+import 'package:bloomi_web/components/custom_navbar_widget.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -11,33 +10,101 @@ class HomeNavBar extends StatefulWidget {
 }
 
 class _HomeNavBarState extends State<HomeNavBar> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final List<bool> _isHovering = List.generate(4, (_) => false);
+  final List<bool> _isHovering = [false, false, false, false];
 
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
 
-    return Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          automaticallyImplyLeading:
-              mediaQueryData.size.width > 900 ? false : true,
-          backgroundColor: UtilConstants.lightgreyColor,
-          title: const Row(
-            children: [
-              Text(
-                "BLOOMi",
-                style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    color: UtilConstants.primaryColor),
+    return Container(
+      color: UtilConstants.lightgreyColor,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: mediaQueryData.size.width * 0.02,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    child: Icon(
+                      Icons.menu,
+                      size: mediaQueryData.size.width * 0.02,
+                    ),
+                  ),
+                  SizedBox(
+                    width: mediaQueryData.size.width * 0.65,
+                  ),
+                  InkWell(
+                    onHover: (value) {
+                      setState(() {
+                        value ? _isHovering[0] = true : _isHovering[0] = false;
+                      });
+                    },
+                    onTap: () {},
+                    child: CustomNavBarWidget("Home",
+                        mediaQueryData: mediaQueryData,
+                        isHovering: _isHovering[0]),
+                  ),
+                  SizedBox(
+                    width: mediaQueryData.size.width * 0.03,
+                  ),
+                  InkWell(
+                    onHover: (value) {
+                      setState(() {
+                        value ? _isHovering[1] = true : _isHovering[1] = false;
+                      });
+                    },
+                    onTap: () {
+                      // Handle Home button tap
+                    },
+                    child: CustomNavBarWidget("Apointment",
+                        mediaQueryData: mediaQueryData,
+                        isHovering: _isHovering[1]),
+                  ),
+                  SizedBox(
+                    width: mediaQueryData.size.width * 0.03,
+                  ),
+                  InkWell(
+                    onHover: (value) {
+                      setState(() {
+                        value ? _isHovering[2] = true : _isHovering[2] = false;
+                      });
+                    },
+                    onTap: () {
+                      // Handle Home button tap
+                    },
+                    child: CustomNavBarWidget("Contact",
+                        mediaQueryData: mediaQueryData,
+                        isHovering: _isHovering[2]),
+                  ),
+                  SizedBox(
+                    width: mediaQueryData.size.width * 0.03,
+                  ),
+                  InkWell(
+                    onHover: (value) {
+                      setState(() {
+                        value ? _isHovering[3] = true : _isHovering[3] = false;
+                      });
+                    },
+                    onTap: () {
+                      // Handle Home button tap
+                    },
+                    child: CustomNavBarWidget("Relax",
+                        mediaQueryData: mediaQueryData,
+                        isHovering: _isHovering[3]),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-        drawer: mediaQueryData.size.width > 900 ? null : const MyDrawer(),
-        body: const CustomText("Home"));
+      ),
+    );
   }
 }
