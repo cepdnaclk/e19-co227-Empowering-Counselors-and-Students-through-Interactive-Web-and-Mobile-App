@@ -1,0 +1,31 @@
+import 'package:bloomi_web/components/custom_button.dart';
+import 'package:bloomi_web/controllers/auth_controller.dart';
+import 'package:flutter/material.dart';
+
+class AdminSetting extends StatefulWidget {
+  const AdminSetting({super.key});
+
+  @override
+  State<AdminSetting> createState() => _AdminSettingState();
+}
+
+class _AdminSettingState extends State<AdminSetting> {
+  @override
+  Widget build(BuildContext context) {
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    return Center(
+      child: Column(
+        children: [
+          const SizedBox(height: 70),
+          InkWell(
+            onTap: () {
+              AuthController.signOutUser();
+            },
+            child: CustomButton("Admin Logout",
+                mediaQueryData: mediaQueryData, width: 250),
+          )
+        ],
+      ),
+    );
+  }
+}

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 
 class AdminNavProvider extends ChangeNotifier {
   int _index = 0; // Use a private variable to store the index
@@ -9,8 +8,7 @@ class AdminNavProvider extends ChangeNotifier {
 
   //------------------SETTERS--------------------
   void setIndex(int index) {
-    _index = index; // Update the private variable
+    _index = index;
     notifyListeners();
-    Logger().i(_index); // Log the updated index
   }
 }
