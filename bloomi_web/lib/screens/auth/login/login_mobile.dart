@@ -6,19 +6,19 @@ import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/components/form_button_mobile.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_mobile.dart';
+import 'package:bloomi_web/providers/auth/login_provider.dart';
 import 'package:bloomi_web/screens/auth/forgotPassword/forgot_password.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginMobile extends StatelessWidget {
-  LoginMobile({
+  const LoginMobile({
     Key? key,
     required this.mediaQueryData,
   }) : super(key: key);
 
   final MediaQueryData mediaQueryData;
-  final TextEditingController _password = TextEditingController();
-  final TextEditingController _email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -59,20 +59,37 @@ class LoginMobile extends StatelessWidget {
                                         height:
                                             mediaQueryData.size.height * 0.08),
                                     FormInputMobile("Email",
-                                        textEditingController: _email,
+                                        textEditingController:
+                                            Provider.of<LoginProvider>(context)
+                                                .email,
                                         mediaQueryData: mediaQueryData),
                                     SizedBox(
                                         height:
                                             mediaQueryData.size.height * 0.02),
                                     FormInputMobile("Password",
-                                        textEditingController: _password,
+                                        textEditingController:
+                                            Provider.of<LoginProvider>(context)
+                                                .password,
                                         mediaQueryData: mediaQueryData),
                                     SizedBox(
                                         height:
                                             mediaQueryData.size.height * 0.05),
-                                    FormButtonMobile(
-                                      "Login",
-                                      mediaQueryData: mediaQueryData,
+                                    Consumer<LoginProvider>(
+                                      builder: (context, value, child) {
+                                        return InkWell(
+                                          onTap: () {
+                                            value.signInUser(
+                                                value.email.text,
+                                                value.password.text,
+                                                mediaQueryData,
+                                                context);
+                                          },
+                                          child: FormButtonMobile(
+                                            "Login",
+                                            mediaQueryData: mediaQueryData,
+                                          ),
+                                        );
+                                      },
                                     ),
                                     SizedBox(
                                         height:

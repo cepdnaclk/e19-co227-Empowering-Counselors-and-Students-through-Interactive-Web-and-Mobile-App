@@ -5,17 +5,18 @@ import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
+import 'package:bloomi_web/providers/auth/forgot_password_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ForgotPasswordWeb extends StatelessWidget {
-  ForgotPasswordWeb({
+  const ForgotPasswordWeb({
     super.key,
     required this.mediaQueryData,
   });
 
   final MediaQueryData mediaQueryData;
-  final TextEditingController _email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -67,13 +68,26 @@ class ForgotPasswordWeb extends StatelessWidget {
                                 SizedBox(
                                     height: mediaQueryData.size.height * 0.01),
                                 FormInputWeb("Email",
-                                    textEditingController: _email,
+                                    textEditingController:
+                                        Provider.of<ForgotPasswordProvider>(
+                                                context)
+                                            .email,
                                     mediaQueryData: mediaQueryData),
                                 SizedBox(
                                     height: mediaQueryData.size.height * 0.06),
-                                FormButtonWeb(
-                                  "Send",
-                                  mediaQueryData: mediaQueryData,
+                                Consumer<ForgotPasswordProvider>(
+                                  builder: (context, value, child) {
+                                    return InkWell(
+                                      onTap: () {
+                                        value.sendEmail(context,
+                                            value.email.text, mediaQueryData);
+                                      },
+                                      child: FormButtonWeb(
+                                        "Send",
+                                        mediaQueryData: mediaQueryData,
+                                      ),
+                                    );
+                                  },
                                 ),
                               ]),
                             ),
