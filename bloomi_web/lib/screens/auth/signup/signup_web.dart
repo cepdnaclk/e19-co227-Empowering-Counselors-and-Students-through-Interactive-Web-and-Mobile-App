@@ -1,12 +1,13 @@
 import 'package:bloomi_web/components/background_color_gradient.dart';
-import 'package:bloomi_web/components/custom_button.dart';
-import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/components/custom_textfeild.dart';
+import 'package:bloomi_web/components/custom_image_column.dart';
+import 'package:bloomi_web/components/custom_text_link_web.dart';
 import 'package:bloomi_web/components/footer.dart';
+import 'package:bloomi_web/components/form_button_web.dart';
+import 'package:bloomi_web/components/form_heading.dart';
+import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/screens/auth/login/login.dart';
 import 'package:bloomi_web/screens/home/home/home.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 
 class SignUpWeb extends StatelessWidget {
@@ -36,16 +37,8 @@ class SignUpWeb extends StatelessWidget {
                         SizedBox(height: mediaQueryData.size.height * 0.1),
                         Row(
                           children: [
-                            Column(
-                              children: [
-                                Image.asset(
-                                  UtilConstants.counsellingImagePath,
-                                  width: mediaQueryData.size.width * 0.3,
-                                  height: mediaQueryData.size.height * 0.5,
-                                ),
-                              ],
-                            ),
-                            SizedBox(width: mediaQueryData.size.width * 0.14),
+                            CustomImageColumn(mediaQueryData: mediaQueryData),
+                            SizedBox(width: mediaQueryData.size.width * 0.12),
                             Container(
                               padding: EdgeInsets.all(
                                   mediaQueryData.size.width * 0.03),
@@ -58,90 +51,40 @@ class SignUpWeb extends StatelessWidget {
                               ),
                               child: Column(
                                 children: [
-                                  SizedBox(
-                                    width: mediaQueryData.size.width * 0.3,
-                                    child: CustomText(
-                                      "SignUp Here",
-                                      fontSize:
-                                          mediaQueryData.size.height * 0.03,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
+                                  FormHeading("SignUp Here",
+                                      mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.05),
-                                  CustomTextFeild(
-                                    hintText: "Enter your name",
-                                    lable: "Name",
-                                    mediaQueryData: mediaQueryData,
-                                    keyboardType: TextInputType.text,
-                                    width: mediaQueryData.size.width * 0.3,
-                                  ),
+                                  FormInputWeb("Name",
+                                      mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.02),
-                                  CustomTextFeild(
-                                    hintText: "Enter your email",
-                                    lable: "Email",
-                                    mediaQueryData: mediaQueryData,
-                                    keyboardType: TextInputType.emailAddress,
-                                    width: mediaQueryData.size.width * 0.3,
-                                  ),
+                                  FormInputWeb("Email",
+                                      mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.02),
-                                  CustomTextFeild(
-                                    hintText: "Enter your password",
-                                    lable: "Password",
-                                    obscure: true,
-                                    mediaQueryData: mediaQueryData,
-                                    keyboardType: TextInputType.visiblePassword,
-                                    width: mediaQueryData.size.width * 0.3,
-                                  ),
+                                  FormInputWeb("Password",
+                                      mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.02),
-                                  CustomTextFeild(
-                                    hintText: "Confirm your password",
-                                    lable: "Confirm Password",
-                                    obscure: true,
-                                    mediaQueryData: mediaQueryData,
-                                    keyboardType: TextInputType.visiblePassword,
-                                    width: mediaQueryData.size.width * 0.3,
-                                  ),
+                                  FormInputWeb("Conform Password",
+                                      mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.10),
-                                  InkWell(
-                                    onTap: () {
-                                      UtilFunction.navigateForward(
-                                          context, const Home());
-                                    },
-                                    child: CustomButton(
-                                      "Register",
+                                  FormButtonWeb("Register",
                                       mediaQueryData: mediaQueryData,
-                                      width: mediaQueryData.size.width * 0.3,
-                                    ),
-                                  ),
+                                      route: const Home()),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.02),
-                                  Container(
-                                    width: mediaQueryData.size.width * 0.3,
-                                    alignment: Alignment.centerRight,
-                                    child: InkWell(
-                                      onTap: () {
-                                        UtilFunction.navigateForward(
-                                            context, const Login());
-                                      },
-                                      child: CustomText(
-                                        "Already have an account?",
-                                        fontSize:
-                                            mediaQueryData.size.height * 0.02,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
+                                  CustomTextLinkWeb("Already have an account?",
+                                      mediaQueryData: mediaQueryData,
+                                      route: const Login())
                                 ],
                               ),
                             ),

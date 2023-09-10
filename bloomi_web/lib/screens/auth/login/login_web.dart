@@ -1,13 +1,15 @@
 import 'package:bloomi_web/components/background_color_gradient.dart';
-import 'package:bloomi_web/components/custom_button.dart';
+import 'package:bloomi_web/components/custom_image_column.dart';
 import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/components/custom_textfeild.dart';
+import 'package:bloomi_web/components/custom_text_link_web.dart';
 import 'package:bloomi_web/components/customicon_container.dart';
 import 'package:bloomi_web/components/footer.dart';
+import 'package:bloomi_web/components/form_button_web.dart';
+import 'package:bloomi_web/components/form_heading.dart';
+import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/screens/auth/forgotPassword/forgot_password.dart';
 import 'package:bloomi_web/screens/home/home/home.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 
 class LoginWeb extends StatelessWidget {
@@ -37,16 +39,8 @@ class LoginWeb extends StatelessWidget {
                         SizedBox(height: mediaQueryData.size.height * 0.1),
                         Row(
                           children: [
-                            Column(
-                              children: [
-                                Image.asset(
-                                  UtilConstants.counsellingImagePath,
-                                  width: mediaQueryData.size.width * 0.3,
-                                  height: mediaQueryData.size.height * 0.5,
-                                ),
-                              ],
-                            ),
-                            SizedBox(width: mediaQueryData.size.width * 0.14),
+                            CustomImageColumn(mediaQueryData: mediaQueryData),
+                            SizedBox(width: mediaQueryData.size.width * 0.12),
                             Column(
                               children: [
                                 Container(
@@ -61,74 +55,30 @@ class LoginWeb extends StatelessWidget {
                                   ),
                                   child: Column(
                                     children: [
-                                      SizedBox(
-                                        width: mediaQueryData.size.width * 0.3,
-                                        child: CustomText(
-                                          "Login Here",
-                                          fontSize:
-                                              mediaQueryData.size.height * 0.03,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
+                                      FormHeading("Login Here",
+                                          mediaQueryData: mediaQueryData),
                                       SizedBox(
                                           height: mediaQueryData.size.height *
                                               0.06),
-                                      CustomTextFeild(
-                                        hintText: "Enter your email",
-                                        lable: "Email",
-                                        mediaQueryData: mediaQueryData,
-                                        keyboardType:
-                                            TextInputType.emailAddress,
-                                        width: mediaQueryData.size.width * 0.3,
-                                      ),
+                                      FormInputWeb("Email",
+                                          mediaQueryData: mediaQueryData),
                                       SizedBox(
                                           height: mediaQueryData.size.height *
                                               0.02),
-                                      CustomTextFeild(
-                                        hintText: "Enter your password",
-                                        lable: "Password",
-                                        obscure: true,
-                                        mediaQueryData: mediaQueryData,
-                                        keyboardType:
-                                            TextInputType.visiblePassword,
-                                        width: mediaQueryData.size.width * 0.3,
-                                      ),
+                                      FormInputWeb("Password",
+                                          mediaQueryData: mediaQueryData),
                                       SizedBox(
                                           height: mediaQueryData.size.height *
                                               0.04),
-                                      InkWell(
-                                        onTap: () {
-                                          UtilFunction.navigateForward(
-                                              context, const Home());
-                                        },
-                                        child: CustomButton(
-                                          "Login",
+                                      FormButtonWeb("Login",
                                           mediaQueryData: mediaQueryData,
-                                          width:
-                                              mediaQueryData.size.width * 0.3,
-                                        ),
-                                      ),
+                                          route: const Home()),
                                       SizedBox(
                                           height: mediaQueryData.size.height *
                                               0.01),
-                                      Container(
-                                        width: mediaQueryData.size.width * 0.3,
-                                        alignment: Alignment.centerRight,
-                                        child: InkWell(
-                                          onTap: () {
-                                            UtilFunction.navigateForward(
-                                                context,
-                                                const ForgotPassword());
-                                          },
-                                          child: CustomText(
-                                            "forgot password?",
-                                            fontSize:
-                                                mediaQueryData.size.height *
-                                                    0.019,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
+                                      CustomTextLinkWeb("forgot password?",
+                                          mediaQueryData: mediaQueryData,
+                                          route: const ForgotPassword()),
                                       SizedBox(
                                           height: mediaQueryData.size.height *
                                               0.05),
