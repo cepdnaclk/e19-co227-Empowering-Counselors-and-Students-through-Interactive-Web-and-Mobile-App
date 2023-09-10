@@ -1,13 +1,11 @@
 import 'package:bloomi_web/components/background_color_gradient.dart';
-import 'package:bloomi_web/components/custom_button.dart';
 import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/components/custom_textfeild.dart';
-import 'package:bloomi_web/components/customicon_container.dart';
 import 'package:bloomi_web/components/footer.dart';
-import 'package:bloomi_web/screens/auth/forgotPassword/forgot_password.dart';
-import 'package:bloomi_web/screens/home/home/home.dart';
+import 'package:bloomi_web/components/form_button_mobile.dart';
+import 'package:bloomi_web/components/form_heading.dart';
+import 'package:bloomi_web/components/form_input_mobile.dart';
+import 'package:bloomi_web/screens/auth/login/login.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPasswordMobile extends StatelessWidget {
@@ -51,102 +49,35 @@ class ForgotPasswordMobile extends StatelessWidget {
                                 ),
                                 child: Column(
                                   children: [
+                                    FormHeading("Reset Password",
+                                        mediaQueryData: mediaQueryData),
                                     SizedBox(
                                         height:
-                                            mediaQueryData.size.height * 0.08),
-                                    CustomTextFeild(
-                                      hintText: "Enter your email",
-                                      lable: "Email",
-                                      mediaQueryData: mediaQueryData,
-                                      keyboardType: TextInputType.emailAddress,
+                                            mediaQueryData.size.height * 0.05),
+                                    SizedBox(
                                       width: (mediaQueryData.size.width < 500)
                                           ? mediaQueryData.size.width
                                           : 400,
+                                      child: CustomText(
+                                        "Please, enter your email address. You will receive a link to create a new password via email.",
+                                        fontSize:
+                                            mediaQueryData.size.height * 0.018,
+                                        fontWeight: FontWeight.w600,
+                                        fontColor: UtilConstants.blackColor,
+                                        textAlign: TextAlign.left,
+                                      ),
                                     ),
                                     SizedBox(
                                         height:
-                                            mediaQueryData.size.height * 0.02),
-                                    CustomTextFeild(
-                                      hintText: "Enter your password",
-                                      lable: "Password",
-                                      obscure: true,
-                                      mediaQueryData: mediaQueryData,
-                                      keyboardType:
-                                          TextInputType.visiblePassword,
-                                      width: (mediaQueryData.size.width < 500)
-                                          ? mediaQueryData.size.width
-                                          : 400,
-                                    ),
+                                            mediaQueryData.size.height * 0.01),
+                                    FormInputMobile("Email",
+                                        mediaQueryData: mediaQueryData),
                                     SizedBox(
                                         height:
                                             mediaQueryData.size.height * 0.07),
-                                    InkWell(
-                                      onTap: () {
-                                        UtilFunction.navigateForward(
-                                            context, const Home());
-                                      },
-                                      child: CustomButton(
-                                        "Login",
+                                    FormButtonMobile("Send",
                                         mediaQueryData: mediaQueryData,
-                                        width: (mediaQueryData.size.width < 500)
-                                            ? mediaQueryData.size.width
-                                            : 400,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                        height:
-                                            mediaQueryData.size.height * 0.02),
-                                    Container(
-                                      width: (mediaQueryData.size.width < 500)
-                                          ? mediaQueryData.size.width
-                                          : 400,
-                                      alignment: Alignment.centerRight,
-                                      child: InkWell(
-                                        onTap: () {
-                                          UtilFunction.navigateForward(
-                                              context, const ForgotPassword());
-                                        },
-                                        child: CustomText(
-                                          "forgot password?",
-                                          fontSize:
-                                              mediaQueryData.size.height * 0.02,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                        height:
-                                            mediaQueryData.size.height * 0.04),
-                                    CustomText(
-                                      "Or login with social account",
-                                      fontSize:
-                                          mediaQueryData.size.height * 0.018,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    SizedBox(
-                                        height:
-                                            mediaQueryData.size.height * 0.025),
-                                    SizedBox(
-                                      width: (mediaQueryData.size.width < 500)
-                                          ? mediaQueryData.size.width
-                                          : 400,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          CustomIconContainer(
-                                            imgPath:
-                                                UtilConstants.googleImagePath,
-                                            mediaQueryData: mediaQueryData,
-                                          ),
-                                          CustomIconContainer(
-                                            imgPath:
-                                                UtilConstants.facebookImagePath,
-                                            mediaQueryData: mediaQueryData,
-                                          ),
-                                        ],
-                                      ),
-                                    )
+                                        widget: const Login()),
                                   ],
                                 ),
                               ),

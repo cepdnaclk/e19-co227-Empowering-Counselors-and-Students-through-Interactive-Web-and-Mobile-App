@@ -5,7 +5,7 @@ class CustomTextFeild extends StatelessWidget {
   final bool obscure;
   final MediaQueryData mediaQueryData;
   final double width;
-  final String hintText;
+
   const CustomTextFeild({
     super.key,
     required this.lable,
@@ -13,7 +13,6 @@ class CustomTextFeild extends StatelessWidget {
     required this.mediaQueryData,
     required TextInputType keyboardType,
     required this.width,
-    required this.hintText,
   });
 
   @override
@@ -25,7 +24,6 @@ class CustomTextFeild extends StatelessWidget {
         obscureText: obscure,
         decoration: InputDecoration(
           labelText: lable,
-          hintText: hintText,
           labelStyle: TextStyle(
               fontSize: mediaQueryData.size.height * 0.023,
               fontWeight: FontWeight.w400),
