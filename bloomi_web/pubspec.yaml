@@ -37,6 +37,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   animate_do: ^3.0.2
   responsive_framework: ^1.1.0
+  firebase_core: ^2.15.1
+  firebase_auth: ^4.9.0
+  logger: ^2.0.2
+  awesome_dialog: ^3.1.0
 
 dev_dependencies:
   flutter_test:
