@@ -1,10 +1,15 @@
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/drawer.dart';
 import 'package:bloomi_web/components/footer.dart';
+import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
+import 'package:bloomi_web/screens/home/home/appointment.dart';
+import 'package:bloomi_web/screens/home/home/contact.dart';
 import 'package:bloomi_web/screens/home/home/home_page.dart';
 import 'package:bloomi_web/screens/home/home/navbar.dart';
+import 'package:bloomi_web/screens/home/home/relax.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -17,6 +22,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
+    final List<Widget> widget = [
+      const HomePage(),
+      const Appointment(),
+      const Contact(),
+      const Relax(),
+    ];
     return Scaffold(
       appBar: (mediaQueryData.size.width <= 900)
           ? AppBar(
@@ -36,7 +47,11 @@ class _HomeState extends State<Home> {
         // Replace this with the content you want to display in the body
         child: Column(
           children: [
-            const HomePage(),
+            Consumer<NavigationProvider>(
+              builder: (context, value, child) {
+                return widget[value.currentIndex];
+              },
+            ),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,

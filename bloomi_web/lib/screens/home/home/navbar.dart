@@ -1,6 +1,8 @@
 import 'package:bloomi_web/components/custom_navbar_widget.dart';
+import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeNavBar extends StatefulWidget {
   const HomeNavBar({Key? key}) : super(key: key);
@@ -46,7 +48,10 @@ class _HomeNavBarState extends State<HomeNavBar> {
                         value ? _isHovering[0] = true : _isHovering[0] = false;
                       });
                     },
-                    onTap: () {},
+                    onTap: () {
+                      Provider.of<NavigationProvider>(context, listen: false)
+                          .setIndex(0);
+                    },
                     child: CustomNavBarWidget("Home",
                         mediaQueryData: mediaQueryData,
                         isHovering: _isHovering[0]),
@@ -61,7 +66,8 @@ class _HomeNavBarState extends State<HomeNavBar> {
                       });
                     },
                     onTap: () {
-                      // Handle Home button tap
+                      Provider.of<NavigationProvider>(context, listen: false)
+                          .setIndex(1);
                     },
                     child: CustomNavBarWidget("Apointment",
                         mediaQueryData: mediaQueryData,
@@ -77,7 +83,8 @@ class _HomeNavBarState extends State<HomeNavBar> {
                       });
                     },
                     onTap: () {
-                      // Handle Home button tap
+                      Provider.of<NavigationProvider>(context, listen: false)
+                          .setIndex(2);
                     },
                     child: CustomNavBarWidget("Contact",
                         mediaQueryData: mediaQueryData,
@@ -93,7 +100,8 @@ class _HomeNavBarState extends State<HomeNavBar> {
                       });
                     },
                     onTap: () {
-                      // Handle Home button tap
+                      Provider.of<NavigationProvider>(context, listen: false)
+                          .setIndex(3);
                     },
                     child: CustomNavBarWidget("Relax",
                         mediaQueryData: mediaQueryData,

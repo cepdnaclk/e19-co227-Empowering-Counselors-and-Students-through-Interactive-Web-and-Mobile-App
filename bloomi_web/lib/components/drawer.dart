@@ -1,7 +1,9 @@
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/controllers/auth_controller.dart';
+import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -49,28 +51,32 @@ class MyDrawer extends StatelessWidget {
                   leading: const Icon(Icons.home),
                   title: const Text('Home'),
                   onTap: () {
-                    // Handle Home button tap
+                    Provider.of<NavigationProvider>(context, listen: false)
+                        .setIndex(0);
                   },
                 ),
                 ListTile(
                   leading: const Icon(Icons.approval),
                   title: const Text('Appointment'),
                   onTap: () {
-                    // Handle Appointment button tap
+                    Provider.of<NavigationProvider>(context, listen: false)
+                        .setIndex(1);
                   },
                 ),
                 ListTile(
                   leading: const Icon(Icons.contact_mail),
                   title: const Text('Contact'),
                   onTap: () {
-                    // Handle Contact button tap
+                    Provider.of<NavigationProvider>(context, listen: false)
+                        .setIndex(2);
                   },
                 ),
                 ListTile(
                   leading: const Icon(Icons.person),
                   title: const Text('Profile'),
                   onTap: () {
-                    // Handle Profile button tap
+                    Provider.of<NavigationProvider>(context, listen: false)
+                        .setIndex(3);
                   },
                 ),
                 ListTile(
