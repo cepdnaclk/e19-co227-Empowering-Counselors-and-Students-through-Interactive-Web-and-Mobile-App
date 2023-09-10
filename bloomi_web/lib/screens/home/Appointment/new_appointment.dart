@@ -14,6 +14,8 @@ class Appointment extends StatefulWidget {
 class _AppointmentState extends State<Appointment> {
   String? selectedCounsellor;
   DateTime? selectedDate;
+  final TextEditingController _name = TextEditingController();
+  final TextEditingController _email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +55,7 @@ class _AppointmentState extends State<Appointment> {
                 ),
                 SizedBox(height: mediaQueryData.size.height * 0.08),
                 CustomTextFeild(
+                  textEditingController: _name,
                   lable: "Full Name",
                   mediaQueryData: mediaQueryData,
                   keyboardType: TextInputType.text,
@@ -60,6 +63,7 @@ class _AppointmentState extends State<Appointment> {
                 ),
                 SizedBox(height: mediaQueryData.size.height * 0.02),
                 CustomTextFeild(
+                  textEditingController: _email,
                   lable: "Email",
                   mediaQueryData: mediaQueryData,
                   keyboardType: TextInputType.emailAddress,

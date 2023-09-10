@@ -5,6 +5,7 @@ class CustomTextFeild extends StatelessWidget {
   final bool obscure;
   final MediaQueryData mediaQueryData;
   final double width;
+  final TextEditingController textEditingController;
 
   const CustomTextFeild({
     super.key,
@@ -13,6 +14,7 @@ class CustomTextFeild extends StatelessWidget {
     required this.mediaQueryData,
     required TextInputType keyboardType,
     required this.width,
+    required this.textEditingController,
   });
 
   @override
@@ -21,6 +23,7 @@ class CustomTextFeild extends StatelessWidget {
       width: width,
       height: mediaQueryData.size.height * 0.063,
       child: TextField(
+        controller: textEditingController,
         obscureText: obscure,
         decoration: InputDecoration(
           labelText: lable,

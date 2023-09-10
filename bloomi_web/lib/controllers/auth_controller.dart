@@ -1,5 +1,5 @@
-import 'package:bloomi_web/screens/auth/login/login.dart';
 import 'package:bloomi_web/screens/auth/signup/signup_form.dart';
+import 'package:bloomi_web/screens/home/home/home.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +16,25 @@ class AuthController {
       } else {
         //----------if user is logged in, navigate to login page---------------
         Logger().i('User is signed in!');
-        UtilFunction.navigateForward(context, const Login());
+        UtilFunction.navigateForward(context, const Home());
       }
     });
+  }
+
+  //-----------------------To SignUp user---------------------
+  static Future<void> signUpUser(String email, String password) async {
+    try {
+      //create user with email and password
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      Logger().i(credential.user);
+    } on FirebaseAuthException catch (e) {
+      Logger().e(e);
+    } catch (e) {
+      Logger().e(e);
+    }
   }
 }

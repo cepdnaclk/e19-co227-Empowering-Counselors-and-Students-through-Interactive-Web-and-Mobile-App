@@ -9,12 +9,13 @@ import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPasswordMobile extends StatelessWidget {
-  const ForgotPasswordMobile({
+  ForgotPasswordMobile({
     Key? key,
     required this.mediaQueryData,
   }) : super(key: key);
 
   final MediaQueryData mediaQueryData;
+  final TextEditingController _email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +72,7 @@ class ForgotPasswordMobile extends StatelessWidget {
                                         height:
                                             mediaQueryData.size.height * 0.01),
                                     FormInputMobile("Email",
+                                        textEditingController: _email,
                                         mediaQueryData: mediaQueryData),
                                     SizedBox(
                                         height:

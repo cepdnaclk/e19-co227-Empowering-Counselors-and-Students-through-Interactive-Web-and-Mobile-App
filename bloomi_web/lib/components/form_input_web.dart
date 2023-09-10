@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 
 class FormInputWeb extends StatelessWidget {
   final String text;
+  final TextEditingController textEditingController;
   const FormInputWeb(
     this.text, {
     super.key,
     required this.mediaQueryData,
+    required this.textEditingController,
   });
 
   final MediaQueryData mediaQueryData;
@@ -14,6 +16,7 @@ class FormInputWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTextFeild(
+      textEditingController: textEditingController,
       lable: text,
       mediaQueryData: mediaQueryData,
       keyboardType: TextInputType.text,

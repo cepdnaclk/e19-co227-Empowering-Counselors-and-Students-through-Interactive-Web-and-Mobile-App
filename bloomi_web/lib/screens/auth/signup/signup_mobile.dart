@@ -10,12 +10,16 @@ import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
 class SignUpMobile extends StatelessWidget {
-  const SignUpMobile({
+  SignUpMobile({
     Key? key,
     required this.mediaQueryData,
   }) : super(key: key);
 
   final MediaQueryData mediaQueryData;
+  final TextEditingController _name = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+  final TextEditingController _conformFassword = TextEditingController();
+  final TextEditingController _email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,21 +59,25 @@ class SignUpMobile extends StatelessWidget {
                                       height:
                                           mediaQueryData.size.height * 0.06),
                                   FormInputMobile("Name",
+                                      textEditingController: _name,
                                       mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.02),
                                   FormInputMobile("Email",
+                                      textEditingController: _email,
                                       mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.02),
                                   FormInputMobile("Password",
+                                      textEditingController: _password,
                                       mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.02),
                                   FormInputMobile("Conform Password",
+                                      textEditingController: _conformFassword,
                                       mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
