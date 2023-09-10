@@ -1,3 +1,4 @@
+import 'package:bloomi_web/screens/Admin/adminui.dart';
 import 'package:bloomi_web/screens/auth/login/login.dart';
 import 'package:bloomi_web/screens/auth/signup/signup_form.dart';
 import 'package:bloomi_web/screens/home/home/home.dart';
@@ -17,7 +18,11 @@ class AuthController {
       } else {
         //----------if user is logged in, navigate to login page---------------
         Logger().i('User is signed in!');
-        UtilFunction.navigateForward(context, const Home());
+        if (user.uid == "3MMoGgwJLVUjpTkJ7f4Zd8FqqyJ2") {
+          UtilFunction.navigateForward(context, const Adminpanel());
+        } else {
+          UtilFunction.navigateForward(context, const Home());
+        }
       }
     });
   }
