@@ -1,3 +1,4 @@
+import 'package:bloomi_web/screens/auth/login/login.dart';
 import 'package:bloomi_web/screens/auth/signup/signup_form.dart';
 import 'package:bloomi_web/screens/home/home/home.dart';
 import 'package:bloomi_web/utils/util_function.dart';
@@ -50,6 +51,7 @@ class AuthController {
     }
   }
 
+  //-----------------------To SignIn user---------------------
   static Future<void> signInUser(String email, String password) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -57,6 +59,16 @@ class AuthController {
         password: password,
       );
       Logger().i(credential.user);
+    } on FirebaseAuthException catch (e) {
+      Logger().e(e);
+    }
+  }
+
+  //-----------------------To Reset Password---------------------
+  static Future<void> resetPassword(String email, BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      UtilFunction.navigateBackward(context, const Login());
     } on FirebaseAuthException catch (e) {
       Logger().e(e);
     }
