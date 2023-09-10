@@ -51,7 +51,7 @@ class SignUpMobile extends StatelessWidget {
                                   SizedBox(
                                     width: mediaQueryData.size.width * 0.3,
                                     child: CustomText(
-                                      "SignUp",
+                                      "SignUp Here",
                                       fontSize:
                                           mediaQueryData.size.height * 0.04,
                                       fontWeight: FontWeight.w600,

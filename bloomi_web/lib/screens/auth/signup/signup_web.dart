@@ -61,7 +61,7 @@ class SignUpWeb extends StatelessWidget {
                                   SizedBox(
                                     width: mediaQueryData.size.width * 0.3,
                                     child: CustomText(
-                                      "SignUp",
+                                      "SignUp Here",
                                       fontSize:
                                           mediaQueryData.size.height * 0.03,
                                       fontWeight: FontWeight.w600,
