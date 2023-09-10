@@ -16,11 +16,11 @@ BLOOMi is a revolutionary web and mobile app designed to bridge the gap between 
 
 ### Features
 
-- 📅 **Easy Appointments**: Seamlessly schedule counseling sessions at your convenience.
-- 📚 **Resource Hub**: Access a rich library of articles, videos, and tools for personal and academic growth.
-- 🎓 **Interactive Workshops**: Participate in virtual workshops that focus on essential skills.
-- 📈 **Progress Tracking**: Set goals, track progress, and celebrate your achievements.
-- 💌 **Direct Messaging**: Connect with counselors through secure and private messaging.
+- **Easy Appointments**: Seamlessly schedule counseling sessions at your convenience.
+- **Resource Hub**: Access a rich library of articles, videos, and tools for personal and academic growth.
+- **Interactive Workshops**: Participate in virtual workshops that focus on essential skills.
+- **Progress Tracking**: Set goals, track progress, and celebrate your achievements.
+- **Direct Messaging**: Connect with counselors through secure and private messaging.
 
 Experience the future of educational support with BLOOMi. Join us on this exciting journey!
 
