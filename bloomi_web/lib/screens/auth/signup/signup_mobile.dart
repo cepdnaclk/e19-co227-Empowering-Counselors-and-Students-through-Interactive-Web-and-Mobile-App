@@ -4,8 +4,8 @@ import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/components/form_button_mobile.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_mobile.dart';
+import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/screens/auth/login/login.dart';
-import 'package:bloomi_web/screens/home/home/home.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -82,9 +82,16 @@ class SignUpMobile extends StatelessWidget {
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.07),
-                                  FormButtonMobile("Register",
+                                  InkWell(
+                                    onTap: () {
+                                      AuthController.signUpUser(
+                                          _email.text, _password.text);
+                                    },
+                                    child: FormButtonMobile(
+                                      "Register",
                                       mediaQueryData: mediaQueryData,
-                                      widget: const Home()),
+                                    ),
+                                  ),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.02),

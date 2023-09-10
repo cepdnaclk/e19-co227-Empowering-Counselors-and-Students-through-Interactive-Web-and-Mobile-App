@@ -7,7 +7,6 @@ import 'package:bloomi_web/components/form_button_mobile.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_mobile.dart';
 import 'package:bloomi_web/screens/auth/forgotPassword/forgot_password.dart';
-import 'package:bloomi_web/screens/home/home/home.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -71,9 +70,10 @@ class LoginMobile extends StatelessWidget {
                                     SizedBox(
                                         height:
                                             mediaQueryData.size.height * 0.05),
-                                    FormButtonMobile("Login",
-                                        mediaQueryData: mediaQueryData,
-                                        widget: const Home()),
+                                    FormButtonMobile(
+                                      "Login",
+                                      mediaQueryData: mediaQueryData,
+                                    ),
                                     SizedBox(
                                         height:
                                             mediaQueryData.size.height * 0.02),
