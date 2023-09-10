@@ -57,12 +57,10 @@ class ForgotPasswordWeb extends StatelessWidget {
                               ),
                               child: Column(children: [
                                 SizedBox(
-                                    height: mediaQueryData.size.height * 0.03),
-                                SizedBox(
                                   width: mediaQueryData.size.width * 0.3,
                                   child: CustomText(
                                     "Forgot Password",
-                                    fontSize: mediaQueryData.size.height * 0.04,
+                                    fontSize: mediaQueryData.size.height * 0.03,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),

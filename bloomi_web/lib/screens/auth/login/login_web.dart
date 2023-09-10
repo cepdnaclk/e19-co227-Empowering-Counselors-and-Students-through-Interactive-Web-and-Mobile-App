@@ -66,7 +66,7 @@ class LoginWeb extends StatelessWidget {
                                         child: CustomText(
                                           "Login",
                                           fontSize:
-                                              mediaQueryData.size.height * 0.04,
+                                              mediaQueryData.size.height * 0.03,
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
