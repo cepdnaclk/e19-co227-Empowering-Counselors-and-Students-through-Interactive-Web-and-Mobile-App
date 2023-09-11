@@ -15,7 +15,7 @@ class _AdminHomeState extends State<AdminHome> {
     return const Scaffold(
       body: Stack(
         children: [
-          Center(child: CustomText("Admin Dashboard")),
+          Center(child: CustomText("Admin Homepage")),
           BackgroundColorGradient()
         ],
       ),
