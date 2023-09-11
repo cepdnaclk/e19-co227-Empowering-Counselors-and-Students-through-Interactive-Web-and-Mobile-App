@@ -1,6 +1,5 @@
 import 'package:bloomi_web/components/background_color_gradient.dart';
 import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/components/form_button_mobile.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_mobile.dart';
@@ -38,7 +37,7 @@ class ForgotPasswordMobile extends StatelessWidget {
                           child: Column(
                             children: [
                               SizedBox(
-                                  height: mediaQueryData.size.height * 0.15),
+                                  height: mediaQueryData.size.height * 0.2),
                               Container(
                                 padding: EdgeInsets.all(
                                     mediaQueryData.size.width * 0.04),
@@ -107,7 +106,6 @@ class ForgotPasswordMobile extends StatelessWidget {
               ],
             ),
           ),
-          Footer(mediaQueryData: mediaQueryData),
         ],
       ),
     );

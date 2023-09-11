@@ -1,7 +1,6 @@
 import 'package:bloomi_web/components/background_color_gradient.dart';
 import 'package:bloomi_web/components/custom_image_column.dart';
 import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
@@ -32,7 +31,7 @@ class ForgotPasswordWeb extends StatelessWidget {
                     horizontal: mediaQueryData.size.width * 0.1),
                 child: Column(
                   children: [
-                    SizedBox(height: mediaQueryData.size.height * 0.1),
+                    SizedBox(height: mediaQueryData.size.height * 0.15),
                     Row(
                       children: [
                         CustomImageColumn(mediaQueryData: mediaQueryData),
@@ -98,7 +97,6 @@ class ForgotPasswordWeb extends StatelessWidget {
                   ],
                 ),
               ),
-              Footer(mediaQueryData: mediaQueryData),
             ],
           ),
         ],
