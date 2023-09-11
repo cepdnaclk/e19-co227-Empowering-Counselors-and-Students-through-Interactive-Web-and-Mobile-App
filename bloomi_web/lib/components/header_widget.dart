@@ -37,7 +37,7 @@ class HeaderWidget extends StatelessWidget {
             icon: Icon(
               Icons.video_call_rounded,
               color: UtilConstants.primaryColor,
-              size: mediaQueryData.size.width * 0.025,
+              size: mediaQueryData.size.width * 0.03,
             ),
           )
         ],
