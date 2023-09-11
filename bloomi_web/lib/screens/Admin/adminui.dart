@@ -48,17 +48,17 @@ class _MyWidgetState extends State<Adminpanel> {
                   ),
                 ),
                 Tab(
-                  text: 'Profile',
+                  text: 'Controls',
                   icon: Icon(
-                    Icons.person_2,
+                    Icons.add_card_sharp,
                     size: 30,
                     color: Colors.blue,
                   ),
                 ),
                 Tab(
-                  text: 'Controls',
+                  text: 'Profile',
                   icon: Icon(
-                    Icons.add_card_sharp,
+                    Icons.person_2,
                     size: 30,
                     color: Colors.blue,
                   ),
@@ -82,7 +82,7 @@ class _MyWidgetState extends State<Adminpanel> {
                   AdminProfile(),
                   AdminSetting(),
                 ],
-              ))
+              )),
             ],
           ),
         ),
