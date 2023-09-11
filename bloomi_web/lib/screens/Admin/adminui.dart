@@ -1,9 +1,9 @@
-import 'package:bloomi_web/screens/Admin/admin_control.dart';
-import 'package:bloomi_web/screens/Admin/admin_dashboard.dart';
-import 'package:bloomi_web/screens/Admin/admin_home.dart';
-import 'package:bloomi_web/screens/Admin/admin_profile.dart';
-import 'package:bloomi_web/screens/Admin/admin_progress.dart';
-import 'package:bloomi_web/screens/Admin/admin_setting.dart';
+import 'package:bloomi_web/screens/Admin/screens/admin_control.dart';
+import 'package:bloomi_web/screens/Admin/screens/admin_dashboard.dart';
+import 'package:bloomi_web/screens/Admin/screens/admin_home.dart';
+import 'package:bloomi_web/screens/Admin/screens/admin_profile.dart';
+import 'package:bloomi_web/screens/Admin/screens/admin_progress.dart';
+import 'package:bloomi_web/screens/Admin/screens/admin_setting.dart';
 import 'package:flutter/material.dart';
 
 class Adminpanel extends StatefulWidget {

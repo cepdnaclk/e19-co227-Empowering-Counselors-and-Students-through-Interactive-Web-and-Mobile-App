@@ -1,4 +1,3 @@
-import 'package:bloomi_web/components/background_color_gradient.dart';
 import 'package:bloomi_web/components/custom_button.dart';
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +25,6 @@ class _AdminSettingState extends State<AdminSetting> {
                   mediaQueryData: mediaQueryData, width: 250),
             ),
           ),
-          const SizedBox(height: 70),
-          const BackgroundColorGradient(),
         ],
       ),
     );

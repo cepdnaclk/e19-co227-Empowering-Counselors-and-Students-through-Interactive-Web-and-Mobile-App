@@ -43,27 +43,13 @@ class _HomeState extends State<Home> {
               preferredSize: Size(mediaQueryData.size.width, 70),
               child: const HomeNavBar(),
             ),
-      body: Center(
-        // Replace this with the content you want to display in the body
-        child: Column(
-          children: [
-            Consumer<NavigationProvider>(
-              builder: (context, value, child) {
-                return widget[value.currentIndex];
-              },
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Footer(mediaQueryData: mediaQueryData),
-                ],
-              ),
-            ),
-          ],
-        ),
+      body: Consumer<NavigationProvider>(
+        builder: (context, value, child) {
+          return widget[value.currentIndex];
+        },
       ),
       drawer: const MyDrawer(),
+      bottomNavigationBar: Footer(mediaQueryData: mediaQueryData),
     );
   }
 }
