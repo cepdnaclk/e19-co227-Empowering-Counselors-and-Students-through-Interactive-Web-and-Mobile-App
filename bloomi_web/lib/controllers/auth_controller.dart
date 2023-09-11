@@ -1,5 +1,4 @@
 import 'package:bloomi_web/screens/Admin/adminui.dart';
-import 'package:bloomi_web/screens/auth/login/login.dart';
 import 'package:bloomi_web/screens/auth/signup/signup_form.dart';
 import 'package:bloomi_web/screens/home/home/home.dart';
 import 'package:bloomi_web/utils/util_function.dart';
@@ -73,7 +72,6 @@ class AuthController {
   static Future<void> resetPassword(String email, BuildContext context) async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-      UtilFunction.navigateBackward(context, const Login());
     } on FirebaseAuthException catch (e) {
       Logger().e(e);
     }

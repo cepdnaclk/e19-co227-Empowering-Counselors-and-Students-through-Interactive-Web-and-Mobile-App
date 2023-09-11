@@ -21,7 +21,7 @@ class CustomIconContainer extends StatelessWidget {
           color: UtilConstants.whiteColor),
       child: Image.asset(
         imgPath,
-        width: mediaQueryData.size.width * 0.03,
+        width: mediaQueryData.size.width * 0.04,
         height: mediaQueryData.size.height * 0.03,
       ),
     );
