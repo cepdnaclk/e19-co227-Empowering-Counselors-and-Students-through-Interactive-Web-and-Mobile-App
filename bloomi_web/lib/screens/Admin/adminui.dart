@@ -25,27 +25,51 @@ class _MyWidgetState extends State<Adminpanel> {
               TabBar(labelColor: Colors.black, tabs: [
                 Tab(
                   text: 'Home',
-                  icon: Icon(Icons.home),
+                  icon: Icon(
+                    Icons.home,
+                    size: 30,
+                    color: Colors.blue,
+                  ),
                 ),
                 Tab(
                   text: 'Dashboard',
-                  icon: Icon(Icons.dashboard),
+                  icon: Icon(
+                    Icons.dashboard,
+                    size: 30,
+                    color: Colors.blue,
+                  ),
                 ),
                 Tab(
                   text: 'Progress',
-                  icon: Icon(Icons.add_chart),
+                  icon: Icon(
+                    Icons.add_chart,
+                    size: 30,
+                    color: Colors.blue,
+                  ),
                 ),
                 Tab(
                   text: 'Profile',
-                  icon: Icon(Icons.person_2),
+                  icon: Icon(
+                    Icons.person_2,
+                    size: 30,
+                    color: Colors.blue,
+                  ),
                 ),
                 Tab(
                   text: 'Controls',
-                  icon: Icon(Icons.add_card_sharp),
+                  icon: Icon(
+                    Icons.add_card_sharp,
+                    size: 30,
+                    color: Colors.blue,
+                  ),
                 ),
                 Tab(
                   text: 'Settings',
-                  icon: Icon(Icons.settings),
+                  icon: Icon(
+                    Icons.settings,
+                    size: 30,
+                    color: Colors.blue,
+                  ),
                 ),
               ]),
               Expanded(
