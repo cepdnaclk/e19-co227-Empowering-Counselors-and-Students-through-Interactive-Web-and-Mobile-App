@@ -59,7 +59,7 @@ class ContactCart extends StatelessWidget {
                         ),
                       ),
                       CustomText(
-                          "Name : $name\nFaculty : $fac\nUniversity : University of Peradeniya\nEmail :$email\nPhone : $phone",
+                          "Name : $name\nFaculty : $fac\nUniversity : University of Peradeniya\nPhone : $phone",
                           fontSize: mediaQueryData.size.width * 0.014,
                           textAlign: TextAlign.left,
                           fontWeight: FontWeight.w600,
@@ -74,7 +74,7 @@ class ContactCart extends StatelessWidget {
                       width: mediaQueryData.size.width * 0.5,
                       height: mediaQueryData.size.height * 0.1,
                       child: CustomText(
-                          "DESCRIPTION : A counselor at the University of Peradeniya is a dedicated professional who provides guidance, support, and counseling services to students. They help students navigate academic, personal, and emotional challenges, empowering them to make informed decisions and succeed in their university journey",
+                          "DESCRIPTION : A counselor at the University of Peradeniya is a dedicated professional who provides guidance, support, and counseling services to students. They help students navigate academic, personal, and emotional challenges, empowering them to make informed decisions ",
                           fontSize: mediaQueryData.size.width * 0.01,
                           textAlign: TextAlign.left,
                           fontWeight: FontWeight.w400,
@@ -110,8 +110,8 @@ class ContactCart extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
-                        width: mediaQueryData.size.width * 0.12,
-                        height: mediaQueryData.size.width * 0.12,
+                        width: mediaQueryData.size.width * 0.13,
+                        height: mediaQueryData.size.width * 0.13,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
@@ -123,8 +123,8 @@ class ContactCart extends StatelessWidget {
                         ),
                       ),
                       CustomText(
-                          "Name : $name\nFaculty : $fac\nUniversity : University of Peradeniya\nEmail :$email\nPhone : $phone",
-                          fontSize: mediaQueryData.size.width * 0.017,
+                          "Name : $name\nFaculty : $fac\nUniversity : University of Peradeniya\nPhone : $phone",
+                          fontSize: mediaQueryData.size.width * 0.018,
                           textAlign: TextAlign.left,
                           fontWeight: FontWeight.w600,
                           fontColor: UtilConstants.blackColor),
@@ -136,9 +136,9 @@ class ContactCart extends StatelessWidget {
                       horizontal: mediaQueryData.size.width * 0.08),
                   child: SizedBox(
                       width: mediaQueryData.size.width * 0.5,
-                      height: mediaQueryData.size.height * 0.1,
+                      height: mediaQueryData.size.height * 0.14,
                       child: CustomText(
-                          "DESCRIPTION : A counselor at the University of Peradeniya is a dedicated professional who provides guidance, support, and counseling services to students. They help students navigate academic, personal, and emotional challenges, empowering them to make informed decisions and succeed in their university journey",
+                          "DESCRIPTION : A counselor at the University of Peradeniya is a dedicated professional who provides guidance, support, and counseling services to students. They help students navigate academic, personal, and emotional challenges, empowering them to make informed decisions",
                           fontSize: mediaQueryData.size.width * 0.016,
                           textAlign: TextAlign.left,
                           fontWeight: FontWeight.w400,
@@ -146,7 +146,7 @@ class ContactCart extends StatelessWidget {
                 ),
                 SizedBox(
                   width: mediaQueryData.size.width * 0.5,
-                  height: mediaQueryData.size.height * 0.2,
+                  height: mediaQueryData.size.height * 0.16,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -154,13 +154,13 @@ class ContactCart extends StatelessWidget {
                         "Email Me",
                         mediaQueryData: mediaQueryData,
                         icon: Icons.mark_email_read_outlined,
-                        size: 0.06,
+                        size: 0.075,
                       ),
                       CustomContactIcon(
                         "Chat",
                         mediaQueryData: mediaQueryData,
                         icon: Icons.chat_rounded,
-                        size: 0.055,
+                        size: 0.07,
                       )
                     ],
                   ),
