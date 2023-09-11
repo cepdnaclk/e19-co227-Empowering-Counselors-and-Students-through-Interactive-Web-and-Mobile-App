@@ -1,7 +1,6 @@
 import 'package:bloomi_web/components/background_color_gradient.dart';
 import 'package:bloomi_web/components/custom_image_column.dart';
 import 'package:bloomi_web/components/custom_text_link_web.dart';
-import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
@@ -127,7 +126,6 @@ class SignUpWeb extends StatelessWidget {
                   ),
                 ),
               ),
-              Footer(mediaQueryData: mediaQueryData),
             ],
           ),
         ],

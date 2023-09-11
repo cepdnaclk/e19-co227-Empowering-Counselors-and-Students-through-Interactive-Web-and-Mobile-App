@@ -8,9 +8,9 @@ import 'package:flutter/material.dart';
 
 class ContactCart extends StatelessWidget {
   const ContactCart({
-    super.key,
+    Key? key,
     required this.mediaQueryData,
-  });
+  }) : super(key: key);
 
   final MediaQueryData mediaQueryData;
 
@@ -26,8 +26,7 @@ class ContactCart extends StatelessWidget {
               ? mediaQueryData.size.height * 0.1
               : mediaQueryData.size.height * 0.1,
         ),
-        child: Expanded(
-            child: Container(
+        child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           width: mediaQueryData.size.width,
           height: (mediaQueryData.size.width >= 900) ? 420 : 460,
@@ -88,7 +87,7 @@ class ContactCart extends StatelessWidget {
               )
             ],
           ),
-        )),
+        ),
       ),
     );
   }

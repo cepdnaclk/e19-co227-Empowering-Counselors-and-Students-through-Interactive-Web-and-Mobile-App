@@ -1,3 +1,4 @@
+import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/screens/auth/signup/signup_mobile.dart';
 import 'package:bloomi_web/screens/auth/signup/signup_web.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class _SignUpState extends State<SignUp> {
       body: (mediaQueryData.size.width > 900)
           ? SignUpWeb(mediaQueryData: mediaQueryData)
           : SignUpMobile(mediaQueryData: mediaQueryData),
+      bottomNavigationBar: Footer(mediaQueryData: mediaQueryData),
     );
   }
 }
