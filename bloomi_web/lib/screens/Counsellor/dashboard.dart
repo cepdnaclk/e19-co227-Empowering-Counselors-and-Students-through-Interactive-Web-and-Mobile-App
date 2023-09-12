@@ -1,8 +1,6 @@
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
-import 'new_appointment.dart';
-
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
 
@@ -65,7 +63,9 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    //final currentWidth = MediaQuery.of(context).size.width;
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    final currentWidth = mediaQueryData.size.width;
+    print(currentWidth);
 
     /*return Scaffold(
       body: Stack(
@@ -196,87 +196,100 @@ class _DashboardState extends State<Dashboard> {
         child: GestureDetector(
           onTap: _closeDropdown,
           child: Padding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.symmetric(
+              vertical: 20.0,
+              horizontal: 10.0,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Row(
-                  children: [
-                    const Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "Dashboard",
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.blueGrey,
-                          fontWeight: FontWeight.bold,
+                Container(
+                  child: Row(
+                    children: [
+                      const Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Dashboard",
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.blueGrey,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                    const Spacer(), // Added Spacer to push the Container to the right
-                    Container(
-                      alignment: Alignment.topRight,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20.0),
-                        child: Image.asset(
-                          UtilConstants.profImagePath,
-                          width: 60,
-                          height: 60,
+                      Spacer(),
+                      Container(
+                        alignment: Alignment.topRight,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20.0),
+                          child: Image.asset(
+                            UtilConstants.profImagePath,
+                            width: 60,
+                            height: 60,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 30,
-                  ),
+                  margin: currentWidth > 500
+                      ? EdgeInsets.symmetric(horizontal: 100)
+                      : EdgeInsets.symmetric(horizontal: 30),
                   child: TextField(
                     onChanged: (value) => _runFilter(value),
                     onTap: () {
                       setState(() {
-                        _isSearchBarTapped =
-                            true; // Update flag when search bar is tapped
+                        _isSearchBarTapped = true;
                       });
                     },
-                    decoration: const InputDecoration(
-                        labelText: 'Search your records',
-                        suffixIcon: Icon(Icons.search)),
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: UtilConstants.lightgreyColor,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: BorderSide.none,
+                      ),
+                      labelText: 'Search your records',
+                      labelStyle: const TextStyle(color: Colors.black),
+                      suffixIcon: const Icon(Icons.search),
+                    ),
                   ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 Expanded(
-                    child: _isSearchBarTapped
-                        ? _foundUsers.isNotEmpty
-                            ? ListView.builder(
-                                itemCount: _foundUsers.length,
-                                itemBuilder: (context, index) => Card(
-                                  key: ValueKey(_foundUsers[index]["id"]),
-                                  color: Colors.amberAccent,
-                                  elevation: 4,
-                                  margin:
-                                      const EdgeInsets.symmetric(vertical: 10),
-                                  child: ListTile(
-                                    leading: Text(
-                                      _foundUsers[index]["id"].toString(),
-                                      style: const TextStyle(fontSize: 24),
-                                    ),
-                                    title: Text(_foundUsers[index]['name']),
-                                    subtitle: Text(
-                                        '${_foundUsers[index]["age"].toString()} years old'),
+                  child: _isSearchBarTapped
+                      ? (_foundUsers.isNotEmpty
+                          ? ListView.builder(
+                              itemCount: _foundUsers.length,
+                              itemBuilder: (context, index) => Card(
+                                key: ValueKey(_foundUsers[index]["id"]),
+                                color: Colors.amberAccent,
+                                elevation: 4,
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                child: ListTile(
+                                  leading: Text(
+                                    _foundUsers[index]["id"].toString(),
+                                    style: const TextStyle(fontSize: 24),
                                   ),
+                                  title: Text(_foundUsers[index]['name']),
+                                  subtitle: Text(
+                                      '${_foundUsers[index]["age"].toString()} years old'),
                                 ),
-                              )
-                            : const Text(
-                                'No results found',
-                                style: TextStyle(fontSize: 24),
-                              )
-                        : Container()),
+                              ),
+                            )
+                          : const Text(
+                              'No results found',
+                              style: TextStyle(fontSize: 24),
+                            ))
+                      : Container(),
+                ),
                 const Text(
                   "Your Next Appointment",
                   textAlign: TextAlign.center,
@@ -314,10 +327,11 @@ class _DashboardState extends State<Dashboard> {
                             ),
                           ),
                           SizedBox(
-                              height: 8,
-                              child: Divider(
-                                thickness: 1,
-                              )),
+                            height: 8,
+                            child: Divider(
+                              thickness: 1,
+                            ),
+                          ),
                           Text('Full Name:'),
                           SizedBox(height: 4),
                           Text('Email:'),
@@ -335,16 +349,6 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
           ),
-        ),
-      ),
-      floatingActionButton: Align(
-        alignment: Alignment.bottomRight,
-        child: FloatingActionButton(
-          onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => const Appointment()));
-          },
-          child: const Icon(Icons.add),
         ),
       ),
     );
