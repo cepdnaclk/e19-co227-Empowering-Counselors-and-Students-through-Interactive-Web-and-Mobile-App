@@ -32,14 +32,27 @@ class HeaderWidget extends StatelessWidget {
               ),
             ],
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.video_call_rounded,
-              color: UtilConstants.primaryColor,
-              size: mediaQueryData.size.width * 0.03,
-            ),
-          )
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.people_alt_rounded,
+                  color: UtilConstants.primaryColor,
+                  size: mediaQueryData.size.width * 0.023,
+                ),
+              ),
+              SizedBox(width: mediaQueryData.size.width * 0.01),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.video_call_rounded,
+                  color: UtilConstants.primaryColor,
+                  size: mediaQueryData.size.width * 0.03,
+                ),
+              )
+            ],
+          ),
         ],
       ),
     );
