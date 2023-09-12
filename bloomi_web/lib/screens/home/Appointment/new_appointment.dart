@@ -1,6 +1,6 @@
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/custom_textfeild.dart';
-import 'package:bloomi_web/screens/home/Appointment/dashboard.dart';
+import 'package:bloomi_web/screens/Counsellor/dashboard.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
