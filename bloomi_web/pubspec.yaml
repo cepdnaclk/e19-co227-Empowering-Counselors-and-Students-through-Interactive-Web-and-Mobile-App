@@ -31,7 +31,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -43,6 +43,7 @@ dependencies:
   logger: ^2.0.2
   awesome_dialog: ^3.1.0
   provider: ^6.0.5
+  syncfusion_flutter_calendar: ^22.2.12
 
 dev_dependencies:
   flutter_test:
