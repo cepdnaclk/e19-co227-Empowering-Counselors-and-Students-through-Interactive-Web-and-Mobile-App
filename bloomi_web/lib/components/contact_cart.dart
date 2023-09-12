@@ -29,7 +29,7 @@ class ContactCart extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           width: mediaQueryData.size.width,
-          height: (mediaQueryData.size.width >= 900) ? 420 : 460,
+          height: (mediaQueryData.size.width >= 900) ? 420 : 480,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(20)),
             gradient: LinearGradient(
@@ -52,7 +52,7 @@ class ContactCart extends StatelessWidget {
               ),
               CustomText(
                 "A counselor at the University of Peradeniya is a dedicated professional who provides guidance, support, and counseling services to students. They help students navigate academic, personal, and emotional challenges, empowering them to make informed decisions",
-                fontSize: (mediaQueryData.size.width >= 900) ? 18 : 15,
+                fontSize: (mediaQueryData.size.width >= 900) ? 18 : 14,
                 textAlign: TextAlign.center,
                 fontWeight: FontWeight.w400,
                 fontColor: UtilConstants.blackColor,

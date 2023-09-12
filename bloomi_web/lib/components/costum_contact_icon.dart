@@ -1,8 +1,6 @@
-import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
-class CustomContactIcon extends StatefulWidget {
+class CustomContactIcon extends StatelessWidget {
   const CustomContactIcon(
     this.text, {
     Key? key,
@@ -17,37 +15,30 @@ class CustomContactIcon extends StatefulWidget {
   final double size;
 
   @override
-  _CustomContactIconState createState() => _CustomContactIconState();
-}
-
-class _CustomContactIconState extends State<CustomContactIcon> {
-  Color iconColor = UtilConstants.primaryColor;
-
-  @override
   Widget build(BuildContext context) {
+    Color iconColor = Colors.blue; // Change to your desired initial color
+
     return MouseRegion(
       onEnter: (_) {
-        setState(() {
-          // Change the icon color when hovering
-          iconColor = Colors.green; // Replace with your desired hover color
-        });
+        // Change the icon color when hovering
+        iconColor = Colors.green; // Replace with your desired hover color
       },
       onExit: (_) {
-        setState(() {
-          // Restore the original icon color when not hovering
-          iconColor =
-              UtilConstants.primaryColor; // Replace with your original color
-        });
+        // Restore the original icon color when not hovering
+        iconColor = Colors.blue; // Replace with your original color
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(widget.icon, color: iconColor, size: widget.size),
-          CustomText(widget.text,
+          Icon(icon, color: iconColor, size: size),
+          Text(
+            text,
+            style: const TextStyle(
               fontSize: 15,
-              textAlign: TextAlign.left,
               fontWeight: FontWeight.w700,
-              fontColor: UtilConstants.blackColor),
+              color: Colors.black, // Replace with your text color
+            ),
+          ),
         ],
       ),
     );
