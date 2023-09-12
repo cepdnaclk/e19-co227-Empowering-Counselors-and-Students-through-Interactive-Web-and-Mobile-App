@@ -1,4 +1,3 @@
-import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
@@ -23,8 +22,8 @@ class MyDrawer extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                        width: 60,
-                        height: 60,
+                        width: 80,
+                        height: 78,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
@@ -36,52 +35,115 @@ class MyDrawer extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      const CustomText("Sachith Dissanayaka",
-                          fontSize: 16,
-                          fontWeight: FontWeight.w200,
-                          fontColor: UtilConstants.blackColor),
-                      const CustomText("sachithdissanayaka135@gmail.com",
-                          fontSize: 12,
-                          fontWeight: FontWeight.w200,
-                          fontColor: UtilConstants.blackColor),
+                      const Text(
+                        "Sachith Dissanayaka",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: UtilConstants.blackColor,
+                        ),
+                      ),
+                      const Text(
+                        "sachithdissanayaka135@gmail.com",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w300,
+                          color: UtilConstants.blackColor,
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 ListTile(
-                  leading: const Icon(Icons.home),
-                  title: const Text('Home'),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                  leading: const Icon(
+                    Icons.home,
+                    size: 24,
+                    color: Colors.blue,
+                  ),
+                  title: const Text(
+                    'Home',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                   onTap: () {
                     Provider.of<NavigationProvider>(context, listen: false)
                         .setIndex(0);
                   },
                 ),
                 ListTile(
-                  leading: const Icon(Icons.approval),
-                  title: const Text('Appointment'),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                  leading: const Icon(
+                    Icons.approval,
+                    size: 24,
+                    color: Colors.blue,
+                  ),
+                  title: const Text(
+                    'Appointment',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                   onTap: () {
                     Provider.of<NavigationProvider>(context, listen: false)
                         .setIndex(1);
                   },
                 ),
                 ListTile(
-                  leading: const Icon(Icons.contact_mail),
-                  title: const Text('Contact'),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                  leading: const Icon(
+                    Icons.contact_mail,
+                    size: 24,
+                    color: Colors.blue,
+                  ),
+                  title: const Text(
+                    'Contact',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                   onTap: () {
                     Provider.of<NavigationProvider>(context, listen: false)
                         .setIndex(2);
                   },
                 ),
                 ListTile(
-                  leading: const Icon(Icons.person),
-                  title: const Text('Profile'),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                  leading: const Icon(
+                    Icons.person,
+                    size: 24,
+                    color: Colors.blue,
+                  ),
+                  title: const Text(
+                    'Profile',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                   onTap: () {
                     Provider.of<NavigationProvider>(context, listen: false)
                         .setIndex(3);
                   },
                 ),
                 ListTile(
-                  leading: const Icon(Icons.logout),
-                  title: const Text('Logout'),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                  leading: const Icon(
+                    Icons.logout,
+                    size: 24,
+                    color: Colors.blue,
+                  ),
+                  title: const Text(
+                    'Logout',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                   onTap: () {
                     AuthController.signOutUser();
                   },
@@ -100,8 +162,8 @@ class MyDrawer extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                        width: 60,
-                        height: 60,
+                        width: 80,
+                        height: 78,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
@@ -113,20 +175,39 @@ class MyDrawer extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      const CustomText("Sachith Dissanayaka",
-                          fontSize: 16,
-                          fontWeight: FontWeight.w200,
-                          fontColor: UtilConstants.blackColor),
-                      const CustomText("sachithdissanayaka135@gmail.com",
-                          fontSize: 12,
-                          fontWeight: FontWeight.w200,
-                          fontColor: UtilConstants.blackColor),
+                      const Text(
+                        "Sachith Dissanayaka",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: UtilConstants.blackColor,
+                        ),
+                      ),
+                      const Text(
+                        "sachithdissanayaka135@gmail.com",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w300,
+                          color: UtilConstants.blackColor,
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 ListTile(
-                  leading: const Icon(Icons.logout),
-                  title: const Text('Logout'),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                  leading: const Icon(
+                    Icons.logout,
+                    size: 24,
+                    color: Colors.blue,
+                  ),
+                  title: const Text(
+                    'Logout',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                   onTap: () {
                     AuthController.signOutUser();
                   },

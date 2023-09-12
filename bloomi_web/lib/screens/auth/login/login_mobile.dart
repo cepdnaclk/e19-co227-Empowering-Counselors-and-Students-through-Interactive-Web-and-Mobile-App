@@ -2,7 +2,6 @@ import 'package:bloomi_web/components/background_color_gradient.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/custom_text_link_mobile.dart';
 import 'package:bloomi_web/components/customicon_container.dart';
-import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/components/form_button_mobile.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_mobile.dart';
@@ -146,7 +145,6 @@ class LoginMobile extends StatelessWidget {
               ],
             ),
           ),
-          Footer(mediaQueryData: mediaQueryData),
         ],
       ),
     );

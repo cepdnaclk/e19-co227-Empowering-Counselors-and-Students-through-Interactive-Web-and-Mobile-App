@@ -1,3 +1,4 @@
+import 'package:bloomi_web/components/background_color_gradient.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +12,13 @@ class AdminDashboard extends StatefulWidget {
 class _AdminDashboardState extends State<AdminDashboard> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: CustomText("Admin Dashboard"),
+    return const Scaffold(
+      body: Stack(
+        children: [
+          Center(child: CustomText("Admin Dashboard")),
+          BackgroundColorGradient(),
+        ],
+      ),
     );
   }
 }

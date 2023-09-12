@@ -1,3 +1,4 @@
+import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/screens/auth/forgotPassword/forgotpass_mobile.dart';
 import 'package:bloomi_web/screens/auth/forgotPassword/forgotpass_web.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       body: (mediaQueryData.size.width > 900)
           ? ForgotPasswordWeb(mediaQueryData: mediaQueryData)
           : ForgotPasswordMobile(mediaQueryData: mediaQueryData),
+      bottomNavigationBar: Footer(mediaQueryData: mediaQueryData),
     );
   }
 }

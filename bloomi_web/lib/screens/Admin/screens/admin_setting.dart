@@ -13,17 +13,18 @@ class _AdminSettingState extends State<AdminSetting> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
-    return Center(
-      child: Column(
+    return Scaffold(
+      body: Stack(
         children: [
-          const SizedBox(height: 70),
-          InkWell(
-            onTap: () {
-              AuthController.signOutUser();
-            },
-            child: CustomButton("Admin Logout",
-                mediaQueryData: mediaQueryData, width: 250),
-          )
+          Center(
+            child: InkWell(
+              onTap: () {
+                AuthController.signOutUser();
+              },
+              child: CustomButton("Admin Logout",
+                  mediaQueryData: mediaQueryData, width: 250),
+            ),
+          ),
         ],
       ),
     );

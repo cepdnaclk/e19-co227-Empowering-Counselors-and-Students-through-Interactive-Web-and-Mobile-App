@@ -3,7 +3,6 @@ import 'package:bloomi_web/components/custom_image_column.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/custom_text_link_web.dart';
 import 'package:bloomi_web/components/customicon_container.dart';
-import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
@@ -148,7 +147,6 @@ class LoginWeb extends StatelessWidget {
                   ),
                 ),
               ),
-              Footer(mediaQueryData: mediaQueryData),
             ],
           ),
         ],

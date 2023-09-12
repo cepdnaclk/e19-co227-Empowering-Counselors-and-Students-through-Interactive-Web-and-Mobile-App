@@ -1,115 +1,90 @@
-//import 'package:bloomi_web/components/background_color_gradient.dart';
-// import 'package:bloomi_web/components/custom_text.dart';
-// import 'package:bloomi_web/components/drawer.dart';
-// import 'package:bloomi_web/utils/util_constant.dart';
-import 'package:bloomi_web/providers/nav_provider/admin_nav_provider.dart';
-import 'package:bloomi_web/screens/Admin/admin_control.dart';
-import 'package:bloomi_web/screens/Admin/admin_dashboard.dart';
-import 'package:bloomi_web/screens/Admin/admin_home.dart';
-import 'package:bloomi_web/screens/Admin/admin_profile.dart';
-import 'package:bloomi_web/screens/Admin/admin_progress.dart';
-import 'package:bloomi_web/screens/Admin/admin_setting.dart';
+import 'package:bloomi_web/screens/Admin/screens/admin_control.dart';
+import 'package:bloomi_web/screens/Admin/screens/admin_dashboard.dart';
+import 'package:bloomi_web/screens/Admin/screens/admin_home.dart';
+import 'package:bloomi_web/screens/Admin/screens/admin_profile.dart';
+import 'package:bloomi_web/screens/Admin/screens/admin_progress.dart';
+import 'package:bloomi_web/screens/Admin/screens/admin_setting.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class Adminpanel extends StatefulWidget {
-  const Adminpanel({Key? key}) : super(key: key);
+  const Adminpanel({super.key});
 
   @override
-  State<Adminpanel> createState() => _HomeNavBarState();
+  State<Adminpanel> createState() => _MyWidgetState();
 }
 
-class _HomeNavBarState extends State<Adminpanel> {
+class _MyWidgetState extends State<Adminpanel> {
   @override
   Widget build(BuildContext context) {
-    final List<Widget> widget = [
-      const AdminHome(),
-      const AdminDashboard(),
-      const AdminProgress(),
-      const AdminControl(),
-      const AdminProfile(),
-      const AdminSetting(),
-    ];
-    return DefaultTabController(
+    return const DefaultTabController(
       length: 6,
       child: Scaffold(
-        body: Column(
-          children: [
-            //BackgroundColorGradient(),
-            TabBar(
-              labelColor: Colors.black,
-              dividerColor: const Color.fromARGB(255, 146, 192, 230),
-              tabs: [
-                InkWell(
-                  onTap: () {
-                    Provider.of<AdminNavProvider>(context, listen: false)
-                        .setIndex(0);
-                  },
-                  child: const Tab(
-                    text: ('Home'),
-                    icon: Icon(Icons.home),
+        body: SafeArea(
+          child: Column(
+            children: [
+              TabBar(labelColor: Colors.black, tabs: [
+                Tab(
+                  text: 'Home',
+                  icon: Icon(
+                    Icons.home,
+                    size: 30,
+                    color: Colors.blue,
                   ),
                 ),
-                InkWell(
-                  onTap: () {
-                    Provider.of<AdminNavProvider>(context, listen: false)
-                        .setIndex(1);
-                  },
-                  child: const Tab(
-                    text: 'Dashboard',
-                    icon: Icon(Icons.dashboard),
+                Tab(
+                  text: 'Dashboard',
+                  icon: Icon(
+                    Icons.dashboard,
+                    size: 30,
+                    color: Colors.blue,
                   ),
                 ),
-                InkWell(
-                  onTap: () {
-                    Provider.of<AdminNavProvider>(context, listen: false)
-                        .setIndex(2);
-                  },
-                  child: const Tab(
-                    text: 'Progress',
-                    icon: Icon(Icons.add_chart),
+                Tab(
+                  text: 'Progress',
+                  icon: Icon(
+                    Icons.add_chart,
+                    size: 30,
+                    color: Colors.blue,
                   ),
                 ),
-                InkWell(
-                  onTap: () {
-                    Provider.of<AdminNavProvider>(context, listen: false)
-                        .setIndex(3);
-                  },
-                  child: const Tab(
-                    text: 'Controls',
-                    icon: Icon(Icons.add_card_sharp),
+                Tab(
+                  text: 'Controls',
+                  icon: Icon(
+                    Icons.add_card_sharp,
+                    size: 30,
+                    color: Colors.blue,
                   ),
                 ),
-                InkWell(
-                  onTap: () {
-                    Provider.of<AdminNavProvider>(context, listen: false)
-                        .setIndex(4);
-                  },
-                  child: const Tab(
-                    text: 'Profile',
-                    icon: Icon(Icons.person),
+                Tab(
+                  text: 'Profile',
+                  icon: Icon(
+                    Icons.person_2,
+                    size: 30,
+                    color: Colors.blue,
                   ),
                 ),
-                InkWell(
-                  onTap: () {
-                    Provider.of<AdminNavProvider>(context, listen: false)
-                        .setIndex(5);
-                  },
-                  child: const Tab(
-                    text: 'Settings',
-                    icon: Icon(Icons.settings),
+                Tab(
+                  text: 'Settings',
+                  icon: Icon(
+                    Icons.settings,
+                    size: 30,
+                    color: Colors.blue,
                   ),
                 ),
-              ],
-            ),
-            Consumer<AdminNavProvider>(
-              builder: (context, value, child) {
-                int key = value.getIndex;
-                // Build your UI using the key variable.
-                return widget[key];
-              },
-            )
-          ],
+              ]),
+              Expanded(
+                  child: TabBarView(
+                children: [
+                  AdminHome(),
+                  AdminDashboard(),
+                  AdminProgress(),
+                  AdminControl(),
+                  AdminProfile(),
+                  AdminSetting(),
+                ],
+              )),
+            ],
+          ),
         ),
       ),
     );

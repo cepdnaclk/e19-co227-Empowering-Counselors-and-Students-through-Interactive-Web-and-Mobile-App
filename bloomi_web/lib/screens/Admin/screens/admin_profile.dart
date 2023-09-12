@@ -1,3 +1,4 @@
+import 'package:bloomi_web/components/background_color_gradient.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +12,13 @@ class AdminProfile extends StatefulWidget {
 class _AdminProfileState extends State<AdminProfile> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: CustomText("Admin Profile"),
+    return const Scaffold(
+      body: Stack(
+        children: [
+          Center(child: CustomText("Admin Profile")),
+          BackgroundColorGradient(),
+        ],
+      ),
     );
   }
 }
