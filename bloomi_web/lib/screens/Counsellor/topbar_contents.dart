@@ -89,7 +89,8 @@ class _TopBarContentsState extends State<TopBarContents> {
                           maintainSize: true,
                           visible: _isHovering[0],
                           child: Container(
-                            width: screenSize.width * 0.03,
+                            width: getTextWidth("Home",
+                                TextStyle(fontSize: screenSize.width * 0.0145)),
                             height: screenSize.width * 0.003,
                             color: UtilConstants.primaryColor,
                           ),
@@ -124,7 +125,8 @@ class _TopBarContentsState extends State<TopBarContents> {
                           maintainSize: true,
                           visible: _isHovering[1],
                           child: Container(
-                            width: screenSize.width * 0.03,
+                            width: getTextWidth("Calender",
+                                TextStyle(fontSize: screenSize.width * 0.0145)),
                             height: screenSize.width * 0.003,
                             color: UtilConstants.primaryColor,
                           ),
@@ -159,7 +161,8 @@ class _TopBarContentsState extends State<TopBarContents> {
                           maintainSize: true,
                           visible: _isHovering[2],
                           child: Container(
-                            width: screenSize.width * 0.03,
+                            width: getTextWidth("Chat",
+                                TextStyle(fontSize: screenSize.width * 0.0145)),
                             height: screenSize.width * 0.003,
                             color: UtilConstants.primaryColor,
                           ),
