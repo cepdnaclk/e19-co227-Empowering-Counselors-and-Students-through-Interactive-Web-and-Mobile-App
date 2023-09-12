@@ -1,6 +1,6 @@
 import 'package:bloomi_web/screens/Admin/adminui.dart';
+import 'package:bloomi_web/screens/Counsellor/navbar.dart';
 import 'package:bloomi_web/screens/auth/signup/signup_form.dart';
-import 'package:bloomi_web/screens/home/Appointment/dashboard.dart';
 import 'package:bloomi_web/screens/home/home/home.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,7 +21,7 @@ class AuthController {
         if (user.uid == "3MMoGgwJLVUjpTkJ7f4Zd8FqqyJ2") {
           UtilFunction.navigateForward(context, const Adminpanel());
         } else if (user.uid == "Tm3SJ2JpSORKzZrFiumARyE4l7f1") {
-          UtilFunction.navigateForward(context, const Dashboard());
+          UtilFunction.navigateForward(context, const CounselorNavBar());
         } else {
           UtilFunction.navigateForward(context, const Home());
         }
