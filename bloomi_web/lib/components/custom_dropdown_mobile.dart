@@ -33,7 +33,7 @@ class _CustomDropdownMobileState extends State<CustomDropdownMobile> {
         borderRadius: BorderRadius.circular(10),
       ),
       child: DropdownButton(
-        iconSize: mediaQueryData.size.width * 0.022,
+        iconSize: mediaQueryData.size.width * 0.019,
         dropdownColor: UtilConstants.lightgreyColor,
         underline: const SizedBox(),
         value: valueChoose,
@@ -47,10 +47,10 @@ class _CustomDropdownMobileState extends State<CustomDropdownMobile> {
               hintText: widget.text,
             ),
             style: TextStyle(
-              fontSize:
-                  (mediaQueryData.size.width + mediaQueryData.size.height) *
-                      0.012,
-            ),
+                fontSize:
+                    (mediaQueryData.size.width + mediaQueryData.size.height) *
+                        0.012,
+                fontWeight: FontWeight.w400),
           ),
         ),
         items: widget.listItem.map((value) {
@@ -60,7 +60,7 @@ class _CustomDropdownMobileState extends State<CustomDropdownMobile> {
               width: mediaQueryData.size.width * 0.4,
               child: Text(value,
                   style: TextStyle(
-                    fontSize: mediaQueryData.size.height * 0.025,
+                    fontSize: mediaQueryData.size.height * 0.02,
                   )),
             ),
           );
