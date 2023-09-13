@@ -94,6 +94,7 @@ class ForgotPasswordMobile extends StatelessWidget {
                                           },
                                           child: FormButtonMobile(
                                             "Send",
+                                            isLoading: value.isLoading,
                                             mediaQueryData: mediaQueryData,
                                           ),
                                         );

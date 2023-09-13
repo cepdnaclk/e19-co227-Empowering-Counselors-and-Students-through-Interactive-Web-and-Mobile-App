@@ -145,6 +145,7 @@ class SignUpMobile extends StatelessWidget {
                                         },
                                         child: FormButtonMobile(
                                           "Register",
+                                          isLoading: value.isLoading,
                                           mediaQueryData: mediaQueryData,
                                         ),
                                       );

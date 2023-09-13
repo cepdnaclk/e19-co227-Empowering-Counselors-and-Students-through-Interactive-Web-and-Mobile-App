@@ -57,18 +57,33 @@ class SignupProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool _isLoading = false;
+
+  //-----------------Getters-----------------
+  bool get isLoading => _isLoading;
+
+  //-----------------Setters-----------------
+  void setIsLoading(bool isLoading) {
+    _isLoading = isLoading;
+    notifyListeners();
+  }
+
   //----------------------Functions---------------------
   Future<void> signUpUser(String email, String password,
       MediaQueryData mediaQueryData, BuildContext context) async {
     try {
       if (email.isNotEmpty && password.isNotEmpty) {
-        AuthController.signUpUser(email, password);
+        setIsLoading(true);
+        await AuthController.signUpUser(email, password);
+        setIsLoading(false);
       } else {
         UtilMethod.customDialogBox(
             mediaQueryData, context, "Error", "Please fill all the fields");
       }
+      setIsLoading(false);
     } catch (e) {
       Logger().e(e);
+      setIsLoading(false);
     }
   }
 }

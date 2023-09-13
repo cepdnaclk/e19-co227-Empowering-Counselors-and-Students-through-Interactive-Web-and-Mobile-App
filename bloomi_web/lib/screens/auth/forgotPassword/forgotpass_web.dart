@@ -91,6 +91,7 @@ class ForgotPasswordWeb extends StatelessWidget {
                                       },
                                       child: FormButtonWeb(
                                         "Send",
+                                        isLoading: value.isLoading,
                                         mediaQueryData: mediaQueryData,
                                       ),
                                     );

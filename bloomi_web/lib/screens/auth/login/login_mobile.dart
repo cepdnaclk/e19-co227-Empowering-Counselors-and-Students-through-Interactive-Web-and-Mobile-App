@@ -85,6 +85,7 @@ class LoginMobile extends StatelessWidget {
                                           },
                                           child: FormButtonMobile(
                                             "Login",
+                                            isLoading: value.isLoading,
                                             mediaQueryData: mediaQueryData,
                                           ),
                                         );
