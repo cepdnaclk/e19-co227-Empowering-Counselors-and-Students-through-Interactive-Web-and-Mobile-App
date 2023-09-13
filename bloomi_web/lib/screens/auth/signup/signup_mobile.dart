@@ -1,5 +1,4 @@
 import 'package:bloomi_web/components/background_color_gradient.dart';
-import 'package:bloomi_web/components/custom_dropdown_mobile.dart';
 import 'package:bloomi_web/components/custom_text_link_mobile.dart';
 import 'package:bloomi_web/components/form_button_mobile.dart';
 import 'package:bloomi_web/components/form_heading.dart';
@@ -20,24 +19,6 @@ class SignUpMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> listItems = [
-      'Faculty of Engineering',
-      'Faculty of Medicine',
-      'Faculty of Dental Sciences',
-      'Faculty of Veterinary Medicine and Animal Science',
-      'Faculty of Science',
-      'Faculty of Agriculture',
-      'Faculty of Allied Health Sciences',
-      'Faculty of Arts',
-      'Faculty of Management',
-    ];
-
-    List<String> year = [
-      '1st Year',
-      '2nd Year',
-      '3rd Year',
-      '4th Year',
-    ];
     return Scaffold(
       body: Column(
         children: [
@@ -105,13 +86,11 @@ class SignUpMobile extends StatelessWidget {
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.01),
-                                  CustomDropdownMobile(
-                                    "Faculty",
-                                    listItem: listItems,
-                                    textEditingController:
-                                        Provider.of<SignupProvider>(context)
-                                            .faculty,
-                                  ),
+                                  FormInputMobile("Faculty",
+                                      textEditingController:
+                                          Provider.of<SignupProvider>(context)
+                                              .faculty,
+                                      mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.01),
@@ -123,13 +102,11 @@ class SignUpMobile extends StatelessWidget {
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.01),
-                                  CustomDropdownMobile(
-                                    "Level of Study",
-                                    listItem: year,
-                                    textEditingController:
-                                        Provider.of<SignupProvider>(context)
-                                            .year,
-                                  ),
+                                  FormInputMobile("Level of Study",
+                                      textEditingController:
+                                          Provider.of<SignupProvider>(context)
+                                              .year,
+                                      mediaQueryData: mediaQueryData),
                                   SizedBox(
                                       height:
                                           mediaQueryData.size.height * 0.07),
@@ -140,11 +117,17 @@ class SignUpMobile extends StatelessWidget {
                                           value.signUpUser(
                                               value.email.text,
                                               value.password.text,
+                                              value.name.text,
+                                              value.phoneNumber.text,
+                                              value.department.text,
+                                              value.faculty.text,
+                                              value.year.text,
                                               mediaQueryData,
                                               context);
                                         },
                                         child: FormButtonMobile(
                                           "Register",
+                                          isLoading: value.isLoading,
                                           mediaQueryData: mediaQueryData,
                                         ),
                                       );

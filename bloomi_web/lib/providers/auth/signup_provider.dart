@@ -12,6 +12,8 @@ class SignupProvider extends ChangeNotifier {
   final TextEditingController _faculty = TextEditingController();
   final TextEditingController _year = TextEditingController();
 
+  final String _userType = "User";
+
   //-----------------Getters-----------------
   TextEditingController get name => _name;
   TextEditingController get password => _password;
@@ -20,6 +22,8 @@ class SignupProvider extends ChangeNotifier {
   TextEditingController get department => _department;
   TextEditingController get faculty => _faculty;
   TextEditingController get year => _year;
+
+  String get userType => _userType;
 
   //-----------------Setters-----------------
   void setName(String name) {
@@ -57,18 +61,51 @@ class SignupProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool _isLoading = false;
+
+  //-----------------Getters-----------------
+  bool get isLoading => _isLoading;
+
+  //-----------------Setters-----------------
+  void setIsLoading(bool isLoading) {
+    _isLoading = isLoading;
+    notifyListeners();
+  }
+
   //----------------------Functions---------------------
-  Future<void> signUpUser(String email, String password,
-      MediaQueryData mediaQueryData, BuildContext context) async {
+  Future<void> signUpUser(
+      String email,
+      String password,
+      String name,
+      String phone,
+      String department,
+      String faculty,
+      String year,
+      MediaQueryData mediaQueryData,
+      BuildContext context) async {
     try {
-      if (email.isNotEmpty && password.isNotEmpty) {
-        AuthController.signUpUser(email, password);
+      if (email.isNotEmpty &&
+          password.isNotEmpty &&
+          phoneNumber.text.isNotEmpty &&
+          name.isNotEmpty &&
+          department.isNotEmpty &&
+          faculty.isNotEmpty &&
+          year.isNotEmpty) {
+        setIsLoading(true);
+
+        //sign up user
+        await AuthController().signUpUser(email, password, name, phone,
+            department, faculty, year, userType, context, mediaQueryData);
+
+        setIsLoading(false);
       } else {
         UtilMethod.customDialogBox(
             mediaQueryData, context, "Error", "Please fill all the fields");
       }
+      setIsLoading(false);
     } catch (e) {
       Logger().e(e);
+      setIsLoading(false);
     }
   }
 }

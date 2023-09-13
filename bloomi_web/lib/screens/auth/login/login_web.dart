@@ -90,6 +90,7 @@ class LoginWeb extends StatelessWidget {
                                             },
                                             child: FormButtonWeb(
                                               "Login",
+                                              isLoading: value.isLoading,
                                               mediaQueryData: mediaQueryData,
                                             ),
                                           );
