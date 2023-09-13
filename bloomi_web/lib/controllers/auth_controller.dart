@@ -21,7 +21,7 @@ class AuthController {
         if (user.uid == "3MMoGgwJLVUjpTkJ7f4Zd8FqqyJ2") {
           UtilFunction.navigateForward(context, const Adminpanel());
         } else if (user.uid == "Tm3SJ2JpSORKzZrFiumARyE4l7f1") {
-          UtilFunction.navigateForward(context, const CounselorNavBar());
+          UtilFunction.navigateForward(context, const CounselorHome());
         } else {
           UtilFunction.navigateForward(context, const Home());
         }

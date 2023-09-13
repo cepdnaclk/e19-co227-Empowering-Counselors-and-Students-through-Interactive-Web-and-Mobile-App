@@ -65,7 +65,6 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     final currentWidth = mediaQueryData.size.width;
-    print(currentWidth);
 
     /*return Scaffold(
       body: Stack(
@@ -206,39 +205,37 @@ class _DashboardState extends State<Dashboard> {
                 Container(
                   child: Row(
                     children: [
-                      const Align(
+                      Align(
                         alignment: Alignment.topLeft,
                         child: Text(
                           "Dashboard",
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: (currentWidth < 900) ? 20 : 30,
                             color: Colors.blueGrey,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Container(
                         alignment: Alignment.topRight,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20.0),
-                          child: Image.asset(
-                            UtilConstants.profImagePath,
-                            width: 60,
-                            height: 60,
-                          ),
+                        child: CircleAvatar(
+                          backgroundImage:
+                              NetworkImage(UtilConstants.profImagePath),
+                          radius: ((currentWidth > 900) ? 30 : 20),
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
+                  height: mediaQueryData.size.height * 0.06,
                   margin: currentWidth > 500
-                      ? EdgeInsets.symmetric(horizontal: 100)
-                      : EdgeInsets.symmetric(horizontal: 30),
+                      ? (const EdgeInsets.symmetric(horizontal: 100))
+                      : const EdgeInsets.symmetric(horizontal: 30),
                   child: TextField(
                     onChanged: (value) => _runFilter(value),
                     onTap: () {
@@ -290,11 +287,11 @@ class _DashboardState extends State<Dashboard> {
                             ))
                       : Container(),
                 ),
-                const Text(
+                Text(
                   "Your Next Appointment",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: (currentWidth < 900) ? 15 : 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.blueGrey,
                   ),

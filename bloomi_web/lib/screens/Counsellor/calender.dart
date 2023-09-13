@@ -19,7 +19,7 @@ class _CounselorCalenderState extends State<CounselorCalender> {
           initialDisplayDate: DateTime.now(),
           initialSelectedDate: DateTime.now(),
           selectionDecoration: BoxDecoration(
-            color: const Color.fromARGB(255, 135, 186, 235),
+            color: const Color.fromARGB(100, 135, 186, 235),
             borderRadius: BorderRadius.circular(10),
           )),
     );

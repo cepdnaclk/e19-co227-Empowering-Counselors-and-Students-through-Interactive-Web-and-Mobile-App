@@ -1,26 +1,90 @@
+import 'dart:js_util';
+import 'package:bloomi_web/utils/util_constant.dart';
+
 import 'package:flutter/material.dart';
 
 class CounselorProfile extends StatefulWidget {
-  const CounselorProfile({super.key});
+  final String name;
+  final String email;
+  final String faculty;
+  final String department;
+  final String imageUrl;
+
+  const CounselorProfile({
+    Key? key,
+    required this.name,
+    required this.email,
+    required this.faculty,
+    required this.department,
+    required this.imageUrl,
+  }) : super(key: key);
 
   @override
-  State<CounselorProfile> createState() => _CounselorProfileState();
+  _CounselorProfileState createState() => _CounselorProfileState();
 }
 
 class _CounselorProfileState extends State<CounselorProfile> {
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
-    return Scaffold(
-        body: Center(
-            child: Container(
-      child: Card(
-          elevation: 0,
-          color: Color.fromARGB(255, 135, 186, 235),
-          child: Container(
-            width: mediaQueryData.size.width * 0.8,
-            height: mediaQueryData.size.width * 0.8,
-          )),
-    )));
+    //add mediaQuery
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    return Card(
+      color: Color.fromARGB(255, 159, 218, 245),
+      margin: EdgeInsets.symmetric(
+        horizontal: mediaQueryData.size.width * 0.1,
+        vertical: mediaQueryData.size.height * 0.1,
+      ),
+      elevation: 2,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: mediaQueryData.size.width * 0.02,
+          vertical: mediaQueryData.size.height * 0.02,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              backgroundImage: NetworkImage(widget.imageUrl),
+              radius: mediaQueryData.size.width * 0.1,
+            ),
+            SizedBox(width: mediaQueryData.size.width * 0.02),
+            const VerticalDivider(
+              color: Colors.black,
+            ),
+            SizedBox(width: mediaQueryData.size.width * 0.02),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    widget.name,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    'Email: ${widget.email}',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  SizedBox(height: 4),
+                  Text(
+                    'Faculty: ${widget.faculty}',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  SizedBox(height: 4),
+                  Text(
+                    'Department: ${widget.department}',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
