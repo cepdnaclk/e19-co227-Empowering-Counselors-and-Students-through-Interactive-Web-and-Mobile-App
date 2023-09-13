@@ -1,6 +1,7 @@
 import 'package:bloomi_web/components/background_color_gradient.dart';
 import 'package:bloomi_web/components/custom_image_column.dart';
 import 'package:bloomi_web/components/custom_text_link_web.dart';
+import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
@@ -10,7 +11,7 @@ import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SignUpWeb extends StatelessWidget {
+class SignUpWeb extends StatefulWidget {
   const SignUpWeb({
     super.key,
     required this.mediaQueryData,
@@ -18,6 +19,29 @@ class SignUpWeb extends StatelessWidget {
 
   final MediaQueryData mediaQueryData;
 
+  @override
+  State<SignUpWeb> createState() => _SignUpWebState();
+}
+
+class _SignUpWebState extends State<SignUpWeb> {
+  List<String> listItems = [
+    'Faculty of Engineering',
+    'Faculty of Medicine',
+    'Faculty of Dental Sciences',
+    'Faculty of Veterinary Medicine and Animal Science',
+    'Faculty of Science',
+    'Faculty of Agriculture',
+    'Faculty of Allied Health Sciences',
+    'Faculty of Arts',
+    'Faculty of Management',
+  ];
+
+  List<String> year = [
+    '1st Year',
+    '2nd Year',
+    '3rd Year',
+    '4th Year',
+  ];
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -31,63 +55,106 @@ class SignUpWeb extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: mediaQueryData.size.width * 0.1),
+                        horizontal: widget.mediaQueryData.size.width * 0.1),
                     child: Column(
                       children: [
-                        SizedBox(height: mediaQueryData.size.height * 0.1),
+                        SizedBox(
+                            height: widget.mediaQueryData.size.height * 0.02),
                         Row(
                           children: [
-                            CustomImageColumn(mediaQueryData: mediaQueryData),
-                            SizedBox(width: mediaQueryData.size.width * 0.12),
+                            CustomImageColumn(
+                                mediaQueryData: widget.mediaQueryData),
+                            SizedBox(
+                                width: widget.mediaQueryData.size.width * 0.12),
                             Container(
                               padding: EdgeInsets.all(
-                                  mediaQueryData.size.width * 0.03),
+                                  widget.mediaQueryData.size.width * 0.03),
                               margin: EdgeInsets.only(
-                                  top: mediaQueryData.size.height * 0.02),
+                                  top:
+                                      widget.mediaQueryData.size.height * 0.02),
                               decoration: BoxDecoration(
                                 color: UtilConstants.lightgreyColor,
                                 borderRadius: BorderRadius.circular(
-                                    mediaQueryData.size.height * 0.03),
+                                    widget.mediaQueryData.size.height * 0.03),
                               ),
                               child: Column(
                                 children: [
                                   FormHeading("SignUp Here",
-                                      mediaQueryData: mediaQueryData),
+                                      mediaQueryData: widget.mediaQueryData),
                                   SizedBox(
                                       height:
-                                          mediaQueryData.size.height * 0.05),
+                                          widget.mediaQueryData.size.height *
+                                              0.04),
                                   FormInputWeb("Name",
                                       textEditingController:
                                           Provider.of<SignupProvider>(context)
                                               .name,
-                                      mediaQueryData: mediaQueryData),
+                                      mediaQueryData: widget.mediaQueryData),
                                   SizedBox(
                                       height:
-                                          mediaQueryData.size.height * 0.02),
+                                          widget.mediaQueryData.size.height *
+                                              0.01),
                                   FormInputWeb("Email",
                                       textEditingController:
                                           Provider.of<SignupProvider>(context)
                                               .email,
-                                      mediaQueryData: mediaQueryData),
+                                      mediaQueryData: widget.mediaQueryData),
                                   SizedBox(
                                       height:
-                                          mediaQueryData.size.height * 0.02),
-                                  FormInputWeb("Password",
+                                          widget.mediaQueryData.size.height *
+                                              0.01),
+                                  FormInputWeb(
+                                    "Password",
+                                    textEditingController:
+                                        Provider.of<SignupProvider>(context)
+                                            .password,
+                                    mediaQueryData: widget.mediaQueryData,
+                                    obscure: true,
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          widget.mediaQueryData.size.height *
+                                              0.01),
+                                  FormInputWeb("Phone Number",
                                       textEditingController:
                                           Provider.of<SignupProvider>(context)
-                                              .password,
-                                      mediaQueryData: mediaQueryData),
+                                              .phoneNumber,
+                                      mediaQueryData: widget.mediaQueryData),
                                   SizedBox(
                                       height:
-                                          mediaQueryData.size.height * 0.02),
-                                  FormInputWeb("Conform Password",
+                                          widget.mediaQueryData.size.height *
+                                              0.01),
+                                  CustomDropdownMenu(
+                                    "Faculty",
+                                    listItem: listItems,
+                                    textEditingController:
+                                        Provider.of<SignupProvider>(context)
+                                            .faculty,
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          widget.mediaQueryData.size.height *
+                                              0.01),
+                                  FormInputWeb("Department",
                                       textEditingController:
                                           Provider.of<SignupProvider>(context)
-                                              .conformFassword,
-                                      mediaQueryData: mediaQueryData),
+                                              .department,
+                                      mediaQueryData: widget.mediaQueryData),
                                   SizedBox(
                                       height:
-                                          mediaQueryData.size.height * 0.10),
+                                          widget.mediaQueryData.size.height *
+                                              0.01),
+                                  CustomDropdownMenu(
+                                    "Level of Study",
+                                    listItem: year,
+                                    textEditingController:
+                                        Provider.of<SignupProvider>(context)
+                                            .year,
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          widget.mediaQueryData.size.height *
+                                              0.06),
                                   Consumer<SignupProvider>(
                                     builder: (context, value, child) {
                                       return InkWell(
@@ -97,21 +164,22 @@ class SignUpWeb extends StatelessWidget {
                                               .signUpUser(
                                                   value.email.text,
                                                   value.password.text,
-                                                  mediaQueryData,
+                                                  widget.mediaQueryData,
                                                   context);
                                         },
                                         child: FormButtonWeb(
                                           "Register",
-                                          mediaQueryData: mediaQueryData,
+                                          mediaQueryData: widget.mediaQueryData,
                                         ),
                                       );
                                     },
                                   ),
                                   SizedBox(
                                       height:
-                                          mediaQueryData.size.height * 0.02),
+                                          widget.mediaQueryData.size.height *
+                                              0.02),
                                   CustomTextLinkWeb("Already have an account?",
-                                      mediaQueryData: mediaQueryData,
+                                      mediaQueryData: widget.mediaQueryData,
                                       route: const Login())
                                 ],
                               ),
@@ -119,7 +187,7 @@ class SignUpWeb extends StatelessWidget {
                           ],
                         ),
                         SizedBox(
-                          height: mediaQueryData.size.height * 0.1,
+                          height: widget.mediaQueryData.size.height * 0.1,
                         ),
                       ],
                     ),

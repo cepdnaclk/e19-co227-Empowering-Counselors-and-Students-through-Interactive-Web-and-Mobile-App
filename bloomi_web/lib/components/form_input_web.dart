@@ -9,9 +9,11 @@ class FormInputWeb extends StatelessWidget {
     super.key,
     required this.mediaQueryData,
     required this.textEditingController,
+    this.obscure = false,
   });
 
   final MediaQueryData mediaQueryData;
+  final bool obscure;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,7 @@ class FormInputWeb extends StatelessWidget {
       mediaQueryData: mediaQueryData,
       keyboardType: TextInputType.text,
       width: mediaQueryData.size.width * 0.3,
+      obscure: obscure,
     );
   }
 }

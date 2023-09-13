@@ -6,14 +6,20 @@ import 'package:logger/logger.dart';
 class SignupProvider extends ChangeNotifier {
   final TextEditingController _name = TextEditingController();
   final TextEditingController _password = TextEditingController();
-  final TextEditingController _conformFassword = TextEditingController();
+  final TextEditingController _phoneNumber = TextEditingController();
   final TextEditingController _email = TextEditingController();
+  final TextEditingController _department = TextEditingController();
+  final TextEditingController _faculty = TextEditingController();
+  final TextEditingController _year = TextEditingController();
 
   //-----------------Getters-----------------
   TextEditingController get name => _name;
   TextEditingController get password => _password;
-  TextEditingController get conformFassword => _conformFassword;
+  TextEditingController get phoneNumber => _phoneNumber;
   TextEditingController get email => _email;
+  TextEditingController get department => _department;
+  TextEditingController get faculty => _faculty;
+  TextEditingController get year => _year;
 
   //-----------------Setters-----------------
   void setName(String name) {
@@ -27,12 +33,27 @@ class SignupProvider extends ChangeNotifier {
   }
 
   void setConformPassword(String conformPassword) {
-    _conformFassword.text = conformPassword;
+    _phoneNumber.text = conformPassword;
     notifyListeners();
   }
 
   void setEmail(String email) {
     _email.text = email;
+    notifyListeners();
+  }
+
+  void setDepartment(String department) {
+    _department.text = department;
+    notifyListeners();
+  }
+
+  void setFaculty(String faculty) {
+    _faculty.text = faculty;
+    notifyListeners();
+  }
+
+  void setYear(String year) {
+    _year.text = year;
     notifyListeners();
   }
 
