@@ -1,8 +1,8 @@
+import 'package:bloomi_web/screens/Admin/screens/admin_activitylog.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_control.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_dashboard.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_home.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_profile.dart';
-import 'package:bloomi_web/screens/Admin/screens/admin_activitylog.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_setting.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class _MyWidgetState extends State<Adminpanel> {
         body: SafeArea(
           child: Column(
             children: [
-              TabBar(labelColor: Colors.black, tabs: [
+              TabBar(isScrollable: false, labelColor: Colors.black, tabs: [
                 Tab(
                   text: 'Home',
                   icon: Icon(
@@ -73,16 +73,17 @@ class _MyWidgetState extends State<Adminpanel> {
                 ),
               ]),
               Expanded(
-                  child: TabBarView(
-                children: [
-                  AdminHome(),
-                  AdminDashboard(),
-                  AdminControl(),
-                  AdminActivityLog(),
-                  AdminProfile(),
-                  AdminSetting(),
-                ],
-              )),
+                child: TabBarView(
+                  children: [
+                    AdminHome(),
+                    AdminDashboard(),
+                    AdminControl(),
+                    AdminActivityLog(),
+                    AdminProfile(),
+                    AdminSetting(),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
