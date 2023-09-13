@@ -58,7 +58,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyC1PNp1acvj4GnQ8OUZDHWJ5aNxcQiiUAQ',
-    appId: '1:277496527429:android:5d0c045aa6f9cbbee8c12c',
+    appId: '1:277496527429:android:03da675314a66cc4e8c12c',
     messagingSenderId: '277496527429',
     projectId: 'bloomi-e01b6',
     storageBucket: 'bloomi-e01b6.appspot.com',

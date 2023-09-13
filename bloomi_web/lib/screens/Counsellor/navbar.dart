@@ -11,8 +11,9 @@ import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+/*
 class CounselorNavBar extends StatefulWidget {
-  const CounselorNavBar({super.key});
+  const CounselorNavBar({Key? key}) : super(key: key);
 
   @override
   State<CounselorNavBar> createState() => _CounselorNavBarState();
@@ -24,31 +25,12 @@ class _CounselorNavBarState extends State<CounselorNavBar> {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
     var screenSize = mediaQueryData.size;
 
-    final List<Widget> widget = [
+    final List<Widget> widgets = [
       const Dashboard(),
       const CounselorCalender(),
       const CounselorMessage(),
       const CounselorProfile(),
     ];
-
-    /*return Scaffold(
-      appBar: (screenSize.width<452)? AppBar(
-        iconTheme: const IconThemeData(color: Colors.blue),
-        backgroundColor: UtilConstants.lightgreyColor,
-        title: const Text(
-          "Bloomi",
-        ),
-        centerTitle: true,
-        elevation: 0,
-      )
-      
-      :PreferredSize(
-        preferredSize: Size(screenSize.width, screenSize.height),
-        child: const TopBarContents(),
-
-      ),
-      drawer: const CounselorDrawer(),
-    );*/
 
     return Scaffold(
       bottomNavigationBar: Footer(mediaQueryData: mediaQueryData),
@@ -61,7 +43,8 @@ class _CounselorNavBarState extends State<CounselorNavBar> {
               title: CustomText("BLOOMI",
                   fontSize: screenSize.width * 0.03,
                   fontWeight: FontWeight.w300,
-                  fontColor: Colors.blue))
+                  fontColor: Colors.blue),
+            )
           : PreferredSize(
               preferredSize: Size(screenSize.width, screenSize.height),
               child: const TopBarContents(),
@@ -72,7 +55,7 @@ class _CounselorNavBarState extends State<CounselorNavBar> {
           children: [
             Consumer<NavigationProvider>(
               builder: (context, value, child) {
-                return widget[value.currentIndex];
+                return widgets[value.currentIndex];
               },
             ),
             Expanded(
@@ -87,6 +70,55 @@ class _CounselorNavBarState extends State<CounselorNavBar> {
         ),
       ),
       drawer: const CounselorDrawer(),
+    );
+  }
+}*/
+
+class CounselorHome extends StatefulWidget {
+  const CounselorHome({Key? key}) : super(key: key);
+
+  @override
+  State<CounselorHome> createState() => _CounselorHomeState();
+}
+
+class _CounselorHomeState extends State<CounselorHome> {
+  @override
+  Widget build(BuildContext context) {
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    final List<Widget> widgets = [
+      const Dashboard(),
+      const CounselorCalender(),
+      MessagingCard(),
+      const CounselorProfile(
+        name: 'John Doe',
+        email: 'johndoe@example.com',
+        faculty: 'Engineering',
+        department: 'Computer Engineering',
+        imageUrl: '../assets/images/profileimage.webp',
+      ),
+    ];
+    return Scaffold(
+      appBar: (mediaQueryData.size.width <= 900)
+          ? AppBar(
+              iconTheme: const IconThemeData(color: UtilConstants.primaryColor),
+              backgroundColor: UtilConstants.lightgreyColor,
+              elevation: 0,
+              centerTitle: true,
+              title: CustomText("BLOOMI",
+                  fontSize: mediaQueryData.size.width * 0.03,
+                  fontWeight: FontWeight.w300,
+                  fontColor: UtilConstants.primaryColor))
+          : PreferredSize(
+              preferredSize: Size(mediaQueryData.size.width, 70),
+              child: const HomeNavBar(),
+            ),
+      body: Consumer<NavigationProvider>(
+        builder: (context, value, child) {
+          return widgets[value.currentIndex];
+        },
+      ),
+      drawer: const CounselorDrawer(),
+      //bottomNavigationBar: Footer(mediaQueryData: mediaQueryData),
     );
   }
 }
