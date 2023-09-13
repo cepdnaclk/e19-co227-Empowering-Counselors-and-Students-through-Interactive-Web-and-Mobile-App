@@ -32,15 +32,15 @@ class ForgotPasswordProvider extends ChangeNotifier {
     try {
       if (email.isNotEmpty) {
         setIsLoading(true);
-        await AuthController.resetPassword(email, context);
+        await AuthController.resetPassword(email, mediaQueryData, context);
         setIsLoading(false);
       } else {
+        Logger().e("Please enter email");
         UtilMethod.customDialogBox(
             mediaQueryData, context, "Error", "Please enter email");
         setIsLoading(false);
       }
     } catch (e) {
-      Logger().e(e);
       setIsLoading(false);
     }
   }

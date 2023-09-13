@@ -9,6 +9,7 @@ import 'package:bloomi_web/screens/auth/login/login.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 class ForgotPasswordWeb extends StatelessWidget {
@@ -80,14 +81,18 @@ class ForgotPasswordWeb extends StatelessWidget {
                                   builder: (context, value, child) {
                                     return InkWell(
                                       onTap: () {
-                                        value
-                                            .sendEmail(
-                                                context,
-                                                value.email.text,
-                                                mediaQueryData)
-                                            .then((value) =>
-                                                UtilFunction.navigateBackward(
-                                                    context, const Login()));
+                                        try {
+                                          value
+                                              .sendEmail(
+                                                  context,
+                                                  value.email.text,
+                                                  mediaQueryData)
+                                              .then((value) =>
+                                                  UtilFunction.navigateBackward(
+                                                      context, const Login()));
+                                        } catch (e) {
+                                          Logger().e(e);
+                                        }
                                       },
                                       child: FormButtonWeb(
                                         "Send",

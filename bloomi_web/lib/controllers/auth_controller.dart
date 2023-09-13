@@ -1,8 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:bloomi_web/screens/Admin/adminui.dart';
 import 'package:bloomi_web/screens/Counsellor/navbar.dart';
 import 'package:bloomi_web/screens/auth/signup/signup_form.dart';
 import 'package:bloomi_web/screens/home/home/home.dart';
 import 'package:bloomi_web/utils/util_function.dart';
+import 'package:bloomi_web/utils/util_method.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -30,7 +33,8 @@ class AuthController {
   }
 
   //-----------------------To SignUp user---------------------
-  static Future<void> signUpUser(String email, String password) async {
+  static Future<void> signUpUser(String email, String password,
+      BuildContext context, MediaQueryData mediaQueryData) async {
     try {
       //create user with email and password
       final credential =
@@ -40,6 +44,7 @@ class AuthController {
       );
       Logger().i(credential.user);
     } on FirebaseAuthException catch (e) {
+      UtilMethod.customDialogBox(mediaQueryData, context, "Error", e.code);
       Logger().e(e);
     } catch (e) {
       Logger().e(e);
@@ -59,7 +64,8 @@ class AuthController {
   }
 
   //-----------------------To SignIn user---------------------
-  static Future<void> signInUser(String email, String password) async {
+  static Future<void> signInUser(String email, String password,
+      BuildContext context, MediaQueryData mediaQueryData) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
@@ -68,14 +74,23 @@ class AuthController {
       Logger().i(credential.user);
     } on FirebaseAuthException catch (e) {
       Logger().e(e);
+      UtilMethod.customDialogBox(mediaQueryData, context, "Error", e.code);
+    } catch (e) {
+      Logger().e(e);
     }
   }
 
   //-----------------------To Reset Password---------------------
-  static Future<void> resetPassword(String email, BuildContext context) async {
+  static Future<void> resetPassword(
+      String email, MediaQueryData mediaQueryData, BuildContext context) async {
     try {
-      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email).then(
+          (value) => UtilMethod.customDialogBox(mediaQueryData, context,
+              "Email sent", "Please check your email"));
     } on FirebaseAuthException catch (e) {
+      UtilMethod.customDialogBox(mediaQueryData, context, "Error", e.code);
+      Logger().e(e);
+    } catch (e) {
       Logger().e(e);
     }
   }

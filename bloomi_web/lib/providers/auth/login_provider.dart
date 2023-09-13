@@ -39,7 +39,8 @@ class LoginProvider extends ChangeNotifier {
     try {
       if (email.isNotEmpty && password.isNotEmpty) {
         setIsLoading(true);
-        await AuthController.signInUser(email, password);
+        await AuthController.signInUser(
+            email, password, context, mediaQueryData);
         setIsLoading(false);
       } else {
         UtilMethod.customDialogBox(
