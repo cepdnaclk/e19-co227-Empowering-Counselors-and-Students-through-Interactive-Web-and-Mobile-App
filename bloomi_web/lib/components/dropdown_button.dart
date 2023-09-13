@@ -32,7 +32,7 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
         borderRadius: BorderRadius.circular(10),
       ),
       child: DropdownButton(
-        iconSize: mediaQueryData.size.width * 0.019,
+        iconSize: mediaQueryData.size.width * 0.015,
         dropdownColor: UtilConstants.lightgreyColor,
         underline: const SizedBox(),
         value: valueChoose,
@@ -49,7 +49,7 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
               fontWeight: FontWeight.w400,
               fontSize:
                   (mediaQueryData.size.width + mediaQueryData.size.height) *
-                      0.009,
+                      0.008,
               color: UtilConstants.blackColor,
             ),
           ),
@@ -58,7 +58,7 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
           return DropdownMenuItem(
             value: value,
             child: SizedBox(
-              width: (mediaQueryData.size.width) * 0.08,
+              width: (mediaQueryData.size.width) * 0.25,
               child: Text(value),
             ),
           );
