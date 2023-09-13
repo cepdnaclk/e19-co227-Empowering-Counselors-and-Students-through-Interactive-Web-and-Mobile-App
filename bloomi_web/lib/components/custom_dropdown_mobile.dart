@@ -1,17 +1,19 @@
+import 'package:bloomi_web/providers/auth/signup_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CustomDropdownMobile extends StatefulWidget {
   const CustomDropdownMobile(
     this.text, {
     super.key,
     required this.listItem,
-    required this.textEditingController,
+    required this.dataType,
   });
 
   final List<String> listItem;
   final String text;
-  final TextEditingController textEditingController;
+  final String dataType;
 
   @override
   State<CustomDropdownMobile> createState() => _CustomDropdownMobileState();
@@ -41,7 +43,6 @@ class _CustomDropdownMobileState extends State<CustomDropdownMobile> {
           // Wrap the TextField with SizedBox to constrain its width
           width: mediaQueryData.size.width * 0.26,
           child: TextField(
-            controller: widget.textEditingController,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: widget.text,
@@ -68,6 +69,11 @@ class _CustomDropdownMobileState extends State<CustomDropdownMobile> {
         onChanged: (value) {
           setState(() {
             valueChoose = value;
+            if (widget.dataType == "faculty") {
+              Provider.of<SignupProvider>(context).setFaculty(value.toString());
+            } else if (widget.dataType == "year") {
+              Provider.of<SignupProvider>(context).setYear(value.toString());
+            }
           });
         },
       ),

@@ -1,7 +1,6 @@
 import 'package:bloomi_web/components/background_color_gradient.dart';
 import 'package:bloomi_web/components/custom_image_column.dart';
 import 'package:bloomi_web/components/custom_text_link_web.dart';
-import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
@@ -125,13 +124,11 @@ class _SignUpWebState extends State<SignUpWeb> {
                                       height:
                                           widget.mediaQueryData.size.height *
                                               0.01),
-                                  CustomDropdownMenu(
-                                    "Faculty",
-                                    listItem: listItems,
-                                    textEditingController:
-                                        Provider.of<SignupProvider>(context)
-                                            .faculty,
-                                  ),
+                                  FormInputWeb("Faculty",
+                                      textEditingController:
+                                          Provider.of<SignupProvider>(context)
+                                              .faculty,
+                                      mediaQueryData: widget.mediaQueryData),
                                   SizedBox(
                                       height:
                                           widget.mediaQueryData.size.height *
@@ -145,13 +142,11 @@ class _SignUpWebState extends State<SignUpWeb> {
                                       height:
                                           widget.mediaQueryData.size.height *
                                               0.01),
-                                  CustomDropdownMenu(
-                                    "Level of Study",
-                                    listItem: year,
-                                    textEditingController:
-                                        Provider.of<SignupProvider>(context)
-                                            .year,
-                                  ),
+                                  FormInputWeb("Level of Study",
+                                      textEditingController:
+                                          Provider.of<SignupProvider>(context)
+                                              .year,
+                                      mediaQueryData: widget.mediaQueryData),
                                   SizedBox(
                                       height:
                                           widget.mediaQueryData.size.height *
@@ -165,6 +160,11 @@ class _SignUpWebState extends State<SignUpWeb> {
                                               .signUpUser(
                                                   value.email.text,
                                                   value.password.text,
+                                                  value.name.text,
+                                                  value.phoneNumber.text,
+                                                  value.department.text,
+                                                  value.faculty.text,
+                                                  value.year.text,
                                                   widget.mediaQueryData,
                                                   context);
                                         },
