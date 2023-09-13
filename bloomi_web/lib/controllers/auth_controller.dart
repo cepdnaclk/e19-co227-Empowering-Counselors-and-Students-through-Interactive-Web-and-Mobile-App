@@ -6,6 +6,7 @@ import 'package:bloomi_web/screens/auth/signup/signup_form.dart';
 import 'package:bloomi_web/screens/home/home/home.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:bloomi_web/utils/util_method.dart';
+import 'package:bloomi_web/utils/util_method_forgot_password.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -85,8 +86,8 @@ class AuthController {
       String email, MediaQueryData mediaQueryData, BuildContext context) async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email).then(
-          (value) => UtilMethod.customDialogBox(mediaQueryData, context,
-              "Email sent", "Please check your email"));
+          (value) => UtilMethodForgotPassword.customDialogBox(mediaQueryData,
+              context, "Email sent", "Please check your email"));
     } on FirebaseAuthException catch (e) {
       UtilMethod.customDialogBox(mediaQueryData, context, "Error", e.code);
       Logger().e(e);

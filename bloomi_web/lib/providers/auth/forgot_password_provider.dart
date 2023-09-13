@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/utils/util_method.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +35,7 @@ class ForgotPasswordProvider extends ChangeNotifier {
       if (email.isNotEmpty) {
         setIsLoading(true);
         await AuthController.resetPassword(email, mediaQueryData, context);
+
         setIsLoading(false);
       } else {
         Logger().e("Please enter email");
