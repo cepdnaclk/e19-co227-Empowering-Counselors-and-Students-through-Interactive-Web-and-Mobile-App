@@ -42,6 +42,7 @@ class _SignUpWebState extends State<SignUpWeb> {
     '3rd Year',
     '4th Year',
   ];
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -169,6 +170,7 @@ class _SignUpWebState extends State<SignUpWeb> {
                                         },
                                         child: FormButtonWeb(
                                           "Register",
+                                          isLoading: value.isLoading,
                                           mediaQueryData: widget.mediaQueryData,
                                         ),
                                       );

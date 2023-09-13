@@ -8,15 +8,18 @@ class FormButtonMobile extends StatelessWidget {
     this.text, {
     super.key,
     required this.mediaQueryData,
+    required this.isLoading,
   });
 
   final MediaQueryData mediaQueryData;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return CustomButton(
       text,
       mediaQueryData: mediaQueryData,
+      isLoading: isLoading,
       width:
           (mediaQueryData.size.width < 500) ? mediaQueryData.size.width : 400,
     );
