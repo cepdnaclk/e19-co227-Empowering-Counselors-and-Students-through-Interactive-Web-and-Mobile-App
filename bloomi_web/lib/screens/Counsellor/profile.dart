@@ -1,6 +1,3 @@
-import 'dart:js_util';
-import 'package:bloomi_web/utils/util_constant.dart';
-
 import 'package:flutter/material.dart';
 
 class CounselorProfile extends StatefulWidget {
@@ -29,7 +26,7 @@ class _CounselorProfileState extends State<CounselorProfile> {
     //add mediaQuery
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Card(
-      color: Color.fromARGB(255, 159, 218, 245),
+      color: const Color.fromARGB(255, 159, 218, 245),
       margin: EdgeInsets.symmetric(
         horizontal: mediaQueryData.size.width * 0.1,
         vertical: mediaQueryData.size.height * 0.1,
@@ -59,25 +56,25 @@ class _CounselorProfileState extends State<CounselorProfile> {
                 children: [
                   Text(
                     widget.name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     'Email: ${widget.email}',
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     'Faculty: ${widget.faculty}',
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     'Department: ${widget.department}',
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ],
               ),

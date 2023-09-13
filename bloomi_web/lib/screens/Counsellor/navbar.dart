@@ -1,5 +1,4 @@
 import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/screens/Counsellor/calender.dart';
 import 'package:bloomi_web/screens/Counsellor/dashboard.dart';
