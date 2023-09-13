@@ -24,6 +24,8 @@ class UtilConstants {
   static const String facebookImagePath = "assets/images/facebook.png";
   static const String profImagePath = "assets/images/prof.webp";
   static const String talkImagePath = "assets/images/talk.png";
+  static const String dummyProfileUrl =
+      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
 
   //-----------------------Padding----------------------
 

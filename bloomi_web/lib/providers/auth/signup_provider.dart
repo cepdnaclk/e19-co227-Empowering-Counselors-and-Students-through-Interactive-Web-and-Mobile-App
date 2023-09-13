@@ -12,6 +12,8 @@ class SignupProvider extends ChangeNotifier {
   final TextEditingController _faculty = TextEditingController();
   final TextEditingController _year = TextEditingController();
 
+  final String _userType = "User";
+
   //-----------------Getters-----------------
   TextEditingController get name => _name;
   TextEditingController get password => _password;
@@ -20,6 +22,8 @@ class SignupProvider extends ChangeNotifier {
   TextEditingController get department => _department;
   TextEditingController get faculty => _faculty;
   TextEditingController get year => _year;
+
+  String get userType => _userType;
 
   //-----------------Setters-----------------
   void setName(String name) {
@@ -69,13 +73,30 @@ class SignupProvider extends ChangeNotifier {
   }
 
   //----------------------Functions---------------------
-  Future<void> signUpUser(String email, String password,
-      MediaQueryData mediaQueryData, BuildContext context) async {
+  Future<void> signUpUser(
+      String email,
+      String password,
+      String name,
+      String phone,
+      String department,
+      String faculty,
+      String year,
+      MediaQueryData mediaQueryData,
+      BuildContext context) async {
     try {
-      if (email.isNotEmpty && password.isNotEmpty) {
+      if (email.isNotEmpty &&
+          password.isNotEmpty &&
+          phoneNumber.text.isNotEmpty &&
+          name.isNotEmpty &&
+          department.isNotEmpty &&
+          faculty.isNotEmpty &&
+          year.isNotEmpty) {
         setIsLoading(true);
-        await AuthController.signUpUser(
-            email, password, context, mediaQueryData);
+
+        //sign up user
+        await AuthController().signUpUser(email, password, name, phone,
+            department, faculty, year, userType, context, mediaQueryData);
+
         setIsLoading(false);
       } else {
         UtilMethod.customDialogBox(
