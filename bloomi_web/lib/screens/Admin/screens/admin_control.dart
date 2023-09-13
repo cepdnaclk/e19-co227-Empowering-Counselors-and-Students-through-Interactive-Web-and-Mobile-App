@@ -1,6 +1,4 @@
-import 'package:bloomi_web/components/background_color_gradient.dart';
-import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/screens/Admin/Registration%20_forms/Counselorform.dart';
+import 'package:bloomi_web/screens/Admin/Registration%20_forms/Studentform.dart';
 import 'package:flutter/material.dart';
 
 class AdminControl extends StatefulWidget {

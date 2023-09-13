@@ -155,17 +155,10 @@ class _StudentformState extends State<Studentform> {
                                   Consumer<SignupProvider>(
                                     builder: (context, value, child) {
                                       return InkWell(
-                                        onTap: () {
-                                          Provider.of<SignupProvider>(context,
-                                                  listen: false)
-                                              .signUpUser(
-                                                  value.email.text,
-                                                  value.password.text,
-                                                  widget.mediaQueryData,
-                                                  context);
-                                        },
+                                        onTap: () {},
                                         child: FormButtonWeb(
                                           "Register",
+                                          isLoading: value.isLoading,
                                           mediaQueryData: widget.mediaQueryData,
                                         ),
                                       );
