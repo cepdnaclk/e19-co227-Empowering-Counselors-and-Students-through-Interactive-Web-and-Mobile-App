@@ -82,17 +82,10 @@ class _CounselorformState extends State<Counselorform> {
                         Consumer<SignupProvider>(
                           builder: (context, value, child) {
                             return InkWell(
-                              onTap: () {
-                                Provider.of<SignupProvider>(context,
-                                        listen: false)
-                                    .signUpUser(
-                                        value.email.text,
-                                        value.password.text,
-                                        mediaQueryData,
-                                        context);
-                              },
+                              onTap: () {},
                               child: FormButtonWeb(
                                 "Register",
+                                isLoading: false,
                                 mediaQueryData: mediaQueryData,
                               ),
                             );
@@ -113,8 +106,8 @@ class _CounselorformState extends State<Counselorform> {
                       Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      onPrimary: Colors.white,
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.blue,
                       elevation: 100,
                       padding: const EdgeInsets.all(20),
                     ),

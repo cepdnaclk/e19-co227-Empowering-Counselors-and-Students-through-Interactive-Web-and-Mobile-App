@@ -10,6 +10,8 @@ class UtilConstants {
   static Color lightRedColor = Colors.red.shade300;
   static Color lightBrownColor = Colors.brown.shade100;
   static Color lightgreyColor = Colors.grey.shade300;
+  static Color homeBackgroundColor =
+      const Color.fromARGB(255, 163, 220, 248).withOpacity(0.5);
 
   //--------------------Gradient Shader--------------------
   static Shader get gradientShader => LinearGradient(

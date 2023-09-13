@@ -1,5 +1,3 @@
-import 'package:bloomi_web/components/background_color_gradient.dart';
-import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
@@ -107,17 +105,10 @@ class _StudentformState extends State<Studentform> {
                         Consumer<SignupProvider>(
                           builder: (context, value, child) {
                             return InkWell(
-                              onTap: () {
-                                Provider.of<SignupProvider>(context,
-                                        listen: false)
-                                    .signUpUser(
-                                        value.email.text,
-                                        value.password.text,
-                                        mediaQueryData,
-                                        context);
-                              },
+                              onTap: () {},
                               child: FormButtonWeb(
                                 "Register",
+                                isLoading: false,
                                 mediaQueryData: mediaQueryData,
                               ),
                             );
@@ -138,8 +129,8 @@ class _StudentformState extends State<Studentform> {
                       Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      onPrimary: Colors.white,
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.blue,
                       elevation: 100,
                       padding: const EdgeInsets.all(20),
                     ),

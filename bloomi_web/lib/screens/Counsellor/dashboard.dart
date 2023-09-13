@@ -221,7 +221,7 @@ class _DashboardState extends State<Dashboard> {
                         alignment: Alignment.topRight,
                         child: CircleAvatar(
                           backgroundImage:
-                              NetworkImage(UtilConstants.profImagePath),
+                              const NetworkImage(UtilConstants.profImagePath),
                           radius: ((currentWidth > 900) ? 30 : 20),
                         ),
                       ),

@@ -2,7 +2,6 @@ import 'package:bloomi_web/screens/Admin/screens/admin_activitylog.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_control.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_dashboard.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_home.dart';
-import 'package:bloomi_web/screens/Admin/screens/admin_profile.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_setting.dart';
 import 'package:flutter/material.dart';
 
@@ -79,7 +78,6 @@ class _MyWidgetState extends State<Adminpanel> {
                     AdminDashboard(),
                     AdminControl(),
                     AdminActivityLog(),
-                    AdminProfile(),
                     AdminSetting(),
                   ],
                 ),
