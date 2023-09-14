@@ -1,91 +1,55 @@
+import 'package:bloomi_web/components/custom_text.dart';
+import 'package:bloomi_web/components/footer.dart';
+import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_activitylog.dart';
-import 'package:bloomi_web/screens/Admin/screens/admin_control.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_dashboard.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_home.dart';
+import 'package:bloomi_web/screens/Admin/screens/admin_navbar.dart';
+import 'package:bloomi_web/screens/Admin/screens/admin_panel_drawer.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_setting.dart';
+import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Adminpanel extends StatefulWidget {
-  const Adminpanel({super.key});
+  const Adminpanel({Key? key}) : super(key: key);
 
   @override
-  State<Adminpanel> createState() => _MyWidgetState();
+  State<Adminpanel> createState() => _AdminpanelState();
 }
 
-class _MyWidgetState extends State<Adminpanel> {
+class _AdminpanelState extends State<Adminpanel> {
   @override
   Widget build(BuildContext context) {
-    return const DefaultTabController(
-      length: 6,
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
-            children: [
-              TabBar(isScrollable: false, labelColor: Colors.black, tabs: [
-                Tab(
-                  text: 'Home',
-                  icon: Icon(
-                    Icons.home,
-                    size: 30,
-                    color: Colors.blue,
-                  ),
-                ),
-                Tab(
-                  text: 'Dashboard',
-                  icon: Icon(
-                    Icons.dashboard,
-                    size: 30,
-                    color: Colors.blue,
-                  ),
-                ),
-                Tab(
-                  text: 'Controls',
-                  icon: Icon(
-                    Icons.add_card_sharp,
-                    size: 30,
-                    color: Colors.blue,
-                  ),
-                ),
-                Tab(
-                  text: 'Activity Log',
-                  icon: Icon(
-                    Icons.add_chart,
-                    size: 30,
-                    color: Colors.blue,
-                  ),
-                ),
-                Tab(
-                  text: 'Profile',
-                  icon: Icon(
-                    Icons.person_2,
-                    size: 30,
-                    color: Colors.blue,
-                  ),
-                ),
-                Tab(
-                  text: 'Settings',
-                  icon: Icon(
-                    Icons.settings,
-                    size: 30,
-                    color: Colors.blue,
-                  ),
-                ),
-              ]),
-              Expanded(
-                child: TabBarView(
-                  children: [
-                    AdminHome(),
-                    AdminDashboard(),
-                    AdminControl(),
-                    AdminActivityLog(),
-                    AdminSetting(),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    final List<Widget> widget = [
+      const AdminHome(),
+      const AdminSetting(),
+      const AdminDashboard(),
+      const AdminActivityLog(),
+    ];
+    return Scaffold(
+      appBar: (mediaQueryData.size.width <= 900)
+          ? AppBar(
+              iconTheme: const IconThemeData(color: UtilConstants.primaryColor),
+              backgroundColor: UtilConstants.lightgreyColor,
+              elevation: 0,
+              centerTitle: true,
+              title: CustomText("BLOOMI",
+                  fontSize: mediaQueryData.size.width * 0.03,
+                  fontWeight: FontWeight.w300,
+                  fontColor: UtilConstants.primaryColor))
+          : PreferredSize(
+              preferredSize: Size(mediaQueryData.size.width, 70),
+              child: const AdminNavBar(),
+            ),
+      body: Consumer<NavigationProvider>(
+        builder: (context, value, child) {
+          return widget[value.currentIndex];
+        },
       ),
+      drawer: const AdminPanelDrawer(),
+      bottomNavigationBar: Footer(mediaQueryData: mediaQueryData),
     );
   }
 }
