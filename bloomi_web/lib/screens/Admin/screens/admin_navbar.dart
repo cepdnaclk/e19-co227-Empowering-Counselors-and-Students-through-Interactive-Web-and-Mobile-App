@@ -86,7 +86,7 @@ class _AdminNavBarState extends State<AdminNavBar> {
                       Provider.of<NavigationProvider>(context, listen: false)
                           .setIndex(2);
                     },
-                    child: CustomNavBarWidget("Councelor",
+                    child: CustomNavBarWidget("Counselor",
                         mediaQueryData: mediaQueryData,
                         isHovering: _isHovering[2]),
                   ),
