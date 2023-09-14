@@ -202,31 +202,29 @@ class _DashboardState extends State<Dashboard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  child: Row(
-                    children: [
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          "Dashboard",
-                          style: TextStyle(
-                            fontSize: (currentWidth < 900) ? 20 : 30,
-                            color: Colors.blueGrey,
-                            fontWeight: FontWeight.bold,
-                          ),
+                Row(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Dashboard",
+                        style: TextStyle(
+                          fontSize: (currentWidth < 900) ? 20 : 30,
+                          color: Colors.blueGrey,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const Spacer(),
-                      Container(
-                        alignment: Alignment.topRight,
-                        child: CircleAvatar(
-                          backgroundImage:
-                              const NetworkImage(UtilConstants.profImagePath),
-                          radius: ((currentWidth > 900) ? 30 : 20),
-                        ),
+                    ),
+                    const Spacer(),
+                    Container(
+                      alignment: Alignment.topRight,
+                      child: CircleAvatar(
+                        backgroundImage:
+                            const NetworkImage(UtilConstants.profImagePath),
+                        radius: ((currentWidth > 900) ? 30 : 20),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 10,

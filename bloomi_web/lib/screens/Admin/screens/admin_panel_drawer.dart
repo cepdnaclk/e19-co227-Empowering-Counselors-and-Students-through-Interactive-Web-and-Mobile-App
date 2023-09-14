@@ -71,7 +71,7 @@ class AdminPanelDrawer extends StatelessWidget {
                 ),
                 onTap: () {
                   Provider.of<NavigationProvider>(context, listen: false)
-                      .setIndex(0);
+                      .setIndex(5);
                 },
               ),
               ListTile(

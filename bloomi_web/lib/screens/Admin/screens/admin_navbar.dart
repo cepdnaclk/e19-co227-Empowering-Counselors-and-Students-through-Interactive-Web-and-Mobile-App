@@ -40,7 +40,7 @@ class _AdminNavBarState extends State<AdminNavBar> {
                     ),
                   ),
                   SizedBox(
-                    width: mediaQueryData.size.width * 0.65,
+                    width: mediaQueryData.size.width * 0.62,
                   ),
                   InkWell(
                     onHover: (value) {
@@ -52,7 +52,7 @@ class _AdminNavBarState extends State<AdminNavBar> {
                       Provider.of<NavigationProvider>(context, listen: false)
                           .setIndex(0);
                     },
-                    child: CustomNavBarWidget("Home",
+                    child: CustomNavBarWidget("Dashboard",
                         mediaQueryData: mediaQueryData,
                         isHovering: _isHovering[0]),
                   ),
@@ -69,7 +69,7 @@ class _AdminNavBarState extends State<AdminNavBar> {
                       Provider.of<NavigationProvider>(context, listen: false)
                           .setIndex(1);
                     },
-                    child: CustomNavBarWidget("Dashboard",
+                    child: CustomNavBarWidget("Students",
                         mediaQueryData: mediaQueryData,
                         isHovering: _isHovering[1]),
                   ),
@@ -86,7 +86,7 @@ class _AdminNavBarState extends State<AdminNavBar> {
                       Provider.of<NavigationProvider>(context, listen: false)
                           .setIndex(2);
                     },
-                    child: CustomNavBarWidget("Log",
+                    child: CustomNavBarWidget("Councelor",
                         mediaQueryData: mediaQueryData,
                         isHovering: _isHovering[2]),
                   ),
@@ -103,7 +103,7 @@ class _AdminNavBarState extends State<AdminNavBar> {
                       Provider.of<NavigationProvider>(context, listen: false)
                           .setIndex(3);
                     },
-                    child: CustomNavBarWidget("Settings",
+                    child: CustomNavBarWidget("Log",
                         mediaQueryData: mediaQueryData,
                         isHovering: _isHovering[3]),
                   ),

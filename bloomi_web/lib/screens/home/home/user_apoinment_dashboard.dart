@@ -80,7 +80,7 @@ class _UserAppoinmentDashboardState extends State<UserAppoinmentDashboard> {
                           child: ListView.builder(
                             itemCount: 2,
                             itemBuilder: (context, index) => Card(
-                              color: UtilConstants.primaryColor,
+                              color: UtilConstants.lightgreyColor,
                               elevation: 4,
                               margin: const EdgeInsets.symmetric(vertical: 10),
                               child: ListTile(
