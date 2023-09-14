@@ -53,7 +53,7 @@ class _CounselorformState extends State<Counselorform> {
                     ),
                     child: Column(
                       children: [
-                        FormHeading("Register Councelors",
+                        FormHeading("Register Counselors",
                             mediaQueryData: mediaQueryData),
                         SizedBox(height: mediaQueryData.size.height * 0.04),
                         FormInputWeb("Name",
@@ -78,6 +78,24 @@ class _CounselorformState extends State<Counselorform> {
                           textEditingController:
                               Provider.of<SignupProvider>(context).faculty,
                         ),
+                        SizedBox(height: mediaQueryData.size.height * 0.01),
+                        FormInputWeb("Credentials",
+                            textEditingController:
+                                Provider.of<SignupProvider>(context)
+                                    .phoneNumber,
+                            mediaQueryData: mediaQueryData),
+                        SizedBox(height: mediaQueryData.size.height * 0.01),
+                        FormInputWeb("User Name",
+                            textEditingController:
+                                Provider.of<SignupProvider>(context)
+                                    .phoneNumber,
+                            mediaQueryData: mediaQueryData),
+                        SizedBox(height: mediaQueryData.size.height * 0.01),
+                        FormInputWeb("Password",
+                            textEditingController:
+                                Provider.of<SignupProvider>(context)
+                                    .phoneNumber,
+                            mediaQueryData: mediaQueryData),
                         SizedBox(height: mediaQueryData.size.height * 0.01),
                         Consumer<SignupProvider>(
                           builder: (context, value, child) {
