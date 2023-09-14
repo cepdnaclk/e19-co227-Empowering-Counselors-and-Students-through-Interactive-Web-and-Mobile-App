@@ -3,10 +3,11 @@ import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_activitylog.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_dashboard.dart';
-import 'package:bloomi_web/screens/Admin/screens/admin_home.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_navbar.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_panel_drawer.dart';
 import 'package:bloomi_web/screens/Admin/screens/admin_setting.dart';
+import 'package:bloomi_web/screens/Admin/screens/counselor_control.dart';
+import 'package:bloomi_web/screens/Admin/screens/students_control.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,10 +24,11 @@ class _AdminpanelState extends State<Adminpanel> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
     final List<Widget> widget = [
-      const AdminHome(),
-      const AdminSetting(),
       const AdminDashboard(),
+      const StudentControl(),
+      const Counselorcontrol(),
       const AdminActivityLog(),
+      const AdminSetting(),
     ];
     return Scaffold(
       appBar: (mediaQueryData.size.width <= 900)
