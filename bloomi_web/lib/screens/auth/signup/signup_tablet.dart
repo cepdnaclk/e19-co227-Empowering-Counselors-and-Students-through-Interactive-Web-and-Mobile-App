@@ -8,16 +8,16 @@ import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SignUpMobile extends StatefulWidget {
-  const SignUpMobile({
+class SignUpTablet extends StatefulWidget {
+  const SignUpTablet({
     super.key,
   });
 
   @override
-  State<SignUpMobile> createState() => _SignUpMobileState();
+  State<SignUpTablet> createState() => _SignUpTabletState();
 }
 
-class _SignUpMobileState extends State<SignUpMobile> {
+class _SignUpTabletState extends State<SignUpTablet> {
   List<String> listItems = [
     'Faculty of Engineering',
     'Faculty of Medicine',
@@ -46,16 +46,16 @@ class _SignUpMobileState extends State<SignUpMobile> {
         height: height,
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 100),
+            padding: const EdgeInsets.symmetric(vertical: 35),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(width: 10),
                 Container(
-                  height: 500,
-                  width: 300,
+                  height: 680,
+                  width: 460,
                   padding: const EdgeInsets.only(
-                      left: 20, right: 20, top: 20, bottom: 10),
+                      left: 40, right: 40, top: 30, bottom: 10),
                   decoration: BoxDecoration(
                     color: UtilConstants.lightgreyColor,
                     borderRadius: BorderRadius.circular(10),
@@ -64,78 +64,47 @@ class _SignUpMobileState extends State<SignUpMobile> {
                     children: [
                       const FormHeading(
                         "SignUp Here",
-                        fontSize: 20,
                       ),
                       const SizedBox(height: 30),
                       FormInputWeb(
                         "Name",
                         textEditingController:
                             Provider.of<SignupProvider>(context).name,
-                        fontSize: 12,
-                        height: 35,
-                        width: 280,
-                        lableFontSize: 12,
                       ),
-                      const SizedBox(height: 6),
+                      const SizedBox(height: 10),
                       FormInputWeb(
                         "Email",
                         textEditingController:
                             Provider.of<SignupProvider>(context).email,
-                        fontSize: 12,
-                        height: 35,
-                        width: 280,
-                        lableFontSize: 12,
                       ),
-                      const SizedBox(height: 6),
+                      const SizedBox(height: 10),
                       FormInputWeb(
                         "Password",
                         textEditingController:
                             Provider.of<SignupProvider>(context).password,
                         obscure: true,
-                        fontSize: 12,
-                        height: 35,
-                        width: 280,
-                        lableFontSize: 12,
                       ),
-                      const SizedBox(height: 6),
+                      const SizedBox(height: 10),
                       FormInputWeb(
                         "Phone Number",
                         textEditingController:
                             Provider.of<SignupProvider>(context).phoneNumber,
-                        fontSize: 12,
-                        height: 35,
-                        width: 280,
-                        lableFontSize: 12,
                       ),
-                      const SizedBox(height: 6),
+                      const SizedBox(height: 10),
                       FormInputWeb(
                         "Faculty",
                         textEditingController:
                             Provider.of<SignupProvider>(context).faculty,
-                        fontSize: 12,
-                        height: 35,
-                        width: 280,
-                        lableFontSize: 12,
                       ),
-                      const SizedBox(height: 6),
-                      FormInputWeb(
-                        "Department",
-                        textEditingController:
-                            Provider.of<SignupProvider>(context).department,
-                        fontSize: 12,
-                        height: 35,
-                        width: 280,
-                        lableFontSize: 12,
-                      ),
-                      const SizedBox(height: 6),
+                      const SizedBox(height: 10),
+                      FormInputWeb("Department",
+                          textEditingController:
+                              Provider.of<SignupProvider>(context).department),
+                      const SizedBox(height: 10),
                       FormInputWeb(
                         "Level of Study",
                         textEditingController:
                             Provider.of<SignupProvider>(context).year,
-                        fontSize: 12,
-                        height: 35,
-                        width: 280,
-                        lableFontSize: 12,
                       ),
                       const SizedBox(height: 25),
                       Consumer<SignupProvider>(
@@ -157,16 +126,13 @@ class _SignUpMobileState extends State<SignUpMobile> {
                             child: FormButtonWeb(
                               "Register",
                               isLoading: value.isLoading,
-                              width: 280,
-                              height: 35,
-                              fontSize: 12,
                             ),
                           );
                         },
                       ),
                       const SizedBox(height: 6),
                       const CustomTextLinkWeb("Already have an account?",
-                          width: 280, fontSize: 9, route: Login())
+                          route: Login())
                     ],
                   ),
                 ),

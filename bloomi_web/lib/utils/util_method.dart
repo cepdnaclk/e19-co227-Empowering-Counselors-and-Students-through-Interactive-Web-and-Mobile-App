@@ -2,10 +2,10 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 
 class UtilMethod {
-  static void customDialogBox(MediaQueryData mediaQueryData,
-      BuildContext context, String title, String desc) {
+  static void customDialogBox(BuildContext context, String title, String desc) {
+    double width = MediaQuery.of(context).size.width;
     AwesomeDialog(
-      width: mediaQueryData.size.width * 0.35,
+      width: width * 0.35,
       context: context,
       dialogType: DialogType.noHeader,
       animType: AnimType.scale,

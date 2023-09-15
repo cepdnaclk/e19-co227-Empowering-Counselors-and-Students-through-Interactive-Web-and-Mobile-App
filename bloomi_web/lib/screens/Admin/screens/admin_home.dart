@@ -1,4 +1,3 @@
-import 'package:bloomi_web/components/background_color_gradient.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +15,6 @@ class _AdminHomeState extends State<AdminHome> {
       body: Stack(
         children: [
           Center(child: CustomText("Welcome to the Admin Dashboard")),
-          BackgroundColorGradient(),
         ],
       ),
     );

@@ -5,7 +5,10 @@ import 'package:bloomi_web/providers/auth/signup_provider.dart';
 import 'package:bloomi_web/providers/nav_provider/admin_nav_provider.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
-import 'package:bloomi_web/screens/splash/splash_screen.dart';
+import 'package:bloomi_web/responsive/responsive_layout.dart';
+import 'package:bloomi_web/screens/splash/splash_desktop.dart';
+import 'package:bloomi_web/screens/splash/splash_mobile.dart';
+import 'package:bloomi_web/screens/splash/splash_tablet.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -35,23 +38,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      builder: (context, child) => ResponsiveBreakpoints.builder(
-        child: child!,
-        breakpoints: [
-          const Breakpoint(start: 0, end: 450, name: MOBILE),
-          const Breakpoint(start: 451, end: 800, name: TABLET),
-          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-        ],
-      ),
-      title: 'BLOOMi',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      //home: const CounselorHome(),
-      home: const SplashScreen(),
-    );
+        builder: (context, child) => ResponsiveBreakpoints.builder(
+              child: child!,
+              breakpoints: [
+                const Breakpoint(start: 0, end: 450, name: MOBILE),
+                const Breakpoint(start: 451, end: 800, name: TABLET),
+                const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+                const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+              ],
+            ),
+        title: 'BLOOMi',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const ResponsiveLayout(
+            mobileBody: SplashScreenMobile(),
+            tabletBody: SplashScreenTablet(),
+            desktopBody: SplashDesktop()));
   }
 }

@@ -1,4 +1,4 @@
-import 'package:bloomi_web/screens/Admin/Registration%20_forms/Counselorform.dart';
+import 'package:bloomi_web/screens/Admin/Registration%20_forms/counselorform.dart';
 import 'package:flutter/material.dart';
 
 class Counselorcontrol extends StatefulWidget {
@@ -126,8 +126,8 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
-                  onPrimary: Colors.white,
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.blue,
                   elevation: 20,
                   padding: const EdgeInsets.all(20),
                 ),
@@ -140,161 +140,162 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.all(20),
-                child: Table(
-                  columnWidths: const <int, TableColumnWidth>{
-                    0: FlexColumnWidth(1.0),
-                    1: FlexColumnWidth(1.0),
-                    2: FlexColumnWidth(1.0),
-                    3: FlexColumnWidth(1.0),
-                    4: FlexColumnWidth(1.0),
-                    5: FlexColumnWidth(1.0),
-                    6: FlexColumnWidth(1.0),
-                    7: FlexColumnWidth(1.0),
-                  },
-                  border: TableBorder.all(
-                    color: Colors.blue.shade500,
-                  ),
-                  children: [
-                    const TableRow(children: [
+              padding: const EdgeInsets.all(20),
+              child: Table(
+                columnWidths: const <int, TableColumnWidth>{
+                  0: FlexColumnWidth(1.0),
+                  1: FlexColumnWidth(1.0),
+                  2: FlexColumnWidth(1.0),
+                  3: FlexColumnWidth(1.0),
+                  4: FlexColumnWidth(1.0),
+                  5: FlexColumnWidth(1.0),
+                  6: FlexColumnWidth(1.0),
+                  7: FlexColumnWidth(1.0),
+                },
+                border: TableBorder.all(
+                  color: Colors.blue.shade500,
+                ),
+                children: [
+                  const TableRow(children: [
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: TableCell(
+                          child: Text(
+                        'Counselor Name',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      )),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: TableCell(
+                          child: Text(
+                        'Counselor Email',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      )),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: TableCell(
+                          child: Text(
+                        'Counselor ID',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      )),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: TableCell(
+                          child: Text(
+                        'Counselor Phone Number',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      )),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: TableCell(
+                          child: Text(
+                        'Faculty',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      )),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: TableCell(
+                          child: Text(
+                        'Credentials',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      )),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: TableCell(
+                          child: Text(
+                        'User Name',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      )),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: TableCell(
+                          child: Text(
+                        'Password',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      )),
+                    ),
+                  ]),
+                  for (int index = 0; index < counselornames.length; index++)
+                    TableRow(children: [
                       Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: TableCell(
                             child: Text(
-                          'Counselor Name',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
+                          counselornames[index],
                         )),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: TableCell(
-                            child: Text(
-                          'Counselor Email',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                        )),
+                        padding: const EdgeInsets.all(10.0),
+                        child: TableCell(child: Text(counseloremails[index])),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: TableCell(
-                            child: Text(
-                          'Counselor ID',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                        )),
+                        padding: const EdgeInsets.all(10.0),
+                        child: TableCell(child: Text(counselornumber[index])),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: TableCell(
-                            child: Text(
-                          'Counselor Phone Number',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                        )),
+                        padding: const EdgeInsets.all(10.0),
+                        child:
+                            TableCell(child: Text(counselorphonenumber[index])),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: TableCell(
-                            child: Text(
-                          'Faculty',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                        )),
+                        padding: const EdgeInsets.all(10.0),
+                        child: TableCell(child: Text(faculties[index])),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10),
-                        child: TableCell(
-                            child: Text(
-                          'Credentials',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                        )),
+                        padding: const EdgeInsets.all(10.0),
+                        child: TableCell(child: Text(credentials[index])),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: TableCell(
-                            child: Text(
-                          'User Name',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                        )),
+                        padding: const EdgeInsets.all(10.0),
+                        child: TableCell(child: Text(usernames[index])),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: TableCell(
-                            child: Text(
-                          'Password',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                        )),
+                        padding: const EdgeInsets.all(10.0),
+                        child: TableCell(child: Text(passwords[index])),
                       ),
                     ]),
-                    for (int index = 0; index < counselornames.length; index++)
-                      TableRow(children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: TableCell(
-                              child: Text(
-                            counselornames[index],
-                          )),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: TableCell(child: Text(counselornumber[index])),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: TableCell(child: Text(counseloremails[index])),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: TableCell(
-                              child: Text(counselorphonenumber[index])),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: TableCell(child: Text(faculties[index])),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: TableCell(child: Text(credentials[index])),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: TableCell(child: Text(usernames[index])),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: TableCell(child: Text(passwords[index])),
-                        ),
-                      ]),
-                  ],
-                )),
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -3,36 +3,39 @@ import 'package:flutter/material.dart';
 class CustomTextFeild extends StatelessWidget {
   final String lable;
   final bool obscure;
-  final MediaQueryData mediaQueryData;
+
   final double width;
+  final double height;
+  final double fontSize;
+  final double lableFontSize;
   final TextEditingController textEditingController;
 
   const CustomTextFeild({
     super.key,
     required this.lable,
     this.obscure = false,
-    required this.mediaQueryData,
-    required TextInputType keyboardType,
     required this.width,
     required this.textEditingController,
+    this.height = 50,
+    this.fontSize = 14,
+    this.lableFontSize = 18,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      height: mediaQueryData.size.height * 0.063,
+      height: height,
       child: TextField(
         style: TextStyle(
-          fontSize: mediaQueryData.size.height * 0.02,
+          fontSize: fontSize,
         ),
         controller: textEditingController,
         obscureText: obscure,
         decoration: InputDecoration(
           labelText: lable,
-          labelStyle: TextStyle(
-              fontSize: mediaQueryData.size.height * 0.023,
-              fontWeight: FontWeight.w400),
+          labelStyle:
+              TextStyle(fontSize: lableFontSize, fontWeight: FontWeight.w400),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),

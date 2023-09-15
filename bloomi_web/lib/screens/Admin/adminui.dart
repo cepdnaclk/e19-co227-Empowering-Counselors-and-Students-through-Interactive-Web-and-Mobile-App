@@ -22,7 +22,8 @@ class Adminpanel extends StatefulWidget {
 class _AdminpanelState extends State<Adminpanel> {
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     final List<Widget> widget = [
       const AdminDashboard(),
       const StudentControl(),
@@ -31,18 +32,18 @@ class _AdminpanelState extends State<Adminpanel> {
       const AdminSetting(),
     ];
     return Scaffold(
-      appBar: (mediaQueryData.size.width <= 900)
+      appBar: (width <= 900)
           ? AppBar(
               iconTheme: const IconThemeData(color: UtilConstants.primaryColor),
               backgroundColor: UtilConstants.lightgreyColor,
               elevation: 0,
               centerTitle: true,
               title: CustomText("BLOOMI",
-                  fontSize: mediaQueryData.size.width * 0.03,
+                  fontSize: width * 0.03,
                   fontWeight: FontWeight.w300,
                   fontColor: UtilConstants.primaryColor))
           : PreferredSize(
-              preferredSize: Size(mediaQueryData.size.width, 70),
+              preferredSize: Size(width, 70),
               child: const AdminNavBar(),
             ),
       body: Consumer<NavigationProvider>(
@@ -51,7 +52,7 @@ class _AdminpanelState extends State<Adminpanel> {
         },
       ),
       drawer: const AdminPanelDrawer(),
-      bottomNavigationBar: Footer(mediaQueryData: mediaQueryData),
+      bottomNavigationBar: Footer(height: height, width: width),
     );
   }
 }

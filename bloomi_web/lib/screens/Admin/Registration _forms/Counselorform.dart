@@ -62,24 +62,28 @@ class _CounselorformState extends State<Counselorform> {
                       child: Center(
                         child: Column(
                           children: [
-                            FormHeading("Register Counselors",
-                                mediaQueryData: mediaQueryData),
+                            const FormHeading(
+                              "Register Counselors",
+                            ),
                             SizedBox(height: mediaQueryData.size.height * 0.04),
-                            FormInputWeb("Name",
-                                textEditingController:
-                                    Provider.of<SignupProvider>(context).name,
-                                mediaQueryData: mediaQueryData),
+                            FormInputWeb(
+                              "Name",
+                              textEditingController:
+                                  Provider.of<SignupProvider>(context).name,
+                            ),
                             SizedBox(height: mediaQueryData.size.height * 0.01),
-                            FormInputWeb("Email",
-                                textEditingController:
-                                    Provider.of<SignupProvider>(context).email,
-                                mediaQueryData: mediaQueryData),
+                            FormInputWeb(
+                              "Email",
+                              textEditingController:
+                                  Provider.of<SignupProvider>(context).email,
+                            ),
                             SizedBox(height: mediaQueryData.size.height * 0.01),
-                            FormInputWeb("Phone Number",
-                                textEditingController:
-                                    Provider.of<SignupProvider>(context)
-                                        .phoneNumber,
-                                mediaQueryData: mediaQueryData),
+                            FormInputWeb(
+                              "Phone Number",
+                              textEditingController:
+                                  Provider.of<SignupProvider>(context)
+                                      .phoneNumber,
+                            ),
                             SizedBox(height: mediaQueryData.size.height * 0.01),
                             CustomDropdownMenu(
                               "Faculty",
@@ -88,32 +92,34 @@ class _CounselorformState extends State<Counselorform> {
                                   Provider.of<SignupProvider>(context).faculty,
                             ),
                             SizedBox(height: mediaQueryData.size.height * 0.01),
-                            FormInputWeb("Credentials",
-                                textEditingController:
-                                    Provider.of<SignupProvider>(context)
-                                        .phoneNumber,
-                                mediaQueryData: mediaQueryData),
+                            FormInputWeb(
+                              "Credentials",
+                              textEditingController:
+                                  Provider.of<SignupProvider>(context)
+                                      .phoneNumber,
+                            ),
                             SizedBox(height: mediaQueryData.size.height * 0.01),
-                            FormInputWeb("User Name",
-                                textEditingController:
-                                    Provider.of<SignupProvider>(context)
-                                        .phoneNumber,
-                                mediaQueryData: mediaQueryData),
+                            FormInputWeb(
+                              "User Name",
+                              textEditingController:
+                                  Provider.of<SignupProvider>(context)
+                                      .phoneNumber,
+                            ),
                             SizedBox(height: mediaQueryData.size.height * 0.01),
-                            FormInputWeb("Password",
-                                textEditingController:
-                                    Provider.of<SignupProvider>(context)
-                                        .phoneNumber,
-                                mediaQueryData: mediaQueryData),
+                            FormInputWeb(
+                              "Password",
+                              textEditingController:
+                                  Provider.of<SignupProvider>(context)
+                                      .phoneNumber,
+                            ),
                             SizedBox(height: mediaQueryData.size.height * 0.01),
                             Consumer<SignupProvider>(
                               builder: (context, value, child) {
                                 return InkWell(
                                   onTap: () {},
-                                  child: FormButtonWeb(
+                                  child: const FormButtonWeb(
                                     "Register",
                                     isLoading: false,
-                                    mediaQueryData: mediaQueryData,
                                   ),
                                 );
                               },
