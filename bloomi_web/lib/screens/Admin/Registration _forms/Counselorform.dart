@@ -3,7 +3,8 @@ import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
-import 'package:bloomi_web/providers/auth/signup_provider.dart';
+import 'package:bloomi_web/providers/auth/Counselorregister_provider.dart';
+//import 'package:bloomi_web/providers/auth/signup_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -66,6 +67,7 @@ class _CounselorformState extends State<Counselorform> {
                               "Register Counselors",
                             ),
                             SizedBox(height: mediaQueryData.size.height * 0.04),
+<<<<<<< Updated upstream
                             FormInputWeb(
                               "Name",
                               textEditingController:
@@ -84,14 +86,39 @@ class _CounselorformState extends State<Counselorform> {
                                   Provider.of<SignupProvider>(context)
                                       .phoneNumber,
                             ),
+=======
+                            FormInputWeb("Name",
+                                textEditingController:
+                                    Provider.of<CounselorRegistrationProvider>(
+                                            context)
+                                        .name,
+                                mediaQueryData: mediaQueryData),
+                            SizedBox(height: mediaQueryData.size.height * 0.01),
+                            FormInputWeb("Email",
+                                textEditingController:
+                                    Provider.of<CounselorRegistrationProvider>(
+                                            context)
+                                        .email,
+                                mediaQueryData: mediaQueryData),
+                            SizedBox(height: mediaQueryData.size.height * 0.01),
+                            FormInputWeb("Phone Number",
+                                textEditingController:
+                                    Provider.of<CounselorRegistrationProvider>(
+                                            context)
+                                        .phoneNumber,
+                                mediaQueryData: mediaQueryData),
+>>>>>>> Stashed changes
                             SizedBox(height: mediaQueryData.size.height * 0.01),
                             CustomDropdownMenu(
                               "Faculty",
                               listItem: listItems,
                               textEditingController:
-                                  Provider.of<SignupProvider>(context).faculty,
+                                  Provider.of<CounselorRegistrationProvider>(
+                                          context)
+                                      .faculty,
                             ),
                             SizedBox(height: mediaQueryData.size.height * 0.01),
+<<<<<<< Updated upstream
                             FormInputWeb(
                               "Credentials",
                               textEditingController:
@@ -112,8 +139,30 @@ class _CounselorformState extends State<Counselorform> {
                                   Provider.of<SignupProvider>(context)
                                       .phoneNumber,
                             ),
+=======
+                            FormInputWeb("Credentials",
+                                textEditingController:
+                                    Provider.of<CounselorRegistrationProvider>(
+                                            context)
+                                        .credentials,
+                                mediaQueryData: mediaQueryData),
                             SizedBox(height: mediaQueryData.size.height * 0.01),
-                            Consumer<SignupProvider>(
+                            FormInputWeb("User Name",
+                                textEditingController:
+                                    Provider.of<CounselorRegistrationProvider>(
+                                            context)
+                                        .username,
+                                mediaQueryData: mediaQueryData),
+                            SizedBox(height: mediaQueryData.size.height * 0.01),
+                            FormInputWeb("Password",
+                                textEditingController:
+                                    Provider.of<CounselorRegistrationProvider>(
+                                            context)
+                                        .password,
+                                mediaQueryData: mediaQueryData),
+>>>>>>> Stashed changes
+                            SizedBox(height: mediaQueryData.size.height * 0.01),
+                            Consumer<CounselorRegistrationProvider>(
                               builder: (context, value, child) {
                                 return InkWell(
                                   onTap: () {},
