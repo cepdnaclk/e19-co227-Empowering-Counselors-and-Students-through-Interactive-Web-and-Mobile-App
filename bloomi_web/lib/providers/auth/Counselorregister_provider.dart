@@ -101,12 +101,12 @@ class CounselorRegistrationProvider extends ChangeNotifier {
 
         //sign up user
         await AuthController().signUpUser(email, password, name, phone,
-            department, faculty, year, userType, context, mediaQueryData);
+            department, faculty, year, userType, context);
 
         setIsLoading(false);
       } else {
         UtilMethod.customDialogBox(
-            mediaQueryData, context, "Error", "Please fill all the fields");
+            context, "Error", "Please fill all the fields");
       }
       setIsLoading(false);
     } catch (e) {
