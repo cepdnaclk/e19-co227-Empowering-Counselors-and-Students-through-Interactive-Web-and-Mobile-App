@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
         },
       ),
       drawer: const MyDrawer(),
-      bottomNavigationBar: Footer(width: width, height: height),
+      bottomNavigationBar: Footer(width: width, height: 55),
     );
   }
 }

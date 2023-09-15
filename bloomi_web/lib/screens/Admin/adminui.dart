@@ -52,7 +52,7 @@ class _AdminpanelState extends State<Adminpanel> {
         },
       ),
       drawer: const AdminPanelDrawer(),
-      bottomNavigationBar: Footer(height: height, width: width),
+      bottomNavigationBar: Footer(height: 55, width: width),
     );
   }
 }

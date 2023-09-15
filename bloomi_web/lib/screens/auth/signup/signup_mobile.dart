@@ -46,13 +46,13 @@ class _SignUpMobileState extends State<SignUpMobile> {
         height: height,
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 100),
+            padding: const EdgeInsets.symmetric(vertical: 80),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(width: 10),
                 Container(
-                  height: 500,
+                  height: 550,
                   width: 300,
                   padding: const EdgeInsets.only(
                       left: 20, right: 20, top: 20, bottom: 10),
@@ -64,7 +64,7 @@ class _SignUpMobileState extends State<SignUpMobile> {
                     children: [
                       const FormHeading(
                         "SignUp Here",
-                        fontSize: 20,
+                        fontSize: 25,
                       ),
                       const SizedBox(height: 30),
                       FormInputWeb(
@@ -72,7 +72,7 @@ class _SignUpMobileState extends State<SignUpMobile> {
                         textEditingController:
                             Provider.of<SignupProvider>(context).name,
                         fontSize: 12,
-                        height: 35,
+                        height: 45,
                         width: 280,
                         lableFontSize: 12,
                       ),
@@ -82,7 +82,7 @@ class _SignUpMobileState extends State<SignUpMobile> {
                         textEditingController:
                             Provider.of<SignupProvider>(context).email,
                         fontSize: 12,
-                        height: 35,
+                        height: 45,
                         width: 280,
                         lableFontSize: 12,
                       ),
@@ -93,7 +93,7 @@ class _SignUpMobileState extends State<SignUpMobile> {
                             Provider.of<SignupProvider>(context).password,
                         obscure: true,
                         fontSize: 12,
-                        height: 35,
+                        height: 45,
                         width: 280,
                         lableFontSize: 12,
                       ),
@@ -103,7 +103,7 @@ class _SignUpMobileState extends State<SignUpMobile> {
                         textEditingController:
                             Provider.of<SignupProvider>(context).phoneNumber,
                         fontSize: 12,
-                        height: 35,
+                        height: 45,
                         width: 280,
                         lableFontSize: 12,
                       ),
@@ -113,7 +113,7 @@ class _SignUpMobileState extends State<SignUpMobile> {
                         textEditingController:
                             Provider.of<SignupProvider>(context).faculty,
                         fontSize: 12,
-                        height: 35,
+                        height: 45,
                         width: 280,
                         lableFontSize: 12,
                       ),
@@ -123,7 +123,7 @@ class _SignUpMobileState extends State<SignUpMobile> {
                         textEditingController:
                             Provider.of<SignupProvider>(context).department,
                         fontSize: 12,
-                        height: 35,
+                        height: 45,
                         width: 280,
                         lableFontSize: 12,
                       ),
@@ -133,7 +133,7 @@ class _SignUpMobileState extends State<SignUpMobile> {
                         textEditingController:
                             Provider.of<SignupProvider>(context).year,
                         fontSize: 12,
-                        height: 35,
+                        height: 45,
                         width: 280,
                         lableFontSize: 12,
                       ),
@@ -158,7 +158,7 @@ class _SignUpMobileState extends State<SignUpMobile> {
                               "Register",
                               isLoading: value.isLoading,
                               width: 280,
-                              height: 35,
+                              height: 45,
                               fontSize: 12,
                             ),
                           );

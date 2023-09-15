@@ -38,14 +38,14 @@ class ForgotPasswordMobile extends StatelessWidget {
                       child: Column(children: [
                         const FormHeading(
                           "Reset Password",
-                          fontSize: 20,
+                          fontSize: 25,
                         ),
                         const SizedBox(height: 50),
                         const SizedBox(
                           width: 280,
                           child: CustomText(
                             "Please, enter your email address. You will receive a link to create a new password via email.",
-                            fontSize: 9,
+                            fontSize: 10,
                             fontWeight: FontWeight.w600,
                             fontColor: UtilConstants.blackColor,
                             textAlign: TextAlign.left,
@@ -58,7 +58,7 @@ class ForgotPasswordMobile extends StatelessWidget {
                               Provider.of<ForgotPasswordProvider>(context)
                                   .email,
                           fontSize: 12,
-                          height: 35,
+                          height: 45,
                           width: 280,
                           lableFontSize: 12,
                         ),
@@ -77,7 +77,7 @@ class ForgotPasswordMobile extends StatelessWidget {
                                 "Send",
                                 isLoading: value.isLoading,
                                 width: 280,
-                                height: 35,
+                                height: 45,
                                 fontSize: 12,
                               ),
                             );

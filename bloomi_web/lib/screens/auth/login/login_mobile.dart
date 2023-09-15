@@ -34,7 +34,7 @@ class LoginMobile extends StatelessWidget {
                         const SizedBox(width: 10),
                         Container(
                           width: 300,
-                          height: 360,
+                          height: 380,
                           padding: const EdgeInsets.only(
                               left: 20, right: 20, top: 20, bottom: 10),
                           decoration: BoxDecoration(
@@ -45,7 +45,7 @@ class LoginMobile extends StatelessWidget {
                             children: [
                               const FormHeading(
                                 "Login Here",
-                                fontSize: 20,
+                                fontSize: 25,
                               ),
                               const SizedBox(height: 50),
                               FormInputWeb(
@@ -53,7 +53,7 @@ class LoginMobile extends StatelessWidget {
                                 textEditingController:
                                     Provider.of<LoginProvider>(context).email,
                                 fontSize: 12,
-                                height: 35,
+                                height: 45,
                                 width: 280,
                                 lableFontSize: 12,
                               ),
@@ -64,7 +64,7 @@ class LoginMobile extends StatelessWidget {
                                     Provider.of<LoginProvider>(context)
                                         .password,
                                 fontSize: 12,
-                                height: 35,
+                                height: 45,
                                 width: 280,
                                 lableFontSize: 12,
                               ),
@@ -80,7 +80,7 @@ class LoginMobile extends StatelessWidget {
                                       "Login",
                                       isLoading: value.isLoading,
                                       width: 280,
-                                      height: 35,
+                                      height: 45,
                                       fontSize: 12,
                                     ),
                                   );
@@ -89,12 +89,12 @@ class LoginMobile extends StatelessWidget {
                               const SizedBox(height: 6),
                               const CustomTextLinkWeb("forgot password?",
                                   width: 280,
-                                  fontSize: 9,
+                                  fontSize: 10,
                                   route: ForgotPassword()),
                               const SizedBox(height: 10),
                               const CustomText(
                                 "Or login with social account",
-                                fontSize: 9,
+                                fontSize: 10,
                                 fontWeight: FontWeight.w500,
                               ),
                               const SizedBox(height: 15),

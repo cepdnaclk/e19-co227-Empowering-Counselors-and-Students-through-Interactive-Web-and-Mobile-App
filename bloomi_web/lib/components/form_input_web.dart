@@ -14,7 +14,7 @@ class FormInputWeb extends StatelessWidget {
     this.obscure = false,
     this.width = 420,
     this.height = 50,
-    this.fontSize = 14,
+    this.fontSize = 16,
     this.lableFontSize = 18,
   });
 
