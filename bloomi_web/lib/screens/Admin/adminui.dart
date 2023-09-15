@@ -22,7 +22,6 @@ class Adminpanel extends StatefulWidget {
 class _AdminpanelState extends State<Adminpanel> {
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     final List<Widget> widget = [
       const AdminDashboard(),

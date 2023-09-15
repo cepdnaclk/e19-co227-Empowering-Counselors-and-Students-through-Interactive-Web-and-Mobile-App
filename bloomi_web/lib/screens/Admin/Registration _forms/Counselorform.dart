@@ -4,16 +4,14 @@ import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/providers/auth/Counselorregister_provider.dart';
+import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class Counselorform extends StatefulWidget {
   const Counselorform({
     super.key,
-    required this.mediaQueryData,
   });
-
-  final MediaQueryData mediaQueryData;
 
   @override
   State<Counselorform> createState() => _CounselorformState();
@@ -46,7 +44,7 @@ class _CounselorformState extends State<Counselorform> {
                 const CustomImage(
                   width: 200,
                   height: 200,
-                  imgPath: 'assets/images/registration.jpeg',
+                  imgPath: UtilConstants.registerImagePath,
                 ),
                 SizedBox(width: mediaQueryData.size.width * 0.05),
                 SizedBox(height: mediaQueryData.size.height * 0.02),
