@@ -1,4 +1,3 @@
-import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
@@ -53,40 +52,42 @@ class _CounselorformState extends State<Counselorform> {
                     ),
                     child: Column(
                       children: [
-                        FormHeading("Register Councelors",
-                            mediaQueryData: mediaQueryData),
-                        SizedBox(height: mediaQueryData.size.height * 0.04),
-                        FormInputWeb("Name",
-                            textEditingController:
-                                Provider.of<SignupProvider>(context).name,
-                            mediaQueryData: mediaQueryData),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        FormInputWeb("Email",
-                            textEditingController:
-                                Provider.of<SignupProvider>(context).email,
-                            mediaQueryData: mediaQueryData),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        FormInputWeb("Phone Number",
-                            textEditingController:
-                                Provider.of<SignupProvider>(context)
-                                    .phoneNumber,
-                            mediaQueryData: mediaQueryData),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        CustomDropdownMenu(
-                          "Faculty",
-                          listItem: listItems,
-                          textEditingController:
-                              Provider.of<SignupProvider>(context).faculty,
+                        const FormHeading(
+                          "Register Councelors",
                         ),
+                        SizedBox(height: mediaQueryData.size.height * 0.04),
+                        FormInputWeb(
+                          "Name",
+                          textEditingController:
+                              Provider.of<SignupProvider>(context).name,
+                        ),
+                        SizedBox(height: mediaQueryData.size.height * 0.01),
+                        FormInputWeb(
+                          "Email",
+                          textEditingController:
+                              Provider.of<SignupProvider>(context).email,
+                        ),
+                        SizedBox(height: mediaQueryData.size.height * 0.01),
+                        FormInputWeb(
+                          "Phone Number",
+                          textEditingController:
+                              Provider.of<SignupProvider>(context).phoneNumber,
+                        ),
+                        SizedBox(height: mediaQueryData.size.height * 0.01),
+                        // CustomDropdownMenu(
+                        //   "Faculty",
+                        //   listItem: listItems,
+                        //   textEditingController:
+                        //       Provider.of<SignupProvider>(context).faculty,
+                        // ),
                         SizedBox(height: mediaQueryData.size.height * 0.01),
                         Consumer<SignupProvider>(
                           builder: (context, value, child) {
                             return InkWell(
                               onTap: () {},
-                              child: FormButtonWeb(
+                              child: const FormButtonWeb(
                                 "Register",
                                 isLoading: false,
-                                mediaQueryData: mediaQueryData,
                               ),
                             );
                           },

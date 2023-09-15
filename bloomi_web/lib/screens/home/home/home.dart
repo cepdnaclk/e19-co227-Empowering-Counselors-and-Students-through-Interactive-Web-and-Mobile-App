@@ -21,7 +21,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     final List<Widget> widget = [
       const HomePage(),
       const Appointment(),
@@ -29,18 +30,18 @@ class _HomeState extends State<Home> {
       const Relax(),
     ];
     return Scaffold(
-      appBar: (mediaQueryData.size.width <= 900)
+      appBar: (width <= 900)
           ? AppBar(
               iconTheme: const IconThemeData(color: UtilConstants.primaryColor),
               backgroundColor: UtilConstants.lightgreyColor,
               elevation: 0,
               centerTitle: true,
               title: CustomText("BLOOMI",
-                  fontSize: mediaQueryData.size.width * 0.03,
+                  fontSize: width * 0.03,
                   fontWeight: FontWeight.w300,
                   fontColor: UtilConstants.primaryColor))
           : PreferredSize(
-              preferredSize: Size(mediaQueryData.size.width, 70),
+              preferredSize: Size(width, 70),
               child: const HomeNavBar(),
             ),
       body: Consumer<NavigationProvider>(
@@ -49,7 +50,7 @@ class _HomeState extends State<Home> {
         },
       ),
       drawer: const MyDrawer(),
-      bottomNavigationBar: Footer(mediaQueryData: mediaQueryData),
+      bottomNavigationBar: Footer(width: width, height: height),
     );
   }
 }

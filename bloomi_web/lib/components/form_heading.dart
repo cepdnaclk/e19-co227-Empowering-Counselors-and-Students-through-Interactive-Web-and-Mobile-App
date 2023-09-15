@@ -3,21 +3,22 @@ import 'package:flutter/material.dart';
 
 class FormHeading extends StatelessWidget {
   final String text;
+  final double width;
+  final double fontSize;
   const FormHeading(
     this.text, {
     super.key,
-    required this.mediaQueryData,
+    this.width = 260,
+    this.fontSize = 26,
   });
-
-  final MediaQueryData mediaQueryData;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: mediaQueryData.size.width * 0.32,
+      width: width,
       child: CustomText(
         text,
-        fontSize: mediaQueryData.size.height * 0.03,
+        fontSize: fontSize,
         fontWeight: FontWeight.w600,
       ),
     );

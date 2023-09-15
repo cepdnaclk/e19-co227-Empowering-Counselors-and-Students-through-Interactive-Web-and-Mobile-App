@@ -57,16 +57,12 @@ class _AppointmentState extends State<Appointment> {
                 CustomTextFeild(
                   textEditingController: _name,
                   lable: "Full Name",
-                  mediaQueryData: mediaQueryData,
-                  keyboardType: TextInputType.text,
                   width: mediaQueryData.size.width * 0.4,
                 ),
                 SizedBox(height: mediaQueryData.size.height * 0.02),
                 CustomTextFeild(
                   textEditingController: _email,
                   lable: "Email",
-                  mediaQueryData: mediaQueryData,
-                  keyboardType: TextInputType.emailAddress,
                   width: mediaQueryData.size.width * 0.4,
                 ),
                 SizedBox(width: 580, height: mediaQueryData.size.height * 0.02),

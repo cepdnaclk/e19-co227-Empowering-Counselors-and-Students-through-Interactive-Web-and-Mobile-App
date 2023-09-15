@@ -12,7 +12,6 @@ class AdminSetting extends StatefulWidget {
 class _AdminSettingState extends State<AdminSetting> {
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Scaffold(
       body: Stack(
         children: [
@@ -21,8 +20,11 @@ class _AdminSettingState extends State<AdminSetting> {
               onTap: () {
                 AuthController.signOutUser();
               },
-              child: CustomButton("Admin Logout",
-                  mediaQueryData: mediaQueryData, width: 250),
+              child: const CustomButton(
+                "Admin Logout",
+                width: 250,
+                height: 50,
+              ),
             ),
           ),
         ],

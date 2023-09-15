@@ -1,6 +1,8 @@
 import 'package:bloomi_web/components/footer.dart';
+import 'package:bloomi_web/responsive/responsive_layout.dart';
+import 'package:bloomi_web/screens/auth/forgotPassword/forgot_password_tablet.dart';
+import 'package:bloomi_web/screens/auth/forgotPassword/forgotpass_desktop.dart';
 import 'package:bloomi_web/screens/auth/forgotPassword/forgotpass_mobile.dart';
-import 'package:bloomi_web/screens/auth/forgotPassword/forgotpass_web.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -13,12 +15,13 @@ class ForgotPassword extends StatefulWidget {
 class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: (mediaQueryData.size.width > 900)
-          ? ForgotPasswordWeb(mediaQueryData: mediaQueryData)
-          : ForgotPasswordMobile(mediaQueryData: mediaQueryData),
-      bottomNavigationBar: Footer(mediaQueryData: mediaQueryData),
+      body: ResponsiveLayout(
+          mobileBody: ForgotPasswordMobile(),
+          tabletBody: ForgotPasswordTablet(),
+          desktopBody: const ForgotPasswordDesktop()),
+      bottomNavigationBar: Footer(width: width, height: 55),
     );
   }
 }

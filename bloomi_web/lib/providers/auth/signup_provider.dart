@@ -81,7 +81,6 @@ class SignupProvider extends ChangeNotifier {
       String department,
       String faculty,
       String year,
-      MediaQueryData mediaQueryData,
       BuildContext context) async {
     try {
       if (email.isNotEmpty &&
@@ -95,12 +94,12 @@ class SignupProvider extends ChangeNotifier {
 
         //sign up user
         await AuthController().signUpUser(email, password, name, phone,
-            department, faculty, year, userType, context, mediaQueryData);
+            department, faculty, year, userType, context);
 
         setIsLoading(false);
       } else {
         UtilMethod.customDialogBox(
-            mediaQueryData, context, "Error", "Please fill all the fields");
+            context, "Error", "Please fill all the fields");
       }
       setIsLoading(false);
     } catch (e) {

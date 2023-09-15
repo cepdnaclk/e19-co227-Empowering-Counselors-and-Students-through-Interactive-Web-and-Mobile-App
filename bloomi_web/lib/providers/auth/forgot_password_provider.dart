@@ -29,18 +29,16 @@ class ForgotPasswordProvider extends ChangeNotifier {
   }
 
   //-----------------------To send email---------------------
-  Future<void> sendEmail(
-      BuildContext context, String email, MediaQueryData mediaQueryData) async {
+  Future<void> sendEmail(BuildContext context, String email) async {
     try {
       if (email.isNotEmpty) {
         setIsLoading(true);
-        await AuthController.resetPassword(email, mediaQueryData, context);
+        await AuthController.resetPassword(email, context);
 
         setIsLoading(false);
       } else {
         Logger().e("Please enter email");
-        UtilMethod.customDialogBox(
-            mediaQueryData, context, "Error", "Please enter email");
+        UtilMethod.customDialogBox(context, "Error", "Please enter email");
         setIsLoading(false);
       }
     } catch (e) {

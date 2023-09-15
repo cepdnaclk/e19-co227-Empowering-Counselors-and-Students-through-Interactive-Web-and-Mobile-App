@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 
 class UtilMethodForgotPassword {
   static void customDialogBox(
-    MediaQueryData mediaQueryData,
     BuildContext context,
     String title,
     String desc,
   ) {
+    double width = MediaQuery.of(context).size.width;
     AwesomeDialog(
-      width: mediaQueryData.size.width * 0.35,
+      width: width * 0.35,
       context: context,
       dialogType: DialogType.noHeader,
       animType: AnimType.scale,

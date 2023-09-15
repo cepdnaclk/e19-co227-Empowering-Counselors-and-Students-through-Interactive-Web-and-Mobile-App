@@ -5,19 +5,20 @@ import 'package:flutter/material.dart';
 class CustomTextLinkWeb extends StatelessWidget {
   final String text;
   final Widget route;
+  final double width;
+  final double fontSize;
   const CustomTextLinkWeb(
     this.text, {
     super.key,
-    required this.mediaQueryData,
     required this.route,
+    this.width = 420,
+    this.fontSize = 15,
   });
-
-  final MediaQueryData mediaQueryData;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: mediaQueryData.size.width * 0.3,
+      width: width,
       alignment: Alignment.centerRight,
       child: InkWell(
         onTap: () {
@@ -25,7 +26,7 @@ class CustomTextLinkWeb extends StatelessWidget {
         },
         child: CustomText(
           text,
-          fontSize: mediaQueryData.size.height * 0.02,
+          fontSize: fontSize,
           fontWeight: FontWeight.w500,
         ),
       ),

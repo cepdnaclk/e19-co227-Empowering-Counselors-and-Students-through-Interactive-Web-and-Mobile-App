@@ -1,4 +1,4 @@
-import 'package:bloomi_web/screens/Admin/Registration%20_forms/Counselorform.dart';
+import 'package:bloomi_web/screens/Admin/Registration%20_forms/counselorform.dart';
 import 'package:flutter/material.dart';
 
 class Counselorcontrol extends StatefulWidget {
@@ -44,8 +44,8 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
             );
           },
           style: ElevatedButton.styleFrom(
-            primary: Colors.blue,
-            onPrimary: Colors.white,
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.blue,
             elevation: 100,
             padding: const EdgeInsets.all(20),
           ),

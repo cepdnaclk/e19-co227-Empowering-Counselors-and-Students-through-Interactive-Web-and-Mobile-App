@@ -4,23 +4,27 @@ import 'package:flutter/material.dart';
 class FormButtonWeb extends StatelessWidget {
   final String text;
   final bool isLoading;
+  final double width;
+  final double height;
+  final double fontSize;
 
   const FormButtonWeb(
     this.text, {
     super.key,
-    required this.mediaQueryData,
     required this.isLoading,
+    this.width = 420,
+    this.height = 50,
+    this.fontSize = 20,
   });
-
-  final MediaQueryData mediaQueryData;
 
   @override
   Widget build(BuildContext context) {
     return CustomButton(
       text,
+      height: height,
       isLoading: isLoading,
-      mediaQueryData: mediaQueryData,
-      width: mediaQueryData.size.width * 0.3,
+      width: width,
+      fontSize: fontSize,
     );
   }
 }

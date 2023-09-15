@@ -1,3 +1,4 @@
+import 'package:bloomi_web/components/custom_image_column.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/custom_text_link_web.dart';
 import 'package:bloomi_web/components/customicon_container.dart';
@@ -10,8 +11,8 @@ import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LoginMobile extends StatelessWidget {
-  const LoginMobile({
+class LoginDesktop extends StatelessWidget {
+  const LoginDesktop({
     super.key,
   });
 
@@ -24,51 +25,59 @@ class LoginMobile extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 30),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
                 child: Column(
                   children: [
-                    const SizedBox(height: 140),
+                    const SizedBox(height: 80),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         const SizedBox(width: 10),
+                        const Column(
+                          children: [
+                            CustomImageColumn(
+                              width: 380,
+                              height: 380,
+                            ),
+                            SizedBox(
+                              width: 420,
+                              child: CustomText(
+                                  "BLOOMi helps you connect and share your feelings with your mentors",
+                                  fontColor: UtilConstants.blackColor,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w300),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(width: 10),
                         Container(
-                          width: 300,
-                          height: 360,
-                          padding: const EdgeInsets.only(
-                              left: 20, right: 20, top: 20, bottom: 10),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 40),
                           decoration: BoxDecoration(
                             color: UtilConstants.lightgreyColor,
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(
+                                UtilConstants.boardRadiusForm),
                           ),
                           child: Column(
                             children: [
                               const FormHeading(
                                 "Login Here",
-                                fontSize: 20,
                               ),
-                              const SizedBox(height: 50),
+                              const SizedBox(height: 70),
                               FormInputWeb(
                                 "Email",
                                 textEditingController:
                                     Provider.of<LoginProvider>(context).email,
-                                fontSize: 12,
-                                height: 35,
-                                width: 280,
-                                lableFontSize: 12,
                               ),
-                              const SizedBox(height: 6),
+                              const SizedBox(height: 10),
                               FormInputWeb(
                                 "Password",
                                 textEditingController:
                                     Provider.of<LoginProvider>(context)
                                         .password,
-                                fontSize: 12,
-                                height: 35,
-                                width: 280,
-                                lableFontSize: 12,
                               ),
-                              const SizedBox(height: 25),
+                              const SizedBox(height: 40),
                               Consumer<LoginProvider>(
                                 builder: (context, value, child) {
                                   return InkWell(
@@ -79,22 +88,17 @@ class LoginMobile extends StatelessWidget {
                                     child: FormButtonWeb(
                                       "Login",
                                       isLoading: value.isLoading,
-                                      width: 280,
-                                      height: 35,
-                                      fontSize: 12,
                                     ),
                                   );
                                 },
                               ),
-                              const SizedBox(height: 6),
-                              const CustomTextLinkWeb("forgot password?",
-                                  width: 280,
-                                  fontSize: 9,
-                                  route: ForgotPassword()),
                               const SizedBox(height: 10),
+                              const CustomTextLinkWeb("forgot password?",
+                                  route: ForgotPassword()),
+                              const SizedBox(height: 40),
                               const CustomText(
                                 "Or login with social account",
-                                fontSize: 9,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w500,
                               ),
                               const SizedBox(height: 15),
@@ -104,14 +108,10 @@ class LoginMobile extends StatelessWidget {
                                 children: [
                                   CustomIconContainer(
                                     imgPath: UtilConstants.googleImagePath,
-                                    width: 25,
-                                    height: 15,
                                   ),
-                                  SizedBox(width: 60),
+                                  SizedBox(width: 100),
                                   CustomIconContainer(
                                     imgPath: UtilConstants.facebookImagePath,
-                                    width: 25,
-                                    height: 15,
                                   ),
                                 ],
                               )

@@ -3,27 +3,34 @@ import 'package:flutter/material.dart';
 
 class FormInputWeb extends StatelessWidget {
   final String text;
+  final double height;
+  final double fontSize;
+  final double lableFontSize;
   final TextEditingController textEditingController;
   const FormInputWeb(
     this.text, {
     super.key,
-    required this.mediaQueryData,
     required this.textEditingController,
     this.obscure = false,
+    this.width = 420,
+    this.height = 50,
+    this.fontSize = 14,
+    this.lableFontSize = 18,
   });
 
-  final MediaQueryData mediaQueryData;
   final bool obscure;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
     return CustomTextFeild(
       textEditingController: textEditingController,
       lable: text,
-      mediaQueryData: mediaQueryData,
-      keyboardType: TextInputType.text,
-      width: mediaQueryData.size.width * 0.3,
+      width: width,
       obscure: obscure,
+      height: height,
+      fontSize: fontSize,
+      lableFontSize: lableFontSize,
     );
   }
 }

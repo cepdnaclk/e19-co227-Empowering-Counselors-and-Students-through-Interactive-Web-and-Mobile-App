@@ -4,19 +4,20 @@ import 'package:flutter/material.dart';
 class CustomImageColumn extends StatelessWidget {
   const CustomImageColumn({
     super.key,
-    required this.mediaQueryData,
+    this.width = 420,
+    this.height = 420,
   });
 
-  final MediaQueryData mediaQueryData;
-
+  final double width;
+  final double height;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Image.asset(
           UtilConstants.counsellingImagePath,
-          width: mediaQueryData.size.width * 0.3,
-          height: mediaQueryData.size.height * 0.5,
+          width: width,
+          height: height,
         ),
       ],
     );

@@ -34,17 +34,16 @@ class LoginProvider extends ChangeNotifier {
   }
 
   //------------------Function--------------------
-  Future<void> signInUser(String email, String password,
-      MediaQueryData mediaQueryData, BuildContext context) async {
+  Future<void> signInUser(
+      String email, String password, BuildContext context) async {
     try {
       if (email.isNotEmpty && password.isNotEmpty) {
         setIsLoading(true);
-        await AuthController.signInUser(
-            email, password, context, mediaQueryData);
+        await AuthController.signInUser(email, password, context);
         setIsLoading(false);
       } else {
         UtilMethod.customDialogBox(
-            mediaQueryData, context, "Error", "Please fill all the fields");
+            context, "Error", "Please fill all the fields");
         setIsLoading(false);
       }
     } catch (e) {

@@ -3,26 +3,26 @@ import 'package:flutter/material.dart';
 
 class CustomIconContainer extends StatelessWidget {
   final String imgPath;
-  final MediaQueryData mediaQueryData;
+  final double width;
+  final double height;
   const CustomIconContainer({
     super.key,
     required this.imgPath,
-    required this.mediaQueryData,
+    this.width = 40,
+    this.height = 30,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(
-          (mediaQueryData.size.height + mediaQueryData.size.width) * 0.007),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(
-              (mediaQueryData.size.height + mediaQueryData.size.width) * 0.01),
+          borderRadius: BorderRadius.circular(UtilConstants.boardRadiusForm),
           color: UtilConstants.whiteColor),
       child: Image.asset(
         imgPath,
-        width: mediaQueryData.size.width * 0.04,
-        height: mediaQueryData.size.height * 0.03,
+        width: width,
+        height: height,
       ),
     );
   }

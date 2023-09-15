@@ -5,11 +5,12 @@ class UtilConstants {
   static const Color primaryColor = Color(0xff20A8D6);
   static const Color whiteColor = Colors.white;
   static const Color blackColor = Colors.black;
+  static Color lightblackColor = Colors.black.withOpacity(0.4);
   static Color pinkColor = Colors.pink.shade400;
   static Color greenColor = Colors.green.shade300;
   static Color lightRedColor = Colors.red.shade300;
   static Color lightBrownColor = Colors.brown.shade100;
-  static Color lightgreyColor = Colors.grey.shade300;
+  static Color lightgreyColor = Colors.grey.shade200;
   static Color homeBackgroundColor =
       const Color.fromARGB(255, 163, 220, 248).withOpacity(0.5);
 
@@ -32,4 +33,5 @@ class UtilConstants {
   //-----------------------Padding----------------------
 
   static const double formPadding = 0.04;
+  static const double boardRadiusForm = 8;
 }

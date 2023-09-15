@@ -4,33 +4,35 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
-  final MediaQueryData mediaQueryData;
+
   final double width;
   final bool isLoading;
+  final double height;
+  final double fontSize;
   const CustomButton(
     this.text, {
     super.key,
-    required this.mediaQueryData,
     required this.width,
     this.isLoading = false,
+    required this.height,
+    this.fontSize = 20,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: mediaQueryData.size.height * 0.07,
+      height: height,
       width: width,
       decoration: BoxDecoration(
           color: UtilConstants.primaryColor,
-          borderRadius:
-              BorderRadius.circular(mediaQueryData.size.height * 0.01)),
+          borderRadius: BorderRadius.circular(10)),
       child: (isLoading == true)
           ? const CircularProgressIndicator.adaptive()
           : CustomText(
               text,
               fontColor: UtilConstants.whiteColor,
-              fontSize: mediaQueryData.size.height * 0.023,
+              fontSize: fontSize,
               fontWeight: FontWeight.bold,
             ),
     );

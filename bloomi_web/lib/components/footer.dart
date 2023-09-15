@@ -5,22 +5,24 @@ import 'package:flutter/material.dart';
 class Footer extends StatelessWidget {
   const Footer({
     super.key,
-    required this.mediaQueryData,
+    required this.height,
+    required this.width,
   });
 
-  final MediaQueryData mediaQueryData;
+  final double height;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: mediaQueryData.size.height * 0.07,
-        width: mediaQueryData.size.width,
+        height: height,
+        width: width,
         color: UtilConstants.primaryColor,
         child: Center(
           child: CustomText(
-            "© 2023 BLOOMi\nAll rights reserved",
+            "© 2023 BLOOMi - University of Peradeniya\nAll rights reserved",
             fontColor: UtilConstants.whiteColor,
-            fontSize: mediaQueryData.size.height * 0.015,
+            fontSize: height * 0.2,
             fontWeight: FontWeight.w300,
           ),
         ));

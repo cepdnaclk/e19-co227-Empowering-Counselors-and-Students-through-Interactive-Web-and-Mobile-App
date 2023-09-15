@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
-class ForgotPasswordMobile extends StatelessWidget {
-  const ForgotPasswordMobile({
+class ForgotPasswordTablet extends StatelessWidget {
+  const ForgotPasswordTablet({
     super.key,
   });
 
@@ -21,16 +21,14 @@ class ForgotPasswordMobile extends StatelessWidget {
           children: [
             Column(
               children: [
-                const SizedBox(height: 140),
+                const SizedBox(height: 160),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(width: 10),
+                    const SizedBox(height: 40),
                     Container(
-                      width: 300,
-                      height: 360,
-                      padding: const EdgeInsets.only(
-                          left: 20, right: 20, top: 20, bottom: 10),
+                      width: 450,
+                      padding: const EdgeInsets.all(30),
                       decoration: BoxDecoration(
                         color: UtilConstants.lightgreyColor,
                         borderRadius: BorderRadius.circular(10),
@@ -38,14 +36,13 @@ class ForgotPasswordMobile extends StatelessWidget {
                       child: Column(children: [
                         const FormHeading(
                           "Reset Password",
-                          fontSize: 20,
                         ),
-                        const SizedBox(height: 50),
+                        const SizedBox(height: 40),
                         const SizedBox(
-                          width: 280,
+                          width: 420,
                           child: CustomText(
                             "Please, enter your email address. You will receive a link to create a new password via email.",
-                            fontSize: 9,
+                            fontSize: 15,
                             fontWeight: FontWeight.w600,
                             fontColor: UtilConstants.blackColor,
                             textAlign: TextAlign.left,
@@ -57,10 +54,6 @@ class ForgotPasswordMobile extends StatelessWidget {
                           textEditingController:
                               Provider.of<ForgotPasswordProvider>(context)
                                   .email,
-                          fontSize: 12,
-                          height: 35,
-                          width: 280,
-                          lableFontSize: 12,
                         ),
                         const SizedBox(height: 40),
                         Consumer<ForgotPasswordProvider>(
@@ -76,9 +69,6 @@ class ForgotPasswordMobile extends StatelessWidget {
                               child: FormButtonWeb(
                                 "Send",
                                 isLoading: value.isLoading,
-                                width: 280,
-                                height: 35,
-                                fontSize: 12,
                               ),
                             );
                           },
