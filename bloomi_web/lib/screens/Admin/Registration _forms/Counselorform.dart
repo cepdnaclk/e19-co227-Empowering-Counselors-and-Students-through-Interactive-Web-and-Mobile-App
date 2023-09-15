@@ -1,3 +1,4 @@
+import 'package:bloomi_web/components/custom_image.dart';
 import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
@@ -39,104 +40,96 @@ class _CounselorformState extends State<Counselorform> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 200),
-          child: Column(
-            children: [
-              SizedBox(height: mediaQueryData.size.height * 0.02),
-              Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    margin:
-                        EdgeInsets.only(top: mediaQueryData.size.height * 0.02),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                    ),
-                    child: Column(
-                      children: [
-                        FormHeading("Register Counselors",
-                            mediaQueryData: mediaQueryData),
-                        SizedBox(height: mediaQueryData.size.height * 0.04),
-                        FormInputWeb("Name",
-                            textEditingController:
-                                Provider.of<SignupProvider>(context).name,
-                            mediaQueryData: mediaQueryData),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        FormInputWeb("Email",
-                            textEditingController:
-                                Provider.of<SignupProvider>(context).email,
-                            mediaQueryData: mediaQueryData),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        FormInputWeb("Phone Number",
-                            textEditingController:
-                                Provider.of<SignupProvider>(context)
-                                    .phoneNumber,
-                            mediaQueryData: mediaQueryData),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        CustomDropdownMenu(
-                          "Faculty",
-                          listItem: listItems,
-                          textEditingController:
-                              Provider.of<SignupProvider>(context).faculty,
-                        ),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        FormInputWeb("Credentials",
-                            textEditingController:
-                                Provider.of<SignupProvider>(context)
-                                    .phoneNumber,
-                            mediaQueryData: mediaQueryData),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        FormInputWeb("User Name",
-                            textEditingController:
-                                Provider.of<SignupProvider>(context)
-                                    .phoneNumber,
-                            mediaQueryData: mediaQueryData),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        FormInputWeb("Password",
-                            textEditingController:
-                                Provider.of<SignupProvider>(context)
-                                    .phoneNumber,
-                            mediaQueryData: mediaQueryData),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        Consumer<SignupProvider>(
-                          builder: (context, value, child) {
-                            return InkWell(
-                              onTap: () {},
-                              child: FormButtonWeb(
-                                "Register",
-                                isLoading: false,
-                                mediaQueryData: mediaQueryData,
-                              ),
-                            );
-                          },
-                        ),
-                        SizedBox(height: mediaQueryData.size.height * 0.02),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: mediaQueryData.size.height * 0.1,
-              ),
-              Center(
-                child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.blue,
-                      elevation: 100,
-                      padding: const EdgeInsets.all(20),
-                    ),
-                    child: const Text(
-                      'Go Back',
-                      style: TextStyle(
-                        fontSize: 20,
+          child: Center(
+            child: Row(
+              children: [
+                const CustomImage(
+                  width: 200,
+                  height: 200,
+                  imgPath: 'assets/images/registration.jpeg',
+                ),
+                SizedBox(width: mediaQueryData.size.width * 0.05),
+                SizedBox(height: mediaQueryData.size.height * 0.02),
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      margin: EdgeInsets.only(
+                          top: mediaQueryData.size.height * 0.02),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
                       ),
-                    )),
-              ),
-            ],
+                      child: Center(
+                        child: Column(
+                          children: [
+                            FormHeading("Register Counselors",
+                                mediaQueryData: mediaQueryData),
+                            SizedBox(height: mediaQueryData.size.height * 0.04),
+                            FormInputWeb("Name",
+                                textEditingController:
+                                    Provider.of<SignupProvider>(context).name,
+                                mediaQueryData: mediaQueryData),
+                            SizedBox(height: mediaQueryData.size.height * 0.01),
+                            FormInputWeb("Email",
+                                textEditingController:
+                                    Provider.of<SignupProvider>(context).email,
+                                mediaQueryData: mediaQueryData),
+                            SizedBox(height: mediaQueryData.size.height * 0.01),
+                            FormInputWeb("Phone Number",
+                                textEditingController:
+                                    Provider.of<SignupProvider>(context)
+                                        .phoneNumber,
+                                mediaQueryData: mediaQueryData),
+                            SizedBox(height: mediaQueryData.size.height * 0.01),
+                            CustomDropdownMenu(
+                              "Faculty",
+                              listItem: listItems,
+                              textEditingController:
+                                  Provider.of<SignupProvider>(context).faculty,
+                            ),
+                            SizedBox(height: mediaQueryData.size.height * 0.01),
+                            FormInputWeb("Credentials",
+                                textEditingController:
+                                    Provider.of<SignupProvider>(context)
+                                        .phoneNumber,
+                                mediaQueryData: mediaQueryData),
+                            SizedBox(height: mediaQueryData.size.height * 0.01),
+                            FormInputWeb("User Name",
+                                textEditingController:
+                                    Provider.of<SignupProvider>(context)
+                                        .phoneNumber,
+                                mediaQueryData: mediaQueryData),
+                            SizedBox(height: mediaQueryData.size.height * 0.01),
+                            FormInputWeb("Password",
+                                textEditingController:
+                                    Provider.of<SignupProvider>(context)
+                                        .phoneNumber,
+                                mediaQueryData: mediaQueryData),
+                            SizedBox(height: mediaQueryData.size.height * 0.01),
+                            Consumer<SignupProvider>(
+                              builder: (context, value, child) {
+                                return InkWell(
+                                  onTap: () {},
+                                  child: FormButtonWeb(
+                                    "Register",
+                                    isLoading: false,
+                                    mediaQueryData: mediaQueryData,
+                                  ),
+                                );
+                              },
+                            ),
+                            SizedBox(height: mediaQueryData.size.height * 0.02),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: mediaQueryData.size.height * 0.1,
+                ),
+              ],
+            ),
           ),
         ),
       ),
