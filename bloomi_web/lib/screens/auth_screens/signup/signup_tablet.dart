@@ -46,7 +46,7 @@ class _SignUpTabletState extends State<SignUpTablet> {
         height: height,
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 35),
+            padding: const EdgeInsets.symmetric(vertical: 50),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
