@@ -1,5 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:bloomi_web/screens/auth/login/login.dart';
+import 'package:bloomi_web/screens/auth_screens/login/login.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 
