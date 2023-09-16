@@ -2,7 +2,6 @@ import 'package:bloomi_web/components/custom_image_column.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/custom_text_link_web.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
-import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/providers/auth/signup_provider.dart';
 import 'package:bloomi_web/screens/auth_screens/login/login.dart';
@@ -65,7 +64,7 @@ class _SignUpDesktopState extends State<SignUpDesktop> {
               ),
               const SizedBox(width: 20),
               Container(
-                height: 630,
+                height: 580,
                 width: 460,
                 padding: const EdgeInsets.only(
                     left: 40, right: 40, top: 30, bottom: 10),
@@ -75,10 +74,6 @@ class _SignUpDesktopState extends State<SignUpDesktop> {
                 ),
                 child: Column(
                   children: [
-                    const FormHeading(
-                      "SignUp Here",
-                    ),
-                    const SizedBox(height: 30),
                     FormInputWeb(
                       "Name",
                       textEditingController:
