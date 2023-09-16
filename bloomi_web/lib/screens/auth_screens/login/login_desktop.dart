@@ -5,6 +5,7 @@ import 'package:bloomi_web/components/customicon_container.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
+import 'package:bloomi_web/providers/auth/google_auth_provider.dart';
 import 'package:bloomi_web/providers/auth/login_provider.dart';
 import 'package:bloomi_web/screens/auth_screens/forgotPassword/forgot_password.dart';
 import 'package:bloomi_web/screens/auth_screens/signup/signup_form.dart';
@@ -105,16 +106,23 @@ class LoginDesktop extends StatelessWidget {
                     ),
                     const SizedBox(
                         height: UtilConstants.spaceBetweenInputDesktop),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        CustomIconContainer(
-                          imgPath: UtilConstants.googleImagePath,
+                        InkWell(
+                          onTap: () {
+                            Provider.of<GoogleAuthProviders>(context,
+                                    listen: false)
+                                .googleAuth();
+                          },
+                          child: const CustomIconContainer(
+                            imgPath: UtilConstants.googleImagePath,
+                          ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                             width: UtilConstants
                                 .spaceBetweenInputAndHeadingDesktop),
-                        CustomIconContainer(
+                        const CustomIconContainer(
                           imgPath: UtilConstants.facebookImagePath,
                         ),
                       ],
