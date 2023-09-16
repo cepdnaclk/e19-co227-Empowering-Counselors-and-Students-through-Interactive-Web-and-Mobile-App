@@ -6,13 +6,20 @@ import 'package:flutter/material.dart';
 class ConversationTile extends StatelessWidget {
   const ConversationTile({
     super.key,
+    required this.name,
+    required this.messages,
+    required this.time,
   });
+
+  final String name;
+  final String messages;
+  final String time;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: 50,
+        horizontal: 10,
         vertical: 10,
       ),
       decoration: const BoxDecoration(
@@ -38,13 +45,13 @@ class ConversationTile extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CustomText(
-                    "Kamal Dissanayaka",
+                  CustomText(
+                    name,
                     fontSize: 18,
                     fontColor: UtilConstants.blackColor,
                   ),
                   CustomText(
-                    "How are you?",
+                    messages,
                     fontSize: 15,
                     fontWeight: FontWeight.w400,
                     fontColor: UtilConstants.blackColor.withOpacity(0.5),
@@ -54,7 +61,7 @@ class ConversationTile extends StatelessWidget {
             ],
           ),
           CustomText(
-            "1 min ago",
+            time,
             fontSize: 14,
             fontWeight: FontWeight.w400,
             fontColor: UtilConstants.blackColor.withOpacity(0.5),
