@@ -1,5 +1,5 @@
 import 'package:bloomi_web/components/footer.dart';
-import 'package:bloomi_web/screens/home/home/chat/conversation/conversation.dart';
+import 'package:bloomi_web/screens/home/chat/conversation/conversation.dart';
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {

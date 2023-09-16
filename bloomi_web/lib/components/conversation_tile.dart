@@ -33,7 +33,7 @@ class ConversationTile extends StatelessWidget {
         children: [
           Row(
             children: [
-              ConversationImage(mediaQueryData: mediaQueryData),
+              const ConversationImage(),
               SizedBox(width: mediaQueryData.size.width * 0.01),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
