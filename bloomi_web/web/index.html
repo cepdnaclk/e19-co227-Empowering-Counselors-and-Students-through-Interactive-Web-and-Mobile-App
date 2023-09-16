@@ -16,10 +16,12 @@
   -->
   <base href="$FLUTTER_BASE_HREF">
 
+  <meta name="google-signin-client_id" content="277496527429-m3aiv2r6lou8p34m03i0htqd4vut3e39.apps.googleusercontent.com">
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
-  <meta name="google-signin-client_id" content="YOUR_CLIENT_ID_HERE">
+  <meta name="google-signin-client_id" content="277496527429-m3aiv2r6lou8p34m03i0htqd4vut3e39.apps.googleusercontent.com">
+
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -39,22 +41,6 @@
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
-
-  <!-- Include the Google API Client Library -->
-  <script src="https://apis.google.com/js/api.js"></script>
-
-  <script>
-    // Initialize the Google API Client Library with your API key and client ID
-    gapi.load('client:auth2', function () {
-      gapi.client.init({
-        apiKey: 'YOUR_API_KEY_HERE',
-        clientId: 'YOUR_CLIENT_ID_HERE',
-        discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/people/v1/rest'],
-        scope: 'profile email openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile',
-      });
-    });
-  </script>
-
 </head>
 <body>
   
