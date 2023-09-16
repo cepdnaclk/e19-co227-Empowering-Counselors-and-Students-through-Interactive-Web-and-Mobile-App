@@ -1,4 +1,5 @@
 import 'package:bloomi_web/components/custom_button.dart';
+import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
 class FormButtonWeb extends StatelessWidget {
@@ -13,8 +14,8 @@ class FormButtonWeb extends StatelessWidget {
     super.key,
     required this.isLoading,
     this.width = 420,
-    this.height = 50,
-    this.fontSize = 20,
+    this.height = UtilConstants.formInputFeildHeightDesktop,
+    this.fontSize = UtilConstants.buttonTextSizeDesktop,
   });
 
   @override

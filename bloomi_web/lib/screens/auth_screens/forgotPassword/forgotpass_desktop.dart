@@ -16,78 +16,67 @@ class ForgotPasswordDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Center(
-        child: Column(
+    return Center(
+      child: SingleChildScrollView(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            const SizedBox(width: 20),
+            const CustomImageColumn(),
+            const SizedBox(width: 40),
             Column(
               children: [
-                const SizedBox(height: 140),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const SizedBox(width: 20),
-                    const CustomImageColumn(),
-                    const SizedBox(width: 40),
-                    Column(
-                      children: [
-                        Container(
-                          width: 460,
-                          padding: const EdgeInsets.all(30),
-                          decoration: BoxDecoration(
-                            color: UtilConstants.lightgreyColor,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(children: [
-                            const FormHeading(
-                              "Reset Password",
-                            ),
-                            const SizedBox(height: 40),
-                            const SizedBox(
-                              width: 420,
-                              child: CustomText(
-                                "Please, enter your email address. You will receive a link to create a new password via email.",
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                                fontColor: UtilConstants.blackColor,
-                                textAlign: TextAlign.left,
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            FormInputWeb(
-                              "Email",
-                              textEditingController:
-                                  Provider.of<ForgotPasswordProvider>(context)
-                                      .email,
-                            ),
-                            const SizedBox(height: 40),
-                            Consumer<ForgotPasswordProvider>(
-                              builder: (context, value, child) {
-                                return InkWell(
-                                  onTap: () {
-                                    try {
-                                      value.sendEmail(
-                                          context, value.email.text);
-                                    } catch (e) {
-                                      Logger().e(e);
-                                    }
-                                  },
-                                  child: FormButtonWeb(
-                                    "Send",
-                                    isLoading: value.isLoading,
-                                  ),
-                                );
-                              },
-                            ),
-                          ]),
-                        ),
-                      ],
+                Container(
+                  width: 460,
+                  padding: const EdgeInsets.all(30),
+                  decoration: BoxDecoration(
+                    color: UtilConstants.lightgreyColor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(children: [
+                    const FormHeading(
+                      "Reset Password",
                     ),
-                    const SizedBox(width: 20),
-                  ],
+                    const SizedBox(height: 40),
+                    const SizedBox(
+                      width: 420,
+                      child: CustomText(
+                        "Please, enter your email address. You will receive a link to create a new password via email.",
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        fontColor: UtilConstants.blackColor,
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    FormInputWeb(
+                      "Email",
+                      textEditingController:
+                          Provider.of<ForgotPasswordProvider>(context).email,
+                    ),
+                    const SizedBox(height: 40),
+                    Consumer<ForgotPasswordProvider>(
+                      builder: (context, value, child) {
+                        return InkWell(
+                          onTap: () {
+                            try {
+                              value.sendEmail(context, value.email.text);
+                            } catch (e) {
+                              Logger().e(e);
+                            }
+                          },
+                          child: FormButtonWeb(
+                            "Send",
+                            isLoading: value.isLoading,
+                          ),
+                        );
+                      },
+                    ),
+                  ]),
                 ),
               ],
             ),
+            const SizedBox(width: 20),
           ],
         ),
       ),

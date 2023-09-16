@@ -39,106 +39,100 @@ class _SignUpTabletState extends State<SignUpTablet> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-
-    return Scaffold(
-      body: SizedBox(
-        height: height,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 50),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(width: 10),
-                Container(
-                  height: 620,
-                  width: 420,
-                  padding: const EdgeInsets.only(
-                      left: 40, right: 40, top: 30, bottom: 10),
-                  decoration: BoxDecoration(
-                    color: UtilConstants.lightgreyColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    children: [
-                      const FormHeading(
-                        "SignUp Here",
-                      ),
-                      const SizedBox(height: 30),
-                      FormInputWeb(
-                        "Name",
-                        textEditingController:
-                            Provider.of<SignupProvider>(context).name,
-                      ),
-                      const SizedBox(height: 10),
-                      FormInputWeb(
-                        "Email",
-                        textEditingController:
-                            Provider.of<SignupProvider>(context).email,
-                      ),
-                      const SizedBox(height: 10),
-                      FormInputWeb(
-                        "Password",
-                        textEditingController:
-                            Provider.of<SignupProvider>(context).password,
-                        obscure: true,
-                      ),
-                      const SizedBox(height: 10),
-                      FormInputWeb(
-                        "Phone Number",
-                        textEditingController:
-                            Provider.of<SignupProvider>(context).phoneNumber,
-                      ),
-                      const SizedBox(height: 10),
-                      FormInputWeb(
-                        "Faculty",
-                        textEditingController:
-                            Provider.of<SignupProvider>(context).faculty,
-                      ),
-                      const SizedBox(height: 10),
-                      FormInputWeb("Department",
-                          textEditingController:
-                              Provider.of<SignupProvider>(context).department),
-                      const SizedBox(height: 10),
-                      FormInputWeb(
-                        "Level of Study",
-                        textEditingController:
-                            Provider.of<SignupProvider>(context).year,
-                      ),
-                      const SizedBox(height: 25),
-                      Consumer<SignupProvider>(
-                        builder: (context, value, child) {
-                          return InkWell(
-                            onTap: () {
-                              Provider.of<SignupProvider>(context,
-                                      listen: false)
-                                  .signUpUser(
-                                      value.email.text,
-                                      value.password.text,
-                                      value.name.text,
-                                      value.phoneNumber.text,
-                                      value.department.text,
-                                      value.faculty.text,
-                                      value.year.text,
-                                      context);
-                            },
-                            child: FormButtonWeb(
-                              "Register",
-                              isLoading: value.isLoading,
-                            ),
-                          );
-                        },
-                      ),
-                      const SizedBox(height: 6),
-                      const CustomTextLinkWeb("Already have an account?",
-                          route: Login())
-                    ],
-                  ),
+    return Center(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 50),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(width: 10),
+              Container(
+                height: 620,
+                width: 420,
+                padding: const EdgeInsets.only(
+                    left: 40, right: 40, top: 30, bottom: 10),
+                decoration: BoxDecoration(
+                  color: UtilConstants.lightgreyColor,
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                const SizedBox(width: 10),
-              ],
-            ),
+                child: Column(
+                  children: [
+                    const FormHeading(
+                      "SignUp Here",
+                    ),
+                    const SizedBox(height: 30),
+                    FormInputWeb(
+                      "Name",
+                      textEditingController:
+                          Provider.of<SignupProvider>(context).name,
+                    ),
+                    const SizedBox(height: 10),
+                    FormInputWeb(
+                      "Email",
+                      textEditingController:
+                          Provider.of<SignupProvider>(context).email,
+                    ),
+                    const SizedBox(height: 10),
+                    FormInputWeb(
+                      "Password",
+                      textEditingController:
+                          Provider.of<SignupProvider>(context).password,
+                      obscure: true,
+                    ),
+                    const SizedBox(height: 10),
+                    FormInputWeb(
+                      "Phone Number",
+                      textEditingController:
+                          Provider.of<SignupProvider>(context).phoneNumber,
+                    ),
+                    const SizedBox(height: 10),
+                    FormInputWeb(
+                      "Faculty",
+                      textEditingController:
+                          Provider.of<SignupProvider>(context).faculty,
+                    ),
+                    const SizedBox(height: 10),
+                    FormInputWeb("Department",
+                        textEditingController:
+                            Provider.of<SignupProvider>(context).department),
+                    const SizedBox(height: 10),
+                    FormInputWeb(
+                      "Level of Study",
+                      textEditingController:
+                          Provider.of<SignupProvider>(context).year,
+                    ),
+                    const SizedBox(height: 25),
+                    Consumer<SignupProvider>(
+                      builder: (context, value, child) {
+                        return InkWell(
+                          onTap: () {
+                            Provider.of<SignupProvider>(context, listen: false)
+                                .signUpUser(
+                                    value.email.text,
+                                    value.password.text,
+                                    value.name.text,
+                                    value.phoneNumber.text,
+                                    value.department.text,
+                                    value.faculty.text,
+                                    value.year.text,
+                                    context);
+                          },
+                          child: FormButtonWeb(
+                            "Register",
+                            isLoading: value.isLoading,
+                          ),
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 6),
+                    const CustomTextLinkWeb("Already have an account?",
+                        route: Login())
+                  ],
+                ),
+              ),
+              const SizedBox(width: 10),
+            ],
           ),
         ),
       ),
