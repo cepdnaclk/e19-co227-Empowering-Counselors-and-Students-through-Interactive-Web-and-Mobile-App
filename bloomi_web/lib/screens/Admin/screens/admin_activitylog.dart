@@ -73,7 +73,7 @@ class _AdminActivityLogState extends State<AdminActivityLog> {
             trailing: CustomText(
               times[index],
               fontSize: 15,
-              fontColor: Color.fromARGB(255, 48, 72, 150),
+              fontColor: const Color.fromARGB(255, 48, 72, 150),
             ),
           );
         },

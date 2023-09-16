@@ -5,15 +5,15 @@ import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class UserAppoinmentDashboard extends StatefulWidget {
-  const UserAppoinmentDashboard({Key? key}) : super(key: key);
+class UserAppointmentDashboard extends StatefulWidget {
+  const UserAppointmentDashboard({Key? key}) : super(key: key);
 
   @override
-  State<UserAppoinmentDashboard> createState() =>
-      _UserAppoinmentDashboardState();
+  State<UserAppointmentDashboard> createState() =>
+      _UserAppointmentDashboardState();
 }
 
-class _UserAppoinmentDashboardState extends State<UserAppoinmentDashboard> {
+class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
@@ -74,27 +74,22 @@ class _UserAppoinmentDashboardState extends State<UserAppoinmentDashboard> {
                     child: SizedBox(
                       height: 300,
                       width: 1000,
-                      child: Expanded(
-                          child: (SizedBox(
-                        child: SizedBox(
-                          child: ListView.builder(
-                            itemCount: 2,
-                            itemBuilder: (context, index) => Card(
-                              color: UtilConstants.lightgreyColor,
-                              elevation: 4,
-                              margin: const EdgeInsets.symmetric(vertical: 10),
-                              child: ListTile(
-                                leading: Text(
-                                  id[index],
-                                  style: const TextStyle(fontSize: 24),
-                                ),
-                                title: Text(names[index]),
-                                subtitle: const Text("Hiii"),
-                              ),
+                      child: ListView.builder(
+                        itemCount: 2,
+                        itemBuilder: (context, index) => Card(
+                          color: UtilConstants.lightgreyColor,
+                          elevation: 4,
+                          margin: const EdgeInsets.symmetric(vertical: 10),
+                          child: ListTile(
+                            leading: Text(
+                              id[index],
+                              style: const TextStyle(fontSize: 24),
                             ),
+                            title: Text(names[index]),
+                            subtitle: const Text("Hiii"),
                           ),
                         ),
-                      ))),
+                      ),
                     ),
                   ),
                 ),
@@ -106,16 +101,13 @@ class _UserAppoinmentDashboardState extends State<UserAppoinmentDashboard> {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    SizedBox(
-                      width: 300,
+                    Expanded(
                       child: CustomCardWidget(),
                     ),
-                    SizedBox(
-                      width: 300,
+                    Expanded(
                       child: CustomCardWidget(),
                     ),
-                    SizedBox(
-                      width: 300,
+                    Expanded(
                       child: CustomCardWidget(),
                     ),
                   ],

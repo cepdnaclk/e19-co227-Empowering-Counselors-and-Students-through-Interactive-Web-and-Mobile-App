@@ -1,11 +1,11 @@
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
-import 'package:bloomi_web/screens/Counsellor/calender.dart';
-import 'package:bloomi_web/screens/Counsellor/dashboard.dart';
-import 'package:bloomi_web/screens/Counsellor/drawer.dart';
-import 'package:bloomi_web/screens/Counsellor/message.dart';
-import 'package:bloomi_web/screens/Counsellor/profile.dart';
-import 'package:bloomi_web/screens/Counsellor/topbar_contents.dart';
+import 'package:bloomi_web/screens/counsellor/calender.dart';
+import 'package:bloomi_web/screens/counsellor/dashboard.dart';
+import 'package:bloomi_web/screens/counsellor/drawer.dart';
+import 'package:bloomi_web/screens/counsellor/message.dart';
+import 'package:bloomi_web/screens/counsellor/profile.dart';
+import 'package:bloomi_web/screens/counsellor/topbar_contents.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -87,7 +87,7 @@ class _CounselorHomeState extends State<CounselorHome> {
     final List<Widget> widgets = [
       const Dashboard(),
       const CounselorCalender(),
-      MessagingCard(),
+      const MessagingCard(),
       const CounselorProfile(
         name: 'John Doe',
         email: 'johndoe@example.com',

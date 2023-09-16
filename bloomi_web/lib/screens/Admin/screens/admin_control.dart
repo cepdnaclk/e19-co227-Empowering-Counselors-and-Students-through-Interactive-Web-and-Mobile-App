@@ -1,4 +1,4 @@
-import 'package:bloomi_web/screens/Admin/Registration%20_forms/studentform.dart';
+import 'package:bloomi_web/screens/admin/registration%20_forms/studentform.dart';
 import 'package:flutter/material.dart';
 
 class AdminControl extends StatefulWidget {

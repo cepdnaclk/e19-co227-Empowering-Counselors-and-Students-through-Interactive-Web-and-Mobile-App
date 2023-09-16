@@ -11,6 +11,6 @@ class Appointment extends StatefulWidget {
 class _AppointmentState extends State<Appointment> {
   @override
   Widget build(BuildContext context) {
-    return const UserAppoinmentDashboard();
+    return const UserAppointmentDashboard();
   }
 }

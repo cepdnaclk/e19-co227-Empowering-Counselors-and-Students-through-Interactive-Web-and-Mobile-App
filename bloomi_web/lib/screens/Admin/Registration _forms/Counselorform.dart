@@ -3,7 +3,7 @@ import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
-import 'package:bloomi_web/providers/auth/Counselorregister_provider.dart';
+import 'package:bloomi_web/providers/auth/counselorregister_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

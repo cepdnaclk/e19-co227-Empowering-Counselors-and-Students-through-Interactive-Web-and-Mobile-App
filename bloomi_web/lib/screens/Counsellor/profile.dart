@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CounselorProfile extends StatefulWidget {
+class CounselorProfile extends StatelessWidget {
   final String name;
   final String email;
   final String faculty;
@@ -16,11 +16,6 @@ class CounselorProfile extends StatefulWidget {
     required this.imageUrl,
   }) : super(key: key);
 
-  @override
-  _CounselorProfileState createState() => _CounselorProfileState();
-}
-
-class _CounselorProfileState extends State<CounselorProfile> {
   @override
   Widget build(BuildContext context) {
     //add mediaQuery
@@ -41,7 +36,7 @@ class _CounselorProfileState extends State<CounselorProfile> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CircleAvatar(
-              backgroundImage: NetworkImage(widget.imageUrl),
+              backgroundImage: NetworkImage(imageUrl),
               radius: mediaQueryData.size.width * 0.1,
             ),
             SizedBox(width: mediaQueryData.size.width * 0.02),
@@ -55,7 +50,7 @@ class _CounselorProfileState extends State<CounselorProfile> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    widget.name,
+                    name,
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -63,17 +58,17 @@ class _CounselorProfileState extends State<CounselorProfile> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Email: ${widget.email}',
+                    'Email: $email',
                     style: const TextStyle(fontSize: 16),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Faculty: ${widget.faculty}',
+                    'Faculty: $faculty',
                     style: const TextStyle(fontSize: 16),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Department: ${widget.department}',
+                    'Department: $department',
                     style: const TextStyle(fontSize: 16),
                   ),
                 ],
