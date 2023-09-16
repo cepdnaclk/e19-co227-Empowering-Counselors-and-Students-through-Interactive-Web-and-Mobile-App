@@ -8,16 +8,16 @@ import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Counselorform extends StatefulWidget {
-  const Counselorform({
+class Counselorupdateform extends StatefulWidget {
+  const Counselorupdateform({
     super.key,
   });
 
   @override
-  State<Counselorform> createState() => _CounselorformState();
+  State<Counselorupdateform> createState() => _CounselorformState();
 }
 
-class _CounselorformState extends State<Counselorform> {
+class _CounselorformState extends State<Counselorupdateform> {
   List<String> listItems = [
     'Faculty of Engineering',
     'Faculty of Medicine',

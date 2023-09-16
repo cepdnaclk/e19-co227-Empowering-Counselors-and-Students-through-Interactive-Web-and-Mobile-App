@@ -1,3 +1,6 @@
+import 'package:bloomi_web/components/custom_tablecells.dart';
+import 'package:bloomi_web/components/custom_tableheads.dart';
+import 'package:bloomi_web/screens/admin_screens/registration%20_forms/Counselorupdateform.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/counselorform.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +26,7 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
     "Robert Lee",
   ];
 
-  final counselornumber = [
+  final counselorid = [
     "547826",
     "309215",
     "682734",
@@ -83,18 +86,7 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
     "MA, Licensed Psychologist",
     "CEH, Certified Ethical Hacker"
   ];
-  final usernames = [
-    "BlueSky123",
-    "StarGazer87",
-    "TechNinja55",
-    "GardenLover22",
-    "MusicMaestro99",
-    "AdventureSeeker42",
-    "FoodieChic76",
-    "Bookworm17",
-    "FitnessFanatic88",
-    "TravelBuddy61"
-  ];
+
   final passwords = [
     "BlueSky123",
     "StarGazer87",
@@ -141,144 +133,60 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
               padding: const EdgeInsets.all(20),
               child: Table(
                 columnWidths: const <int, TableColumnWidth>{
-                  0: FlexColumnWidth(1.0),
+                  0: FlexColumnWidth(0.8),
                   1: FlexColumnWidth(1.0),
                   2: FlexColumnWidth(1.0),
-                  3: FlexColumnWidth(1.0),
-                  4: FlexColumnWidth(1.0),
-                  5: FlexColumnWidth(1.0),
-                  6: FlexColumnWidth(1.0),
-                  7: FlexColumnWidth(1.0),
+                  3: FlexColumnWidth(0.8),
+                  4: FlexColumnWidth(1.2),
+                  5: FlexColumnWidth(1.2),
+                  6: FlexColumnWidth(1.2),
                 },
                 border: TableBorder.all(
                   color: Colors.blue.shade500,
                 ),
                 children: [
                   const TableRow(children: [
-                    TableCell(
-                      verticalAlignment: TableCellVerticalAlignment.middle,
-                      child: Text(
-                        'Counselor Name',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                    TableCell(
-                      verticalAlignment: TableCellVerticalAlignment.middle,
-                      child: Text(
-                        'Counselor Email',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                    TableCell(
-                      verticalAlignment: TableCellVerticalAlignment.middle,
-                      child: Text(
-                        'Counselor ID',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                    TableCell(
-                      verticalAlignment: TableCellVerticalAlignment.middle,
-                      child: Text(
-                        'Counselor Phone Number',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                    TableCell(
-                      verticalAlignment: TableCellVerticalAlignment.middle,
-                      child: Text(
-                        'Faculty',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                    TableCell(
-                      verticalAlignment: TableCellVerticalAlignment.middle,
-                      child: Text(
-                        'Credentials',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                    TableCell(
-                      verticalAlignment: TableCellVerticalAlignment.middle,
-                      child: Text(
-                        'User Name',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                    TableCell(
-                      verticalAlignment: TableCellVerticalAlignment.middle,
-                      child: Text(
-                        'Password',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
+                    Tableheads(text: 'Counselor Id'),
+                    Tableheads(text: 'Name'),
+                    Tableheads(text: 'Email'),
+                    Tableheads(text: 'Contact Nu.'),
+                    Tableheads(text: 'Faculty'),
+                    Tableheads(text: 'Credentials'),
+                    Tableheads(text: 'Controls'),
                   ]),
                   for (int index = 0; index < counselornames.length; index++)
                     TableRow(children: [
+                      Tablecellwidget(name: counselorid, indexnumber: index),
+                      Tablecellwidget(name: counselornames, indexnumber: index),
+                      Tablecellwidget(
+                          name: counseloremails, indexnumber: index),
+                      Tablecellwidget(
+                          name: counselorphonenumber, indexnumber: index),
+                      Tablecellwidget(name: faculties, indexnumber: index),
+                      Tablecellwidget(name: credentials, indexnumber: index),
                       TableCell(
-                        verticalAlignment: TableCellVerticalAlignment.middle,
-                        child: Text(
-                          counselornames[index],
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 10, right: 5, top: 10, bottom: 10),
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    UtilFunction.navigateForward(
+                                      context,
+                                      const Counselorupdateform(),
+                                    );
+                                  },
+                                  child: const Text('Update')),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 5),
+                              child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Delete')),
+                            ),
+                          ],
                         ),
-                      ),
-                      TableCell(
-                        verticalAlignment: TableCellVerticalAlignment.middle,
-                        child: Text(counseloremails[index]),
-                      ),
-                      TableCell(
-                        verticalAlignment: TableCellVerticalAlignment.middle,
-                        child: Text(counselornumber[index]),
-                      ),
-                      TableCell(
-                        verticalAlignment: TableCellVerticalAlignment.middle,
-                        child: Text(counselorphonenumber[index]),
-                      ),
-                      TableCell(
-                        verticalAlignment: TableCellVerticalAlignment.middle,
-                        child: Text(faculties[index]),
-                      ),
-                      TableCell(
-                        verticalAlignment: TableCellVerticalAlignment.middle,
-                        child: Text(credentials[index]),
-                      ),
-                      TableCell(
-                        verticalAlignment: TableCellVerticalAlignment.middle,
-                        child: Text(usernames[index]),
-                      ),
-                      TableCell(
-                        verticalAlignment: TableCellVerticalAlignment.middle,
-                        child: Text(passwords[index]),
                       ),
                     ]),
                 ],

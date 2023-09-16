@@ -10,7 +10,6 @@ class CounselorRegistrationProvider extends ChangeNotifier {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _department = TextEditingController();
   final TextEditingController _faculty = TextEditingController();
-  final TextEditingController _username = TextEditingController();
   final TextEditingController _credentials = TextEditingController();
   final String _userType = "Counselors";
 
@@ -21,7 +20,6 @@ class CounselorRegistrationProvider extends ChangeNotifier {
   TextEditingController get email => _email;
   TextEditingController get department => _department;
   TextEditingController get faculty => _faculty;
-  TextEditingController get username => _username;
   TextEditingController get credentials => _credentials;
 
   String get userType => _userType;
@@ -54,11 +52,6 @@ class CounselorRegistrationProvider extends ChangeNotifier {
 
   void setDepartment(String department) {
     _department.text = department;
-    notifyListeners();
-  }
-
-  void setUserName(String username) {
-    _username.text = username;
     notifyListeners();
   }
 
