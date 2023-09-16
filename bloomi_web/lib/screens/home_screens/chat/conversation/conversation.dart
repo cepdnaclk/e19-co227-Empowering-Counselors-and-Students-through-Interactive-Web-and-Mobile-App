@@ -12,21 +12,26 @@ class Conversation extends StatefulWidget {
 class _ConversationState extends State<Conversation> {
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Column(
         children: [
           const HeaderWidget(),
-          const SizedBox(height: 50),
+          const SizedBox(height: 10),
           Expanded(
             child: ListView.separated(
                 itemBuilder: (context, index) {
-                  return ConversationTile(mediaQueryData: mediaQueryData);
+                  return const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: ConversationTile(),
+                  );
                 },
                 separatorBuilder: (context, index) {
-                  return SizedBox(height: mediaQueryData.size.height * 0.01);
+                  return const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: SizedBox(height: 2),
+                  );
                 },
-                itemCount: 10),
+                itemCount: 1),
           )
         ],
       ),

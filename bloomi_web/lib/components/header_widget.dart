@@ -12,9 +12,9 @@ class HeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 40),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       width: width,
-      height: 55,
+      height: 70,
       color: UtilConstants.lightgreyColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -25,7 +25,8 @@ class HeaderWidget extends StatelessWidget {
               SizedBox(width: 20),
               CustomText(
                 "Sachith Dissanayaka",
-                fontSize: 15,
+                fontSize: 20,
+                fontColor: UtilConstants.blackColor,
               ),
             ],
           ),
@@ -35,8 +36,8 @@ class HeaderWidget extends StatelessWidget {
                 onPressed: () {},
                 icon: const Icon(
                   Icons.people_alt_rounded,
-                  color: UtilConstants.primaryColor,
-                  size: 20,
+                  color: UtilConstants.blackColor,
+                  size: 30,
                 ),
               ),
               const SizedBox(width: 20),
@@ -44,8 +45,8 @@ class HeaderWidget extends StatelessWidget {
                 onPressed: () {},
                 icon: const Icon(
                   Icons.video_call_rounded,
-                  color: UtilConstants.primaryColor,
-                  size: 20,
+                  color: UtilConstants.blackColor,
+                  size: 40,
                 ),
               )
             ],
