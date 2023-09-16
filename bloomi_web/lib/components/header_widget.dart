@@ -33,6 +33,12 @@ class HeaderWidget extends StatelessWidget {
                 fontSize: 20,
                 fontColor: UtilConstants.blackColor,
               ),
+              const SizedBox(width: 4),
+              Icon(
+                Icons.circle_rounded,
+                color: UtilConstants.greenColor,
+                size: 10,
+              )
             ],
           ),
           isTrue

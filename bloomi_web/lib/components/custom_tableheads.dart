@@ -11,13 +11,16 @@ class Tableheads extends StatelessWidget {
   Widget build(BuildContext context) {
     return TableCell(
       verticalAlignment: TableCellVerticalAlignment.middle,
-      child: Text(
-        text,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.deepPurpleAccent,
-          fontSize: 20,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.deepPurpleAccent,
+            fontSize: 20,
+          ),
         ),
       ),
     );
