@@ -6,19 +6,19 @@ import 'package:flutter/material.dart';
 class ConversationTile extends StatelessWidget {
   const ConversationTile({
     super.key,
-    required this.mediaQueryData,
   });
-
-  final MediaQueryData mediaQueryData;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: mediaQueryData.size.width * 0.04,
-        vertical: mediaQueryData.size.height * 0.02,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 50,
+        vertical: 10,
       ),
       decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.grey,
@@ -34,19 +34,20 @@ class ConversationTile extends StatelessWidget {
           Row(
             children: [
               const ConversationImage(),
-              SizedBox(width: mediaQueryData.size.width * 0.01),
+              const SizedBox(width: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText(
+                  const CustomText(
                     "Kamal Dissanayaka",
-                    fontSize: mediaQueryData.size.width * 0.015,
+                    fontSize: 18,
+                    fontColor: UtilConstants.blackColor,
                   ),
                   CustomText(
                     "How are you?",
-                    fontSize: mediaQueryData.size.width * 0.009,
+                    fontSize: 15,
                     fontWeight: FontWeight.w400,
-                    fontColor: UtilConstants.lightgreyColor,
+                    fontColor: UtilConstants.blackColor.withOpacity(0.5),
                   ),
                 ],
               ),
@@ -54,9 +55,9 @@ class ConversationTile extends StatelessWidget {
           ),
           CustomText(
             "1 min ago",
-            fontSize: mediaQueryData.size.width * 0.01,
+            fontSize: 14,
             fontWeight: FontWeight.w400,
-            fontColor: UtilConstants.lightgreyColor,
+            fontColor: UtilConstants.blackColor.withOpacity(0.5),
           ),
         ],
       ),
