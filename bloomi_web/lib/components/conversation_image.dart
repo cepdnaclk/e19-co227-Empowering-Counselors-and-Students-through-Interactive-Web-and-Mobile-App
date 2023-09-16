@@ -4,16 +4,13 @@ import 'package:flutter/material.dart';
 class ConversationImage extends StatelessWidget {
   const ConversationImage({
     super.key,
-    required this.mediaQueryData,
   });
-
-  final MediaQueryData mediaQueryData;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: mediaQueryData.size.width * 0.04,
-      height: mediaQueryData.size.width * 0.04,
+      width: 20,
+      height: 20,
       decoration: const BoxDecoration(
         shape: BoxShape.circle, // Use BoxShape.circle to create an oval shape
       ),

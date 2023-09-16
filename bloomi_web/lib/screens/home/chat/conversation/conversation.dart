@@ -16,8 +16,8 @@ class _ConversationState extends State<Conversation> {
     return SafeArea(
       child: Column(
         children: [
-          HeaderWidget(mediaQueryData: mediaQueryData),
-          SizedBox(height: mediaQueryData.size.height * 0.01),
+          const HeaderWidget(),
+          const SizedBox(height: 30),
           Expanded(
             child: ListView.separated(
                 itemBuilder: (context, index) {

@@ -6,29 +6,26 @@ import 'package:flutter/material.dart';
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({
     super.key,
-    required this.mediaQueryData,
   });
-
-  final MediaQueryData mediaQueryData;
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Container(
-      padding:
-          EdgeInsets.symmetric(horizontal: mediaQueryData.size.width * 0.01),
-      width: mediaQueryData.size.width,
-      height: mediaQueryData.size.height * 0.09,
+      padding: const EdgeInsets.symmetric(horizontal: 40),
+      width: width,
+      height: 55,
       color: UtilConstants.lightgreyColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
+          const Row(
             children: [
-              ConversationImage(mediaQueryData: mediaQueryData),
-              SizedBox(width: mediaQueryData.size.width * 0.01),
+              ConversationImage(),
+              SizedBox(width: 20),
               CustomText(
                 "Sachith Dissanayaka",
-                fontSize: mediaQueryData.size.width * 0.015,
+                fontSize: 15,
               ),
             ],
           ),
@@ -36,19 +33,19 @@ class HeaderWidget extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.people_alt_rounded,
                   color: UtilConstants.primaryColor,
-                  size: mediaQueryData.size.width * 0.023,
+                  size: 20,
                 ),
               ),
-              SizedBox(width: mediaQueryData.size.width * 0.01),
+              const SizedBox(width: 20),
               IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.video_call_rounded,
                   color: UtilConstants.primaryColor,
-                  size: mediaQueryData.size.width * 0.03,
+                  size: 20,
                 ),
               )
             ],

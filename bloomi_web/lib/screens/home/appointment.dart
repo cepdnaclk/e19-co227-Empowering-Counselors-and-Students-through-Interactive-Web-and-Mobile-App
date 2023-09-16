@@ -1,4 +1,4 @@
-import 'package:bloomi_web/screens/home/home/user_apoinment_dashboard.dart';
+import 'package:bloomi_web/screens/home/user_apoinment_dashboard.dart';
 import 'package:flutter/material.dart';
 
 class Appointment extends StatefulWidget {
