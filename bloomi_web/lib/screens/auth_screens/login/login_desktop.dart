@@ -7,6 +7,7 @@ import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/providers/auth/login_provider.dart';
 import 'package:bloomi_web/screens/auth_screens/forgotPassword/forgot_password.dart';
+import 'package:bloomi_web/screens/auth_screens/signup/signup_form.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,22 +37,21 @@ class LoginDesktop extends StatelessWidget {
                         const SizedBox(width: 10),
                         const Column(
                           children: [
-                            CustomImageColumn(
-                              width: 380,
-                              height: 380,
-                            ),
+                            CustomImageColumn(),
                             SizedBox(
                               width: 420,
                               child: CustomText(
                                   "BLOOMi helps you connect and share your feelings with your mentors",
                                   fontColor: UtilConstants.blackColor,
-                                  fontSize: 20,
+                                  fontSize: 17,
                                   fontWeight: FontWeight.w300),
                             ),
                           ],
                         ),
                         const SizedBox(width: 10),
                         Container(
+                          width: 460,
+                          height: 520,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 30, vertical: 40),
                           decoration: BoxDecoration(
@@ -64,7 +64,7 @@ class LoginDesktop extends StatelessWidget {
                               const FormHeading(
                                 "Login Here",
                               ),
-                              const SizedBox(height: 70),
+                              const SizedBox(height: 40),
                               FormInputWeb(
                                 "Email",
                                 textEditingController:
@@ -77,7 +77,10 @@ class LoginDesktop extends StatelessWidget {
                                     Provider.of<LoginProvider>(context)
                                         .password,
                               ),
-                              const SizedBox(height: 40),
+                              const SizedBox(height: 10),
+                              const CustomTextLinkWeb("Forgot password?",
+                                  route: ForgotPassword()),
+                              const SizedBox(height: 20),
                               Consumer<LoginProvider>(
                                 builder: (context, value, child) {
                                   return InkWell(
@@ -93,9 +96,9 @@ class LoginDesktop extends StatelessWidget {
                                 },
                               ),
                               const SizedBox(height: 10),
-                              const CustomTextLinkWeb("forgot password?",
-                                  route: ForgotPassword()),
-                              const SizedBox(height: 40),
+                              const CustomTextLinkWeb("Create new account?",
+                                  route: SignUp()),
+                              const SizedBox(height: 30),
                               const CustomText(
                                 "Or login with social account",
                                 fontSize: 15,
@@ -109,7 +112,7 @@ class LoginDesktop extends StatelessWidget {
                                   CustomIconContainer(
                                     imgPath: UtilConstants.googleImagePath,
                                   ),
-                                  SizedBox(width: 100),
+                                  SizedBox(width: 50),
                                   CustomIconContainer(
                                     imgPath: UtilConstants.facebookImagePath,
                                   ),
