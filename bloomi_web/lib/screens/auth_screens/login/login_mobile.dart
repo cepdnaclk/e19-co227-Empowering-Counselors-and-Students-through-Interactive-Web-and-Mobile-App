@@ -6,6 +6,7 @@ import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/providers/auth/login_provider.dart';
 import 'package:bloomi_web/screens/auth_screens/forgotPassword/forgot_password.dart';
+import 'package:bloomi_web/screens/auth_screens/signup/signup_form.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -93,9 +94,7 @@ class LoginMobile extends StatelessWidget {
                               ),
                               const SizedBox(height: 6),
                               const CustomTextLinkWeb("Create new account?",
-                                  width: 280,
-                                  fontSize: 10,
-                                  route: ForgotPassword()),
+                                  width: 280, fontSize: 10, route: SignUp()),
                               const SizedBox(height: 8),
                               const CustomText(
                                 "Or login with social account",
