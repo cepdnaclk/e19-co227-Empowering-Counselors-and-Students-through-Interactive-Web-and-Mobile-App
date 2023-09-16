@@ -4,8 +4,8 @@ import 'package:bloomi_web/screens/counsellor_screens/calender/calender.dart';
 import 'package:bloomi_web/screens/counsellor_screens/chat/message.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/drawer.dart';
-import 'package:bloomi_web/screens/counsellor_screens/home/topbar_contents.dart';
 import 'package:bloomi_web/screens/counsellor_screens/profile/profile.dart';
+import 'package:bloomi_web/screens/counsellor_screens/topbar_contents.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -109,7 +109,7 @@ class _CounselorHomeState extends State<CounselorHome> {
                   fontColor: UtilConstants.primaryColor))
           : PreferredSize(
               preferredSize: Size(mediaQueryData.size.width, 70),
-              child: const HomeNavBar(),
+              child: const CounsellorNavBar(),
             ),
       body: Consumer<NavigationProvider>(
         builder: (context, value, child) {
