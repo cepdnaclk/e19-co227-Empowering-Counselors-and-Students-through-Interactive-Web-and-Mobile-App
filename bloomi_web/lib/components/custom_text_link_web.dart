@@ -1,4 +1,5 @@
 import 'package:bloomi_web/components/custom_text.dart';
+import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class CustomTextLinkWeb extends StatelessWidget {
     super.key,
     required this.route,
     this.width = 420,
-    this.fontSize = 15,
+    this.fontSize = UtilConstants.customLinkTextDesktop,
   });
 
   @override

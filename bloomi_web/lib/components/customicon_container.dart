@@ -17,7 +17,7 @@ class CustomIconContainer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(UtilConstants.boardRadiusForm),
+          borderRadius: BorderRadius.circular(10),
           color: UtilConstants.whiteColor),
       child: Image.asset(
         imgPath,

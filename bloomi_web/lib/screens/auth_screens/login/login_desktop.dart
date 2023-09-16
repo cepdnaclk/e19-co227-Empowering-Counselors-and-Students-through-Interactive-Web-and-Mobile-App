@@ -20,117 +20,112 @@ class LoginDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const SizedBox(width: 10),
+              const Column(
                 children: [
-                  const SizedBox(height: 100),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const SizedBox(width: 10),
-                      const Column(
-                        children: [
-                          CustomImageColumn(),
-                          SizedBox(
-                            width: 420,
-                            child: CustomText(
-                                "BLOOMi helps you connect and share your feelings with your mentors",
-                                fontColor: UtilConstants.blackColor,
-                                fontSize: 17,
-                                fontWeight: FontWeight.w300),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(width: 10),
-                      Column(
-                        children: [
-                          Container(
-                            width: 460,
-                            height: 520,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 40),
-                            decoration: BoxDecoration(
-                              color: UtilConstants.lightgreyColor,
-                              borderRadius: BorderRadius.circular(
-                                  UtilConstants.boardRadiusForm),
-                            ),
-                            child: Column(
-                              children: [
-                                const FormHeading(
-                                  "Login Here",
-                                ),
-                                const SizedBox(height: 40),
-                                FormInputWeb(
-                                  "Email",
-                                  textEditingController:
-                                      Provider.of<LoginProvider>(context).email,
-                                ),
-                                const SizedBox(height: 10),
-                                FormInputWeb(
-                                  "Password",
-                                  textEditingController:
-                                      Provider.of<LoginProvider>(context)
-                                          .password,
-                                ),
-                                const SizedBox(height: 10),
-                                const CustomTextLinkWeb("Forgot password?",
-                                    route: ForgotPassword()),
-                                const SizedBox(height: 20),
-                                Consumer<LoginProvider>(
-                                  builder: (context, value, child) {
-                                    return InkWell(
-                                      onTap: () {
-                                        value.signInUser(value.email.text,
-                                            value.password.text, context);
-                                      },
-                                      child: FormButtonWeb(
-                                        "Login",
-                                        isLoading: value.isLoading,
-                                      ),
-                                    );
-                                  },
-                                ),
-                                const SizedBox(height: 10),
-                                const CustomTextLinkWeb("Create new account?",
-                                    route: SignUp()),
-                                const SizedBox(height: 30),
-                                const CustomText(
-                                  "Or login with social account",
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                const SizedBox(height: 15),
-                                const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    CustomIconContainer(
-                                      imgPath: UtilConstants.googleImagePath,
-                                    ),
-                                    SizedBox(width: 50),
-                                    CustomIconContainer(
-                                      imgPath: UtilConstants.facebookImagePath,
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(width: 10),
-                    ],
+                  CustomImageColumn(),
+                  SizedBox(
+                    width: 420,
+                    child: CustomText(
+                        "BLOOMi helps you connect and share your feelings with your mentors",
+                        fontColor: UtilConstants.blackColor,
+                        fontSize: UtilConstants.loginPageFontSizeDesktop,
+                        fontWeight: FontWeight.w300),
                   ),
                 ],
               ),
-            ),
+              const SizedBox(width: 10),
+              Container(
+                width: UtilConstants.desktopFormWidth,
+                height: 520,
+                padding: const EdgeInsets.symmetric(
+                    horizontal: UtilConstants.formPaddingHorizontalDesktop,
+                    vertical: UtilConstants.formPaddingVerticalDesktop),
+                decoration: BoxDecoration(
+                  color: UtilConstants.lightgreyColor,
+                  borderRadius: BorderRadius.circular(
+                      UtilConstants.formBoardRadiusDesktop),
+                ),
+                child: Column(
+                  children: [
+                    const FormHeading(
+                      "Login Here",
+                    ),
+                    const SizedBox(
+                        height:
+                            UtilConstants.spaceBetweenHeadingAndInputDesktop),
+                    FormInputWeb(
+                      "Email",
+                      textEditingController:
+                          Provider.of<LoginProvider>(context).email,
+                    ),
+                    const SizedBox(
+                        height: UtilConstants.spaceBetweenInputDesktop),
+                    FormInputWeb(
+                      "Password",
+                      textEditingController:
+                          Provider.of<LoginProvider>(context).password,
+                    ),
+                    const SizedBox(
+                        height: UtilConstants.spaceBetweenInputDesktop),
+                    const CustomTextLinkWeb("Forgot password?",
+                        route: ForgotPassword()),
+                    const SizedBox(
+                        height:
+                            UtilConstants.spaceBetweenInputAndHeadingDesktop),
+                    Consumer<LoginProvider>(
+                      builder: (context, value, child) {
+                        return InkWell(
+                          onTap: () {
+                            value.signInUser(
+                                value.email.text, value.password.text, context);
+                          },
+                          child: FormButtonWeb(
+                            "Login",
+                            isLoading: value.isLoading,
+                          ),
+                        );
+                      },
+                    ),
+                    const SizedBox(
+                        height: UtilConstants.spaceBetweenInputDesktop),
+                    const CustomTextLinkWeb("Create new account?",
+                        route: SignUp()),
+                    const SizedBox(height: 30),
+                    const CustomText(
+                      "Or login with social account",
+                      fontSize: UtilConstants.customLinkTextDesktop,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    const SizedBox(
+                        height: UtilConstants.spaceBetweenInputDesktop),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        CustomIconContainer(
+                          imgPath: UtilConstants.googleImagePath,
+                        ),
+                        SizedBox(
+                            width: UtilConstants
+                                .spaceBetweenInputAndHeadingDesktop),
+                        CustomIconContainer(
+                          imgPath: UtilConstants.facebookImagePath,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(width: UtilConstants.spaceBetweenInputDesktop),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

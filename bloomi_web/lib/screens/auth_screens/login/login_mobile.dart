@@ -19,118 +19,101 @@ class LoginMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 30),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 140),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(width: 10),
-                        Container(
-                          width: 300,
-                          height: 380,
-                          padding: const EdgeInsets.only(
-                              left: 20, right: 20, top: 20, bottom: 10),
-                          decoration: BoxDecoration(
-                            color: UtilConstants.lightgreyColor,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            children: [
-                              const FormHeading(
-                                "Login Here",
-                                fontSize: 20,
-                              ),
-                              const SizedBox(height: 50),
-                              FormInputWeb(
-                                "Email",
-                                textEditingController:
-                                    Provider.of<LoginProvider>(context).email,
-                                fontSize: 12,
-                                height: 45,
-                                width: 280,
-                                lableFontSize: 12,
-                              ),
-                              const SizedBox(height: 6),
-                              FormInputWeb(
-                                "Password",
-                                textEditingController:
-                                    Provider.of<LoginProvider>(context)
-                                        .password,
-                                fontSize: 12,
-                                height: 45,
-                                width: 280,
-                                lableFontSize: 12,
-                              ),
-                              const SizedBox(height: 6),
-                              const CustomTextLinkWeb("Forgot password?",
-                                  width: 280,
-                                  fontSize: 10,
-                                  route: ForgotPassword()),
-                              const SizedBox(height: 15),
-                              Consumer<LoginProvider>(
-                                builder: (context, value, child) {
-                                  return InkWell(
-                                    onTap: () {
-                                      value.signInUser(value.email.text,
-                                          value.password.text, context);
-                                    },
-                                    child: FormButtonWeb(
-                                      "Login",
-                                      isLoading: value.isLoading,
-                                      width: 280,
-                                      height: 45,
-                                      fontSize: 12,
-                                    ),
-                                  );
-                                },
-                              ),
-                              const SizedBox(height: 6),
-                              const CustomTextLinkWeb("Create new account?",
-                                  width: 280, fontSize: 10, route: SignUp()),
-                              const SizedBox(height: 8),
-                              const CustomText(
-                                "Or login with social account",
-                                fontSize: 10,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              const SizedBox(height: 15),
-                              const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  CustomIconContainer(
-                                    imgPath: UtilConstants.googleImagePath,
-                                    width: 25,
-                                    height: 15,
-                                  ),
-                                  SizedBox(width: 60),
-                                  CustomIconContainer(
-                                    imgPath: UtilConstants.facebookImagePath,
-                                    width: 25,
-                                    height: 15,
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
+      child: SingleChildScrollView(
+        child: Container(
+          width: UtilConstants.mobileFormWidth,
+          height: 440,
+          padding: const EdgeInsets.symmetric(
+              horizontal: UtilConstants.formPaddingHorizontalMobile,
+              vertical: UtilConstants.formPaddingVerticalMobile),
+          decoration: BoxDecoration(
+            color: UtilConstants.lightgreyColor,
+            borderRadius:
+                BorderRadius.circular(UtilConstants.formBoardRadiusMobile),
           ),
-        ],
+          child: Column(
+            children: [
+              const FormHeading(
+                "Login Here",
+                fontSize: UtilConstants.mobileHeadingTextFontSize,
+              ),
+              const SizedBox(
+                  height: UtilConstants.spaceBetweenHeadingAndInputTablet),
+              FormInputWeb(
+                "Email",
+                textEditingController:
+                    Provider.of<LoginProvider>(context).email,
+                fontSize: UtilConstants.mobileInputFontSize,
+                height: UtilConstants.mobileinputHeight,
+                width: UtilConstants.mobileInputWidth,
+                lableFontSize: UtilConstants.mobileLableFontSize,
+              ),
+              const SizedBox(height: UtilConstants.spaceBetweenInputMobile),
+              FormInputWeb(
+                "Password",
+                textEditingController:
+                    Provider.of<LoginProvider>(context).password,
+                fontSize: UtilConstants.mobileInputFontSize,
+                height: UtilConstants.mobileinputHeight,
+                width: UtilConstants.mobileInputWidth,
+                lableFontSize: UtilConstants.mobileLableFontSize,
+              ),
+              const SizedBox(height: UtilConstants.spaceBetweenInputMobile),
+              const CustomTextLinkWeb("Forgot password?",
+                  width: UtilConstants.mobileInputWidth,
+                  fontSize: UtilConstants.customLinkTextMobile,
+                  route: ForgotPassword()),
+              const SizedBox(
+                  height: UtilConstants.spaceBetweenInputAndHeadingTablet),
+              Consumer<LoginProvider>(
+                builder: (context, value, child) {
+                  return InkWell(
+                    onTap: () {
+                      value.signInUser(
+                          value.email.text, value.password.text, context);
+                    },
+                    child: FormButtonWeb(
+                      "Login",
+                      isLoading: value.isLoading,
+                      fontSize: UtilConstants.mobileInputFontSize,
+                      height: UtilConstants.mobileinputHeight,
+                      width: UtilConstants.mobileInputWidth,
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: UtilConstants.spaceBetweenInputMobile),
+              const CustomTextLinkWeb("Create new account?",
+                  width: UtilConstants.mobileInputWidth,
+                  fontSize: UtilConstants.customLinkTextMobile,
+                  route: SignUp()),
+              const SizedBox(height: 30),
+              const CustomText(
+                "Or login with social account",
+                fontSize: UtilConstants.customLinkTextMobile,
+                fontWeight: FontWeight.w500,
+              ),
+              const SizedBox(height: 15),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CustomIconContainer(
+                    imgPath: UtilConstants.googleImagePath,
+                    width: 25,
+                    height: 15,
+                  ),
+                  SizedBox(
+                      width: UtilConstants.spaceBetweenInputAndHeadingMobile),
+                  CustomIconContainer(
+                    imgPath: UtilConstants.facebookImagePath,
+                    width: 25,
+                    height: 15,
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
