@@ -4,7 +4,7 @@ import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/screens/counsellor_screens/Appointment/new_appointment.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/topbar_contents.dart';
-import 'package:bloomi_web/screens/home_screens/chat/conversation/contact.dart';
+import 'package:bloomi_web/screens/home_screens/chat/home/contact.dart';
 import 'package:bloomi_web/screens/home_screens/relax/relax.dart';
 import 'package:bloomi_web/screens/home_screens/user_dashboard/home_page.dart';
 import 'package:bloomi_web/utils/util_constant.dart';

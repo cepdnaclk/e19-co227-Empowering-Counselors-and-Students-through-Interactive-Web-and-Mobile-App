@@ -17,7 +17,7 @@ class _ConversationState extends State<Conversation> {
       child: Column(
         children: [
           const HeaderWidget(),
-          const SizedBox(height: 30),
+          const SizedBox(height: 50),
           Expanded(
             child: ListView.separated(
                 itemBuilder: (context, index) {
