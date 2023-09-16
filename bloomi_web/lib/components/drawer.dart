@@ -30,7 +30,7 @@ class MyDrawer extends StatelessWidget {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: NetworkImage(value.userModel!.imgUrl),
+                                image: (NetworkImage(value.userModel!.imgUrl)),
                                 fit: BoxFit.cover,
                               ),
                             ),
