@@ -325,14 +325,14 @@ import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomeNavBar extends StatefulWidget {
-  const HomeNavBar({Key? key}) : super(key: key);
+class CounsellorNavBar extends StatefulWidget {
+  const CounsellorNavBar({Key? key}) : super(key: key);
 
   @override
-  State<HomeNavBar> createState() => _HomeNavBarState();
+  State<CounsellorNavBar> createState() => _CounsellorNavBarState();
 }
 
-class _HomeNavBarState extends State<HomeNavBar> {
+class _CounsellorNavBarState extends State<CounsellorNavBar> {
   final List<bool> _isHovering = [false, false, false, false];
 
   @override
