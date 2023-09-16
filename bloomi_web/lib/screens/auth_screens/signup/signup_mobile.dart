@@ -1,6 +1,5 @@
 import 'package:bloomi_web/components/custom_text_link_web.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
-import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/providers/auth/signup_provider.dart';
 import 'package:bloomi_web/screens/auth_screens/login/login.dart';
@@ -42,7 +41,7 @@ class _SignUpMobileState extends State<SignUpMobile> {
     return Center(
       child: SingleChildScrollView(
         child: Container(
-          height: 540,
+          height: 480,
           width: 300,
           padding:
               const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
@@ -52,11 +51,6 @@ class _SignUpMobileState extends State<SignUpMobile> {
           ),
           child: Column(
             children: [
-              const FormHeading(
-                "SignUp Here",
-                fontSize: 20,
-              ),
-              const SizedBox(height: 30),
               FormInputWeb(
                 "Name",
                 textEditingController:
