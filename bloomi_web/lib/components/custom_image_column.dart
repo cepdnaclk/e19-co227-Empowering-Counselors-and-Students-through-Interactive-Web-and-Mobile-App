@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class CustomImageColumn extends StatelessWidget {
   const CustomImageColumn({
     super.key,
-    this.width = 420,
-    this.height = 420,
+    this.width = 380,
+    this.height = 380,
   });
 
   final double width;

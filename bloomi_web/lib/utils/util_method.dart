@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class UtilMethod {
   static void customDialogBox(BuildContext context, String title, String desc) {
-    double width = MediaQuery.of(context).size.width;
+    final double width = MediaQuery.of(context).size.width;
     AwesomeDialog(
-      width: width * 0.35,
+      width: (width > 420) ? 400 : 300,
       context: context,
       dialogType: DialogType.noHeader,
       animType: AnimType.scale,

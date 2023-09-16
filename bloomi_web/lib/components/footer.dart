@@ -17,7 +17,7 @@ class Footer extends StatelessWidget {
     return Container(
         height: height,
         width: width,
-        color: UtilConstants.primaryColor,
+        color: UtilConstants.marinerColor,
         child: Center(
           child: CustomText(
             "© 2023 BLOOMi - University of Peradeniya\nAll rights reserved",

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class UtilConstants {
   //--------------------App Colors--------------------
-  static const Color primaryColor = Color(0xff20A8D6);
+  static const Color primaryColor = Color(0xff2F76BA);
   static const Color whiteColor = Colors.white;
   static const Color blackColor = Colors.black;
   static Color lightblackColor = Colors.black.withOpacity(0.4);
@@ -35,4 +35,8 @@ class UtilConstants {
 
   static const double formPadding = 0.04;
   static const double boardRadiusForm = 8;
+
+  //-----------------------Color palette----------------------
+  static Color marinerColor = const Color(0xff2F76BA);
+  static Color tropicalBlurColor = const Color(0xffD1E5FA);
 }

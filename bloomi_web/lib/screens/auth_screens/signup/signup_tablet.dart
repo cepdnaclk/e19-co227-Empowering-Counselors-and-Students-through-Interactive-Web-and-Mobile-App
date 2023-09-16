@@ -52,8 +52,8 @@ class _SignUpTabletState extends State<SignUpTablet> {
               children: [
                 const SizedBox(width: 10),
                 Container(
-                  height: 680,
-                  width: 460,
+                  height: 620,
+                  width: 420,
                   padding: const EdgeInsets.only(
                       left: 40, right: 40, top: 30, bottom: 10),
                   decoration: BoxDecoration(

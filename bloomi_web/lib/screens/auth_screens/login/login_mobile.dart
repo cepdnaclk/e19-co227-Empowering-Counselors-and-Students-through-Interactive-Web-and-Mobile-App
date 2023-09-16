@@ -45,7 +45,7 @@ class LoginMobile extends StatelessWidget {
                             children: [
                               const FormHeading(
                                 "Login Here",
-                                fontSize: 25,
+                                fontSize: 20,
                               ),
                               const SizedBox(height: 50),
                               FormInputWeb(
@@ -68,7 +68,12 @@ class LoginMobile extends StatelessWidget {
                                 width: 280,
                                 lableFontSize: 12,
                               ),
-                              const SizedBox(height: 25),
+                              const SizedBox(height: 6),
+                              const CustomTextLinkWeb("Forgot password?",
+                                  width: 280,
+                                  fontSize: 10,
+                                  route: ForgotPassword()),
+                              const SizedBox(height: 15),
                               Consumer<LoginProvider>(
                                 builder: (context, value, child) {
                                   return InkWell(
@@ -87,11 +92,11 @@ class LoginMobile extends StatelessWidget {
                                 },
                               ),
                               const SizedBox(height: 6),
-                              const CustomTextLinkWeb("forgot password?",
+                              const CustomTextLinkWeb("Create new account?",
                                   width: 280,
                                   fontSize: 10,
                                   route: ForgotPassword()),
-                              const SizedBox(height: 10),
+                              const SizedBox(height: 8),
                               const CustomText(
                                 "Or login with social account",
                                 fontSize: 10,

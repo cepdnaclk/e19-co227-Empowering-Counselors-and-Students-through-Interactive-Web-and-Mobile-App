@@ -48,7 +48,7 @@ class _SignUpDesktopState extends State<SignUpDesktop> {
         height: height,
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 35),
+            padding: EdgeInsets.symmetric(vertical: height * 0.05),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -62,15 +62,15 @@ class _SignUpDesktopState extends State<SignUpDesktop> {
                       child: CustomText(
                           "BLOOMi helps you connect and share your feelings with your mentors",
                           fontColor: UtilConstants.blackColor,
-                          fontSize: 20,
+                          fontSize: 17,
                           fontWeight: FontWeight.w300),
                     ),
                   ],
                 ),
                 const SizedBox(width: 20),
                 Container(
-                  height: 680,
-                  width: 500,
+                  height: 630,
+                  width: 460,
                   padding: const EdgeInsets.only(
                       left: 40, right: 40, top: 30, bottom: 10),
                   decoration: BoxDecoration(
@@ -82,7 +82,7 @@ class _SignUpDesktopState extends State<SignUpDesktop> {
                       const FormHeading(
                         "SignUp Here",
                       ),
-                      const SizedBox(height: 40),
+                      const SizedBox(height: 30),
                       FormInputWeb(
                         "Name",
                         textEditingController:

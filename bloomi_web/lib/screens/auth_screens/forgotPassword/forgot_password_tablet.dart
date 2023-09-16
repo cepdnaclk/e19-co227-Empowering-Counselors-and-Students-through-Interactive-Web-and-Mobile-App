@@ -27,7 +27,7 @@ class ForgotPasswordTablet extends StatelessWidget {
                   children: [
                     const SizedBox(height: 40),
                     Container(
-                      width: 450,
+                      width: 460,
                       padding: const EdgeInsets.all(30),
                       decoration: BoxDecoration(
                         color: UtilConstants.lightgreyColor,

@@ -6,6 +6,7 @@ import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/providers/auth/login_provider.dart';
 import 'package:bloomi_web/screens/auth_screens/forgotPassword/forgot_password.dart';
+import 'package:bloomi_web/screens/auth_screens/signup/signup_form.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +34,8 @@ class LoginTablet extends StatelessWidget {
                       children: [
                         const SizedBox(width: 15),
                         Container(
-                          width: 450,
+                          width: 420,
+                          height: 520,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 30, vertical: 40),
                           decoration: BoxDecoration(
@@ -46,7 +48,7 @@ class LoginTablet extends StatelessWidget {
                               const FormHeading(
                                 "Login Here",
                               ),
-                              const SizedBox(height: 70),
+                              const SizedBox(height: 40),
                               FormInputWeb(
                                 "Email",
                                 textEditingController:
@@ -59,7 +61,10 @@ class LoginTablet extends StatelessWidget {
                                     Provider.of<LoginProvider>(context)
                                         .password,
                               ),
-                              const SizedBox(height: 40),
+                              const SizedBox(height: 10),
+                              const CustomTextLinkWeb("Forgot password?",
+                                  route: ForgotPassword()),
+                              const SizedBox(height: 20),
                               Consumer<LoginProvider>(
                                 builder: (context, value, child) {
                                   return InkWell(
@@ -75,9 +80,9 @@ class LoginTablet extends StatelessWidget {
                                 },
                               ),
                               const SizedBox(height: 10),
-                              const CustomTextLinkWeb("forgot password?",
-                                  route: ForgotPassword()),
-                              const SizedBox(height: 40),
+                              const CustomTextLinkWeb("Create new account?",
+                                  route: SignUp()),
+                              const SizedBox(height: 30),
                               const CustomText(
                                 "Or login with social account",
                                 fontSize: 15,
@@ -91,7 +96,7 @@ class LoginTablet extends StatelessWidget {
                                   CustomIconContainer(
                                     imgPath: UtilConstants.googleImagePath,
                                   ),
-                                  SizedBox(width: 100),
+                                  SizedBox(width: 50),
                                   CustomIconContainer(
                                     imgPath: UtilConstants.facebookImagePath,
                                   ),

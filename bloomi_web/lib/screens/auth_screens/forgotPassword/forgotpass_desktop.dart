@@ -27,14 +27,12 @@ class ForgotPasswordDesktop extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     const SizedBox(width: 20),
-                    const CustomImageColumn(
-                      width: 380,
-                      height: 380,
-                    ),
+                    const CustomImageColumn(),
                     const SizedBox(width: 40),
                     Column(
                       children: [
                         Container(
+                          width: 460,
                           padding: const EdgeInsets.all(30),
                           decoration: BoxDecoration(
                             color: UtilConstants.lightgreyColor,
