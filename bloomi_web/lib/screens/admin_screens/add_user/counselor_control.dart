@@ -2,6 +2,7 @@ import 'package:bloomi_web/components/custom_tablecells.dart';
 import 'package:bloomi_web/components/custom_tableheads.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/Counselorupdateform.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/counselorform.dart';
+import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 
@@ -142,7 +143,8 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                   6: FlexColumnWidth(1.2),
                 },
                 border: TableBorder.all(
-                  color: Colors.blue.shade500,
+                  width: 2,
+                  color: UtilConstants.primaryColor,
                 ),
                 children: [
                   const TableRow(children: [
@@ -165,12 +167,12 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                       Tablecellwidget(name: faculties, indexnumber: index),
                       Tablecellwidget(name: credentials, indexnumber: index),
                       TableCell(
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 10, right: 5, top: 10, bottom: 10),
-                              child: ElevatedButton(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton(
                                   onPressed: () {
                                     UtilFunction.navigateForward(
                                       context,
@@ -178,14 +180,11 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                     );
                                   },
                                   child: const Text('Update')),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 5),
-                              child: ElevatedButton(
+                              ElevatedButton(
                                   onPressed: () {},
                                   child: const Text('Delete')),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ]),

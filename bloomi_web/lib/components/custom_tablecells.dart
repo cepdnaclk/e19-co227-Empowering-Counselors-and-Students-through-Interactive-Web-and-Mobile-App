@@ -1,3 +1,5 @@
+import 'package:bloomi_web/components/custom_text.dart';
+import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
 class Tablecellwidget extends StatelessWidget {
@@ -12,14 +14,13 @@ class Tablecellwidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10),
-      child: TableCell(
-        verticalAlignment: TableCellVerticalAlignment.middle,
-        child: Text(
-          name[indexnumber],
-          textAlign: TextAlign.center,
-        ),
+    return TableCell(
+      verticalAlignment: TableCellVerticalAlignment.middle,
+      child: CustomText(
+        name[indexnumber],
+        textAlign: TextAlign.center,
+        fontSize: 16,
+        fontColor: UtilConstants.blackColor,
       ),
     );
   }

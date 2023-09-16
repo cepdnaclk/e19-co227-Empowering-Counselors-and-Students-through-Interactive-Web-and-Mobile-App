@@ -1,5 +1,7 @@
 import 'package:bloomi_web/components/conversation_tile.dart';
+import 'package:bloomi_web/components/custom_chat_bubble.dart';
 import 'package:bloomi_web/components/header_widget.dart';
+import 'package:bloomi_web/components/messagetyping_widget.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
@@ -102,18 +104,19 @@ class _ConversationState extends State<Conversation> {
                               width: width - 530,
                               height: height - 152 - 80,
                               color: UtilConstants.whiteColor,
-                              child: ListView.builder(
-                                itemCount:
-                                    1, // Replace with the actual item count
-                                itemBuilder: (context, index) {
-                                  // Replace this with your desired list item widget
-                                  return ListTile(
-                                    title:
-                                        Text(messages[value.getIndex] ?? " "),
-
-                                    // Customize your list item as needed
-                                  );
-                                },
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                      child: ListView.separated(
+                                          itemBuilder: (context, index) {
+                                            return const ChatBubble();
+                                          },
+                                          separatorBuilder: (context, index) {
+                                            return const SizedBox(height: 10);
+                                          },
+                                          itemCount: 20)),
+                                  const MessageTypingWidget(),
+                                ],
                               ),
                             ),
                           ),
