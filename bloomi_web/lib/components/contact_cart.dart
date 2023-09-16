@@ -1,7 +1,7 @@
 import 'package:bloomi_web/components/costum_contact_icon.dart';
 import 'package:bloomi_web/components/custom_image_cart.dart';
 import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/screens/home/chat/conversation/chat.dart';
+import 'package:bloomi_web/screens/home_screens/chat/conversation/chat.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
