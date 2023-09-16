@@ -1,9 +1,12 @@
+import 'dart:html';
+
 import 'package:bloomi_web/components/custom_tablecells.dart';
 import 'package:bloomi_web/components/custom_tableheads.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/Counselorupdateform.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/counselorform.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Counselorcontrol extends StatefulWidget {
@@ -101,6 +104,8 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
     "TravelBuddy61"
   ];
 
+  List<bool> isRowHovered = List.generate(10, (index) => false);
+  List<bool> isRowHoveredDeleted = List.generate(10, (index) => false);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,9 +122,7 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.blue,
-                  elevation: 20,
+                  elevation: 5,
                   padding: const EdgeInsets.all(20),
                 ),
                 child: const Text(
@@ -135,15 +138,15 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
               child: Table(
                 columnWidths: const <int, TableColumnWidth>{
                   0: FlexColumnWidth(0.8),
-                  1: FlexColumnWidth(1.0),
-                  2: FlexColumnWidth(1.0),
+                  1: FlexColumnWidth(0.9),
+                  2: FlexColumnWidth(1.1),
                   3: FlexColumnWidth(0.8),
                   4: FlexColumnWidth(1.2),
                   5: FlexColumnWidth(1.2),
                   6: FlexColumnWidth(1.2),
                 },
                 border: TableBorder.all(
-                  width: 2,
+                  width: 1.5,
                   color: UtilConstants.primaryColor,
                 ),
                 children: [
@@ -172,17 +175,66 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              ElevatedButton(
-                                  onPressed: () {
-                                    UtilFunction.navigateForward(
-                                      context,
-                                      const Counselorupdateform(),
-                                    );
-                                  },
-                                  child: const Text('Update')),
-                              ElevatedButton(
+                              MouseRegion(
+                                onEnter: (_) {
+                                  setState(() {
+                                    isRowHovered[index] = true;
+                                  });
+                                },
+                                onExit: (_) {
+                                  setState(() {
+                                    isRowHovered[index] = false;
+                                  });
+                                },
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      UtilFunction.navigateForward(
+                                        context,
+                                        const Counselorupdateform(),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      primary: isRowHovered[index]
+                                          ? Colors.greenAccent
+                                          : Colors.grey.shade50,
+                                    ),
+                                    child: Text(
+                                      'Update',
+                                      style: TextStyle(
+                                        color: isRowHovered[index]
+                                            ? Colors.black
+                                            : Colors.purple.shade400,
+                                      ),
+                                    )),
+                              ),
+                              MouseRegion(
+                                onEnter: (_) {
+                                  setState(() {
+                                    isRowHoveredDeleted[index] = true;
+                                  });
+                                },
+                                onExit: (_) {
+                                  setState(() {
+                                    isRowHoveredDeleted[index] = false;
+                                  });
+                                },
+                                child: ElevatedButton(
                                   onPressed: () {},
-                                  child: const Text('Delete')),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: isRowHoveredDeleted[index]
+                                        ? Colors.redAccent.shade200
+                                        : Colors.grey.shade50,
+                                  ),
+                                  child: Text(
+                                    'Delete',
+                                    style: TextStyle(
+                                      color: isRowHoveredDeleted[index]
+                                          ? Colors.black
+                                          : Colors.purple.shade400,
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),

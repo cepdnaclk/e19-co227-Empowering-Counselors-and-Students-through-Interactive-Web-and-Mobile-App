@@ -51,7 +51,7 @@ class _CounselorformState extends State<Counselorupdateform> {
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(30),
                       margin: EdgeInsets.only(
                           top: mediaQueryData.size.height * 0.02),
                       decoration: const BoxDecoration(
@@ -61,7 +61,7 @@ class _CounselorformState extends State<Counselorupdateform> {
                         child: Column(
                           children: [
                             const FormHeading(
-                              "Register Counselors",
+                              "Update Counselor Details",
                             ),
                             SizedBox(height: mediaQueryData.size.height * 0.04),
                             FormInputWeb(
@@ -106,20 +106,13 @@ class _CounselorformState extends State<Counselorupdateform> {
                             ),
                             SizedBox(height: mediaQueryData.size.height * 0.01),
                             SizedBox(height: mediaQueryData.size.height * 0.01),
-                            FormInputWeb(
-                              "Password",
-                              textEditingController:
-                                  Provider.of<CounselorRegistrationProvider>(
-                                          context)
-                                      .password,
-                            ),
                             SizedBox(height: mediaQueryData.size.height * 0.01),
                             Consumer<CounselorRegistrationProvider>(
                               builder: (context, value, child) {
                                 return InkWell(
                                   onTap: () {},
                                   child: const FormButtonWeb(
-                                    "Register",
+                                    "Update",
                                     isLoading: false,
                                   ),
                                 );
