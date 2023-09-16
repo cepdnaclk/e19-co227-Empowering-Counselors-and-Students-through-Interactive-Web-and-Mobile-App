@@ -5,6 +5,7 @@ import 'package:bloomi_web/providers/auth/login_provider.dart';
 import 'package:bloomi_web/providers/auth/signup_provider.dart';
 import 'package:bloomi_web/providers/nav_provider/admin_nav_provider.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
+import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/responsive/responsive_layout.dart';
 import 'package:bloomi_web/screens/splash_screen/splash_desktop.dart';
@@ -29,6 +30,7 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (_) => AdminNavProvider()),
       ChangeNotifierProvider(create: (_) => UserProvider()),
       ChangeNotifierProvider(create: (_) => CounselorRegistrationProvider()),
+      ChangeNotifierProvider(create: (_) => UserChatProvider()),
     ],
     child: const MyApp(),
   ));
