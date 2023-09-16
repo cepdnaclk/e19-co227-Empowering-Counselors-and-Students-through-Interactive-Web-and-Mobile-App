@@ -1,5 +1,5 @@
 import 'package:bloomi_web/firebase_options.dart';
-import 'package:bloomi_web/providers/auth/Counselorregister_provider.dart';
+import 'package:bloomi_web/providers/auth/counselorregister_provider.dart';
 import 'package:bloomi_web/providers/auth/forgot_password_provider.dart';
 import 'package:bloomi_web/providers/auth/login_provider.dart';
 import 'package:bloomi_web/providers/auth/signup_provider.dart';

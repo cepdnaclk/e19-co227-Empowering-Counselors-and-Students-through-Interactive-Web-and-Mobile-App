@@ -17,10 +17,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: ResponsiveLayout(
+      body: const ResponsiveLayout(
           mobileBody: ForgotPasswordMobile(),
           tabletBody: ForgotPasswordTablet(),
-          desktopBody: const ForgotPasswordDesktop()),
+          desktopBody: ForgotPasswordDesktop()),
       bottomNavigationBar: Footer(width: width, height: 55),
     );
   }

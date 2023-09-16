@@ -1,8 +1,8 @@
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/auth/user_model.dart';
-import 'package:bloomi_web/screens/Admin/adminui.dart';
-import 'package:bloomi_web/screens/Counsellor/navbar.dart';
+import 'package:bloomi_web/screens/admin/adminui.dart';
 import 'package:bloomi_web/screens/auth/signup/signup_form.dart';
+import 'package:bloomi_web/screens/counsellor/navbar.dart';
 import 'package:bloomi_web/screens/home/home/home.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:firebase_auth/firebase_auth.dart';

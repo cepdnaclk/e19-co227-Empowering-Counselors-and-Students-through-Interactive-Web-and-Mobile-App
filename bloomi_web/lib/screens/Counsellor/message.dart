@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MessagingCard extends StatefulWidget {
-  @override
-  _MessagingCardState createState() => _MessagingCardState();
-}
+class MessagingCard extends StatelessWidget {
+  const MessagingCard({super.key});
 
-class _MessagingCardState extends State<MessagingCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
       color: const Color.fromARGB(255, 159, 218, 245),
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       elevation: 2,
       child: InkWell(
         onTap: () {
@@ -87,14 +84,14 @@ class _MessagingCardState extends State<MessagingCard> {
                   ],
                 ),
               ),
-              SizedBox(width: 16),
+              const SizedBox(width: 16),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width * 0.5,
-                    child: Text(
+                    child: const Text(
                       'Message',
                       style: TextStyle(fontSize: 16),
                     ),
