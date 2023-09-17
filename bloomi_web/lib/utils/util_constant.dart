@@ -44,8 +44,8 @@ class UtilConstants {
   static const double formBoardRadiusDesktop = 10.0;
   static const double spaceBetweenHeadingAndInputDesktop = 40.0;
   static const double formInputFeildHeightDesktop = 50.0;
-  static const double textForntSizeDesktop = 16.0;
-  static const double lableFontSizeDesktop = 18.0;
+  static const double textForntSizeDesktop = 15.0;
+  static const double lableFontSizeDesktop = 15.0;
   static const double spaceBetweenInputDesktop = 10.0;
   static const double spaceBetweenInputAndHeadingDesktop = 20.0;
   static const double customLinkTextDesktop = 15.0;

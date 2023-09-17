@@ -17,10 +17,12 @@ class FormInputWeb extends StatelessWidget {
     this.height = UtilConstants.formInputFeildHeightDesktop,
     this.fontSize = UtilConstants.textForntSizeDesktop,
     this.lableFontSize = UtilConstants.lableFontSizeDesktop,
+    this.icon,
   });
 
   final bool obscure;
   final double width;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class FormInputWeb extends StatelessWidget {
       height: height,
       fontSize: fontSize,
       lableFontSize: lableFontSize,
+      icon: icon,
     );
   }
 }

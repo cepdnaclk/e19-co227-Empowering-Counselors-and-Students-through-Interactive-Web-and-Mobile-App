@@ -1,18 +1,15 @@
-import 'package:bloomi_web/providers/auth/signup_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-class DropDownButtonWidget extends StatelessWidget {
+class AdminDropDownButtonWidget extends StatelessWidget {
   final List<String> listItem;
   final String text;
-  final int index;
-  const DropDownButtonWidget({
+
+  const AdminDropDownButtonWidget({
     super.key,
     required this.listItem,
     required this.text,
-    required this.index,
   });
 
   @override
@@ -52,17 +49,7 @@ class DropDownButtonWidget extends StatelessWidget {
         }
         return null;
       },
-      onChanged: (value) {
-        if (index == 1) {
-          Provider.of<SignupProvider>(context, listen: false)
-              .setFaculty(value!);
-        } else if (index == 2) {
-          Provider.of<SignupProvider>(context, listen: false)
-              .setDepartment(value!);
-        } else {
-          Provider.of<SignupProvider>(context, listen: false).setYear(value!);
-        }
-      },
+      onChanged: (value) {},
       onSaved: (value) {
         selectedValue = value.toString();
       },

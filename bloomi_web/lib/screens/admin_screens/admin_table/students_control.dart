@@ -80,7 +80,6 @@ class _StudentControlState extends State<StudentControl> {
 
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -91,8 +90,7 @@ class _StudentControlState extends State<StudentControl> {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) =>
-                          Studentform(mediaQueryData: mediaQueryData),
+                      builder: (context) => const Studentform(),
                     ),
                   );
                 },
@@ -165,7 +163,7 @@ class _StudentControlState extends State<StudentControl> {
                                         );
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        primary: isRowHovered[index]
+                                        backgroundColor: isRowHovered[index]
                                             ? Colors.greenAccent
                                             : Colors.grey.shade50,
                                       ),
@@ -192,9 +190,10 @@ class _StudentControlState extends State<StudentControl> {
                                   child: ElevatedButton(
                                     onPressed: () {},
                                     style: ElevatedButton.styleFrom(
-                                      primary: isRowHoveredDeleted[index]
-                                          ? Colors.redAccent.shade200
-                                          : Colors.grey.shade50,
+                                      backgroundColor:
+                                          isRowHoveredDeleted[index]
+                                              ? Colors.redAccent.shade200
+                                              : Colors.grey.shade50,
                                     ),
                                     child: Text(
                                       'Delete',

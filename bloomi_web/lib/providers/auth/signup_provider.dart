@@ -8,21 +8,22 @@ class SignupProvider extends ChangeNotifier {
   final TextEditingController _password = TextEditingController();
   final TextEditingController _phoneNumber = TextEditingController();
   final TextEditingController _email = TextEditingController();
-  final TextEditingController _department = TextEditingController();
-  final TextEditingController _faculty = TextEditingController();
-  final TextEditingController _year = TextEditingController();
+  String _department = "";
+  String _faculty = "";
+  String _year = "";
 
   final String _userType = "User";
+  bool _isObscure = true;
 
   //-----------------Getters-----------------
   TextEditingController get name => _name;
   TextEditingController get password => _password;
   TextEditingController get phoneNumber => _phoneNumber;
   TextEditingController get email => _email;
-  TextEditingController get department => _department;
-  TextEditingController get faculty => _faculty;
-  TextEditingController get year => _year;
-
+  String get department => _department;
+  String get faculty => _faculty;
+  String get year => _year;
+  bool get isObscure => _isObscure;
   String get userType => _userType;
 
   //-----------------Setters-----------------
@@ -47,18 +48,28 @@ class SignupProvider extends ChangeNotifier {
   }
 
   void setDepartment(String department) {
-    _department.text = department;
+    _department = department;
     notifyListeners();
   }
 
   void setFaculty(String faculty) {
-    _faculty.text = faculty;
+    _faculty = faculty;
     notifyListeners();
   }
 
   void setYear(String year) {
-    _year.text = year;
+    _year = year;
     notifyListeners();
+  }
+
+  void setIsObscure(bool isObscure) {
+    if (isObscure == false) {
+      _isObscure = !_isObscure;
+      notifyListeners();
+    } else {
+      _isObscure = _isObscure;
+      notifyListeners();
+    }
   }
 
   bool _isLoading = false;

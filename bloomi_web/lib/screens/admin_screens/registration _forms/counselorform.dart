@@ -1,5 +1,4 @@
 import 'package:bloomi_web/components/custom_image.dart';
-import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
@@ -88,14 +87,6 @@ class _CounselorformState extends State<Counselorform> {
                                       .phoneNumber,
                             ),
                             SizedBox(height: mediaQueryData.size.height * 0.01),
-                            CustomDropdownMenu(
-                              "Faculty",
-                              listItem: listItems,
-                              textEditingController:
-                                  Provider.of<CounselorRegistrationProvider>(
-                                          context)
-                                      .faculty,
-                            ),
                             SizedBox(height: mediaQueryData.size.height * 0.01),
                             FormInputWeb(
                               "Credentials",
