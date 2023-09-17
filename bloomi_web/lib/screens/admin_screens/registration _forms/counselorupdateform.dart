@@ -35,100 +35,111 @@ class _CounselorformState extends State<Counselorupdateform> {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 200),
-          child: Center(
-            child: Row(
-              children: [
-                const CustomImage(
-                  width: 200,
-                  height: 200,
-                  imgPath: UtilConstants.registerImagePath,
-                ),
-                SizedBox(width: mediaQueryData.size.width * 0.05),
-                SizedBox(height: mediaQueryData.size.height * 0.02),
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(30),
-                      margin: EdgeInsets.only(
-                          top: mediaQueryData.size.height * 0.02),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      child: Center(
-                        child: Column(
-                          children: [
-                            const FormHeading(
-                              "Update Counselor Details",
-                            ),
-                            SizedBox(height: mediaQueryData.size.height * 0.04),
-                            FormInputWeb(
-                              "Name",
-                              textEditingController:
-                                  Provider.of<CounselorRegistrationProvider>(
-                                          context)
-                                      .name,
-                            ),
-                            SizedBox(height: mediaQueryData.size.height * 0.01),
-                            FormInputWeb(
-                              "Email",
-                              textEditingController:
-                                  Provider.of<CounselorRegistrationProvider>(
-                                          context)
-                                      .email,
-                            ),
-                            SizedBox(height: mediaQueryData.size.height * 0.01),
-                            FormInputWeb(
-                              "Phone Number",
-                              textEditingController:
-                                  Provider.of<CounselorRegistrationProvider>(
-                                          context)
-                                      .phoneNumber,
-                            ),
-                            SizedBox(height: mediaQueryData.size.height * 0.01),
-                            CustomDropdownMenu(
-                              "Faculty",
-                              listItem: listItems,
-                              textEditingController:
-                                  Provider.of<CounselorRegistrationProvider>(
-                                          context)
-                                      .faculty,
-                            ),
-                            SizedBox(height: mediaQueryData.size.height * 0.01),
-                            FormInputWeb(
-                              "Credentials",
-                              textEditingController:
-                                  Provider.of<CounselorRegistrationProvider>(
-                                          context)
-                                      .credentials,
-                            ),
-                            SizedBox(height: mediaQueryData.size.height * 0.01),
-                            SizedBox(height: mediaQueryData.size.height * 0.01),
-                            SizedBox(height: mediaQueryData.size.height * 0.01),
-                            Consumer<CounselorRegistrationProvider>(
-                              builder: (context, value, child) {
-                                return InkWell(
-                                  onTap: () {},
-                                  child: const FormButtonWeb(
-                                    "Update",
-                                    isLoading: false,
-                                  ),
-                                );
-                              },
-                            ),
-                            SizedBox(height: mediaQueryData.size.height * 0.02),
-                          ],
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 200),
+            child: Center(
+              child: Row(
+                children: [
+                  const CustomImage(
+                    width: 200,
+                    height: 200,
+                    imgPath: UtilConstants.registerImagePath,
+                  ),
+                  SizedBox(width: mediaQueryData.size.width * 0.05),
+                  SizedBox(height: mediaQueryData.size.height * 0.02),
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(30),
+                        margin: EdgeInsets.only(
+                            top: mediaQueryData.size.height * 0.02),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                        ),
+                        child: Center(
+                          child: Column(
+                            children: [
+                              const FormHeading(
+                                "Update Counselor Details",
+                              ),
+                              SizedBox(
+                                  height: mediaQueryData.size.height * 0.04),
+                              FormInputWeb(
+                                "Name",
+                                textEditingController:
+                                    Provider.of<CounselorRegistrationProvider>(
+                                            context)
+                                        .name,
+                              ),
+                              SizedBox(
+                                  height: mediaQueryData.size.height * 0.01),
+                              FormInputWeb(
+                                "Email",
+                                textEditingController:
+                                    Provider.of<CounselorRegistrationProvider>(
+                                            context)
+                                        .email,
+                              ),
+                              SizedBox(
+                                  height: mediaQueryData.size.height * 0.01),
+                              FormInputWeb(
+                                "Phone Number",
+                                textEditingController:
+                                    Provider.of<CounselorRegistrationProvider>(
+                                            context)
+                                        .phoneNumber,
+                              ),
+                              SizedBox(
+                                  height: mediaQueryData.size.height * 0.01),
+                              CustomDropdownMenu(
+                                "Faculty",
+                                listItem: listItems,
+                                textEditingController:
+                                    Provider.of<CounselorRegistrationProvider>(
+                                            context)
+                                        .faculty,
+                              ),
+                              SizedBox(
+                                  height: mediaQueryData.size.height * 0.01),
+                              FormInputWeb(
+                                "Credentials",
+                                textEditingController:
+                                    Provider.of<CounselorRegistrationProvider>(
+                                            context)
+                                        .credentials,
+                              ),
+                              SizedBox(
+                                  height: mediaQueryData.size.height * 0.01),
+                              SizedBox(
+                                  height: mediaQueryData.size.height * 0.01),
+                              SizedBox(
+                                  height: mediaQueryData.size.height * 0.01),
+                              Consumer<CounselorRegistrationProvider>(
+                                builder: (context, value, child) {
+                                  return InkWell(
+                                    onTap: () {},
+                                    child: const FormButtonWeb(
+                                      "Update",
+                                      isLoading: false,
+                                    ),
+                                  );
+                                },
+                              ),
+                              SizedBox(
+                                  height: mediaQueryData.size.height * 0.02),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: mediaQueryData.size.height * 0.1,
-                ),
-              ],
+                    ],
+                  ),
+                  SizedBox(
+                    height: mediaQueryData.size.height * 0.1,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
