@@ -11,9 +11,8 @@ class AdminControl extends StatefulWidget {
 class _AdminControlState extends State<AdminControl> {
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
-    return Scaffold(
-      body: Studentform(mediaQueryData: mediaQueryData),
+    return const Scaffold(
+      body: Studentform(),
     );
   }
 }

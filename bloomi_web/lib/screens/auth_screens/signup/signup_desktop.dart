@@ -1,10 +1,12 @@
 import 'package:bloomi_web/components/custom_image_column.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/custom_text_link_web.dart';
+import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/providers/auth/signup_provider.dart';
 import 'package:bloomi_web/screens/auth_screens/login/login.dart';
+import 'package:bloomi_web/utils/department_list.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +21,7 @@ class SignUpDesktop extends StatefulWidget {
 }
 
 class _SignUpDesktopState extends State<SignUpDesktop> {
-  List<String> listItems = [
+  List<String> faculty = [
     'Faculty of Engineering',
     'Faculty of Medicine',
     'Faculty of Dental Sciences',
@@ -37,7 +39,6 @@ class _SignUpDesktopState extends State<SignUpDesktop> {
     '3rd Year',
     '4th Year',
   ];
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -75,22 +76,34 @@ class _SignUpDesktopState extends State<SignUpDesktop> {
                 child: Column(
                   children: [
                     FormInputWeb(
-                      "Name",
+                      "Full Name",
                       textEditingController:
                           Provider.of<SignupProvider>(context).name,
                     ),
                     const SizedBox(height: 10),
                     FormInputWeb(
-                      "Email",
+                      "Student Email",
                       textEditingController:
                           Provider.of<SignupProvider>(context).email,
                     ),
                     const SizedBox(height: 10),
-                    FormInputWeb(
-                      "Password",
-                      textEditingController:
-                          Provider.of<SignupProvider>(context).password,
-                      obscure: true,
+                    Consumer<SignupProvider>(
+                      builder: (context, value, child) {
+                        return FormInputWeb(
+                          "Password",
+                          textEditingController: value.password,
+                          obscure: value.isObscure ? true : false,
+                          icon: InkWell(
+                            onTap: () {
+                              value.setIsObscure(false);
+                            },
+                            child: const Icon(
+                              Icons.visibility_off,
+                              size: 15,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                     const SizedBox(height: 10),
                     FormInputWeb(
@@ -99,20 +112,21 @@ class _SignUpDesktopState extends State<SignUpDesktop> {
                           Provider.of<SignupProvider>(context).phoneNumber,
                     ),
                     const SizedBox(height: 10),
-                    FormInputWeb(
-                      "Faculty",
-                      textEditingController:
-                          Provider.of<SignupProvider>(context).faculty,
+                    DropDownButtonWidget(
+                      index: 1,
+                      text: "Faculty",
+                      listItem: faculty,
                     ),
                     const SizedBox(height: 10),
-                    FormInputWeb("Department",
-                        textEditingController:
-                            Provider.of<SignupProvider>(context).department),
+                    DropDownButtonWidget(
+                        index: 2,
+                        text: "Department",
+                        listItem: DepartmentList.facultyOfEngineering),
                     const SizedBox(height: 10),
-                    FormInputWeb(
-                      "Level of Study",
-                      textEditingController:
-                          Provider.of<SignupProvider>(context).year,
+                    DropDownButtonWidget(
+                      index: 3,
+                      text: "Year",
+                      listItem: year,
                     ),
                     const SizedBox(height: 25),
                     Consumer<SignupProvider>(
@@ -125,9 +139,9 @@ class _SignUpDesktopState extends State<SignUpDesktop> {
                                     value.password.text,
                                     value.name.text,
                                     value.phoneNumber.text,
-                                    value.department.text,
-                                    value.faculty.text,
-                                    value.year.text,
+                                    value.department,
+                                    value.faculty,
+                                    value.year,
                                     context);
                           },
                           child: FormButtonWeb(
