@@ -40,7 +40,9 @@ class ConversationTile extends StatelessWidget {
         children: [
           Row(
             children: [
-              const ConversationImage(),
+              const ConversationImage(
+                imagePath: UtilConstants.profImagePath,
+              ),
               const SizedBox(width: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -37,7 +37,7 @@ class _CounselorformState extends State<Counselorform> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(left: 200),
+          padding: const EdgeInsets.only(left: 200, top: 50),
           child: Center(
             child: Row(
               children: [

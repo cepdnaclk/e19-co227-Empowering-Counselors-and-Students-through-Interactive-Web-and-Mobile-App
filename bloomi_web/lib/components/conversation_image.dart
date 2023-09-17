@@ -1,13 +1,14 @@
-import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
 class ConversationImage extends StatelessWidget {
   final double width;
   final double height;
+  final String imagePath;
   const ConversationImage({
     super.key,
     this.width = 45,
     this.height = 45,
+    required this.imagePath,
   });
 
   @override
@@ -20,8 +21,8 @@ class ConversationImage extends StatelessWidget {
       ),
       child: ClipOval(
         // Use ClipOval instead of ClipRRect
-        child: Image.asset(
-          UtilConstants.profImagePath,
+        child: Image.network(
+          imagePath,
           fit: BoxFit.cover,
         ),
       ),
