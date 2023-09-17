@@ -160,15 +160,16 @@ class AuthController {
         // If it's a new user, save their data to Firestore
         if (isNewUser) {
           await saveUserData(
-            user.uid,
-            user.displayName ?? "", // Google users usually have a display name
-            user.email ?? "",
-            user.phoneNumber ?? "",
-            "", // You can add department, faculty, year, and userType here
-            "", // Add faculty
-            "", // Add year
-            "", // Add userType
-          );
+              user.uid,
+              user.displayName ??
+                  "", // Google users usually have a display name
+              user.email ?? "",
+              user.phoneNumber ?? "",
+              "", // You can add department, faculty, year, and userType here
+              "", // Add faculty
+              "", // Add year
+              user.photoURL ?? "" // Add userType
+              );
         }
         Logger().i(user.displayName);
       }
