@@ -65,6 +65,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     final currentWidth = mediaQueryData.size.width;
+    final currentHeight = mediaQueryData.size.height;
 
     /*return Scaffold(
       body: Stack(
@@ -254,8 +255,8 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: currentHeight * 0.02,
                 ),
                 Expanded(
                   child: _isSearchBarTapped
@@ -266,14 +267,17 @@ class _DashboardState extends State<Dashboard> {
                                 key: ValueKey(_foundUsers[index]["id"]),
                                 color: Colors.amberAccent,
                                 elevation: 4,
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 10),
+                                margin: EdgeInsets.symmetric(
+                                    vertical: currentHeight * 0.01),
                                 child: ListTile(
                                   leading: Text(
                                     _foundUsers[index]["id"].toString(),
-                                    style: const TextStyle(fontSize: 24),
+                                    style: TextStyle(
+                                        fontSize: currentWidth * 0.03),
                                   ),
-                                  title: Text(_foundUsers[index]['name']),
+                                  title: Text(_foundUsers[index]['name'],
+                                      style: TextStyle(
+                                          fontSize: currentWidth * 0.03)),
                                   subtitle: Text(
                                       '${_foundUsers[index]["age"].toString()} years old'),
                                 ),
@@ -294,49 +298,51 @@ class _DashboardState extends State<Dashboard> {
                     color: Colors.blueGrey,
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(
-                    top: 10,
-                    bottom: 30,
-                    left: 20,
-                    right: 20,
-                  ),
-                  child: Card(
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.only(
+                      top: 10,
+                      bottom: 30,
+                      left: 20,
+                      right: 20,
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 30,
-                        vertical: 20,
+                    child: Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Title',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 20,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Title',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 8,
-                            child: Divider(
-                              thickness: 1,
+                            SizedBox(
+                              height: 8,
+                              child: Divider(
+                                thickness: 1,
+                              ),
                             ),
-                          ),
-                          Text('Full Name:'),
-                          SizedBox(height: 4),
-                          Text('Email:'),
-                          SizedBox(height: 4),
-                          Text('Counsellor:'),
-                          SizedBox(height: 4),
-                          Text('Date:'),
-                          SizedBox(height: 4),
-                          Text('Time:'),
-                        ],
+                            Text('Full Name:'),
+                            SizedBox(height: 4),
+                            Text('Email:'),
+                            SizedBox(height: 4),
+                            Text('Counsellor:'),
+                            SizedBox(height: 4),
+                            Text('Date:'),
+                            SizedBox(height: 4),
+                            Text('Time:'),
+                          ],
+                        ),
                       ),
                     ),
                   ),

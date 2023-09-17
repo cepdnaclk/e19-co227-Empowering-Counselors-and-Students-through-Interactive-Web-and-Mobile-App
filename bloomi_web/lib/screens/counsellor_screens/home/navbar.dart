@@ -5,10 +5,13 @@ import 'package:bloomi_web/screens/counsellor_screens/chat/message.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/drawer.dart';
 import 'package:bloomi_web/screens/counsellor_screens/profile/profile.dart';
-import 'package:bloomi_web/screens/counsellor_screens/topbar_contents.dart';
+import 'package:bloomi_web/screens/counsellor_screens/home/topbar_contents.dart';
+import 'package:bloomi_web/screens/counsellor_screens/profile/profile_panel.dart';
+import 'package:bloomi_web/screens/counsellor_screens/profile/profile_screen.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:bloomi_web/components/footer.dart';
 
 /*
 class CounselorNavBar extends StatefulWidget {
@@ -84,20 +87,22 @@ class _CounselorHomeState extends State<CounselorHome> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
+    var width = mediaQueryData.size.width;
     final List<Widget> widgets = [
       const Dashboard(),
       const CounselorCalender(),
       const MessagingCard(),
-      const CounselorProfile(
+      ProfileScreen(),
+      /*const CounselorProfile(
         name: 'John Doe',
         email: 'johndoe@example.com',
         faculty: 'Engineering',
         department: 'Computer Engineering',
         imageUrl: '../assets/images/profileimage.webp',
-      ),
+      ),*/
     ];
     return Scaffold(
-      appBar: (mediaQueryData.size.width <= 900)
+      appBar: (width <= 900)
           ? AppBar(
               iconTheme: const IconThemeData(color: UtilConstants.primaryColor),
               backgroundColor: UtilConstants.lightgreyColor,
@@ -108,7 +113,7 @@ class _CounselorHomeState extends State<CounselorHome> {
                   fontWeight: FontWeight.w300,
                   fontColor: UtilConstants.primaryColor))
           : PreferredSize(
-              preferredSize: Size(mediaQueryData.size.width, 70),
+              preferredSize: Size(width, 70),
               child: const CounsellorNavBar(),
             ),
       body: Consumer<NavigationProvider>(
@@ -117,7 +122,7 @@ class _CounselorHomeState extends State<CounselorHome> {
         },
       ),
       drawer: const CounselorDrawer(),
-      //bottomNavigationBar: Footer(mediaQueryData: mediaQueryData),
+      bottomNavigationBar: Footer(height: 55, width: width),
     );
   }
 }
