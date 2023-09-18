@@ -1,12 +1,10 @@
-import 'package:bloomi_web/components/homepage_card_widget_yoga.dart';
+/* import 'package:bloomi_web/components/homepage_card_widget_self.dart'; */
+import 'package:bloomi_web/components/homepage_card_widget_self.dart';
 import 'package:bloomi_web/components/homepage_class.dart';
 import 'package:bloomi_web/components/homepage_yogapage_constants.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
-/* import 'package:new_project/class/item_class.dart';
-import 'package:new_project/core/constants.dart';
- */
 class DescriptionPageYoga extends StatefulWidget {
   const DescriptionPageYoga({super.key, required this.items});
 
@@ -55,7 +53,7 @@ class _DescriptionPageYogaState extends State<DescriptionPageYoga> {
             bottom: 10,
           ),
           child: Padding(
-            padding: const EdgeInsets.all(kDouble20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               children: [
                 Image.asset(widget.items.imagePath),
@@ -71,14 +69,6 @@ class _DescriptionPageYogaState extends State<DescriptionPageYoga> {
                 ),
                 const Text(
                   yogaDescription1,
-                  style: TextStyle(fontSize: 20),
-                  textAlign: TextAlign.justify,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                const Text(
-                  yogaDescription2,
                   style: TextStyle(fontSize: 20),
                   textAlign: TextAlign.justify,
                 ),
@@ -102,44 +92,44 @@ class _DescriptionPageYogaState extends State<DescriptionPageYoga> {
                   height: 15,
                 ),
                 const Text(
-                  yogaDescription5,
+                  yogaDescription2,
                   style: TextStyle(fontSize: 20),
                   textAlign: TextAlign.justify,
                 ),
                 const SizedBox(
                   height: 15,
                 ),
-                yogaActivity1,
+                yogaActvity1,
                 const SizedBox(
                   height: 15,
                 ),
-                yogaActivity2,
+                yogaActvity2,
                 const SizedBox(
                   height: 15,
                 ),
-                yogaActivity3,
+                yogaActvity3,
                 const SizedBox(
                   height: 15,
                 ),
-                yogaActivity4,
+                yogaActvity4,
                 const SizedBox(
                   height: 15,
                 ),
-                yogaActivity5,
+                yogaActvity5,
                 const SizedBox(
                   height: 15,
                 ),
-                yogaActivity6,
+                yogaActvity6,
                 const SizedBox(
                   height: 15,
                 ),
-                yogaActivity7,
+                yogaActvity7,
                 const SizedBox(
                   height: 15,
                 ),
-                CardWidgetYoga(
+                CardWidgetSelf(
                   items: ItemClass(
-                      title: "", imagePath: UtilConstants.yogaFinalImagePath),
+                      title: "", imagePath: UtilConstants.finalYogaImagePath),
                 ),
               ],
             ),

@@ -37,7 +37,8 @@ class _HomePageState extends State<HomePage> {
                   child: Card(
                     child: CardWidgetYoga(
                       items: ItemClass(
-                          title: UtilConstants.yogaTitle,
+                          title:
+                              "\"Yoga: A journey within to find tranquility and nurture mental health\"",
                           imagePath: UtilConstants.yogaImagePath),
                     ),
                   ),
