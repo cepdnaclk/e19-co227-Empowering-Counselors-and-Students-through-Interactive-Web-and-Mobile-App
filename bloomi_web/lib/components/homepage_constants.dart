@@ -30,8 +30,8 @@ const activity1 = Column(
       height: 5,
     ),
     Text(
-      "Regular physical activity not only benefits your body but also releases endorphins, which boost your mood and reduce stress.",
-      style: TextStyle(fontSize: 23),
+      "Engaging in regular physical activity offers a multitude of benefits, extending beyond mere physical health. Exercise releases endorphins, the body's natural mood lifters, which contribute to a more positive emotional state and reduced stress levels. It enhances cardiovascular fitness, strengthens muscles, and promotes overall well-being. Incorporating physical activity into your routine is a powerful step toward a healthier, happier life.",
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
@@ -50,8 +50,8 @@ const activity2 = Column(
       height: 5,
     ),
     Text(
-      "Nourishing your body with a balanced diet rich in fruits, vegetables, and whole grains can have a profound impact on your energy levels and overall health.",
-      style: TextStyle(fontSize: 23),
+      "Nourishing your body with a well-balanced diet, abundant in fruits, vegetables, and whole grains, can yield a profound influence on your vitality and overall well-being. This dietary approach provides essential nutrients, fuels energy levels, supports physical health, and bolsters mental clarity. It is a cornerstone of a healthy lifestyle, contributing to sustained wellness and an improved quality of life.",
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
@@ -70,8 +70,8 @@ const activity3 = Column(
       height: 5,
     ),
     Text(
-      "Prioritize getting enough sleep, as it is essential for physical and mental recovery. Aim for 7-9 hours of quality sleep each night.",
-      style: TextStyle(fontSize: 23),
+      "Prioritize the importance of getting an adequate amount of sleep, as it plays a vital role in both physical and mental recovery. Strive for a consistent sleep routine, aiming for 7-9 hours of high-quality sleep each night. Sufficient sleep not only rejuvenates your body but also sharpens cognitive function, enhances mood stability, and fosters overall well-being. It is a cornerstone of a healthy and balanced lifestyle.",
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
@@ -91,7 +91,7 @@ const activity4 = Column(
     ),
     Text(
       "Practicing mindfulness and meditation can alleviate stress, enhance concentration, and foster a profound inner tranquility and emotional resilience. These practices empower individuals to navigate life's challenges with grace and heightened self-awareness.",
-      style: TextStyle(fontSize: 23),
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
@@ -111,7 +111,7 @@ const activity5 = Column(
     ),
     Text(
       "Writing down your thoughts and feelings can serve as a therapeutic avenue for processing emotions, fostering self-reflection, and gaining profound clarity regarding the various aspects of your life. This practice encourages emotional catharsis and personal growth, empowering individuals to make informed decisions and better understand their inner selves.",
-      style: TextStyle(fontSize: 23),
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
@@ -130,8 +130,8 @@ const activity6 = Column(
       height: 5,
     ),
     Text(
-      "Engaging in activities you enjoy, whether it's painting, gardening, reading, or playing a musical instrument, can provide relaxation and fulfillment.",
-      style: TextStyle(fontSize: 23),
+      "Participating in activities you genuinely enjoy, such as painting, gardening, reading, or playing a musical instrument, offers more than just relaxation; it provides profound fulfillment. These pursuits ignite your passions, nourish your creativity, and create moments of joy and contentment. They serve as an essential reservoir of happiness and a powerful means of self-expression, contributing to a well-rounded and satisfying life.",
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
@@ -151,7 +151,7 @@ const activity7 = Column(
     ),
     Text(
       "Spend quality time with friends and loved ones, for nurturing and fostering social connections is essential for maintaining emotional well-being. These bonds provide a powerful support system, enriching life with love, laughter, and shared experiences, ultimately contributing to a profound sense of happiness and emotional resilience.",
-      style: TextStyle(fontSize: 23),
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
@@ -171,7 +171,7 @@ const activity8 = Column(
     ),
     Text(
       "Learn the art of saying \"no\" when it's essential, and set firm yet compassionate boundaries to safeguard your precious time and energy. By doing so, you empower yourself to prioritize self-care, reduce overwhelm, and maintain a healthier, more balanced life that fosters personal well-being and personal growth.",
-      style: TextStyle(fontSize: 23),
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
@@ -190,8 +190,8 @@ const activity9 = Column(
       height: 5,
     ),
     Text(
-      "Don't hesitate to seek help from a therapist, counselor, or coach when dealing with challenging emotional or mental issues.",
-      style: TextStyle(fontSize: 23),
+      "Don't hesitate to reach out for support from a qualified therapist, counselor, or coach when facing complex emotional or mental challenges. Seeking professional help is a courageous step towards healing and personal growth. These experts provide guidance, strategies, and a safe space to explore and address your concerns, fostering emotional resilience and well-being on your journey towards a healthier, happier life.",
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
@@ -211,7 +211,7 @@ const activity10 = Column(
     ),
     Text(
       "Practice self-compassion by treating yourself with the same kindness, understanding, and forgiveness you readily offer to a dear friend. Cultivate a nurturing inner dialogue that acknowledges imperfections, embraces self-love, and bolsters emotional well-being, fostering a deeper connection with your own self and enhancing resilience in the face of life's challenges.",
-      style: TextStyle(fontSize: 23),
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
@@ -231,7 +231,7 @@ const activity11 = Column(
     ),
     Text(
       "Take regular breaks from screens and technology to alleviate stress and enhance the quality of your sleep. These digital detox moments enable relaxation, reduce eye strain, and help reset your body's natural sleep-wake cycle. The result is improved overall well-being, including better sleep patterns, increased focus, and a rejuvenated sense of mental and emotional clarity.",
-      style: TextStyle(fontSize: 23),
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
@@ -250,8 +250,8 @@ const activity12 = Column(
       height: 5,
     ),
     Text(
-      "Don't neglect your physical health; schedule regular check-ups with healthcare professionals to address any potential issues early.",
-      style: TextStyle(fontSize: 23),
+      "Prioritize your physical health by scheduling routine check-ups with healthcare professionals. Regular medical examinations are essential for early detection and prevention of potential health issues. They empower you to take proactive steps toward maintaining your well-being and addressing any concerns promptly. By investing in preventive care, you ensure a healthier, longer-lasting life.",
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
@@ -271,7 +271,7 @@ const activity13 = Column(
     ),
     Text(
       "Efficiently managing your time is a powerful strategy to minimize stress and create room for self-care endeavors. By prioritizing tasks, setting clear goals, and embracing effective time management techniques, you gain the freedom to nurture your well-being. This balanced approach allows for self-care rituals that rejuvenate your mind and body, ultimately leading to improved mental health and a greater sense of fulfillment.",
-      style: TextStyle(fontSize: 23),
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
@@ -291,7 +291,7 @@ const activity14 = Column(
     ),
     Text(
       "Engage in lifelong learning and personal growth to cultivate a profound sense of purpose and fulfillment in life. Embracing new knowledge, acquiring new skills, and seeking personal development opportunities not only expand your horizons but also provide a profound sense of achievement and meaning. This journey of self-improvement empowers you to navigate life's challenges with resilience and contributes to a more fulfilling and enriched existence.",
-      style: TextStyle(fontSize: 23),
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
@@ -311,7 +311,7 @@ const activity15 = Column(
     ),
     Text(
       "Allocate dedicated moments for introspection and self-reflection, allowing you to delve deeper into self-awareness and a profound understanding of your unique needs and aspirations. These reflective pauses nurture personal growth, enhance emotional intelligence, and provide valuable insights into your goals and values. They serve as a compass, guiding you towards a more authentic and purpose-driven life, fostering lasting fulfillment and contentment.",
-      style: TextStyle(fontSize: 23),
+      style: TextStyle(fontSize: 20),
     ),
   ],
 );
