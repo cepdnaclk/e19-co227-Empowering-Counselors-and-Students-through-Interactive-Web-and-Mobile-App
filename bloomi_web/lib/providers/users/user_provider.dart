@@ -2,6 +2,7 @@
 
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/auth/user_model.dart';
+import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/home/adminui.dart';
 import 'package:bloomi_web/screens/auth_screens/login/login.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/navbar.dart';
@@ -10,6 +11,7 @@ import 'package:bloomi_web/utils/util_function.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 
 class UserProvider extends ChangeNotifier {
   UserModel? _userModel;
@@ -26,6 +28,13 @@ class UserProvider extends ChangeNotifier {
         //----------if user is logged in, navigate to login page---------------
 
         await startFetchUserData(user.uid).then((value) {
+          try {
+            Provider.of<UserAppoinmentProvider>(context, listen: false)
+                .startFetchAllUserData();
+          } catch (e) {
+            Logger().e(e);
+          }
+
           if (value!.userType == "Counselor") {
             Logger().e(value.userType);
             UtilFunction.navigateForward(context, const CounselorHome());
