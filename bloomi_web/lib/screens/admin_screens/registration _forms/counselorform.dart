@@ -2,7 +2,7 @@ import 'package:bloomi_web/components/admin_dropdown_menu.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
-import 'package:bloomi_web/providers/auth/counselorregister_provider.dart';
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -37,7 +37,7 @@ class _CounselorformState extends State<Counselorform> {
         child: SingleChildScrollView(
           child: Container(
             width: 440,
-            height: 580,
+            height: 600,
             padding: const EdgeInsets.all(30),
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -64,6 +64,14 @@ class _CounselorformState extends State<Counselorform> {
                   ),
                   SizedBox(height: mediaQueryData.size.height * 0.01),
                   FormInputWeb(
+                    "Password",
+                    obscure: true,
+                    textEditingController:
+                        Provider.of<CounselorRegistrationProvider>(context)
+                            .password,
+                  ),
+                  SizedBox(height: mediaQueryData.size.height * 0.01),
+                  FormInputWeb(
                     "Phone Number",
                     textEditingController:
                         Provider.of<CounselorRegistrationProvider>(context)
@@ -73,7 +81,7 @@ class _CounselorformState extends State<Counselorform> {
                   SizedBox(
                       width: 420,
                       child: AdminDropDownButtonWidget(
-                          listItem: faculty, text: "Faculty")),
+                          index: 1, listItem: faculty, text: "Faculty")),
                   SizedBox(height: mediaQueryData.size.height * 0.01),
                   FormInputWeb(
                     "Credentials",
@@ -88,11 +96,18 @@ class _CounselorformState extends State<Counselorform> {
                     builder: (context, value, child) {
                       return InkWell(
                         onTap: () {
-                          // Add your update logic here
+                          value.signUpUser(
+                              value.name.text,
+                              value.email.text,
+                              value.password.text,
+                              value.phoneNumber.text,
+                              value.faculty,
+                              value.credentials.text,
+                              context);
                         },
-                        child: const FormButtonWeb(
+                        child: FormButtonWeb(
                           "Update",
-                          isLoading: false,
+                          isLoading: value.isLoading,
                         ),
                       );
                     },
