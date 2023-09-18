@@ -25,6 +25,8 @@ class UtilConstants {
   // -------------------Titles used for home page
   static const String selfCareTitle =
       "\"Self-care is the fuel that allows your light to shine brightly.\"";
+  static const String yogaTitle =
+      "\"Yoga: A journey within to find tranquility and nurture mental health.\"";
 
   //--------------------Image path--------------------
 
@@ -39,6 +41,18 @@ class UtilConstants {
   static const String selfCareIsntSelfishImagePath =
       "assets/images/self_care_isnt_selfish.png";
   static const String otherImagePath = "assets/images/self.png";
+  static const String yogaImagePath = "assets/images/yoga_image.png";
+  static const String yogaFinalImagePath = "assets/images/yoga_final.png";
+  static const String uttanasanaImagePath = "assets/images/uttanasana.gif";
+  static const String viparitaKaraniImagePath =
+      "assets/images/Viparita_Karani.png";
+  static const String shavasanaImagePath = "assets/images/shavasana.png";
+  static const String balasanaImagePath1 = "assets/images/balasana_1.png";
+  static const String balasanaImagePath2 = "assets/images/balasana_2.png";
+  static const String setuImagePath = "assets/images/Setu_bandhasana.png";
+  static const String garudasanaImagePath = "assets/images/garudasana.png";
+  static const String anjaneyasanaImagePath = "assets/images/Anjaneyasana.png";
+
   static const String dummyProfileUrl =
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
 

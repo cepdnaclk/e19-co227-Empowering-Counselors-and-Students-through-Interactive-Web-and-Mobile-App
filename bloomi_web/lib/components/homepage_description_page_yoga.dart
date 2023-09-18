@@ -1,22 +1,22 @@
-import 'package:bloomi_web/components/homepage_card_widget.dart';
+import 'package:bloomi_web/components/homepage_card_widget_yoga.dart';
 import 'package:bloomi_web/components/homepage_class.dart';
-import 'package:bloomi_web/components/homepage_constants.dart';
+import 'package:bloomi_web/components/homepage_yogapage_constants.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
 /* import 'package:new_project/class/item_class.dart';
 import 'package:new_project/core/constants.dart';
  */
-class DescriptionPage extends StatefulWidget {
-  const DescriptionPage({super.key, required this.items});
+class DescriptionPageYoga extends StatefulWidget {
+  const DescriptionPageYoga({super.key, required this.items});
 
   final ItemClass items;
 
   @override
-  State<DescriptionPage> createState() => _DescriptionPageState();
+  State<DescriptionPageYoga> createState() => _DescriptionPageYogaState();
 }
 
-class _DescriptionPageState extends State<DescriptionPage> {
+class _DescriptionPageYogaState extends State<DescriptionPageYoga> {
   double fontSizeCustom = 25;
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class _DescriptionPageState extends State<DescriptionPage> {
                   height: 20,
                 ),
                 const Text(
-                  selfCareDescription1,
+                  yogaDescription1,
                   style: TextStyle(fontSize: 20),
                   textAlign: TextAlign.justify,
                 ),
@@ -78,80 +78,68 @@ class _DescriptionPageState extends State<DescriptionPage> {
                   height: 15,
                 ),
                 const Text(
-                  selfCareDescription2,
+                  yogaDescription2,
                   style: TextStyle(fontSize: 20),
                   textAlign: TextAlign.justify,
                 ),
                 const SizedBox(
                   height: 15,
                 ),
-                activity1,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity2,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity3,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity4,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity5,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity6,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity7,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity8,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity9,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity10,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity11,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity12,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity13,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity14,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity15,
-                const SizedBox(
-                  height: 15,
+                const Text(
+                  yogaDescription3,
+                  style: TextStyle(fontSize: 20),
+                  textAlign: TextAlign.justify,
                 ),
                 const SizedBox(
                   height: 15,
                 ),
-                CardWidget(
+                const Text(
+                  yogaDescription4,
+                  style: TextStyle(fontSize: 20),
+                  textAlign: TextAlign.justify,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const Text(
+                  yogaDescription5,
+                  style: TextStyle(fontSize: 20),
+                  textAlign: TextAlign.justify,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                yogaActivity1,
+                const SizedBox(
+                  height: 15,
+                ),
+                yogaActivity2,
+                const SizedBox(
+                  height: 15,
+                ),
+                yogaActivity3,
+                const SizedBox(
+                  height: 15,
+                ),
+                yogaActivity4,
+                const SizedBox(
+                  height: 15,
+                ),
+                yogaActivity5,
+                const SizedBox(
+                  height: 15,
+                ),
+                yogaActivity6,
+                const SizedBox(
+                  height: 15,
+                ),
+                yogaActivity7,
+                const SizedBox(
+                  height: 15,
+                ),
+                CardWidgetYoga(
                   items: ItemClass(
-                      title: "",
-                      imagePath: UtilConstants.selfCareIsntSelfishImagePath),
+                      title: "", imagePath: UtilConstants.yogaFinalImagePath),
                 ),
               ],
             ),

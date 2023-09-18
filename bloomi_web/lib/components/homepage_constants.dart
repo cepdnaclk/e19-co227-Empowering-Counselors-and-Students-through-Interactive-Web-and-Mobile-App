@@ -1,6 +1,12 @@
-import 'dart:js';
-
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        Column,
+        CrossAxisAlignment,
+        FontWeight,
+        MainAxisAlignment,
+        SizedBox,
+        Text,
+        TextStyle;
 
 const double kDouble5 = 5.0;
 const double kDouble10 = 10.0;
