@@ -1,5 +1,6 @@
 /* import 'package:bloomi_web/components/custom_card_widget.dart'; */
-import 'package:bloomi_web/components/homepage_card_widget.dart';
+import 'package:bloomi_web/components/homepage_card_widget_self.dart';
+import 'package:bloomi_web/components/homepage_card_widget_yoga.dart';
 import 'package:bloomi_web/components/homepage_class.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 /* import 'package:bloomi_web/components/custom_text.dart';
@@ -25,7 +26,7 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            CardWidget(
+            CardWidgetSelf(
               items: ItemClass(
                   title: UtilConstants.selfCareTitle,
                   imagePath: UtilConstants.selfCareImagePath),
@@ -34,38 +35,17 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Expanded(
                   child: Card(
-                    child: CardWidget(
+                    child: CardWidgetYoga(
                       items: ItemClass(
-                          title: 'Space',
-                          imagePath: UtilConstants.otherImagePath),
+                          title:
+                              "\"Yoga: A journey within to find tranquility and nurture mental health\"",
+                          imagePath: UtilConstants.yogaImagePath),
                     ),
                   ),
                 ),
                 Expanded(
                   child: Card(
-                    child: CardWidget(
-                      items: ItemClass(
-                          title: 'Travel',
-                          imagePath: UtilConstants.otherImagePath),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Card(
-                    child: CardWidget(
-                      items: ItemClass(
-                          title: 'Space',
-                          imagePath: UtilConstants.otherImagePath),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Card(
-                    child: CardWidget(
+                    child: CardWidgetYoga(
                       items: ItemClass(
                           title: 'Travel',
                           imagePath: UtilConstants.otherImagePath),
@@ -78,7 +58,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Expanded(
                   child: Card(
-                    child: CardWidget(
+                    child: CardWidgetYoga(
                       items: ItemClass(
                           title: 'Space',
                           imagePath: UtilConstants.otherImagePath),
@@ -87,7 +67,29 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Expanded(
                   child: Card(
-                    child: CardWidget(
+                    child: CardWidgetYoga(
+                      items: ItemClass(
+                          title: 'Travel',
+                          imagePath: UtilConstants.otherImagePath),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Card(
+                    child: CardWidgetYoga(
+                      items: ItemClass(
+                          title: 'Space',
+                          imagePath: UtilConstants.otherImagePath),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Card(
+                    child: CardWidgetYoga(
                       items: ItemClass(
                           title: 'Travel',
                           imagePath: UtilConstants.otherImagePath),
