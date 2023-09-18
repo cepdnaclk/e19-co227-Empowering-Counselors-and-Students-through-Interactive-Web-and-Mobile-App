@@ -1,15 +1,19 @@
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AdminDropDownButtonWidget extends StatelessWidget {
   final List<String> listItem;
   final String text;
+  final int index;
 
   const AdminDropDownButtonWidget({
     super.key,
     required this.listItem,
     required this.text,
+    required this.index,
   });
 
   @override
@@ -49,7 +53,12 @@ class AdminDropDownButtonWidget extends StatelessWidget {
         }
         return null;
       },
-      onChanged: (value) {},
+      onChanged: (value) {
+        if (index == 1) {
+          Provider.of<CounselorRegistrationProvider>(context, listen: false)
+              .setFaculty(value!);
+        }
+      },
       onSaved: (value) {
         selectedValue = value.toString();
       },

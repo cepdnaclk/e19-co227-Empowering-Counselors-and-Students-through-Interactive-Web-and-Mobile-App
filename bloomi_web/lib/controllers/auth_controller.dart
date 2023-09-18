@@ -20,6 +20,7 @@ class AuthController {
     String department,
     String faculty,
     String year,
+    String userCredential,
     String userType,
     BuildContext context,
   ) async {
@@ -40,6 +41,7 @@ class AuthController {
           department,
           faculty,
           year,
+          userCredential,
           userType, //save user data in cloud firestore
         );
       }
@@ -56,8 +58,16 @@ class AuthController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-  Future<void> saveUserData(String uid, String name, String email, String phone,
-      String department, String faculty, String year, String userType) {
+  Future<void> saveUserData(
+      String uid,
+      String name,
+      String email,
+      String phone,
+      String department,
+      String faculty,
+      String year,
+      String userCredential,
+      String userType) {
     return users
         .doc(uid)
         .set({
@@ -68,6 +78,7 @@ class AuthController {
           'department': department,
           'faculty': faculty,
           'year': year,
+          'userCredential': userCredential,
           'userType': userType,
           'imgUrl': UtilConstants.dummyProfileUrl,
         })
@@ -165,6 +176,7 @@ class AuthController {
                   "", // Google users usually have a display name
               user.email ?? "",
               user.phoneNumber ?? "",
+              "",
               "", // You can add department, faculty, year, and userType here
               "", // Add faculty
               "", // Add year

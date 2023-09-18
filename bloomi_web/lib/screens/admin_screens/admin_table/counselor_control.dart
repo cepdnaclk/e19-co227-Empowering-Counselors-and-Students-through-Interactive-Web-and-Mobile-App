@@ -1,6 +1,5 @@
 import 'package:bloomi_web/components/custom_tablecells.dart';
 import 'package:bloomi_web/components/custom_tableheads.dart';
-import 'package:bloomi_web/screens/admin_screens/registration%20_forms/Counselorupdateform.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/counselorform.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
@@ -187,7 +186,7 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                     onPressed: () {
                                       UtilFunction.navigateForward(
                                         context,
-                                        const Counselorupdateform(),
+                                        const Counselorform(),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(

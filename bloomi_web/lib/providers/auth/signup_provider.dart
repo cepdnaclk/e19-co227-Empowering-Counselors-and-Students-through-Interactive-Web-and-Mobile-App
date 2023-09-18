@@ -104,8 +104,18 @@ class SignupProvider extends ChangeNotifier {
         setIsLoading(true);
 
         //sign up user
-        await AuthController().signUpUser(email, password, name, phone,
-            department, faculty, year, userType, context);
+        await AuthController().signUpUser(
+          email,
+          password,
+          name,
+          phone,
+          department,
+          faculty,
+          year,
+          userType,
+          "",
+          context,
+        );
 
         setIsLoading(false);
       } else {
