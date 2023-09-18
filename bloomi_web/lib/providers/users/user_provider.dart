@@ -32,7 +32,6 @@ class UserProvider extends ChangeNotifier {
           } else if (value.userType == "Admin") {
             UtilFunction.navigateForward(context, const Adminpanel());
           } else {
-            Logger().e(value.userType);
             UtilFunction.navigateForward(context, const Home());
           }
         });

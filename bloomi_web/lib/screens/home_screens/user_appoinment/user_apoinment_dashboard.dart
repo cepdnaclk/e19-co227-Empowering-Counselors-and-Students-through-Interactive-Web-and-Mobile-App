@@ -1,5 +1,6 @@
 import 'package:bloomi_web/components/custom_card_widget.dart';
 import 'package:bloomi_web/components/custom_text.dart';
+import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
@@ -18,13 +19,13 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     final currentWidth = mediaQueryData.size.width;
-    final List<String> id = ["1", "2"];
-    final List<String> names = ["Sachith Dissanayaka", "Sachith Dissanayaka"];
+
+    List<String> name = ["Dr. A", "Dr. B"];
+    List<String> credential = ["PhD", "PhD"];
+    List<String> uid = ["1", "2"];
     return Scaffold(
-      backgroundColor: UtilConstants.homeBackgroundColor,
       body: SafeArea(
-        child: GestureDetector(
-          child: Padding(
+        child: Padding(
             padding: const EdgeInsets.symmetric(
               vertical: 20.0,
               horizontal: 10.0,
@@ -56,7 +57,7 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                             child: CircleAvatar(
                               backgroundImage:
                                   NetworkImage(value.userModel!.imgUrl),
-                              radius: ((currentWidth > 900) ? 30 : 20),
+                              radius: ((currentWidth > 900) ? 25 : 20),
                             ),
                           );
                         },
@@ -72,25 +73,31 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: SizedBox(
-                      height: 300,
-                      width: 1000,
-                      child: ListView.builder(
-                        itemCount: 2,
-                        itemBuilder: (context, index) => Card(
-                          color: UtilConstants.lightgreyColor,
-                          elevation: 4,
-                          margin: const EdgeInsets.symmetric(vertical: 10),
-                          child: ListTile(
-                            leading: Text(
-                              id[index],
-                              style: const TextStyle(fontSize: 24),
-                            ),
-                            title: Text(names[index]),
-                            subtitle: const Text("Hiii"),
-                          ),
-                        ),
-                      ),
-                    ),
+                        height: 300,
+                        width: 1000,
+                        child: Consumer<UserAppoinmentProvider>(
+                          builder: (context, value, child) {
+                            return ListView.builder(
+                              itemCount: 2, // Use the length of the list
+                              itemBuilder: (context, index) {
+                                return Card(
+                                  color: UtilConstants.lightgreyColor,
+                                  elevation: 4,
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 10),
+                                  child: ListTile(
+                                    leading: Text(
+                                      uid[index],
+                                      style: const TextStyle(fontSize: 24),
+                                    ),
+                                    title: Text(name[index]),
+                                    subtitle: Text(credential[index]),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        )),
                   ),
                 ),
                 const CustomText(
@@ -113,9 +120,7 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                   ],
                 ),
               ],
-            ),
-          ),
-        ),
+            )),
       ),
     );
   }
