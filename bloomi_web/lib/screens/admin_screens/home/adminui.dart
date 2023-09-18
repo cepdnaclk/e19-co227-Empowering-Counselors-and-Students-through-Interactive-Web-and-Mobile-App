@@ -1,9 +1,9 @@
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
-import 'package:bloomi_web/screens/admin_screens/add_user/counselor_control.dart';
-import 'package:bloomi_web/screens/admin_screens/add_user/students_control.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_panel/admin_panel_drawer.dart';
+import 'package:bloomi_web/screens/admin_screens/admin_table/counselor_control.dart';
+import 'package:bloomi_web/screens/admin_screens/admin_table/students_control.dart';
 import 'package:bloomi_web/screens/admin_screens/dashboard/admin_dashboard.dart';
 import 'package:bloomi_web/screens/admin_screens/home/admin_navbar.dart';
 import 'package:bloomi_web/screens/admin_screens/log_activity/admin_activitylog.dart';

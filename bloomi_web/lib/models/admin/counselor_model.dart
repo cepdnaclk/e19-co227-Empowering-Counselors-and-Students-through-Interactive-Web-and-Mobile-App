@@ -1,4 +1,4 @@
-class UserModel {
+class AllUserModel {
   String uid;
   String name;
   String email;
@@ -10,7 +10,7 @@ class UserModel {
   String userType;
   String imgUrl;
 
-  UserModel({
+  AllUserModel({
     required this.uid,
     required this.name,
     required this.email,
@@ -24,7 +24,7 @@ class UserModel {
   });
 
   //-----------binding data from firestore to user model----------------
-  UserModel.fromJson(Map<String, dynamic> json)
+  AllUserModel.fromJson(Map<String, dynamic> json)
       : uid = json['uid'],
         name = json['name'],
         email = json['email'],

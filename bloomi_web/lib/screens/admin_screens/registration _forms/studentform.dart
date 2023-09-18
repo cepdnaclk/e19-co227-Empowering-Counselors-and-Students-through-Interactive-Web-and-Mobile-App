@@ -1,22 +1,23 @@
+import 'package:bloomi_web/components/admin_dropdown_menu.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/providers/auth/signup_provider.dart';
+import 'package:bloomi_web/utils/department_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class Studentform extends StatefulWidget {
   const Studentform({
-    super.key,
-    required this.mediaQueryData,
-  });
-  final MediaQueryData mediaQueryData;
+    Key? key, // Use Key? instead of super.key
+  }) : super(key: key);
+
   @override
-  State<Studentform> createState() => _StudentformState();
+  State<Studentform> createState() => _CounselorformState();
 }
 
-class _StudentformState extends State<Studentform> {
-  List<String> listItems = [
+class _CounselorformState extends State<Studentform> {
+  List<String> faculty = [
     'Faculty of Engineering',
     'Faculty of Medicine',
     'Faculty of Dental Sciences',
@@ -34,115 +35,92 @@ class _StudentformState extends State<Studentform> {
     '3rd Year',
     '4th Year',
   ];
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
+
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 200),
-          child: Column(
-            children: [
-              SizedBox(height: mediaQueryData.size.height * 0.02),
-              Row(
+      body: Center(
+        child: SingleChildScrollView(
+          child: Container(
+            width: 440,
+            height: 670,
+            padding: const EdgeInsets.all(30),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+            ),
+            child: Center(
+              child: Column(
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    margin:
-                        EdgeInsets.only(top: mediaQueryData.size.height * 0.02),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                    ),
-                    child: Column(
-                      children: [
-                        const FormHeading(
-                          "Register Students",
-                        ),
-                        SizedBox(height: mediaQueryData.size.height * 0.04),
-                        FormInputWeb(
-                          "Name",
-                          textEditingController:
-                              Provider.of<SignupProvider>(context).name,
-                        ),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        FormInputWeb(
-                          "Email",
-                          textEditingController:
-                              Provider.of<SignupProvider>(context).email,
-                        ),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        FormInputWeb(
-                          "Password",
-                          textEditingController:
-                              Provider.of<SignupProvider>(context).password,
-                          obscure: true,
-                        ),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        FormInputWeb(
-                          "Phone Number",
-                          textEditingController:
-                              Provider.of<SignupProvider>(context).phoneNumber,
-                        ),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        // CustomDropdownMenu(
-                        //   "Faculty",
-                        //   listItem: listItems,
-                        //   textEditingController:
-                        //       Provider.of<SignupProvider>(context).faculty,
-                        // ),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        FormInputWeb(
-                          "Department",
-                          textEditingController:
-                              Provider.of<SignupProvider>(context).department,
-                        ),
-                        SizedBox(height: mediaQueryData.size.height * 0.01),
-                        // CustomDropdownMenu(
-                        //   "Level of Study",
-                        //   listItem: year,
-                        //   textEditingController:
-                        //       Provider.of<SignupProvider>(context).year,
-                        // ),
-                        SizedBox(height: mediaQueryData.size.height * 0.06),
-                        Consumer<SignupProvider>(
-                          builder: (context, value, child) {
-                            return InkWell(
-                              onTap: () {},
-                              child: const FormButtonWeb(
-                                "Register",
-                                isLoading: false,
-                              ),
-                            );
-                          },
-                        ),
-                        SizedBox(height: mediaQueryData.size.height * 0.02),
-                      ],
+                  const FormHeading(
+                    "Update Student Details",
+                  ),
+                  SizedBox(height: mediaQueryData.size.height * 0.04),
+                  FormInputWeb(
+                    "Name",
+                    textEditingController:
+                        Provider.of<SignupProvider>(context).name,
+                  ),
+                  SizedBox(height: mediaQueryData.size.height * 0.01),
+                  FormInputWeb(
+                    "Email",
+                    textEditingController:
+                        Provider.of<SignupProvider>(context).email,
+                  ),
+                  SizedBox(height: mediaQueryData.size.height * 0.01),
+                  FormInputWeb(
+                    "Password",
+                    textEditingController:
+                        Provider.of<SignupProvider>(context).email,
+                  ),
+                  SizedBox(height: mediaQueryData.size.height * 0.01),
+                  FormInputWeb(
+                    "Phone Number",
+                    textEditingController:
+                        Provider.of<SignupProvider>(context).phoneNumber,
+                  ),
+                  SizedBox(height: mediaQueryData.size.height * 0.01),
+                  SizedBox(
+                    width: 420,
+                    child: AdminDropDownButtonWidget(
+                        index: 1, listItem: faculty, text: "Faculty"),
+                  ),
+                  SizedBox(height: mediaQueryData.size.height * 0.01),
+                  SizedBox(
+                    width: 420,
+                    child: AdminDropDownButtonWidget(
+                        index: 2,
+                        listItem: DepartmentList.facultyOfEngineering,
+                        text: "Department"),
+                  ),
+                  SizedBox(height: mediaQueryData.size.height * 0.01),
+                  SizedBox(
+                    width: 420,
+                    child: AdminDropDownButtonWidget(
+                      listItem: year,
+                      text: "Year",
+                      index: 3,
                     ),
                   ),
+                  SizedBox(height: mediaQueryData.size.height * 0.03),
+                  Consumer<SignupProvider>(
+                    builder: (context, value, child) {
+                      return InkWell(
+                        onTap: () {
+                          // Add your update logic here
+                        },
+                        child: const FormButtonWeb(
+                          "Update",
+                          isLoading: false,
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(height: mediaQueryData.size.height * 0.02),
                 ],
               ),
-              SizedBox(
-                height: mediaQueryData.size.height * 0.1,
-              ),
-              Center(
-                child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.blue,
-                      elevation: 100,
-                      padding: const EdgeInsets.all(20),
-                    ),
-                    child: const Text(
-                      'Go Back',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    )),
-              ),
-            ],
+            ),
           ),
         ),
       ),

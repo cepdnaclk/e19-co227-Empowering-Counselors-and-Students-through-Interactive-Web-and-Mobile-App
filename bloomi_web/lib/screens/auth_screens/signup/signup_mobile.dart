@@ -1,8 +1,10 @@
 import 'package:bloomi_web/components/custom_text_link_web.dart';
+import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/providers/auth/signup_provider.dart';
 import 'package:bloomi_web/screens/auth_screens/login/login.dart';
+import 'package:bloomi_web/utils/department_list.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +19,7 @@ class SignUpMobile extends StatefulWidget {
 }
 
 class _SignUpMobileState extends State<SignUpMobile> {
-  List<String> listItems = [
+  List<String> faculty = [
     'Faculty of Engineering',
     'Faculty of Medicine',
     'Faculty of Dental Sciences',
@@ -92,34 +94,21 @@ class _SignUpMobileState extends State<SignUpMobile> {
                 lableFontSize: 12,
               ),
               const SizedBox(height: 6),
-              FormInputWeb(
-                "Faculty",
-                textEditingController:
-                    Provider.of<SignupProvider>(context).faculty,
-                fontSize: 12,
-                height: 45,
-                width: 280,
-                lableFontSize: 12,
+              DropDownButtonWidget(
+                index: 1,
+                text: "Faculty",
+                listItem: faculty,
               ),
               const SizedBox(height: 6),
-              FormInputWeb(
-                "Department",
-                textEditingController:
-                    Provider.of<SignupProvider>(context).department,
-                fontSize: 12,
-                height: 45,
-                width: 280,
-                lableFontSize: 12,
-              ),
+              DropDownButtonWidget(
+                  index: 2,
+                  text: "Department",
+                  listItem: DepartmentList.facultyOfEngineering),
               const SizedBox(height: 6),
-              FormInputWeb(
-                "Level of Study",
-                textEditingController:
-                    Provider.of<SignupProvider>(context).year,
-                fontSize: 12,
-                height: 45,
-                width: 280,
-                lableFontSize: 12,
+              DropDownButtonWidget(
+                index: 3,
+                text: "Year",
+                listItem: year,
               ),
               const SizedBox(height: 25),
               Consumer<SignupProvider>(
@@ -132,9 +121,9 @@ class _SignUpMobileState extends State<SignUpMobile> {
                               value.password.text,
                               value.name.text,
                               value.phoneNumber.text,
-                              value.department.text,
-                              value.faculty.text,
-                              value.year.text,
+                              value.department,
+                              value.faculty,
+                              value.year,
                               context);
                     },
                     child: FormButtonWeb(

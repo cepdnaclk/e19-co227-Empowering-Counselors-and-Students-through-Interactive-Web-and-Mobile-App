@@ -1,11 +1,12 @@
 import 'package:bloomi_web/firebase_options.dart';
-import 'package:bloomi_web/providers/auth/counselorregister_provider.dart';
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/providers/auth/forgot_password_provider.dart';
 import 'package:bloomi_web/providers/auth/google_auth_provider.dart';
 import 'package:bloomi_web/providers/auth/login_provider.dart';
 import 'package:bloomi_web/providers/auth/signup_provider.dart';
 import 'package:bloomi_web/providers/nav_provider/admin_nav_provider.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
+import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/responsive/responsive_layout.dart';
@@ -33,6 +34,7 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (_) => CounselorRegistrationProvider()),
       ChangeNotifierProvider(create: (_) => UserChatProvider()),
       ChangeNotifierProvider(create: (_) => GoogleAuthProviders()),
+      ChangeNotifierProvider(create: (_) => UserAppoinmentProvider()),
     ],
     child: const MyApp(),
   ));

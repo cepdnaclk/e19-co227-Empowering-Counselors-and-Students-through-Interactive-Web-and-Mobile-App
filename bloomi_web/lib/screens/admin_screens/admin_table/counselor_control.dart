@@ -1,12 +1,8 @@
-import 'dart:html';
-
 import 'package:bloomi_web/components/custom_tablecells.dart';
 import 'package:bloomi_web/components/custom_tableheads.dart';
-import 'package:bloomi_web/screens/admin_screens/registration%20_forms/Counselorupdateform.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/counselorform.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Counselorcontrol extends StatefulWidget {
@@ -190,11 +186,11 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                     onPressed: () {
                                       UtilFunction.navigateForward(
                                         context,
-                                        const Counselorupdateform(),
+                                        const Counselorform(),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      primary: isRowHovered[index]
+                                      backgroundColor: isRowHovered[index]
                                           ? Colors.greenAccent
                                           : Colors.grey.shade50,
                                     ),
@@ -221,7 +217,7 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                 child: ElevatedButton(
                                   onPressed: () {},
                                   style: ElevatedButton.styleFrom(
-                                    primary: isRowHoveredDeleted[index]
+                                    backgroundColor: isRowHoveredDeleted[index]
                                         ? Colors.redAccent.shade200
                                         : Colors.grey.shade50,
                                   ),

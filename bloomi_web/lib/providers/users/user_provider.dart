@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/auth/user_model.dart';
 import 'package:bloomi_web/screens/admin_screens/home/adminui.dart';
@@ -10,6 +12,9 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 class UserProvider extends ChangeNotifier {
+  UserModel? _userModel;
+
+  UserModel? get userModel => _userModel;
   //-----------------------To initialize user---------------------
   Future<void> initializeUser(BuildContext context) async {
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
@@ -19,43 +24,39 @@ class UserProvider extends ChangeNotifier {
         UtilFunction.navigateForward(context, const Login());
       } else {
         //----------if user is logged in, navigate to login page---------------
-        Logger().i('User is signed in!');
 
-        if (user.uid == "3MMoGgwJLVUjpTkJ7f4Zd8FqqyJ2") {
-          await startFetchUserData(user.uid).then((value) {
-            UtilFunction.navigateForward(context, const Adminpanel());
-          });
-        } else if (user.uid == "Tm3SJ2JpSORKzZrFiumARyE4l7f1") {
-          await startFetchUserData(user.uid).then((value) {
+        await startFetchUserData(user.uid).then((value) {
+          if (value!.userType == "Counselor") {
+            Logger().e(value.userType);
             UtilFunction.navigateForward(context, const CounselorHome());
-          });
-        } else {
-          await startFetchUserData(user.uid).then((value) {
+          } else if (value.userType == "Admin") {
+            UtilFunction.navigateForward(context, const Adminpanel());
+          } else {
             UtilFunction.navigateForward(context, const Home());
-          });
-        }
+          }
+        });
       }
     });
   }
 
   //-----------------------To fetch user data---------------------
-  UserModel? _userModel;
-
-  UserModel? get userModel => _userModel;
 
   //-----------------------To fetch user data---------------------
-  Future<void> startFetchUserData(String uid) async {
+  Future<UserModel?> startFetchUserData(String uid) async {
     try {
-      AuthController().fetchUserData(uid).then((value) {
-        if (value != null) {
-          _userModel = value;
-          notifyListeners();
-        } else {
-          Logger().i("User not found");
-        }
-      });
+      UserModel? userModel = await AuthController().fetchUserData(uid);
+      if (userModel != null) {
+        _userModel = userModel;
+
+        notifyListeners();
+        return userModel;
+      } else {
+        Logger().i("User not found");
+        return null;
+      }
     } catch (e) {
       Logger().e(e);
+      return null;
     }
   }
 }
