@@ -6,6 +6,7 @@ class UserModel {
   String department;
   String faculty;
   String year;
+  String userCredential;
   String userType;
   String imgUrl;
 
@@ -17,6 +18,7 @@ class UserModel {
     required this.department,
     required this.faculty,
     required this.year,
+    required this.userCredential,
     required this.userType,
     required this.imgUrl,
   });
@@ -30,6 +32,7 @@ class UserModel {
         department = json['department'],
         faculty = json['faculty'],
         year = json['year'],
+        userCredential = json['userCredential'],
         userType = json['userType'],
         imgUrl = json['imgUrl'];
 }

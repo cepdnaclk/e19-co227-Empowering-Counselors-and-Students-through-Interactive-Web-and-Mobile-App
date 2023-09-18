@@ -24,19 +24,16 @@ class UserProvider extends ChangeNotifier {
         UtilFunction.navigateForward(context, const Login());
       } else {
         //----------if user is logged in, navigate to login page---------------
-        Logger().i('User is signed in!');
 
-        if (user.uid == "3MMoGgwJLVUjpTkJ7f4Zd8FqqyJ2") {
-          await startFetchUserData(user.uid).then((value) {
+        await startFetchUserData(user.uid).then((value) {
+          if (value!.userType == "Counselor") {
+            UtilFunction.navigateForward(context, const CounselorHome());
+          } else if (value.userType == "Admin") {
             UtilFunction.navigateForward(context, const Adminpanel());
-          });
-        } else if (user.uid == "3MMoGgwJLVUjpTkJ7f4Zd8FqqyJ3") {
-          UtilFunction.navigateForward(context, const CounselorHome());
-        } else {
-          await startFetchUserData(user.uid).then((value) {
+          } else {
             UtilFunction.navigateForward(context, const Home());
-          });
-        }
+          }
+        });
       }
     });
   }
@@ -44,18 +41,21 @@ class UserProvider extends ChangeNotifier {
   //-----------------------To fetch user data---------------------
 
   //-----------------------To fetch user data---------------------
-  Future<void> startFetchUserData(String uid) async {
+  Future<UserModel?> startFetchUserData(String uid) async {
     try {
-      AuthController().fetchUserData(uid).then((value) {
-        if (value != null) {
-          _userModel = value;
-          notifyListeners();
-        } else {
-          Logger().i("User not found");
-        }
-      });
+      UserModel? userModel = await AuthController().fetchUserData(uid);
+      if (userModel != null) {
+        _userModel = userModel;
+
+        notifyListeners();
+        return userModel;
+      } else {
+        Logger().i("User not found");
+        return null;
+      }
     } catch (e) {
       Logger().e(e);
+      return null;
     }
   }
 }
