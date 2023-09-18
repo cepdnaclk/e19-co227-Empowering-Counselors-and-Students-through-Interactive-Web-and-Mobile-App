@@ -1,3 +1,4 @@
+import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
 class CustomCardWidget extends StatelessWidget {
@@ -8,6 +9,7 @@ class CustomCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: UtilConstants.tropicalBlurColor,
       elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
