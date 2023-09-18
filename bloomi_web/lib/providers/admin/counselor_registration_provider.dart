@@ -112,8 +112,8 @@ class CounselorRegistrationProvider extends ChangeNotifier {
           department,
           faculty,
           year,
-          userType,
           credential,
+          userType,
           context,
         );
 
