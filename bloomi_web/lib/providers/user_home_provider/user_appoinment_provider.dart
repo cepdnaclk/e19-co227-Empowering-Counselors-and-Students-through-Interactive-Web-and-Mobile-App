@@ -4,14 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 class UserAppoinmentProvider extends ChangeNotifier {
+  DateTime _dateTime = DateTime.now();
+  DateTime get getDateTime => _dateTime;
+
+  void setDateTime(DateTime dateTime) {
+    _dateTime = dateTime;
+    notifyListeners();
+    Logger().i(_dateTime);
+  }
+
   //-------------------to store the all user---------------------
   List<AllUserModel> _allUserModel = [];
-
   List<AllUserModel> get allUserModel => _allUserModel;
 
   //-----------------------start fetching all counselor data---------------------
   final List<AllUserModel> _allCounselorModel = [];
-
   List<AllUserModel> get allCounselorModel => _allCounselorModel;
 
   bool _isLoading = false;
