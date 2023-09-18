@@ -4,6 +4,8 @@ import 'package:bloomi_web/screens/counsellor_screens/profile/profile.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 
 class ProfileCard extends StatelessWidget {
+  const ProfileCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;

@@ -10,6 +10,7 @@ import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/responsive/responsive_layout.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard.dart';
 import 'package:bloomi_web/screens/splash_screen/splash_desktop.dart';
 import 'package:bloomi_web/screens/splash_screen/splash_mobile.dart';
 import 'package:bloomi_web/screens/splash_screen/splash_tablet.dart';
@@ -62,8 +63,13 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: const ResponsiveLayout(
-            mobileBody: SplashScreenMobile(),
-            tabletBody: SplashScreenTablet(),
-            desktopBody: SplashDesktop()));
+          mobileBody: SplashScreenMobile(),
+          tabletBody: SplashScreenTablet(),
+          desktopBody: SplashDesktop(),
+
+          /* mobileBody: Dashboard(),
+            tabletBody: Dashboard(),
+            desktopBody: Dashboard(),*/
+        ));
   }
 }

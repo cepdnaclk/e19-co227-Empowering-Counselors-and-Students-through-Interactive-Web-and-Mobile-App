@@ -2,6 +2,7 @@ import 'package:bloomi_web/components/custom_text_link_web.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/providers/auth/signup_provider.dart';
+import 'package:bloomi_web/providers/counselor/counselorprofile_edit_provider.dart';
 import 'package:bloomi_web/screens/auth_screens/login/login.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
@@ -29,13 +30,6 @@ class _editTabletState extends State<editTablet> {
     'Faculty of Management',
   ];
 
-  List<String> year = [
-    '1st Year',
-    '2nd Year',
-    '3rd Year',
-    '4th Year',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -60,57 +54,66 @@ class _editTabletState extends State<editTablet> {
                     FormInputWeb(
                       "Name",
                       textEditingController:
-                          Provider.of<SignupProvider>(context).name,
+                          Provider.of<CounselorProfileEditProvider>(context)
+                              .name,
                     ),
                     const SizedBox(height: 10),
                     FormInputWeb(
                       "Email",
                       textEditingController:
-                          Provider.of<SignupProvider>(context).email,
+                          Provider.of<CounselorProfileEditProvider>(context)
+                              .email,
                     ),
                     const SizedBox(height: 10),
                     FormInputWeb(
                       "Password",
                       textEditingController:
-                          Provider.of<SignupProvider>(context).password,
+                          Provider.of<CounselorProfileEditProvider>(context)
+                              .password,
                       obscure: true,
                     ),
                     const SizedBox(height: 10),
                     FormInputWeb(
                       "Phone Number",
                       textEditingController:
-                          Provider.of<SignupProvider>(context).phoneNumber,
+                          Provider.of<CounselorProfileEditProvider>(context)
+                              .phoneNumber,
                     ),
                     const SizedBox(height: 10),
                     FormInputWeb(
                       "Faculty",
                       textEditingController:
-                          Provider.of<SignupProvider>(context).faculty,
+                          Provider.of<CounselorProfileEditProvider>(context)
+                              .faculty,
                     ),
                     const SizedBox(height: 10),
                     FormInputWeb("Department",
                         textEditingController:
-                            Provider.of<SignupProvider>(context).department),
+                            Provider.of<CounselorProfileEditProvider>(context)
+                                .department),
                     const SizedBox(height: 10),
                     FormInputWeb(
-                      "Level of Study",
+                      "Credentials",
                       textEditingController:
-                          Provider.of<SignupProvider>(context).year,
+                          Provider.of<CounselorProfileEditProvider>(context)
+                              .credentials,
                     ),
                     const SizedBox(height: 25),
-                    Consumer<SignupProvider>(
+                    Consumer<CounselorProfileEditProvider>(
                       builder: (context, value, child) {
                         return InkWell(
                           onTap: () {
-                            Provider.of<SignupProvider>(context, listen: false)
-                                .signUpUser(
+                            Provider.of<CounselorProfileEditProvider>(context,
+                                    listen: false)
+                                .counselorProfileEdit(
                                     value.email.text,
                                     value.password.text,
+                                    value.confirmPassword.text,
                                     value.name.text,
                                     value.phoneNumber.text,
                                     value.department.text,
                                     value.faculty.text,
-                                    value.year.text,
+                                    value.credentials.text,
                                     context);
                           },
                           child: FormButtonWeb(

@@ -151,6 +151,49 @@ class AuthController {
     }
   }
 
+  //-----------------------To signin with google User---------------------
+
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      // Sign in with Google
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser!.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      final UserCredential authResult =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      // Check if the user is new or existing
+      final User? user = authResult.user;
+      final bool isNewUser = authResult.additionalUserInfo!.isNewUser;
+
+      if (user != null) {
+        // If it's a new user, save their data to Firestore
+        if (isNewUser) {
+          await saveUserData(
+              user.uid,
+              user.displayName ??
+                  "", // Google users usually have a display name
+              user.email ?? "",
+              user.phoneNumber ?? "",
+              "",
+              "", // You can add department, faculty, year, and userType here
+              "", // Add faculty
+              "", // Add year
+              user.photoURL ?? "" // Add userType
+              );
+        }
+        Logger().i(user.displayName);
+      }
+    } catch (e) {
+      Logger().e(e);
+    }
+    return null;
+  }
+
   //-----------------------To add Counselor Profile---------------------
   Future<void> counselorProfile(
     String email,
@@ -173,7 +216,7 @@ class AuthController {
 
       if (credential.user != null) {
         //There is an eror with this code part
-        saveUserData(
+        saveCounselorData(
           credential.user!.uid,
           name,
           email,
@@ -241,46 +284,5 @@ Future<CounselorModel?> fetchCounselorData(String counselorid) async {
     return counselor;
   } catch (e) {
     Logger().e(e);
-  //-----------------------To signin with google User---------------------
-
-  Future<UserCredential?> signInWithGoogle() async {
-    try {
-      // Sign in with Google
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser!.authentication;
-      final AuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-      final UserCredential authResult =
-          await FirebaseAuth.instance.signInWithCredential(credential);
-
-      // Check if the user is new or existing
-      final User? user = authResult.user;
-      final bool isNewUser = authResult.additionalUserInfo!.isNewUser;
-
-      if (user != null) {
-        // If it's a new user, save their data to Firestore
-        if (isNewUser) {
-          await saveUserData(
-              user.uid,
-              user.displayName ??
-                  "", // Google users usually have a display name
-              user.email ?? "",
-              user.phoneNumber ?? "",
-              "",
-              "", // You can add department, faculty, year, and userType here
-              "", // Add faculty
-              "", // Add year
-              user.photoURL ?? "" // Add userType
-              );
-        }
-        Logger().i(user.displayName);
-      }
-    } catch (e) {
-      Logger().e(e);
-    }
-    return null;
   }
 }
