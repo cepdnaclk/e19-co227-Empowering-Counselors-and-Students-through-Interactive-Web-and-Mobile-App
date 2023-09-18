@@ -1,9 +1,8 @@
 import 'package:bloomi_web/components/counselor_list_view.dart';
 import 'package:bloomi_web/components/custom_card_widget.dart';
 import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/providers/users/user_provider.dart';
+import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class UserAppointmentDashboard extends StatefulWidget {
   const UserAppointmentDashboard({Key? key}) : super(key: key);
@@ -36,32 +35,16 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "Available Counsellors",
-                            style: TextStyle(
-                              fontSize: (currentWidth < 900) ? 20 : 30,
-                              color: Colors.blueGrey,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        Text(
+                          "Available Counsellors",
+                          style: TextStyle(
+                            fontSize: (currentWidth < 900) ? 20 : 30,
+                            color: UtilConstants.blackColor,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Spacer(),
-                        Consumer<UserProvider>(
-                          builder: (context, value, child) {
-                            return Container(
-                              alignment: Alignment.topRight,
-                              child: CircleAvatar(
-                                backgroundImage:
-                                    NetworkImage(value.userModel!.imgUrl),
-                                radius: ((currentWidth > 900) ? 25 : 20),
-                              ),
-                            );
-                          },
-                        )
                       ],
                     ),
                   ),
@@ -79,24 +62,33 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   const CustomText(
                     "Your Appointment",
-                    fontColor: Colors.blueGrey,
-                    fontSize: 20,
+                    fontColor: UtilConstants.blackColor,
+                    fontSize: 24,
                   ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Expanded(
-                        child: CustomCardWidget(),
-                      ),
-                      Expanded(
-                        child: CustomCardWidget(),
-                      ),
-                      Expanded(
-                        child: CustomCardWidget(),
-                      ),
-                    ],
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Expanded(
+                          child: CustomCardWidget(),
+                        ),
+                        Expanded(
+                          child: CustomCardWidget(),
+                        ),
+                        Expanded(
+                          child: CustomCardWidget(),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

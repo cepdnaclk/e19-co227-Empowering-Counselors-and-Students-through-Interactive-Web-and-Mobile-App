@@ -48,7 +48,10 @@ class _HomeState extends State<Home> {
           return widget[value.currentIndex];
         },
       ),
-      drawer: const MyDrawer(),
+      drawer: const Padding(
+        padding: EdgeInsets.only(left: 20, top: 20, bottom: 20),
+        child: MyDrawer(),
+      ),
       bottomNavigationBar: Footer(width: width, height: 55),
     );
   }
