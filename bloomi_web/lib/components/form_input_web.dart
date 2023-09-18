@@ -8,6 +8,7 @@ class FormInputWeb extends StatelessWidget {
   final double fontSize;
   final double lableFontSize;
   final TextEditingController textEditingController;
+
   const FormInputWeb(
     this.text, {
     super.key,
