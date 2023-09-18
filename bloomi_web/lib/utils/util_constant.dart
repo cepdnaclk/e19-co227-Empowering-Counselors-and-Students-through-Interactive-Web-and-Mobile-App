@@ -12,6 +12,8 @@ class UtilConstants {
   static Color lightBrownColor = Colors.brown.shade100;
   static Color lightgreyColor = Colors.grey.shade200;
   static Color greyColor = Colors.grey;
+  static Color homePageBackgroundColor =
+      const Color.fromARGB(255, 235, 226, 238);
   static Color homeBackgroundColor =
       const Color.fromARGB(255, 163, 220, 248).withOpacity(0.5);
 
@@ -19,6 +21,10 @@ class UtilConstants {
   static Shader get gradientShader => LinearGradient(
           colors: [primaryColor, pinkColor, greenColor, lightRedColor])
       .createShader(const Rect.fromLTWH(20.0, 200.0, 200.0, 20.0));
+
+  // -------------------Titles used for home page
+  static const String selfCareTitle =
+      "\"Self-care is the fuel that allows your light to shine brightly.\"";
 
   //--------------------Image path--------------------
 
@@ -29,6 +35,10 @@ class UtilConstants {
   static const String profImagePath = "assets/images/prof.webp";
   static const String talkImagePath = "assets/images/talk.png";
   static const String registerImagePath = "assets/images/registration.jpeg";
+  static const String selfCareImagePath = "assets/images/selfcare.png";
+  static const String selfCareIsntSelfishImagePath =
+      "assets/images/self_care_isnt_selfish.png";
+  static const String otherImagePath = "assets/images/self.png";
   static const String dummyProfileUrl =
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
 
