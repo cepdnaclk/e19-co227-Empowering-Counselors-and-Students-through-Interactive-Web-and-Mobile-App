@@ -112,8 +112,8 @@ class SignupProvider extends ChangeNotifier {
           department,
           faculty,
           year,
-          userType,
           "",
+          userType,
           context,
         );
 

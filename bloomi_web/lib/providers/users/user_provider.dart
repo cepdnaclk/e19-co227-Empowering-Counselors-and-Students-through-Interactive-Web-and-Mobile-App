@@ -27,10 +27,12 @@ class UserProvider extends ChangeNotifier {
 
         await startFetchUserData(user.uid).then((value) {
           if (value!.userType == "Counselor") {
+            Logger().e(value.userType);
             UtilFunction.navigateForward(context, const CounselorHome());
           } else if (value.userType == "Admin") {
             UtilFunction.navigateForward(context, const Adminpanel());
           } else {
+            Logger().e(value.userType);
             UtilFunction.navigateForward(context, const Home());
           }
         });
