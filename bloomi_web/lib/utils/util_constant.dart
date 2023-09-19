@@ -19,6 +19,7 @@ class UtilConstants {
       const Color.fromARGB(255, 235, 226, 238);
   static Color homeBackgroundColor =
       const Color.fromARGB(255, 163, 220, 248).withOpacity(0.5);
+  static Color homePageQuoteTitleColor = const Color.fromARGB(255, 20, 82, 117);
 
   //--------------------Gradient Shader--------------------
   static Shader get gradientShader => LinearGradient(
@@ -60,6 +61,8 @@ class UtilConstants {
   static const String diamondLastImagePath = "assets/images/work_hard.png";
   static const String travelImagePath = "assets/images/travel.png";
   static const String travelLastImagePath = "assets/images/travel_last.png";
+  static const String friendsImagePath = "assets/images/friends.png";
+  static const String friendLastImagePath = "assets/images/friend_last.png";
   static const String dummyProfileUrl =
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
 
