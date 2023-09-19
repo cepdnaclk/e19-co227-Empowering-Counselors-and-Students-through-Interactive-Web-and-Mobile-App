@@ -1,37 +1,16 @@
-import 'package:bloomi_web/components/admin_dropdown_counselor_menu.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
-import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
+import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Adminform extends StatefulWidget {
-  const Adminform({
-    Key? key, // Use Key? instead of super.key
-  }) : super(key: key);
-
-  @override
-  State<Adminform> createState() => _AdminformState();
-}
-
-class _AdminformState extends State<Adminform> {
-  List<String> faculty = [
-    'Faculty of Engineering',
-    'Faculty of Medicine',
-    'Faculty of Dental Sciences',
-    'Faculty of Veterinary Medicine and Animal Science',
-    'Faculty of Science',
-    'Faculty of Agriculture',
-    'Faculty of Allied Health Sciences',
-    'Faculty of Arts',
-    'Faculty of Management',
-  ];
+class AdminRegistrationForm extends StatelessWidget {
+  const AdminRegistrationForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
-
+    double heightone = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -48,51 +27,45 @@ class _AdminformState extends State<Adminform> {
                   const FormHeading(
                     "Add Admins",
                   ),
-                  SizedBox(height: mediaQueryData.size.height * 0.04),
+                  SizedBox(height: heightone * 0.04),
                   FormInputWeb(
                     "Name",
                     textEditingController:
-                        Provider.of<CounselorRegistrationProvider>(context)
-                            .name,
+                        Provider.of<AdminRegistrationProvider>(context).name,
                   ),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
+                  SizedBox(height: heightone * 0.01),
                   FormInputWeb(
                     "Email",
                     textEditingController:
-                        Provider.of<CounselorRegistrationProvider>(context)
-                            .email,
+                        Provider.of<AdminRegistrationProvider>(context).email,
                   ),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
+                  SizedBox(height: heightone * 0.01),
                   FormInputWeb(
                     "Password",
                     obscure: true,
                     textEditingController:
-                        Provider.of<CounselorRegistrationProvider>(context)
+                        Provider.of<AdminRegistrationProvider>(context)
                             .password,
                   ),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
+                  SizedBox(height: heightone * 0.01),
                   FormInputWeb(
                     "Phone Number",
                     textEditingController:
-                        Provider.of<CounselorRegistrationProvider>(context)
+                        Provider.of<AdminRegistrationProvider>(context)
                             .phoneNumber,
                   ),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
-                  SizedBox(
-                      width: 420,
-                      child: AdminDropDownCounselorWidget(
-                          index: 1, listItem: faculty, text: "Faculty")),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
+                  SizedBox(height: heightone * 0.01),
+                  SizedBox(height: heightone * 0.01),
                   FormInputWeb(
                     "Credentials",
                     textEditingController:
-                        Provider.of<CounselorRegistrationProvider>(context)
+                        Provider.of<AdminRegistrationProvider>(context)
                             .credentials,
                   ),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
-                  Consumer<CounselorRegistrationProvider>(
+                  SizedBox(height: heightone * 0.01),
+                  SizedBox(height: heightone * 0.01),
+                  SizedBox(height: heightone * 0.01),
+                  Consumer<AdminRegistrationProvider>(
                     builder: (context, value, child) {
                       return InkWell(
                         onTap: () {
@@ -101,7 +74,7 @@ class _AdminformState extends State<Adminform> {
                               value.email.text,
                               value.password.text,
                               value.phoneNumber.text,
-                              value.faculty,
+                              // value.faculty,
                               value.credentials.text,
                               context);
                         },
@@ -112,7 +85,7 @@ class _AdminformState extends State<Adminform> {
                       );
                     },
                   ),
-                  SizedBox(height: mediaQueryData.size.height * 0.02),
+                  SizedBox(height: heightone * 0.02),
                 ],
               ),
             ),

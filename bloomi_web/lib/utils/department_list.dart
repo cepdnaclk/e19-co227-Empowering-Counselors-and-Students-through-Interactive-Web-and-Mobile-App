@@ -11,15 +11,14 @@ class DepartmentList {
   ];
 
   static final List<String> facultyOfAgriculture = [
-    "Department of Agricultural Economics and Management",
-    "Department of Agricultural Engineering",
-    "Department of Animal Science",
-    "Department of Crop Science",
-    "Department of Food Science and Technology",
-    "Department of Plant Pathology",
-    "Department of Soil Science",
-    "Department of Veterinary Clinical Sciences",
-    "Department of Veterinary Paraclinical Sciences"
+    "Agricultural Biology",
+    "Agricultural Engineering",
+    "Agricultural Extension",
+    "Agricultural Economics and Business Management",
+    "Animal Science",
+    "Crop Science",
+    "Food Science and Technology",
+    "Soil Science"
   ];
 
   static final List<String> facultyOfAlliedHealthSciences = [
