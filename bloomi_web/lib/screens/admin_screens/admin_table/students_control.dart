@@ -133,11 +133,11 @@ class _StudentControlState extends State<StudentControl> {
                   for (int index = 0; index < studentnames.length; index++)
                     TableRow(
                       children: [
-                        Tablecellwidget(name: studentnames, indexnumber: index),
-                        Tablecellwidget(name: emails, indexnumber: index),
-                        Tablecellwidget(name: faculties, indexnumber: index),
-                        Tablecellwidget(name: departments, indexnumber: index),
-                        Tablecellwidget(name: studentyear, indexnumber: index),
+                        Tablecellwidget(name: studentnames[index]),
+                        Tablecellwidget(name: emails[index]),
+                        Tablecellwidget(name: faculties[index]),
+                        Tablecellwidget(name: departments[index]),
+                        Tablecellwidget(name: studentyear[index]),
                         TableCell(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10),
