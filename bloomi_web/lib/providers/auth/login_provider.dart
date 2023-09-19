@@ -6,10 +6,11 @@ import 'package:logger/logger.dart';
 class LoginProvider extends ChangeNotifier {
   final TextEditingController _password = TextEditingController();
   final TextEditingController _email = TextEditingController();
-
+  bool _isObscure = true;
   //------------------GETTERS--------------------
   TextEditingController get password => _password;
   TextEditingController get email => _email;
+  bool get isObscure => _isObscure;
 
   //------------------SETTERS--------------------
   void setEmail(String email) {
@@ -31,6 +32,16 @@ class LoginProvider extends ChangeNotifier {
   void setIsLoading(bool isLoading) {
     _isLoading = isLoading;
     notifyListeners();
+  }
+
+  void setIsObscure(bool isObscure) {
+    if (isObscure == false) {
+      _isObscure = !_isObscure;
+      notifyListeners();
+    } else {
+      _isObscure = _isObscure;
+      notifyListeners();
+    }
   }
 
   //------------------Function--------------------
