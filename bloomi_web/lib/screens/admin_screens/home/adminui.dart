@@ -1,7 +1,6 @@
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
-import 'package:bloomi_web/screens/admin_screens/admin_controller/admin_control.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_panel/admin_panel_drawer.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_table/counselor_control.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_table/students_control.dart';
