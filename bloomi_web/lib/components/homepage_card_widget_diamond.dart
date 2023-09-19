@@ -26,7 +26,7 @@ class CardWidgetDiamond extends StatelessWidget {
       child: Card(
         child: Container(
           width: double.infinity,
-          height: 330,
+          height: 350,
           padding: const EdgeInsets.all(kDouble10),
           child: Column(
             children: [
