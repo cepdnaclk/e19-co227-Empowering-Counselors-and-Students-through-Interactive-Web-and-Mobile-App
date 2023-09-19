@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:bloomi_web/components/custom_tablecells.dart';
 import 'package:bloomi_web/components/custom_tableheads.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/adminform.dart';
@@ -14,6 +16,7 @@ class AdminDashboard extends StatefulWidget {
 
 class _AdminDashboardState extends State<AdminDashboard> {
   @override
+  // ignore: override_on_non_overriding_member
   final Adminnames = [
     "Sarah Smith",
     "John Davis",

@@ -7,9 +7,6 @@ import 'package:bloomi_web/screens/admin_screens/admin_table/counselor_control.d
 import 'package:bloomi_web/screens/admin_screens/admin_table/students_control.dart';
 import 'package:bloomi_web/screens/admin_screens/dashboard/admin_dashboard.dart';
 import 'package:bloomi_web/screens/admin_screens/home/admin_navbar.dart';
-import 'package:bloomi_web/screens/admin_screens/log_activity/admin_activitylog.dart';
-//import 'package:bloomi_web/screens/admin_screens/log_activity/admin_activitylog.dart';
-import 'package:bloomi_web/screens/admin_screens/setting/admin_setting.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -51,7 +48,10 @@ class _AdminpanelState extends State<Adminpanel> {
           return widget[value.currentIndex];
         },
       ),
-      drawer: const AdminPanelDrawer(),
+      drawer: const Padding(
+        padding: EdgeInsets.only(left: 20, top: 20, bottom: 20),
+        child: AdminPanelDrawer(),
+      ),
       bottomNavigationBar: Footer(height: 55, width: width),
     );
   }

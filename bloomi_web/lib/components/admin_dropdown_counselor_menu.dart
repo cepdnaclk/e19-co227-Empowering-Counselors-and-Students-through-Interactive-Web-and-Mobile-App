@@ -4,12 +4,12 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class AdminDropDownButtonWidget extends StatelessWidget {
+class AdminDropDownCounselorWidget extends StatelessWidget {
   final List<String> listItem;
   final String text;
   final int index;
 
-  const AdminDropDownButtonWidget({
+  const AdminDropDownCounselorWidget({
     super.key,
     required this.listItem,
     required this.text,

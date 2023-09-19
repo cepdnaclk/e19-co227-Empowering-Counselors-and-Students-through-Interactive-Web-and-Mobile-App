@@ -15,7 +15,6 @@ class MyDrawer extends StatelessWidget {
         ? Consumer<UserProvider>(
             builder: (context, value, child) {
               return ClipRRect(
-                // Wrap the Drawer with ClipRRect
                 borderRadius:
                     BorderRadius.circular(20.0), // Set the border radius
                 child: Drawer(
