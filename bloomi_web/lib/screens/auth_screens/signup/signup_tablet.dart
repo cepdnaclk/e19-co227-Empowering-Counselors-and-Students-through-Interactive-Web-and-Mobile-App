@@ -89,12 +89,6 @@ class _SignUpTabletState extends State<SignUpTablet> {
                         );
                       },
                     ),
-                    // FormInputWeb(
-                    //   "Password",
-                    //   textEditingController:
-                    //       Provider.of<SignupProvider>(context).password,
-                    //   obscure: true,
-                    // ),
                     const SizedBox(height: 10),
                     FormInputWeb(
                       "Phone Number",

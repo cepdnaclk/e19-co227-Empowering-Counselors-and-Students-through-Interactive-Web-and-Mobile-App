@@ -44,10 +44,23 @@ class LoginTablet extends StatelessWidget {
                     Provider.of<LoginProvider>(context).email,
               ),
               const SizedBox(height: UtilConstants.spaceBetweenInputTablet),
-              FormInputWeb(
-                "Password",
-                textEditingController:
-                    Provider.of<LoginProvider>(context).password,
+              Consumer<LoginProvider>(
+                builder: (context, value, child) {
+                  return FormInputWeb(
+                    "Password",
+                    textEditingController: value.password,
+                    obscure: value.isObscure ? true : false,
+                    icon: InkWell(
+                      onTap: () {
+                        value.setIsObscure(false);
+                      },
+                      child: const Icon(
+                        Icons.visibility_off,
+                        size: 15,
+                      ),
+                    ),
+                  );
+                },
               ),
               const SizedBox(height: UtilConstants.spaceBetweenInputTablet),
               const CustomTextLinkWeb("Forgot password?",
