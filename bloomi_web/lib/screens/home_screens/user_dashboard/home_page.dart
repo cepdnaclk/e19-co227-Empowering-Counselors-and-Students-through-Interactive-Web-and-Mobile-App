@@ -1,4 +1,5 @@
 /* import 'package:bloomi_web/components/custom_card_widget.dart'; */
+import 'package:bloomi_web/components/homepage_card_widget_nature.dart';
 import 'package:bloomi_web/components/homepage_card_widget_self.dart';
 import 'package:bloomi_web/components/homepage_card_widget_yoga.dart';
 import 'package:bloomi_web/components/homepage_class.dart';
@@ -26,6 +27,87 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Card(
+                    child: CardWidgetNature(
+                      items: ItemClass(
+                          title:
+                              '"The Healing Power of Nature: A Path to Mental and Emotional Well-Being"',
+                          imagePath: UtilConstants.natureHealingImagePath),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Card(
+                    child: CardWidgetYoga(
+                      items: ItemClass(
+                          title: 'Travel',
+                          imagePath: UtilConstants.otherImagePath),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Card(
+                    child: CardWidgetYoga(
+                      items: ItemClass(
+                          title: 'Travel',
+                          imagePath: UtilConstants.otherImagePath),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Card(
+                    child: CardWidgetYoga(
+                      items: ItemClass(
+                          title: 'Travel',
+                          imagePath: UtilConstants.otherImagePath),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Card(
+                    child: CardWidgetYoga(
+                      items: ItemClass(
+                          title: 'Space',
+                          imagePath: UtilConstants.otherImagePath),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Card(
+                    child: CardWidgetYoga(
+                      items: ItemClass(
+                          title: 'Travel',
+                          imagePath: UtilConstants.otherImagePath),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Card(
+                    child: CardWidgetYoga(
+                      items: ItemClass(
+                          title: 'Travel',
+                          imagePath: UtilConstants.otherImagePath),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Card(
+                    child: CardWidgetYoga(
+                      items: ItemClass(
+                          title: 'Travel',
+                          imagePath: UtilConstants.otherImagePath),
+                    ),
+                  ),
+                ),
+              ],
+            ),
             CardWidgetSelf(
               items: ItemClass(
                   title: UtilConstants.selfCareTitle,

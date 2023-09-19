@@ -1,19 +1,19 @@
-import 'package:bloomi_web/components/homepage_card_widget_self.dart';
+import 'package:bloomi_web/components/homepage_card_widget_nature.dart';
 import 'package:bloomi_web/components/homepage_class.dart';
-import 'package:bloomi_web/components/homepage_constants.dart';
+import 'package:bloomi_web/components/homepage_nature_heal_constants.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
-class DescriptionPageSelf extends StatefulWidget {
-  const DescriptionPageSelf({super.key, required this.items});
+class DescriptionPageNature extends StatefulWidget {
+  const DescriptionPageNature({super.key, required this.items});
 
   final ItemClass items;
 
   @override
-  State<DescriptionPageSelf> createState() => _DescriptionPageSelfState();
+  State<DescriptionPageNature> createState() => _DescriptionPageNatureState();
 }
 
-class _DescriptionPageSelfState extends State<DescriptionPageSelf> {
+class _DescriptionPageNatureState extends State<DescriptionPageNature> {
   double fontSizeCustom = 25;
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class _DescriptionPageSelfState extends State<DescriptionPageSelf> {
             bottom: 10,
           ),
           child: Padding(
-            padding: const EdgeInsets.all(kDouble20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               children: [
                 Image.asset(widget.items.imagePath),
@@ -66,89 +66,34 @@ class _DescriptionPageSelfState extends State<DescriptionPageSelf> {
                 const SizedBox(
                   height: 20,
                 ),
-                const Text(
-                  selfCareDescription1,
-                  style: TextStyle(fontSize: 20),
-                  textAlign: TextAlign.justify,
-                ),
+                natureColumn1,
                 const SizedBox(
                   height: 15,
                 ),
-                const Text(
-                  selfCareDescription2,
-                  style: TextStyle(fontSize: 20),
-                  textAlign: TextAlign.justify,
-                ),
+                natureColumn2,
                 const SizedBox(
                   height: 15,
                 ),
-                activity1,
+                natureColumn3,
                 const SizedBox(
                   height: 15,
                 ),
-                activity2,
+                natureColumn4,
                 const SizedBox(
                   height: 15,
                 ),
-                activity3,
+                natureColumn5,
                 const SizedBox(
                   height: 15,
                 ),
-                activity4,
+                natureColumn6,
                 const SizedBox(
                   height: 15,
                 ),
-                activity5,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity6,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity7,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity8,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity9,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity10,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity11,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity12,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity13,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity14,
-                const SizedBox(
-                  height: 15,
-                ),
-                activity15,
-                const SizedBox(
-                  height: 15,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                CardWidgetSelf(
+                CardWidgetNature(
                   items: ItemClass(
                       title: "",
-                      imagePath: UtilConstants.selfCareIsntSelfishImagePath),
+                      imagePath: UtilConstants.sunsetHealingImagePath),
                 ),
               ],
             ),

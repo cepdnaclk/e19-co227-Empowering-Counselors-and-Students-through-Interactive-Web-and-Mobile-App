@@ -12,6 +12,9 @@ class UtilConstants {
   static Color lightBrownColor = Colors.brown.shade100;
   static Color lightgreyColor = Colors.grey.shade200;
   static Color greyColor = Colors.grey;
+  static Color naturePageTopicColor =
+      const Color.fromARGB(255, 11, 62, 104).withOpacity(0.8);
+  static Color naturePageShadowColor = Colors.blue.withOpacity(0.5);
   static Color homePageBackgroundColor =
       const Color.fromARGB(255, 235, 226, 238);
   static Color homeBackgroundColor =
@@ -49,6 +52,10 @@ class UtilConstants {
   static const String setuImagePath = "assets/images/Setu_bandhasana.png";
   static const String anjaneyasanaImagePath = "assets/images/Anjaneyasana.png";
   static const String garudasanaImagePath = "assets/images/garudasana.png";
+  static const String natureHealingImagePath = "assets/images/nature.png";
+  static const String sunsetHealingImagePath = "assets/images/sunset.png";
+  static const String feelingStressedImagePath =
+      "assets/images/feeling_stressed.png";
   static const String dummyProfileUrl =
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
 
