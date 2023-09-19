@@ -8,7 +8,6 @@ class DepartmentList {
     "Department of Electrical and Electronic Engineering",
     "Department of Mechanical Engineering",
     "Department of Materials Science and Engineering",
-    //-----------------
   ];
 
   static final List<String> facultyOfAgriculture = [
