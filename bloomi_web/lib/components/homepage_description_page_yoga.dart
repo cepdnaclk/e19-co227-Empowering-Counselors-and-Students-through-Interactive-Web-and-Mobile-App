@@ -1,4 +1,3 @@
-/* import 'package:bloomi_web/components/homepage_card_widget_self.dart'; */
 import 'package:bloomi_web/components/homepage_card_widget_self.dart';
 import 'package:bloomi_web/components/homepage_class.dart';
 import 'package:bloomi_web/components/homepage_yogapage_constants.dart';

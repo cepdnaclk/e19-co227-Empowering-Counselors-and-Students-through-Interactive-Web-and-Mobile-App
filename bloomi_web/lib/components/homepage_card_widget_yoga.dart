@@ -2,9 +2,6 @@ import 'package:bloomi_web/components/homepage_class.dart';
 import 'package:bloomi_web/components/homepage_constants.dart';
 import 'package:bloomi_web/components/homepage_description_page_yoga.dart';
 import 'package:flutter/material.dart';
-/* import 'package:new_project/class/item_class.dart';
-import 'package:new_project/core/constants.dart';
-import 'package:new_project/pages/description_page.dart'; */
 
 class CardWidgetYoga extends StatelessWidget {
   const CardWidgetYoga({super.key, required this.items});
@@ -39,7 +36,7 @@ class CardWidgetYoga extends StatelessWidget {
               Text(
                 items.title,
                 style: const TextStyle(
-                  fontSize: 22,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
