@@ -73,16 +73,38 @@ class _SignUpMobileState extends State<SignUpMobile> {
                 lableFontSize: 12,
               ),
               const SizedBox(height: 6),
-              FormInputWeb(
-                "Password",
-                textEditingController:
-                    Provider.of<SignupProvider>(context).password,
-                obscure: true,
-                fontSize: 12,
-                height: 45,
-                width: 280,
-                lableFontSize: 12,
+              Consumer<SignupProvider>(
+                builder: (context, value, child) {
+                  return FormInputWeb(
+                    "Password",
+                    textEditingController: value.password,
+                    obscure: value.isObscure ? true : false,
+                    icon: InkWell(
+                      onTap: () {
+                        value.setIsObscure(false);
+                      },
+                      child: const Icon(
+                        Icons.visibility_off,
+                        size: 15,
+                      ),
+                    ),
+                    fontSize: 12,
+                    height: 45,
+                    width: 280,
+                    lableFontSize: 12,
+                  );
+                },
               ),
+              // FormInputWeb(
+              //   "Password",
+              //   textEditingController:
+              //       Provider.of<SignupProvider>(context).password,
+              //   obscure: true,
+              //   fontSize: 12,
+              //   height: 45,
+              //   width: 280,
+              //   lableFontSize: 12,
+              // ),
               const SizedBox(height: 6),
               FormInputWeb(
                 "Phone Number",
