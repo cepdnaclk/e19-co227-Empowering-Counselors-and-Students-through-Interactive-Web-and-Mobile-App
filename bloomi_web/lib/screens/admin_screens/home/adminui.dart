@@ -8,6 +8,7 @@ import 'package:bloomi_web/screens/admin_screens/admin_table/students_control.da
 import 'package:bloomi_web/screens/admin_screens/dashboard/admin_dashboard.dart';
 import 'package:bloomi_web/screens/admin_screens/home/admin_home.dart';
 import 'package:bloomi_web/screens/admin_screens/home/admin_navbar.dart';
+import 'package:bloomi_web/screens/admin_screens/setting/admin_setting.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +29,7 @@ class _AdminpanelState extends State<Adminpanel> {
       const StudentControl(),
       const Counselorcontrol(),
       const AdminDashboard(),
+      const AdminSetting(),
     ];
     return Scaffold(
       appBar: (width <= 900)
