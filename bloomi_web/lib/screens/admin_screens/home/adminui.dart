@@ -6,6 +6,7 @@ import 'package:bloomi_web/screens/admin_screens/admin_panel/admin_panel_drawer.
 import 'package:bloomi_web/screens/admin_screens/admin_table/counselor_control.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_table/students_control.dart';
 import 'package:bloomi_web/screens/admin_screens/dashboard/admin_dashboard.dart';
+import 'package:bloomi_web/screens/admin_screens/home/admin_home.dart';
 import 'package:bloomi_web/screens/admin_screens/home/admin_navbar.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
@@ -23,10 +24,10 @@ class _AdminpanelState extends State<Adminpanel> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     final List<Widget> widget = [
-      const AdminDashboard(),
+      const AdminHome(),
       const StudentControl(),
       const Counselorcontrol(),
-      const AdminControl(),
+      const AdminDashboard(),
     ];
     return Scaffold(
       appBar: (width <= 900)
