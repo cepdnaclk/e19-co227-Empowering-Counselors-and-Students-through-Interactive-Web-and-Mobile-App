@@ -1,4 +1,4 @@
-import 'package:bloomi_web/components/admin_dropdown_menu.dart';
+import 'package:bloomi_web/components/admin_dropdown_counselor_menu.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
@@ -80,7 +80,7 @@ class _AdminformState extends State<Adminform> {
                   SizedBox(height: mediaQueryData.size.height * 0.01),
                   SizedBox(
                       width: 420,
-                      child: AdminDropDownButtonWidget(
+                      child: AdminDropDownCounselorWidget(
                           index: 1, listItem: faculty, text: "Faculty")),
                   SizedBox(height: mediaQueryData.size.height * 0.01),
                   FormInputWeb(
