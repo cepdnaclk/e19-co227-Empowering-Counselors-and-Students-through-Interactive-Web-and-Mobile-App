@@ -295,21 +295,6 @@ const depColumn7 = Column(
     ),
   ],
 );
-const depColumn8 = Column(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    SizedBox(
-      height: 5,
-    ),
-    Text(
-      "But perhaps the most transformative chapter in Emma's journey was the support she received from her friends and family. She slowly began to open up about her depression, letting them see the battles she faced each day. Their unwavering love and understanding provided the anchor she needed during the storm.",
-      style: TextStyle(fontSize: 20),
-    ),
-    SizedBox(
-      height: 5,
-    ),
-  ],
-);
 const depColumn9 = Column(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [

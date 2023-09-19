@@ -110,13 +110,7 @@ class _DescriptionPageDiamondState extends State<DescriptionPageDiamond> {
                 const SizedBox(
                   height: 10,
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
                 depColumn2,
-                const SizedBox(
-                  height: 10,
-                ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -124,13 +118,7 @@ class _DescriptionPageDiamondState extends State<DescriptionPageDiamond> {
                 const SizedBox(
                   height: 10,
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
                 depColumn4,
-                const SizedBox(
-                  height: 10,
-                ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -138,13 +126,7 @@ class _DescriptionPageDiamondState extends State<DescriptionPageDiamond> {
                 const SizedBox(
                   height: 10,
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
                 depColumn6,
-                const SizedBox(
-                  height: 10,
-                ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -152,27 +134,11 @@ class _DescriptionPageDiamondState extends State<DescriptionPageDiamond> {
                 const SizedBox(
                   height: 10,
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                depColumn8,
-                const SizedBox(
-                  height: 10,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
                 depColumn9,
                 const SizedBox(
                   height: 10,
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
                 depColumn10,
-                const SizedBox(
-                  height: 10,
-                ),
                 const SizedBox(
                   height: 10,
                 ),
