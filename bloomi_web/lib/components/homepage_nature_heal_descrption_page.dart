@@ -1,4 +1,4 @@
-import 'package:bloomi_web/components/homepage_card_widget_nature.dart';
+import 'package:bloomi_web/components/homepage_card_widget_self.dart';
 import 'package:bloomi_web/components/homepage_class.dart';
 import 'package:bloomi_web/components/homepage_nature_heal_constants.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
@@ -90,7 +90,7 @@ class _DescriptionPageNatureState extends State<DescriptionPageNature> {
                 const SizedBox(
                   height: 15,
                 ),
-                CardWidgetNature(
+                CardWidgetSelf(
                   items: ItemClass(
                       title: "",
                       imagePath: UtilConstants.sunsetHealingImagePath),

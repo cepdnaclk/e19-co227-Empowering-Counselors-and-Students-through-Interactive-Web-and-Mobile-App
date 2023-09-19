@@ -1,4 +1,5 @@
 /* import 'package:bloomi_web/components/custom_card_widget.dart'; */
+import 'package:bloomi_web/components/homepage_card_widget_diamond.dart';
 import 'package:bloomi_web/components/homepage_card_widget_nature.dart';
 import 'package:bloomi_web/components/homepage_card_widget_self.dart';
 import 'package:bloomi_web/components/homepage_card_widget_yoga.dart';
@@ -24,7 +25,12 @@ class _HomePageState extends State<HomePage> {
         title: const Text("Home Page"),
       ), */
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.only(
+          top: 20,
+          bottom: 20,
+          left: 40,
+          right: 40,
+        ),
         child: Column(
           children: [
             Row(
@@ -33,18 +39,17 @@ class _HomePageState extends State<HomePage> {
                   child: Card(
                     child: CardWidgetNature(
                       items: ItemClass(
-                          title:
-                              '"The Healing Power of Nature: A Path to Mental and Emotional Well-Being"',
+                          title: '"The Healing Power of Nature"',
                           imagePath: UtilConstants.natureHealingImagePath),
                     ),
                   ),
                 ),
                 Expanded(
                   child: Card(
-                    child: CardWidgetYoga(
+                    child: CardWidgetDiamond(
                       items: ItemClass(
-                          title: 'Travel',
-                          imagePath: UtilConstants.otherImagePath),
+                          title: '"Shine like a Bright Diamond"',
+                          imagePath: UtilConstants.diamondImagePath),
                     ),
                   ),
                 ),
