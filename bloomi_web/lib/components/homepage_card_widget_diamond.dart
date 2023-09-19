@@ -1,10 +1,10 @@
 import 'package:bloomi_web/components/homepage_class.dart';
 import 'package:bloomi_web/components/homepage_constants.dart';
-import 'package:bloomi_web/components/homepage_nature_heal_descrption_page.dart';
+import 'package:bloomi_web/components/homepage_description_page_diamond.dart';
 import 'package:flutter/material.dart';
 
-class CardWidgetNature extends StatelessWidget {
-  const CardWidgetNature({super.key, required this.items});
+class CardWidgetDiamond extends StatelessWidget {
+  const CardWidgetDiamond({super.key, required this.items});
   final ItemClass items;
 
   @override
@@ -16,7 +16,7 @@ class CardWidgetNature extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return DescriptionPageNature(
+              return DescriptionPageDiamond(
                 items: items,
               );
             },
