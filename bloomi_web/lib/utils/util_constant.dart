@@ -58,6 +58,8 @@ class UtilConstants {
       "assets/images/feeling_stressed.png";
   static const String diamondImagePath = "assets/images/diomend.png";
   static const String diamondLastImagePath = "assets/images/work_hard.png";
+  static const String travelImagePath = "assets/images/travel.png";
+  static const String travelLastImagePath = "assets/images/travel_last.png";
   static const String dummyProfileUrl =
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
 

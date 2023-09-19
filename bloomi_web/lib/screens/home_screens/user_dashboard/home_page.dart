@@ -1,12 +1,10 @@
-/* import 'package:bloomi_web/components/custom_card_widget.dart'; */
 import 'package:bloomi_web/components/homepage_card_widget_diamond.dart';
 import 'package:bloomi_web/components/homepage_card_widget_nature.dart';
 import 'package:bloomi_web/components/homepage_card_widget_self.dart';
+import 'package:bloomi_web/components/homepage_card_widget_travel.dart';
 import 'package:bloomi_web/components/homepage_card_widget_yoga.dart';
 import 'package:bloomi_web/components/homepage_class.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-/* import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/utils/util_constant.dart'; */
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -55,10 +53,11 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Expanded(
                   child: Card(
-                    child: CardWidgetYoga(
+                    child: CardWidgetTravel(
                       items: ItemClass(
-                          title: 'Travel',
-                          imagePath: UtilConstants.otherImagePath),
+                          title:
+                              '"Travel far, travel wide, and discover the world outside to find the treasures within."',
+                          imagePath: UtilConstants.travelImagePath),
                     ),
                   ),
                 ),
