@@ -21,6 +21,14 @@ class UserAppoinmentProvider extends ChangeNotifier {
   final List<AllUserModel> _allCounselorModel = [];
   List<AllUserModel> get allCounselorModel => _allCounselorModel;
 
+  //------------------to store the all user data without admin and counselors---------------------
+  final List<AllUserModel> _allStudentModel = [];
+  List<AllUserModel> get allStudentModel => _allStudentModel;
+
+  //-------------------to store the all admin---------------------
+  final List<AllUserModel> _allAdminModel = [];
+  List<AllUserModel> get allAdminModel => _allAdminModel;
+
   bool _isLoading = false;
 
   //-----------------Getters-----------------
@@ -42,6 +50,10 @@ class UserAppoinmentProvider extends ChangeNotifier {
       for (var e in _allUserModel) {
         if (e.userType == "Counselor") {
           _allCounselorModel.add(e);
+        } else if (e.userType == "User") {
+          _allStudentModel.add(e);
+        } else {
+          _allAdminModel.add(e);
         }
       }
 
