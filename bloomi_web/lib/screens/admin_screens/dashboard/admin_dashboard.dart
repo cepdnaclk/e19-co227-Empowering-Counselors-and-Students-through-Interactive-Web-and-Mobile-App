@@ -1,6 +1,5 @@
 import 'package:bloomi_web/components/custom_tablecells.dart';
 import 'package:bloomi_web/components/custom_tableheads.dart';
-import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/adminform.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
@@ -160,13 +159,12 @@ class _AdminDashboardState extends State<AdminDashboard> {
                   ]),
                   for (int index = 0; index < Adminnames.length; index++)
                     TableRow(children: [
-                      Tablecellwidget(name: Adminid, indexnumber: index),
-                      Tablecellwidget(name: Adminnames, indexnumber: index),
-                      Tablecellwidget(name: Adminemails, indexnumber: index),
-                      Tablecellwidget(
-                          name: Adminphonenumber, indexnumber: index),
-                      Tablecellwidget(name: faculties, indexnumber: index),
-                      Tablecellwidget(name: credentials, indexnumber: index),
+                      Tablecellwidget(name: Adminid[index]),
+                      Tablecellwidget(name: Adminnames[index]),
+                      Tablecellwidget(name: Adminemails[index]),
+                      Tablecellwidget(name: Adminphonenumber[index]),
+                      Tablecellwidget(name: faculties[index]),
+                      Tablecellwidget(name: credentials[index]),
                       TableCell(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10),
