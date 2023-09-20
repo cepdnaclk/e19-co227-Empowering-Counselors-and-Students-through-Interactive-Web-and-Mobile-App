@@ -1,21 +1,15 @@
 import 'package:bloomi_web/components/custom_text.dart';
+import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/screens/counsellor_screens/calender/calender.dart';
-import 'package:bloomi_web/screens/counsellor_screens/chat/counselor_chat.dart';
 import 'package:bloomi_web/screens/counsellor_screens/chat/message.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard.dart';
-import 'package:bloomi_web/components/drawer.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/drawer.dart';
-import 'package:bloomi_web/screens/counsellor_screens/profile/profile.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/topbar_contents.dart';
 import 'package:bloomi_web/screens/counsellor_screens/profile/profile_home.dart';
-import 'package:bloomi_web/screens/counsellor_screens/profile/profile_panel.dart';
-import 'package:bloomi_web/screens/home_screens/chat/conversation/conversation.dart';
-import 'package:bloomi_web/screens/home_screens/chat/home/chat.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:bloomi_web/components/footer.dart';
 
 class CounselorHome extends StatefulWidget {
   const CounselorHome({Key? key}) : super(key: key);

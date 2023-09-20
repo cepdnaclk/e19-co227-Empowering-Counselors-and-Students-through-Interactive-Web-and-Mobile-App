@@ -6,11 +6,11 @@ class TopBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
           alignment: Alignment.topCenter,
-          width: _width,
+          width: width,
           height: MediaQuery.of(context).size.width < 450 ? 100 : 300,
           child: Image.asset(UtilConstants.counsellingImagePath,
               fit: BoxFit.cover)),

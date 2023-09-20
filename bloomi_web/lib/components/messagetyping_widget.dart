@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:chat_bubbles/message_bars/message_bar.dart';
 import 'package:flutter/material.dart';
 

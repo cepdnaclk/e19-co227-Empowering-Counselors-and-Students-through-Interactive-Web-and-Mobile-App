@@ -8,8 +8,6 @@ class ProfileTabDesktopScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MediaQueryData mediaQueryData = MediaQuery.of(context);
-    var size = mediaQueryData.size;
     return const Scaffold(
 
         /// background color

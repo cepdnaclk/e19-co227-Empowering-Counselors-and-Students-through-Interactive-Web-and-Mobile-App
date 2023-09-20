@@ -4,7 +4,7 @@ import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 
 class CounselorProfile extends StatefulWidget {
-  CounselorProfile({Key? key}) : super(key: key);
+  const CounselorProfile({Key? key}) : super(key: key);
 
   @override
   State<CounselorProfile> createState() => _CounselorProfileState();

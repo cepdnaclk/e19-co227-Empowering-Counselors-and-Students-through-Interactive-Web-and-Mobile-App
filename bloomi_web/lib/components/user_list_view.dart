@@ -1,5 +1,4 @@
 import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
-import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -120,7 +119,7 @@ class _UserListViewState extends State<UserListView> {
                 ? (_foundUsers.isNotEmpty
                     ? ListView.builder(
                         itemCount: _foundUsers.length,
-                        itemBuilder: (context, index) => Container(
+                        itemBuilder: (context, index) => SizedBox(
                           height: 60, // Specify the desired height here
                           child: Card(
                             key: ValueKey(_foundUsers[index]["id"]),

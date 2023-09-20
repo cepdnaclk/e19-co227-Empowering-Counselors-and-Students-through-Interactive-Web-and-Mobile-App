@@ -9,7 +9,7 @@ class ProfileImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        CircleAvatar(
+        const CircleAvatar(
           radius: 70,
           backgroundImage: AssetImage(UtilConstants.profImagePath),
         ),
@@ -18,9 +18,9 @@ class ProfileImage extends StatelessWidget {
           right: 0,
           child: IconButton(
             onPressed: () {
-              ImagePick();
+              const ImagePick();
             },
-            icon: Icon(Icons.photo_camera),
+            icon: const Icon(Icons.photo_camera),
             color: UtilConstants.blackColor,
           ),
         ),
