@@ -3,7 +3,7 @@ import 'package:bloomi_web/utils/util_method.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
-class CounselorRegistrationProvider extends ChangeNotifier {
+class CounselorEditProvider extends ChangeNotifier {
   final TextEditingController _name = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _phoneNumber = TextEditingController();
@@ -88,7 +88,7 @@ class CounselorRegistrationProvider extends ChangeNotifier {
   }
 
   //----------------------Functions---------------------
-  Future<void> signUpUser(
+  Future<void> editCounselor(
       String name,
       String email,
       String password,
@@ -105,8 +105,8 @@ class CounselorRegistrationProvider extends ChangeNotifier {
           credential.isNotEmpty) {
         setIsLoading(true);
 
-        //sign up user
-        await AuthController().signUpUser(
+        //save counselor
+        await AuthController().saveCounselorData(
           email,
           password,
           name,
@@ -115,8 +115,6 @@ class CounselorRegistrationProvider extends ChangeNotifier {
           faculty,
           year,
           credential,
-          userType,
-          context,
         );
 
         setIsLoading(false);

@@ -77,7 +77,8 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                           index++)
                         TableRow(children: [
                           Tablecellwidget(
-                              name: value.allCounselorModel[index].uid),
+                            name: value.allCounselorModel[index].uid,
+                          ),
                           Tablecellwidget(
                               name: value.allCounselorModel[index].name),
                           Tablecellwidget(

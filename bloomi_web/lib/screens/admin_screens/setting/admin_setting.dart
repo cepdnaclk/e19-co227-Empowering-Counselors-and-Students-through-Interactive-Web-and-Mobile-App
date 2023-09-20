@@ -20,10 +20,13 @@ class _AdminSettingState extends State<AdminSetting> {
               onTap: () {
                 AuthController.signOutUser();
               },
-              child: const CustomButton(
+              child: CustomButton(
                 "Admin Logout",
                 width: 250,
                 height: 50,
+                onPressed: () {
+                  AuthController.signOutUser();
+                },
               ),
             ),
           ),
