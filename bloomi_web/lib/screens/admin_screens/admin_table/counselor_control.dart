@@ -15,8 +15,9 @@ class Counselorcontrol extends StatefulWidget {
 }
 
 class _CounselorcontrolState extends State<Counselorcontrol> {
-  List<bool> isRowHovered = List.generate(20, (index) => false);
-  List<bool> isRowHoveredDeleted = List.generate(20, (index) => false);
+  List<bool> isRowHovered = List.generate(2, (index) => false, growable: true);
+  List<bool> isRowHoveredDeleted =
+      List.generate(2, (index) => false, growable: true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
