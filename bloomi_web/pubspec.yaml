@@ -50,12 +50,14 @@ dependencies:
   dropdown_button2: ^2.3.9
   firebase_storage: ^11.2.6
   image_picker: ^1.0.4
-
   xen_popup_card: ^0.0.1
   date_field: ^3.0.5
   intl: ^0.18.1
   sidebarx: ^0.16.1
   fl_chart: ^0.63.0
+  firebase_dynamic_links: ^5.3.6
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

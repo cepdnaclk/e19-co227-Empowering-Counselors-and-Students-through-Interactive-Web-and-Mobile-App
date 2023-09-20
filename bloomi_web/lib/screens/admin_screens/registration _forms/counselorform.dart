@@ -97,13 +97,14 @@ class _CounselorformState extends State<Counselorform> {
                       return InkWell(
                         onTap: () {
                           value.signUpUser(
-                              value.name.text,
-                              value.email.text,
-                              value.password.text,
-                              value.phoneNumber.text,
-                              value.faculty,
-                              value.credentials.text,
-                              context);
+                            value.name.text,
+                            value.email.text,
+                            value.password.text,
+                            value.phoneNumber.text,
+                            value.faculty,
+                            value.credentials.text,
+                            context,
+                          );
                         },
                         child: FormButtonWeb(
                           "Update",

@@ -89,13 +89,14 @@ class CounselorRegistrationProvider extends ChangeNotifier {
 
   //----------------------Functions---------------------
   Future<void> signUpUser(
-      String name,
-      String email,
-      String password,
-      String phone,
-      String faculty,
-      String credential,
-      BuildContext context) async {
+    String name,
+    String email,
+    String password,
+    String phone,
+    String faculty,
+    String credential,
+    BuildContext context,
+  ) async {
     try {
       if (email.isNotEmpty &&
           password.isNotEmpty &&

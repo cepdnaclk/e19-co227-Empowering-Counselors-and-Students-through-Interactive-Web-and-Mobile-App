@@ -97,7 +97,7 @@ class AuthController {
       UserModel user =
           UserModel.fromJson(documentSnapshot.data() as Map<String, dynamic>);
 
-      Logger().e(user.phone);
+      Logger().e(user.department);
 
       return user;
     } catch (e) {
