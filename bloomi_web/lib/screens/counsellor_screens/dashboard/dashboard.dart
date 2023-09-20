@@ -1,5 +1,3 @@
-import 'package:bloomi_web/components/user_list_view.dart';
-import 'package:bloomi_web/models/admin/counselor_model.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -157,7 +155,7 @@ class _DashboardState extends State<Dashboard> {
                       ? (_foundUsers.isNotEmpty
                           ? ListView.builder(
                               itemCount: _foundUsers.length,
-                              itemBuilder: (context, index) => Container(
+                              itemBuilder: (context, index) => SizedBox(
                                 height: 60, // Specify the desired height here
                                 child: Card(
                                   key: ValueKey(_foundUsers[index]["id"]),
@@ -253,22 +251,22 @@ class _DashboardState extends State<Dashboard> {
                                   style: TextStyle(
                                       fontSize:
                                           (currentWidth < 900) ? 12 : 15)),
-                              SizedBox(height: 4),
+                              const SizedBox(height: 4),
                               Text('Email:',
                                   style: TextStyle(
                                       fontSize:
                                           (currentWidth < 900) ? 12 : 15)),
-                              SizedBox(height: 4),
+                              const SizedBox(height: 4),
                               Text('Counsellor:',
                                   style: TextStyle(
                                       fontSize:
                                           (currentWidth < 900) ? 12 : 15)),
-                              SizedBox(height: 4),
+                              const SizedBox(height: 4),
                               Text('Date:',
                                   style: TextStyle(
                                       fontSize:
                                           (currentWidth < 900) ? 12 : 15)),
-                              SizedBox(height: 4),
+                              const SizedBox(height: 4),
                               Text('Time:',
                                   style: TextStyle(
                                       fontSize:

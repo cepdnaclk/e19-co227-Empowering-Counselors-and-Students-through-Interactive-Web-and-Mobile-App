@@ -1,7 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'dart:html';
-
 import 'package:bloomi_web/models/auth/counselor_model.dart';
 import 'package:bloomi_web/models/auth/user_model.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
@@ -285,5 +283,6 @@ class AuthController {
     } catch (e) {
       Logger().e(e);
     }
+    return null;
   }
 }

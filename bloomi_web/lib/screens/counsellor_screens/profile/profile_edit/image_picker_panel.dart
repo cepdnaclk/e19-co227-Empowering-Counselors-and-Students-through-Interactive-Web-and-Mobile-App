@@ -2,13 +2,11 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:bloomi_web/components/footer.dart';
-import 'package:bloomi_web/providers/counselor/addto_firestore.dart';
+import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:logger/logger.dart';
 
 class ImagePick extends StatefulWidget {
   const ImagePick({
@@ -26,12 +24,12 @@ class _ImagePickState extends State<ImagePick> {
   Future pickImage(ImageSource source) async {
     try {
       final image = await ImagePicker().pickImage(source: source);
-      String resp = await StorageData().saveData(file: _image!);
+
       if (image != null) {
         return await image.readAsBytes();
       }
     } on PlatformException catch (e) {
-      print('Failed to pick image: $e');
+      Logger().e(e);
     }
     return null;
   }
@@ -48,31 +46,6 @@ class _ImagePickState extends State<ImagePick> {
     });
   }
 
-/*
-  Future<void> uploadImage() async {
-    try {
-      if (image == null) return;
-      final storageRef = FirebaseStorage.instance
-          .ref()
-          .child('profile_images/${DateTime.now()}.jpg');
-      final uploadTask = storageRef.putFile(image!);
-      final snapshot = await uploadTask.whenComplete(() {});
-      final downloadUrl = await snapshot.ref.getDownloadURL();
-
-      setState(() {
-        imageUrl = downloadUrl;
-      });
-
-      // Store the download URL in Firestore
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc('user_id')
-          .update({'profileImageUrl': imageUrl});
-    } catch (e) {
-      print('Failed to upload image: $e');
-    }
-  }
-*/
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
