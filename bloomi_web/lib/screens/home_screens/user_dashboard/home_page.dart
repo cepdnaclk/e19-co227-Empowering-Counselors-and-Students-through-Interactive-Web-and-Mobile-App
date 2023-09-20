@@ -1,4 +1,5 @@
 import 'package:bloomi_web/components/homepage_card_widget_diamond.dart';
+import 'package:bloomi_web/components/homepage_card_widget_friend.dart';
 import 'package:bloomi_web/components/homepage_card_widget_nature.dart';
 import 'package:bloomi_web/components/homepage_card_widget_self.dart';
 import 'package:bloomi_web/components/homepage_card_widget_travel.dart';
@@ -24,13 +25,66 @@ class _HomePageState extends State<HomePage> {
       ), */
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(
-          top: 20,
+          top: 10,
           bottom: 20,
           left: 40,
           right: 40,
         ),
         child: Column(
           children: [
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.grey.withOpacity(0.6),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5), // Shadow color
+                    spreadRadius: 5, // Spread radius
+                    blurRadius: 7, // Blur radius
+                    offset: const Offset(0, 3), // Offset (horizontal, vertical)
+                  ),
+                ],
+              ),
+              margin: const EdgeInsets.only(
+                top: 20,
+                bottom: 20,
+              ),
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Counseling is Your Safe Harbor",
+                    style: TextStyle(
+                      color: UtilConstants.homePageQuoteTitleColor,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      shadows: [
+                        Shadow(
+                          color: UtilConstants.naturePageShadowColor,
+                          blurRadius: 10,
+                          offset: const Offset(10, 10),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Text(
+                    "\"In counseling, you'll find a safe harbor where you can navigate life's storms.\"",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'DancingScript'),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                ],
+              ),
+            ),
             Row(
               children: [
                 Expanded(
@@ -56,61 +110,74 @@ class _HomePageState extends State<HomePage> {
                     child: CardWidgetTravel(
                       items: ItemClass(
                           title:
-                              '"Travel far, travel wide, and discover the world outside to find the treasures within."',
+                              '"Travel, where the journey is as enchanting as the destination."',
                           imagePath: UtilConstants.travelImagePath),
                     ),
                   ),
                 ),
                 Expanded(
                   child: Card(
-                    child: CardWidgetYoga(
+                    child: CardWidgetFriend(
                       items: ItemClass(
-                          title: 'Travel',
-                          imagePath: UtilConstants.otherImagePath),
+                          title: '"Good friends make life beautiful."',
+                          imagePath: UtilConstants.friendsImagePath),
                     ),
                   ),
                 ),
               ],
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: Card(
-                    child: CardWidgetYoga(
-                      items: ItemClass(
-                          title: 'Space',
-                          imagePath: UtilConstants.otherImagePath),
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.grey.withOpacity(0.6),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5), // Shadow color
+                    spreadRadius: 5, // Spread radius
+                    blurRadius: 7, // Blur radius
+                    offset: const Offset(0, 3), // Offset (horizontal, vertical)
+                  ),
+                ],
+              ),
+              margin: const EdgeInsets.only(
+                top: 20,
+                bottom: 20,
+              ),
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "A Guiding Light",
+                    style: TextStyle(
+                      color: UtilConstants.homePageQuoteTitleColor,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      shadows: [
+                        Shadow(
+                          color: UtilConstants.naturePageShadowColor,
+                          blurRadius: 10,
+                          offset: const Offset(10, 10),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-                Expanded(
-                  child: Card(
-                    child: CardWidgetYoga(
-                      items: ItemClass(
-                          title: 'Travel',
-                          imagePath: UtilConstants.otherImagePath),
-                    ),
+                  const SizedBox(
+                    height: 5,
                   ),
-                ),
-                Expanded(
-                  child: Card(
-                    child: CardWidgetYoga(
-                      items: ItemClass(
-                          title: 'Travel',
-                          imagePath: UtilConstants.otherImagePath),
-                    ),
+                  const Text(
+                    "\"Counseling can be the guiding light that leads you out of the darkness.\"",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "monospace"),
                   ),
-                ),
-                Expanded(
-                  child: Card(
-                    child: CardWidgetYoga(
-                      items: ItemClass(
-                          title: 'Travel',
-                          imagePath: UtilConstants.otherImagePath),
-                    ),
+                  const SizedBox(
+                    height: 5,
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             CardWidgetSelf(
               items: ItemClass(

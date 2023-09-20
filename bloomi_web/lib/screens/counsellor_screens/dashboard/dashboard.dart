@@ -13,14 +13,14 @@ class _DashboardState extends State<Dashboard> {
   // You can use data fetched from a database or a server as well
   final List<Map<String, dynamic>> _allUsers = [
     {"id": 1, "name": "Andy", "age": 29},
-    {"id": 2, "name": "Aragon", "age": 40},
+    {"id": 2, "name": "Aragon", "age": 21},
     {"id": 3, "name": "Bob", "age": 5},
     {"id": 4, "name": "Barbara", "age": 35},
     {"id": 5, "name": "Candy", "age": 21},
-    {"id": 6, "name": "Colin", "age": 55},
+    {"id": 6, "name": "Colin", "age": 23},
     {"id": 7, "name": "Audra", "age": 30},
     {"id": 8, "name": "Banana", "age": 14},
-    {"id": 9, "name": "Caversky", "age": 100},
+    {"id": 9, "name": "Caversky", "age": 24},
     {"id": 10, "name": "Becky", "age": 32},
   ];
 
@@ -65,132 +65,10 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     final currentWidth = mediaQueryData.size.width;
-
-    /*return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            color:const  Color.fromARGB(255, 163, 220, 248),
-            child: const Column(
-              children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Dashboard",
-                    style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.blueGrey,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                /*SizedBox(
-                  width: 580,
-                  child: Card(
-                      child: Center(
-                    child: Column(children: [
-                      ListTile(
-                          title: Text(
-                        "My Appointment",
-                      )),
-                      Text("text", style: TextStyle(fontSize: 20)),
-                      Text("data", style: TextStyle(fontSize: 20))
-                    ]),
-                  )),
-                ),
-                
-                */
-
-                SizedBox(height: 20),
-                Padding(
-                  padding: EdgeInsets.all(15.0),
-                  child: TextField(
-                    keyboardType: TextInputType.text,
-                    autofocus: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Search your records',
-                      suffixIcon: Icon(Icons.search),
-                    ),
-                    /*onChanged: (value) => setState() {
-                      _runFilter(value);
-                    },*/
-                  ),
-                ),
-                SizedBox(height: 20),
-                Expanded(
-                  child: _foundUsers.isNotEmpty
-                      ?ListView.builder(
-                          itemCount: _foundUsers.length,
-                          itemBuilder: (context, index) => Card(
-                            key: ValueKey(_foundUsers[index]["id"]),
-                            color: Colors.amberAccent,
-                            elevation: 4,
-                            margin: const EdgeInsets.symmetric(vertical: 10),
-                            child: ListTile(
-                              leading: Text(
-                                _foundUsers[index]["id"].toString(),
-                                style: const TextStyle(fontSize: 24),
-                              ),
-                              title: Text(_foundUsers[index]['name']),
-                              subtitle: Text(
-                                  '${_foundUsers[index]["age"].toString()} years old'),
-                            ),
-                          ),
-                        )
-                      : Center(
-                          child: Text(
-                            'No results found',
-                            style: TextStyle(fontSize: 24),
-                          ),
-                        ),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  "Your Next Appointment",
-                  textAlign: TextAlign.left,
-                ),
-                Card(
-                  elevation: 0,
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  child: SizedBox(
-                    width: 300,
-                    height: 100,
-                    child: Center(child: Text('Filled Card')),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            top: 10,
-            right: 20,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: Image.asset(
-                UtilConstants.profImagePath,
-                width: 60,
-                height: 60,
-              ),
-            ),
-          ),
-        ],
-      ),
-      floatingActionButton: Align(
-        alignment: Alignment.bottomRight,
-        child: FloatingActionButton(
-          onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => const Appointment()));
-          },
-          child: const Icon(Icons.add),
-        ),
-      ),
-    );*/
+    final currentHeight = mediaQueryData.size.height;
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 163, 220, 248),
+      backgroundColor: UtilConstants.homeBackgroundColor,
       body: SafeArea(
         child: GestureDetector(
           onTap: _closeDropdown,
@@ -221,7 +99,7 @@ class _DashboardState extends State<Dashboard> {
                       child: CircleAvatar(
                         backgroundImage:
                             const NetworkImage(UtilConstants.profImagePath),
-                        radius: ((currentWidth > 900) ? 30 : 20),
+                        radius: ((currentWidth < 900) ? 20 : 30),
                       ),
                     ),
                   ],
@@ -230,7 +108,7 @@ class _DashboardState extends State<Dashboard> {
                   height: 10,
                 ),
                 Container(
-                  height: mediaQueryData.size.height * 0.06,
+                  height: (currentWidth < 900) ? 27 : 35,
                   margin: currentWidth > 500
                       ? (const EdgeInsets.symmetric(horizontal: 100))
                       : const EdgeInsets.symmetric(horizontal: 30),
@@ -242,101 +120,160 @@ class _DashboardState extends State<Dashboard> {
                       });
                     },
                     decoration: InputDecoration(
+                      contentPadding:
+                          const EdgeInsets.only(bottom: 10.0, left: 10),
                       filled: true,
                       fillColor: UtilConstants.lightgreyColor,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0),
+                        gapPadding: 8,
                         borderSide: BorderSide.none,
                       ),
-                      labelText: 'Search your records',
-                      labelStyle: const TextStyle(color: Colors.black),
-                      suffixIcon: const Icon(Icons.search),
+                      labelText: 'Select a Student',
+                      labelStyle: TextStyle(
+                          color: UtilConstants.primaryColor,
+                          fontSize: (currentWidth < 900) ? 12 : 16),
+                      suffixIcon: Icon(
+                        Icons.search,
+                        color: UtilConstants.primaryColor,
+                        size: (currentWidth < 900) ? 12 : 16,
+                      ),
                     ),
+                    style: TextStyle(
+                        fontSize: (currentWidth < 900)
+                            ? 12
+                            : 16), // Set font size for the content
+                    cursorWidth: 1.8, // Set cursor width
+                    cursorHeight: (currentWidth < 900) ? 14 : 18,
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: currentHeight * 0.015,
                 ),
                 Expanded(
                   child: _isSearchBarTapped
                       ? (_foundUsers.isNotEmpty
                           ? ListView.builder(
                               itemCount: _foundUsers.length,
-                              itemBuilder: (context, index) => Card(
-                                key: ValueKey(_foundUsers[index]["id"]),
-                                color: Colors.amberAccent,
-                                elevation: 4,
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                child: ListTile(
-                                  leading: Text(
-                                    _foundUsers[index]["id"].toString(),
-                                    style: const TextStyle(fontSize: 24),
+                              itemBuilder: (context, index) => SizedBox(
+                                height: 60, // Specify the desired height here
+                                child: Card(
+                                  key: ValueKey(_foundUsers[index]["id"]),
+                                  color: UtilConstants.lightgreyColor,
+                                  elevation: 2,
+                                  margin: const EdgeInsets.symmetric(
+                                      vertical: 2, horizontal: 20),
+                                  child: ListTile(
+                                    onTap: () {
+                                      // Update next appointment field with relevant student's next appointment
+                                      _closeDropdown();
+                                    },
+                                    leading: Text(
+                                      _foundUsers[index]["id"].toString(),
+                                      style: TextStyle(
+                                          fontSize:
+                                              (currentWidth < 750) ? 10 : 15),
+                                    ),
+                                    title: Text(
+                                      _foundUsers[index]['name'],
+                                      style: TextStyle(
+                                          fontSize:
+                                              (currentWidth < 750) ? 10 : 15),
+                                    ),
+                                    subtitle: Text(
+                                      '${_foundUsers[index]["age"].toString()} years old',
+                                      style: TextStyle(
+                                          fontSize:
+                                              (currentWidth < 750) ? 10 : 15),
+                                    ),
                                   ),
-                                  title: Text(_foundUsers[index]['name']),
-                                  subtitle: Text(
-                                      '${_foundUsers[index]["age"].toString()} years old'),
                                 ),
                               ),
                             )
-                          : const Text(
+                          : Text(
                               'No results found',
-                              style: TextStyle(fontSize: 24),
+                              style: TextStyle(
+                                  fontSize: (currentWidth < 750) ? 10 : 15),
                             ))
                       : Container(),
                 ),
-                Text(
-                  "Your Next Appointment",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: (currentWidth < 900) ? 15 : 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blueGrey,
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(
-                    top: 10,
-                    bottom: 30,
-                    left: 20,
-                    right: 20,
-                  ),
-                  child: Card(
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 30,
-                        vertical: 20,
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Container(
+                      margin: const EdgeInsets.only(
+                        top: 10,
+                        bottom: 30,
+                        left: 20,
+                        right: 20,
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Title',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
+                      child: Card(
+                        elevation: 2,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 30,
+                            vertical: 20,
                           ),
-                          SizedBox(
-                            height: 8,
-                            child: Divider(
-                              thickness: 1,
-                            ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Your Next Appointment",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: (currentWidth < 900) ? 15 : 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: UtilConstants.primaryColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Text('Title',
+                                  style: TextStyle(
+                                    fontSize: (currentWidth < 900) ? 15 : 18,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                              const SizedBox(
+                                height: 8,
+                                child: Divider(
+                                  thickness: 1,
+                                ),
+                              ),
+                              Text('Full Name:',
+                                  style: TextStyle(
+                                      fontSize:
+                                          (currentWidth < 900) ? 12 : 15)),
+                              const SizedBox(height: 4),
+                              Text('Email:',
+                                  style: TextStyle(
+                                      fontSize:
+                                          (currentWidth < 900) ? 12 : 15)),
+                              const SizedBox(height: 4),
+                              Text('Counsellor:',
+                                  style: TextStyle(
+                                      fontSize:
+                                          (currentWidth < 900) ? 12 : 15)),
+                              const SizedBox(height: 4),
+                              Text('Date:',
+                                  style: TextStyle(
+                                      fontSize:
+                                          (currentWidth < 900) ? 12 : 15)),
+                              const SizedBox(height: 4),
+                              Text('Time:',
+                                  style: TextStyle(
+                                      fontSize:
+                                          (currentWidth < 900) ? 12 : 15)),
+                            ],
                           ),
-                          Text('Full Name:'),
-                          SizedBox(height: 4),
-                          Text('Email:'),
-                          SizedBox(height: 4),
-                          Text('Counsellor:'),
-                          SizedBox(height: 4),
-                          Text('Date:'),
-                          SizedBox(height: 4),
-                          Text('Time:'),
-                        ],
+                        ),
                       ),
                     ),
                   ),

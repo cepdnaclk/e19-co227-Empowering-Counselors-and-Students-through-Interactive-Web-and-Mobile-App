@@ -9,6 +9,7 @@ class CustomButton extends StatelessWidget {
   final bool isLoading;
   final double height;
   final double fontSize;
+  final VoidCallback onPressed;
   const CustomButton(
     this.text, {
     super.key,
@@ -16,6 +17,7 @@ class CustomButton extends StatelessWidget {
     this.isLoading = false,
     required this.height,
     this.fontSize = 20,
+    required this.onPressed,
   });
 
   @override

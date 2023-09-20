@@ -26,6 +26,7 @@ class FormButtonWeb extends StatelessWidget {
       isLoading: isLoading,
       width: width,
       fontSize: fontSize,
+      onPressed: () {},
     );
   }
 }

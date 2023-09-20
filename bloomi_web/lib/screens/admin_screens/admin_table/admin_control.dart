@@ -17,11 +17,8 @@ class AdminControl extends StatefulWidget {
 }
 
 class _AdminControlState extends State<AdminControl> {
-  @override
-  // ignore: override_on_non_overriding_member
-
-  List<bool> isRowHovered = List.generate(10, (index) => false);
-  List<bool> isRowHoveredDeleted = List.generate(10, (index) => false);
+  List<bool> isRowHovered = List.generate(20, (index) => false);
+  List<bool> isRowHoveredDeleted = List.generate(20, (index) => false);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -122,7 +119,7 @@ class _AdminControlState extends State<AdminControl> {
                                               : Colors.grey.shade50,
                                         ),
                                         child: Text(
-                                          'Register',
+                                          'Update',
                                           style: TextStyle(
                                             color: isRowHovered[index]
                                                 ? Colors.black

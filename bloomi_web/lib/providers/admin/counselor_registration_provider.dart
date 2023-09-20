@@ -9,6 +9,8 @@ class CounselorRegistrationProvider extends ChangeNotifier {
   final TextEditingController _phoneNumber = TextEditingController();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _credentials = TextEditingController();
+  //final TextEditingController _faculty = TextEditingController();
+  //final TextEditingController _department = TextEditingController();
   String _department = "";
   String _faculty = "";
   String _year = "";

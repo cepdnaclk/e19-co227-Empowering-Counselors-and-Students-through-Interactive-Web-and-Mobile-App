@@ -64,8 +64,9 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: const ResponsiveLayout(
-            mobileBody: SplashScreenMobile(),
-            tabletBody: SplashScreenTablet(),
-            desktopBody: SplashDesktop()));
+          mobileBody: SplashScreenMobile(),
+          tabletBody: SplashScreenTablet(),
+          desktopBody: SplashDesktop(),
+        ));
   }
 }
