@@ -45,6 +45,7 @@ class UserAppoinmentProvider extends ChangeNotifier {
     try {
       setIsLoading(true);
 
+      _allUserModel.clear();
       _allUserModel = await AdminController().fetchAllUserData();
 
       for (var e in _allUserModel) {
