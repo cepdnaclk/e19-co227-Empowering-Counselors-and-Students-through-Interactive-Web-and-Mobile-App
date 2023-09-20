@@ -71,11 +71,23 @@ class _SignUpTabletState extends State<SignUpTablet> {
                           Provider.of<SignupProvider>(context).email,
                     ),
                     const SizedBox(height: 10),
-                    FormInputWeb(
-                      "Password",
-                      textEditingController:
-                          Provider.of<SignupProvider>(context).password,
-                      obscure: true,
+                    Consumer<SignupProvider>(
+                      builder: (context, value, child) {
+                        return FormInputWeb(
+                          "Password",
+                          textEditingController: value.password,
+                          obscure: value.isObscure ? true : false,
+                          icon: InkWell(
+                            onTap: () {
+                              value.setIsObscure(false);
+                            },
+                            child: const Icon(
+                              Icons.visibility_off,
+                              size: 15,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                     const SizedBox(height: 10),
                     FormInputWeb(

@@ -1,4 +1,4 @@
-import 'package:bloomi_web/components/admin_dropdown_menu.dart';
+import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
@@ -72,7 +72,7 @@ class _CounselorformState extends State<Studentform> {
                   FormInputWeb(
                     "Password",
                     textEditingController:
-                        Provider.of<SignupProvider>(context).email,
+                        Provider.of<SignupProvider>(context).password,
                   ),
                   SizedBox(height: mediaQueryData.size.height * 0.01),
                   FormInputWeb(
@@ -82,37 +82,41 @@ class _CounselorformState extends State<Studentform> {
                   ),
                   SizedBox(height: mediaQueryData.size.height * 0.01),
                   SizedBox(
-                    width: 420,
-                    child: AdminDropDownButtonWidget(
-                        index: 1, listItem: faculty, text: "Faculty"),
-                  ),
+                      width: 420,
+                      child: DropDownButtonWidget(
+                          listItem: faculty, text: "Faculty", index: 1)),
                   SizedBox(height: mediaQueryData.size.height * 0.01),
                   SizedBox(
-                    width: 420,
-                    child: AdminDropDownButtonWidget(
-                        index: 2,
-                        listItem: DepartmentList.facultyOfEngineering,
-                        text: "Department"),
-                  ),
+                      width: 420,
+                      child: DropDownButtonWidget(
+                          listItem: DepartmentList.facultyOfEngineering,
+                          text: "Department",
+                          index: 2)),
                   SizedBox(height: mediaQueryData.size.height * 0.01),
                   SizedBox(
-                    width: 420,
-                    child: AdminDropDownButtonWidget(
-                      listItem: year,
-                      text: "Year",
-                      index: 3,
-                    ),
-                  ),
+                      width: 420,
+                      child: DropDownButtonWidget(
+                          listItem: year, text: "Year", index: 3)),
                   SizedBox(height: mediaQueryData.size.height * 0.03),
                   Consumer<SignupProvider>(
                     builder: (context, value, child) {
                       return InkWell(
                         onTap: () {
+                          value.signUpUser(
+                              value.email.text,
+                              value.password.text,
+                              value.name.text,
+                              value.phoneNumber.text,
+                              value.department,
+                              value.faculty,
+                              value.year,
+                              context);
+
                           // Add your update logic here
                         },
-                        child: const FormButtonWeb(
+                        child: FormButtonWeb(
                           "Update",
-                          isLoading: false,
+                          isLoading: value.isLoading,
                         ),
                       );
                     },

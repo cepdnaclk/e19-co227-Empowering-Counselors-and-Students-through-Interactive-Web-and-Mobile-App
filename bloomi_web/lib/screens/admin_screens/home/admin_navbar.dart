@@ -52,7 +52,7 @@ class _AdminNavBarState extends State<AdminNavBar> {
                       Provider.of<NavigationProvider>(context, listen: false)
                           .setIndex(0);
                     },
-                    child: CustomNavBarWidget("Dashboard",
+                    child: CustomNavBarWidget("Home",
                         mediaQueryData: mediaQueryData,
                         isHovering: _isHovering[0]),
                   ),
@@ -86,7 +86,7 @@ class _AdminNavBarState extends State<AdminNavBar> {
                       Provider.of<NavigationProvider>(context, listen: false)
                           .setIndex(2);
                     },
-                    child: CustomNavBarWidget("Counselor",
+                    child: CustomNavBarWidget("Counselors",
                         mediaQueryData: mediaQueryData,
                         isHovering: _isHovering[2]),
                   ),
@@ -103,7 +103,7 @@ class _AdminNavBarState extends State<AdminNavBar> {
                       Provider.of<NavigationProvider>(context, listen: false)
                           .setIndex(3);
                     },
-                    child: CustomNavBarWidget("Log",
+                    child: CustomNavBarWidget("Admins",
                         mediaQueryData: mediaQueryData,
                         isHovering: _isHovering[3]),
                   ),

@@ -49,14 +49,27 @@ class LoginMobile extends StatelessWidget {
                 lableFontSize: UtilConstants.mobileLableFontSize,
               ),
               const SizedBox(height: UtilConstants.spaceBetweenInputMobile),
-              FormInputWeb(
-                "Password",
-                textEditingController:
-                    Provider.of<LoginProvider>(context).password,
-                fontSize: UtilConstants.mobileInputFontSize,
-                height: UtilConstants.mobileinputHeight,
-                width: UtilConstants.mobileInputWidth,
-                lableFontSize: UtilConstants.mobileLableFontSize,
+              Consumer<LoginProvider>(
+                builder: (context, value, child) {
+                  return FormInputWeb(
+                    "Password",
+                    textEditingController: value.password,
+                    obscure: value.isObscure ? true : false,
+                    icon: InkWell(
+                      onTap: () {
+                        value.setIsObscure(false);
+                      },
+                      child: const Icon(
+                        Icons.visibility_off,
+                        size: 15,
+                      ),
+                    ),
+                    fontSize: UtilConstants.mobileInputFontSize,
+                    height: UtilConstants.mobileinputHeight,
+                    width: UtilConstants.mobileInputWidth,
+                    lableFontSize: UtilConstants.mobileLableFontSize,
+                  );
+                },
               ),
               const SizedBox(height: UtilConstants.spaceBetweenInputMobile),
               const CustomTextLinkWeb("Forgot password?",

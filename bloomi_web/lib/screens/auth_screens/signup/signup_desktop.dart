@@ -133,16 +133,15 @@ class _SignUpDesktopState extends State<SignUpDesktop> {
                       builder: (context, value, child) {
                         return InkWell(
                           onTap: () {
-                            Provider.of<SignupProvider>(context, listen: false)
-                                .signUpUser(
-                                    value.email.text,
-                                    value.password.text,
-                                    value.name.text,
-                                    value.phoneNumber.text,
-                                    value.department,
-                                    value.faculty,
-                                    value.year,
-                                    context);
+                            value.signUpUser(
+                                value.email.text,
+                                value.password.text,
+                                value.name.text,
+                                value.phoneNumber.text,
+                                value.department,
+                                value.faculty,
+                                value.year,
+                                context);
                           },
                           child: FormButtonWeb(
                             "Register",
