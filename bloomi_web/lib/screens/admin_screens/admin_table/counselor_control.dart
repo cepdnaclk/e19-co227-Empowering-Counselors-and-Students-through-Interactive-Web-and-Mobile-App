@@ -15,9 +15,8 @@ class Counselorcontrol extends StatefulWidget {
 }
 
 class _CounselorcontrolState extends State<Counselorcontrol> {
-  List<bool> isRowHovered = List.generate(2, (index) => false, growable: true);
-  List<bool> isRowHoveredDeleted =
-      List.generate(2, (index) => false, growable: true);
+  List<bool> isRowHovered = [];
+  List<bool> isRowHoveredDeleted = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +46,10 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
             ),
             Consumer<UserAppoinmentProvider>(
               builder: (context, value, child) {
+                isRowHovered =
+                    List.generate(value.allAdminModel.length, (index) => false);
+                isRowHoveredDeleted =
+                    List.generate(value.allAdminModel.length, (index) => false);
                 return Padding(
                   padding: const EdgeInsets.all(20),
                   child: Table(

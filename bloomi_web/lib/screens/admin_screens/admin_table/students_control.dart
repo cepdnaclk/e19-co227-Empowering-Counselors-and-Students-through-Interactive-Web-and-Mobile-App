@@ -16,9 +16,8 @@ class StudentControl extends StatefulWidget {
 }
 
 class _StudentControlState extends State<StudentControl> {
-  List<bool> isRowHovered = List.generate(2, (index) => false, growable: true);
-  List<bool> isRowHoveredDeleted =
-      List.generate(2, (index) => false, growable: true);
+  List<bool> isRowHovered = [];
+  List<bool> isRowHoveredDeleted = [];
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +49,10 @@ class _StudentControlState extends State<StudentControl> {
             ),
             Consumer<UserAppoinmentProvider>(
               builder: (context, value, child) {
+                isRowHovered = List.generate(
+                    value.allStudentModel.length, (index) => false);
+                isRowHoveredDeleted = List.generate(
+                    value.allStudentModel.length, (index) => false);
                 return Padding(
                   padding: const EdgeInsets.all(20),
                   child: Table(
