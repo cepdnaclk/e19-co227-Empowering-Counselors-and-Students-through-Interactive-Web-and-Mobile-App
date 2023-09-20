@@ -45,17 +45,15 @@ class UserAppoinmentProvider extends ChangeNotifier {
     try {
       setIsLoading(true);
 
+      _allUserModel.clear();
       _allUserModel = await AdminController().fetchAllUserData();
 
       for (var e in _allUserModel) {
         if (e.userType == "Counselor") {
-          _allCounselorModel.clear();
           _allCounselorModel.add(e);
         } else if (e.userType == "User") {
-          _allStudentModel.clear();
           _allStudentModel.add(e);
         } else {
-          _allAdminModel.clear();
           _allAdminModel.add(e);
         }
       }
