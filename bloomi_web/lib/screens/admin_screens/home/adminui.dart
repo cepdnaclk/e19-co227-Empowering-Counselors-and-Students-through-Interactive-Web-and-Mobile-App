@@ -5,7 +5,6 @@ import 'package:bloomi_web/screens/admin_screens/admin_panel/admin_panel_drawer.
 import 'package:bloomi_web/screens/admin_screens/admin_table/admin_control.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_table/counselor_control.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_table/students_control.dart';
-import 'package:bloomi_web/screens/admin_screens/dashboard/admin_dashboard.dart';
 import 'package:bloomi_web/screens/admin_screens/home/admin_home.dart';
 import 'package:bloomi_web/screens/admin_screens/home/admin_navbar.dart';
 import 'package:bloomi_web/screens/admin_screens/setting/admin_setting.dart';
