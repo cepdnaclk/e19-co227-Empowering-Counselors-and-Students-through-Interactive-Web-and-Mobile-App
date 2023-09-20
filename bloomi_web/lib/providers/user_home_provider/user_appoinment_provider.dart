@@ -1,5 +1,5 @@
 import 'package:bloomi_web/controllers/admin_controller.dart';
-import 'package:bloomi_web/models/admin/counselor_model.dart';
+import 'package:bloomi_web/models/all_user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 

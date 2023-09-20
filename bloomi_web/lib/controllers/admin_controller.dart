@@ -1,4 +1,4 @@
-import 'package:bloomi_web/models/admin/counselor_model.dart';
+import 'package:bloomi_web/models/all_user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:logger/logger.dart';
 

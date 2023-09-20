@@ -1,19 +1,17 @@
 import 'package:bloomi_web/components/conversation_image.dart';
 import 'package:bloomi_web/components/custom_text.dart';
+import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class ConversationTile extends StatelessWidget {
   const ConversationTile({
     super.key,
-    required this.name,
-    required this.messages,
-    required this.time,
+    required this.chatModel,
   });
 
-  final String name;
-  final String messages;
-  final String time;
+  final ChatModel chatModel;
 
   @override
   Widget build(BuildContext context) {
@@ -40,20 +38,30 @@ class ConversationTile extends StatelessWidget {
         children: [
           Row(
             children: [
-              const ConversationImage(
-                imagePath: UtilConstants.profImagePath,
+              ConversationImage(
+                imagePath: chatModel.img,
               ),
               const SizedBox(width: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText(
-                    name,
-                    fontSize: 18,
-                    fontColor: UtilConstants.blackColor,
+                  Row(
+                    children: [
+                      CustomText(
+                        chatModel.name,
+                        fontSize: 18,
+                        fontColor: UtilConstants.blackColor,
+                      ),
+                      const SizedBox(width: 5),
+                      Icon(Icons.circle_rounded,
+                          size: 8,
+                          color: chatModel.isOnline
+                              ? UtilConstants.greenColor
+                              : UtilConstants.greyColor)
+                    ],
                   ),
                   CustomText(
-                    messages,
+                    "Hiii",
                     fontSize: 15,
                     fontWeight: FontWeight.w400,
                     fontColor: UtilConstants.blackColor.withOpacity(0.5),
@@ -63,7 +71,8 @@ class ConversationTile extends StatelessWidget {
             ],
           ),
           CustomText(
-            time,
+            timeago.format(DateTime.parse(chatModel.lastSeen),
+                allowFromNow: true),
             fontSize: 14,
             fontWeight: FontWeight.w400,
             fontColor: UtilConstants.blackColor.withOpacity(0.5),

@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:bloomi_web/controllers/auth_controller.dart';
-import 'package:bloomi_web/models/auth/user_model.dart';
+import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/home/adminui.dart';
 import 'package:bloomi_web/screens/auth_screens/login/login.dart';
@@ -37,18 +37,18 @@ class UserProvider extends ChangeNotifier {
 
           if (value!.userType == "Counselor") {
             Logger().e(value.userType);
-            UtilFunction.navigateForward(context, const CounselorHome());
+            startFetchUserAdditionalData(user.uid).then((value) =>
+                UtilFunction.navigateForward(context, const CounselorHome()));
           } else if (value.userType == "Admin") {
             UtilFunction.navigateForward(context, const Adminpanel());
           } else {
-            UtilFunction.navigateForward(context, const Home());
+            startFetchUserAdditionalData(user.uid).then(
+                (value) => UtilFunction.navigateForward(context, const Home()));
           }
         });
       }
     });
   }
-
-  //-----------------------To fetch user data---------------------
 
   //-----------------------To fetch user data---------------------
   Future<UserModel?> startFetchUserData(String uid) async {
@@ -67,5 +67,35 @@ class UserProvider extends ChangeNotifier {
       Logger().e(e);
       return null;
     }
+  }
+
+  //-----------------------To fetch user data---------------------
+
+  ChatModel? _chatModel;
+
+  ChatModel? get chatModel => _chatModel;
+  Future<ChatModel?> startFetchUserAdditionalData(String uid) async {
+    try {
+      ChatModel? chatModel =
+          await AuthController().fetchUserAdditionalData(uid);
+      if (chatModel != null) {
+        _chatModel = chatModel;
+        notifyListeners();
+
+        return chatModel;
+      } else {
+        Logger().i("User not found");
+        return null;
+      }
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
+  //-----------------------To update current user online states---------------------
+  void updateUserOnlineState(bool val) {
+    Logger().e(val);
+    AuthController().updateOnlineState(userModel!.uid, val);
   }
 }

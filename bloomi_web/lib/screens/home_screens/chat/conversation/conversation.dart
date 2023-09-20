@@ -1,20 +1,61 @@
-import 'package:bloomi_web/components/conversation_tile.dart';
+import 'package:bloomi_web/components/chat_list_view_user.dart';
 import 'package:bloomi_web/components/custom_chat_bubble.dart';
 import 'package:bloomi_web/components/header_widget.dart';
 import 'package:bloomi_web/components/messagetyping_widget.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
+import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 class Conversation extends StatefulWidget {
+  @override
   const Conversation({super.key});
 
   @override
   State<Conversation> createState() => _ConversationState();
 }
 
-class _ConversationState extends State<Conversation> {
+class _ConversationState extends State<Conversation>
+    with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
+  }
+
+  //--------------to check app state----------------------
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+
+    Logger().w(state.index);
+    if (state.index == 1) {
+      Logger().e("Hiiiii");
+      Provider.of<UserProvider>(context, listen: false)
+          .updateUserOnlineState(true);
+    }
+    // switch (state.index) {
+    //   case 1:
+    //     Logger().e("Hiiiii");
+    //     Provider.of<UserProvider>(context, listen: false)
+    //         .updateUserOnlineState(true);
+    //     break;
+    //   case 0:
+    //     Provider.of<UserProvider>(context, listen: false)
+    //         .updateUserOnlineState(false);
+
+    //     break;
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -52,40 +93,11 @@ class _ConversationState extends State<Conversation> {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                Container(
-                  width: 500,
-                  height: height - 152,
-                  color: UtilConstants.lightgreyColor,
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
-                    child: ListView.separated(
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: InkWell(
-                              onTap: () {
-                                Provider.of<UserChatProvider>(context,
-                                        listen: false)
-                                    .changeIndex(index);
-                              },
-                              child: ConversationTile(
-                                name: names[index],
-                                messages: messages[index],
-                                time: timeList[index],
-                              ),
-                            ),
-                          );
-                        },
-                        separatorBuilder: (context, index) {
-                          return const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: SizedBox(height: 2),
-                          );
-                        },
-                        itemCount: 5),
-                  ),
-                ),
+                ChatListViewUser(
+                    height: height,
+                    names: names,
+                    messages: messages,
+                    timeList: timeList),
                 const SizedBox(width: 4),
                 Container(
                   width: width - 522,
