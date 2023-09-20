@@ -18,9 +18,9 @@ class _CounselorEditFormState extends State<CounselorEditForm> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: const ResponsiveLayout(
-          mobileBody: editMobile(),
-          tabletBody: editTablet(),
-          desktopBody: editDesktop()),
+          mobileBody: EditMobile(),
+          tabletBody: EditTablet(),
+          desktopBody: EditDesktop()),
       bottomNavigationBar: Footer(height: 55, width: width),
     );
   }

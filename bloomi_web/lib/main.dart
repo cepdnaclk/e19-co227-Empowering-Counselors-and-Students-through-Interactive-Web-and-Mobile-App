@@ -68,10 +68,6 @@ class MyApp extends StatelessWidget {
           mobileBody: SplashScreenMobile(),
           tabletBody: SplashScreenTablet(),
           desktopBody: SplashDesktop(),
-
-          /* mobileBody: Dashboard(),
-            tabletBody: Dashboard(),
-            desktopBody: Dashboard(),*/
         ));
   }
 }

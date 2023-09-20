@@ -193,7 +193,7 @@ class AuthController {
     }
     return null;
   }
-
+/*
   //-----------------------To add Counselor Profile---------------------
   Future<void> counselorProfile(
     String email,
@@ -235,54 +235,55 @@ class AuthController {
       Logger().e(e);
     }
   }
-}
+}*/
 
 //----------------------saving counselor data in cloud firestore---------------------
-FirebaseFirestore firestore = FirebaseFirestore.instance;
-CollectionReference counselors =
-    FirebaseFirestore.instance.collection('counselors');
+  CollectionReference counselors =
+      FirebaseFirestore.instance.collection('counselors');
 
-Future<void> saveCounselorData(
-    String counselorid,
-    String name,
-    String email,
-    String phone,
-    String department,
-    String faculty,
-    String credentials,
-    String userType) {
-  return counselors
-      .doc(counselorid)
-      .set({
-        'counselorid': counselorid,
-        'name': name,
-        'email': email,
-        'phone': phone,
-        'department': department,
-        'faculty': faculty,
-        'credentials': credentials,
-        'userType': userType,
-        'imgUrl': UtilConstants.dummyProfileUrl,
-      })
-      .then((value) => Logger().i("Counselor Added"))
-      .catchError((error) => Logger().e("Failed to add counselor: $error"));
-}
+  Future<void> saveCounselorData(
+      String counselorid,
+      String name,
+      String email,
+      String phone,
+      String department,
+      String faculty,
+      String credentials,
+      String userType) {
+    return counselors
+        .doc(counselorid)
+        .set({
+          'counselorid': counselorid,
+          'name': name,
+          'email': email,
+          'phone': phone,
+          'department': department,
+          'faculty': faculty,
+          'credentials': credentials,
+          'userType': userType,
+          'imgUrl': UtilConstants.dummyProfileUrl,
+        })
+        .then((value) => Logger().i("Counselor Added"))
+        .catchError((error) => Logger().e("Failed to add counselor: $error"));
+  }
 
 //-----------------------fetch counselor data from database---------------------
 
-Future<CounselorModel?> fetchCounselorData(String counselorid) async {
-  try {
-    //-------firebase quary to fetch user data from database--------
-    DocumentSnapshot documentSnapshot = await counselors.doc(counselorid).get();
+  Future<CounselorModel?> fetchCounselorData(String counselorid) async {
+    try {
+      //-------firebase quary to fetch user data from database--------
+      DocumentSnapshot documentSnapshot =
+          await counselors.doc(counselorid).get();
 
-    //-------mapping user data to user model--------
-    CounselorModel counselor = CounselorModel.fromJson(
-        documentSnapshot.data() as Map<String, dynamic>);
+      //-------mapping user data to user model--------
+      CounselorModel counselor = CounselorModel.fromJson(
+          documentSnapshot.data() as Map<String, dynamic>);
 
-    Logger().i(counselor.email);
+      Logger().i(counselor.email);
 
-    return counselor;
-  } catch (e) {
-    Logger().e(e);
+      return counselor;
+    } catch (e) {
+      Logger().e(e);
+    }
   }
 }

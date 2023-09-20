@@ -1,3 +1,4 @@
+import 'package:bloomi_web/screens/counsellor_screens/profile/profile_edit/avatar_edit.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:bloomi_web/screens/counsellor_screens/profile/profile_card.dart';
@@ -23,6 +24,7 @@ class ProfilePanle extends StatelessWidget {
     );
   }
 
-  Widget ProfileImage() => const CircleAvatar(
+  /*Widget ProfileImage() => const CircleAvatar(
       radius: 70, backgroundImage: AssetImage(UtilConstants.profImagePath));
+ */
 }
