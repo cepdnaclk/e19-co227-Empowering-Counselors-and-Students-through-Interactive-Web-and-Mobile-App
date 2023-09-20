@@ -16,69 +16,8 @@ class StudentControl extends StatefulWidget {
 }
 
 class _StudentControlState extends State<StudentControl> {
-  List<String> faculties = [
-    'Faculty of Medicine',
-    'Faculty of Dental Sciences',
-    'Faculty of Veterinary Medicine and Animal Science',
-    'Faculty of Science',
-    'Faculty of Agriculture',
-    'Faculty of Allied Health Sciences',
-    'Faculty of Arts',
-    'Faculty of Management',
-    'Faculty of Engineering',
-    'Faculty of Medicine',
-  ];
-
-  List<String> studentyear = [
-    '1st Year',
-    '2nd Year',
-    '3rd Year',
-    '4th Year',
-    '1st Year',
-    '2nd Year',
-    '3rd Year',
-    '4th Year',
-    '1st Year',
-    '2nd Year',
-  ];
-  List<String> studentnames = [
-    "John Doe",
-    "Alice Johnson",
-    "Michael Smith",
-    "Emily Brown",
-    "Daniel Wilson",
-    "Olivia Garcia",
-    "David Lee",
-    "Sophia Taylor",
-    "Ethan Martinez",
-    "Ava Anderson"
-  ];
-  List<String> departments = [
-    "Computer Department",
-    " Electrical Department",
-    "Mechanical Department",
-    "Civil Department",
-    " Chemical Department",
-    "Computer Department",
-    " Electrical Department",
-    "Mechanical Department",
-    "Civil Department",
-    " Chemical Department",
-  ];
-  List<String> emails = [
-    "john.doe@email.com",
-    "susan.smith@email.com",
-    "michael.johnson@email.com",
-    "lisa.wilson@email.com",
-    "david.brown@email.com",
-    "emily.miller@email.com",
-    "robert.jones@email.com",
-    "sarah.davis@email.com",
-    "jennifer.wang@email.com",
-    "william.chen@email.com"
-  ];
-  List<bool> isRowHovered = List.generate(10, (index) => false);
-  List<bool> isRowHoveredDeleted = List.generate(10, (index) => false);
+  List<bool> isRowHovered = List.generate(20, (index) => false);
+  List<bool> isRowHoveredDeleted = List.generate(20, (index) => false);
 
   @override
   Widget build(BuildContext context) {
