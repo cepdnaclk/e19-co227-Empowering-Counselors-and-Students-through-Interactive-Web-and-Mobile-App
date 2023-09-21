@@ -65,6 +65,10 @@ class UtilConstants {
   static const String travelLastImagePath = "assets/images/travel_last.png";
   static const String friendsImagePath = "assets/images/friends.png";
   static const String friendLastImagePath = "assets/images/friend_last.png";
+  static const String gardeningImagePath = "assets/images/gard.png";
+  static const String gardtwoImagePath = "assets/images/gardd.png";
+  static const String readImagePath = "assets/images/read.png";
+  static const String readlastImagePath = "assets/images/readlast.png";
   static const String dummyProfileUrl =
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
 

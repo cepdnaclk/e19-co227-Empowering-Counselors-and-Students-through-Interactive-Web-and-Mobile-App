@@ -1,6 +1,8 @@
 import 'package:bloomi_web/components/homepage_card_widget_diamond.dart';
 import 'package:bloomi_web/components/homepage_card_widget_friend.dart';
+import 'package:bloomi_web/components/homepage_card_widget_gardening.dart';
 import 'package:bloomi_web/components/homepage_card_widget_nature.dart';
+import 'package:bloomi_web/components/homepage_card_widget_reading.dart';
 import 'package:bloomi_web/components/homepage_card_widget_self.dart';
 import 'package:bloomi_web/components/homepage_card_widget_travel.dart';
 import 'package:bloomi_web/components/homepage_card_widget_yoga.dart';
@@ -51,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                   const HomePageQuote(
                     quoteTitle: "Counselling is your Safe Habor",
                     quoteContent:
-                        "\"In counselling, you'll find a safe harbor where you can navigate life's storms\"",
+                        "\"In counselling, you'll find a safe harbor where you can navigate life's storms.\"",
                   ),
                   Row(
                     children: [
@@ -59,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                         child: Card(
                           child: CardWidgetNature(
                             items: ItemClass(
-                                title: '"The Healing Power of Nature"',
+                                title: '"The Healing Power of Nature."',
                                 imagePath:
                                     UtilConstants.natureHealingImagePath),
                           ),
@@ -69,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                         child: Card(
                           child: CardWidgetDiamond(
                             items: ItemClass(
-                                title: '"Shine like a Bright Diamond"',
+                                title: '"Shine like a Bright Diamond."',
                                 imagePath: UtilConstants.diamondImagePath),
                           ),
                         ),
@@ -113,17 +115,18 @@ class _HomePageState extends State<HomePage> {
                           child: CardWidgetYoga(
                             items: ItemClass(
                                 title:
-                                    "\"Yoga: A journey within to find tranquility and nurture mental health\"",
+                                    "\"Yoga: A journey within to find tranquility and nurture mental health.\"",
                                 imagePath: UtilConstants.yogaImagePath),
                           ),
                         ),
                       ),
                       Expanded(
                         child: Card(
-                          child: CardWidgetYoga(
+                          child: CardWidgetGardening(
                             items: ItemClass(
-                                title: 'Travel',
-                                imagePath: UtilConstants.otherImagePath),
+                                title:
+                                    '"Gardening is a living art, where patience is the canvas and nature is the masterpiece."',
+                                imagePath: UtilConstants.gardeningImagePath),
                           ),
                         ),
                       ),
@@ -133,10 +136,11 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Expanded(
                         child: Card(
-                          child: CardWidgetYoga(
+                          child: CardWidgetRead(
                             items: ItemClass(
-                                title: 'Space',
-                                imagePath: UtilConstants.otherImagePath),
+                                title:
+                                    '"Books: where every page turns into an unforgettable adventure."',
+                                imagePath: UtilConstants.readImagePath),
                           ),
                         ),
                       ),
