@@ -19,7 +19,9 @@ class UtilConstants {
       const Color.fromARGB(255, 235, 226, 238);
   static Color homeBackgroundColor =
       const Color.fromARGB(255, 163, 220, 248).withOpacity(0.5);
-  static Color homePageQuoteTitleColor = const Color.fromARGB(255, 20, 82, 117);
+  static Color homePageQuoteTitleColor = const Color.fromARGB(255, 2, 75, 80);
+  static Color homepageQuoteBackgroundColor =
+      const Color.fromARGB(255, 125, 192, 189).withOpacity(0.6);
 
   //--------------------Gradient Shader--------------------
   static Shader get gradientShader => LinearGradient(

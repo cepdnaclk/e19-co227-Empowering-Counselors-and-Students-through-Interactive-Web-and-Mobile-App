@@ -26,6 +26,7 @@ class CardWidgetYoga extends StatelessWidget {
       child: Card(
         child: Container(
           width: double.infinity,
+          height: 500,
           padding: const EdgeInsets.all(kDouble10),
           child: Column(
             children: [
