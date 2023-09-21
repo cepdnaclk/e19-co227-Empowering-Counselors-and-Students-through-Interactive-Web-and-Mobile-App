@@ -96,6 +96,10 @@ class UserProvider extends ChangeNotifier {
   //-----------------------To update current user online states---------------------
   void updateUserOnlineState(bool val) {
     Logger().e(val);
-    AuthController().updateOnlineState(userModel!.uid, val);
+    try {
+      AuthController().updateOnlineState(userModel!.uid, val);
+    } catch (e) {
+      Logger().e(e);
+    }
   }
 }

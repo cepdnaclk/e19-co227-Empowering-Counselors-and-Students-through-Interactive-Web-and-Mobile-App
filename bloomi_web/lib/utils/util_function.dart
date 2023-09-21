@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class UtilFunction {
   //---------------------Forward Navigation--------------------
@@ -27,9 +28,10 @@ class UtilFunction {
     );
 
     return selectedDate!;
-    // Do something with the selected date
+  }
 
-    // You can also update the TextFormFiled controller with the selected date
-    // controller.text = selectedDate.toString();
+  //---------------------time ago function--------------------
+  static String getTimeAgo(String date) {
+    return timeago.format(DateTime.parse(date), allowFromNow: true);
   }
 }

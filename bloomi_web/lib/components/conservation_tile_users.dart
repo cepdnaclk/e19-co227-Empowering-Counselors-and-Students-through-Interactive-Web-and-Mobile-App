@@ -1,17 +1,21 @@
 import 'package:bloomi_web/components/conversation_image.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/models/objects.dart';
+import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class ConversationTile extends StatelessWidget {
-  const ConversationTile({
+class ConversationTileUsers extends StatelessWidget {
+  const ConversationTileUsers({
     super.key,
-    required this.conversationModel,
+    required this.chatModel,
+    required this.index,
   });
 
-  final ConversationModel conversationModel;
+  final ChatModel chatModel;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +43,7 @@ class ConversationTile extends StatelessWidget {
           Row(
             children: [
               ConversationImage(
-                imagePath: conversationModel.usersArray[1].img,
+                imagePath: chatModel.img,
               ),
               const SizedBox(width: 20),
               Column(
@@ -48,34 +52,39 @@ class ConversationTile extends StatelessWidget {
                   Row(
                     children: [
                       CustomText(
-                        conversationModel.usersArray[1].name,
+                        chatModel.name,
                         fontSize: 18,
                         fontColor: UtilConstants.blackColor,
                       ),
                       const SizedBox(width: 5),
                       Icon(Icons.circle_rounded,
                           size: 8,
-                          color: conversationModel.usersArray[1].isOnline
+                          color: chatModel.isOnline
                               ? UtilConstants.greenColor
                               : UtilConstants.greyColor)
                     ],
                   ),
                   CustomText(
-                    conversationModel.lastMessage,
+                    UtilFunction.getTimeAgo(chatModel.lastSeen),
                     fontSize: 15,
                     fontWeight: FontWeight.w400,
                     fontColor: UtilConstants.blackColor.withOpacity(0.5),
                   ),
                 ],
-              ),
+              )
             ],
           ),
-          CustomText(
-            UtilFunction.getTimeAgo(conversationModel.lastMessageTime),
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-            fontColor: UtilConstants.blackColor.withOpacity(0.5),
-          ),
+          Consumer<UserChatProvider>(
+            builder: (context, value, child) {
+              return ElevatedButton(
+                  onPressed: () {
+                    value.createConversation(context, chatModel, index);
+                  },
+                  child: value.getLoadingIndex == index
+                      ? const CircularProgressIndicator.adaptive()
+                      : const Text("Message"));
+            },
+          )
         ],
       ),
     );
