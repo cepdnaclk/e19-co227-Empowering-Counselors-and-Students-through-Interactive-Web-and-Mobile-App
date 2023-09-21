@@ -19,8 +19,7 @@ class HomePageQuote extends StatelessWidget {
         color: UtilConstants.homepageQuoteBackgroundColor,
         boxShadow: [
           BoxShadow(
-            color: const Color.fromARGB(255, 105, 104, 104)
-                .withOpacity(0.8), // Shadow color
+            color: UtilConstants.homepageQuoteShadowColor, // Shadow color
             spreadRadius: 2, // Spread radius
             blurRadius: 2, // Blur radius
             offset: const Offset(0, 3), // Offset (horizontal, vertical)
