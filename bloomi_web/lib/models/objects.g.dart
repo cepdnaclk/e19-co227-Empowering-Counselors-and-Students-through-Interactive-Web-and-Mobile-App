@@ -28,6 +28,28 @@ Map<String, dynamic> _$ChatModelToJson(ChatModel instance) => <String, dynamic>{
       'userType': instance.userType,
     };
 
+ConversationModel _$ConversationModelFromJson(Map<String, dynamic> json) =>
+    ConversationModel(
+      id: json['id'] as String,
+      users: (json['users'] as List<dynamic>).map((e) => e as String).toList(),
+      usersArray: (json['usersArray'] as List<dynamic>)
+          .map((e) => ChatModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      lastMessage: json['lastMessage'] as String,
+      lastMessageTime: json['lastMessageTime'] as String,
+      createdBy: json['createdBy'] as String,
+    );
+
+Map<String, dynamic> _$ConversationModelToJson(ConversationModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'users': instance.users,
+      'usersArray': instance.usersArray.map((e) => e.toJson()).toList(),
+      'lastMessage': instance.lastMessage,
+      'lastMessageTime': instance.lastMessageTime,
+      'createdBy': instance.createdBy,
+    };
+
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       uid: json['uid'] as String,
       name: json['name'] as String,

@@ -1,14 +1,14 @@
 import 'package:bloomi_web/components/chat_list_view_user.dart';
 import 'package:bloomi_web/components/conversation_image.dart';
 import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/providers/users/user_provider.dart';
+import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({
+class ChatHeaderWidget extends StatelessWidget {
+  const ChatHeaderWidget({
     super.key,
     this.isTrue = true,
   });
@@ -26,25 +26,27 @@ class HeaderWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Consumer<UserProvider>(
+          Consumer<UserChatProvider>(
             builder: (context, value, child) {
               return Row(
                 children: [
                   ConversationImage(
-                    imagePath: value.userModel!.imgUrl,
+                    imagePath: value.getImg,
                   ),
                   const SizedBox(width: 20),
                   CustomText(
-                    value.userModel!.name,
+                    value.getName,
                     fontSize: 20,
                     fontColor: UtilConstants.blackColor,
                   ),
                   const SizedBox(width: 4),
-                  Icon(
-                    Icons.circle_rounded,
-                    color: UtilConstants.greenColor,
-                    size: 10,
-                  )
+                  (value.getIndex == -1)
+                      ? const Text("")
+                      : Icon(
+                          Icons.circle_rounded,
+                          color: UtilConstants.greenColor,
+                          size: 10,
+                        )
                 ],
               );
             },
