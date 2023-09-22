@@ -76,10 +76,9 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                         Tableheads(text: 'Credentials'),
                         Tableheads(text: 'Controls'),
                       ]),
-                      for (int index = 0;
-                          index < value.allCounselorModel.length;
-                          index++)
-                        TableRow(children: [
+                      ...List.generate(
+                        value.allCounselorModel.length,
+                        (index) => TableRow(children: [
                           Tablecellwidget(
                             name: value.allCounselorModel[index].uid,
                           ),
@@ -167,6 +166,7 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                             ),
                           ),
                         ]),
+                      )
                     ],
                   ),
                 );

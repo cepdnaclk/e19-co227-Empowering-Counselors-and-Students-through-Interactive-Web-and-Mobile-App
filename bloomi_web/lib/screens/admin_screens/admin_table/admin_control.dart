@@ -84,12 +84,11 @@ class _AdminControlState extends State<AdminControl> {
                         Tableheads(text: 'Contact Nu.'),
                         // Tableheads(text: 'Faculty'),
                         Tableheads(text: 'Credentials'),
-                        Tableheads(text: 'Controls'),
+                        Tableheads(text: 'Actions'),
                       ]),
-                      for (int index = 0;
-                          index < value.allAdminModel.length;
-                          index++)
-                        TableRow(children: [
+                      ...List.generate(
+                        value.allAdminModel.length,
+                        (index) => TableRow(children: [
                           Tablecellwidget(name: value.allAdminModel[index].uid),
                           Tablecellwidget(
                               name: value.allAdminModel[index].name),
@@ -100,79 +99,80 @@ class _AdminControlState extends State<AdminControl> {
                           // Tablecellwidget(name: faculties[index]),
                           Tablecellwidget(
                               name: value.allAdminModel[index].userCredential),
-                          const TableCell(
+                          TableCell(
                             child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: 10),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  // MouseRegion(
-                                  //   onEnter: (_) {
-                                  //     setState(() {
-                                  //       isRowHovered[index] = true;
-                                  //     });
-                                  //   },
-                                  //   onExit: (_) {
-                                  //     setState(() {
-                                  //       isRowHovered[index] = false;
-                                  //     });
-                                  //   },
-                                  //   child: ElevatedButton(
-                                  //       onPressed: () {
-                                  //         UtilFunction.navigateForward(
-                                  //           context,
-                                  //           const AdminRegistrationForm(),
-                                  //         );
-                                  //       },
-                                  //       style: ElevatedButton.styleFrom(
-                                  //         backgroundColor: isRowHovered[index]
-                                  //             ? Colors.greenAccent
-                                  //             : Colors.grey.shade50,
-                                  //       ),
-                                  //       child: Text(
-                                  //         'Update',
-                                  //         style: TextStyle(
-                                  //           color: isRowHovered[index]
-                                  //               ? Colors.black
-                                  //               : Colors.purple.shade400,
-                                  //         ),
-                                  //       )),
-                                  // ),
-                                  // MouseRegion(
-                                  //   onEnter: (_) {
-                                  //     setState(() {
-                                  //       isRowHoveredDeleted[index] = true;
-                                  //     });
-                                  //   },
-                                  //   onExit: (_) {
-                                  //     setState(() {
-                                  //       isRowHoveredDeleted[index] = false;
-                                  //     });
-                                  //   },
-                                  //   child: ElevatedButton(
-                                  //     onPressed: () {},
-                                  //     style: ElevatedButton.styleFrom(
-                                  //       backgroundColor:
-                                  //           isRowHoveredDeleted[index]
-                                  //               ? Colors.redAccent.shade200
-                                  //               : Colors.grey.shade50,
-                                  //     ),
-                                  //     child: Text(
-                                  //       'Delete',
-                                  //       style: TextStyle(
-                                  //         color: isRowHoveredDeleted[index]
-                                  //             ? Colors.black
-                                  //             : Colors.purple.shade400,
-                                  //       ),
-                                  //     ),
-                                  //   ),
-                                  // ),
+                                  MouseRegion(
+                                    onEnter: (_) {
+                                      setState(() {
+                                        isRowHovered[index] = true;
+                                      });
+                                    },
+                                    onExit: (_) {
+                                      setState(() {
+                                        isRowHovered[index] = false;
+                                      });
+                                    },
+                                    child: ElevatedButton(
+                                        onPressed: () {
+                                          UtilFunction.navigateForward(
+                                            context,
+                                            const AdminRegistrationForm(),
+                                          );
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: isRowHovered[index]
+                                              ? Colors.greenAccent
+                                              : Colors.grey.shade50,
+                                        ),
+                                        child: Text(
+                                          'Update',
+                                          style: TextStyle(
+                                            color: isRowHovered[index]
+                                                ? Colors.black
+                                                : Colors.purple.shade400,
+                                          ),
+                                        )),
+                                  ),
+                                  MouseRegion(
+                                    onEnter: (_) {
+                                      setState(() {
+                                        isRowHoveredDeleted[index] = true;
+                                      });
+                                    },
+                                    onExit: (_) {
+                                      setState(() {
+                                        isRowHoveredDeleted[index] = false;
+                                      });
+                                    },
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor:
+                                            isRowHoveredDeleted[index]
+                                                ? Colors.redAccent.shade200
+                                                : Colors.grey.shade50,
+                                      ),
+                                      child: Text(
+                                        'Delete',
+                                        style: TextStyle(
+                                          color: isRowHoveredDeleted[index]
+                                              ? Colors.black
+                                              : Colors.purple.shade400,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
                           ),
                         ]),
+                      )
                     ],
                   ),
                 );
