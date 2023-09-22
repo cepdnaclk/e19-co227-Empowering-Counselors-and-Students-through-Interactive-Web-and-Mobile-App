@@ -44,8 +44,10 @@ class UserAppoinmentProvider extends ChangeNotifier {
   Future<void> startFetchAllUserData() async {
     try {
       setIsLoading(true);
-
       _allUserModel.clear();
+      _allCounselorModel.clear();
+      _allStudentModel.clear();
+      _allAdminModel.clear();
       _allUserModel = await AdminController().fetchAllUserData();
 
       for (var e in _allUserModel) {
