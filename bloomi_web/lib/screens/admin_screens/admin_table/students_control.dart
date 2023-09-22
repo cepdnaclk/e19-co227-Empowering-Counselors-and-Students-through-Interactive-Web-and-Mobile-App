@@ -78,10 +78,9 @@ class _StudentControlState extends State<StudentControl> {
                         Tableheads(text: 'Year'),
                         Tableheads(text: 'Controls'),
                       ]),
-                      for (int index = 0;
-                          index < value.allStudentModel.length;
-                          index++)
-                        TableRow(
+                      ...List.generate(
+                        value.allStudentModel.length,
+                        (index) => TableRow(
                           children: [
                             Tablecellwidget(
                                 name: value.allStudentModel[index].name),
@@ -170,6 +169,7 @@ class _StudentControlState extends State<StudentControl> {
                             ),
                           ],
                         ),
+                      )
                     ],
                   ),
                 );
