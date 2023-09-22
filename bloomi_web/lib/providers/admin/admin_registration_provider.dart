@@ -106,23 +106,30 @@ class AdminRegistrationProvider extends ChangeNotifier {
           name.isNotEmpty &&
           // faculty.isNotEmpty &&
           credential.isNotEmpty) {
-        setIsLoading(true);
+        if (phoneNumber.length == 10 && phoneNumber.startsWith('07')) {
+          setIsLoading(true);
+          UtilMethod.customDialogBox(
+              context, "Success", "Registered Successfully!");
 
-        //sign up user
-        await AuthController().signUpUser(
-          email,
-          password,
-          name,
-          phoneNumber,
-          department,
-          faculty,
-          year,
-          credential,
-          userType,
-          context,
-        );
+          //sign up user
+          await AuthController().signUpUser(
+            email,
+            password,
+            name,
+            phoneNumber,
+            department,
+            faculty,
+            year,
+            credential,
+            userType,
+            context,
+          );
 
-        setIsLoading(false);
+          setIsLoading(false);
+        } else {
+          UtilMethod.customDialogBox(
+              context, "Error", "Please enter a valid Phone Number");
+        }
       } else {
         Logger().i(email);
         Logger().i(password);
