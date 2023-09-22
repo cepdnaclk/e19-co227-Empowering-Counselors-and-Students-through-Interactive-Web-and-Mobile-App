@@ -84,4 +84,40 @@ class ChatController {
   Stream<QuerySnapshot> getConversation(String currentUserId) => conversations
       .orderBy('createdAt', descending: true)
       .where('users', arrayContainsAny: [currentUserId]).snapshots();
+
+  //-------------send message-----------------
+  CollectionReference messages =
+      FirebaseFirestore.instance.collection('messages');
+
+  //-------------send message to the db-----------------
+
+  Future<void> sendMessage(String conId, String senderName, String senderId,
+      String reciverId, String message) async {
+    try {
+      await messages.add({
+        'conId': conId,
+        'senderName': senderName,
+        'senderId': senderId,
+        'reciverId': reciverId,
+        'message': message,
+        'messageTime': DateTime.now().toString(),
+        'createdAt': DateTime.now(),
+      });
+
+      //------------------------update conversation last msg------------------------
+      await conversations.doc(conId).update({
+        'lastMessage': message,
+        'lastMessageTime': DateTime.now().toString(),
+        'createdAt': DateTime.now(),
+      });
+    } catch (e) {
+      Logger().e(e);
+    }
+  }
+
+  //-------------retrieve and listen to the messages real-time-----------------
+  Stream<QuerySnapshot> getMessages(String conId) => messages
+      .orderBy('createdAt', descending: true)
+      .where('conId', isEqualTo: conId)
+      .snapshots();
 }

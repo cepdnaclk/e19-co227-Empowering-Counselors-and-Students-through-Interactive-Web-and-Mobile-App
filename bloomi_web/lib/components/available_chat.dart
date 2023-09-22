@@ -76,15 +76,7 @@ class AvailableChat extends StatelessWidget {
                                     .changeIndex(index);
                                 Provider.of<UserChatProvider>(context,
                                         listen: false)
-                                    .changeName(
-                                        _list[index].usersArray[1].name);
-                                Provider.of<UserChatProvider>(context,
-                                        listen: false)
-                                    .changeImg(_list[index].usersArray[1].img);
-                                Provider.of<UserChatProvider>(context,
-                                        listen: false)
-                                    .changeIsOnline(
-                                        _list[index].usersArray[1].isOnline);
+                                    .changeConversationModelNew(_list[index]);
                               } catch (e) {
                                 Logger().e(e);
                               }
