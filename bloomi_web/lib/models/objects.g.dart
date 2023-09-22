@@ -50,6 +50,25 @@ Map<String, dynamic> _$ConversationModelToJson(ConversationModel instance) =>
       'createdBy': instance.createdBy,
     };
 
+MessageModel _$MessageModelFromJson(Map<String, dynamic> json) => MessageModel(
+      conId: json['conId'] as String,
+      senderName: json['senderName'] as String,
+      senderId: json['senderId'] as String,
+      reciverId: json['reciverId'] as String,
+      message: json['message'] as String,
+      messageTime: json['messageTime'] as String,
+    );
+
+Map<String, dynamic> _$MessageModelToJson(MessageModel instance) =>
+    <String, dynamic>{
+      'conId': instance.conId,
+      'senderName': instance.senderName,
+      'senderId': instance.senderId,
+      'reciverId': instance.reciverId,
+      'message': instance.message,
+      'messageTime': instance.messageTime,
+    };
+
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       uid: json['uid'] as String,
       name: json['name'] as String,
