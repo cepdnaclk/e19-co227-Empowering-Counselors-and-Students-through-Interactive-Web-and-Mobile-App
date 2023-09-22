@@ -89,6 +89,8 @@ class CustomChatScreen extends StatelessWidget {
                         children: [
                           Expanded(
                               child: ListView.separated(
+                                  physics: const BouncingScrollPhysics(),
+                                  reverse: true,
                                   itemBuilder: (context, index) {
                                     return Consumer<UserProvider>(
                                       builder: (context, value, child) {
