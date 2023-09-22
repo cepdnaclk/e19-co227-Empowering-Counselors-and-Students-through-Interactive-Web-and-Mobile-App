@@ -125,10 +125,10 @@ packages:
     dependency: transitive
     description:
       name: built_value
-      sha256: ff627b645b28fb8bdb69e645f910c2458fd6b65f6585c3a53e0626024897dedf
+      sha256: a8de5955205b4d1dbbbc267daddf2178bd737e4bab8987c04a500478c9651e74
       url: "https://pub.dev"
     source: hosted
-    version: "8.6.2"
+    version: "8.6.3"
   characters:
     dependency: transitive
     description:
@@ -492,10 +492,10 @@ packages:
     dependency: transitive
     description:
       name: google_sign_in_android
-      sha256: "8d76099cb220d4f10c7e3c24492814c733f48ecb574c45c0ccadf5d5e50b012d"
+      sha256: "6031f59074a337fdd81be821aba84cee3a41338c6e958499a5cd34d3e1db80ef"
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.19"
+    version: "6.1.20"
   google_sign_in_ios:
     dependency: transitive
     description:
@@ -564,10 +564,10 @@ packages:
     dependency: transitive
     description:
       name: image_picker_android
-      sha256: "47da2161c2e9f8f8a9cbbd89d466d174333fbdd769aeed848912e0b16d9cb369"
+      sha256: "0c7b83bbe2980c8a8e36e974f055e11e51675784e13a4762889feed0f3937ff2"
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.8"
+    version: "0.8.8+1"
   image_picker_for_web:
     dependency: transitive
     description:
@@ -985,26 +985,26 @@ packages:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_calendar
-      sha256: "3a823c95c8f0b8b65f71bcbfcf81a5920ea71d20186796782ef26a3aa8acfeb0"
+      sha256: "26524caedc21fabc26297da4a32bf20089029fabcdbe609eacdbf11559ba0fbd"
       url: "https://pub.dev"
     source: hosted
-    version: "22.2.12"
+    version: "23.1.36"
   syncfusion_flutter_core:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
-      sha256: "9f0a4593f7642b2f106e329734d0e5fc746baf8d0a59495eec586cd0d9ba7d02"
+      sha256: aea119c8117953fa5decf4a313b431e556b0959cd35ff88f8fbdc0eda9bedb06
       url: "https://pub.dev"
     source: hosted
-    version: "22.2.12"
+    version: "23.1.36"
   syncfusion_flutter_datepicker:
     dependency: transitive
     description:
       name: syncfusion_flutter_datepicker
-      sha256: c09d8a84f07da41c12b02ac350f4aab8b73be2c51095fca9f9404b2a5af67585
+      sha256: "74eeebbf388bf89327fa2593942765aad2049e99d46128402ba0e32c03df5d08"
       url: "https://pub.dev"
     source: hosted
-    version: "22.2.12"
+    version: "23.1.36"
   term_glyph:
     dependency: transitive
     description:
