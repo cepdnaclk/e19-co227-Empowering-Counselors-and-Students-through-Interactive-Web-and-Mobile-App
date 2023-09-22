@@ -69,6 +69,18 @@ Map<String, dynamic> _$MessageModelToJson(MessageModel instance) =>
       'messageTime': instance.messageTime,
     };
 
+NoteModel _$NoteModelFromJson(Map<String, dynamic> json) => NoteModel(
+      id: json['id'] as String,
+      title: json['title'] as String,
+      description: json['description'] as String,
+    );
+
+Map<String, dynamic> _$NoteModelToJson(NoteModel instance) => <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'description': instance.description,
+    };
+
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       uid: json['uid'] as String,
       name: json['name'] as String,

@@ -7,6 +7,7 @@ import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/drawer.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/topbar_contents.dart';
 import 'package:bloomi_web/screens/counsellor_screens/profile/profile_home.dart';
+import 'package:bloomi_web/screens/home_screens/note/note.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +29,7 @@ class _CounselorHomeState extends State<CounselorHome> {
       const CounselorCalender(),
       const MessagingCard(),
       const ProfileHome(),
+      const Note(),
     ];
     return Scaffold(
       appBar: (width <= 900)
@@ -49,7 +51,10 @@ class _CounselorHomeState extends State<CounselorHome> {
           return widgets[value.currentIndex];
         },
       ),
-      drawer: const CounselorDrawer(),
+      drawer: const Padding(
+        padding: EdgeInsets.only(left: 20, top: 20, bottom: 20),
+        child: CounselorDrawer(),
+      ),
       bottomNavigationBar: Footer(height: 55, width: width),
     );
   }
