@@ -3,8 +3,7 @@
 import 'package:bloomi_web/controllers/chat_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
-import 'package:bloomi_web/screens/home_screens/chat/conversation/conversation.dart';
-import 'package:bloomi_web/utils/util_constant.dart';
+import 'package:bloomi_web/screens/home_screens/chat/home/chat.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -13,18 +12,13 @@ import 'package:provider/provider.dart';
 class UserChatProvider extends ChangeNotifier {
   // ------------------ User Chat index------------------
   int _index = -1;
-  String name = "";
-  String img = UtilConstants.dummyProfileUrl;
-  bool isOnline = false;
+
+  ConversationModel? _conversationModelNew;
 
   // ------------------ User Chat index get------------------
   int get getIndex => _index;
 
-  String get getName => name;
-
-  String get getImg => img;
-
-  bool get getIsOnline => isOnline;
+  ConversationModel get getConversationModelNew => _conversationModelNew!;
 
   // ------------------ User Chat index set------------------
   void changeIndex(int index) {
@@ -33,23 +27,13 @@ class UserChatProvider extends ChangeNotifier {
     Logger().i(getIndex);
   }
 
-  void changeName(String name) {
-    this.name = name;
+  // ------------------ User Chat index set------------------
+  void changeConversationModelNew(ConversationModel conversationModel) {
+    _conversationModelNew = conversationModel;
     notifyListeners();
-    Logger().i(getName);
+    Logger().i(getIndex);
   }
 
-  void changeImg(String img) {
-    this.img = img;
-    notifyListeners();
-    Logger().i(getImg);
-  }
-
-  void changeIsOnline(bool isOnline) {
-    this.isOnline = isOnline;
-    notifyListeners();
-    Logger().i(getIsOnline);
-  }
   //-------------------Start of create conversation-------------------
 
   //-------------create conversation loading index-----------------
@@ -88,11 +72,26 @@ class UserChatProvider extends ChangeNotifier {
 
       changeLoadingIndex(-1);
 
+      Logger().i(_conversationModel!.id);
       //-------------navigate to the conversation screen-----------------
-      UtilFunction.navigateBackward(context, const Conversation());
+      UtilFunction.navigateBackward(context, const Chat());
     } catch (e) {
       Logger().e(e);
       changeLoadingIndex(-1);
+    }
+  }
+
+  //-------------------send message and save it in db-------------------
+  Future<void> startSendMessage(BuildContext context, String msg) async {
+    try {
+      //-------------save msg in dp----------------
+      ChatModel me =
+          Provider.of<UserProvider>(context, listen: false).chatModel!;
+
+      await _chatController.sendMessage(_conversationModelNew!.id, me.name,
+          me.uid, _conversationModelNew!.usersArray[1].uid, msg);
+    } catch (e) {
+      Logger().e(e);
     }
   }
 }

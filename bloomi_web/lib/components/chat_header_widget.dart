@@ -31,13 +31,33 @@ class ChatHeaderWidget extends StatelessWidget {
               return Row(
                 children: [
                   ConversationImage(
-                    imagePath: value.getImg,
+                    imagePath: (value.getIndex == -1)
+                        ? UtilConstants.dummyProfileUrl
+                        : value.getConversationModelNew.usersArray[1].img,
                   ),
                   const SizedBox(width: 20),
-                  CustomText(
-                    value.getName,
-                    fontSize: 20,
-                    fontColor: UtilConstants.blackColor,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomText(
+                        (value.getIndex == -1)
+                            ? ""
+                            : value.getConversationModelNew.usersArray[1].name,
+                        fontSize: 20,
+                        fontColor: UtilConstants.blackColor,
+                      ),
+                      CustomText(
+                        (value.getIndex == -1)
+                            ? ""
+                            : UtilFunction.getTimeAgo(
+                                value.getConversationModelNew.usersArray[1]
+                                    .lastSeen,
+                              ),
+                        fontSize: 10,
+                        fontColor: UtilConstants.blackColor,
+                      ),
+                    ],
                   ),
                   const SizedBox(width: 4),
                   (value.getIndex == -1)
