@@ -28,28 +28,4 @@ class NoteController {
 
   //------------------------ GET NOTE ------------------------
   Stream<QuerySnapshot> getNotes() => notes.snapshots();
-
-  // Future<List<NoteModel>> fetchAllNotes() async {
-  //   try {
-  //     QuerySnapshot querySnapshot = await notes.get();
-  //     Logger().i(querySnapshot.docs.length);
-
-  //     //------temp list-------
-  //     List<NoteModel> list = [];
-
-  //     for (var e in querySnapshot.docs) {
-  //       //------mapping data to user model-------
-  //       NoteModel allNotes =
-  //           NoteModel.fromJson(e.data() as Map<String, dynamic>);
-
-  //       //------adding user model to list-------
-  //       list.add(allNotes);
-  //     }
-  //     return list;
-  //   } catch (e) {
-  //     Logger().e(e);
-
-  //     return [];
-  //   }
-  // }
 }

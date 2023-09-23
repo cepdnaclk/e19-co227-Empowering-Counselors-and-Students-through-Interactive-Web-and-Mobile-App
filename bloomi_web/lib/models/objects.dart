@@ -2,6 +2,7 @@ library objects;
 
 import 'package:json_annotation/json_annotation.dart';
 
+part 'appointment_model.dart';
 part 'chat_model.dart';
 part 'conversation_model.dart';
 part 'message_model.dart';

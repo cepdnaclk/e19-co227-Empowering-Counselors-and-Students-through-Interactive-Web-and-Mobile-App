@@ -21,6 +21,7 @@ class UtilFunction {
   //---------------------time picker--------------------
   static selectDate(BuildContext context) async {
     DateTime? selectedDate = await showDatePicker(
+      initialEntryMode: DatePickerEntryMode.inputOnly,
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2023, 1, 1),

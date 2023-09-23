@@ -1,4 +1,4 @@
-import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
+import 'package:bloomi_web/providers/user_home_provider/appointment_provider.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -18,7 +18,7 @@ class CustomDatePicker extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Consumer<UserAppoinmentProvider>(
+        child: Consumer<AppointmentProvider>(
           builder: (context, value, child) {
             return TextFormField(
               controller: TextEditingController(
