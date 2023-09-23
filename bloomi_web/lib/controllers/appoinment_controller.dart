@@ -41,4 +41,7 @@ class AppointmentController {
       Logger().e(e);
     }
   }
+
+  //------------------------ GET APPOINTMENT ------------------------
+  Stream<QuerySnapshot> getAppointment() => appointments.snapshots();
 }
