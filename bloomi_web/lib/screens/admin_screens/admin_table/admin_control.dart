@@ -1,3 +1,4 @@
+import 'package:bloomi_web/components/custom_control_buttons.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/adminform.dart';
 import 'package:bloomi_web/utils/util_admin_functions.dart';
@@ -77,73 +78,18 @@ class _AdminControlState extends State<AdminControl> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          MouseRegion(
-                                            onEnter: (_) {
-                                              setState(() {
-                                                isRowHovered[index] = true;
-                                              });
-                                            },
-                                            onExit: (_) {
-                                              setState(() {
-                                                isRowHovered[index] = false;
-                                              });
-                                            },
-                                            child: ElevatedButton(
-                                                onPressed: () =>
-                                                    adminregistrationform(
-                                                        context),
-                                                style: ElevatedButton.styleFrom(
-                                                  backgroundColor:
-                                                      isRowHovered[index]
-                                                          ? Colors.greenAccent
-                                                          : Colors.grey.shade50,
-                                                ),
-                                                child: Text(
-                                                  'Update',
-                                                  style: TextStyle(
-                                                    color: isRowHovered[index]
-                                                        ? Colors.black
-                                                        : Colors
-                                                            .purple.shade400,
-                                                  ),
-                                                )),
+                                          CustomControlButton(
+                                            text: 'Update',
+                                            color: Colors.greenAccent,
+                                            basiccolor: Colors.grey.shade50,
                                           ),
                                           const SizedBox(
                                             width: 10,
                                           ),
-                                          MouseRegion(
-                                            onEnter: (_) {
-                                              setState(() {
-                                                isRowHoveredDeleted[index] =
-                                                    true;
-                                              });
-                                            },
-                                            onExit: (_) {
-                                              setState(() {
-                                                isRowHoveredDeleted[index] =
-                                                    false;
-                                              });
-                                            },
-                                            child: ElevatedButton(
-                                              onPressed: () {},
-                                              style: ElevatedButton.styleFrom(
-                                                backgroundColor:
-                                                    isRowHoveredDeleted[index]
-                                                        ? Colors
-                                                            .redAccent.shade200
-                                                        : Colors.grey.shade50,
-                                              ),
-                                              child: Text(
-                                                'Delete',
-                                                style: TextStyle(
-                                                  color:
-                                                      isRowHoveredDeleted[index]
-                                                          ? Colors.black
-                                                          : Colors
-                                                              .purple.shade400,
-                                                ),
-                                              ),
-                                            ),
+                                          CustomControlButton(
+                                            text: 'Delete',
+                                            color: Colors.redAccent.shade100,
+                                            basiccolor: Colors.grey.shade50,
                                           ),
                                         ],
                                       ),
