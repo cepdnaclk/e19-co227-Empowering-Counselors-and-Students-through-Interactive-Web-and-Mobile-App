@@ -4,11 +4,11 @@ class AdminFunctions {
   //Admin Panel Datacells
   static DataCell customDatacells(String text) {
     return DataCell(
-      Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10),
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
+      Text(
+        text,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          fontSize: 15,
         ),
       ),
     );
