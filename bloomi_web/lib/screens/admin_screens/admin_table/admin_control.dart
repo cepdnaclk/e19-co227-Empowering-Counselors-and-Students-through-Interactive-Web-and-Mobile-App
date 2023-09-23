@@ -13,9 +13,6 @@ class AdminControl extends StatefulWidget {
 }
 
 class _AdminControlState extends State<AdminControl> {
-  List<bool> isRowHovered = [];
-  List<bool> isRowHoveredDeleted = [];
-
   @override
   void initState() {
     super.initState();
@@ -33,11 +30,6 @@ class _AdminControlState extends State<AdminControl> {
             Consumer<UserAppoinmentProvider>(
               builder: (context, value, child) {
                 // Initialize the lists based on the length of allAdminModel
-                isRowHovered =
-                    List.generate(value.allAdminModel.length, (index) => false);
-                isRowHoveredDeleted =
-                    List.generate(value.allAdminModel.length, (index) => false);
-
                 return Padding(
                     padding: const EdgeInsets.all(40),
                     child: Center(
@@ -82,6 +74,9 @@ class _AdminControlState extends State<AdminControl> {
                                             text: 'Update',
                                             color: Colors.greenAccent,
                                             basiccolor: Colors.grey.shade50,
+                                            // function:
+                                            //     AdminForm.adminregistrationform(
+                                            //         context),
                                           ),
                                           const SizedBox(
                                             width: 10,
@@ -90,6 +85,11 @@ class _AdminControlState extends State<AdminControl> {
                                             text: 'Delete',
                                             color: Colors.redAccent.shade100,
                                             basiccolor: Colors.grey.shade50,
+                                            // function:
+                                            //     UtilMethod.customDialogBox(
+                                            //         context,
+                                            //         'Warning!',
+                                            //         'Do You Want to Delete?'),
                                           ),
                                         ],
                                       ),
@@ -107,7 +107,7 @@ class _AdminControlState extends State<AdminControl> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          adminregistrationform(context);
+          AdminForm.adminregistrationform(context);
         },
         child: const Icon(Icons.group_add_sharp),
       ),

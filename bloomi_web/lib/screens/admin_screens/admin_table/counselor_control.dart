@@ -1,9 +1,7 @@
-import 'package:bloomi_web/components/custom_tablecells.dart';
-import 'package:bloomi_web/components/custom_tableheads.dart';
+import 'package:bloomi_web/components/custom_control_buttons.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/counselorform.dart';
-import 'package:bloomi_web/utils/util_constant.dart';
-import 'package:bloomi_web/utils/util_function.dart';
+import 'package:bloomi_web/utils/util_admin_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,165 +13,96 @@ class Counselorcontrol extends StatefulWidget {
 }
 
 class _CounselorcontrolState extends State<Counselorcontrol> {
-  List<bool> isRowHovered = [];
-  List<bool> isRowHoveredDeleted = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-              child: ElevatedButton(
-                onPressed: () {
-                  UtilFunction.navigateForward(
-                    context,
-                    const Counselorform(),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  elevation: 5,
-                  padding: const EdgeInsets.all(20),
-                ),
-                child: const Text(
-                  'Add Counselor',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-            ),
             Consumer<UserAppoinmentProvider>(
               builder: (context, value, child) {
-                isRowHovered =
-                    List.generate(value.allAdminModel.length, (index) => false);
-                isRowHoveredDeleted =
-                    List.generate(value.allAdminModel.length, (index) => false);
                 return Padding(
                   padding: const EdgeInsets.all(20),
-                  child: Table(
-                    columnWidths: const <int, TableColumnWidth>{
-                      0: FlexColumnWidth(0.8),
-                      1: FlexColumnWidth(0.9),
-                      2: FlexColumnWidth(1.1),
-                      3: FlexColumnWidth(0.8),
-                      4: FlexColumnWidth(1.2),
-                      5: FlexColumnWidth(1.2),
-                      6: FlexColumnWidth(1.2),
-                    },
-                    border: TableBorder.all(
-                      width: 1.5,
-                      color: UtilConstants.primaryColor,
-                    ),
-                    children: [
-                      const TableRow(children: [
-                        Tableheads(text: 'Counselor Id'),
-                        Tableheads(text: 'Name'),
-                        Tableheads(text: 'Email'),
-                        Tableheads(text: 'Contact Nu.'),
-                        Tableheads(text: 'Faculty'),
-                        Tableheads(text: 'Credentials'),
-                        Tableheads(text: 'Controls'),
-                      ]),
-                      ...List.generate(
-                        value.allCounselorModel.length,
-                        (index) => TableRow(children: [
-                          Tablecellwidget(
-                            name: value.allCounselorModel[index].uid,
-                          ),
-                          Tablecellwidget(
-                              name: value.allCounselorModel[index].name),
-                          Tablecellwidget(
-                              name: value.allCounselorModel[index].email),
-                          Tablecellwidget(
-                              name: value.allCounselorModel[index].phone),
-                          Tablecellwidget(
-                              name: value.allCounselorModel[index].faculty),
-                          Tablecellwidget(
-                              name: value
-                                  .allCounselorModel[index].userCredential),
-                          TableCell(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  MouseRegion(
-                                    onEnter: (_) {
-                                      setState(() {
-                                        isRowHovered[index] = true;
-                                      });
-                                    },
-                                    onExit: (_) {
-                                      setState(() {
-                                        isRowHovered[index] = false;
-                                      });
-                                    },
-                                    child: ElevatedButton(
-                                        onPressed: () {
-                                          UtilFunction.navigateForward(
-                                            context,
-                                            const Counselorform(),
-                                          );
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: isRowHovered[index]
-                                              ? Colors.greenAccent
-                                              : Colors.grey.shade50,
+                  child: Center(
+                    child: DataTable(
+                        sortColumnIndex: 0,
+                        sortAscending: true,
+                        dataRowMinHeight: 50,
+                        dataRowMaxHeight: 50,
+                        dataTextStyle: TextStyle(
+                          color: Colors.grey.shade900,
+                        ),
+                        columns: [
+                          AdminFunctions.customDataColumns('Name'),
+                          AdminFunctions.customDataColumns('Email'),
+                          AdminFunctions.customDataColumns('Contact Number'),
+                          AdminFunctions.customDataColumns('Faculty'),
+                          AdminFunctions.customDataColumns('Credentials'),
+                          AdminFunctions.customDataColumns('Actions'),
+                        ],
+                        rows: List.generate(
+                          value.allCounselorModel.length,
+                          (index) {
+                            return DataRow(
+                              cells: [
+                                AdminFunctions.customDatacells(
+                                    value.allCounselorModel[index].name),
+                                AdminFunctions.customDatacells(
+                                    value.allCounselorModel[index].email),
+                                AdminFunctions.customDatacells(
+                                    value.allCounselorModel[index].phone),
+                                AdminFunctions.customDatacells(
+                                    value.allCounselorModel[index].faculty),
+                                AdminFunctions.customDatacells(value
+                                    .allCounselorModel[index].userCredential),
+                                DataCell(
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        CustomControlButton(
+                                          text: 'Update',
+                                          color: Colors.greenAccent,
+                                          basiccolor: Colors.grey.shade50,
+                                          // function: CounselorForm
+                                          //     .counselorregistrationform(
+                                          //         context),
                                         ),
-                                        child: Text(
-                                          'Update',
-                                          style: TextStyle(
-                                            color: isRowHovered[index]
-                                                ? Colors.black
-                                                : Colors.purple.shade400,
-                                          ),
-                                        )),
-                                  ),
-                                  MouseRegion(
-                                    onEnter: (_) {
-                                      setState(() {
-                                        isRowHoveredDeleted[index] = true;
-                                      });
-                                    },
-                                    onExit: (_) {
-                                      setState(() {
-                                        isRowHoveredDeleted[index] = false;
-                                      });
-                                    },
-                                    child: ElevatedButton(
-                                      onPressed: () {},
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            isRowHoveredDeleted[index]
-                                                ? Colors.redAccent.shade200
-                                                : Colors.grey.shade50,
-                                      ),
-                                      child: Text(
-                                        'Delete',
-                                        style: TextStyle(
-                                          color: isRowHoveredDeleted[index]
-                                              ? Colors.black
-                                              : Colors.purple.shade400,
+                                        const SizedBox(
+                                          width: 10,
                                         ),
-                                      ),
+                                        CustomControlButton(
+                                          text: 'Delete',
+                                          color: Colors.redAccent.shade100,
+                                          basiccolor: Colors.grey.shade50,
+                                          // function: UtilMethod.customDialogBox(
+                                          //     context,
+                                          //     'Warning!',
+                                          //     'Do You Want to Delete?'),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ]),
-                      )
-                    ],
+                                ),
+                              ],
+                            );
+                          },
+                        )),
                   ),
                 );
               },
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          CounselorForm.counselorregistrationform(context);
+        },
+        child: const Icon(Icons.group_add_sharp),
       ),
     );
   }

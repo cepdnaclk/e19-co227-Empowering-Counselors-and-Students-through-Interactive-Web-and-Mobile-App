@@ -1,7 +1,6 @@
 import 'package:bloomi_web/components/custom_tablecells.dart';
 import 'package:bloomi_web/components/custom_tableheads.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
-import 'package:bloomi_web/screens/admin_screens/registration%20_forms/counselorform.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/studentform.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
@@ -117,7 +116,7 @@ class _StudentControlState extends State<StudentControl> {
                                           onPressed: () {
                                             UtilFunction.navigateForward(
                                               context,
-                                              const Counselorform(),
+                                              const Studentform(),
                                             );
                                           },
                                           style: ElevatedButton.styleFrom(

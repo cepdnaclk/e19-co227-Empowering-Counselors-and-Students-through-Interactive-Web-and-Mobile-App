@@ -1,4 +1,5 @@
-import 'package:bloomi_web/components/admin_dropdown_counselor_menu.dart';
+// Admin Register Form
+import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
@@ -6,120 +7,110 @@ import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart'
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Counselorform extends StatefulWidget {
-  const Counselorform({
-    Key? key, // Use Key? instead of super.key
-  }) : super(key: key);
+List<String> faculty = [
+  'Faculty of Engineering',
+  'Faculty of Medicine',
+  'Faculty of Dental Sciences',
+  'Faculty of Veterinary Medicine and Animal Science',
+  'Faculty of Science',
+  'Faculty of Agriculture',
+  'Faculty of Allied Health Sciences',
+  'Faculty of Arts',
+  'Faculty of Management',
+];
 
-  @override
-  State<Counselorform> createState() => _CounselorformState();
-}
-
-class _CounselorformState extends State<Counselorform> {
-  List<String> faculty = [
-    'Faculty of Engineering',
-    'Faculty of Medicine',
-    'Faculty of Dental Sciences',
-    'Faculty of Veterinary Medicine and Animal Science',
-    'Faculty of Science',
-    'Faculty of Agriculture',
-    'Faculty of Allied Health Sciences',
-    'Faculty of Arts',
-    'Faculty of Management',
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
-
-    return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
+class CounselorForm {
+  static counselorregistrationform(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        double heightone = MediaQuery.of(context).size.height;
+        return Center(
           child: Container(
-            width: 440,
-            height: 600,
-            padding: const EdgeInsets.all(30),
-            decoration: const BoxDecoration(
-              color: Colors.white,
+            width: 500,
+            height: 1000,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(2.0),
             ),
-            child: Center(
-              child: Column(
-                children: [
-                  const FormHeading(
-                    "Update Counselor Details",
+            child: AlertDialog(
+              actions: <Widget>[
+                const Padding(
+                  padding: EdgeInsets.only(top: 10.0),
+                  child: Center(
+                    child: FormHeading(
+                      "Add Counselor",
+                      color: Colors.grey,
+                    ),
                   ),
-                  SizedBox(height: mediaQueryData.size.height * 0.04),
-                  FormInputWeb(
-                    "Name",
-                    textEditingController:
-                        Provider.of<CounselorRegistrationProvider>(context)
-                            .name,
-                  ),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
-                  FormInputWeb(
-                    "Email",
-                    textEditingController:
-                        Provider.of<CounselorRegistrationProvider>(context)
-                            .email,
-                  ),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
-                  FormInputWeb(
-                    "Password",
-                    obscure: true,
-                    textEditingController:
-                        Provider.of<CounselorRegistrationProvider>(context)
-                            .password,
-                  ),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
-                  FormInputWeb(
-                    "Phone Number",
-                    textEditingController:
-                        Provider.of<CounselorRegistrationProvider>(context)
-                            .phoneNumber,
-                  ),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
-                  SizedBox(
-                      width: 420,
-                      child: AdminDropDownCounselorWidget(
-                          index: 1, listItem: faculty, text: "Faculty")),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
-                  FormInputWeb(
-                    "Credentials",
-                    textEditingController:
-                        Provider.of<CounselorRegistrationProvider>(context)
-                            .credentials,
-                  ),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
-                  SizedBox(height: mediaQueryData.size.height * 0.01),
-                  Consumer<CounselorRegistrationProvider>(
-                    builder: (context, value, child) {
-                      return InkWell(
-                        onTap: () {
-                          value.signUpUser(
+                ),
+                SizedBox(height: heightone * 0.04),
+                FormInputWeb(
+                  "Name",
+                  textEditingController:
+                      Provider.of<CounselorRegistrationProvider>(context).name,
+                ),
+                SizedBox(height: heightone * 0.01),
+                FormInputWeb(
+                  "Email",
+                  textEditingController:
+                      Provider.of<CounselorRegistrationProvider>(context).email,
+                ),
+                SizedBox(height: heightone * 0.01),
+                FormInputWeb(
+                  "Password",
+                  obscure: true,
+                  textEditingController:
+                      Provider.of<CounselorRegistrationProvider>(context)
+                          .password,
+                ),
+                SizedBox(height: heightone * 0.01),
+                FormInputWeb(
+                  "Phone Number",
+                  textEditingController:
+                      Provider.of<CounselorRegistrationProvider>(context)
+                          .phoneNumber,
+                ),
+                SizedBox(height: heightone * 0.01),
+                SizedBox(
+                    width: 420,
+                    child: DropDownButtonWidget(
+                        listItem: faculty, text: "Faculty", index: 1)),
+                SizedBox(height: heightone * 0.01),
+                FormInputWeb(
+                  "Credentials",
+                  textEditingController:
+                      Provider.of<CounselorRegistrationProvider>(context)
+                          .credentials,
+                ),
+                SizedBox(height: heightone * 0.01),
+                SizedBox(height: heightone * 0.01),
+                SizedBox(height: heightone * 0.01),
+                Consumer<CounselorRegistrationProvider>(
+                  builder: (context, value, child) {
+                    return InkWell(
+                      onTap: () {
+                        value.signUpUser(
                             value.name.text,
                             value.email.text,
                             value.password.text,
                             value.phoneNumber.text,
                             value.faculty,
                             value.credentials.text,
-                            context,
-                          );
-                        },
-                        child: FormButtonWeb(
-                          "Update",
-                          isLoading: value.isLoading,
-                        ),
-                      );
-                    },
-                  ),
-                  SizedBox(height: mediaQueryData.size.height * 0.02),
-                ],
-              ),
+                            context);
+                      },
+                      child: FormButtonWeb(
+                        "Register",
+                        isLoading: value.isLoading,
+                      ),
+                    );
+                  },
+                ),
+                SizedBox(height: heightone * 0.02),
+              ],
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
