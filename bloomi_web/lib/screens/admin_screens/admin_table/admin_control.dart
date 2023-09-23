@@ -91,7 +91,7 @@ class _AdminControlState extends State<AdminControl> {
                                                 UtilMethod.customDialogBox(
                                                     context,
                                                     'Warning!',
-                                                    'qqqq');
+                                                    'Do You Want to delete?');
                                               }),
                                         ],
                                       ),

@@ -84,7 +84,9 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                           basiccolor: Colors.grey.shade50,
                                           onPressed: () {
                                             UtilMethod.customDialogBox(
-                                                context, 'Warning!', 'qqqq');
+                                                context,
+                                                'Warning!',
+                                                'Do You want to delete?');
                                           },
                                         ),
                                       ],
