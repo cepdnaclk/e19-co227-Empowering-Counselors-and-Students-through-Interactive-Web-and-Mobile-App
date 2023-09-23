@@ -229,6 +229,27 @@ class AdminPanelDrawer extends StatelessWidget {
                           color: Colors.blue,
                         ),
                         title: const Text(
+                          'Chat',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        onTap: () {
+                          Provider.of<NavigationProvider>(context,
+                                  listen: false)
+                              .setIndex(5);
+                        },
+                      ),
+                      ListTile(
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 16),
+                        leading: const Icon(
+                          Icons.logout,
+                          size: 24,
+                          color: Colors.blue,
+                        ),
+                        title: const Text(
                           'Logout',
                           style: TextStyle(
                             fontSize: 16,

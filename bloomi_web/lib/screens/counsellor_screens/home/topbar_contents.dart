@@ -1,8 +1,6 @@
 import 'package:bloomi_web/components/custom_navbar_widget.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
-import 'package:bloomi_web/screens/home_screens/chat/home/chat.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -42,7 +40,7 @@ class _CounsellorNavBarState extends State<CounsellorNavBar> {
                     ),
                   ),
                   SizedBox(
-                    width: mediaQueryData.size.width * 0.65,
+                    width: mediaQueryData.size.width * 0.685,
                   ),
                   InkWell(
                     onHover: (value) {
@@ -85,7 +83,8 @@ class _CounsellorNavBarState extends State<CounsellorNavBar> {
                       });
                     },
                     onTap: () {
-                      UtilFunction.navigateForward(context, const Chat());
+                      Provider.of<NavigationProvider>(context, listen: false)
+                          .setIndex(2);
                     },
                     child: CustomNavBarWidget("Chat",
                         mediaQueryData: mediaQueryData,
