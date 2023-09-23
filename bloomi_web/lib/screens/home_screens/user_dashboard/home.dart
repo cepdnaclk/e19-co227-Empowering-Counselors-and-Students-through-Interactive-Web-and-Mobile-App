@@ -3,7 +3,7 @@ import 'package:bloomi_web/components/drawer.dart';
 import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/screens/home_screens/appoinment/user_appoinment/user_apoinment_dashboard.dart';
-import 'package:bloomi_web/screens/home_screens/chat/home/contact.dart';
+import 'package:bloomi_web/screens/home_screens/chat/home/chat.dart';
 import 'package:bloomi_web/screens/home_screens/note/note.dart';
 import 'package:bloomi_web/screens/home_screens/relax/relax.dart';
 import 'package:bloomi_web/screens/home_screens/user_dashboard/home_page.dart';
@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
     final List<Widget> widget = [
       const HomePage(),
       const UserAppointmentDashboard(),
-      const Contact(),
+      const Chat(),
       const Relax(),
       const Note(),
     ];
