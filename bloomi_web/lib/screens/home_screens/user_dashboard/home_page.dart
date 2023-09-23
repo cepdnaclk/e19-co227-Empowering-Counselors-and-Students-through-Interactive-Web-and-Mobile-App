@@ -1,6 +1,5 @@
 import 'package:bloomi_web/components/homepage_card_widget_diamond.dart';
 import 'package:bloomi_web/components/homepage_card_widget_friend.dart';
-import 'package:bloomi_web/components/homepage_card_widget_gardening.dart';
 import 'package:bloomi_web/components/homepage_card_widget_nature.dart';
 import 'package:bloomi_web/components/homepage_card_widget_reading.dart';
 import 'package:bloomi_web/components/homepage_card_widget_self.dart';
@@ -109,30 +108,30 @@ class _HomePageState extends State<HomePage> {
                       imagePath: UtilConstants.selfCareImagePath,
                     ),
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Card(
-                          child: CardWidgetYoga(
-                            items: ItemClass(
-                                title:
-                                    "\"Yoga: A journey within to find tranquility and nurture mental health.\"",
-                                imagePath: UtilConstants.yogaImagePath),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Card(
-                          child: CardWidgetGardening(
-                            items: ItemClass(
-                                title:
-                                    '"Gardening is a living art, where patience is the canvas and nature is the masterpiece."',
-                                imagePath: UtilConstants.gardeningImagePath),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   children: [
+                  //     Expanded(
+                  //       child: Card(
+                  //         child: CardWidgetYoga(
+                  //           items: ItemClass(
+                  //               title:
+                  //                   "\"Yoga: A journey within to find tranquility and nurture mental health.\"",
+                  //               imagePath: UtilConstants.yogaImagePath),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     Expanded(
+                  //       child: Card(
+                  //         child: CardWidgetGardening(
+                  //           items: ItemClass(
+                  //               title:
+                  //                   '"Gardening is a living art, where patience is the canvas and nature is the masterpiece."',
+                  //               imagePath: UtilConstants.gardeningImagePath),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   Row(
                     children: [
                       Expanded(

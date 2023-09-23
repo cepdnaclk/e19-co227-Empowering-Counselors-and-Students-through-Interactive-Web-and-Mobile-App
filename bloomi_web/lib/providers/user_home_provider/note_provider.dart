@@ -63,19 +63,4 @@ class NoteProvider extends ChangeNotifier {
       setIsLoading(false);
     }
   }
-
-  //------------------------ GET NOTE ------------------------
-  // List<NoteModel> _allNoteModel = [];
-  // List<NoteModel> get allNoteModel => _allNoteModel;
-
-  // Future<void> startFetchAllNotes() async {
-  //   try {
-  //     _allNoteModel.clear();
-
-  //     _allNoteModel = await NoteController().fetchAllNotes();
-  //     notifyListeners();
-  //   } catch (e) {
-  //     Logger().e(e);
-  //   }
-  // }
 }

@@ -37,7 +37,10 @@ class CounselorListView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: TextButton(
-                      onPressed: () => UtilFormMethod.showDialogMethod(context),
+                      onPressed: () => UtilFormMethod.showDialogMethod(
+                          context,
+                          value.allCounselorModel[index].uid,
+                          value.allCounselorModel[index].name),
                       child: const Icon(Icons.add, color: Colors.white),
                     )),
               ),

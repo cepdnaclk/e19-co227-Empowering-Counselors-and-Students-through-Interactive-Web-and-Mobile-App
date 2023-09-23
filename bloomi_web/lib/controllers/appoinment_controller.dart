@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
-class AppoinmentController {
+class AppointmentController {
   CollectionReference appointments =
       FirebaseFirestore.instance.collection('appointments');
 

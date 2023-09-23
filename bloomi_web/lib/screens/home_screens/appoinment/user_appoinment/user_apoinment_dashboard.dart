@@ -95,23 +95,20 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Expanded(
-                          child: CustomCardWidget(),
-                        ),
-                        Expanded(
-                          child: CustomCardWidget(),
-                        ),
-                        Expanded(
-                          child: CustomCardWidget(),
-                        ),
-                      ],
+                  SizedBox(
+                    height: 220,
+                    child: GridView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      padding: const EdgeInsets.all(20),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3, childAspectRatio: 2.3),
+                      itemBuilder: (BuildContext context, int index) {
+                        return const CustomCardWidget();
+                      },
+                      itemCount: 6,
                     ),
-                  ),
+                  )
                 ],
               ),
             )),

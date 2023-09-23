@@ -3,48 +3,41 @@ import 'package:flutter/material.dart';
 
 class CustomCardWidget extends StatelessWidget {
   const CustomCardWidget({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: UtilConstants.lightgreyColor,
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 30,
-          vertical: 20,
+    return SizedBox(
+      // Make the card expand to the full width
+      child: Card(
+        color: UtilConstants.lightgreyColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Title',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+        child: const Padding(
+          padding: EdgeInsets.all(16), // Adjust padding as needed
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Title',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            SizedBox(
-              height: 8,
-              child: Divider(
+              Divider(
                 thickness: 1,
+                height: 16, // Adjust the height of the divider
               ),
-            ),
-            Text('Full Name:'),
-            SizedBox(height: 4),
-            Text('Email:'),
-            SizedBox(height: 4),
-            Text('Counsellor:'),
-            SizedBox(height: 4),
-            Text('Date:'),
-            SizedBox(height: 4),
-            Text('Time:'),
-          ],
+              Text('Full Name:'),
+              Text('Email:'),
+              Text('Counsellor:'),
+              Text('Date:'),
+              Text('Time:'),
+            ],
+          ),
         ),
       ),
     );

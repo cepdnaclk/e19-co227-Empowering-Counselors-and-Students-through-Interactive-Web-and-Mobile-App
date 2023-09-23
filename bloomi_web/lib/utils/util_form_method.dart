@@ -1,15 +1,18 @@
 import 'package:bloomi_web/components/custom_date_picker.dart';
+import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/custom_time_picker.dart';
-import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/providers/user_home_provider/appointment_provider.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
+import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 class UtilFormMethod {
   //---------------------------method to show dialog box input feild---------------------------
-  static showDialogMethod(BuildContext context) {
+  static showDialogMethod(
+      BuildContext context, String counselorId, String counselorName) {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -45,9 +48,47 @@ class UtilFormMethod {
                           },
                         ),
                         const SizedBox(height: 50),
-                        const FormButtonWeb(
-                          "Send Appointment",
-                          isLoading: false,
+                        Consumer2<AppointmentProvider, UserProvider>(
+                          builder: (context, value, value2, child) {
+                            return ElevatedButton(
+                              onPressed: () async {
+                                try {
+                                  value.saveAppointment(
+                                      context,
+                                      value2.userModel!.uid,
+                                      counselorId,
+                                      value.name.text,
+                                      counselorName,
+                                      value2.userModel!.email,
+                                      value2.userModel!.faculty,
+                                      value.getDateTime.toString(),
+                                      value.getTimeOfDay.format(context));
+                                } catch (e) {
+                                  Logger().e(e);
+                                }
+                              },
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateColor.resolveWith(
+                                  (states) {
+                                    if (states
+                                        .contains(MaterialState.hovered)) {
+                                      return UtilConstants.greenColor;
+                                    }
+                                    return UtilConstants.greenColor;
+                                  },
+                                ),
+                                minimumSize: MaterialStateProperty.all(
+                                    const Size(double.infinity, 60)),
+                              ),
+                              child: value.isLoading
+                                  ? const CircularProgressIndicator.adaptive()
+                                  : const CustomText(
+                                      "Save Note",
+                                      fontColor: UtilConstants.blackColor,
+                                      fontSize: 15,
+                                    ),
+                            );
+                          },
                         ),
                       ],
                     ),

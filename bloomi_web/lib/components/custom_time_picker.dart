@@ -39,7 +39,7 @@ class CustomTimePicker extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                value.getDateTime.toString(),
+                value.getTimeOfDay.format(context),
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(width: 10),
@@ -47,7 +47,8 @@ class CustomTimePicker extends StatelessWidget {
                 onTap: () async {
                   try {
                     TimeOfDay timeOfDay = await _selectTime(context);
-                    // value.setDateTime(dateTime.);
+
+                    value.setTimeOfDay(timeOfDay);
                   } catch (e) {
                     Logger().e(e);
                   }
