@@ -3,7 +3,6 @@
 import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/adminform.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -37,12 +36,7 @@ class _AdminControlState extends State<AdminControl> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
                 child: ElevatedButton(
-                  onPressed: () {
-                    UtilFunction.navigateForward(
-                      context,
-                      const AdminRegistrationForm(),
-                    );
-                  },
+                  onPressed: () => adminregistrationform(context),
                   style: ElevatedButton.styleFrom(
                     elevation: 5,
                     padding: const EdgeInsets.all(20),
@@ -158,12 +152,9 @@ class _AdminControlState extends State<AdminControl> {
                                               });
                                             },
                                             child: ElevatedButton(
-                                                onPressed: () {
-                                                  UtilFunction.navigateForward(
-                                                    context,
-                                                    const AdminRegistrationForm(),
-                                                  );
-                                                },
+                                                onPressed: () =>
+                                                    adminregistrationform(
+                                                        context),
                                                 style: ElevatedButton.styleFrom(
                                                   backgroundColor:
                                                       isRowHovered[index]
