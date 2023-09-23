@@ -1,7 +1,9 @@
 import 'package:bloomi_web/components/custom_control_buttons.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
+import 'package:bloomi_web/screens/admin_screens/registration%20_forms/adminform.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/counselorform.dart';
 import 'package:bloomi_web/utils/util_admin_functions.dart';
+import 'package:bloomi_web/utils/util_method.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -67,7 +69,11 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                           text: 'Update',
                                           color: Colors.greenAccent,
                                           basiccolor: Colors.grey.shade50,
-                                          index: 1,
+                                          onPressed: () {
+                                            CounselorForm
+                                                .counselorregistrationform(
+                                                    context);
+                                          },
                                         ),
                                         const SizedBox(
                                           width: 10,
@@ -76,7 +82,10 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                           text: 'Delete',
                                           color: Colors.redAccent.shade100,
                                           basiccolor: Colors.grey.shade50,
-                                          index: 2,
+                                          onPressed: () {
+                                            UtilMethod.customDialogBox(
+                                                context, 'Warning!', 'qqqq');
+                                          },
                                         ),
                                       ],
                                     ),
