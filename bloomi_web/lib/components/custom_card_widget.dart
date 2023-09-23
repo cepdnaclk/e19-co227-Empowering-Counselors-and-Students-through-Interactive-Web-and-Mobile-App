@@ -1,10 +1,13 @@
+import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
 class CustomCardWidget extends StatelessWidget {
+  final List<AppointmentModel> list;
   const CustomCardWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+    required this.list,
+  });
 
   @override
   Widget build(BuildContext context) {

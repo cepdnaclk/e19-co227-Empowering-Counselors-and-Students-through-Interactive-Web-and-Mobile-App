@@ -9,7 +9,6 @@ class CustomControlButton extends StatelessWidget {
 
   final int index;
 
-
   const CustomControlButton({
     super.key,
     required this.text,
@@ -23,7 +22,6 @@ class CustomControlButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MouseRegion(
       child: ElevatedButton(
-
           onPressed: () {
             if (index == 1) {
               AdminForm.adminregistrationform(context, "Update Admin");
@@ -32,7 +30,6 @@ class CustomControlButton extends StatelessWidget {
                   context, "Warning", "Do you want to delete this user?");
             }
           },
-
           style: ButtonStyle(
             overlayColor: MaterialStateProperty.resolveWith<Color?>(
               (Set<MaterialState> states) {
@@ -43,7 +40,6 @@ class CustomControlButton extends StatelessWidget {
               },
             ),
           ),
-          onPressed: () {},
           child: Text(
             text,
           )),
