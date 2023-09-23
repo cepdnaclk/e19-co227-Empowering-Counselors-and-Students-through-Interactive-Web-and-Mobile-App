@@ -82,6 +82,10 @@ class _AdminControlState extends State<AdminControl> {
                                             text: 'Update',
                                             color: Colors.greenAccent,
                                             basiccolor: Colors.grey.shade50,
+                                            function: () {
+                                              AdminForm.adminregistrationform(
+                                                  context);
+                                            },
                                           ),
                                           const SizedBox(
                                             width: 10,
@@ -90,6 +94,10 @@ class _AdminControlState extends State<AdminControl> {
                                             text: 'Delete',
                                             color: Colors.redAccent.shade100,
                                             basiccolor: Colors.grey.shade50,
+                                            function: () {
+                                              AdminForm.adminregistrationform(
+                                                  context);
+                                            },
                                           ),
                                         ],
                                       ),
@@ -107,7 +115,7 @@ class _AdminControlState extends State<AdminControl> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          adminregistrationform(context);
+          AdminForm.adminregistrationform(context);
         },
         child: const Icon(Icons.group_add_sharp),
       ),
