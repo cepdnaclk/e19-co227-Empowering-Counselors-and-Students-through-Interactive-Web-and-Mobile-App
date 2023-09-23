@@ -8,8 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AdminForm {
-
-  static adminregistrationform(BuildContext context) {
+  static adminregistrationform(BuildContext context, String heading) {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -23,11 +22,11 @@ class AdminForm {
             ),
             child: AlertDialog(
               actions: <Widget>[
-                const Padding(
-                  padding: EdgeInsets.only(top: 10.0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
                   child: Center(
                     child: FormHeading(
-                      "Add Admins",
+                      heading,
                       color: Colors.grey,
                     ),
                   ),

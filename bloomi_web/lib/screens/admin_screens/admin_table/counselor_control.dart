@@ -67,9 +67,7 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                           text: 'Update',
                                           color: Colors.greenAccent,
                                           basiccolor: Colors.grey.shade50,
-                                          // function: CounselorForm
-                                          //     .counselorregistrationform(
-                                          //         context),
+                                          index: 1,
                                         ),
                                         const SizedBox(
                                           width: 10,
@@ -78,10 +76,7 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                           text: 'Delete',
                                           color: Colors.redAccent.shade100,
                                           basiccolor: Colors.grey.shade50,
-                                          // function: UtilMethod.customDialogBox(
-                                          //     context,
-                                          //     'Warning!',
-                                          //     'Do You Want to Delete?'),
+                                          index: 2,
                                         ),
                                       ],
                                     ),
