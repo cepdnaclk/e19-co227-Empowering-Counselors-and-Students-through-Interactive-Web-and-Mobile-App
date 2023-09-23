@@ -1,5 +1,3 @@
-import 'package:bloomi_web/screens/admin_screens/registration%20_forms/adminform.dart';
-import 'package:bloomi_web/utils/util_method.dart';
 import 'package:flutter/material.dart';
 
 class CustomControlButton extends StatelessWidget {
@@ -7,14 +5,13 @@ class CustomControlButton extends StatelessWidget {
   final Color color;
   final Color basiccolor;
 
-  final int index;
-
+  final VoidCallback onPressed;
   const CustomControlButton({
     super.key,
     required this.text,
     required this.color,
     required this.basiccolor,
-    required this.index,
+    required this.onPressed,
     // required this.function,
   });
 
@@ -22,14 +19,7 @@ class CustomControlButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MouseRegion(
       child: ElevatedButton(
-          onPressed: () {
-            if (index == 1) {
-              AdminForm.adminregistrationform(context, "Update Admin");
-            } else {
-              UtilMethod.customDialogBox(
-                  context, "Warning", "Do you want to delete this user?");
-            }
-          },
+          onPressed: onPressed,
           style: ButtonStyle(
             overlayColor: MaterialStateProperty.resolveWith<Color?>(
               (Set<MaterialState> states) {
