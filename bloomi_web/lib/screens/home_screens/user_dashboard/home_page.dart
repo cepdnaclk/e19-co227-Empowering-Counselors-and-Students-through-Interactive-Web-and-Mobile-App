@@ -5,6 +5,7 @@ import 'package:bloomi_web/components/homepage_card_widget_nature.dart';
 import 'package:bloomi_web/components/homepage_card_widget_reading.dart';
 import 'package:bloomi_web/components/homepage_card_widget_self.dart';
 import 'package:bloomi_web/components/homepage_card_widget_travel.dart';
+import 'package:bloomi_web/components/homepage_card_widget_wildlife.dart';
 import 'package:bloomi_web/components/homepage_card_widget_yoga.dart';
 import 'package:bloomi_web/components/homepage_class.dart';
 import 'package:bloomi_web/components/homepage_quote.dart';
@@ -146,10 +147,11 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Expanded(
                         child: Card(
-                          child: CardWidgetYoga(
+                          child: CardWidgetWild(
                             items: ItemClass(
-                                title: 'Travel',
-                                imagePath: UtilConstants.otherImagePath),
+                                title:
+                                    '"Watching wildlife: where peace meets the wild."',
+                                imagePath: UtilConstants.wildImagePath3),
                           ),
                         ),
                       ),
