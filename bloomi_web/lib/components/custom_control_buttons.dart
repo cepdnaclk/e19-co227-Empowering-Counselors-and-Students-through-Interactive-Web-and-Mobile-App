@@ -6,7 +6,6 @@ class CustomControlButton extends StatelessWidget {
   final Color color;
   final Color basiccolor;
 
-
   const CustomControlButton({
     super.key,
     required this.text,
@@ -19,7 +18,6 @@ class CustomControlButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MouseRegion(
       child: ElevatedButton(
-
           style: ButtonStyle(
             overlayColor: MaterialStateProperty.resolveWith<Color?>(
               (Set<MaterialState> states) {
@@ -30,6 +28,7 @@ class CustomControlButton extends StatelessWidget {
               },
             ),
           ),
+          onPressed: () {},
           child: Text(
             text,
           )),
