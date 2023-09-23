@@ -1,8 +1,6 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/adminform.dart';
-import 'package:bloomi_web/utils/util_constant.dart';
+import 'package:bloomi_web/utils/util_admin_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,109 +27,48 @@ class _AdminControlState extends State<AdminControl> {
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                child: ElevatedButton(
-                  onPressed: () => adminregistrationform(context),
-                  style: ElevatedButton.styleFrom(
-                    elevation: 5,
-                    padding: const EdgeInsets.all(20),
-                  ),
-                  child: const Text(
-                    'Add Admins',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ),
-              Consumer<UserAppoinmentProvider>(
-                builder: (context, value, child) {
-                  // Initialize the lists based on the length of allAdminModel
-                  isRowHovered = List.generate(
-                      value.allAdminModel.length, (index) => false);
-                  isRowHoveredDeleted = List.generate(
-                      value.allAdminModel.length, (index) => false);
+        child: Column(
+          children: [
+            Consumer<UserAppoinmentProvider>(
+              builder: (context, value, child) {
+                // Initialize the lists based on the length of allAdminModel
+                isRowHovered =
+                    List.generate(value.allAdminModel.length, (index) => false);
+                isRowHoveredDeleted =
+                    List.generate(value.allAdminModel.length, (index) => false);
 
-                  return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 10),
+                return Padding(
+                    padding: const EdgeInsets.all(40),
+                    child: Center(
                       child: DataTable(
+                          sortColumnIndex: 0,
+                          sortAscending: true,
                           dataRowMinHeight: 50,
                           dataRowMaxHeight: 50,
-                          dataTextStyle: const TextStyle(
-                            color: Colors.grey,
+                          dataTextStyle: TextStyle(
+                            color: Colors.grey.shade900,
                           ),
-                          columnSpacing: (width * 1 / 20),
+                          columnSpacing: (width * 1 / 15),
                           columns: [
-                            DataColumn(
-                                label: Center(
-                              child: Text(
-                                'Admin Id',
-                                style: TextStyle(
-                                    color: UtilConstants.greenColor,
-                                    fontSize: 20),
-                              ),
-                            )),
-                            DataColumn(
-                                label: Text(
-                              'Name',
-                              style: TextStyle(
-                                  color: UtilConstants.greenColor,
-                                  fontSize: 20),
-                            )),
-                            DataColumn(
-                                label: Text(
-                              'Email',
-                              style: TextStyle(
-                                  color: UtilConstants.greenColor,
-                                  fontSize: 20),
-                            )),
-                            DataColumn(
-                                label: Text(
-                              'Contact Number',
-                              style: TextStyle(
-                                  color: UtilConstants.greenColor,
-                                  fontSize: 20),
-                            )),
-                            // Tableheads(text: 'Faculty'),
-                            DataColumn(
-                                label: Text(
-                              'Faculty',
-                              style: TextStyle(
-                                  color: UtilConstants.greenColor,
-                                  fontSize: 20),
-                            )),
-                            DataColumn(
-                                label: Text(
-                              'Actions',
-                              style: TextStyle(
-                                  color: UtilConstants.greenColor,
-                                  fontSize: 20),
-                            )),
+                            AdminFunctions.customDataColumns('Name'),
+                            AdminFunctions.customDataColumns('Email'),
+                            AdminFunctions.customDataColumns('Contact Number'),
+                            AdminFunctions.customDataColumns('Faculty'),
+                            AdminFunctions.customDataColumns('Actions'),
                           ],
                           rows: List.generate(
                             value.allAdminModel.length,
                             (index) {
                               return DataRow(
                                 cells: [
-                                  DataCell(
-                                    Text(
-                                      value.allAdminModel[index].uid,
-                                    ),
-                                  ),
-                                  DataCell(
-                                      Text(value.allAdminModel[index].name)),
-                                  DataCell(
-                                      Text(value.allAdminModel[index].email)),
-                                  DataCell(
-                                      Text(value.allAdminModel[index].phone)),
-                                  DataCell(Text(value
-                                      .allAdminModel[index].userCredential)),
+                                  AdminFunctions.customDatacells(
+                                      value.allAdminModel[index].name),
+                                  AdminFunctions.customDatacells(
+                                      value.allAdminModel[index].email),
+                                  AdminFunctions.customDatacells(
+                                      value.allAdminModel[index].phone),
+                                  AdminFunctions.customDatacells(value
+                                      .allAdminModel[index].userCredential),
                                   DataCell(
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
@@ -170,6 +107,9 @@ class _AdminControlState extends State<AdminControl> {
                                                             .purple.shade400,
                                                   ),
                                                 )),
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
                                           ),
                                           MouseRegion(
                                             onEnter: (_) {
@@ -212,11 +152,22 @@ class _AdminControlState extends State<AdminControl> {
                                 ],
                               );
                             },
-                          )));
-                },
+                          )),
+                    ));
+              },
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 100.0),
+                child: FloatingActionButton.extended(
+                  onPressed: () => adminregistrationform(context),
+                  label: const Icon(Icons.person_3),
+                  icon: const Icon(Icons.add),
+                ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
