@@ -1,6 +1,7 @@
 import 'package:bloomi_web/components/homepage_card_widget_diamond.dart';
 import 'package:bloomi_web/components/homepage_card_widget_friend.dart';
 import 'package:bloomi_web/components/homepage_card_widget_gardening.dart';
+import 'package:bloomi_web/components/homepage_card_widget_music.dart';
 import 'package:bloomi_web/components/homepage_card_widget_nature.dart';
 import 'package:bloomi_web/components/homepage_card_widget_reading.dart';
 import 'package:bloomi_web/components/homepage_card_widget_self.dart';
@@ -52,7 +53,7 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   const HomePageQuote(
-                    quoteTitle: "Counselling is your Safe Habor",
+                    quoteTitle: "Counselling is your Safe Harbor",
                     quoteContent:
                         "\"In counselling, you'll find a safe harbor where you can navigate life's storms.\"",
                   ),
@@ -133,6 +134,11 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
+                  const HomePageQuote(
+                    quoteTitle: "Unveiling Strength Through Counseling",
+                    quoteContent:
+                        "\"Counseling isn't about fixing what's wrong; it's about discovering the incredible strength and resilience that has been within you all along.\"",
+                  ),
                   Row(
                     children: [
                       Expanded(
@@ -161,10 +167,11 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Expanded(
                         child: Card(
-                          child: CardWidgetYoga(
+                          child: CardWidgetMusic(
                             items: ItemClass(
-                                title: 'Space',
-                                imagePath: UtilConstants.otherImagePath),
+                                title:
+                                    '"Music soothes the soul, a balm for a weary mind."',
+                                imagePath: UtilConstants.musicImagePath2),
                           ),
                         ),
                       ),
@@ -178,6 +185,11 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ],
+                  ),
+                  const HomePageQuote(
+                    quoteTitle: "Embracing the Healing Path",
+                    quoteContent:
+                        "\"Remember, in the vulnerability of seeking counseling, you are not broken; you are a masterpiece in progress, and counseling is the brush that helps you paint a brighter future.\"",
                   ),
                   /* Card(
             child: CardWidget(
