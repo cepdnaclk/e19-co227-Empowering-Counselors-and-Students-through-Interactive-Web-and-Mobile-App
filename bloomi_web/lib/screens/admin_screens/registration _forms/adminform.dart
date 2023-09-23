@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AdminForm {
-  //----------------------admin registration form-----------------------
+
   static adminregistrationform(BuildContext context) {
     return showDialog<void>(
       context: context,
