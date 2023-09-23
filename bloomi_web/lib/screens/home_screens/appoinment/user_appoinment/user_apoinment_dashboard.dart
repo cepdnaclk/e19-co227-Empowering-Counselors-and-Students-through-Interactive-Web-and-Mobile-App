@@ -144,6 +144,7 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                             itemBuilder: (BuildContext context, int index) {
                               return CustomCardWidget(
                                 list: _list,
+                                index: index,
                               );
                             },
                             itemCount: _list.length,
