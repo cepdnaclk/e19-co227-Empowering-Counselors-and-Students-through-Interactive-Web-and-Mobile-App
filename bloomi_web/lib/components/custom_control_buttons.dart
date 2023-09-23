@@ -5,7 +5,7 @@ class CustomControlButton extends StatelessWidget {
   final String text;
   final Color color;
   final Color basiccolor;
-  // final VoidCallback function;
+
 
   const CustomControlButton({
     super.key,
@@ -19,9 +19,7 @@ class CustomControlButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MouseRegion(
       child: ElevatedButton(
-          onPressed: () {
-            CounselorForm.counselorregistrationform(context);
-          },
+
           style: ButtonStyle(
             overlayColor: MaterialStateProperty.resolveWith<Color?>(
               (Set<MaterialState> states) {

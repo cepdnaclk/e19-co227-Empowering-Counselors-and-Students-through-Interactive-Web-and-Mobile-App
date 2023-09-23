@@ -1,4 +1,5 @@
 // Admin Register Form
+
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AdminForm {
+
   static adminregistrationform(BuildContext context) {
     return showDialog<void>(
       context: context,
