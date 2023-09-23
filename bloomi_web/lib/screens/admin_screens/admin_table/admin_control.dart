@@ -156,19 +156,14 @@ class _AdminControlState extends State<AdminControl> {
                     ));
               },
             ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 100.0),
-                child: FloatingActionButton.extended(
-                  onPressed: () => adminregistrationform(context),
-                  label: const Icon(Icons.person_3),
-                  icon: const Icon(Icons.add),
-                ),
-              ),
-            ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          adminregistrationform(context);
+        },
+        child: const Icon(Icons.group_add_sharp),
       ),
     );
   }

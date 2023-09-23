@@ -6,6 +6,32 @@ part of 'objects.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+AppointmentModel _$AppointmentModelFromJson(Map<String, dynamic> json) =>
+    AppointmentModel(
+      id: json['id'] as String,
+      studentId: json['studentId'] as String,
+      counselorId: json['counselorId'] as String,
+      studentName: json['studentName'] as String,
+      counselorName: json['counselorName'] as String,
+      studentEmail: json['studentEmail'] as String,
+      studentFaculty: json['studentFaculty'] as String,
+      date: json['date'] as String,
+      time: json['time'] as String,
+    );
+
+Map<String, dynamic> _$AppointmentModelToJson(AppointmentModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'studentId': instance.studentId,
+      'counselorId': instance.counselorId,
+      'studentName': instance.studentName,
+      'counselorName': instance.counselorName,
+      'studentEmail': instance.studentEmail,
+      'studentFaculty': instance.studentFaculty,
+      'date': instance.date,
+      'time': instance.time,
+    };
+
 ChatModel _$ChatModelFromJson(Map<String, dynamic> json) => ChatModel(
       uid: json['uid'] as String,
       name: json['name'] as String,
