@@ -16,6 +16,8 @@ class SplashDesktop extends StatefulWidget {
 
 class _SplashDesktopState extends State<SplashDesktop> {
   @override
+
+  //-----------------------inirialized user---------------------
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {

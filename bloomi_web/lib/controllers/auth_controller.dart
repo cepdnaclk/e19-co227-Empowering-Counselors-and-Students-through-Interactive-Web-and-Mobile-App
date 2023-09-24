@@ -59,6 +59,15 @@ class AuthController {
             token: "",
             userType: userType));
       }
+
+      if (userType == "Counselor") {
+        signOutUser();
+      }
+
+      if (userType == "Admin") {
+        signOutUser();
+      }
+
       Logger().i(credential.user);
     } on FirebaseAuthException catch (e) {
       UtilMethod.customDialogBox(context, "Error", e.code);
@@ -100,8 +109,6 @@ class AuthController {
       //-------mapping user data to user model--------
       UserModel user =
           UserModel.fromJson(documentSnapshot.data() as Map<String, dynamic>);
-
-      Logger().e(user.department);
 
       return user;
     } catch (e) {

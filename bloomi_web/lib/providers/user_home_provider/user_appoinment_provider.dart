@@ -52,6 +52,9 @@ class UserAppoinmentProvider extends ChangeNotifier {
       _allCounselorModel.clear();
       _allStudentModel.clear();
       _allAdminModel.clear();
+
+      Logger().i(_allUserModel.length);
+
       _allUserModel = await AdminController().fetchAllUserData();
 
       for (var e in _allUserModel) {
@@ -65,6 +68,11 @@ class UserAppoinmentProvider extends ChangeNotifier {
         }
       }
 
+      Logger().i("Hiiiiiiiiiiiiiiiiiii");
+      Logger().i(_allUserModel.length);
+      Logger().i(_allCounselorModel.length);
+      Logger().i(_allStudentModel.length);
+      Logger().i(_allAdminModel.length);
       setIsLoading(true);
       notifyListeners();
     } catch (e) {
