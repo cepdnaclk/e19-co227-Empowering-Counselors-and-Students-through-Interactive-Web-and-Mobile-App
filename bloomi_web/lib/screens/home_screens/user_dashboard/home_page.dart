@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                           child: CardWidgetTravel(
                             items: ItemClass(
                                 title:
-                                    '"Travel, where the journey is as enchanting as the destination."',
+                                    '"Exploration allows serenity to flourish."',
                                 imagePath: UtilConstants.travelImagePath),
                           ),
                         ),

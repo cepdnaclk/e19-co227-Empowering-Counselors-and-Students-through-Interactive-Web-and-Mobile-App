@@ -38,6 +38,7 @@ class CardWidgetSelf extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'BodoniModa',
                 ),
               ),
               const SizedBox(
