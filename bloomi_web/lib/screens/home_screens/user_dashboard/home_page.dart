@@ -1,5 +1,7 @@
+import 'package:bloomi_web/components/homepage_card_widget_cooking.dart';
 import 'package:bloomi_web/components/homepage_card_widget_diamond.dart';
 import 'package:bloomi_web/components/homepage_card_widget_friend.dart';
+import 'package:bloomi_web/components/homepage_card_widget_gardening.dart';
 import 'package:bloomi_web/components/homepage_card_widget_music.dart';
 import 'package:bloomi_web/components/homepage_card_widget_nature.dart';
 import 'package:bloomi_web/components/homepage_card_widget_reading.dart';
@@ -52,7 +54,7 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   const HomePageQuote(
-                    quoteTitle: "Counselling is your Safe Habor",
+                    quoteTitle: "Counselling is your Safe Harbor",
                     quoteContent:
                         "\"In counselling, you'll find a safe harbor where you can navigate life's storms.\"",
                   ),
@@ -109,30 +111,30 @@ class _HomePageState extends State<HomePage> {
                       imagePath: UtilConstants.selfCareImagePath,
                     ),
                   ),
-                  // Row(
-                  //   children: [
-                  //     Expanded(
-                  //       child: Card(
-                  //         child: CardWidgetYoga(
-                  //           items: ItemClass(
-                  //               title:
-                  //                   "\"Yoga: A journey within to find tranquility and nurture mental health.\"",
-                  //               imagePath: UtilConstants.yogaImagePath),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     Expanded(
-                  //       child: Card(
-                  //         child: CardWidgetGardening(
-                  //           items: ItemClass(
-                  //               title:
-                  //                   '"Gardening is a living art, where patience is the canvas and nature is the masterpiece."',
-                  //               imagePath: UtilConstants.gardeningImagePath),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Card(
+                          child: CardWidgetYoga(
+                            items: ItemClass(
+                                title:
+                                    "\"Yoga: A journey within to find tranquility and nurture mental health.\"",
+                                imagePath: UtilConstants.yogaImagePath),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Card(
+                          child: CardWidgetGardening(
+                            items: ItemClass(
+                                title:
+                                    '"Gardening is a living art, where patience is the canvas and nature is the masterpiece."',
+                                imagePath: UtilConstants.gardeningImagePath),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   const HomePageQuote(
                     quoteTitle: "Unveiling Strength Through Counseling",
                     quoteContent:
@@ -169,17 +171,18 @@ class _HomePageState extends State<HomePage> {
                           child: CardWidgetMusic(
                             items: ItemClass(
                                 title:
-                                    '"Music soothes the soul, a balm for a weary mind."',
+                                    '"Music: soothes the soul, a balm for a weary mind."',
                                 imagePath: UtilConstants.musicImagePath1),
                           ),
                         ),
                       ),
                       Expanded(
                         child: Card(
-                          child: CardWidgetYoga(
+                          child: CardWidgetCook(
                             items: ItemClass(
-                                title: 'Travel',
-                                imagePath: UtilConstants.otherImagePath),
+                                title:
+                                    '"Cooking: A meditative escape where stress dissolves in the flavors, offering relaxation for the soul."',
+                                imagePath: UtilConstants.cookingImagePath1),
                           ),
                         ),
                       ),

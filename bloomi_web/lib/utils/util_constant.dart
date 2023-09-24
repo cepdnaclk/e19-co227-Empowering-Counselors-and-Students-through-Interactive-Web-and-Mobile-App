@@ -76,6 +76,8 @@ class UtilConstants {
   static const String wildImagePath3 = "assets/images/animals.png";
   static const String musicImagePath1 = "assets/images/musicc.webp";
   static const String musicImagePath2 = "assets/images/music.webp";
+  static const String cookingImagePath1 = "assets/images/cooking1.png";
+  static const String cookingImagePath2 = "assets/images/cooking2.png";
   static const String dummyProfileUrl =
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
 
