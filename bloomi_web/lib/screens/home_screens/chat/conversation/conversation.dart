@@ -48,22 +48,21 @@ class _ConversationState extends State<Conversation>
         child: Column(
           children: [
             const HeaderWidget(isTrue: false),
-            const SizedBox(height: 4),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  AvailableChat(height: height),
+                  AvailableChat(height: height - 59),
                   const SizedBox(width: 4),
                   Consumer<UserChatProvider>(
                     builder: (context, value, child) {
                       Logger().e(value.getIndex);
                       return (value.getIndex == -1)
                           ? CustomChatScreen(
-                              width: width, height: height, conId: "")
+                              width: width, height: height - 59, conId: "")
                           : CustomChatScreen(
                               width: width,
-                              height: height,
+                              height: height - 59,
                               conId: value.getConversationModelNew.id);
                     },
                   )
