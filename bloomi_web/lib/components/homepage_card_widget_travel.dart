@@ -25,20 +25,30 @@ class CardWidgetTravel extends StatelessWidget {
       },
       child: Card(
         child: Container(
-          width: double.infinity,
-          height: 350,
+          width: MediaQuery.of(context).size.width * 0.8,
+          height: 300,
           padding: const EdgeInsets.all(kDouble10),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
                 height: kDouble5,
               ),
-              Image.asset(items.imagePath),
-              Text(
-                items.title,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+              SizedBox(
+                height: 200,
+                child: Image.asset(
+                  items.imagePath,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(
+                height: 50,
+                child: Text(
+                  items.title,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               const SizedBox(

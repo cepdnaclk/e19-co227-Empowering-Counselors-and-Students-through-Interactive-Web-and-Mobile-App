@@ -1,10 +1,10 @@
 import 'package:bloomi_web/components/homepage_class.dart';
 import 'package:bloomi_web/components/homepage_constants.dart';
-import 'package:bloomi_web/components/homepage_nature_heal_descrption_page.dart';
+import 'package:bloomi_web/components/homepage_description_page_cook.dart';
 import 'package:flutter/material.dart';
 
-class CardWidgetNature extends StatelessWidget {
-  const CardWidgetNature({super.key, required this.items});
+class CardWidgetCook extends StatelessWidget {
+  const CardWidgetCook({super.key, required this.items});
   final ItemClass items;
 
   @override
@@ -16,7 +16,7 @@ class CardWidgetNature extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return DescriptionPageNature(
+              return DescriptionPageCook(
                 items: items,
               );
             },
@@ -26,7 +26,7 @@ class CardWidgetNature extends StatelessWidget {
       child: Card(
         child: Container(
           width: MediaQuery.of(context).size.width * 0.8,
-          height: 300,
+          height: 500,
           padding: const EdgeInsets.all(kDouble10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,7 +35,7 @@ class CardWidgetNature extends StatelessWidget {
                 height: kDouble5,
               ),
               SizedBox(
-                height: 200,
+                height: 400,
                 child: Image.asset(
                   items.imagePath,
                   fit: BoxFit.cover,
