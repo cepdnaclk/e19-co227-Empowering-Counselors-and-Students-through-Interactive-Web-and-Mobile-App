@@ -21,15 +21,15 @@ class UserProvider extends ChangeNotifier {
   Future<void> initializeUser(BuildContext context) async {
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
       if (user == null) {
-        //----------if user is not logged in, navigate to signup page----------
+        //----------if user is not logged in, navigate to login page----------
         Logger().i('User is currently signed out!');
         UtilFunction.navigateForward(context, const Login());
       } else {
         //----------if user is logged in, navigate to login page---------------
 
-        await startFetchUserData(user.uid).then((value) {
+        await startFetchUserData(user.uid).then((value) async {
           try {
-            Provider.of<UserAppoinmentProvider>(context, listen: false)
+            await Provider.of<UserAppoinmentProvider>(context, listen: false)
                 .startFetchAllUserData();
           } catch (e) {
             Logger().e(e);
@@ -37,12 +37,13 @@ class UserProvider extends ChangeNotifier {
 
           if (value!.userType == "Counselor") {
             Logger().e(value.userType);
-            startFetchUserAdditionalData(user.uid).then((value) =>
+            await startFetchUserAdditionalData(user.uid).then((value) =>
                 UtilFunction.navigateForward(context, const CounselorHome()));
           } else if (value.userType == "Admin") {
             UtilFunction.navigateForward(context, const Adminpanel());
           } else {
-            startFetchUserAdditionalData(user.uid).then(
+            Logger().e(value.userType);
+            await startFetchUserAdditionalData(user.uid).then(
                 (value) => UtilFunction.navigateForward(context, const Home()));
           }
         });
@@ -56,8 +57,8 @@ class UserProvider extends ChangeNotifier {
       UserModel? userModel = await AuthController().fetchUserData(uid);
       if (userModel != null) {
         _userModel = userModel;
-
         notifyListeners();
+
         return userModel;
       } else {
         Logger().i("User not found");
