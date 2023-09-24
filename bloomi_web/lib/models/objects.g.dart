@@ -6,6 +6,27 @@ part of 'objects.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+AdminModel _$AdminModelFromJson(Map<String, dynamic> json) => AdminModel(
+      uid: json['uid'] as String,
+      name: json['name'] as String,
+      email: json['email'] as String,
+      phone: json['phone'] as String,
+      userType: json['userType'] as String,
+      imgUrl: json['imgUrl'] as String,
+      credential: json['credential'] as String,
+    );
+
+Map<String, dynamic> _$AdminModelToJson(AdminModel instance) =>
+    <String, dynamic>{
+      'uid': instance.uid,
+      'name': instance.name,
+      'email': instance.email,
+      'phone': instance.phone,
+      'credential': instance.credential,
+      'userType': instance.userType,
+      'imgUrl': instance.imgUrl,
+    };
+
 AppointmentModel _$AppointmentModelFromJson(Map<String, dynamic> json) =>
     AppointmentModel(
       id: json['id'] as String,
@@ -74,6 +95,30 @@ Map<String, dynamic> _$ConversationModelToJson(ConversationModel instance) =>
       'lastMessage': instance.lastMessage,
       'lastMessageTime': instance.lastMessageTime,
       'createdBy': instance.createdBy,
+    };
+
+CounsellorModel _$CounsellorModelFromJson(Map<String, dynamic> json) =>
+    CounsellorModel(
+      uid: json['uid'] as String,
+      name: json['name'] as String,
+      email: json['email'] as String,
+      phone: json['phone'] as String,
+      faculty: json['faculty'] as String,
+      userCredential: json['userCredential'] as String,
+      userType: json['userType'] as String,
+      imgUrl: json['imgUrl'] as String,
+    );
+
+Map<String, dynamic> _$CounsellorModelToJson(CounsellorModel instance) =>
+    <String, dynamic>{
+      'uid': instance.uid,
+      'name': instance.name,
+      'email': instance.email,
+      'phone': instance.phone,
+      'faculty': instance.faculty,
+      'userCredential': instance.userCredential,
+      'userType': instance.userType,
+      'imgUrl': instance.imgUrl,
     };
 
 MessageModel _$MessageModelFromJson(Map<String, dynamic> json) => MessageModel(

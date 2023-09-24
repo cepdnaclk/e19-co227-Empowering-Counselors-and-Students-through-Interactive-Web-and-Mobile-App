@@ -72,7 +72,7 @@ class AdminForm {
                   builder: (context, value, child) {
                     return InkWell(
                       onTap: () {
-                        value.signUpUser(
+                        value.signUpAdmin(
                             value.name.text,
                             value.email.text,
                             value.password.text,

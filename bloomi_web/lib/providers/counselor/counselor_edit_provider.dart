@@ -1,4 +1,4 @@
-import 'package:bloomi_web/controllers/auth_controller.dart';
+import 'package:bloomi_web/controllers/counsellor_controller.dart';
 import 'package:bloomi_web/utils/util_method.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -106,26 +106,19 @@ class CounselorEditProvider extends ChangeNotifier {
         setIsLoading(true);
 
         //save counselor
-        await AuthController().saveCounselorData(
+        await CounsellorController().signUpCounsellor(
           email,
           password,
           name,
           phone,
-          department,
           faculty,
-          year,
+          userType,
           credential,
+          context,
         );
 
         setIsLoading(false);
       } else {
-        Logger().i(email);
-        Logger().i(password);
-        Logger().i(name);
-        Logger().i(faculty);
-        Logger().i(phone);
-        Logger().i(credential);
-
         UtilMethod.customDialogBox(
             context, "Error", "Please fill all the fields");
       }

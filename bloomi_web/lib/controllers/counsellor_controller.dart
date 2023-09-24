@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_method.dart';
@@ -8,13 +9,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
-class AdminController {
-  //-----------------------To SignUp Admin---------------------
-  Future<void> signUpAdmin(
+class CounsellorController {
+  //-----------------------To SignUp counsellor---------------------
+  Future<void> signUpCounsellor(
     String email,
     String password,
     String name,
     String phone,
+    String faculty,
     String userCredential,
     String userType,
     BuildContext context,
@@ -28,12 +30,13 @@ class AdminController {
       );
 
       if (credential.user != null) {
-        saveAdminData(AdminModel(
+        saveCounsellorData(CounsellorModel(
             uid: credential.user!.uid,
             name: name,
             email: email,
             phone: phone,
-            credential: userCredential,
+            faculty: faculty,
+            userCredential: userCredential,
             userType: userType,
             imgUrl: ""));
       }
@@ -49,7 +52,7 @@ class AdminController {
             token: "",
             userType: userType));
       }
-
+      AuthController.signInUser(email, password, context);
       Logger().i(credential.user);
     } on FirebaseAuthException catch (e) {
       UtilMethod.customDialogBox(context, "Error", e.code);
@@ -59,20 +62,22 @@ class AdminController {
     }
   }
 
-  //----------------------saving Admin data in cloud firestore---------------------
+  //----------------------saving Counsellor data in cloud firestore---------------------
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  CollectionReference admins = FirebaseFirestore.instance.collection('admins');
+  CollectionReference counsellor =
+      FirebaseFirestore.instance.collection('counsellors');
 
-  Future<void> saveAdminData(AdminModel adminModel) {
-    return admins
-        .doc(adminModel.uid)
+  Future<void> saveCounsellorData(CounsellorModel counsellorModel) {
+    return counsellor
+        .doc(counsellorModel.uid)
         .set({
-          'uid': adminModel.uid,
-          'name': adminModel.name,
-          'email': adminModel.email,
-          'phone': adminModel.phone,
-          'credential': adminModel.credential,
-          'userType': adminModel.userType,
+          'uid': counsellorModel.uid,
+          'name': counsellorModel.name,
+          'email': counsellorModel.email,
+          'phone': counsellorModel.phone,
+          'faculty': counsellorModel.faculty,
+          'userCredential': counsellorModel.userCredential,
+          'userType': counsellorModel.userType,
           'imgUrl': UtilConstants.dummyProfileUrl,
         })
         .then((value) => Logger().i("User Added"))
@@ -80,18 +85,17 @@ class AdminController {
   }
 
   //-----------------------fetch admin data from database---------------------
-  Future<AdminModel?> fetchAdminData(String adminId) async {
+  Future<CounsellorModel?> fetchCounsellorData(String counsellorId) async {
     try {
       //-------firebase quary to fetch admin data from database--------
-      DocumentSnapshot documentSnapshot = await admins.doc(adminId).get();
-
-      Logger().i(documentSnapshot.data());
+      DocumentSnapshot documentSnapshot =
+          await counsellor.doc(counsellorId).get();
 
       //-------mapping admin data to admin model--------
-      AdminModel admin =
-          AdminModel.fromJson(documentSnapshot.data() as Map<String, dynamic>);
+      CounsellorModel counsellorModel = CounsellorModel.fromJson(
+          documentSnapshot.data() as Map<String, dynamic>);
 
-      return admin;
+      return counsellorModel;
     } catch (e) {
       Logger().e(e);
       return null;
@@ -120,24 +124,23 @@ class AdminController {
         .catchError((error) => Logger().e("Failed to add user: $error"));
   }
 
-  //-----------------------fetch all admin data from database---------------------
-  Future<List<AdminModel>> fetchAllAdminData() async {
+  //-----------------------fetch all counsellor data from database---------------------
+  Future<List<CounsellorModel>> fetchAllCounsellorData() async {
     try {
-      QuerySnapshot querySnapshot = await admins.get();
+      QuerySnapshot querySnapshot = await counsellor.get();
       Logger().i(querySnapshot.docs.length);
 
       //------temp list-------
-      List<AdminModel> list = [];
+      List<CounsellorModel> list = [];
 
       for (var e in querySnapshot.docs) {
         //------mapping data to user model-------
-        AdminModel allAdminModel =
-            AdminModel.fromJson(e.data() as Map<String, dynamic>);
+        CounsellorModel allCounsellorModel =
+            CounsellorModel.fromJson(e.data() as Map<String, dynamic>);
 
         //------adding user model to list-------
-        list.add(allAdminModel);
+        list.add(allCounsellorModel);
       }
-
       return list;
     } catch (e) {
       Logger().e(e);

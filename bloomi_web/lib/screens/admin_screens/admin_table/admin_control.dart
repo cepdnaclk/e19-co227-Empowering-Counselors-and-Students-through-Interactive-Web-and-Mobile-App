@@ -1,5 +1,5 @@
 import 'package:bloomi_web/components/custom_control_buttons.dart';
-import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
+import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/adminform.dart';
 import 'package:bloomi_web/utils/util_admin_functions.dart';
 import 'package:bloomi_web/utils/util_method.dart';
@@ -28,7 +28,7 @@ class _AdminControlState extends State<AdminControl> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Consumer<UserAppoinmentProvider>(
+            Consumer<AdminRegistrationProvider>(
               builder: (context, value, child) {
                 // Initialize the lists based on the length of allAdminModel
                 return Padding(
@@ -61,8 +61,8 @@ class _AdminControlState extends State<AdminControl> {
                                       value.allAdminModel[index].email),
                                   AdminFunctions.customDatacells(
                                       value.allAdminModel[index].phone),
-                                  AdminFunctions.customDatacells(value
-                                      .allAdminModel[index].userCredential),
+                                  AdminFunctions.customDatacells(
+                                      value.allAdminModel[index].credential),
                                   DataCell(
                                     Padding(
                                       padding: const EdgeInsets.symmetric(

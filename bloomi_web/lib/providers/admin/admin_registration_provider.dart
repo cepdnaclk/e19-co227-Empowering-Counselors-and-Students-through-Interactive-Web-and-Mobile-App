@@ -1,4 +1,5 @@
-import 'package:bloomi_web/controllers/auth_controller.dart';
+import 'package:bloomi_web/controllers/admin_controller.dart';
+import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/utils/util_method.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -6,12 +7,9 @@ import 'package:logger/logger.dart';
 class AdminRegistrationProvider extends ChangeNotifier {
   final TextEditingController _name = TextEditingController();
   final TextEditingController _password = TextEditingController();
-  TextEditingController _phoneNumber = TextEditingController();
+  final TextEditingController _phoneNumber = TextEditingController();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _credentials = TextEditingController();
-  String _department = "";
-  String _faculty = "";
-  String _year = "";
 
   final String _userType = "Admin";
   bool _isObscure = true;
@@ -22,9 +20,6 @@ class AdminRegistrationProvider extends ChangeNotifier {
   TextEditingController get phoneNumber => _phoneNumber;
   TextEditingController get email => _email;
   TextEditingController get credentials => _credentials;
-  String get department => _department;
-  String get faculty => _faculty;
-  String get year => _year;
   bool get isObscure => _isObscure;
   String get userType => _userType;
 
@@ -44,23 +39,8 @@ class AdminRegistrationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setDepartment(String department) {
-    _department = department;
-    notifyListeners();
-  }
-
-  void setFaculty(String faculty) {
-    _faculty = faculty;
-    notifyListeners();
-  }
-
-  void setPhoneNumber(String faculty) {
-    _phoneNumber = phoneNumber;
-    notifyListeners();
-  }
-
-  void setYear(String year) {
-    _year = year;
+  void setPhoneNumber(String phoneNumber) {
+    _phoneNumber.text = phoneNumber;
     notifyListeners();
   }
 
@@ -91,7 +71,7 @@ class AdminRegistrationProvider extends ChangeNotifier {
   }
 
   //----------------------Functions---------------------
-  Future<void> signUpUser(
+  Future<void> signUpAdmin(
       String name,
       String email,
       String password,
@@ -104,26 +84,30 @@ class AdminRegistrationProvider extends ChangeNotifier {
           password.isNotEmpty &&
           phoneNumber.isNotEmpty &&
           name.isNotEmpty &&
-          // faculty.isNotEmpty &&
           credential.isNotEmpty) {
         if (phoneNumber.length == 10 && phoneNumber.startsWith('07')) {
           setIsLoading(true);
-          UtilMethod.customDialogBox(
-              context, "Success", "Registered Successfully!");
 
           //sign up user
-          await AuthController().signUpUser(
+          await AdminController()
+              .signUpAdmin(
             email,
             password,
             name,
             phoneNumber,
-            department,
-            faculty,
-            year,
             credential,
             userType,
             context,
-          );
+          )
+              .then((value) {
+            UtilMethod.customDialogBox(
+                context, "Success", "Registered Successfully!");
+            _email.clear();
+            _password.clear();
+            _phoneNumber.clear();
+            _name.clear();
+            _credentials.clear();
+          });
 
           setIsLoading(false);
         } else {
@@ -131,13 +115,6 @@ class AdminRegistrationProvider extends ChangeNotifier {
               context, "Error", "Please enter a valid Phone Number");
         }
       } else {
-        Logger().i(email);
-        Logger().i(password);
-        Logger().i(name);
-        Logger().i(faculty);
-        Logger().i(phoneNumber);
-        Logger().i(credential);
-
         UtilMethod.customDialogBox(
             context, "Error", "Please fill all the fields");
       }
@@ -145,6 +122,53 @@ class AdminRegistrationProvider extends ChangeNotifier {
     } catch (e) {
       Logger().e(e);
       setIsLoading(false);
+    }
+  }
+
+  //-----------------------To fetch counselor data---------------------
+
+  AdminModel? _adminModel;
+
+  AdminModel? get adminModel => _adminModel;
+  Future<AdminModel?> startFetchAdminData(String uid) async {
+    try {
+      AdminModel? adminModel = await AdminController().fetchAdminData(uid);
+      if (adminModel != null) {
+        _adminModel = adminModel;
+        notifyListeners();
+
+        return adminModel;
+      } else {
+        Logger().i("User not found");
+        return null;
+      }
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
+  //-----------------------start fetching all admin data---------------------
+
+  final List<AdminModel> _allAdminModel = [];
+  List<AdminModel> get allAdminModel => _allAdminModel;
+  Future<void> startFetchAllAdminData() async {
+    try {
+      setIsLoading(true);
+      _allAdminModel.clear();
+
+      List<AdminModel> allAdminModels =
+          await AdminController().fetchAllAdminData();
+
+      for (var e in allAdminModels) {
+        Logger().i(e.name);
+        _allAdminModel.add(e);
+      }
+
+      setIsLoading(false);
+    } catch (e) {
+      setIsLoading(false);
+      Logger().e(e);
     }
   }
 }

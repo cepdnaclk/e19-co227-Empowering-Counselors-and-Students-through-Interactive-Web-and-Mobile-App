@@ -5,7 +5,7 @@ import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/controllers/appoinment_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
-import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -70,14 +70,15 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(color: Colors.black),
                             ),
-                            child: Consumer<UserAppoinmentProvider>(
+                            child: Consumer<CounsellorRegistrationProvider>(
                               builder: (context, value, child) {
                                 return Column(
                                   children: [
-                                    DropDownButtonWidget(
-                                        listItem: value.allCounselorNameModel,
-                                        text: "Select Counselor",
-                                        index: 1),
+                                    DropDownButtonWidget(listItem: [
+                                      ...value.allCounsellorModel
+                                          .map((e) => e.name)
+                                          .toList()
+                                    ], text: "Select Counselor", index: 1),
                                     const Calender(),
                                   ],
                                 );

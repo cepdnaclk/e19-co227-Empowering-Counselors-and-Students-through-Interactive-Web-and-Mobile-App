@@ -1,5 +1,5 @@
 import 'package:bloomi_web/components/custom_control_buttons.dart';
-import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/counselorform.dart';
 import 'package:bloomi_web/utils/util_admin_functions.dart';
 import 'package:bloomi_web/utils/util_method.dart';
@@ -20,7 +20,7 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Consumer<UserAppoinmentProvider>(
+            Consumer<CounsellorRegistrationProvider>(
               builder: (context, value, child) {
                 return Padding(
                   padding: const EdgeInsets.all(20),
@@ -42,20 +42,20 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                           AdminFunctions.customDataColumns('Actions'),
                         ],
                         rows: List.generate(
-                          value.allCounselorModel.length,
+                          value.allCounsellorModel.length,
                           (index) {
                             return DataRow(
                               cells: [
                                 AdminFunctions.customDatacells(
-                                    value.allCounselorModel[index].name),
+                                    value.allCounsellorModel[index].name),
                                 AdminFunctions.customDatacells(
-                                    value.allCounselorModel[index].email),
+                                    value.allCounsellorModel[index].email),
                                 AdminFunctions.customDatacells(
-                                    value.allCounselorModel[index].phone),
+                                    value.allCounsellorModel[index].phone),
                                 AdminFunctions.customDatacells(
-                                    value.allCounselorModel[index].faculty),
+                                    value.allCounsellorModel[index].faculty),
                                 AdminFunctions.customDatacells(value
-                                    .allCounselorModel[index].userCredential),
+                                    .allCounsellorModel[index].userCredential),
                                 DataCell(
                                   Padding(
                                     padding: const EdgeInsets.symmetric(

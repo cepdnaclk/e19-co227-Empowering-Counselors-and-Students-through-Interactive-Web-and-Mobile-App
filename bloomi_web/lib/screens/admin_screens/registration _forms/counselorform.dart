@@ -47,49 +47,53 @@ class CounselorForm {
                 FormInputWeb(
                   "Name",
                   textEditingController:
-                      Provider.of<CounselorRegistrationProvider>(context).name,
+                      Provider.of<CounsellorRegistrationProvider>(context).name,
                 ),
                 SizedBox(height: heightone * 0.01),
                 FormInputWeb(
                   "Email",
                   textEditingController:
-                      Provider.of<CounselorRegistrationProvider>(context).email,
+                      Provider.of<CounsellorRegistrationProvider>(context)
+                          .email,
                 ),
                 SizedBox(height: heightone * 0.01),
                 FormInputWeb(
                   "Password",
                   obscure: true,
                   textEditingController:
-                      Provider.of<CounselorRegistrationProvider>(context)
+                      Provider.of<CounsellorRegistrationProvider>(context)
                           .password,
                 ),
                 SizedBox(height: heightone * 0.01),
                 FormInputWeb(
                   "Phone Number",
                   textEditingController:
-                      Provider.of<CounselorRegistrationProvider>(context)
+                      Provider.of<CounsellorRegistrationProvider>(context)
                           .phoneNumber,
                 ),
                 SizedBox(height: heightone * 0.01),
                 SizedBox(
                     width: 420,
                     child: DropDownButtonWidget(
-                        listItem: faculty, text: "Faculty", index: 1)),
+                        listItem: faculty,
+                        text: "Faculty",
+                        index: 1,
+                        isFormAdmin: true)),
                 SizedBox(height: heightone * 0.01),
                 FormInputWeb(
                   "Credentials",
                   textEditingController:
-                      Provider.of<CounselorRegistrationProvider>(context)
+                      Provider.of<CounsellorRegistrationProvider>(context)
                           .credentials,
                 ),
                 SizedBox(height: heightone * 0.01),
                 SizedBox(height: heightone * 0.01),
                 SizedBox(height: heightone * 0.01),
-                Consumer<CounselorRegistrationProvider>(
+                Consumer<CounsellorRegistrationProvider>(
                   builder: (context, value, child) {
                     return InkWell(
                       onTap: () {
-                        value.signUpUser(
+                        value.signUpCounsellor(
                             value.name.text,
                             value.email.text,
                             value.password.text,
