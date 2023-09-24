@@ -7,9 +7,9 @@ import 'package:bloomi_web/providers/auth/login_provider.dart';
 import 'package:bloomi_web/providers/auth/signup_provider.dart';
 import 'package:bloomi_web/providers/nav_provider/admin_nav_provider.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
+import 'package:bloomi_web/providers/user_home_provider/all_user_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/appointment_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/note_provider.dart';
-import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/responsive/responsive_layout.dart';
@@ -33,10 +33,10 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (_) => ForgotPasswordProvider()),
       ChangeNotifierProvider(create: (_) => AdminNavProvider()),
       ChangeNotifierProvider(create: (_) => UserProvider()),
-      ChangeNotifierProvider(create: (_) => CounselorRegistrationProvider()),
+      ChangeNotifierProvider(create: (_) => CounsellorRegistrationProvider()),
       ChangeNotifierProvider(create: (_) => UserChatProvider()),
       ChangeNotifierProvider(create: (_) => GoogleAuthProviders()),
-      ChangeNotifierProvider(create: (_) => UserAppoinmentProvider()),
+      ChangeNotifierProvider(create: (_) => AllUserProvider()),
       ChangeNotifierProvider(create: (_) => AdminRegistrationProvider()),
       ChangeNotifierProvider(create: (_) => NoteProvider()),
       ChangeNotifierProvider(create: (_) => AppointmentProvider()),
@@ -57,6 +57,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
+        // home: const Adminpanel());
         home: const ResponsiveLayout(
           mobileBody: SplashScreenMobile(),
           tabletBody: SplashScreenTablet(),

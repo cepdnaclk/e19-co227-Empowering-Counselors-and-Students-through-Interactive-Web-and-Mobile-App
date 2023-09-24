@@ -1,4 +1,4 @@
-import 'package:bloomi_web/providers/user_home_provider/user_appoinment_provider.dart';
+import 'package:bloomi_web/providers/user_home_provider/all_user_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -69,7 +69,7 @@ class _UserListViewState extends State<UserListView> {
     final currentWidth = mediaQueryData.size.width;
     final currentHeight = mediaQueryData.size.height;
 
-    return Consumer<UserAppoinmentProvider>(builder: (context, value, child) {
+    return Consumer<AllUserProvider>(builder: (context, value, child) {
       return Row(
         children: [
           Container(

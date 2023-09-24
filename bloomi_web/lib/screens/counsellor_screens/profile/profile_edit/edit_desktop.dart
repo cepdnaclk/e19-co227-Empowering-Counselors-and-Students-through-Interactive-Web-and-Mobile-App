@@ -78,21 +78,21 @@ class _EditDesktopState extends State<EditDesktop> {
                       FormInputWeb(
                         "Name",
                         textEditingController:
-                            Provider.of<CounselorRegistrationProvider>(context)
+                            Provider.of<CounsellorRegistrationProvider>(context)
                                 .name,
                       ),
                       const SizedBox(height: 10),
                       FormInputWeb(
                         "Email",
                         textEditingController:
-                            Provider.of<CounselorRegistrationProvider>(context)
+                            Provider.of<CounsellorRegistrationProvider>(context)
                                 .email,
                       ),
                       const SizedBox(height: 10),
                       FormInputWeb(
                         "Password",
                         textEditingController:
-                            Provider.of<CounselorRegistrationProvider>(context)
+                            Provider.of<CounsellorRegistrationProvider>(context)
                                 .password,
                         obscure: true,
                       ),
@@ -100,7 +100,7 @@ class _EditDesktopState extends State<EditDesktop> {
                       FormInputWeb(
                         "Phone Number",
                         textEditingController:
-                            Provider.of<CounselorRegistrationProvider>(context)
+                            Provider.of<CounsellorRegistrationProvider>(context)
                                 .phoneNumber,
                       ),
 
@@ -114,15 +114,15 @@ class _EditDesktopState extends State<EditDesktop> {
                       FormInputWeb(
                         "Credentials",
                         textEditingController:
-                            Provider.of<CounselorRegistrationProvider>(context)
+                            Provider.of<CounsellorRegistrationProvider>(context)
                                 .credentials,
                       ),
                       const SizedBox(height: 25),
-                      Consumer<CounselorRegistrationProvider>(
+                      Consumer<CounsellorRegistrationProvider>(
                         builder: (context, value, child) {
                           return InkWell(
                             onTap: () {
-                              value.signUpUser(
+                              value.signUpCounsellor(
                                   value.name.text,
                                   value.email.text,
                                   value.password.text,

@@ -1,20 +1,16 @@
-import 'package:bloomi_web/controllers/auth_controller.dart';
+import 'package:bloomi_web/controllers/counsellor_controller.dart';
+import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/utils/util_method.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
-class CounselorRegistrationProvider extends ChangeNotifier {
+class CounsellorRegistrationProvider extends ChangeNotifier {
   final TextEditingController _name = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _phoneNumber = TextEditingController();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _credentials = TextEditingController();
-  //final TextEditingController _faculty = TextEditingController();
-  //final TextEditingController _department = TextEditingController();
-  String _department = "";
   String _faculty = "";
-  String _year = "";
-
   final String _userType = "Counselor";
   bool _isObscure = true;
 
@@ -24,9 +20,7 @@ class CounselorRegistrationProvider extends ChangeNotifier {
   TextEditingController get phoneNumber => _phoneNumber;
   TextEditingController get email => _email;
   TextEditingController get credentials => _credentials;
-  String get department => _department;
   String get faculty => _faculty;
-  String get year => _year;
   bool get isObscure => _isObscure;
   String get userType => _userType;
 
@@ -46,18 +40,8 @@ class CounselorRegistrationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setDepartment(String department) {
-    _department = department;
-    notifyListeners();
-  }
-
   void setFaculty(String faculty) {
     _faculty = faculty;
-    notifyListeners();
-  }
-
-  void setYear(String year) {
-    _year = year;
     notifyListeners();
   }
 
@@ -88,7 +72,7 @@ class CounselorRegistrationProvider extends ChangeNotifier {
   }
 
   //----------------------Functions---------------------
-  Future<void> signUpUser(
+  Future<void> signUpCounsellor(
     String name,
     String email,
     String password,
@@ -107,28 +91,29 @@ class CounselorRegistrationProvider extends ChangeNotifier {
         setIsLoading(true);
 
         //sign up user
-        await AuthController().signUpUser(
+        await CounsellorController()
+            .signUpCounsellor(
           email,
           password,
           name,
           phone,
-          department,
           faculty,
-          year,
           credential,
           userType,
           context,
-        );
+        )
+            .then((value) {
+          UtilMethod.customDialogBox(
+              context, "Success", "Counsellor Registered Successfully");
+          _email.clear();
+          _password.clear();
+          _phoneNumber.clear();
+          _name.clear();
+          _credentials.clear();
+        });
 
         setIsLoading(false);
       } else {
-        Logger().i(email);
-        Logger().i(password);
-        Logger().i(name);
-        Logger().i(faculty);
-        Logger().i(phone);
-        Logger().i(credential);
-
         UtilMethod.customDialogBox(
             context, "Error", "Please fill all the fields");
       }
@@ -136,6 +121,54 @@ class CounselorRegistrationProvider extends ChangeNotifier {
     } catch (e) {
       Logger().e(e);
       setIsLoading(false);
+    }
+  }
+
+  //-----------------------To fetch counselor data---------------------
+
+  CounsellorModel? _counsellorModel;
+
+  CounsellorModel? get counsellorModel => _counsellorModel;
+  Future<CounsellorModel?> startFetchCounsellorData(String uid) async {
+    try {
+      CounsellorModel? counsellorModel =
+          await CounsellorController().fetchCounsellorData(uid);
+      if (counsellorModel != null) {
+        _counsellorModel = counsellorModel;
+        notifyListeners();
+
+        return counsellorModel;
+      } else {
+        Logger().i("User not found");
+        return null;
+      }
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
+  //-----------------------start fetching all admin data---------------------
+
+  final List<CounsellorModel> _allCounsellorModel = [];
+  List<CounsellorModel> get allCounsellorModel => _allCounsellorModel;
+  Future<void> startFetchAllCounsellorData() async {
+    try {
+      setIsLoading(true);
+      _allCounsellorModel.clear();
+
+      List<CounsellorModel> allCounsellorModels =
+          await CounsellorController().fetchAllCounsellorData();
+
+      for (var e in allCounsellorModels) {
+        Logger().i(e.name);
+        _allCounsellorModel.add(e);
+      }
+
+      setIsLoading(false);
+    } catch (e) {
+      setIsLoading(false);
+      Logger().e(e);
     }
   }
 }

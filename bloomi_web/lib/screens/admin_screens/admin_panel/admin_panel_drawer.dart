@@ -1,6 +1,6 @@
 import 'package:bloomi_web/controllers/auth_controller.dart';
+import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
-import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +12,7 @@ class AdminPanelDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     return (mediaQueryData.size.width <= 900)
-        ? Consumer<UserProvider>(
+        ? Consumer<AdminRegistrationProvider>(
             builder: (context, value, child) {
               return ClipRRect(
                 // Wrap the Drawer with ClipRRect
@@ -35,7 +35,7 @@ class AdminPanelDrawer extends StatelessWidget {
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
-                                  image: NetworkImage(value.userModel!.imgUrl),
+                                  image: NetworkImage(value.adminModel!.imgUrl),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -44,7 +44,7 @@ class AdminPanelDrawer extends StatelessWidget {
                               height: 10,
                             ),
                             Text(
-                              value.userModel!.name,
+                              value.adminModel!.name,
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ class AdminPanelDrawer extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              value.userModel!.email,
+                              value.adminModel!.email,
                               style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w300,
@@ -171,7 +171,7 @@ class AdminPanelDrawer extends StatelessWidget {
               );
             },
           )
-        : Consumer<UserProvider>(
+        : Consumer<AdminRegistrationProvider>(
             builder: (context, value, child) {
               return ClipRRect(
                 // Wrap the Drawer with ClipRRect
@@ -193,7 +193,7 @@ class AdminPanelDrawer extends StatelessWidget {
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
-                                  image: NetworkImage(value.userModel!.imgUrl),
+                                  image: NetworkImage(value.adminModel!.imgUrl),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -202,7 +202,7 @@ class AdminPanelDrawer extends StatelessWidget {
                               height: 10,
                             ),
                             Text(
-                              value.userModel!.name,
+                              value.adminModel!.name,
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -210,7 +210,7 @@ class AdminPanelDrawer extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              value.userModel!.email,
+                              value.adminModel!.email,
                               style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w300,

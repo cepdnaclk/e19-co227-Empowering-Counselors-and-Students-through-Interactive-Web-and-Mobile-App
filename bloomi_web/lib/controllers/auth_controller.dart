@@ -1,6 +1,4 @@
 // ignore_for_file: use_build_context_synchronously
-
-import 'package:bloomi_web/models/counselor_model.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_method.dart';
@@ -58,14 +56,6 @@ class AuthController {
             isOnline: true,
             token: "",
             userType: userType));
-      }
-
-      if (userType == "Counselor") {
-        signOutUser();
-      }
-
-      if (userType == "Admin") {
-        signOutUser();
       }
 
       Logger().i(credential.user);
@@ -145,6 +135,7 @@ class AuthController {
       //-------firebase quary to fetch user data from database--------
       DocumentSnapshot documentSnapshot = await additionalUsers.doc(uid).get();
 
+      Logger().e(documentSnapshot.data());
       //-------mapping user data to user model--------
       ChatModel chatModel =
           ChatModel.fromJson(documentSnapshot.data() as Map<String, dynamic>);
@@ -155,6 +146,31 @@ class AuthController {
     } catch (e) {
       Logger().e(e);
       return null;
+    }
+  }
+
+  //-----------------------fetch all user data from database---------------------
+  Future<List<UserModel>> fetchAllUserData() async {
+    try {
+      QuerySnapshot querySnapshot = await users.get();
+      Logger().i(querySnapshot.docs.length);
+
+      //------temp list-------
+      List<UserModel> list = [];
+
+      for (var e in querySnapshot.docs) {
+        //------mapping data to user model-------
+        UserModel allUserModel =
+            UserModel.fromJson(e.data() as Map<String, dynamic>);
+
+        //------adding user model to list-------
+        list.add(allUserModel);
+      }
+      return list;
+    } catch (e) {
+      Logger().e(e);
+
+      return [];
     }
   }
 
@@ -237,57 +253,6 @@ class AuthController {
         }
         Logger().i(user.displayName);
       }
-    } catch (e) {
-      Logger().e(e);
-    }
-    return null;
-  }
-
-//----------------------saving counselor data in cloud firestore---------------------
-  CollectionReference counselors =
-      FirebaseFirestore.instance.collection('counselors');
-
-  Future<void> saveCounselorData(
-      String counselorid,
-      String name,
-      String email,
-      String phone,
-      String department,
-      String faculty,
-      String credentials,
-      String userType) {
-    return counselors
-        .doc(counselorid)
-        .set({
-          'counselorid': counselorid,
-          'name': name,
-          'email': email,
-          'phone': phone,
-          'department': department,
-          'faculty': faculty,
-          'credentials': credentials,
-          'userType': userType,
-          'imgUrl': UtilConstants.dummyProfileUrl,
-        })
-        .then((value) => Logger().i("Counselor Added"))
-        .catchError((error) => Logger().e("Failed to add counselor: $error"));
-  }
-
-//-----------------------fetch counselor data from database---------------------
-
-  Future<CounselorModel?> fetchCounselorData(String counselorid) async {
-    try {
-      //-------firebase quary to fetch user data from database--------
-      DocumentSnapshot documentSnapshot =
-          await counselors.doc(counselorid).get();
-
-      //-------mapping user data to user model--------
-      CounselorModel counselor = CounselorModel.fromJson(
-          documentSnapshot.data() as Map<String, dynamic>);
-
-      Logger().i(counselor.email);
-
-      return counselor;
     } catch (e) {
       Logger().e(e);
     }

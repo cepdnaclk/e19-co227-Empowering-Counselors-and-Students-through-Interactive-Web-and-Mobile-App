@@ -55,7 +55,7 @@ class AdminDropDownCounselorWidget extends StatelessWidget {
       },
       onChanged: (value) {
         if (index == 1) {
-          Provider.of<CounselorRegistrationProvider>(context, listen: false)
+          Provider.of<CounsellorRegistrationProvider>(context, listen: false)
               .setFaculty(value!);
         }
       },

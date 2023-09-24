@@ -53,7 +53,7 @@ class _EditMobileState extends State<EditMobile> {
               FormInputWeb(
                 "Name",
                 textEditingController:
-                    Provider.of<CounselorRegistrationProvider>(context).name,
+                    Provider.of<CounsellorRegistrationProvider>(context).name,
                 fontSize: 12,
                 height: 45,
                 width: 280,
@@ -63,7 +63,7 @@ class _EditMobileState extends State<EditMobile> {
               FormInputWeb(
                 "Email",
                 textEditingController:
-                    Provider.of<CounselorRegistrationProvider>(context).email,
+                    Provider.of<CounsellorRegistrationProvider>(context).email,
                 fontSize: 12,
                 height: 45,
                 width: 280,
@@ -73,7 +73,7 @@ class _EditMobileState extends State<EditMobile> {
               FormInputWeb(
                 "Password",
                 textEditingController:
-                    Provider.of<CounselorRegistrationProvider>(context)
+                    Provider.of<CounsellorRegistrationProvider>(context)
                         .password,
                 obscure: true,
                 fontSize: 12,
@@ -85,7 +85,7 @@ class _EditMobileState extends State<EditMobile> {
               FormInputWeb(
                 "Phone Number",
                 textEditingController:
-                    Provider.of<CounselorRegistrationProvider>(context)
+                    Provider.of<CounsellorRegistrationProvider>(context)
                         .phoneNumber,
                 fontSize: 12,
                 height: 45,
@@ -103,7 +103,7 @@ class _EditMobileState extends State<EditMobile> {
               FormInputWeb(
                 "Credentials",
                 textEditingController:
-                    Provider.of<CounselorRegistrationProvider>(context)
+                    Provider.of<CounsellorRegistrationProvider>(context)
                         .credentials,
                 fontSize: 12,
                 height: 45,
@@ -111,11 +111,11 @@ class _EditMobileState extends State<EditMobile> {
                 lableFontSize: 12,
               ),
               const SizedBox(height: 25),
-              Consumer<CounselorRegistrationProvider>(
+              Consumer<CounsellorRegistrationProvider>(
                 builder: (context, value, child) {
                   return InkWell(
                     onTap: () {
-                      value.signUpUser(
+                      value.signUpCounsellor(
                           value.name.text,
                           value.email.text,
                           value.password.text,
