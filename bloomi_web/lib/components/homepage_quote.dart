@@ -39,7 +39,8 @@ class HomePageQuote extends StatelessWidget {
             style: TextStyle(
               color: UtilConstants.homePageQuoteTitleColor,
               fontSize: 25,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w300,
+              fontFamily: 'Skranji',
               shadows: [
                 Shadow(
                   color: UtilConstants.naturePageShadowColor,
@@ -55,9 +56,10 @@ class HomePageQuote extends StatelessWidget {
           Text(
             quoteContent,
             style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: "monospace"),
+              fontSize: 25,
+              fontWeight: FontWeight.w400,
+              fontFamily: 'Julee',
+            ),
           ),
           const SizedBox(
             height: 5,
