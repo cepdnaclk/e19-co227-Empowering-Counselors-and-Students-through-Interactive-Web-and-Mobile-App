@@ -2,11 +2,11 @@ import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/screens/counsellor_screens/calender/calender.dart';
+import 'package:bloomi_web/screens/counsellor_screens/chat/home/chat_counsellor.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/drawer.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/topbar_contents.dart';
 import 'package:bloomi_web/screens/counsellor_screens/profile/profile_home.dart';
-import 'package:bloomi_web/screens/home_screens/chat/home/chat.dart';
 import 'package:bloomi_web/screens/home_screens/note/note.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class _CounselorHomeState extends State<CounselorHome> {
     final List<Widget> widgets = [
       const Dashboard(),
       const CounselorCalender(),
-      const Chat(),
+      const ChatCounsellor(),
       const ProfileHome(),
       const Note(),
     ];

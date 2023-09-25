@@ -1,22 +1,22 @@
-import 'package:bloomi_web/components/conservation_tile_users.dart';
-import 'package:bloomi_web/controllers/counsellor_controller.dart';
+import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
+import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/conservation_tile_counsellor.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
-class ChatListViewUser extends StatefulWidget {
-  const ChatListViewUser({
+class ChatListViewCounsellor extends StatefulWidget {
+  const ChatListViewCounsellor({
     super.key,
   });
 
   @override
-  State<ChatListViewUser> createState() => _ChatListViewUserState();
+  State<ChatListViewCounsellor> createState() => _ChatListViewCounsellorState();
 }
 
-class _ChatListViewUserState extends State<ChatListViewUser> {
+class _ChatListViewCounsellorState extends State<ChatListViewCounsellor> {
   final List<ChatModel> _list = [];
 
   @override
@@ -27,7 +27,7 @@ class _ChatListViewUserState extends State<ChatListViewUser> {
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
             child: StreamBuilder(
-              stream: CounsellorController().getCounselorsAdditional(),
+              stream: AuthController().getUsersAdditional(),
               builder: (context, snapshot) {
                 //-------if the snapshot error occurs, show error message-------
                 if (snapshot.hasError) {
@@ -45,7 +45,7 @@ class _ChatListViewUserState extends State<ChatListViewUser> {
 
                 if (snapshot.data!.docs.isEmpty) {
                   return const Center(
-                    child: Text("No Counsellor Found Yet"),
+                    child: Text("No Student Found Yet"),
                   );
                 }
 
@@ -59,6 +59,7 @@ class _ChatListViewUserState extends State<ChatListViewUser> {
                   Map<String, dynamic> data = e.data() as Map<String, dynamic>;
                   var model = ChatModel.fromJson(data);
                   _list.add(model);
+                  Logger().i(model.name);
                 }
 
                 return ListView.separated(
@@ -71,7 +72,7 @@ class _ChatListViewUserState extends State<ChatListViewUser> {
                                     listen: false)
                                 .changeIndex(index);
                           },
-                          child: ConversationTileUsers(
+                          child: ConversationTileCounsellor(
                             chatModel: _list[index],
                             index: index,
                           ),

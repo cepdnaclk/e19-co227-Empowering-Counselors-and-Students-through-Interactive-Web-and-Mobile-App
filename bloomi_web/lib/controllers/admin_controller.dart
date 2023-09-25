@@ -122,4 +122,7 @@ class AdminController {
 
   //------------------------ GET All Admins ------------------------
   Stream<QuerySnapshot> getAdmins() => admins.snapshots();
+
+  //-------------retrieve and listen to the admin real-time-----------------
+  Stream<QuerySnapshot> getAdminAdditional() => admins.snapshots();
 }

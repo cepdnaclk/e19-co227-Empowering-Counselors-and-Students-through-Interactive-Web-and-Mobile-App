@@ -1,11 +1,9 @@
 import 'package:bloomi_web/controllers/counsellor_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
-import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_form_method.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:provider/provider.dart';
 
 class CounselorListView extends StatefulWidget {
   const CounselorListView({
@@ -20,75 +18,70 @@ class _CounselorListViewState extends State<CounselorListView> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CounsellorRegistrationProvider>(
-      builder: (context, value, child) {
-        return StreamBuilder(
-          stream: CounsellorController().getCounsellors(),
-          builder: (context, snapshot) {
-            //-------if the snapshot error occurs, show error message-------
-            if (snapshot.hasError) {
-              return const Center(
-                child: Text("Something went wrong"),
-              );
-            }
+    return StreamBuilder(
+      stream: CounsellorController().getCounsellors(),
+      builder: (context, snapshot) {
+        //-------if the snapshot error occurs, show error message-------
+        if (snapshot.hasError) {
+          return const Center(
+            child: Text("Something went wrong"),
+          );
+        }
 
-            //-------if the snapshot is waiting, show progress indicator-------
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+        //-------if the snapshot is waiting, show progress indicator-------
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
 
-            if (snapshot.data!.docs.isEmpty) {
-              return const Center(
-                child: Text("No Counsellor found"),
-              );
-            }
+        if (snapshot.data!.docs.isEmpty) {
+          return const Center(
+            child: Text("No Counsellor found"),
+          );
+        }
 
-            Logger().i(snapshot.data!.docs.length);
+        Logger().i(snapshot.data!.docs.length);
 
-            //-------------clear the list before adding new data----------------
-            _listCounsellor.clear();
+        //-------------clear the list before adding new data----------------
+        _listCounsellor.clear();
 
-            //-----------------read the document list from snapshot and map to model and add to list----------------
-            for (var e in snapshot.data!.docs) {
-              Map<String, dynamic> data = e.data() as Map<String, dynamic>;
-              var model = CounsellorModel.fromJson(data);
-              _listCounsellor.add(model);
-            }
+        //-----------------read the document list from snapshot and map to model and add to list----------------
+        for (var e in snapshot.data!.docs) {
+          Map<String, dynamic> data = e.data() as Map<String, dynamic>;
+          var model = CounsellorModel.fromJson(data);
+          _listCounsellor.add(model);
+        }
 
-            return ListView.builder(
-              itemCount: _listCounsellor.length, // Use the length of the list
-              itemBuilder: (context, index) {
-                return Card(
-                  color: UtilConstants.lightgreyColor,
-                  elevation: 4,
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  child: ListTile(
-                    title: Text(_listCounsellor[index].name),
-                    subtitle: Text(_listCounsellor[index].userCredential),
-                    leading: CircleAvatar(
-                      backgroundImage:
-                          NetworkImage(_listCounsellor[index].imgUrl),
+        return ListView.builder(
+          itemCount: _listCounsellor.length, // Use the length of the list
+          itemBuilder: (context, index) {
+            return Card(
+              color: UtilConstants.lightgreyColor,
+              elevation: 4,
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              child: ListTile(
+                title: Text(_listCounsellor[index].name),
+                subtitle: Text(_listCounsellor[index].userCredential),
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(_listCounsellor[index].imgUrl),
+                ),
+                trailing: Container(
+                    alignment: Alignment.center,
+                    width: 100,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.blueGrey,
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    trailing: Container(
-                        alignment: Alignment.center,
-                        width: 100,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          color: Colors.blueGrey,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: TextButton(
-                          onPressed: () => UtilFormMethod.showDialogMethod(
-                              context,
-                              _listCounsellor[index].uid,
-                              _listCounsellor[index].name),
-                          child: const Icon(Icons.add, color: Colors.white),
-                        )),
-                  ),
-                );
-              },
+                    child: TextButton(
+                      onPressed: () => UtilFormMethod.showDialogMethod(
+                          context,
+                          _listCounsellor[index].uid,
+                          _listCounsellor[index].name),
+                      child: const Icon(Icons.add, color: Colors.white),
+                    )),
+              ),
             );
           },
         );

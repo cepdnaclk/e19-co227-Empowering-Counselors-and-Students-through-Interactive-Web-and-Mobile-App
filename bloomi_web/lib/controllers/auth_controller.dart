@@ -248,4 +248,7 @@ class AuthController {
 
   //------------------------ GET All users ------------------------
   Stream<QuerySnapshot> getUsers() => users.snapshots();
+
+  //------------------------ GET All users aditional  ------------------------
+  Stream<QuerySnapshot> getUsersAdditional() => additionalUsers.snapshots();
 }

@@ -101,6 +101,27 @@ class CounsellorController {
     }
   }
 
+  //-----------------------fetch user additional data from database---------------------
+  Future<ChatModel?> fetchCounsellorAdditionalData(String uid) async {
+    try {
+      //-------firebase quary to fetch user data from database--------
+      DocumentSnapshot documentSnapshot =
+          await additionalCounsellor.doc(uid).get();
+
+      Logger().e(documentSnapshot.data());
+      //-------mapping user data to user model--------
+      ChatModel chatModel =
+          ChatModel.fromJson(documentSnapshot.data() as Map<String, dynamic>);
+
+      Logger().e(chatModel.isOnline);
+
+      return chatModel;
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
   //----------------------saving admin additional data in cloud firestore---------------------
 
   CollectionReference additionalCounsellor =
@@ -123,6 +144,22 @@ class CounsellorController {
         .catchError((error) => Logger().e("Failed to add user: $error"));
   }
 
+  //-----------------------update the current online state and lastseen---------------------
+  Future<void> updateOnlineStateCounsellor(String uid, bool isOnline) async {
+    await additionalCounsellor
+        .doc(uid)
+        .update({
+          'isOnline': isOnline,
+          'lastSeen': DateTime.now().toString(),
+        })
+        .then((value) => Logger().i("online state updated"))
+        .catchError((error) => Logger().e("Failed to update: $error"));
+  }
+
   //------------------------ GET All Counselors ------------------------
   Stream<QuerySnapshot> getCounsellors() => counsellor.snapshots();
+
+  //-------------retrieve and listen to the counselor real-time-----------------
+  Stream<QuerySnapshot> getCounselorsAdditional() =>
+      additionalCounsellor.snapshots();
 }

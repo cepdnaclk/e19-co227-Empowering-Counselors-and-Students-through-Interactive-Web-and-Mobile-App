@@ -2,7 +2,9 @@ import 'package:bloomi_web/screens/home_screens/chat/conversation/conversation.d
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {
-  const Chat({super.key});
+  const Chat({
+    super.key,
+  });
 
   @override
   State<Chat> createState() => _ChatState();
