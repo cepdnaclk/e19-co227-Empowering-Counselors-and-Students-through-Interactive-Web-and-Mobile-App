@@ -7,8 +7,8 @@ import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({
+class HeaderWidgetCounsellor extends StatelessWidget {
+  const HeaderWidgetCounsellor({
     super.key,
     this.isTrue = true,
   });

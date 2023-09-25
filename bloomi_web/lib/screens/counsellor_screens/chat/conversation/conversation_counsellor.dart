@@ -1,32 +1,33 @@
-import 'package:bloomi_web/components/available_chat.dart';
-import 'package:bloomi_web/components/custom_chat_screen.dart';
 import 'package:bloomi_web/components/header_widget.dart';
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
-import 'package:bloomi_web/providers/users/user_provider.dart';
+import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/available_chat_counsellor.dart';
+import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/custom_chat_screen_counsellor.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
-class Conversation extends StatefulWidget {
+class ConversationCounsellor extends StatefulWidget {
   @override
-  const Conversation({
+  const ConversationCounsellor({
     super.key,
   });
 
   @override
-  State<Conversation> createState() => _ConversationState();
+  State<ConversationCounsellor> createState() => _ConversationCounsellorState();
 }
 
-class _ConversationState extends State<Conversation>
+class _ConversationCounsellorState extends State<ConversationCounsellor>
     with WidgetsBindingObserver {
-  late UserProvider _userProvider;
+  late CounsellorRegistrationProvider _counsellorRegistrationProvider;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _userProvider = Provider.of<UserProvider>(context,
-        listen: false); // Save a reference to the provider
+    _counsellorRegistrationProvider =
+        Provider.of<CounsellorRegistrationProvider>(context,
+            listen: false); // Save a reference to the provider
   }
 
   @override
@@ -39,9 +40,11 @@ class _ConversationState extends State<Conversation>
       key: const Key('conversation_key'), // Use a unique key for each instance
       onVisibilityChanged: (info) {
         if (info.visibleFraction == 0) {
-          _userProvider.updateUserOnlineState(false); // Use the saved reference
+          _counsellorRegistrationProvider
+              .updateCounsellorOnlineState(false); // Use the saved reference
         } else {
-          _userProvider.updateUserOnlineState(true); // Use the saved reference
+          _counsellorRegistrationProvider
+              .updateCounsellorOnlineState(true); // Use the saved reference
         }
       },
       child: SafeArea(
@@ -54,7 +57,7 @@ class _ConversationState extends State<Conversation>
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  AvailableChat(height: height - 59),
+                  AvailableChatCounsellor(height: height - 59),
                   const SizedBox(width: 4),
                   Consumer<UserChatProvider>(
                     builder: (context, value, child) {
@@ -62,9 +65,9 @@ class _ConversationState extends State<Conversation>
 
                       //----------------this is used to make when user dont have any convercation then show the empty screen----------------
                       return (value.getIndex == -1)
-                          ? CustomChatScreen(
+                          ? CustomChatScreenCounsellor(
                               width: width, height: height - 59, conId: "")
-                          : CustomChatScreen(
+                          : CustomChatScreenCounsellor(
                               width: width,
                               height: height - 59,
                               conId: value.getConversationModelNew.id);

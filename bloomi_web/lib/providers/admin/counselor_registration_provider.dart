@@ -152,4 +152,39 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
       return null;
     }
   }
+
+  //-----------------------To fetch additional data---------------------
+
+  ChatModel? _chatModel;
+
+  ChatModel? get chatModel => _chatModel;
+  Future<ChatModel?> startFetchCounsellorAdditionalData(String uid) async {
+    try {
+      ChatModel? chatModel =
+          await CounsellorController().fetchCounsellorAdditionalData(uid);
+      if (chatModel != null) {
+        _chatModel = chatModel;
+        notifyListeners();
+        Logger().e(chatModel.lastSeen);
+        return chatModel;
+      } else {
+        Logger().i("User not found");
+        return null;
+      }
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
+  //-----------------------To update current user online states---------------------
+  void updateCounsellorOnlineState(bool val) {
+    Logger().e(val);
+    try {
+      CounsellorController()
+          .updateOnlineStateCounsellor(counsellorModel!.uid, val);
+    } catch (e) {
+      Logger().e(e);
+    }
+  }
 }

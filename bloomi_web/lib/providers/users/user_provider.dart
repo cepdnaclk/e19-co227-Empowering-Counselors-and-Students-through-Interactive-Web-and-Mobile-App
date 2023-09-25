@@ -48,7 +48,9 @@ class UserProvider extends ChangeNotifier {
             //----------if user is counsellor, navigate to counsellor home page----------
           } else if (counsellorModel != null) {
             //----------to start fetching user additional data----------
-            await startFetchUserAdditionalData(user.uid);
+            await Provider.of<CounsellorRegistrationProvider>(context,
+                    listen: false)
+                .startFetchCounsellorAdditionalData(user.uid);
             UtilFunction.navigateForward(context, const CounselorHome());
 
             //----------if user is admin, navigate to admin home page----------
