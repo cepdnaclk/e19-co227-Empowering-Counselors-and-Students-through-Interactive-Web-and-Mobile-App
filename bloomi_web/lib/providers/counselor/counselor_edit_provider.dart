@@ -1,4 +1,3 @@
-import 'package:bloomi_web/controllers/counsellor_controller.dart';
 import 'package:bloomi_web/utils/util_method.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -89,13 +88,14 @@ class CounselorEditProvider extends ChangeNotifier {
 
   //----------------------Functions---------------------
   Future<void> editCounselor(
-      String name,
-      String email,
-      String password,
-      String phone,
-      String faculty,
-      String credential,
-      BuildContext context) async {
+    String name,
+    String email,
+    String password,
+    String phone,
+    String faculty,
+    String credential,
+    BuildContext context,
+  ) async {
     try {
       if (email.isNotEmpty &&
           password.isNotEmpty &&
@@ -106,16 +106,16 @@ class CounselorEditProvider extends ChangeNotifier {
         setIsLoading(true);
 
         //save counselor
-        await CounsellorController().signUpCounsellor(
-          email,
-          password,
-          name,
-          phone,
-          faculty,
-          userType,
-          credential,
-          context,
-        );
+        // await CounsellorController().signUpCounsellor(
+        //   email,
+        //   password,
+        //   name,
+        //   phone,
+        //   faculty,
+        //   userType,
+        //   credential,
+        //   context,
+        // );
 
         setIsLoading(false);
       } else {

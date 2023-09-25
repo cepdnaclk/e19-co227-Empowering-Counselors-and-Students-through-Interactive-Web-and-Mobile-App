@@ -11,10 +11,7 @@ import 'package:provider/provider.dart';
 class ChatListViewUser extends StatefulWidget {
   const ChatListViewUser({
     super.key,
-    required this.messages,
   });
-
-  final List<String> messages;
 
   @override
   State<ChatListViewUser> createState() => _ChatListViewUserState();

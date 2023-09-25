@@ -147,28 +147,4 @@ class AdminRegistrationProvider extends ChangeNotifier {
       return null;
     }
   }
-
-  //-----------------------start fetching all admin data---------------------
-
-  final List<AdminModel> _allAdminModel = [];
-  List<AdminModel> get allAdminModel => _allAdminModel;
-  Future<void> startFetchAllAdminData() async {
-    try {
-      setIsLoading(true);
-      _allAdminModel.clear();
-
-      List<AdminModel> allAdminModels =
-          await AdminController().fetchAllAdminData();
-
-      for (var e in allAdminModels) {
-        Logger().i(e.name);
-        _allAdminModel.add(e);
-      }
-
-      setIsLoading(false);
-    } catch (e) {
-      setIsLoading(false);
-      Logger().e(e);
-    }
-  }
 }

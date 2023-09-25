@@ -1,7 +1,8 @@
-import 'package:bloomi_web/providers/user_home_provider/all_user_provider.dart';
+import 'package:bloomi_web/controllers/auth_controller.dart';
+import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/utils/util_admin_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:logger/logger.dart';
 
 class StudentControl extends StatefulWidget {
   const StudentControl({super.key});
@@ -13,6 +14,7 @@ class StudentControl extends StatefulWidget {
 class _StudentControlState extends State<StudentControl> {
   List<bool> isRowHovered = [];
   List<bool> isRowHoveredDeleted = [];
+  final List<UserModel> _list = [];
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +23,45 @@ class _StudentControlState extends State<StudentControl> {
         child: Center(
           child: Column(
             children: [
-              Consumer<AllUserProvider>(
-                builder: (context, value, child) {
-                  return Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: DataTable(
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: StreamBuilder(
+                  stream: AuthController().getUsers(),
+                  builder: (context, snapshot) {
+                    //-------if the snapshot error occurs, show error message-------
+                    if (snapshot.hasError) {
+                      return const Center(
+                        child: Text("Something went wrong"),
+                      );
+                    }
+
+                    //-------if the snapshot is waiting, show progress indicator-------
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+
+                    if (snapshot.data!.docs.isEmpty) {
+                      return const Center(
+                        child: Text("No Users found"),
+                      );
+                    }
+
+                    Logger().i(snapshot.data!.docs.length);
+
+                    //-------------clear the list before adding new data----------------
+                    _list.clear();
+
+                    //-----------------read the document list from snapshot and map to model and add to list----------------
+                    for (var e in snapshot.data!.docs) {
+                      Map<String, dynamic> data =
+                          e.data() as Map<String, dynamic>;
+                      var model = UserModel.fromJson(data);
+                      _list.add(model);
+                    }
+
+                    return DataTable(
                         sortColumnIndex: 0,
                         sortAscending: true,
                         dataRowMinHeight: 50,
@@ -42,29 +78,29 @@ class _StudentControlState extends State<StudentControl> {
                           AdminFunctions.customDataColumns('Year'),
                         ],
                         rows: List.generate(
-                          value.allUserModel.length,
+                          _list.length,
                           (index) {
                             return DataRow(
                               cells: [
                                 AdminFunctions.customDatacells(
-                                    value.allUserModel[index].name),
+                                    _list[index].name),
                                 AdminFunctions.customDatacells(
-                                    value.allUserModel[index].email),
+                                    _list[index].email),
                                 AdminFunctions.customDatacells(
-                                    value.allUserModel[index].phone),
+                                    _list[index].phone),
                                 AdminFunctions.customDatacells(
-                                    value.allUserModel[index].faculty),
+                                    _list[index].faculty),
                                 AdminFunctions.customDatacells(
-                                    value.allUserModel[index].department),
+                                    _list[index].department),
                                 AdminFunctions.customDatacells(
-                                    value.allUserModel[index].year),
+                                    _list[index].year),
                               ],
                             );
                           },
-                        )),
-                  );
-                },
-              ),
+                        ));
+                  },
+                ),
+              )
             ],
           ),
         ),

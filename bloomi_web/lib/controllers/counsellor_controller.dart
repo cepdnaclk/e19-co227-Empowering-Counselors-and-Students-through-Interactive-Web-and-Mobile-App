@@ -1,6 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_method.dart';
@@ -30,7 +29,7 @@ class CounsellorController {
       );
 
       if (credential.user != null) {
-        saveCounsellorData(CounsellorModel(
+        await saveCounsellorData(CounsellorModel(
             uid: credential.user!.uid,
             name: name,
             email: email,
@@ -42,7 +41,7 @@ class CounsellorController {
       }
 
       if (credential.user != null) {
-        saveUserAdditionalData(ChatModel(
+        await saveUserAdditionalData(ChatModel(
             uid: credential.user!.uid,
             name: name,
             email: email,
@@ -52,7 +51,7 @@ class CounsellorController {
             token: "",
             userType: userType));
       }
-      AuthController.signInUser(email, password, context);
+
       Logger().i(credential.user);
     } on FirebaseAuthException catch (e) {
       UtilMethod.customDialogBox(context, "Error", e.code);
@@ -104,11 +103,11 @@ class CounsellorController {
 
   //----------------------saving admin additional data in cloud firestore---------------------
 
-  CollectionReference additionalUsers =
-      FirebaseFirestore.instance.collection('additionalUsers');
+  CollectionReference additionalCounsellor =
+      FirebaseFirestore.instance.collection('additionalCounsellor');
 
   Future<void> saveUserAdditionalData(ChatModel chatModel) {
-    return additionalUsers
+    return additionalCounsellor
         .doc(chatModel.uid)
         .set({
           'uid': chatModel.uid,
@@ -124,28 +123,6 @@ class CounsellorController {
         .catchError((error) => Logger().e("Failed to add user: $error"));
   }
 
-  //-----------------------fetch all counsellor data from database---------------------
-  Future<List<CounsellorModel>> fetchAllCounsellorData() async {
-    try {
-      QuerySnapshot querySnapshot = await counsellor.get();
-      Logger().i(querySnapshot.docs.length);
-
-      //------temp list-------
-      List<CounsellorModel> list = [];
-
-      for (var e in querySnapshot.docs) {
-        //------mapping data to user model-------
-        CounsellorModel allCounsellorModel =
-            CounsellorModel.fromJson(e.data() as Map<String, dynamic>);
-
-        //------adding user model to list-------
-        list.add(allCounsellorModel);
-      }
-      return list;
-    } catch (e) {
-      Logger().e(e);
-
-      return [];
-    }
-  }
+  //------------------------ GET All Counselors ------------------------
+  Stream<QuerySnapshot> getCounsellors() => counsellor.snapshots();
 }

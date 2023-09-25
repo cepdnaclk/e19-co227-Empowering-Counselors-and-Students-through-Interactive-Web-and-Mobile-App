@@ -50,6 +50,11 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setPhoneNumber(String phoneNumber) {
+    _phoneNumber.text = phoneNumber;
+    notifyListeners();
+  }
+
   void setIsObscure(bool isObscure) {
     if (isObscure == false) {
       _isObscure = !_isObscure;
@@ -145,30 +150,6 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
     } catch (e) {
       Logger().e(e);
       return null;
-    }
-  }
-
-  //-----------------------start fetching all admin data---------------------
-
-  final List<CounsellorModel> _allCounsellorModel = [];
-  List<CounsellorModel> get allCounsellorModel => _allCounsellorModel;
-  Future<void> startFetchAllCounsellorData() async {
-    try {
-      setIsLoading(true);
-      _allCounsellorModel.clear();
-
-      List<CounsellorModel> allCounsellorModels =
-          await CounsellorController().fetchAllCounsellorData();
-
-      for (var e in allCounsellorModels) {
-        Logger().i(e.name);
-        _allCounsellorModel.add(e);
-      }
-
-      setIsLoading(false);
-    } catch (e) {
-      setIsLoading(false);
-      Logger().e(e);
     }
   }
 }

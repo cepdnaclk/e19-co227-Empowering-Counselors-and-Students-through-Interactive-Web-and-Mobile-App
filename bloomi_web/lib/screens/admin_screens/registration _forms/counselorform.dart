@@ -3,6 +3,7 @@ import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
+import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -89,18 +90,20 @@ class CounselorForm {
                 SizedBox(height: heightone * 0.01),
                 SizedBox(height: heightone * 0.01),
                 SizedBox(height: heightone * 0.01),
-                Consumer<CounsellorRegistrationProvider>(
-                  builder: (context, value, child) {
+                Consumer2<CounsellorRegistrationProvider,
+                    AdminRegistrationProvider>(
+                  builder: (context, value, value2, child) {
                     return InkWell(
                       onTap: () {
                         value.signUpCounsellor(
-                            value.name.text,
-                            value.email.text,
-                            value.password.text,
-                            value.phoneNumber.text,
-                            value.faculty,
-                            value.credentials.text,
-                            context);
+                          value.name.text,
+                          value.email.text,
+                          value.password.text,
+                          value.phoneNumber.text,
+                          value.faculty,
+                          value.credentials.text,
+                          context,
+                        );
                       },
                       child: FormButtonWeb(
                         "Register",
