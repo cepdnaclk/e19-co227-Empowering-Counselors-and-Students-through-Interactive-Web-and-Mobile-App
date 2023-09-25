@@ -30,7 +30,7 @@ class AvailableChatCounsellor extends StatelessWidget {
             builder: (context, value, child) {
               return StreamBuilder(
                 stream: ChatController()
-                    .getConversation(value.counsellorModel!.uid),
+                    .getConversationCounsellor(value.counsellorModel!.uid),
                 builder: (context, snapshot) {
                   //-------if the snapshot error occurs, show error message-------
                   if (snapshot.hasError) {

@@ -24,14 +24,12 @@ class UserChatProvider extends ChangeNotifier {
   void changeIndex(int index) {
     _index = index;
     notifyListeners();
-    Logger().i(getIndex);
   }
 
   // ------------------ User Chat index set------------------
   void changeConversationModelNew(ConversationModel conversationModel) {
     _conversationModelNew = conversationModel;
     notifyListeners();
-    Logger().i(getIndex);
   }
 
   //-------------------Start of create conversation-------------------
