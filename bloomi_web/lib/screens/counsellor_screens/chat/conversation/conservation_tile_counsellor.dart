@@ -1,7 +1,7 @@
 import 'package:bloomi_web/components/conversation_image.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/models/objects.dart';
-import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
@@ -74,7 +74,7 @@ class ConversationTileCounsellor extends StatelessWidget {
               )
             ],
           ),
-          Consumer<UserChatProvider>(
+          Consumer<CounsellorRegistrationProvider>(
             builder: (context, value, child) {
               return ElevatedButton(
                   onPressed: () {

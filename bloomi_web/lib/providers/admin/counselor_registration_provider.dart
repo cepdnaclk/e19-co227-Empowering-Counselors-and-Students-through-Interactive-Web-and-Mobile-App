@@ -1,8 +1,15 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:bloomi_web/controllers/chat_controller.dart';
 import 'package:bloomi_web/controllers/counsellor_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
+import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
+import 'package:bloomi_web/screens/home_screens/chat/home/chat.dart';
+import 'package:bloomi_web/utils/util_function.dart';
 import 'package:bloomi_web/utils/util_method.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 
 class CounsellorRegistrationProvider extends ChangeNotifier {
   final TextEditingController _name = TextEditingController();
@@ -13,6 +20,7 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
   String _faculty = "";
   final String _userType = "Counselor";
   bool _isObscure = true;
+  ConversationModel? _conversationModelNew;
 
   //-----------------Getters-----------------
   TextEditingController get name => _name;
@@ -23,6 +31,7 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
   String get faculty => _faculty;
   bool get isObscure => _isObscure;
   String get userType => _userType;
+  ConversationModel get getConversationModelNew => _conversationModelNew!;
 
   //-----------------Setters-----------------
   void setName(String name) {
@@ -55,6 +64,12 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  // ------------------ User Chat index set------------------
+  void changeConversationModelNew(ConversationModel conversationModel) {
+    _conversationModelNew = conversationModel;
+    notifyListeners();
+  }
+
   void setIsObscure(bool isObscure) {
     if (isObscure == false) {
       _isObscure = !_isObscure;
@@ -74,6 +89,19 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
   void setIsLoading(bool isLoading) {
     _isLoading = isLoading;
     notifyListeners();
+  }
+
+  //-------------create conversation loading index-----------------
+  int _loadingIndex = -1;
+
+  //-------------create conversation loading index get-----------------
+  int get getLoadingIndex => _loadingIndex;
+
+  //-------------create conversation loading index set-----------------
+  void changeLoadingIndex(int index) {
+    _loadingIndex = index;
+    notifyListeners();
+    Logger().i(getLoadingIndex);
   }
 
   //----------------------Functions---------------------
@@ -183,6 +211,64 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
     try {
       CounsellorController()
           .updateOnlineStateCounsellor(counsellorModel!.uid, val);
+    } catch (e) {
+      Logger().e(e);
+    }
+  }
+
+  //------------------converasation model-------------------
+  ConversationModel? _conversationModel;
+
+  //-------------converasation model get-----------------
+  ConversationModel? get getConversationModel => _conversationModel;
+
+  final ChatController _chatController = ChatController();
+  Future<void> createConversation(
+      BuildContext context, ChatModel peerUser, int loading) async {
+    try {
+      //-------------get the current user-----------------
+      ChatModel me =
+          Provider.of<CounsellorRegistrationProvider>(context, listen: false)
+              .chatModel!;
+
+      changeLoadingIndex(loading);
+
+      _conversationModel =
+          await _chatController.createConversation(me, peerUser);
+
+      notifyListeners();
+
+      changeLoadingIndex(-1);
+
+      Logger().i(_conversationModel!.id);
+      //-------------navigate to the conversation screen-----------------
+      UtilFunction.navigateBackward(context, const Chat());
+    } catch (e) {
+      Logger().e(e);
+      changeLoadingIndex(-1);
+    }
+  }
+
+  final ChatController _chatControllerModel = ChatController();
+  //-------------------send message and save it in db-------------------
+  Future<void> startSendMessage(BuildContext context, String msg) async {
+    try {
+      //-------------save msg in dp----------------
+      ChatModel me =
+          Provider.of<CounsellorRegistrationProvider>(context, listen: false)
+              .chatModel!;
+
+      await _chatControllerModel.sendMessage(
+          Provider.of<UserChatProvider>(context, listen: false)
+              .getConversationModelNew
+              .id,
+          me.name,
+          me.uid,
+          Provider.of<UserChatProvider>(context, listen: false)
+              .getConversationModelNew
+              .usersArray[1]
+              .uid,
+          msg);
     } catch (e) {
       Logger().e(e);
     }

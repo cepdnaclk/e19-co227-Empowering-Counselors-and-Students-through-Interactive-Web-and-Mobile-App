@@ -51,10 +51,7 @@ class _NoteState extends State<Note> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet(
-            shape: ContinuousRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
-            ),
+          showDialog(
             context: context,
             builder: (context) {
               return Consumer<NoteProvider>(

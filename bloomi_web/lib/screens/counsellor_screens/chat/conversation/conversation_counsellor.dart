@@ -1,8 +1,8 @@
-import 'package:bloomi_web/components/header_widget.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
 import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/available_chat_counsellor.dart';
 import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/custom_chat_screen_counsellor.dart';
+import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/header_widget_counsellor.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -50,9 +50,7 @@ class _ConversationCounsellorState extends State<ConversationCounsellor>
       child: SafeArea(
         child: Column(
           children: [
-            const HeaderWidget(
-              isTrue: false,
-            ),
+            const HeaderWidgetCounsellor(isTrue: false),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(

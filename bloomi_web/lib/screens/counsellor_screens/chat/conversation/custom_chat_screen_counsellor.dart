@@ -1,10 +1,10 @@
-import 'package:bloomi_web/components/chat_header_widget.dart';
-import 'package:bloomi_web/components/custom_chat_bubble.dart';
-import 'package:bloomi_web/components/messagetyping_widget.dart';
 import 'package:bloomi_web/controllers/chat_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
-import 'package:bloomi_web/providers/users/user_provider.dart';
+import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/chat_header_counsellor_widget.dart';
+import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/custom_chat_bubble_counsellor.dart';
+import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/messagetyping_widget_counsellor.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -33,7 +33,7 @@ class CustomChatScreenCounsellor extends StatelessWidget {
         builder: (context, value, child) {
           return Column(
             children: [
-              const ChatHeaderWidget(),
+              const ChatHeaderCounsellorWidget(),
               StreamBuilder(
                 stream: ChatController().getMessages(conId),
                 builder: (context, snapshot) {
@@ -59,7 +59,7 @@ class CustomChatScreenCounsellor extends StatelessWidget {
                         child: const Column(
                           children: [
                             Expanded(child: SizedBox()),
-                            MessageTypingWidget(),
+                            MessageTypingWidgetCounsellor(),
                           ],
                         ),
                       ),
@@ -92,11 +92,12 @@ class CustomChatScreenCounsellor extends StatelessWidget {
                                   physics: const BouncingScrollPhysics(),
                                   reverse: true,
                                   itemBuilder: (context, index) {
-                                    return Consumer<UserProvider>(
+                                    return Consumer<
+                                        CounsellorRegistrationProvider>(
                                       builder: (context, value, child) {
-                                        return ChatBubble(
+                                        return ChatBubbleCounsellor(
                                           isSender: _list[index].senderId ==
-                                              value.userModel!.uid,
+                                              value.counsellorModel!.uid,
                                           messageModel: _list[index],
                                         );
                                       },
@@ -106,7 +107,7 @@ class CustomChatScreenCounsellor extends StatelessWidget {
                                     return const SizedBox(height: 10);
                                   },
                                   itemCount: _list.length)),
-                          const MessageTypingWidget(),
+                          const MessageTypingWidgetCounsellor(),
                         ],
                       ),
                     ),
