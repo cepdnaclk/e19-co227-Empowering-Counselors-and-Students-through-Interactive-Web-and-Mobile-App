@@ -5,6 +5,7 @@ class AdminModel {
   String uid;
   String name;
   String email;
+
   String phone;
   String credential;
   String userType;

@@ -4,12 +4,11 @@ import 'package:bloomi_web/components/custom_card_widget.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/controllers/appoinment_controller.dart';
+import 'package:bloomi_web/controllers/counsellor_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
-import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:provider/provider.dart';
 
 class UserAppointmentDashboard extends StatefulWidget {
   const UserAppointmentDashboard({Key? key}) : super(key: key);
@@ -21,6 +20,8 @@ class UserAppointmentDashboard extends StatefulWidget {
 
 class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
   final List<AppointmentModel> _list = [];
+  final List<CounsellorModel> _listCounsellor = [];
+  final List<String> _listCounsellorName = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,19 +71,56 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(color: Colors.black),
                             ),
-                            child: Consumer<CounsellorRegistrationProvider>(
-                              builder: (context, value, child) {
-                                return Column(
-                                  children: [
-                                    DropDownButtonWidget(listItem: [
-                                      ...value.allCounsellorModel
-                                          .map((e) => e.name)
-                                          .toList()
-                                    ], text: "Select Counselor", index: 1),
-                                    const Calender(),
-                                  ],
-                                );
-                              },
+                            child: Column(
+                              children: [
+                                StreamBuilder(
+                                  stream:
+                                      CounsellorController().getCounsellors(),
+                                  builder: (context, snapshot) {
+                                    //-------if the snapshot error occurs, show error message-------
+                                    if (snapshot.hasError) {
+                                      return const Center(
+                                        child: Text("Something went wrong"),
+                                      );
+                                    }
+
+                                    //-------if the snapshot is waiting, show progress indicator-------
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return const Center(
+                                        child: CircularProgressIndicator(),
+                                      );
+                                    }
+
+                                    if (snapshot.data!.docs.isEmpty) {
+                                      return const Center(
+                                        child: Text("No Counsellor found"),
+                                      );
+                                    }
+
+                                    Logger().i(snapshot.data!.docs.length);
+
+                                    //-------------clear the list before adding new data----------------
+                                    _listCounsellor.clear();
+
+                                    //-----------------read the document list from snapshot and map to model and add to list----------------
+                                    for (var e in snapshot.data!.docs) {
+                                      Map<String, dynamic> data =
+                                          e.data() as Map<String, dynamic>;
+                                      var model =
+                                          CounsellorModel.fromJson(data);
+                                      _listCounsellor.add(model);
+                                      _listCounsellorName.add(model.name);
+                                    }
+
+                                    return DropDownButtonWidget(
+                                        listItem: _listCounsellorName,
+                                        text: "Select Counselor",
+                                        index: 1);
+                                  },
+                                ),
+                                const Calender(),
+                              ],
                             ),
                           ),
                         ),

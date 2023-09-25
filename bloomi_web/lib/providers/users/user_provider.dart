@@ -3,7 +3,6 @@ import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
-import 'package:bloomi_web/providers/user_home_provider/all_user_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/home/adminui.dart';
 import 'package:bloomi_web/screens/auth_screens/login/login.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/navbar.dart';
@@ -18,6 +17,7 @@ class UserProvider extends ChangeNotifier {
   UserModel? _userModel;
 
   UserModel? get userModel => _userModel;
+
   //-----------------------To initialize user---------------------
   Future<void> initializeUser(BuildContext context) async {
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
@@ -43,44 +43,17 @@ class UserProvider extends ChangeNotifier {
           if (userModel != null) {
             //----------to start fetching user additional data----------
             await startFetchUserAdditionalData(user.uid);
-
-            //----------to start fetching all counsellor data----------
-            await Provider.of<CounsellorRegistrationProvider>(context,
-                    listen: false)
-                .startFetchAllCounsellorData();
-
-            //----------to start fetching all user data----------
-            await Provider.of<AllUserProvider>(context, listen: false)
-                .startFetchAllUserData();
             UtilFunction.navigateForward(context, const Home());
 
             //----------if user is counsellor, navigate to counsellor home page----------
           } else if (counsellorModel != null) {
             //----------to start fetching user additional data----------
             await startFetchUserAdditionalData(user.uid);
-
-            //----------to start fetching all user data----------
-            await Provider.of<AllUserProvider>(context, listen: false)
-                .startFetchAllUserData();
             UtilFunction.navigateForward(context, const CounselorHome());
 
             //----------if user is admin, navigate to admin home page----------
           } else if (adminModel != null) {
-            //----------to start fetching all user data----------
-            await Provider.of<AllUserProvider>(context, listen: false)
-                .startFetchAllUserData();
-
-            //----------to start fetching user additional data----------
             await startFetchUserAdditionalData(user.uid);
-
-            //----------to start fetching all admin data----------
-            await Provider.of<AdminRegistrationProvider>(context, listen: false)
-                .startFetchAllAdminData();
-
-            //----------to start fetching all counsellor data----------
-            await Provider.of<CounsellorRegistrationProvider>(context,
-                    listen: false)
-                .startFetchAllCounsellorData();
             UtilFunction.navigateForward(context, const Adminpanel());
           }
         } catch (e) {

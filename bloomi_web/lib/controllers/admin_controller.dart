@@ -100,11 +100,11 @@ class AdminController {
 
   //----------------------saving admin additional data in cloud firestore---------------------
 
-  CollectionReference additionalUsers =
-      FirebaseFirestore.instance.collection('additionalUsers');
+  CollectionReference additionalAdmin =
+      FirebaseFirestore.instance.collection('additionalAdmin');
 
   Future<void> saveUserAdditionalData(ChatModel chatModel) {
-    return additionalUsers
+    return additionalAdmin
         .doc(chatModel.uid)
         .set({
           'uid': chatModel.uid,
@@ -120,29 +120,6 @@ class AdminController {
         .catchError((error) => Logger().e("Failed to add user: $error"));
   }
 
-  //-----------------------fetch all admin data from database---------------------
-  Future<List<AdminModel>> fetchAllAdminData() async {
-    try {
-      QuerySnapshot querySnapshot = await admins.get();
-      Logger().i(querySnapshot.docs.length);
-
-      //------temp list-------
-      List<AdminModel> list = [];
-
-      for (var e in querySnapshot.docs) {
-        //------mapping data to user model-------
-        AdminModel allAdminModel =
-            AdminModel.fromJson(e.data() as Map<String, dynamic>);
-
-        //------adding user model to list-------
-        list.add(allAdminModel);
-      }
-
-      return list;
-    } catch (e) {
-      Logger().e(e);
-
-      return [];
-    }
-  }
+  //------------------------ GET All Admins ------------------------
+  Stream<QuerySnapshot> getAdmins() => admins.snapshots();
 }

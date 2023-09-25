@@ -149,31 +149,6 @@ class AuthController {
     }
   }
 
-  //-----------------------fetch all user data from database---------------------
-  Future<List<UserModel>> fetchAllUserData() async {
-    try {
-      QuerySnapshot querySnapshot = await users.get();
-      Logger().i(querySnapshot.docs.length);
-
-      //------temp list-------
-      List<UserModel> list = [];
-
-      for (var e in querySnapshot.docs) {
-        //------mapping data to user model-------
-        UserModel allUserModel =
-            UserModel.fromJson(e.data() as Map<String, dynamic>);
-
-        //------adding user model to list-------
-        list.add(allUserModel);
-      }
-      return list;
-    } catch (e) {
-      Logger().e(e);
-
-      return [];
-    }
-  }
-
   //-----------------------To SignOut user---------------------
   static Future<void> signOutUser() async {
     try {
@@ -270,4 +245,7 @@ class AuthController {
         .then((value) => Logger().i("online state updated"))
         .catchError((error) => Logger().e("Failed to update: $error"));
   }
+
+  //------------------------ GET All users ------------------------
+  Stream<QuerySnapshot> getUsers() => users.snapshots();
 }

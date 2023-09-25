@@ -73,17 +73,7 @@ class HeaderWidget extends StatelessWidget {
               : IconButton(
                   onPressed: () {
                     UtilFunction.navigateForward(
-                        context,
-                        const ChatListViewUser(
-                          messages: [
-                            "1",
-                            "2",
-                            "3",
-                            "4",
-                            "5",
-                            "6",
-                          ],
-                        ));
+                        context, const ChatListViewUser());
                   },
                   icon: const Icon(
                     Icons.people_alt_rounded,
