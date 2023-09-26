@@ -5,6 +5,7 @@ import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 class AdminForm {
@@ -71,15 +72,21 @@ class AdminForm {
                 Consumer<AdminRegistrationProvider>(
                   builder: (context, value, child) {
                     return InkWell(
-                      onTap: () {
-                        value.signUpAdmin(
-                            value.name.text,
-                            value.email.text,
-                            value.password.text,
-                            value.phoneNumber.text,
-                            // value.faculty,
-                            value.credentials.text,
-                            context);
+                      onTap: () async {
+                        try {
+                          value.signUpAdmin(
+                              value.name.text,
+                              value.email.text,
+                              value.password.text,
+                              value.phoneNumber.text,
+                              // value.faculty,
+                              value.credentials.text,
+                              context,
+                              "",
+                              false);
+                        } catch (e) {
+                          Logger().e(e);
+                        }
                       },
                       child: FormButtonWeb(
                         "Register",

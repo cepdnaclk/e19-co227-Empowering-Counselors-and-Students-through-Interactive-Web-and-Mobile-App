@@ -49,17 +49,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'BLOOMi',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        // home: const Adminpanel());
-        home: const ResponsiveLayout(
-          mobileBody: SplashScreenMobile(),
-          tabletBody: SplashScreenTablet(),
-          desktopBody: SplashDesktop(),
-        ));
+      title: 'BLOOMi',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      // home: const Adminpanel());
+      home: const ResponsiveLayout(
+        mobileBody: SplashScreenMobile(),
+        tabletBody: SplashScreenTablet(),
+        desktopBody: SplashDesktop(),
+      ),
+    );
   }
 }
