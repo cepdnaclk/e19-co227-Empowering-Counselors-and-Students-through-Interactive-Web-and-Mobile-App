@@ -1,13 +1,10 @@
 import 'package:bloomi_web/components/footer.dart';
-import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_table/admin_control.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_table/counselor_control.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_table/students_control.dart';
 import 'package:bloomi_web/screens/admin_screens/home/admin_home.dart';
 import 'package:bloomi_web/screens/admin_screens/log_activity/admin_activitylog.dart';
-import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 class AdminPanel extends StatelessWidget {
@@ -28,71 +25,55 @@ class AdminPanel extends StatelessWidget {
               title: const Text('BLOOMI'),
               leading: IconButton(
                 onPressed: () {
-                  // if (!Platform.isAndroid && !Platform.isIOS) {
-                  //   _controller.setExtended(true);
-                  // }
                   _key.currentState?.openDrawer();
                 },
                 icon: const Icon(Icons.menu),
               ),
             )
-          : null,
+          : AppBar(
+              automaticallyImplyLeading: false,
+              backgroundColor: canvasColor,
+              title: const Text(
+                'BLOOMI',
+                style: TextStyle(
+                  color: white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              actions: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.notifications,
+                    color: white,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.settings,
+                    color: white,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.logout,
+                    color: white,
+                  ),
+                ),
+                const SizedBox(width: 5)
+              ],
+            ),
       drawer: ExampleSidebarX(controller: _controller),
       body: Row(
         children: [
           if (!isSmallScreen) ExampleSidebarX(controller: _controller),
-          SingleChildScrollView(
-            child: Scaffold(
-              appBar: AppBar(
-                automaticallyImplyLeading: false,
-                title: Consumer<AdminRegistrationProvider>(
-                  builder: (context, value, child) {
-                    // Return a widget from the builder function.
-                    return Container(
-                      decoration: const BoxDecoration(color: Colors.amber),
-                      height: 57,
-                      margin: const EdgeInsets.only(right: 30),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Container(
-                            width: 80,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: NetworkImage(value.adminModel!.imgUrl),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            value.adminModel!.name,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: UtilConstants.blackColor,
-
-                              // Use Colors.black instead of UtilConstants.blackColor
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-              body: Expanded(
-                child: Center(
-                  child: _ScreensExample(
-                    controller: _controller,
-                  ),
-                ),
+          Expanded(
+            child: Center(
+              child: _ScreensExample(
+                controller: _controller,
               ),
             ),
           ),
@@ -156,6 +137,7 @@ class ExampleSidebarX extends StatelessWidget {
         ),
       ),
       extendedTheme: const SidebarXTheme(
+        padding: EdgeInsets.only(top: 30),
         width: 200,
         decoration: BoxDecoration(
           color: canvasColor,
@@ -192,88 +174,42 @@ class ExampleSidebarX extends StatelessWidget {
 }
 
 class _ScreensExample extends StatelessWidget {
-  _ScreensExample({
+  const _ScreensExample({
     Key? key,
     required this.controller,
   }) : super(key: key);
 
   final SidebarXController controller;
-  List<Widget> PageNavigator = [
-    const AdminHome(),
-    const AdminControl(),
-    const StudentControl(),
-    const Counselorcontrol(),
-    const AdminActivityLog()
-  ];
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return AnimatedBuilder(
       animation: controller,
       builder: (context, child) {
-        // final pageTitle = _getTitleByIndex(controller.selectedIndex);
         switch (controller.selectedIndex) {
           case 0:
-            return AdminHome();
+            return const AdminHome();
           case 1:
-            return StudentControl();
+            return const StudentControl();
           case 2:
-            return Counselorcontrol();
+            return const Counselorcontrol();
           case 3:
-            return AdminControl();
+            return const AdminControl();
           case 4:
-            return AdminActivityLog();
-          // return ListView.builder(
-          //   padding: const EdgeInsets.only(top: 10),
-          //   itemBuilder: (context, index) => Container(
-          //     height: 100,
-          //     width: double.infinity,
-          //     margin: const EdgeInsets.only(bottom: 10, right: 10, left: 10),
-          //     decoration: BoxDecoration(
-          //       borderRadius: BorderRadius.circular(20),
-          //       color: Theme.of(context).canvasColor,
-          //       boxShadow: const [BoxShadow()],
-          //     ),
-          //   ),
-          // );
+            return const AdminActivityLog();
+
           default:
-            return Text('');
-          // return Text(
-          //   pageTitle,
-          //   style: theme.textTheme.headlineSmall,
-          //  );
+            return const Text('');
         }
       },
     );
   }
 }
 
-// String _getTitleByIndex(int index) {
-//   switch (index) {
-//     case 0:
-//       return '';
-//     case 1:
-//       return 'Search';
-//     case 2:
-//       return 'People';
-//     case 3:
-//       return 'Favorites';
-//     case 4:
-//       return 'Custom iconWidget';
-//     case 5:
-//       return 'Profile';
-//     case 6:
-//       return 'Settings';
-//     default:
-//       return 'Not found page';
-//   }
-// }
-
-const primaryColor = Color(0xFF685BFF);
-const canvasColor = Color(0xFF2E2E48);
+const primaryColor = Color(0xFF2E2E48);
+const canvasColor = Color(0xFF272643);
 const scaffoldBackgroundColor = Color(0xFF464667);
 const accentCanvasColor = Color(0xFF3E3E61);
 const white = Colors.white;
-final actionColor = const Color(0xFF5F5FA7).withOpacity(0.6);
+final actionColor = const Color.fromARGB(255, 50, 50, 132).withOpacity(0.6);
 final divider = Divider(color: white.withOpacity(0.3), height: 1);

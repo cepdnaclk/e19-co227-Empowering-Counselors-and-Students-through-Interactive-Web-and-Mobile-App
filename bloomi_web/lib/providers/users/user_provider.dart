@@ -43,7 +43,7 @@ class UserProvider extends ChangeNotifier {
           if (userModel != null) {
             //----------to start fetching user additional data----------
             await startFetchUserAdditionalData(user.uid);
-            UtilFunction.navigateForward(context, const Home());
+            UtilFunction.navigateForward(context, Home());
 
             //----------if user is counsellor, navigate to counsellor home page----------
           } else if (counsellorModel != null) {
@@ -56,7 +56,7 @@ class UserProvider extends ChangeNotifier {
             //----------if user is admin, navigate to admin home page----------
           } else if (adminModel != null) {
             await startFetchUserAdditionalData(user.uid);
- UtilFunction.navigateForward(context, AdminPanel());
+            UtilFunction.navigateForward(context, AdminPanel());
           }
         } catch (e) {
           Logger().e(e);
