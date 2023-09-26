@@ -179,7 +179,7 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                             padding: const EdgeInsets.all(20),
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 1, childAspectRatio: 6.8),
+                                    crossAxisCount: 1, childAspectRatio: 6),
                             itemBuilder: (BuildContext context, int index) {
                               return CustomCardWidget(
                                 list: _list,
