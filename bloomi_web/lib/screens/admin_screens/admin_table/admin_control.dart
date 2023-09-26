@@ -25,9 +25,6 @@ class _AdminControlState extends State<AdminControl> {
   final List<AdminModel> _list = [];
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
-    var width = mediaQueryData.size.width;
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -79,16 +76,14 @@ class _AdminControlState extends State<AdminControl> {
                               sortColumnIndex: 0,
                               sortAscending: true,
                               dataRowMinHeight: 50,
-                              dataRowMaxHeight: 50,
+                              dataRowMaxHeight: 60,
                               dataTextStyle: TextStyle(
                                 color: Colors.grey.shade900,
                               ),
-                              columnSpacing: (width * 1 / 15),
                               columns: [
                                 AdminFunctions.customDataColumns('Name'),
                                 AdminFunctions.customDataColumns('Email'),
-                                AdminFunctions.customDataColumns(
-                                    'Contact Number'),
+                                AdminFunctions.customDataColumns('Contacts'),
                                 AdminFunctions.customDataColumns('Faculty'),
                                 AdminFunctions.customDataColumns('Actions'),
                               ],

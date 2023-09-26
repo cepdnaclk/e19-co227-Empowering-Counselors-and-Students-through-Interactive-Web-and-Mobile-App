@@ -6,7 +6,6 @@ class AdminFunctions {
     return DataCell(
       Text(
         text,
-        textAlign: TextAlign.center,
         style: const TextStyle(
           fontSize: 15,
         ),
@@ -17,15 +16,11 @@ class AdminFunctions {
   //--------------------Datacolumns---------------------------
   static DataColumn customDataColumns(String text) {
     return DataColumn(
-        label: Center(
-      child: Center(
-        child: Text(
-          text,
-          style: TextStyle(
-            color: Colors.blue.shade300,
-            fontSize: 20,
-          ),
-        ),
+        label: Text(
+      text,
+      style: TextStyle(
+        color: Colors.blue.shade300,
+        fontSize: 18,
       ),
     ));
   }
