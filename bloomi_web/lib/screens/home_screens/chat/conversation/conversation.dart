@@ -54,7 +54,7 @@ class _ConversationState extends State<Conversation>
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  AvailableChat(height: height - 59),
+                  AvailableChat(height: height - 50),
                   const SizedBox(width: 4),
                   Consumer<UserChatProvider>(
                     builder: (context, value, child) {
@@ -63,10 +63,12 @@ class _ConversationState extends State<Conversation>
                       //----------------this is used to make when user dont have any convercation then show the empty screen----------------
                       return (value.getIndex == -1)
                           ? CustomChatScreen(
-                              width: width, height: height - 59, conId: "")
+                              width: width - 200,
+                              height: height - 50,
+                              conId: "")
                           : CustomChatScreen(
-                              width: width,
-                              height: height - 59,
+                              width: width - 200,
+                              height: height - 50,
                               conId: value.getConversationModelNew.id);
                     },
                   )

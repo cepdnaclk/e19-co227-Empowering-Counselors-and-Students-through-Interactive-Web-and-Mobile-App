@@ -101,35 +101,35 @@ class CustomCardWidget extends StatelessWidget {
                       )
                     ],
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 20),
-                    height: 70,
-                    width: 400,
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: UtilConstants.lightgreyColor),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text("Status:"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Container(
-                          width: 100,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: UtilConstants.greenColor,
-                          ),
-                          child: const Center(
-                            child: Text("Pending"),
-                          ),
-                        )
-                      ],
-                    ),
-                  )
+                  // Container(
+                  //   margin: const EdgeInsets.only(top: 20),
+                  //   height: 70,
+                  //   width: 400,
+                  //   padding: const EdgeInsets.symmetric(horizontal: 20),
+                  //   decoration: BoxDecoration(
+                  //       borderRadius: BorderRadius.circular(10),
+                  //       color: UtilConstants.lightgreyColor),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       const Text("Status:"),
+                  //       const SizedBox(
+                  //         width: 20,
+                  //       ),
+                  //       Container(
+                  //         width: 100,
+                  //         height: 40,
+                  //         decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(10),
+                  //           color: UtilConstants.greenColor,
+                  //         ),
+                  //         child: const Center(
+                  //           child: Text("Pending"),
+                  //         ),
+                  //       )
+                  //     ],
+                  //   ),
+                  // )
                 ],
               )
             ],
