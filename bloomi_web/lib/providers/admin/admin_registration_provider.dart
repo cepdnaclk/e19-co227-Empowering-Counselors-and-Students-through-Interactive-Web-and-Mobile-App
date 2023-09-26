@@ -76,9 +76,10 @@ class AdminRegistrationProvider extends ChangeNotifier {
       String email,
       String password,
       String phoneNumber,
-      // String faculty,
       String credential,
-      BuildContext context) async {
+      BuildContext context,
+      String uId,
+      bool isTrue) async {
     try {
       if (email.isNotEmpty &&
           password.isNotEmpty &&
@@ -88,6 +89,7 @@ class AdminRegistrationProvider extends ChangeNotifier {
         if (phoneNumber.length == 10 && phoneNumber.startsWith('07')) {
           setIsLoading(true);
 
+          Logger().e("User not found");
           //sign up user
           await AdminController()
               .signUpAdmin(
@@ -98,6 +100,8 @@ class AdminRegistrationProvider extends ChangeNotifier {
             credential,
             userType,
             context,
+            uId,
+            isTrue,
           )
               .then((value) {
             UtilMethod.customDialogBox(
@@ -125,7 +129,7 @@ class AdminRegistrationProvider extends ChangeNotifier {
     }
   }
 
-  //-----------------------To fetch counselor data---------------------
+  //-----------------------To fetch admin data---------------------
 
   AdminModel? _adminModel;
 

@@ -56,7 +56,7 @@ class UserProvider extends ChangeNotifier {
             //----------if user is admin, navigate to admin home page----------
           } else if (adminModel != null) {
             await startFetchUserAdditionalData(user.uid);
-            UtilFunction.navigateForward(context, AdminPanel());
+ UtilFunction.navigateForward(context, AdminPanel());
           }
         } catch (e) {
           Logger().e(e);

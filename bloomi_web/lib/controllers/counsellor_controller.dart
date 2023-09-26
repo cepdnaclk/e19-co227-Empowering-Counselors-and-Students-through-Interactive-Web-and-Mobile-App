@@ -19,18 +19,14 @@ class CounsellorController {
     String userCredential,
     String userType,
     BuildContext context,
+    String uId,
+    bool isTrue,
   ) async {
     try {
-      //create Admin account with email and password
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      if (credential.user != null) {
+      if (isTrue == false) {
+        String id = counsellor.doc().id;
         await saveCounsellorData(CounsellorModel(
-            uid: credential.user!.uid,
+            uid: id,
             name: name,
             email: email,
             phone: phone,
@@ -38,11 +34,29 @@ class CounsellorController {
             userCredential: userCredential,
             userType: userType,
             imgUrl: ""));
-      }
 
-      if (credential.user != null) {
         await saveUserAdditionalData(ChatModel(
-            uid: credential.user!.uid,
+            uid: id,
+            name: name,
+            email: email,
+            img: "",
+            lastSeen: DateTime.now().toString(),
+            isOnline: true,
+            token: "",
+            userType: userType));
+      } else {
+        await saveCounsellorData(CounsellorModel(
+            uid: uId,
+            name: name,
+            email: email,
+            phone: phone,
+            faculty: faculty,
+            userCredential: userCredential,
+            userType: userType,
+            imgUrl: ""));
+
+        await saveUserAdditionalData(ChatModel(
+            uid: uId,
             name: name,
             email: email,
             img: "",
@@ -51,8 +65,6 @@ class CounsellorController {
             token: "",
             userType: userType));
       }
-
-      Logger().i(credential.user);
     } on FirebaseAuthException catch (e) {
       UtilMethod.customDialogBox(context, "Error", e.code);
       Logger().e(e);
