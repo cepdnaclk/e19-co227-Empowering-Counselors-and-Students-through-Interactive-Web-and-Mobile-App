@@ -10,9 +10,6 @@ class TestingNavigator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    final _controller = SidebarXController(selectedIndex: 0, extended: true);
-
     return Scaffold(
       key: _key,
       appBar: AppBar(
