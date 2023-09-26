@@ -113,6 +113,8 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
     String faculty,
     String credential,
     BuildContext context,
+    String uId,
+    bool isTrue,
   ) async {
     try {
       if (email.isNotEmpty &&
@@ -123,6 +125,7 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
           credential.isNotEmpty) {
         setIsLoading(true);
 
+        Logger().e("User not found");
         //sign up user
         await CounsellorController()
             .signUpCounsellor(
@@ -134,6 +137,8 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
           credential,
           userType,
           context,
+          uId,
+          isTrue,
         )
             .then((value) {
           UtilMethod.customDialogBox(

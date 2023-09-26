@@ -162,7 +162,7 @@ class AuthController {
   }
 
   //-----------------------To SignIn user---------------------
-  static Future<void> signInUser(
+  static Future<bool> signInUser(
       String email, String password, BuildContext context) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -170,11 +170,15 @@ class AuthController {
         password: password,
       );
       Logger().i(credential.user);
+
+      return true;
     } on FirebaseAuthException catch (e) {
       Logger().e(e);
-      UtilMethod.customDialogBox(context, "Error", e.code);
+      // UtilMethod.customDialogBox(context, "Error", e.code);
+      return false;
     } catch (e) {
       Logger().e(e);
+      return false;
     }
   }
 

@@ -11,36 +11,48 @@ import 'package:logger/logger.dart';
 class AdminController {
   //-----------------------To SignUp Admin---------------------
   Future<void> signUpAdmin(
-    String email,
-    String password,
-    String name,
-    String phone,
-    String userCredential,
-    String userType,
-    BuildContext context,
-  ) async {
+      String email,
+      String password,
+      String name,
+      String phone,
+      String userCredential,
+      String userType,
+      BuildContext context,
+      String uId,
+      bool isTrue) async {
     try {
-      //create Admin account with email and password
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      if (credential.user != null) {
+      if (isTrue == false) {
+        String id = admins.doc().id;
         saveAdminData(AdminModel(
-            uid: credential.user!.uid,
+            uid: id,
             name: name,
             email: email,
             phone: phone,
             credential: userCredential,
             userType: userType,
             imgUrl: ""));
-      }
 
-      if (credential.user != null) {
         saveUserAdditionalData(ChatModel(
-            uid: credential.user!.uid,
+            uid: id,
+            name: name,
+            email: email,
+            img: "",
+            lastSeen: DateTime.now().toString(),
+            isOnline: true,
+            token: "",
+            userType: userType));
+      } else {
+        saveAdminData(AdminModel(
+            uid: uId,
+            name: name,
+            email: email,
+            phone: phone,
+            credential: userCredential,
+            userType: userType,
+            imgUrl: ""));
+
+        saveUserAdditionalData(ChatModel(
+            uid: uId,
             name: name,
             email: email,
             img: "",
@@ -49,8 +61,6 @@ class AdminController {
             token: "",
             userType: userType));
       }
-
-      Logger().i(credential.user);
     } on FirebaseAuthException catch (e) {
       UtilMethod.customDialogBox(context, "Error", e.code);
       Logger().e(e);
@@ -98,6 +108,31 @@ class AdminController {
     }
   }
 
+  // List<AdminModel>? allAdmin;
+
+  // List<AdminModel>? get admin => allAdmin;
+  // //-----------------------fetch admin data from database---------------------
+  // Future<List<AdminModel>?> fetchAllAdminData() async {
+  //   try {
+  //     //-------firebase quary to fetch admin data from database--------
+  //     QuerySnapshot querySnapshot = await admins.get();
+
+  //     Logger().i(querySnapshot.docs.length);
+
+  //     for (var e in querySnapshot.docs) {
+  //       AdminModel admin =
+  //           AdminModel.fromJson(e.data() as Map<String, dynamic>);
+
+  //       allAdmin!.add(admin);
+  //     }
+
+  //     return allAdmin;
+  //   } catch (e) {
+  //     Logger().e(e);
+  //     return null;
+  //   }
+  // }
+
   //----------------------saving admin additional data in cloud firestore---------------------
 
   CollectionReference additionalAdmin =
@@ -124,5 +159,5 @@ class AdminController {
   Stream<QuerySnapshot> getAdmins() => admins.snapshots();
 
   //-------------retrieve and listen to the admin real-time-----------------
-  Stream<QuerySnapshot> getAdminAdditional() => admins.snapshots();
+  Stream<QuerySnapshot> getAdminAdditional() => additionalAdmin.snapshots();
 }
