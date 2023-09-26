@@ -30,15 +30,15 @@ class _AdminNavBarState extends State<AdminNavBar> {
                   SizedBox(
                     width: mediaQueryData.size.width * 0.02,
                   ),
-                  InkWell(
-                    onTap: () {
-                      Scaffold.of(context).openDrawer();
-                    },
-                    child: Icon(
-                      Icons.menu,
-                      size: mediaQueryData.size.width * 0.02,
-                    ),
-                  ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     Scaffold.of(context).openDrawer();
+                  //   },
+                  //   child: Icon(
+                  //     Icons.menu,
+                  //     size: mediaQueryData.size.width * 0.02,
+                  //   ),
+                  // ),
                   SizedBox(
                     width: mediaQueryData.size.width * 0.62,
                   ),
