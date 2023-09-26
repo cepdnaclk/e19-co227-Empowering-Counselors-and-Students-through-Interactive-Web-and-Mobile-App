@@ -12,11 +12,7 @@ class _AdminHomeState extends State<AdminHome> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Stack(
-        children: [
-          Center(child: CustomText("Welcome to the Admin Dashboard")),
-        ],
-      ),
+      body: Center(child: CustomText("Welcome to the Admin Dashboard")),
     );
   }
 }
