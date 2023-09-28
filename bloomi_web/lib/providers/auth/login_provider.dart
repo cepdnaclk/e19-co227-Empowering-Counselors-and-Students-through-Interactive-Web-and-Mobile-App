@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
@@ -59,83 +61,78 @@ class LoginProvider extends ChangeNotifier {
         await AuthController.signInUser(email, password, context).then((value) {
           if (value == false) {
             checkUserExistence(email).then((value2) async {
-              if (value2!['exists']) {
-                await FirebaseAuth.instance
-                    .createUserWithEmailAndPassword(
-                  email: email,
-                  password: password,
-                )
-                    .then((value) async {
-                  try {
-                    final userType = value2['userType'];
+              try {
+                if (value2!['exists']) {
+                  await FirebaseAuth.instance
+                      .createUserWithEmailAndPassword(
+                    email: email,
+                    password: password,
+                  )
+                      .then((value) async {
+                    try {
+                      final userType = value2['userType'];
+                      if (userType == 'admin') {
+                        final uidPre = value2['uid'];
+                        final userIdPreviousCollection = admins.doc(uidPre);
+                        final adminAdditional = additionalAdmin.doc(uidPre);
+                        final name = value2['name'];
+                        final phoneNumber = value2['phoneNumber'];
+                        final credential = value2['credential'];
 
-                    if (userType == 'admin') {
-                      final uidPre = value2['uid'];
-                      final userIdPreviousCollection = admins.doc(uidPre);
-                      final adminAdditional = additionalAdmin.doc(uidPre);
-                      // await userIdPrevious.update({'uid': value.user!.uid});
-                      final name = value2['name'];
-                      final phoneNumber = value2['phoneNumber'];
-                      final credential = value2['credential'];
-                      Provider.of<AdminRegistrationProvider>(context,
-                              listen: false)
-                          .signUpAdmin(
-                        name,
-                        email,
-                        password,
-                        phoneNumber,
-                        credential,
-                        context,
-                        value.user!.uid,
-                        true,
-                      );
+                        await Provider.of<AdminRegistrationProvider>(context,
+                                listen: false)
+                            .signUpAdmin(
+                          name,
+                          email,
+                          password,
+                          phoneNumber,
+                          credential,
+                          context,
+                          value.user!.uid,
+                          true,
+                        );
 
-                      await userIdPreviousCollection.delete();
-                      await adminAdditional.delete();
-                    } else if (userType == 'counsellor') {
-                      Logger().e("Hiiiii");
-                      final uidPre = value2['uid'];
-                      final userIdPreviousCollection = counsellors.doc(uidPre);
-                      final counsellorAdditional =
-                          additionalCounsellor.doc(uidPre);
-                      // await userIdPrevious.update({'uid': value.user!.uid});
+                        await userIdPreviousCollection.delete();
+                        await adminAdditional.delete();
+                      } else if (userType == 'counsellor') {
+                        final uidPre = value2['uid'];
+                        final userIdPreviousCollection =
+                            counsellors.doc(uidPre);
+                        final counsellorAdditional =
+                            additionalCounsellor.doc(uidPre);
+                        final name = value2['name'];
+                        final phoneNumber = value2['phoneNumber'];
+                        final faculty = value2['faculty'];
+                        final credential = value2['credential'];
 
-                      final name = value2['name'];
-                      final phoneNumber = value2['phoneNumber'];
-                      final faculty = value2['faculty'];
-                      final credential = value2['credential'];
-                      Logger().e("Byeeee");
-
-                      Logger().e(name ?? "");
-                      Logger().e(phoneNumber ?? "");
-                      Logger().e(faculty ?? "");
-                      Logger().e(credential ?? "");
-                      // Logger().e(value.user!.uid);
-                      // Logger().e(email??"");
-                      // Logger().e(password);
-
-                      Provider.of<CounsellorRegistrationProvider>(context,
-                              listen: false)
-                          .signUpCounsellor(
-                              name,
-                              email,
-                              password,
-                              phoneNumber,
-                              faculty,
-                              credential,
-                              context,
-                              value.user!.uid,
-                              true);
-                      await userIdPreviousCollection.delete();
-                      await counsellorAdditional.delete();
+                        await Provider.of<CounsellorRegistrationProvider>(
+                                context,
+                                listen: false)
+                            .signUpCounsellor(
+                                name,
+                                email,
+                                password,
+                                phoneNumber,
+                                faculty,
+                                credential,
+                                context,
+                                value.user!.uid,
+                                true);
+                        await userIdPreviousCollection.delete();
+                        await counsellorAdditional.delete();
+                      }
+                    } catch (e) {
+                      Logger().e(e);
                     }
-                  } catch (e) {
-                    Logger().e(e);
-                  }
-                });
-              } else {
+                  });
+                } else {
+                  UtilMethod.customDialogBox(
+                      context, "Error", "email not Exists");
+                }
+              } catch (e) {
                 UtilMethod.customDialogBox(
-                    context, "Error", "email not Exists");
+                    context, "Error", "Incorrect Password");
+                Logger().e(e);
               }
             });
           } else {
@@ -177,7 +174,7 @@ class LoginProvider extends ChangeNotifier {
           'uid': adminQuery.docs[0].data()['uid'],
           'name': adminQuery.docs[0].data()['name'],
           'phoneNumber': adminQuery.docs[0].data()['phone'],
-          'credential': adminQuery.docs[0].data()['userCredential'],
+          'credential': adminQuery.docs[0].data()['credential'],
         };
       } else if (counsellorQuery.docs.isNotEmpty) {
         // User exists as a counsellor, return user type and existence status
