@@ -2,7 +2,6 @@ import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/screens/home_screens/chat/conversation/available_chat.dart';
 import 'package:bloomi_web/screens/home_screens/chat/conversation/custom_chat_screen.dart';
-import 'package:bloomi_web/screens/home_screens/chat/conversation/header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -45,37 +44,37 @@ class _ConversationState extends State<Conversation>
         }
       },
       child: SafeArea(
-        child: Column(
-          children: [
-            const HeaderWidget(
-              isTrue: false,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  AvailableChat(height: height - 50),
-                  const SizedBox(width: 4),
-                  Consumer<UserChatProvider>(
-                    builder: (context, value, child) {
-                      Logger().e(value.getIndex);
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // const HeaderWidget(
+              //   isTrue: false,
+              // ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    AvailableChat(height: height),
+                    const SizedBox(width: 4),
+                    Consumer<UserChatProvider>(
+                      builder: (context, value, child) {
+                        Logger().e(value.getIndex);
 
-                      //----------------this is used to make when user dont have any convercation then show the empty screen----------------
-                      return (value.getIndex == -1)
-                          ? CustomChatScreen(
-                              width: width - 200,
-                              height: height - 50,
-                              conId: "")
-                          : CustomChatScreen(
-                              width: width - 200,
-                              height: height - 50,
-                              conId: value.getConversationModelNew.id);
-                    },
-                  )
-                ],
-              ),
-            )
-          ],
+                        //----------------this is used to make when user dont have any convercation then show the empty screen----------------
+                        return (value.getIndex == -1)
+                            ? CustomChatScreen(
+                                width: width - 200, height: height, conId: "")
+                            : CustomChatScreen(
+                                width: width - 200,
+                                height: height,
+                                conId: value.getConversationModelNew.id);
+                      },
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
