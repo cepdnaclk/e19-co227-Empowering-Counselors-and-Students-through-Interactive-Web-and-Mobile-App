@@ -21,6 +21,7 @@ class CustomChatScreen extends StatelessWidget {
   final double width;
   final double height;
   final String conId;
+
   final List<MessageModel> _list = [];
 
   @override
@@ -56,12 +57,6 @@ class CustomChatScreen extends StatelessWidget {
                         width: width - 530,
                         height: height - 152 - 80,
                         color: UtilConstants.whiteColor,
-                        child: const Column(
-                          children: [
-                            Expanded(child: SizedBox()),
-                            MessageTypingWidget(),
-                          ],
-                        ),
                       ),
                     );
                   }

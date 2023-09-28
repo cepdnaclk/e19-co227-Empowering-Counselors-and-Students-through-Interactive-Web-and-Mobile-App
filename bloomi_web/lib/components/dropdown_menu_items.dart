@@ -73,11 +73,11 @@ class MenuItem {
 }
 
 abstract class MenuItems {
-  static const List<MenuItem> firstItems = [home, share, settings];
+  static const List<MenuItem> firstItems = [home, settings];
   static const List<MenuItem> secondItems = [logout];
 
   static const home = MenuItem(text: 'Sachith Dissanayaka');
-  static const share = MenuItem(text: 'Share', icon: Icons.share);
+
   static const settings = MenuItem(text: 'Settings', icon: Icons.settings);
   static const logout = MenuItem(text: 'Log Out', icon: Icons.logout);
 
@@ -108,9 +108,7 @@ abstract class MenuItems {
       case MenuItems.settings:
         //Do something
         break;
-      case MenuItems.share:
-        //Do something
-        break;
+
       case MenuItems.logout:
         AuthController.signOutUser();
         break;

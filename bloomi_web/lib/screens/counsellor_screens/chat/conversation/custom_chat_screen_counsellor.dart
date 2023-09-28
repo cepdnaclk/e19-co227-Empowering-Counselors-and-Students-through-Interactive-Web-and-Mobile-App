@@ -16,11 +16,13 @@ class CustomChatScreenCounsellor extends StatelessWidget {
     required this.width,
     required this.height,
     required this.conId,
+    required this.getIndex,
   });
 
   final double width;
   final double height;
   final String conId;
+  final int getIndex;
   final List<MessageModel> _list = [];
 
   @override
@@ -107,7 +109,9 @@ class CustomChatScreenCounsellor extends StatelessWidget {
                                     return const SizedBox(height: 10);
                                   },
                                   itemCount: _list.length)),
-                          const MessageTypingWidgetCounsellor(),
+                          (getIndex == -1)
+                              ? const SizedBox()
+                              : const MessageTypingWidgetCounsellor(),
                         ],
                       ),
                     ),

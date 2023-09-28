@@ -64,10 +64,14 @@ class _ConversationCounsellorState extends State<ConversationCounsellor>
                       //----------------this is used to make when user dont have any convercation then show the empty screen----------------
                       return (value.getIndex == -1)
                           ? CustomChatScreenCounsellor(
-                              width: width, height: height - 59, conId: "")
-                          : CustomChatScreenCounsellor(
-                              width: width,
+                              width: width - 200,
                               height: height - 59,
+                              getIndex: value.getIndex,
+                              conId: "")
+                          : CustomChatScreenCounsellor(
+                              width: width - 200,
+                              height: height - 59,
+                              getIndex: value.getIndex,
                               conId: value.getConversationModelNew.id);
                     },
                   )
