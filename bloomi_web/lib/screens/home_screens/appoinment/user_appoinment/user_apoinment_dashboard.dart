@@ -136,50 +136,82 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                     fontSize: 24,
                   ),
                   SizedBox(
-                      height: 220,
-                      child: StreamBuilder(
-                        stream: AppointmentController().getAppointment(),
-                        builder: (context, snapshot) {
-                          //-------if the snapshot error occurs, show error message-------
-                          if (snapshot.hasError) {
-                            return const Center(
-                              child: Text("Something went wrong"),
-                            );
-                          }
+                    height: 220,
+                    child: StreamBuilder(
+                      stream: AppointmentController().getAppointment(),
+                      builder: (context, snapshot) {
+                        // -------if the snapshot error occurs, show error message-------
+                        if (snapshot.hasError) {
+                          return const Center(
+                            child: Text(
+                              "Something went wrong",
+                              style: TextStyle(
+                                fontSize: 18.0, // Customize the font size
+                                color: Colors.red, // Customize the text color
+                                fontWeight: FontWeight
+                                    .bold, // Customize the font weight
+                              ),
+                            ),
+                          );
+                        }
 
-                          //-------if the snapshot is waiting, show progress indicator-------
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          }
+                        // -------if the snapshot is waiting, show progress indicator-------
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
 
-                          if (snapshot.data!.docs.isEmpty) {
-                            return const Center(
-                              child: Text("No Appointment found"),
-                            );
-                          }
+                        if (snapshot.data!.docs.isEmpty) {
+                          return const Center(
+                            child: Text(
+                              "No Appointment found",
+                              style: TextStyle(
+                                fontSize: 18.0, // Customize the font size
+                                color: Colors.blue, // Customize the text color
+                                fontWeight: FontWeight
+                                    .bold, // Customize the font weight
+                              ),
+                            ),
+                          );
+                        }
 
-                          Logger().i(snapshot.data!.docs.length);
+                        Logger().i(snapshot.data!.docs.length);
 
-                          //-------------clear the list before adding new data----------------
-                          _list.clear();
+                        // -------------clear the list before adding new data----------------
+                        _list.clear();
 
-                          //-----------------read the document list from snapshot and map to model and add to list----------------
-                          for (var e in snapshot.data!.docs) {
-                            Map<String, dynamic> data =
-                                e.data() as Map<String, dynamic>;
-                            var model = AppointmentModel.fromJson(data);
-                            _list.add(model);
-                          }
+                        //-----------------read the document list from snapshot and map to model and add to list----------------
+                        for (var e in snapshot.data!.docs) {
+                          Map<String, dynamic> data =
+                              e.data() as Map<String, dynamic>;
+                          var model = AppointmentModel.fromJson(data);
+                          _list.add(model);
+                        }
 
-                          return GridView.builder(
+                        return Container(
+                          padding: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color:
+                                Colors.white, // Customize the background color
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: GridView.builder(
                             physics: const BouncingScrollPhysics(),
-                            padding: const EdgeInsets.all(20),
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 1, childAspectRatio: 6),
+                              crossAxisCount: 1,
+                              childAspectRatio: 6,
+                            ),
                             itemBuilder: (BuildContext context, int index) {
                               return CustomCardWidget(
                                 list: _list,
@@ -187,9 +219,11 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                               );
                             },
                             itemCount: _list.length,
-                          );
-                        },
-                      ))
+                          ),
+                        );
+                      },
+                    ),
+                  )
                 ],
               ),
             )),

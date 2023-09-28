@@ -1,8 +1,8 @@
-import 'package:bloomi_web/components/available_chat.dart';
-import 'package:bloomi_web/components/custom_chat_screen.dart';
-import 'package:bloomi_web/components/header_widget.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
+import 'package:bloomi_web/screens/home_screens/chat/conversation/available_chat.dart';
+import 'package:bloomi_web/screens/home_screens/chat/conversation/custom_chat_screen.dart';
+import 'package:bloomi_web/screens/home_screens/chat/conversation/header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';

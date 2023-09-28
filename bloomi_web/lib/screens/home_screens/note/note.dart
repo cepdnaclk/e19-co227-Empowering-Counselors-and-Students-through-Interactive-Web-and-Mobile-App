@@ -1,9 +1,7 @@
 import 'package:bloomi_web/components/calender.dart';
 import 'package:bloomi_web/components/custom_form_note_taking.dart';
 import 'package:bloomi_web/components/note_card.dart';
-import 'package:bloomi_web/providers/user_home_provider/note_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class CalendarApp extends StatelessWidget {
   const CalendarApp({super.key});
@@ -47,16 +45,7 @@ class _NoteState extends State<Note> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return Consumer<NoteProvider>(
-                builder: (context, value, child) {
-                  return const CustomFormNoteTaking();
-                },
-              );
-            },
-          );
+          UtilFormMethodNoteTaking.showDialogMethod(context);
         },
         child: const Icon(Icons.add),
       ),
