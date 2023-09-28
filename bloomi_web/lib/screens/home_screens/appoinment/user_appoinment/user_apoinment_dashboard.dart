@@ -1,10 +1,6 @@
-import 'package:bloomi_web/components/calender.dart';
 import 'package:bloomi_web/components/counselor_list_view.dart';
 import 'package:bloomi_web/components/custom_card_widget.dart';
-import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/components/dropdown_button.dart';
 import 'package:bloomi_web/controllers/appoinment_controller.dart';
-import 'package:bloomi_web/controllers/counsellor_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
@@ -20,123 +16,67 @@ class UserAppointmentDashboard extends StatefulWidget {
 
 class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
   final List<AppointmentModel> _list = [];
-  final List<CounsellorModel> _listCounsellor = [];
-  final List<String> _listCounsellorName = [];
+
+  int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 20.0,
-              horizontal: 10.0,
-            ),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        const Column(
-                          children: [
-                            Text(
-                              "Available Counsellors",
-                              style: TextStyle(
-                                fontSize: 25,
-                                color: UtilConstants.blackColor,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: SizedBox(
-                                height: 300,
-                                width: 600,
-                                child: CounselorListView(),
-                              ),
-                            ),
-                          ],
+          padding: const EdgeInsets.symmetric(
+            vertical: 20.0,
+            horizontal: 10.0,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Available Counsellors",
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: UtilConstants.blackColor,
+                          fontWeight: FontWeight.bold,
                         ),
-                        const SizedBox(
-                          width: 120,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: SizedBox(
+                          height: 300,
+                          child: CounselorListView(),
                         ),
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: Colors.black),
-                            ),
-                            child: Column(
-                              children: [
-                                StreamBuilder(
-                                  stream:
-                                      CounsellorController().getCounsellors(),
-                                  builder: (context, snapshot) {
-                                    //-------if the snapshot error occurs, show error message-------
-                                    if (snapshot.hasError) {
-                                      return const Center(
-                                        child: Text("Something went wrong"),
-                                      );
-                                    }
-
-                                    //-------if the snapshot is waiting, show progress indicator-------
-                                    if (snapshot.connectionState ==
-                                        ConnectionState.waiting) {
-                                      return const Center(
-                                        child: CircularProgressIndicator(),
-                                      );
-                                    }
-
-                                    if (snapshot.data!.docs.isEmpty) {
-                                      return const Center(
-                                        child: Text("No Counsellor found"),
-                                      );
-                                    }
-
-                                    Logger().i(snapshot.data!.docs.length);
-
-                                    //-------------clear the list before adding new data----------------
-                                    _listCounsellor.clear();
-
-                                    //-----------------read the document list from snapshot and map to model and add to list----------------
-                                    for (var e in snapshot.data!.docs) {
-                                      Map<String, dynamic> data =
-                                          e.data() as Map<String, dynamic>;
-                                      var model =
-                                          CounsellorModel.fromJson(data);
-                                      _listCounsellor.add(model);
-                                      _listCounsellorName.add(model.name);
-                                    }
-
-                                    return DropDownButtonWidget(
-                                        listItem: _listCounsellorName,
-                                        text: "Select Counselor",
-                                        index: 1);
-                                  },
-                                ),
-                                const Calender(),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(
-                    height: 40,
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                const Text(
+                  "Your Appointments",
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: UtilConstants.blackColor,
+                    fontWeight: FontWeight.bold,
                   ),
-                  const CustomText(
-                    "Your Appointment",
-                    fontColor: UtilConstants.blackColor,
-                    fontSize: 24,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 25,
                   ),
-                  SizedBox(
-                    height: 220,
+                  child: SizedBox(
+                    height: 185,
                     child: StreamBuilder(
                       stream: AppointmentController().getAppointment(),
                       builder: (context, snapshot) {
@@ -146,10 +86,9 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                             child: Text(
                               "Something went wrong",
                               style: TextStyle(
-                                fontSize: 18.0, // Customize the font size
-                                color: Colors.red, // Customize the text color
-                                fontWeight: FontWeight
-                                    .bold, // Customize the font weight
+                                fontSize: 18.0,
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           );
@@ -168,10 +107,9 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                             child: Text(
                               "No Appointment found",
                               style: TextStyle(
-                                fontSize: 18.0, // Customize the font size
-                                color: Colors.blue, // Customize the text color
-                                fontWeight: FontWeight
-                                    .bold, // Customize the font weight
+                                fontSize: 18.0,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           );
@@ -190,28 +128,9 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                           _list.add(model);
                         }
 
-                        return Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color:
-                                Colors.white, // Customize the background color
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: const Offset(0, 3),
-                              ),
-                            ],
-                          ),
-                          child: GridView.builder(
+                        return Expanded(
+                          child: ListView.builder(
                             physics: const BouncingScrollPhysics(),
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 1,
-                              childAspectRatio: 6,
-                            ),
                             itemBuilder: (BuildContext context, int index) {
                               return CustomCardWidget(
                                 list: _list,
@@ -223,10 +142,12 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                         );
                       },
                     ),
-                  )
-                ],
-              ),
-            )),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
