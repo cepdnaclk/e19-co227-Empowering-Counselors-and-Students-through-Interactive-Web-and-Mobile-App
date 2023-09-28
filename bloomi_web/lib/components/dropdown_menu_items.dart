@@ -24,21 +24,21 @@ class _DropDownMenuItemsState extends State<DropDownMenuItems> {
         ),
         items: [
           ...MenuItems.firstItems.map(
-            (item) => DropdownMenuItem<MenuItem>(
+            (item) => DropdownMenuItem<String>(
               value: item,
               child: MenuItems.buildItem(item),
             ),
           ),
           const DropdownMenuItem<Divider>(enabled: false, child: Divider()),
           ...MenuItems.secondItems.map(
-            (item) => DropdownMenuItem<MenuItem>(
+            (item) => DropdownMenuItem<String>(
               value: item,
               child: MenuItems.buildItem(item),
             ),
           ),
         ],
         onChanged: (value) {
-          MenuItems.onChanged(context, value! as MenuItem);
+          MenuItems.onChanged(context, value! as String);
         },
         dropdownStyleData: DropdownStyleData(
           width: 200,
@@ -47,7 +47,7 @@ class _DropDownMenuItemsState extends State<DropDownMenuItems> {
             borderRadius: BorderRadius.circular(10),
             color: UtilConstants.whiteColor,
           ),
-          offset: const Offset(20, -10),
+          offset: const Offset(-190, -4),
         ),
         menuItemStyleData: MenuItemStyleData(
           customHeights: [
@@ -62,35 +62,24 @@ class _DropDownMenuItemsState extends State<DropDownMenuItems> {
   }
 }
 
-class MenuItem {
-  const MenuItem({
-    required this.text,
-    this.icon,
-  });
-
-  final String text;
-  final IconData? icon;
-}
-
 abstract class MenuItems {
-  static const List<MenuItem> firstItems = [home, settings];
-  static const List<MenuItem> secondItems = [logout];
+  static const List<String> firstItems = [home, settings];
+  static const List<String> secondItems = [logout];
 
-  static const home = MenuItem(text: 'Sachith Dissanayaka');
+  static const home = 'Sachith Dissanayaka';
 
-  static const settings = MenuItem(text: 'Settings', icon: Icons.settings);
-  static const logout = MenuItem(text: 'Log Out', icon: Icons.logout);
+  static const settings = 'Settings';
+  static const logout = 'Log Out';
 
-  static Widget buildItem(MenuItem item) {
+  static Widget buildItem(String item) {
     return Row(
       children: [
-        Icon(item.icon, color: UtilConstants.blackColor, size: 22),
         const SizedBox(
-          width: 10,
+          width: 5,
         ),
         Expanded(
           child: Text(
-            item.text,
+            item,
             style: const TextStyle(
               color: UtilConstants.blackColor,
             ),
@@ -100,7 +89,7 @@ abstract class MenuItems {
     );
   }
 
-  static void onChanged(BuildContext context, MenuItem item) {
+  static void onChanged(BuildContext context, String item) {
     switch (item) {
       case MenuItems.home:
         //Do something

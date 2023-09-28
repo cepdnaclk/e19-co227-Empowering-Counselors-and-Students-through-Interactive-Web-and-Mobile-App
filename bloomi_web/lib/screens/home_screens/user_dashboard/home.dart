@@ -66,7 +66,7 @@ class Home extends StatelessWidget {
                     icon: Icons.notifications,
                   ),
                 ),
-                const SizedBox(width: 20),
+                const SizedBox(width: 35),
                 Container(
                   decoration: BoxDecoration(
                     color: canvasColor,
@@ -79,7 +79,7 @@ class Home extends StatelessWidget {
                     icon: Icons.person,
                   ),
                 ),
-                const SizedBox(width: 15)
+                const SizedBox(width: 25)
               ],
               bottom: const PreferredSize(
                 preferredSize:
