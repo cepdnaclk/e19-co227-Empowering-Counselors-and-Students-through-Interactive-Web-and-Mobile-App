@@ -132,14 +132,17 @@ class _EditDesktopState extends State<EditDesktop> {
                         builder: (context, value, child) {
                           return InkWell(
                             onTap: () {
-                              // value.signUpCounsellor(
-                              //     value.name.text,
-                              //     value.email.text,
-                              //     value.password.text,
-                              //     value.phoneNumber.text,
-                              //     value.faculty,
-                              //     value.credentials.text,
-                              //     context);
+                              value.updateCounselor(
+                                value.name.text,
+                                value.email.text,
+                                value.password.text,
+                                value.phoneNumber.text,
+                                value.faculty,
+                                value.credentials.text,
+                                context,
+                                value.counsellorModel!.uid,
+                                value.counsellorModel!.imgUrl,
+                              );
                             },
                             child: FormButtonWeb(
                               "Save",

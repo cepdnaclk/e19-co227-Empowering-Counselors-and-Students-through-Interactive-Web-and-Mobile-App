@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
@@ -115,6 +116,17 @@ class _ImagePickState extends State<ImagePick> {
                 builder: (context, value, child) {
                   return InkWell(
                     onTap: () {
+                      /*value.updateCounselor(
+                        value.counsellorModel!.name,
+                        value.counsellorModel!.email,
+                        value.counsellorModel!.phone,
+                        value.counsellorModel!.faculty,
+                        value.counsellorModel!.userCredential,
+                        value.counsellorModel!.userType,
+                        context,
+                        value.counsellorModel!.uid,
+                        utf8.decode(_image!),
+                      );*/
                       //upload image
                       Navigator.of(context).pop();
                     },

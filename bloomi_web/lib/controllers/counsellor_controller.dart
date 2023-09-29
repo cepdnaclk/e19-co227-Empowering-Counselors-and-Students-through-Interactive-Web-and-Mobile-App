@@ -95,10 +95,60 @@ class CounsellorController {
           'faculty': counsellorModel.faculty,
           'userCredential': counsellorModel.userCredential,
           'userType': counsellorModel.userType,
-          'imgUrl': UtilConstants.dummyProfileUrl,
+          'imgUrl': counsellorModel.imgUrl,
         })
         .then((value) => Logger().i("User Added"))
         .catchError((error) => Logger().e("Failed to add user: $error"));
+  }
+
+  //-----------------------To Update counsellor---------------------
+  Future<void> updateCounsellor(
+    String email,
+    String password,
+    String name,
+    String phone,
+    String faculty,
+    String userCredential,
+    String userType,
+    BuildContext context,
+    String uId,
+    String imgUrl,
+  ) async {
+    try {
+      String id = counsellor.doc().id;
+      await updateCounsellorData(CounsellorModel(
+          uid: id,
+          name: name,
+          email: email,
+          phone: phone,
+          faculty: faculty,
+          userCredential: userCredential,
+          userType: userType,
+          imgUrl: imgUrl));
+    } on FirebaseAuthException catch (e) {
+      UtilMethod.customDialogBox(context, "Error", e.code);
+      Logger().e(e);
+    } catch (e) {
+      Logger().e(e);
+    }
+  }
+
+  //----------------------Update Counsellor data in cloud firestore---------------------
+  Future<void> updateCounsellorData(CounsellorModel counsellorModel) {
+    return counsellor
+        .doc(counsellorModel.uid)
+        .update({
+          'uid': counsellorModel.uid,
+          'name': counsellorModel.name,
+          'email': counsellorModel.email,
+          'phone': counsellorModel.phone,
+          'faculty': counsellorModel.faculty,
+          'userCredential': counsellorModel.userCredential,
+          'userType': counsellorModel.userType,
+          'imgUrl': counsellorModel.imgUrl,
+        })
+        .then((value) => Logger().i("User Updated"))
+        .catchError((error) => Logger().e("Failed to update user: $error"));
   }
 
   //-----------------------fetch admin data from database---------------------

@@ -20,6 +20,7 @@ class DropDownButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double currWidth = MediaQuery.of(context).size.width;
     // ignore: unused_local_variable
     String? selectedValue;
 
@@ -28,20 +29,22 @@ class DropDownButtonWidget extends StatelessWidget {
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: 16),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(10),
         ),
       ),
       hint: Text(
         text,
-        style: const TextStyle(fontSize: 14, color: UtilConstants.blackColor),
+        style: TextStyle(
+            fontSize: currWidth < 480 ? 12 : 14,
+            color: UtilConstants.blackColor),
       ),
       items: listItem
           .map((item) => DropdownMenuItem<String>(
                 value: item,
                 child: Text(
                   item,
-                  style: const TextStyle(
-                    fontSize: 14,
+                  style: TextStyle(
+                    fontSize: currWidth < 480 ? 12 : 14,
                   ),
                 ),
               ))

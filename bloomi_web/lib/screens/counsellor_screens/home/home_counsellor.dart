@@ -2,8 +2,11 @@ import 'package:bloomi_web/components/dropdown_menu_items.dart';
 import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/screens/counsellor_screens/calender/calendar_home.dart';
 import 'package:bloomi_web/screens/counsellor_screens/chat/home/chat_counsellor.dart';
-import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard.dart';
+
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard_home.dart';
+import 'package:bloomi_web/screens/counsellor_screens/profile/profile_home.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/notification_viewer.dart.dart';
+
 import 'package:bloomi_web/screens/home_screens/note/note.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +27,24 @@ class HomeCounsellor extends StatelessWidget {
       appBar: isSmallScreen
           ? AppBar(
               backgroundColor: canvasColor,
-              title: const Text('BLOOMI'),
+              title: Row(
+                children: [
+                  Image.asset(
+                    UtilConstants.primaryImagePath,
+                    height: 40,
+                    width: 40,
+                  ),
+                  const SizedBox(width: 10),
+                  const Text(
+                    'BLOOMI',
+                    style: TextStyle(
+                      color: white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
               leading: IconButton(
                 onPressed: () {
                   _key.currentState?.openDrawer();
@@ -232,12 +252,13 @@ class _ScreensExample extends StatelessWidget {
       builder: (context, child) {
         switch (controller.selectedIndex) {
           case 0:
-            return const Dashboard();
+            return const DashboardHome();
 
           case 1:
             return const ChatCounsellor();
           case 2:
-            return const Note();
+            //return const Note();
+            return const ProfileHome();
           case 3:
             return const CalendarHome();
 
