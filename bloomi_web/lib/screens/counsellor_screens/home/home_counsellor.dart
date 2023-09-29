@@ -1,15 +1,15 @@
+import 'package:bloomi_web/components/dropdown_menu_items.dart';
 import 'package:bloomi_web/components/footer.dart';
-import 'package:bloomi_web/controllers/auth_controller.dart';
-import 'package:bloomi_web/screens/admin_screens/admin_table/admin_control.dart';
-import 'package:bloomi_web/screens/admin_screens/admin_table/counselor_control.dart';
-import 'package:bloomi_web/screens/admin_screens/admin_table/students_control.dart';
-import 'package:bloomi_web/screens/admin_screens/home/admin_home.dart';
-import 'package:bloomi_web/screens/admin_screens/log_activity/admin_activitylog.dart';
+import 'package:bloomi_web/screens/counsellor_screens/calender/calendar_home.dart';
+import 'package:bloomi_web/screens/counsellor_screens/chat/home/chat_counsellor.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard.dart';
+import 'package:bloomi_web/screens/home_screens/note/note.dart';
+import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
-class AdminPanel extends StatelessWidget {
-  AdminPanel({Key? key}) : super(key: key);
+class HomeCounsellor extends StatelessWidget {
+  HomeCounsellor({Key? key}) : super(key: key);
 
   final _controller = SidebarXController(selectedIndex: 0, extended: true);
   final _key = GlobalKey<ScaffoldState>();
@@ -34,45 +34,74 @@ class AdminPanel extends StatelessWidget {
           : AppBar(
               automaticallyImplyLeading: false,
               backgroundColor: canvasColor,
-              title: const Text(
-                'BLOOMI',
-                style: TextStyle(
-                  color: white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+              title: Row(
+                children: [
+                  Image.asset(
+                    UtilConstants.primaryImagePath,
+                    height: 40,
+                    width: 40,
+                  ),
+                  const SizedBox(width: 10),
+                  const Text(
+                    'BLOOMI',
+                    style: TextStyle(
+                      color: white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
               actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.notifications,
-                    color: white,
+                Container(
+                  decoration: BoxDecoration(
+                    color: canvasColor,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  alignment: Alignment.center,
+                  width: 24,
+                  height: 24, // Adjust the width to your preference.
+                  child: const DropDownMenuItems(
+                    icon: Icons.notifications,
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.settings,
-                    color: white,
+                const SizedBox(width: 20),
+                Container(
+                  decoration: BoxDecoration(
+                    color: canvasColor,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  alignment: Alignment.center,
+                  width: 24,
+                  height: 24, // Adjust the width to your preference.
+                  child: const DropDownMenuItems(
+                    icon: Icons.person,
                   ),
                 ),
-                IconButton(
-                  onPressed: () {
-                    AuthController.signOutUser();
-                  },
-                  icon: const Icon(
-                    Icons.logout,
-                    color: white,
-                  ),
-                ),
-                const SizedBox(width: 5)
+                const SizedBox(width: 15)
               ],
+              bottom: const PreferredSize(
+                preferredSize:
+                    Size.fromHeight(5), // Adjust the height as needed
+                child: SizedBox(), // This is an empty widget
+              ),
             ),
       drawer: ExampleSidebarX(controller: _controller),
       body: Row(
         children: [
-          if (!isSmallScreen) ExampleSidebarX(controller: _controller),
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(
+                  //color: Colors.white,
+                  color: UtilConstants
+                      .homeBackgroundColor, // Add your desired color here
+                  width: 2.0, // Adjust the width as needed
+                ),
+              ),
+            ),
+            child: ExampleSidebarX(controller: _controller),
+          ),
           Expanded(
             child: Center(
               child: _ScreensExample(
@@ -112,16 +141,16 @@ class ExampleSidebarX extends StatelessWidget {
         itemTextPadding: const EdgeInsets.only(left: 30),
         selectedItemTextPadding: const EdgeInsets.only(left: 30),
         itemDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(20),
           border: Border.all(color: canvasColor),
         ),
         selectedItemDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: actionColor.withOpacity(0.37),
           ),
           gradient: const LinearGradient(
-            colors: [accentCanvasColor, canvasColor],
+            colors: [UtilConstants.primaryColor, white],
           ),
           boxShadow: [
             BoxShadow(
@@ -140,7 +169,7 @@ class ExampleSidebarX extends StatelessWidget {
         ),
       ),
       extendedTheme: const SidebarXTheme(
-        padding: EdgeInsets.only(top: 30),
+        padding: EdgeInsets.only(top: 10),
         width: 200,
         decoration: BoxDecoration(
           color: canvasColor,
@@ -151,25 +180,19 @@ class ExampleSidebarX extends StatelessWidget {
         SidebarXItem(
           icon: Icons.home,
           label: 'Home',
-          onTap: () {
-            const AdminHome();
-          },
+          onTap: () {},
         ),
         const SidebarXItem(
-          icon: Icons.search,
-          label: 'Search',
+          icon: Icons.chat,
+          label: 'Chat',
         ),
         const SidebarXItem(
-          icon: Icons.people,
-          label: 'People',
+          icon: Icons.note_add,
+          label: 'Note',
         ),
         const SidebarXItem(
-          icon: Icons.favorite,
-          label: 'Favorites',
-        ),
-        const SidebarXItem(
-          iconWidget: FlutterLogo(size: 20),
-          label: 'Flutter',
+          icon: Icons.calendar_month_outlined,
+          label: 'Calender',
         ),
       ],
     );
@@ -191,15 +214,14 @@ class _ScreensExample extends StatelessWidget {
       builder: (context, child) {
         switch (controller.selectedIndex) {
           case 0:
-            return const AdminHome();
+            return const Dashboard();
+
           case 1:
-            return const StudentControl();
+            return const ChatCounsellor();
           case 2:
-            return const Counselorcontrol();
+            return const Note();
           case 3:
-            return const AdminControl();
-          case 4:
-            return const AdminActivityLog();
+            return const CalendarHome();
 
           default:
             return const Text('');

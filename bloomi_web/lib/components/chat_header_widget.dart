@@ -21,7 +21,7 @@ class ChatHeaderWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       width: width,
-      height: 70,
+      height: 60,
       color: UtilConstants.tropicalBlurColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

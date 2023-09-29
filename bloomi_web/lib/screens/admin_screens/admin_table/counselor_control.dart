@@ -70,15 +70,14 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                             sortColumnIndex: 0,
                             sortAscending: true,
                             dataRowMinHeight: 50,
-                            dataRowMaxHeight: 50,
+                            dataRowMaxHeight: 60,
                             dataTextStyle: TextStyle(
                               color: Colors.grey.shade900,
                             ),
                             columns: [
                               AdminFunctions.customDataColumns('Name'),
                               AdminFunctions.customDataColumns('Email'),
-                              AdminFunctions.customDataColumns(
-                                  'Contact Number'),
+                              AdminFunctions.customDataColumns('Contacts'),
                               AdminFunctions.customDataColumns('Faculty'),
                               AdminFunctions.customDataColumns('Credentials'),
                               AdminFunctions.customDataColumns('Actions'),
@@ -104,7 +103,7 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                             vertical: 10),
                                         child: Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
+                                              MainAxisAlignment.start,
                                           children: [
                                             CustomControlButton(
                                               text: 'Update',

@@ -73,6 +73,7 @@ class _DashboardState extends State<Dashboard> {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     final currentWidth = mediaQueryData.size.width;
     final currentHeight = mediaQueryData.size.height;
+    print(currentWidth);
 
     return StreamBuilder(
         stream: AuthController().getUsers(),
@@ -251,12 +252,13 @@ class _DashboardState extends State<Dashboard> {
                       ),
                       Expanded(
                         child: SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
                           child: Container(
                             margin: const EdgeInsets.only(
                               top: 10,
-                              bottom: 30,
-                              left: 20,
-                              right: 20,
+                              bottom: 20,
+                              //left: 20,
+                              //right: 20,
                             ),
                             child: Card(
                               elevation: 2,
@@ -268,71 +270,154 @@ class _DashboardState extends State<Dashboard> {
                                   horizontal: 30,
                                   vertical: 20,
                                 ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "Your Next Appointment",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontSize:
-                                                (currentWidth < 900) ? 15 : 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: UtilConstants.primaryColor,
+                                child: currentWidth > 480
+                                    ? Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Your Next Appointment",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  fontSize: (currentWidth < 900)
+                                                      ? 15
+                                                      : 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: UtilConstants
+                                                      .primaryColor,
+                                                ),
+                                              ),
+                                            ],
                                           ),
+                                          const SizedBox(
+                                            height: 8,
+                                          ),
+                                          Text('Title',
+                                              style: TextStyle(
+                                                fontSize: (currentWidth < 900)
+                                                    ? 15
+                                                    : 18,
+                                                fontWeight: FontWeight.bold,
+                                              )),
+                                          const SizedBox(
+                                            height: 8,
+                                            child: Divider(
+                                              thickness: 1,
+                                            ),
+                                          ),
+                                          Text('Full Name : ',
+                                              style: TextStyle(
+                                                  fontSize: (currentWidth < 900)
+                                                      ? 12
+                                                      : 15)),
+                                          const SizedBox(height: 4),
+                                          Text('Email:',
+                                              style: TextStyle(
+                                                  fontSize: (currentWidth < 900)
+                                                      ? 12
+                                                      : 15)),
+                                          const SizedBox(height: 4),
+                                          Text('Counsellor:',
+                                              style: TextStyle(
+                                                  fontSize: (currentWidth < 900)
+                                                      ? 12
+                                                      : 15)),
+                                          const SizedBox(height: 4),
+                                          Text('Date:',
+                                              style: TextStyle(
+                                                  fontSize: (currentWidth < 900)
+                                                      ? 12
+                                                      : 15)),
+                                          const SizedBox(height: 4),
+                                          Text('Time:',
+                                              style: TextStyle(
+                                                  fontSize: (currentWidth < 900)
+                                                      ? 12
+                                                      : 15)),
+                                        ],
+                                      )
+                                    : SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  "Your Next Appointment",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    fontSize:
+                                                        (currentWidth < 900)
+                                                            ? 15
+                                                            : 20,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: UtilConstants
+                                                        .primaryColor,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Text('Title',
+                                                style: TextStyle(
+                                                  fontSize: (currentWidth < 900)
+                                                      ? 15
+                                                      : 18,
+                                                  fontWeight: FontWeight.bold,
+                                                )),
+                                            const SizedBox(
+                                              height: 8,
+                                              child: Divider(
+                                                thickness: 1,
+                                              ),
+                                            ),
+                                            Text('Full Name : ',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        (currentWidth < 900)
+                                                            ? 12
+                                                            : 15)),
+                                            const SizedBox(height: 4),
+                                            Text('Email:',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        (currentWidth < 900)
+                                                            ? 12
+                                                            : 15)),
+                                            const SizedBox(height: 4),
+                                            Text('Counsellor:',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        (currentWidth < 900)
+                                                            ? 12
+                                                            : 15)),
+                                            const SizedBox(height: 4),
+                                            Text('Date:',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        (currentWidth < 900)
+                                                            ? 12
+                                                            : 15)),
+                                            const SizedBox(height: 4),
+                                            Text('Time:',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        (currentWidth < 900)
+                                                            ? 12
+                                                            : 15)),
+                                          ],
                                         ),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 8,
-                                    ),
-                                    Text('Title',
-                                        style: TextStyle(
-                                          fontSize:
-                                              (currentWidth < 900) ? 15 : 18,
-                                          fontWeight: FontWeight.bold,
-                                        )),
-                                    const SizedBox(
-                                      height: 8,
-                                      child: Divider(
-                                        thickness: 1,
                                       ),
-                                    ),
-                                    Text('Full Name : ',
-                                        style: TextStyle(
-                                            fontSize: (currentWidth < 900)
-                                                ? 12
-                                                : 15)),
-                                    const SizedBox(height: 4),
-                                    Text('Email:',
-                                        style: TextStyle(
-                                            fontSize: (currentWidth < 900)
-                                                ? 12
-                                                : 15)),
-                                    const SizedBox(height: 4),
-                                    Text('Counsellor:',
-                                        style: TextStyle(
-                                            fontSize: (currentWidth < 900)
-                                                ? 12
-                                                : 15)),
-                                    const SizedBox(height: 4),
-                                    Text('Date:',
-                                        style: TextStyle(
-                                            fontSize: (currentWidth < 900)
-                                                ? 12
-                                                : 15)),
-                                    const SizedBox(height: 4),
-                                    Text('Time:',
-                                        style: TextStyle(
-                                            fontSize: (currentWidth < 900)
-                                                ? 12
-                                                : 15)),
-                                  ],
-                                ),
                               ),
                             ),
                           ),

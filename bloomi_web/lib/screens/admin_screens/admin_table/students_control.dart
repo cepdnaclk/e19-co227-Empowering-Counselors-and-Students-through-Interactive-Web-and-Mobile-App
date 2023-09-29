@@ -65,14 +65,14 @@ class _StudentControlState extends State<StudentControl> {
                         sortColumnIndex: 0,
                         sortAscending: true,
                         dataRowMinHeight: 50,
-                        dataRowMaxHeight: 50,
+                        dataRowMaxHeight: 60,
                         dataTextStyle: TextStyle(
                           color: Colors.grey.shade900,
                         ),
                         columns: [
                           AdminFunctions.customDataColumns('Name'),
                           AdminFunctions.customDataColumns('Email'),
-                          AdminFunctions.customDataColumns('Contact Number'),
+                          AdminFunctions.customDataColumns('Contacts'),
                           AdminFunctions.customDataColumns('Faculty'),
                           AdminFunctions.customDataColumns('Department'),
                           AdminFunctions.customDataColumns('Year'),

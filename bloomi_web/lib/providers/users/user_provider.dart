@@ -5,7 +5,7 @@ import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/home/adminui.dart';
 import 'package:bloomi_web/screens/auth_screens/login/login.dart';
-import 'package:bloomi_web/screens/counsellor_screens/home/navbar.dart';
+import 'package:bloomi_web/screens/counsellor_screens/home/home_counsellor.dart';
 import 'package:bloomi_web/screens/home_screens/user_dashboard/home.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -43,7 +43,7 @@ class UserProvider extends ChangeNotifier {
           if (userModel != null) {
             //----------to start fetching user additional data----------
             await startFetchUserAdditionalData(user.uid);
-            UtilFunction.navigateForward(context, const Home());
+            UtilFunction.navigateForward(context, Home());
 
             //----------if user is counsellor, navigate to counsellor home page----------
           } else if (counsellorModel != null) {
@@ -51,13 +51,12 @@ class UserProvider extends ChangeNotifier {
             await Provider.of<CounsellorRegistrationProvider>(context,
                     listen: false)
                 .startFetchCounsellorAdditionalData(user.uid);
-            UtilFunction.navigateForward(context, const CounselorHome());
+            UtilFunction.navigateForward(context, HomeCounsellor());
 
             //----------if user is admin, navigate to admin home page----------
           } else if (adminModel != null) {
             await startFetchUserAdditionalData(user.uid);
-
-            UtilFunction.navigateForward(context, const Adminpanel());
+            UtilFunction.navigateForward(context, AdminPanel());
           }
         } catch (e) {
           Logger().e(e);

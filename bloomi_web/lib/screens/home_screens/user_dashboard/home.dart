@@ -1,60 +1,262 @@
-import 'package:bloomi_web/components/custom_text.dart';
-import 'package:bloomi_web/components/drawer.dart';
+import 'package:bloomi_web/components/dropdown_menu_items.dart';
 import 'package:bloomi_web/components/footer.dart';
-import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
-import 'package:bloomi_web/screens/home_screens/appoinment/user_appoinment/user_apoinment_dashboard.dart';
+import 'package:bloomi_web/components/notification_viewer.dart.dart';
+import 'package:bloomi_web/screens/home_screens/appoinment/appointment.dart';
 import 'package:bloomi_web/screens/home_screens/chat/home/chat.dart';
 import 'package:bloomi_web/screens/home_screens/note/note.dart';
 import 'package:bloomi_web/screens/home_screens/relax/relax.dart';
 import 'package:bloomi_web/screens/home_screens/user_dashboard/home_page.dart';
-import 'package:bloomi_web/screens/home_screens/user_dashboard/navbar.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:sidebarx/sidebarx.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class Home extends StatelessWidget {
+  Home({Key? key}) : super(key: key);
 
-  @override
-  State<Home> createState() => _HomeState();
-}
+  final _controller = SidebarXController(selectedIndex: 0, extended: true);
+  final _key = GlobalKey<ScaffoldState>();
 
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    final List<Widget> widget = [
-      const HomePage(),
-      const UserAppointmentDashboard(),
-      const Chat(),
-      const Relax(),
-      const Note(),
-    ];
+    final width = MediaQuery.of(context).size.width;
+    final isSmallScreen = MediaQuery.of(context).size.width < 600;
     return Scaffold(
-      appBar: (width <= 900)
+      key: _key,
+      appBar: isSmallScreen
           ? AppBar(
-              iconTheme: const IconThemeData(color: UtilConstants.primaryColor),
-              backgroundColor: UtilConstants.lightgreyColor,
-              elevation: 0,
-              centerTitle: true,
-              title: CustomText("BLOOMI",
-                  fontSize: width * 0.03,
-                  fontWeight: FontWeight.w300,
-                  fontColor: UtilConstants.primaryColor))
-          : PreferredSize(
-              preferredSize: Size(width, 70),
-              child: const HomeNavBar(),
+              backgroundColor: canvasColor,
+              title: const Text('BLOOMI'),
+              leading: IconButton(
+                onPressed: () {
+                  _key.currentState?.openDrawer();
+                },
+                icon: const Icon(Icons.menu),
+              ),
+            )
+          : AppBar(
+              automaticallyImplyLeading: false,
+              backgroundColor: canvasColor,
+              title: Row(
+                children: [
+                  Image.asset(
+                    UtilConstants.primaryImagePath,
+                    height: 40,
+                    width: 40,
+                  ),
+                  const SizedBox(width: 10),
+                  const Text(
+                    'BLOOMI',
+                    style: TextStyle(
+                      color: white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+              actions: [
+                InkWell(
+                  onTap: () {
+                    UtilFormMethodNotification.showDialogMethod(context);
+                  },
+                  child: Stack(
+                    children: [
+                      const Icon(Icons.notifications,
+                          size: 24, color: Colors.white),
+                      Positioned(
+                        right: -0.6,
+                        top: -2,
+                        child: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: const BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Text(
+                            '5',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 11,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 35),
+                Container(
+                  decoration: BoxDecoration(
+                    color: canvasColor,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  alignment: Alignment.center,
+                  width: 24,
+                  height: 24, // Adjust the width to your preference.
+                  child: const DropDownMenuItems(
+                    icon: Icons.person,
+                  ),
+                ),
+                const SizedBox(width: 25)
+              ],
+              bottom: const PreferredSize(
+                preferredSize:
+                    Size.fromHeight(5), // Adjust the height as needed
+                child: SizedBox(), // This is an empty widget
+              ),
             ),
-      body: Consumer<NavigationProvider>(
-        builder: (context, value, child) {
-          return widget[value.currentIndex];
-        },
+      drawer: ExampleSidebarX(controller: _controller),
+      body: Row(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              border: Border(
+                top: BorderSide(
+                  color: Colors.white, // Add your desired color here
+                  width: 2.0, // Adjust the width as needed
+                ),
+              ),
+            ),
+            child: ExampleSidebarX(controller: _controller),
+          ),
+          Expanded(
+            child: Center(
+              child: _ScreensExample(
+                controller: _controller,
+              ),
+            ),
+          ),
+        ],
       ),
-      drawer: const Padding(
-        padding: EdgeInsets.only(left: 20, top: 20, bottom: 20),
-        child: MyDrawer(),
-      ),
-      bottomNavigationBar: Footer(width: width, height: 55),
+      bottomNavigationBar: Footer(height: 55, width: width),
     );
   }
 }
+
+class ExampleSidebarX extends StatelessWidget {
+  const ExampleSidebarX({
+    Key? key,
+    required SidebarXController controller,
+  })  : _controller = controller,
+        super(key: key);
+
+  final SidebarXController _controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return SidebarX(
+      controller: _controller,
+      theme: SidebarXTheme(
+        margin: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: canvasColor,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        hoverColor: scaffoldBackgroundColor,
+        textStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
+        selectedTextStyle: const TextStyle(color: Colors.white),
+        itemTextPadding: const EdgeInsets.only(left: 30),
+        selectedItemTextPadding: const EdgeInsets.only(left: 30),
+        itemDecoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: canvasColor),
+        ),
+        selectedItemDecoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: actionColor.withOpacity(0.37),
+          ),
+          gradient: const LinearGradient(
+            colors: [UtilConstants.primaryColor, white],
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.28),
+              blurRadius: 30,
+            )
+          ],
+        ),
+        iconTheme: IconThemeData(
+          color: Colors.white.withOpacity(0.7),
+          size: 20,
+        ),
+        selectedIconTheme: const IconThemeData(
+          color: Colors.white,
+          size: 20,
+        ),
+      ),
+      extendedTheme: const SidebarXTheme(
+        padding: EdgeInsets.only(top: 10),
+        width: 200,
+        decoration: BoxDecoration(
+          color: canvasColor,
+        ),
+      ),
+      footerDivider: divider,
+      items: [
+        SidebarXItem(
+          icon: Icons.home,
+          label: 'Home',
+          onTap: () {},
+        ),
+        const SidebarXItem(
+          icon: Icons.calendar_today,
+          label: 'Appointments',
+        ),
+        const SidebarXItem(
+          icon: Icons.chat,
+          label: 'Chat',
+        ),
+        const SidebarXItem(
+          icon: Icons.note_add,
+          label: 'Note',
+        ),
+        const SidebarXItem(
+          icon: Icons.music_note,
+          label: 'Relax',
+        ),
+      ],
+    );
+  }
+}
+
+class _ScreensExample extends StatelessWidget {
+  const _ScreensExample({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
+
+  final SidebarXController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (context, child) {
+        switch (controller.selectedIndex) {
+          case 0:
+            return const HomePage();
+          case 1:
+            return const Appointment();
+          case 2:
+            return const Chat();
+          case 3:
+            return const Note();
+          case 4:
+            return const Relax();
+
+          default:
+            return const Text('');
+        }
+      },
+    );
+  }
+}
+
+const primaryColor = Color(0xFF2E2E48);
+const canvasColor = Color(0xFF272643);
+const scaffoldBackgroundColor = Color(0xFF464667);
+const accentCanvasColor = Color(0xFF3E3E61);
+const white = Colors.white;
+final actionColor = const Color.fromARGB(255, 50, 50, 132).withOpacity(0.6);
+final divider = Divider(color: white.withOpacity(0.3), height: 1);

@@ -28,7 +28,7 @@ class DropDownButtonWidget extends StatelessWidget {
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: 16),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(5),
         ),
       ),
       hint: Text(

@@ -21,13 +21,14 @@ class CustomChatScreen extends StatelessWidget {
   final double width;
   final double height;
   final String conId;
+
   final List<MessageModel> _list = [];
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width - 522,
-      height: height - 152,
+      height: height - 132,
       color: UtilConstants.lightgreyColor,
       child: Consumer<UserChatProvider>(
         builder: (context, value, child) {
@@ -52,16 +53,15 @@ class CustomChatScreen extends StatelessWidget {
                   if (snapshot.data!.docs.isEmpty) {
                     return Padding(
                       padding: const EdgeInsets.all(4.0),
-                      child: Container(
-                        width: width - 530,
-                        height: height - 152 - 80,
-                        color: UtilConstants.whiteColor,
-                        child: const Column(
-                          children: [
-                            Expanded(child: SizedBox()),
-                            MessageTypingWidget(),
-                          ],
-                        ),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: width - 530,
+                            height: height - 152 - 115,
+                            color: UtilConstants.whiteColor,
+                          ),
+                          const MessageTypingWidget(),
+                        ],
                       ),
                     );
                   }
@@ -83,7 +83,7 @@ class CustomChatScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(4.0),
                     child: Container(
                       width: width - 530,
-                      height: height - 152 - 80,
+                      height: height - 152 - 50,
                       color: UtilConstants.whiteColor,
                       child: Column(
                         children: [
