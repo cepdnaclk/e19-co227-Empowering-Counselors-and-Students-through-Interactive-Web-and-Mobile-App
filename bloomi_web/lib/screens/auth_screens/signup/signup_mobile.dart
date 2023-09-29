@@ -83,10 +83,9 @@ class _SignUpMobileState extends State<SignUpMobile> {
                       onTap: () {
                         value.setIsObscure(false);
                       },
-                      child: const Icon(
-                        Icons.visibility_off,
-                        size: 15,
-                      ),
+                      child: value.isObscure
+                          ? const Icon(Icons.visibility_off, size: 15)
+                          : const Icon(Icons.visibility, size: 15),
                     ),
                     fontSize: 12,
                     height: 45,

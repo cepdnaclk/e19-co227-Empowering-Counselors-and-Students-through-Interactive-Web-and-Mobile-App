@@ -1,6 +1,6 @@
 import 'package:bloomi_web/components/dropdown_menu_items.dart';
 import 'package:bloomi_web/components/footer.dart';
-import 'package:bloomi_web/screens/counsellor_screens/calender/calender.dart';
+import 'package:bloomi_web/screens/counsellor_screens/calender/calendar_home.dart';
 import 'package:bloomi_web/screens/counsellor_screens/chat/home/chat_counsellor.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard.dart';
 import 'package:bloomi_web/screens/home_screens/note/note.dart';
@@ -90,10 +90,12 @@ class HomeCounsellor extends StatelessWidget {
       body: Row(
         children: [
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               border: Border(
                 top: BorderSide(
-                  color: Colors.white, // Add your desired color here
+                  //color: Colors.white,
+                  color: UtilConstants
+                      .homeBackgroundColor, // Add your desired color here
                   width: 2.0, // Adjust the width as needed
                 ),
               ),
@@ -139,11 +141,11 @@ class ExampleSidebarX extends StatelessWidget {
         itemTextPadding: const EdgeInsets.only(left: 30),
         selectedItemTextPadding: const EdgeInsets.only(left: 30),
         itemDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(20),
           border: Border.all(color: canvasColor),
         ),
         selectedItemDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: actionColor.withOpacity(0.37),
           ),
@@ -219,7 +221,7 @@ class _ScreensExample extends StatelessWidget {
           case 2:
             return const Note();
           case 3:
-            return const CounselorCalender();
+            return const CalendarHome();
 
           default:
             return const Text('');
