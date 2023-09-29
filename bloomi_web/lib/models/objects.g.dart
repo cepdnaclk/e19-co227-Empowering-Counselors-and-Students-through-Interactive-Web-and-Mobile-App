@@ -38,6 +38,7 @@ AppointmentModel _$AppointmentModelFromJson(Map<String, dynamic> json) =>
       studentFaculty: json['studentFaculty'] as String,
       date: json['date'] as String,
       time: json['time'] as String,
+      status: json['status'] as String,
     );
 
 Map<String, dynamic> _$AppointmentModelToJson(AppointmentModel instance) =>
@@ -51,6 +52,7 @@ Map<String, dynamic> _$AppointmentModelToJson(AppointmentModel instance) =>
       'studentFaculty': instance.studentFaculty,
       'date': instance.date,
       'time': instance.time,
+      'status': instance.status,
     };
 
 ChatModel _$ChatModelFromJson(Map<String, dynamic> json) => ChatModel(
@@ -144,12 +146,38 @@ NoteModel _$NoteModelFromJson(Map<String, dynamic> json) => NoteModel(
       id: json['id'] as String,
       title: json['title'] as String,
       description: json['description'] as String,
+      userId: json['userId'] as String,
     );
 
 Map<String, dynamic> _$NoteModelToJson(NoteModel instance) => <String, dynamic>{
+      'userId': instance.userId,
       'id': instance.id,
       'title': instance.title,
       'description': instance.description,
+    };
+
+NotificationModel _$NotificationModelFromJson(Map<String, dynamic> json) =>
+    NotificationModel(
+      id: json['id'] as String,
+      studentId: json['studentId'] as String,
+      counselorId: json['counselorId'] as String,
+      studentName: json['studentName'] as String,
+      counselorName: json['counselorName'] as String,
+      date: json['date'] as String,
+      time: json['time'] as String,
+      status: json['status'] as String,
+    );
+
+Map<String, dynamic> _$NotificationModelToJson(NotificationModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'studentId': instance.studentId,
+      'counselorId': instance.counselorId,
+      'studentName': instance.studentName,
+      'counselorName': instance.counselorName,
+      'date': instance.date,
+      'time': instance.time,
+      'status': instance.status,
     };
 
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(

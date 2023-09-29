@@ -151,4 +151,61 @@ class AdminRegistrationProvider extends ChangeNotifier {
       return null;
     }
   }
+
+  //----------------------Functions for update---------------------
+  Future<void> updateAdmin(
+    String uid,
+    String name,
+    String email,
+    String password,
+    String phoneNumber,
+    String credential,
+    BuildContext context,
+  ) async {
+    try {
+      if (uid.isNotEmpty &&
+          email.isNotEmpty &&
+          password.isNotEmpty &&
+          phoneNumber.isNotEmpty &&
+          name.isNotEmpty &&
+          credential.isNotEmpty) {
+        if (phoneNumber.length == 10 && phoneNumber.startsWith('07')) {
+          setIsLoading(true);
+
+          await AdminController()
+              .updateAdmin(
+            email,
+            password,
+            name,
+            phoneNumber,
+            credential,
+            userType,
+            context,
+            uid,
+          )
+              .then((value) {
+            UtilMethod.customDialogBox(
+                context, "Success", "Registered Successfully!");
+            _email.clear();
+            _password.clear();
+            _phoneNumber.clear();
+            _name.clear();
+            _credentials.clear();
+          });
+
+          setIsLoading(false);
+        } else {
+          UtilMethod.customDialogBox(
+              context, "Error", "Please enter a valid Phone Number");
+        }
+      } else {
+        UtilMethod.customDialogBox(
+            context, "Error", "Please fill all the fields");
+      }
+      setIsLoading(false);
+    } catch (e) {
+      Logger().e(e);
+      setIsLoading(false);
+    }
+  }
 }

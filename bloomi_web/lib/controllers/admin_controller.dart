@@ -89,6 +89,24 @@ class AdminController {
         .catchError((error) => Logger().e("Failed to add user: $error"));
   }
 
+  //----------------------update Admin data in cloud firestore---------------------
+
+  Future<void> updateAdminData(AdminModel adminModel) {
+    return admins
+        .doc(adminModel.uid)
+        .update({
+          'uid': adminModel.uid,
+          'name': adminModel.name,
+          'email': adminModel.email,
+          'phone': adminModel.phone,
+          'credential': adminModel.credential,
+          'userType': adminModel.userType,
+          'imgUrl': UtilConstants.dummyProfileUrl,
+        })
+        .then((value) => Logger().i("User Added"))
+        .catchError((error) => Logger().e("Failed to add user: $error"));
+  }
+
   //-----------------------fetch admin data from database---------------------
   Future<AdminModel?> fetchAdminData(String adminId) async {
     try {
@@ -153,6 +171,44 @@ class AdminController {
         })
         .then((value) => Logger().i("User Added"))
         .catchError((error) => Logger().e("Failed to add user: $error"));
+  }
+
+  //-----------------------To update Admin---------------------
+  Future<void> updateAdmin(
+    String email,
+    String password,
+    String name,
+    String phone,
+    String userCredential,
+    String userType,
+    BuildContext context,
+    String uId,
+  ) async {
+    try {
+      updateAdminData(AdminModel(
+          uid: uId,
+          name: name,
+          email: email,
+          phone: phone,
+          credential: userCredential,
+          userType: userType,
+          imgUrl: ""));
+
+      saveUserAdditionalData(ChatModel(
+          uid: uId,
+          name: name,
+          email: email,
+          img: "",
+          lastSeen: DateTime.now().toString(),
+          isOnline: true,
+          token: "",
+          userType: userType));
+    } on FirebaseAuthException catch (e) {
+      UtilMethod.customDialogBox(context, "Error", e.code);
+      Logger().e(e);
+    } catch (e) {
+      Logger().e(e);
+    }
   }
 
   //------------------------ GET All Admins ------------------------

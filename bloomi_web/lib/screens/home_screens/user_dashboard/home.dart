@@ -1,11 +1,11 @@
 import 'package:bloomi_web/components/dropdown_menu_items.dart';
 import 'package:bloomi_web/components/footer.dart';
-import 'package:bloomi_web/components/notification_viewer.dart.dart';
 import 'package:bloomi_web/screens/home_screens/appoinment/appointment.dart';
 import 'package:bloomi_web/screens/home_screens/chat/home/chat.dart';
 import 'package:bloomi_web/screens/home_screens/note/note.dart';
 import 'package:bloomi_web/screens/home_screens/relax/relax.dart';
 import 'package:bloomi_web/screens/home_screens/user_dashboard/home_page.dart';
+import 'package:bloomi_web/screens/home_screens/user_dashboard/notification.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -57,7 +57,7 @@ class Home extends StatelessWidget {
               actions: [
                 InkWell(
                   onTap: () {
-                    UtilFormMethodNotification.showDialogMethod(context);
+                    UserNotification.showDialogMethod(context);
                   },
                   child: Stack(
                     children: [
@@ -73,9 +73,9 @@ class Home extends StatelessWidget {
                             shape: BoxShape.circle,
                           ),
                           child: const Text(
-                            '5',
+                            '.',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.red,
                               fontSize: 11,
                             ),
                           ),

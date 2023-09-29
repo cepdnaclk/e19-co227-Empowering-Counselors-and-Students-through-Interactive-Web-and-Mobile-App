@@ -33,7 +33,6 @@ class _EditDesktopState extends State<EditDesktop> {
 
   @override
   Widget build(BuildContext context) {
-    bool isObscure = true;
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),

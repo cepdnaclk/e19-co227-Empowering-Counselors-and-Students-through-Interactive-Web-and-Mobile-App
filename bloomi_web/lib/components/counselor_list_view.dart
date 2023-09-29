@@ -138,7 +138,7 @@ class _CounselorListViewState extends State<CounselorListView> {
                         radius: 30,
                       ),
                       trailing: Tooltip(
-                        message: "Add Counselor",
+                        message: "Add Appointment",
                         child: Ink(
                           decoration: const ShapeDecoration(
                             color: Colors.blueGrey,
