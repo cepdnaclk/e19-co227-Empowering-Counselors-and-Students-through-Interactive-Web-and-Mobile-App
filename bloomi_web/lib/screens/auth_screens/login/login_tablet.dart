@@ -54,10 +54,9 @@ class LoginTablet extends StatelessWidget {
                       onTap: () {
                         value.setIsObscure(false);
                       },
-                      child: const Icon(
-                        Icons.visibility_off,
-                        size: 15,
-                      ),
+                      child: value.isObscure
+                          ? const Icon(Icons.visibility_off, size: 15)
+                          : const Icon(Icons.visibility, size: 15),
                     ),
                   );
                 },

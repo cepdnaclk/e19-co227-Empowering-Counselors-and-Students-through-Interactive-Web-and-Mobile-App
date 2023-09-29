@@ -33,6 +33,7 @@ class _EditDesktopState extends State<EditDesktop> {
 
   @override
   Widget build(BuildContext context) {
+    bool isObscure = true;
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
@@ -89,12 +90,22 @@ class _EditDesktopState extends State<EditDesktop> {
                                 .email,
                       ),
                       const SizedBox(height: 10),
-                      FormInputWeb(
-                        "Password",
-                        textEditingController:
-                            Provider.of<CounsellorRegistrationProvider>(context)
-                                .password,
-                        obscure: true,
+                      Consumer<CounsellorRegistrationProvider>(
+                        builder: (context, value, child) {
+                          return FormInputWeb(
+                            "Password",
+                            textEditingController: value.password,
+                            obscure: value.isObscure ? true : false,
+                            icon: InkWell(
+                              onTap: () {
+                                value.setIsObscure(false);
+                              },
+                              child: value.isObscure
+                                  ? const Icon(Icons.visibility_off, size: 18)
+                                  : const Icon(Icons.visibility, size: 18),
+                            ),
+                          );
+                        },
                       ),
                       const SizedBox(height: 10),
                       FormInputWeb(

@@ -104,7 +104,7 @@ class CustomCardWidget extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(top: 20),
                     height: 70,
-                    width: 400,
+                    width: 300,
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -117,7 +117,7 @@ class CustomCardWidget extends StatelessWidget {
                           width: 20,
                         ),
                         Container(
-                          width: 100,
+                          width: 80,
                           height: 40,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),

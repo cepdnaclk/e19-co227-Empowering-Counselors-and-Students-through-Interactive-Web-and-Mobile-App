@@ -92,7 +92,7 @@ class CounselorDrawer extends StatelessWidget {
                           color: Colors.blue,
                         ),
                         title: const Text(
-                          'Appointment',
+                          'Calender',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
@@ -144,6 +144,27 @@ class CounselorDrawer extends StatelessWidget {
                           Provider.of<NavigationProvider>(context,
                                   listen: false)
                               .setIndex(3);
+                        },
+                      ),
+                      ListTile(
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 16),
+                        leading: const Icon(
+                          Icons.note_alt_outlined,
+                          size: 24,
+                          color: Colors.blue,
+                        ),
+                        title: const Text(
+                          'Note Take',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        onTap: () {
+                          Provider.of<NavigationProvider>(context,
+                                  listen: false)
+                              .setIndex(4);
                         },
                       ),
                       ListTile(

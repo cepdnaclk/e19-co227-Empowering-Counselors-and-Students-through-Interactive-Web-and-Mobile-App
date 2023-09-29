@@ -31,11 +31,14 @@ class _EditMobileState extends State<EditMobile> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    print(width);
     return Center(
       child: SingleChildScrollView(
         child: Container(
-          height: 480,
-          width: 300,
+          height: height * 0.8,
+          width: width * 0.8,
           padding:
               const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
           decoration: BoxDecoration(
@@ -70,16 +73,26 @@ class _EditMobileState extends State<EditMobile> {
                 lableFontSize: 12,
               ),
               const SizedBox(height: 6),
-              FormInputWeb(
-                "Password",
-                textEditingController:
-                    Provider.of<CounsellorRegistrationProvider>(context)
-                        .password,
-                obscure: true,
-                fontSize: 12,
-                height: 45,
-                width: 280,
-                lableFontSize: 12,
+              Consumer<CounsellorRegistrationProvider>(
+                builder: (context, value, child) {
+                  return FormInputWeb(
+                    "Password",
+                    textEditingController: value.password,
+                    fontSize: 12,
+                    height: 45,
+                    width: 280,
+                    lableFontSize: 12,
+                    obscure: value.isObscure ? true : false,
+                    icon: InkWell(
+                      onTap: () {
+                        value.setIsObscure(false);
+                      },
+                      child: value.isObscure
+                          ? const Icon(Icons.visibility_off, size: 15)
+                          : const Icon(Icons.visibility, size: 15),
+                    ),
+                  );
+                },
               ),
               const SizedBox(height: 6),
               FormInputWeb(
@@ -94,11 +107,10 @@ class _EditMobileState extends State<EditMobile> {
               ),
               const SizedBox(height: 6),
               SizedBox(
-                width: 300,
+                width: 280,
                 child: DropDownButtonWidget(
                     index: 1, listItem: faculty, text: "Faculty"),
               ),
-              const SizedBox(height: 6),
               const SizedBox(height: 6),
               FormInputWeb(
                 "Credentials",

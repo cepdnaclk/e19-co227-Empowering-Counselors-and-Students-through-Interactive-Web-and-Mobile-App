@@ -39,9 +39,10 @@ class _CounsellorNavBarState extends State<CounsellorNavBar> {
                       size: mediaQueryData.size.width * 0.02,
                     ),
                   ),
-                  SizedBox(
+                  const Spacer(),
+                  /*SizedBox(
                     width: mediaQueryData.size.width * 0.685,
-                  ),
+                  ),*/
                   InkWell(
                     onHover: (value) {
                       setState(() {
@@ -86,7 +87,7 @@ class _CounsellorNavBarState extends State<CounsellorNavBar> {
                       Provider.of<NavigationProvider>(context, listen: false)
                           .setIndex(2);
                     },
-                    child: CustomNavBarWidget("Chat",
+                    child: CustomNavBarWidget("Contact",
                         mediaQueryData: mediaQueryData,
                         isHovering: _isHovering[2]),
                   ),
@@ -106,6 +107,9 @@ class _CounsellorNavBarState extends State<CounsellorNavBar> {
                     child: CustomNavBarWidget("Profile",
                         mediaQueryData: mediaQueryData,
                         isHovering: _isHovering[3]),
+                  ),
+                  SizedBox(
+                    width: mediaQueryData.size.width * 0.015,
                   ),
                 ],
               ),

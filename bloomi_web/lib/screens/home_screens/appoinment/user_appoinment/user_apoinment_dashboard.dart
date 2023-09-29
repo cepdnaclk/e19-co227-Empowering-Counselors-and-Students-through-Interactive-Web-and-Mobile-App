@@ -176,7 +176,7 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
 
                           return GridView.builder(
                             physics: const BouncingScrollPhysics(),
-                            padding: const EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(0),
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 1, childAspectRatio: 6.8),
