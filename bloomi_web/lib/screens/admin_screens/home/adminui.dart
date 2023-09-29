@@ -1,11 +1,14 @@
 import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/controllers/auth_controller.dart';
+import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_table/admin_control.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_table/counselor_control.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_table/students_control.dart';
 import 'package:bloomi_web/screens/admin_screens/home/admin_home.dart';
 import 'package:bloomi_web/screens/admin_screens/log_activity/admin_activitylog.dart';
+import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 class AdminPanel extends StatelessWidget {
@@ -66,7 +69,43 @@ class AdminPanel extends StatelessWidget {
                     color: white,
                   ),
                 ),
-                const SizedBox(width: 5)
+                const SizedBox(width: 5),
+                Consumer<AdminRegistrationProvider>(
+                  builder: (context, value, child) {
+                    // Return a widget from the builder function.
+                    return Row(
+                      children: [
+                        Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.blue,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: NetworkImage(value.adminModel!.imgUrl),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 2,
+                        ),
+                        Text(
+                          value.adminModel!.name,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: UtilConstants.whiteColor,
+
+                            // Use Colors.black instead of UtilConstants.blackColor
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                      ],
+                    );
+                  },
+                ),
               ],
             ),
       drawer: ExampleSidebarX(controller: _controller),
