@@ -162,6 +162,56 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
     }
   }
 
+  //----------------------Function to update counselor---------------------
+  Future<void> updateCounselor(
+    String name,
+    String email,
+    String password,
+    String phone,
+    String faculty,
+    String credential,
+    BuildContext context,
+    String uId,
+    String imgUrl,
+  ) async {
+    try {
+      if (email.isNotEmpty && password.isNotEmpty && name.isNotEmpty) {
+        setIsLoading(true);
+        await CounsellorController()
+            .updateCounsellor(
+          name,
+          email,
+          password,
+          phone,
+          faculty,
+          credential,
+          userType,
+          context,
+          uId,
+          imgUrl,
+        )
+            .then((value) {
+          UtilMethod.customDialogBox(
+              context, "Success", "Counsellor Updated Successfully");
+          _email.clear();
+          _password.clear();
+          _phoneNumber.clear();
+          _name.clear();
+          _credentials.clear();
+        });
+
+        setIsLoading(false);
+      } else {
+        UtilMethod.customDialogBox(
+            context, "Error", "Please fill all the fields");
+      }
+      setIsLoading(false);
+    } catch (e) {
+      Logger().e(e);
+      setIsLoading(false);
+    }
+  }
+
   //-----------------------To fetch counselor data---------------------
 
   CounsellorModel? _counsellorModel;
