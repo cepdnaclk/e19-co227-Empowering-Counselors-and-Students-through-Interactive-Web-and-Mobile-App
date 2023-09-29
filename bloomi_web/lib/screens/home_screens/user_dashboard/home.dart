@@ -1,5 +1,4 @@
 import 'package:bloomi_web/components/dropdown_menu_items.dart';
-import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/screens/home_screens/appoinment/appointment.dart';
 import 'package:bloomi_web/screens/home_screens/chat/home/chat.dart';
 import 'package:bloomi_web/screens/home_screens/note/note.dart';
@@ -18,8 +17,8 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final isSmallScreen = MediaQuery.of(context).size.width < 600;
+    // final width = MediaQuery.of(context).size.width;
+    final isSmallScreen = MediaQuery.of(context).size.width < 900;
     return Scaffold(
       key: _key,
       appBar: isSmallScreen
@@ -99,26 +98,13 @@ class Home extends StatelessWidget {
                 ),
                 const SizedBox(width: 25)
               ],
-              bottom: const PreferredSize(
-                preferredSize:
-                    Size.fromHeight(5), // Adjust the height as needed
-                child: SizedBox(), // This is an empty widget
-              ),
             ),
       drawer: ExampleSidebarX(controller: _controller),
       body: Row(
         children: [
-          Container(
-            decoration: const BoxDecoration(
-              border: Border(
-                top: BorderSide(
-                  color: Colors.white, // Add your desired color here
-                  width: 2.0, // Adjust the width as needed
-                ),
-              ),
-            ),
-            child: ExampleSidebarX(controller: _controller),
-          ),
+          (!isSmallScreen)
+              ? ExampleSidebarX(controller: _controller)
+              : const SizedBox(),
           Expanded(
             child: Center(
               child: _ScreensExample(
@@ -128,7 +114,7 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: Footer(height: 55, width: width),
+      // bottomNavigationBar: Footer(height: 55, width: width),
     );
   }
 }
@@ -167,7 +153,7 @@ class ExampleSidebarX extends StatelessWidget {
             color: actionColor.withOpacity(0.37),
           ),
           gradient: const LinearGradient(
-            colors: [UtilConstants.primaryColor, white],
+            colors: [canvasColor, white],
           ),
           boxShadow: [
             BoxShadow(

@@ -1,5 +1,4 @@
 import 'package:bloomi_web/components/dropdown_menu_items.dart';
-import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/screens/counsellor_screens/calender/calendar_home.dart';
 import 'package:bloomi_web/screens/counsellor_screens/chat/home/chat_counsellor.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard.dart';
@@ -17,7 +16,6 @@ class HomeCounsellor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
     return Scaffold(
       key: _key,
@@ -107,19 +105,7 @@ class HomeCounsellor extends StatelessWidget {
       drawer: ExampleSidebarX(controller: _controller),
       body: Row(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              border: Border(
-                top: BorderSide(
-                  //color: Colors.white,
-                  color: UtilConstants
-                      .homeBackgroundColor, // Add your desired color here
-                  width: 2.0, // Adjust the width as needed
-                ),
-              ),
-            ),
-            child: ExampleSidebarX(controller: _controller),
-          ),
+          ExampleSidebarX(controller: _controller),
           Expanded(
             child: Center(
               child: _ScreensExample(
@@ -129,7 +115,6 @@ class HomeCounsellor extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: Footer(height: 55, width: width),
     );
   }
 }

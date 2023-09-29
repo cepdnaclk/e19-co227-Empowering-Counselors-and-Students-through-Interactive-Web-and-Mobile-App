@@ -17,19 +17,21 @@ class CustomChatScreenCounsellor extends StatelessWidget {
     required this.height,
     required this.conId,
     required this.getIndex,
+    required this.isMobile,
   });
 
   final double width;
   final double height;
   final String conId;
   final int getIndex;
+  final bool isMobile;
   final List<MessageModel> _list = [];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width - 522,
-      height: height - 152,
+      width: (isMobile == false) ? width * 0.55 : width,
+      height: height,
       color: UtilConstants.lightgreyColor,
       child: Consumer<UserChatProvider>(
         builder: (context, value, child) {
@@ -55,8 +57,8 @@ class CustomChatScreenCounsellor extends StatelessWidget {
                     return Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: Container(
-                        width: width - 530,
-                        height: height - 152 - 80,
+                        width: (isMobile == false) ? width * 0.65 : width,
+                        height: height - 135,
                         color: UtilConstants.whiteColor,
                         child: const Column(
                           children: [
@@ -84,8 +86,8 @@ class CustomChatScreenCounsellor extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: Container(
-                      width: width - 530,
-                      height: height - 152 - 80,
+                      width: (isMobile == false) ? width * 0.65 : width,
+                      height: height - 70,
                       color: UtilConstants.whiteColor,
                       child: Column(
                         children: [

@@ -59,6 +59,7 @@ dependencies:
   syncfusion_flutter_calendar: ^23.1.36
   firebase_core: ^2.16.0
   cr_calendar: ^1.2.1
+  animated_text_kit: ^4.2.2
   
 
 dev_dependencies:

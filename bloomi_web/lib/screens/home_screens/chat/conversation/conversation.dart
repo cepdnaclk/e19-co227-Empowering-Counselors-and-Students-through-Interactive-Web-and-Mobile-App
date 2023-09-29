@@ -1,3 +1,4 @@
+import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/screens/home_screens/chat/conversation/available_chat.dart';
@@ -33,47 +34,70 @@ class _ConversationState extends State<Conversation>
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    // Wrap your existing Conversation widget with VisibilityDetector
+    double widthFinal = (width > 1000) ? width - 220 : width;
+    double heightFinal = (width > 1000) ? height - 125 : height - 54;
+
     return VisibilityDetector(
-      key: const Key('conversation_key'), // Use a unique key for each instance
+      key: const Key('conversation_key'),
       onVisibilityChanged: (info) {
         if (info.visibleFraction == 0) {
-          _userProvider.updateUserOnlineState(false); // Use the saved reference
+          _userProvider.updateUserOnlineState(false);
         } else {
-          _userProvider.updateUserOnlineState(true); // Use the saved reference
+          _userProvider.updateUserOnlineState(true);
         }
       },
       child: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              // const HeaderWidget(
-              //   isTrue: false,
-              // ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    AvailableChat(height: height),
-                    const SizedBox(width: 4),
-                    Consumer<UserChatProvider>(
-                      builder: (context, value, child) {
-                        Logger().e(value.getIndex);
+        child: Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: (width > 1000)
+                      ? Row(
+                          children: [
+                            AvailableChat(
+                              isMobile: false,
+                              height: heightFinal,
+                              width: widthFinal,
+                            ),
+                            const SizedBox(width: 4),
+                            Consumer<UserChatProvider>(
+                              builder: (context, value, child) {
+                                Logger().e(value.getIndex);
 
-                        //----------------this is used to make when user dont have any convercation then show the empty screen----------------
-                        return (value.getIndex == -1)
-                            ? CustomChatScreen(
-                                width: width - 200, height: height, conId: "")
-                            : CustomChatScreen(
-                                width: width - 200,
-                                height: height,
-                                conId: value.getConversationModelNew.id);
-                      },
-                    )
-                  ],
+                                //----------------this is used to make when user dont have any convercation then show the empty screen----------------
+                                return (value.getIndex == -1)
+                                    ? CustomChatScreen(
+                                        isMobile: false,
+                                        width: widthFinal,
+                                        height: heightFinal,
+                                        conId: "")
+                                    : CustomChatScreen(
+                                        isMobile: false,
+                                        width: widthFinal,
+                                        height: heightFinal,
+                                        conId:
+                                            value.getConversationModelNew.id);
+                              },
+                            )
+                          ],
+                        )
+                      : Column(
+                          children: [
+                            AvailableChat(
+                              isMobile: true,
+                              height: heightFinal - 70,
+                              width: widthFinal,
+                            ),
+                            const SizedBox(width: 4),
+                            // ChatScreenCustom(widthFinal: widthFinal, heightFinal: heightFinal)
+                          ],
+                        ),
                 ),
-              )
-            ],
+                Footer(height: 55, width: width)
+              ],
+            ),
           ),
         ),
       ),

@@ -1,12 +1,7 @@
 import 'package:bloomi_web/components/counselor_list_view.dart';
 import 'package:bloomi_web/components/custom_card_widget.dart';
-import 'package:bloomi_web/controllers/appoinment_controller.dart';
-import 'package:bloomi_web/models/objects.dart';
-import 'package:bloomi_web/providers/users/user_provider.dart';
-import 'package:bloomi_web/utils/util_constant.dart';
+import 'package:bloomi_web/components/footer.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
-import 'package:provider/provider.dart';
 
 class UserAppointmentDashboard extends StatefulWidget {
   const UserAppointmentDashboard({Key? key}) : super(key: key);
@@ -17,144 +12,65 @@ class UserAppointmentDashboard extends StatefulWidget {
 }
 
 class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
-  final List<AppointmentModel> _list = [];
+  Color getAppointmentStateColor(String state) {
+    if (state == 'Pending') {
+      return Colors.orange;
+    } else if (state == 'Confirmed') {
+      return Colors.red;
+    } else {
+      return Colors.green;
+    }
+  }
 
-  int currentIndex = 0;
+  Widget buildRichText(String text, {Color? color, FontWeight? fontWeight}) {
+    return Text.rich(
+      TextSpan(
+        text: text,
+        style: TextStyle(
+          fontSize: 16,
+          color: color ?? Colors.black,
+          fontWeight: fontWeight ?? FontWeight.normal,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 20.0,
-            horizontal: 10.0,
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    children: [
-                      Text(
-                        "Available Counsellors",
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: UtilConstants.blackColor,
-                          fontWeight: FontWeight.bold,
-                        ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(25.0),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: SizedBox(
+                        height: 400,
+                        child: CounselorListView(),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: SizedBox(
-                          height: 300,
-                          child: CounselorListView(),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                const Text(
-                  "Your Appointments",
-                  style: TextStyle(
-                    fontSize: 25,
-                    color: UtilConstants.blackColor,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 25,
-                  ),
-                  child: SizedBox(
-                    height: 185,
-                    child: Consumer<UserProvider>(
-                      builder: (context, value, child) {
-                        return StreamBuilder(
-                          stream: AppointmentController().getAppointmentsByUid(
-                            value.userModel!.uid,
-                          ),
-                          builder: (context, snapshot) {
-                            // -------if the snapshot error occurs, show error message-------
-                            if (snapshot.hasError) {
-                              return const Center(
-                                child: Text(
-                                  "Something went wrong",
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: Colors.red,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              );
-                            }
-
-                            // -------if the snapshot is waiting, show progress indicator-------
-                            if (snapshot.connectionState ==
-                                ConnectionState.waiting) {
-                              return const Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            }
-
-                            if (snapshot.data!.docs.isEmpty) {
-                              return const Center(
-                                child: Text(
-                                  "No Appointment found",
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: Colors.blue,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              );
-                            }
-
-                            Logger().i(snapshot.data!.docs.length);
-
-                            // -------------clear the list before adding new data----------------
-                            _list.clear();
-
-                            //-----------------read the document list from snapshot and map to model and add to list----------------
-                            for (var e in snapshot.data!.docs) {
-                              Map<String, dynamic> data =
-                                  e.data() as Map<String, dynamic>;
-                              var model = AppointmentModel.fromJson(data);
-                              _list.add(model);
-                            }
-
-                            return Expanded(
-                              child: ListView.builder(
-                                physics: const BouncingScrollPhysics(),
-                                itemBuilder: (BuildContext context, int index) {
-                                  return CustomCardWidget(
-                                    list: _list,
-                                    index: index,
-                                    state: _list[index].status,
-                                  );
-                                },
-                                itemCount: _list.length,
-                              ),
-                            );
-                          },
-                        );
-                      },
                     ),
-                  ),
-                )
-              ],
-            ),
+                    SizedBox(height: 50),
+                    Text(
+                      "Your Appointments",
+                      style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    CustomCardWidget(),
+                  ],
+                ),
+              ),
+              Footer(height: 55, width: width),
+            ],
           ),
         ),
       ),
