@@ -44,6 +44,22 @@ class AppointmentController {
     }
   }
 
+  //------------------------ UPDATE APPOINTMENT STATUS ------------------------
+  void updateAppointmentState(String uid, String newState) async {
+    try {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('appointments')
+          .where('counselorId', isEqualTo: uid)
+          .get();
+
+      for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
+        await documentSnapshot.reference.update({'status': newState});
+      }
+    } catch (e) {
+      Logger().e(e);
+    }
+  }
+
   //------------------------ GET APPOINTMENT ------------------------
   Stream<QuerySnapshot> getAppointment() => appointments.snapshots();
 

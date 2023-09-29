@@ -1,3 +1,4 @@
+import 'package:bloomi_web/controllers/appoinment_controller.dart';
 import 'package:bloomi_web/controllers/notification_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
@@ -110,6 +111,11 @@ class UtilFormMethodNotification {
                                             list[index].id,
                                             'Approved',
                                           );
+
+                                          AppointmentController()
+                                              .updateAppointmentState(
+                                                  value.counsellorModel!.uid,
+                                                  'Approved');
                                         },
                                         style: ButtonStyle(
                                           backgroundColor: MaterialStateProperty
@@ -155,6 +161,10 @@ class UtilFormMethodNotification {
                                             list[index].id,
                                             'Declined',
                                           );
+                                          AppointmentController()
+                                              .updateAppointmentState(
+                                                  value.counsellorModel!.uid,
+                                                  'Declined');
                                         },
                                         style: ButtonStyle(
                                           backgroundColor: MaterialStateProperty

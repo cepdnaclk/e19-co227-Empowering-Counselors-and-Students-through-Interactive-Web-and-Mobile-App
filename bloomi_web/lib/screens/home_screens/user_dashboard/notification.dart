@@ -92,7 +92,7 @@ class UserNotification {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "${list[index].studentName} your appointment is ${list[index].status}",
+                                    "${list[index].studentName} your appointment is ${list[index].status} by ${list[index].counselorName}",
                                     style: const TextStyle(
                                       fontSize: 16,
                                     ),

@@ -18,15 +18,15 @@ class CustomCardWidget extends StatelessWidget {
     if (state == 'Pending') {
       return Colors.orange;
     } else if (state == 'Confirmed') {
-      return Colors.green;
-    } else {
       return Colors.red;
+    } else {
+      return Colors.green;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final appointmentStateColor = getAppointmentStateColor('Pending');
+    final appointmentStateColor = getAppointmentStateColor(state);
 
     return SizedBox(
       child: Card(
