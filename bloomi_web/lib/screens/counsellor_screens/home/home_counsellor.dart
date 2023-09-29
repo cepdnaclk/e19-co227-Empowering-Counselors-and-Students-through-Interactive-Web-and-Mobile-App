@@ -28,6 +28,7 @@ class HomeCounsellor extends StatelessWidget {
           ? AppBar(
               backgroundColor: canvasColor,
               title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
                     UtilConstants.primaryImagePath,
@@ -49,7 +50,10 @@ class HomeCounsellor extends StatelessWidget {
                 onPressed: () {
                   _key.currentState?.openDrawer();
                 },
-                icon: const Icon(Icons.menu),
+                icon: const Icon(
+                  Icons.menu,
+                  color: white,
+                ),
               ),
             )
           : AppBar(
@@ -138,7 +142,8 @@ class HomeCounsellor extends StatelessWidget {
                 ),
               ),
             ),
-            child: ExampleSidebarX(controller: _controller),
+            child:
+                isSmallScreen ? null : ExampleSidebarX(controller: _controller),
           ),
           Expanded(
             child: Center(

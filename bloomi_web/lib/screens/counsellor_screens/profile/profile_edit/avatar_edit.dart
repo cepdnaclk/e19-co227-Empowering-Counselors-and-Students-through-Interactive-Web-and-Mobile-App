@@ -9,12 +9,13 @@ class ProfileImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Consumer<CounsellorRegistrationProvider>(
         builder: (context, value, child) {
       return Stack(
         children: [
           CircleAvatar(
-            radius: 70,
+            radius: width < 480 ? 50 : 70,
             backgroundImage: NetworkImage(value.counsellorModel!.imgUrl),
           ),
           Positioned(

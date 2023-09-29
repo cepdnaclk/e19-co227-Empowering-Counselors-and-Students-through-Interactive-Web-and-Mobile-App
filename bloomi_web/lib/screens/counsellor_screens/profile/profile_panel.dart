@@ -7,11 +7,11 @@ class ProfilePanle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isMobile = MediaQuery.of(context).size.width < 450 ? true : false;
+    bool isMobile = MediaQuery.of(context).size.width < 480 ? true : false;
     double width = MediaQuery.of(context).size.width;
     return Container(
       margin: EdgeInsets.fromLTRB(isMobile ? 15 : width / 10,
-          isMobile ? 0 : 150, isMobile ? 15 : width / 10, 10),
+          isMobile ? 100 : 150, isMobile ? 15 : width / 10, 10),
       child: Stack(
         children: [
           const ProfileCard(),
