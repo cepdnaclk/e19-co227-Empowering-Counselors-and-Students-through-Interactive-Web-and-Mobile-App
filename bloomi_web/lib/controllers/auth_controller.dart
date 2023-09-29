@@ -60,7 +60,13 @@ class AuthController {
 
       Logger().i(credential.user);
     } on FirebaseAuthException catch (e) {
-      UtilMethod.customDialogBox(context, "Error", e.code);
+      UtilMethod.customDialogBox(
+        context,
+        "Error",
+        e.code,
+        onCancelPressed: () {},
+        onOkPressed: () {},
+      );
       Logger().e(e);
     } catch (e) {
       Logger().e(e);
@@ -189,7 +195,13 @@ class AuthController {
           (value) => UtilMethodForgotPassword.customDialogBox(
               context, "Email sent", "Please check your email"));
     } on FirebaseAuthException catch (e) {
-      UtilMethod.customDialogBox(context, "Error", e.code);
+      UtilMethod.customDialogBox(
+        context,
+        "Error",
+        e.code,
+        onCancelPressed: () {},
+        onOkPressed: () {},
+      );
       Logger().e(e);
     } catch (e) {
       Logger().e(e);

@@ -19,7 +19,12 @@ class NoteController {
         'description': description,
       }).then((value) {
         UtilMethod.customDialogBox(
-            context, "Success", "Note Added Successfully");
+          context,
+          "Success",
+          "Note Added Successfully",
+          onCancelPressed: () {},
+          onOkPressed: () {},
+        );
         // ignore: invalid_return_type_for_catch_error
       }).catchError((error) => Logger().e("Failed to add user: $error"));
     } catch (e) {

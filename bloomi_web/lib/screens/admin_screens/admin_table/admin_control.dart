@@ -129,9 +129,12 @@ class _AdminControlState extends State<AdminControl> {
                                                       Colors.grey.shade50,
                                                   onPressed: () {
                                                     UtilMethod.customDialogBox(
-                                                        context,
-                                                        'Warning!',
-                                                        'Do You Want to delete?');
+                                                      context,
+                                                      'Warning!',
+                                                      'Do You Want to delete?',
+                                                      onOkPressed: () {},
+                                                      onCancelPressed: () {},
+                                                    );
                                                   }),
                                             ],
                                           ),

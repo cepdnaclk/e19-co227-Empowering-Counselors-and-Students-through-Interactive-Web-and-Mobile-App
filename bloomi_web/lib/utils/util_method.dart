@@ -2,7 +2,13 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 
 class UtilMethod {
-  static customDialogBox(BuildContext context, String title, String desc) {
+  static customDialogBox(
+    BuildContext context,
+    String title,
+    String desc, {
+    VoidCallback? onOkPressed,
+    VoidCallback? onCancelPressed,
+  }) {
     final double width = MediaQuery.of(context).size.width;
     AwesomeDialog(
       width: (width > 420) ? 400 : 300,
@@ -11,8 +17,8 @@ class UtilMethod {
       animType: AnimType.scale,
       title: title,
       desc: desc,
-      btnCancelOnPress: () {},
-      btnOkOnPress: () {},
+      btnCancelOnPress: onCancelPressed,
+      btnOkOnPress: onOkPressed,
     ).show();
   }
 }

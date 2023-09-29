@@ -38,7 +38,13 @@ class ForgotPasswordProvider extends ChangeNotifier {
         setIsLoading(false);
       } else {
         Logger().e("Please enter email");
-        UtilMethod.customDialogBox(context, "Error", "Please enter email");
+        UtilMethod.customDialogBox(
+          context,
+          "Error",
+          "Please enter email",
+          onCancelPressed: () {},
+          onOkPressed: () {},
+        );
         setIsLoading(false);
       }
     } catch (e) {

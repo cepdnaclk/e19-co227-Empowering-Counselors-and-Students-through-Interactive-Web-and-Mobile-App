@@ -36,7 +36,12 @@ class AppointmentController {
         'status': status,
       }).then((value) {
         UtilMethod.customDialogBox(
-            context, "Success", "Appointment Send Successfully");
+          context,
+          "Success",
+          "Appointment Send Successfully",
+          onCancelPressed: () {},
+          onOkPressed: () {},
+        );
         // ignore: invalid_return_type_for_catch_error
       }).catchError((error) => Logger().e("Failed to add Appointment: $error"));
     } catch (e) {

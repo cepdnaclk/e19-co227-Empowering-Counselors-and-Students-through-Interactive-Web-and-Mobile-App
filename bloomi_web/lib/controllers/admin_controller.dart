@@ -62,7 +62,13 @@ class AdminController {
             userType: userType));
       }
     } on FirebaseAuthException catch (e) {
-      UtilMethod.customDialogBox(context, "Error", e.code);
+      UtilMethod.customDialogBox(
+        context,
+        "Error",
+        e.code,
+        onCancelPressed: () {},
+        onOkPressed: () {},
+      );
       Logger().e(e);
     } catch (e) {
       Logger().e(e);

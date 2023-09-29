@@ -142,7 +142,12 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
         )
             .then((value) {
           UtilMethod.customDialogBox(
-              context, "Success", "Counsellor Registered Successfully");
+            context,
+            "Success",
+            "Counsellor Registered Successfully",
+            onCancelPressed: () {},
+            onOkPressed: () {},
+          );
           _email.clear();
           _password.clear();
           _phoneNumber.clear();
@@ -153,7 +158,12 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
         setIsLoading(false);
       } else {
         UtilMethod.customDialogBox(
-            context, "Error", "Please fill all the fields");
+          context,
+          "Error",
+          "Please fill all the fields",
+          onCancelPressed: () {},
+          onOkPressed: () {},
+        );
       }
       setIsLoading(false);
     } catch (e) {
