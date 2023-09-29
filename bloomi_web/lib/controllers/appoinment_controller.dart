@@ -18,6 +18,7 @@ class AppointmentController {
     String studentFaculty,
     String date,
     String time,
+    String status,
   ) async {
     try {
       String appointmentId = appointments.doc().id;
@@ -32,6 +33,7 @@ class AppointmentController {
         'studentFaculty': studentFaculty,
         'date': date,
         'time': time,
+        'status': status,
       }).then((value) {
         UtilMethod.customDialogBox(
             context, "Success", "Appointment Send Successfully");
@@ -44,4 +46,8 @@ class AppointmentController {
 
   //------------------------ GET APPOINTMENT ------------------------
   Stream<QuerySnapshot> getAppointment() => appointments.snapshots();
+
+  //-------------GET APPOINTMENT ACORDING TO UID-----------------
+  Stream<QuerySnapshot> getAppointmentsByUid(String studentId) =>
+      appointments.where('studentId', isEqualTo: studentId).snapshots();
 }

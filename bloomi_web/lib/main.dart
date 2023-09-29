@@ -9,6 +9,7 @@ import 'package:bloomi_web/providers/nav_provider/admin_nav_provider.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/appointment_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/note_provider.dart';
+import 'package:bloomi_web/providers/user_home_provider/notification_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/responsive/responsive_layout.dart';
@@ -38,6 +39,7 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (_) => AdminRegistrationProvider()),
       ChangeNotifierProvider(create: (_) => NoteProvider()),
       ChangeNotifierProvider(create: (_) => AppointmentProvider()),
+      ChangeNotifierProvider(create: (_) => NotificationProvider()),
     ],
     child: const MyApp(),
   ));

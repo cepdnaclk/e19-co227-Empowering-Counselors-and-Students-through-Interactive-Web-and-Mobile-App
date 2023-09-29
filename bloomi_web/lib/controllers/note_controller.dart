@@ -7,12 +7,13 @@ class NoteController {
   CollectionReference notes = FirebaseFirestore.instance.collection('note');
 
   //------------------------ SAVE NOTE ------------------------
-  Future<void> saveNotes(
-      String title, String description, BuildContext context) async {
+  Future<void> saveNotes(String title, String description, BuildContext context,
+      String userId) async {
     try {
       String noteId = notes.doc().id;
 
       return notes.add({
+        'userId': userId,
         'id': noteId,
         'title': title,
         'description': description,
@@ -28,4 +29,8 @@ class NoteController {
 
   //------------------------ GET NOTE ------------------------
   Stream<QuerySnapshot> getNotes() => notes.snapshots();
+
+  //-------------GET NOTES ACORDING TO UID-----------------
+  Stream<QuerySnapshot> getNotesByUid(String studentId) =>
+      notes.where('userId', isEqualTo: studentId).snapshots();
 }

@@ -42,15 +42,11 @@ class NoteProvider extends ChangeNotifier {
   }
 
   //------------------------ SAVE NOTE ------------------------
-  Future<void> saveNote(
-      String title, String description, BuildContext context) async {
+  Future<void> saveNote(String title, String description, BuildContext context,
+      String userId) async {
     try {
       setIsLoading(true);
-      await NoteController().saveNotes(
-        title,
-        description,
-        context,
-      );
+      await NoteController().saveNotes(title, description, context, userId);
 
       // Clear text fields after saving
       titleController.clear();

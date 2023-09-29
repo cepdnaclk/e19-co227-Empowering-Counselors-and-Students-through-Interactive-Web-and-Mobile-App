@@ -1,6 +1,5 @@
 import 'package:bloomi_web/components/calender.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-
 import 'package:flutter/material.dart';
 
 class CounselorCalendarDesktop extends StatefulWidget {
@@ -14,9 +13,6 @@ class CounselorCalendarDesktop extends StatefulWidget {
 class _CounselorCalendarDesktopState extends State<CounselorCalendarDesktop> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,

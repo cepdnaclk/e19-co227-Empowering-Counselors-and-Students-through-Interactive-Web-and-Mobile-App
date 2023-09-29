@@ -3,6 +3,7 @@ import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/custom_time_picker.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/providers/user_home_provider/appointment_provider.dart';
+import 'package:bloomi_web/providers/user_home_provider/notification_provider.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
@@ -48,21 +49,36 @@ class UtilFormMethod {
                           },
                         ),
                         const SizedBox(height: 50),
-                        Consumer2<AppointmentProvider, UserProvider>(
-                          builder: (context, value, value2, child) {
+                        Consumer3<AppointmentProvider, UserProvider,
+                            NotificationProvider>(
+                          builder: (context, value, value2, value3, child) {
                             return ElevatedButton(
                               onPressed: () async {
                                 try {
-                                  value.saveAppointment(
-                                      context,
-                                      value2.userModel!.uid,
-                                      counselorId,
-                                      value.name.text,
-                                      counselorName,
-                                      value2.userModel!.email,
-                                      value2.userModel!.faculty,
-                                      value.getDateTime.toString(),
-                                      value.getTimeOfDay.format(context));
+                                  value
+                                      .saveAppointment(
+                                    context,
+                                    value2.userModel!.uid,
+                                    counselorId,
+                                    value.name.text,
+                                    counselorName,
+                                    value2.userModel!.email,
+                                    value2.userModel!.faculty,
+                                    value.getDateTime.toString(),
+                                    value.getTimeOfDay.format(context),
+                                    "Pending",
+                                  )
+                                      .then((value1) {
+                                    value3.saveNotification(
+                                        context,
+                                        value2.userModel!.uid,
+                                        counselorId,
+                                        value2.userModel!.name,
+                                        counselorName,
+                                        value.getDateTime.toString(),
+                                        value.getTimeOfDay.format(context),
+                                        "Pending");
+                                  });
                                 } catch (e) {
                                   Logger().e(e);
                                 }

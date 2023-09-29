@@ -52,7 +52,8 @@ class AppointmentProvider extends ChangeNotifier {
       String studentEmail,
       String studentFaculty,
       String date,
-      String time) async {
+      String time,
+      String status) async {
     try {
       if (studentId.isNotEmpty &&
           counselorId.isNotEmpty &&
@@ -61,18 +62,21 @@ class AppointmentProvider extends ChangeNotifier {
           studentEmail.isNotEmpty &&
           studentFaculty.isNotEmpty &&
           date.isNotEmpty &&
-          time.isNotEmpty) {
+          time.isNotEmpty &&
+          status.isNotEmpty) {
         setIsLoading(true);
         await AppointmentController().saveAppoinments(
-            context,
-            studentId,
-            counselorId,
-            studentName,
-            counselorName,
-            studentEmail,
-            studentFaculty,
-            date,
-            time);
+          context,
+          studentId,
+          counselorId,
+          studentName,
+          counselorName,
+          studentEmail,
+          studentFaculty,
+          date,
+          time,
+          status,
+        );
         notifyListeners();
         setIsLoading(false);
       } else {

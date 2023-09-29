@@ -1,5 +1,6 @@
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/providers/user_home_provider/note_provider.dart';
+import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -42,14 +43,15 @@ class UtilFormMethodNoteTaking {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Consumer<NoteProvider>(
-                  builder: (context, value, child) {
+                Consumer2<NoteProvider, UserProvider>(
+                  builder: (context, value, value2, child) {
                     return ElevatedButton(
                       onPressed: () async {
                         await value.saveNote(
                           value.getTitleController.text,
                           value.getDescriptionController.text,
                           context,
+                          value2.userModel!.uid,
                         );
                         // Clear text fields after saving
                       },

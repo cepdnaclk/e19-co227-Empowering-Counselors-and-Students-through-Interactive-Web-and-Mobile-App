@@ -9,5 +9,6 @@ part 'conversation_model.dart';
 part 'counsellor_model.dart';
 part 'message_model.dart';
 part 'note_model.dart';
+part 'notification_model.dart';
 part 'objects.g.dart';
 part 'user_model.dart';

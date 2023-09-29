@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 class CustomCardWidget extends StatelessWidget {
   final List<AppointmentModel> list;
   final int index;
+  final String state;
 
   const CustomCardWidget({
     Key? key,
     required this.list,
     required this.index,
+    required this.state,
   }) : super(key: key);
 
   Color getAppointmentStateColor(String state) {
@@ -137,7 +139,7 @@ class CustomCardWidget extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    'Pending',
+                    state,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: appointmentStateColor,
