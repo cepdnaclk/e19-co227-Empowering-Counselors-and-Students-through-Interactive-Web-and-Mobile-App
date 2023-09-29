@@ -7,6 +7,7 @@ import 'package:bloomi_web/screens/admin_screens/admin_table/students_control.da
 import 'package:bloomi_web/screens/admin_screens/home/admin_home.dart';
 import 'package:bloomi_web/screens/admin_screens/log_activity/admin_activitylog.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
+import 'package:bloomi_web/utils/util_method.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -76,8 +77,8 @@ class AdminPanel extends StatelessWidget {
                     return Row(
                       children: [
                         Container(
-                          width: 50,
-                          height: 50,
+                          width: 35,
+                          height: 35,
                           decoration: BoxDecoration(
                             color: Colors.blue,
                             shape: BoxShape.circle,
@@ -97,11 +98,9 @@ class AdminPanel extends StatelessWidget {
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: UtilConstants.whiteColor,
-
-                            // Use Colors.black instead of UtilConstants.blackColor
                           ),
                         ),
-                        const SizedBox(width: 5),
+                        const SizedBox(width: 10),
                       ],
                     );
                   },
@@ -145,9 +144,12 @@ class ExampleSidebarX extends StatelessWidget {
           color: canvasColor,
           borderRadius: BorderRadius.circular(20),
         ),
-        hoverColor: scaffoldBackgroundColor,
+        hoverColor: UtilConstants.greyColor,
+
+        // hoverColor: scaffoldBackgroundColor,
         textStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
         selectedTextStyle: const TextStyle(color: Colors.white),
+
         itemTextPadding: const EdgeInsets.only(left: 30),
         selectedItemTextPadding: const EdgeInsets.only(left: 30),
         itemDecoration: BoxDecoration(
@@ -160,7 +162,7 @@ class ExampleSidebarX extends StatelessWidget {
             color: actionColor.withOpacity(0.37),
           ),
           gradient: const LinearGradient(
-            colors: [accentCanvasColor, canvasColor],
+            colors: [accentCanvasColor, backgroundcolor],
           ),
           boxShadow: [
             BoxShadow(
@@ -187,29 +189,40 @@ class ExampleSidebarX extends StatelessWidget {
       ),
       footerDivider: divider,
       items: [
-        SidebarXItem(
+        const SidebarXItem(
           icon: Icons.home,
           label: 'Home',
-          onTap: () {
-            const AdminHome();
-          },
         ),
         const SidebarXItem(
           icon: Icons.search,
-          label: 'Search',
+          label: 'Student Control',
         ),
         const SidebarXItem(
           icon: Icons.people,
-          label: 'People',
+          label: 'Counselor Control',
         ),
         const SidebarXItem(
           icon: Icons.favorite,
-          label: 'Favorites',
+          label: 'Admin Control',
         ),
         const SidebarXItem(
-          iconWidget: FlutterLogo(size: 20),
-          label: 'Flutter',
+          icon: Icons.local_activity,
+          label: 'Activity Log',
         ),
+        SidebarXItem(
+            icon: Icons.logout,
+            label: 'Sign Out',
+            onTap: () {
+              UtilMethod.customDialogBox(
+                context,
+                'Sign Out',
+                'Do you Want to Sign Out?',
+                onOkPressed: () {
+                  AuthController.signOutUser();
+                },
+                onCancelPressed: () {},
+              );
+            }),
       ],
     );
   }
@@ -255,3 +268,4 @@ const accentCanvasColor = Color(0xFF3E3E61);
 const white = Colors.white;
 final actionColor = const Color.fromARGB(255, 50, 50, 132).withOpacity(0.6);
 final divider = Divider(color: white.withOpacity(0.3), height: 1);
+const backgroundcolor = Color.fromARGB(33, 50, 22, 172);

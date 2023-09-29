@@ -126,7 +126,9 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                                 UtilMethod.customDialogBox(
                                                     context,
                                                     'Warning!',
-                                                    'Do You want to delete?');
+                                                    'Do You want to delete?',
+                                                    onCancelPressed: () {},
+                                                    onOkPressed: () {});
                                               },
                                             ),
                                           ],

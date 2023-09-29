@@ -105,7 +105,12 @@ class AdminRegistrationProvider extends ChangeNotifier {
           )
               .then((value) {
             UtilMethod.customDialogBox(
-                context, "Success", "Registered Successfully!");
+              context,
+              "Success",
+              "Registered Successfully!",
+              onCancelPressed: () {},
+              onOkPressed: () {},
+            );
             _email.clear();
             _password.clear();
             _phoneNumber.clear();
@@ -116,11 +121,21 @@ class AdminRegistrationProvider extends ChangeNotifier {
           setIsLoading(false);
         } else {
           UtilMethod.customDialogBox(
-              context, "Error", "Please enter a valid Phone Number");
+            context,
+            "Error",
+            "Please enter a valid Phone Number",
+            onCancelPressed: () {},
+            onOkPressed: () {},
+          );
         }
       } else {
         UtilMethod.customDialogBox(
-            context, "Error", "Please fill all the fields");
+          context,
+          "Error",
+          "Please fill all the fields",
+          onCancelPressed: () {},
+          onOkPressed: () {},
+        );
       }
       setIsLoading(false);
     } catch (e) {

@@ -127,11 +127,21 @@ class LoginProvider extends ChangeNotifier {
                   });
                 } else {
                   UtilMethod.customDialogBox(
-                      context, "Error", "email not Exists");
+                    context,
+                    "Error",
+                    "email not Exists",
+                    onCancelPressed: () {},
+                    onOkPressed: () {},
+                  );
                 }
               } catch (e) {
                 UtilMethod.customDialogBox(
-                    context, "Error", "Incorrect Password");
+                  context,
+                  "Error",
+                  "Incorrect Password",
+                  onCancelPressed: () {},
+                  onOkPressed: () {},
+                );
                 Logger().e(e);
               }
             });
@@ -143,7 +153,12 @@ class LoginProvider extends ChangeNotifier {
         setIsLoading(false);
       } else {
         UtilMethod.customDialogBox(
-            context, "Error", "Please fill all the fields");
+          context,
+          "Error",
+          "Please fill all the fields",
+          onCancelPressed: () {},
+          onOkPressed: () {},
+        );
         setIsLoading(false);
       }
     } catch (e) {

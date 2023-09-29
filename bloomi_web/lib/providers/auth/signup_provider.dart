@@ -120,7 +120,8 @@ class SignupProvider extends ChangeNotifier {
         setIsLoading(false);
       } else {
         UtilMethod.customDialogBox(
-            context, "Error", "Please fill all the fields");
+            context, "Error", "Please fill all the fields",
+            onOkPressed: () {}, onCancelPressed: () {});
       }
       setIsLoading(false);
     } catch (e) {
