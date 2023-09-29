@@ -68,6 +68,9 @@ class AppointmentController {
   //------------------------ GET APPOINTMENT ------------------------
   Stream<QuerySnapshot> getAppointment() => appointments.snapshots();
 
+  Stream<QuerySnapshot> getCounselorAppointment(String currentUserId) =>
+      appointments.where("uid", isEqualTo: currentUserId).snapshots();
+
   //-------------GET APPOINTMENT ACORDING TO UID-----------------
   Stream<QuerySnapshot> getAppointmentsByUid(String studentId) =>
       appointments.where('studentId', isEqualTo: studentId).snapshots();

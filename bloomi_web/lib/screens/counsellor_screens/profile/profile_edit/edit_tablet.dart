@@ -70,12 +70,26 @@ class _EditTabletState extends State<EditTablet> {
                               .email,
                     ),
                     const SizedBox(height: 10),
-                    FormInputWeb(
-                      "Password",
-                      textEditingController:
-                          Provider.of<CounsellorRegistrationProvider>(context)
-                              .password,
-                      obscure: true,
+                    Consumer<CounsellorRegistrationProvider>(
+                      builder: (context, value, child) {
+                        return FormInputWeb(
+                          "Password",
+                          textEditingController: value.password,
+                          fontSize: 14,
+                          height: 45,
+                          width: 420,
+                          lableFontSize: 12,
+                          obscure: value.isObscure ? true : false,
+                          icon: InkWell(
+                            onTap: () {
+                              value.setIsObscure(false);
+                            },
+                            child: value.isObscure
+                                ? const Icon(Icons.visibility_off, size: 15)
+                                : const Icon(Icons.visibility, size: 15),
+                          ),
+                        );
+                      },
                     ),
                     const SizedBox(height: 10),
                     FormInputWeb(
@@ -102,14 +116,17 @@ class _EditTabletState extends State<EditTablet> {
                       builder: (context, value, child) {
                         return InkWell(
                           onTap: () {
-                            // value.signUpCounsellor(
-                            //     value.name.text,
-                            //     value.email.text,
-                            //     value.password.text,
-                            //     value.phoneNumber.text,
-                            //     value.faculty,
-                            //     value.credentials.text,
-                            //     context);
+                            value.updateCounselor(
+                              value.name.text,
+                              value.email.text,
+                              value.password.text,
+                              value.phoneNumber.text,
+                              value.faculty,
+                              value.credentials.text,
+                              context,
+                              value.counsellorModel!.imgUrl,
+                              value.counsellorModel!.uid,
+                            );
                           },
                           child: FormButtonWeb(
                             "Save",

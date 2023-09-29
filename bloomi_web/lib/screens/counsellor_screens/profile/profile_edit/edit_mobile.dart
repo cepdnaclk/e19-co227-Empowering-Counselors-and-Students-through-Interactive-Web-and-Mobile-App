@@ -33,7 +33,7 @@ class _EditMobileState extends State<EditMobile> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    print(width);
+
     return Center(
       child: SingleChildScrollView(
         child: Container(
@@ -109,7 +109,10 @@ class _EditMobileState extends State<EditMobile> {
               SizedBox(
                 width: 280,
                 child: DropDownButtonWidget(
-                    index: 1, listItem: faculty, text: "Faculty"),
+                  index: 1,
+                  listItem: faculty,
+                  text: "Faculty",
+                ),
               ),
               const SizedBox(height: 6),
               FormInputWeb(
@@ -127,14 +130,17 @@ class _EditMobileState extends State<EditMobile> {
                 builder: (context, value, child) {
                   return InkWell(
                     onTap: () {
-                      // value.signUpCounsellor(
-                      //     value.name.text,
-                      //     value.email.text,
-                      //     value.password.text,
-                      //     value.phoneNumber.text,
-                      //     value.faculty,
-                      //     value.credentials.text,
-                      //     context);
+                      value.updateCounselor(
+                        value.name.text,
+                        value.email.text,
+                        value.password.text,
+                        value.phoneNumber.text,
+                        value.faculty,
+                        value.credentials.text,
+                        context,
+                        value.counsellorModel!.imgUrl,
+                        value.counsellorModel!.uid,
+                      );
                     },
                     child: FormButtonWeb(
                       "Save",
