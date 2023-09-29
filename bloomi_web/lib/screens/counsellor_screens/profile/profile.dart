@@ -94,110 +94,113 @@ class _CounselorProfileState extends State<CounselorProfile> {
                         child: const Text('Edit'))
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          profileDetails['name'],
-                          style: TextStyle(
-                            fontSize: width > 750 ? 20 : 14,
-                            fontWeight: FontWeight.bold,
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            profileDetails['name'],
+                            style: TextStyle(
+                              fontSize: width > 750 ? 20 : 14,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 8),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "${keys[1]}",
-                                  style: TextStyle(
-                                      fontSize: width > 750 ? 16 : 12),
-                                ),
-                                width > 750
-                                    ? const SizedBox(width: 74)
-                                    : const SizedBox(width: 60),
-                                Text(": " + values[1],
-                                    style: TextStyle(
-                                        fontSize: width > 750 ? 16 : 12)),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text("${keys[2]}",
-                                    style: TextStyle(
-                                        fontSize: width > 750 ? 16 : 12)),
-                                const SizedBox(width: 10),
-                                Text(
-                                  ": " + values[2],
-                                  style: TextStyle(
-                                      fontSize: width > 750 ? 16 : 12),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text("${keys[3]}",
-                                    style: TextStyle(
-                                        fontSize: width > 750 ? 16 : 12)),
-                                width > 750
-                                    ? const SizedBox(width: 62)
-                                    : const SizedBox(width: 49),
-                                Text(
-                                  ": " + values[3],
-                                  style: TextStyle(
-                                      fontSize: width > 750 ? 16 : 12),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text("${keys[4]}",
-                                    style: TextStyle(
-                                        fontSize: width > 750 ? 16 : 12)),
-                                width > 750
-                                    ? const SizedBox(width: 31)
-                                    : const SizedBox(width: 26),
-                                Text(
-                                  ": " + values[4],
-                                  style: TextStyle(
-                                      fontSize: width > 750 ? 16 : 12),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(width: 5),
-                          ],
-                        ),
-                        /*for (int x = 1; x < len - 1; x++)
-                          Row(
+                          const SizedBox(height: 8),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                keys[x],
-                                style:
-                                    TextStyle(fontSize: width > 750 ? 16 : 12),
+                              Row(
+                                children: [
+                                  Text(
+                                    "${keys[1]}",
+                                    style: TextStyle(
+                                        fontSize: width > 750 ? 16 : 12),
+                                  ),
+                                  width > 750
+                                      ? const SizedBox(width: 74)
+                                      : const SizedBox(width: 60),
+                                  Text(": " + values[1],
+                                      style: TextStyle(
+                                          fontSize: width > 750 ? 16 : 12)),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text("${keys[2]}",
+                                      style: TextStyle(
+                                          fontSize: width > 750 ? 16 : 12)),
+                                  const SizedBox(width: 10),
+                                  Text(
+                                    ": " + values[2],
+                                    style: TextStyle(
+                                        fontSize: width > 750 ? 16 : 12),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text("${keys[3]}",
+                                      style: TextStyle(
+                                          fontSize: width > 750 ? 16 : 12)),
+                                  width > 750
+                                      ? const SizedBox(width: 62)
+                                      : const SizedBox(width: 49),
+                                  Text(
+                                    ": " + values[3],
+                                    style: TextStyle(
+                                        fontSize: width > 750 ? 16 : 12),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text("${keys[4]}",
+                                      style: TextStyle(
+                                          fontSize: width > 750 ? 16 : 12)),
+                                  width > 750
+                                      ? const SizedBox(width: 31)
+                                      : const SizedBox(width: 26),
+                                  Text(
+                                    ": " + values[4],
+                                    style: TextStyle(
+                                        fontSize: width > 750 ? 16 : 12),
+                                  ),
+                                ],
                               ),
                               const SizedBox(width: 5),
-                              Text(
-                                ":",
-                                style:
-                                    TextStyle(fontSize: width > 750 ? 16 : 12),
-                              ),
-                              const SizedBox(width: 5),
-                              Text(
-                                values[x],
-                                style:
-                                    TextStyle(fontSize: width > 750 ? 16 : 12),
-                              ),
                             ],
-                          ),*/
-                      ],
-                    ),
-                  ],
+                          ),
+                          /*for (int x = 1; x < len - 1; x++)
+                            Row(
+                              children: [
+                                Text(
+                                  keys[x],
+                                  style:
+                                      TextStyle(fontSize: width > 750 ? 16 : 12),
+                                ),
+                                const SizedBox(width: 5),
+                                Text(
+                                  ":",
+                                  style:
+                                      TextStyle(fontSize: width > 750 ? 16 : 12),
+                                ),
+                                const SizedBox(width: 5),
+                                Text(
+                                  values[x],
+                                  style:
+                                      TextStyle(fontSize: width > 750 ? 16 : 12),
+                                ),
+                              ],
+                            ),*/
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
