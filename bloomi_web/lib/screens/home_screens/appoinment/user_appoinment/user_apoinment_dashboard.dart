@@ -2,9 +2,11 @@ import 'package:bloomi_web/components/counselor_list_view.dart';
 import 'package:bloomi_web/components/custom_card_widget.dart';
 import 'package:bloomi_web/controllers/appoinment_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
+import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 
 class UserAppointmentDashboard extends StatefulWidget {
   const UserAppointmentDashboard({Key? key}) : super(key: key);
@@ -77,68 +79,75 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                   ),
                   child: SizedBox(
                     height: 185,
-                    child: StreamBuilder(
-                      stream: AppointmentController().getAppointment(),
-                      builder: (context, snapshot) {
-                        // -------if the snapshot error occurs, show error message-------
-                        if (snapshot.hasError) {
-                          return const Center(
-                            child: Text(
-                              "Something went wrong",
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          );
-                        }
-
-                        // -------if the snapshot is waiting, show progress indicator-------
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }
-
-                        if (snapshot.data!.docs.isEmpty) {
-                          return const Center(
-                            child: Text(
-                              "No Appointment found",
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          );
-                        }
-
-                        Logger().i(snapshot.data!.docs.length);
-
-                        // -------------clear the list before adding new data----------------
-                        _list.clear();
-
-                        //-----------------read the document list from snapshot and map to model and add to list----------------
-                        for (var e in snapshot.data!.docs) {
-                          Map<String, dynamic> data =
-                              e.data() as Map<String, dynamic>;
-                          var model = AppointmentModel.fromJson(data);
-                          _list.add(model);
-                        }
-
-                        return Expanded(
-                          child: ListView.builder(
-                            physics: const BouncingScrollPhysics(),
-                            itemBuilder: (BuildContext context, int index) {
-                              return CustomCardWidget(
-                                list: _list,
-                                index: index,
-                              );
-                            },
-                            itemCount: _list.length,
+                    child: Consumer<UserProvider>(
+                      builder: (context, value, child) {
+                        return StreamBuilder(
+                          stream: AppointmentController().getAppointmentsByUid(
+                            value.userModel!.uid,
                           ),
+                          builder: (context, snapshot) {
+                            // -------if the snapshot error occurs, show error message-------
+                            if (snapshot.hasError) {
+                              return const Center(
+                                child: Text(
+                                  "Something went wrong",
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              );
+                            }
+
+                            // -------if the snapshot is waiting, show progress indicator-------
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+
+                            if (snapshot.data!.docs.isEmpty) {
+                              return const Center(
+                                child: Text(
+                                  "No Appointment found",
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              );
+                            }
+
+                            Logger().i(snapshot.data!.docs.length);
+
+                            // -------------clear the list before adding new data----------------
+                            _list.clear();
+
+                            //-----------------read the document list from snapshot and map to model and add to list----------------
+                            for (var e in snapshot.data!.docs) {
+                              Map<String, dynamic> data =
+                                  e.data() as Map<String, dynamic>;
+                              var model = AppointmentModel.fromJson(data);
+                              _list.add(model);
+                            }
+
+                            return Expanded(
+                              child: ListView.builder(
+                                physics: const BouncingScrollPhysics(),
+                                itemBuilder: (BuildContext context, int index) {
+                                  return CustomCardWidget(
+                                    list: _list,
+                                    index: index,
+                                    state: _list[index].status,
+                                  );
+                                },
+                                itemCount: _list.length,
+                              ),
+                            );
+                          },
                         );
                       },
                     ),

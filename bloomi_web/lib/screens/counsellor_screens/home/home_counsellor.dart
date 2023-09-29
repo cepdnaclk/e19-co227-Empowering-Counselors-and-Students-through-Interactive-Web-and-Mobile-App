@@ -2,8 +2,11 @@ import 'package:bloomi_web/components/dropdown_menu_items.dart';
 import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/screens/counsellor_screens/calender/calendar_home.dart';
 import 'package:bloomi_web/screens/counsellor_screens/chat/home/chat_counsellor.dart';
+
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard_home.dart';
 import 'package:bloomi_web/screens/counsellor_screens/profile/profile_home.dart';
+import 'package:bloomi_web/screens/counsellor_screens/home/notification_viewer.dart.dart';
+
 import 'package:bloomi_web/screens/home_screens/note/note.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
@@ -71,19 +74,36 @@ class HomeCounsellor extends StatelessWidget {
                 ],
               ),
               actions: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: canvasColor,
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  alignment: Alignment.center,
-                  width: 24,
-                  height: 24, // Adjust the width to your preference.
-                  child: const DropDownMenuItems(
-                    icon: Icons.notifications,
+                InkWell(
+                  onTap: () {
+                    UtilFormMethodNotification.showDialogMethod(context);
+                  },
+                  child: Stack(
+                    children: [
+                      const Icon(Icons.notifications,
+                          size: 24, color: Colors.white),
+                      Positioned(
+                        right: -0.6,
+                        top: -2,
+                        child: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: const BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Text(
+                            '.',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 11,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(width: 20),
+                const SizedBox(width: 35),
                 Container(
                   decoration: BoxDecoration(
                     color: canvasColor,
@@ -96,7 +116,7 @@ class HomeCounsellor extends StatelessWidget {
                     icon: Icons.person,
                   ),
                 ),
-                const SizedBox(width: 15)
+                const SizedBox(width: 25)
               ],
               bottom: const PreferredSize(
                 preferredSize:

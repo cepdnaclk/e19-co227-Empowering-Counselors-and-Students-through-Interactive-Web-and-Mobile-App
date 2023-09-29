@@ -18,6 +18,7 @@ class AppointmentController {
     String studentFaculty,
     String date,
     String time,
+    String status,
   ) async {
     try {
       String appointmentId = appointments.doc().id;
@@ -32,9 +33,15 @@ class AppointmentController {
         'studentFaculty': studentFaculty,
         'date': date,
         'time': time,
+        'status': status,
       }).then((value) {
         UtilMethod.customDialogBox(
-            context, "Success", "Appointment Send Successfully");
+          context,
+          "Success",
+          "Appointment Send Successfully",
+          onCancelPressed: () {},
+          onOkPressed: () {},
+        );
         // ignore: invalid_return_type_for_catch_error
       }).catchError((error) => Logger().e("Failed to add Appointment: $error"));
     } catch (e) {
@@ -42,8 +49,29 @@ class AppointmentController {
     }
   }
 
+  //------------------------ UPDATE APPOINTMENT STATUS ------------------------
+  void updateAppointmentState(String uid, String newState) async {
+    try {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('appointments')
+          .where('counselorId', isEqualTo: uid)
+          .get();
+
+      for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
+        await documentSnapshot.reference.update({'status': newState});
+      }
+    } catch (e) {
+      Logger().e(e);
+    }
+  }
+
   //------------------------ GET APPOINTMENT ------------------------
   Stream<QuerySnapshot> getAppointment() => appointments.snapshots();
+
   Stream<QuerySnapshot> getCounselorAppointment(String currentUserId) =>
       appointments.where("uid", isEqualTo: currentUserId).snapshots();
+
+  //-------------GET APPOINTMENT ACORDING TO UID-----------------
+  Stream<QuerySnapshot> getAppointmentsByUid(String studentId) =>
+      appointments.where('studentId', isEqualTo: studentId).snapshots();
 }
