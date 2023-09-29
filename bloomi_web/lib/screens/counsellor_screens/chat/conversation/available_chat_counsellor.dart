@@ -3,7 +3,9 @@ import 'package:bloomi_web/controllers/chat_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
+import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/custom_chat_view.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
+import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -12,17 +14,21 @@ class AvailableChatCounsellor extends StatelessWidget {
   AvailableChatCounsellor({
     super.key,
     required this.height,
+    required this.width,
+    required this.isMobile,
   });
 
   final double height;
+  final double width;
+  final bool isMobile;
 
   final List<ConversationModel> _list = [];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 500,
-      height: height - 152,
+      width: (isMobile == false) ? width * 0.45 : width,
+      height: height,
       color: UtilConstants.lightgreyColor,
       child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
@@ -78,6 +84,12 @@ class AvailableChatCounsellor extends StatelessWidget {
                                 Provider.of<UserChatProvider>(context,
                                         listen: false)
                                     .changeConversationModelNew(_list[index]);
+                                isMobile
+                                    ? UtilFunction.navigateForward(
+                                        context,
+                                        CustomChatView(
+                                            width: width, height: height))
+                                    : null;
                               } catch (e) {
                                 Logger().e(e);
                               }

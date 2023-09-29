@@ -1,17 +1,13 @@
+import 'package:bloomi_web/controllers/appoinment_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
+import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CustomCardWidget extends StatelessWidget {
-  final List<AppointmentModel> list;
-  final int index;
-  final String state;
-
   const CustomCardWidget({
     Key? key,
-    required this.list,
-    required this.index,
-    required this.state,
   }) : super(key: key);
 
   Color getAppointmentStateColor(String state) {
@@ -24,133 +20,170 @@ class CustomCardWidget extends StatelessWidget {
     }
   }
 
+  Widget buildRichText(
+    String text, {
+    Color? color,
+    FontWeight? fontWeight,
+    double? fontSize,
+  }) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: fontSize ?? 16,
+        color: color ?? Colors.black,
+        fontWeight: fontWeight ?? FontWeight.normal,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final appointmentStateColor = getAppointmentStateColor(state);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final screenWidth = constraints.maxWidth;
 
-    return SizedBox(
-      child: Card(
-        color: UtilConstants.lightgreyColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 20,
+        int columns = 1;
+
+        if (screenWidth > 600) {
+          columns = 2; // For tablets and larger screens
+        }
+
+        if (screenWidth > 1200) {
+          columns = 3; // For larger screens like laptops
+        }
+
+        return SizedBox(
+          height: 500,
+          child: Consumer<UserProvider>(
+            builder: (context, value, child) {
+              return StreamBuilder(
+                stream: AppointmentController()
+                    .getAppointmentsByUid(value.userModel!.uid),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return const Center(
+                      child: Text(
+                        "Something went wrong",
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    );
+                  }
+
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+
+                  if (snapshot.data!.docs.isEmpty) {
+                    return const Center(
+                      child: Text(
+                        "No Appointment found",
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    );
+                  }
+
+                  // Clear the list before adding new data
+                  List<AppointmentModel> list = [];
+
+                  for (var e in snapshot.data!.docs) {
+                    Map<String, dynamic> data =
+                        e.data() as Map<String, dynamic>;
+                    var model = AppointmentModel.fromJson(data);
+                    list.add(model);
+                  }
+
+                  return Expanded(
+                    child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: columns,
+                        childAspectRatio: 1.0,
+                        mainAxisSpacing: 8.0,
+                        crossAxisSpacing: 8.0,
+                        mainAxisExtent: 192.0,
+                      ),
+                      itemBuilder: (BuildContext context, int index) {
+                        return Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          color: Colors.white,
+                          elevation: 10,
+                          shadowColor: Colors.grey.withOpacity(0.4),
+                          child: Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                buildRichText(
+                                  "Appointment Details",
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  fontSize: 18.0,
+                                ),
+                                const Divider(
+                                  thickness: 2,
+                                  height: 10,
+                                  color: UtilConstants.blackColor,
+                                ),
+                                const SizedBox(height: 8),
+                                buildRichText(
+                                  "Counselor Name: ${list[index].counselorName}",
+                                  fontSize: 16.0,
+                                ),
+                                buildRichText(
+                                  "Appointment Date: ${list[index].date.toString().substring(0, 10)}",
+                                  fontSize: 16.0,
+                                ),
+                                buildRichText(
+                                  "Appointment Time: ${list[index].time}",
+                                  fontSize: 16.0,
+                                ),
+                                const SizedBox(height: 8),
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: 10,
+                                      height: 10,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: getAppointmentStateColor(
+                                            list[index].status),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    buildRichText(
+                                      list[index].status,
+                                      color: getAppointmentStateColor(
+                                          list[index].status),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16.0,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                      itemCount: list.length,
+                    ),
+                  );
+                },
+              );
+            },
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "Appointment Details",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  shadows: [
-                    Shadow(
-                      blurRadius: 3.0,
-                      color: Colors.grey,
-                      offset: Offset(2.0, 2.0),
-                    ),
-                  ],
-                ),
-              ),
-              const Divider(
-                thickness: 1,
-                height: 16,
-                color: UtilConstants.blackColor,
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      "Student Name: ${list[index].studentName}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      "Student Email: ${list[index].studentEmail}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      "Student Faculty: ${list[index].studentFaculty}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      "Counselor Name: ${list[index].counselorName}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      "Appointment Date: ${list[index].date.toString().substring(0, 10)}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      "Appointment Time: ${list[index].time}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  Container(
-                    width: 10,
-                    height: 10,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: appointmentStateColor,
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    state,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: appointmentStateColor,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

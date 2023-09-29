@@ -23,25 +23,78 @@ class _NoteState extends State<Note> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        children: [
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-            padding: const EdgeInsets.all(10),
-            width: 600,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.black),
-            ),
-            child: const Calender(),
-          ),
-          const Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: NoteCard(),
-            ),
-          ),
-        ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth < 600) {
+            // For mobile devices
+            return Column(
+              children: [
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  padding: const EdgeInsets.all(10),
+                  width: double.infinity, // Expand to full width
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.black),
+                  ),
+                  child: const Calender(),
+                ),
+                const Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 10),
+                    child: NoteCard(),
+                  ),
+                ),
+              ],
+            );
+          } else if (constraints.maxWidth < 1000) {
+            // For tablets
+            return Column(
+              children: [
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 60),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.black),
+                  ),
+                  child: const Calender(),
+                ),
+                const Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 10, left: 40, right: 40),
+                    child: NoteCard(),
+                  ),
+                ),
+              ],
+            );
+          } else {
+            // For laptops and larger screens
+            return Row(
+              children: [
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  padding: const EdgeInsets.all(10),
+                  width: 600, // Fixed width for laptops
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.black),
+                  ),
+                  child: const Calender(),
+                ),
+                const Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 10),
+                    child: NoteCard(),
+                  ),
+                ),
+              ],
+            );
+          }
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

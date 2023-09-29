@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 class CounselorListView extends StatefulWidget {
-  const CounselorListView({
-    super.key,
-  });
+  const CounselorListView({Key? key}) : super(key: key);
+
   @override
   State<CounselorListView> createState() => _CounselorListViewState();
 }
@@ -31,139 +30,183 @@ class _CounselorListViewState extends State<CounselorListView> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextField(
-            controller: _searchController,
-            onChanged: (query) {
-              setState(() {});
-            },
-            decoration: InputDecoration(
-              hintText: 'Search by name...',
-              prefixIcon: const Icon(
-                Icons.search,
-                color: Colors.grey,
+    return Scaffold(
+      appBar: AppBar(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color.fromARGB(255, 75, 75, 112),
+        title: const Text('Available Counsellors',
+            style: TextStyle(
+              color: Colors.white,
+            )),
+      ),
+      backgroundColor: const Color.fromARGB(255, 228, 218, 230),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            child: TextField(
+              controller: _searchController,
+              onChanged: (query) {
+                setState(() {});
+              },
+              decoration: InputDecoration(
+                hintText: 'Search by name...',
+                prefixIcon: const Icon(
+                  Icons.search,
+                  color: Colors.grey,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                fillColor: Colors.white,
+                filled: true,
+                hintStyle: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey[600], // Hint text color
+                ),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
               ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(2),
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.black,
               ),
-              fillColor: Colors.white,
-              filled: true,
-            ),
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.black,
             ),
           ),
-        ),
-        Expanded(
-          child: StreamBuilder(
-            stream: CounsellorController().getCounsellors(),
-            builder: (context, snapshot) {
-              if (snapshot.hasError) {
-                return const Center(
-                  child: Text("Something went wrong"),
-                );
-              }
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: StreamBuilder(
+                stream: CounsellorController().getCounsellors(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return const Center(
+                      child: Text("Something went wrong"),
+                    );
+                  }
 
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
 
-              if (snapshot.data!.docs.isEmpty) {
-                return const Center(
-                  child: Text("No Counsellor found"),
-                );
-              }
+                  if (snapshot.data!.docs.isEmpty) {
+                    return const Center(
+                      child: Text("No Counsellor found"),
+                    );
+                  }
 
-              Logger().i(snapshot.data!.docs.length);
+                  Logger().i(snapshot.data!.docs.length);
 
-              _listCounsellor.clear();
+                  _listCounsellor.clear();
 
-              for (var e in snapshot.data!.docs) {
-                Map<String, dynamic> data = e.data() as Map<String, dynamic>;
-                var model = CounsellorModel.fromJson(data);
-                _listCounsellor.add(model);
-              }
+                  for (var e in snapshot.data!.docs) {
+                    Map<String, dynamic> data =
+                        e.data() as Map<String, dynamic>;
+                    var model = CounsellorModel.fromJson(data);
+                    _listCounsellor.add(model);
+                  }
 
-              final counselorsToDisplay = _searchController.text.isNotEmpty
-                  ? _filteredCounselors(_searchController.text)
-                  : _listCounsellor;
+                  final screenWidth = MediaQuery.of(context).size.width;
+                  int columns = 1;
 
-              return ListView.builder(
-                itemCount: counselorsToDisplay.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    elevation: 8,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                  if (screenWidth > 700) {
+                    columns = 2;
+                  }
+                  if (screenWidth > 1200) {
+                    columns = 3;
+                  }
+
+                  final counselorsToDisplay = _searchController.text.isNotEmpty
+                      ? _filteredCounselors(_searchController.text)
+                      : _listCounsellor;
+
+                  return GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: columns,
+                      childAspectRatio: screenWidth > 900 ? 2.0 : 6.5,
+                      mainAxisSpacing: 14.0,
+                      crossAxisSpacing: 8.0,
+                      mainAxisExtent: 90.0,
                     ),
-                    child: ListTile(
-                      tileColor: Colors.white,
-                      title: Text(
-                        counselorsToDisplay[index].name,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Colors.black,
-                          shadows: [
-                            Shadow(
-                              blurRadius: 3.0,
-                              color: Colors.grey,
-                              offset: Offset(2.0, 2.0),
-                            ),
-                          ],
+                    itemCount: counselorsToDisplay.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                      ),
-                      subtitle: Text(
-                        counselorsToDisplay[index].userCredential,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          shadows: [
-                            Shadow(
-                              blurRadius: 2.0,
-                              color: Colors.grey,
-                              offset: Offset(1.0, 1.0),
+                        color: Colors.white,
+                        child: Center(
+                          child: ListTile(
+                            title: Text(
+                              counselorsToDisplay[index].name,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.black,
+                                shadows: [
+                                  Shadow(
+                                    blurRadius: 3.0,
+                                    color: Colors.grey.shade300,
+                                    offset: const Offset(2.0, 2.0),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ],
-                        ),
-                      ),
-                      leading: CircleAvatar(
-                        backgroundImage:
-                            NetworkImage(counselorsToDisplay[index].imgUrl),
-                        radius: 30,
-                      ),
-                      trailing: Tooltip(
-                        message: "Add Appointment",
-                        child: Ink(
-                          decoration: const ShapeDecoration(
-                            color: Colors.blueGrey,
-                            shape: CircleBorder(),
+                            subtitle: Text(
+                              counselorsToDisplay[index].userCredential,
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey[600], // Subtitle text color
+                                shadows: [
+                                  Shadow(
+                                    blurRadius: 2.0,
+                                    color: Colors.grey.shade300, // Shadow color
+                                    offset: const Offset(1.0, 1.0),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            leading: CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                  counselorsToDisplay[index].imgUrl),
+                              radius: 30,
+                            ),
+                            trailing: Tooltip(
+                              message: "Add Appointment",
+                              child: Ink(
+                                decoration: const ShapeDecoration(
+                                  color: Colors.blueGrey,
+                                  shape: CircleBorder(),
+                                ),
+                                child: IconButton(
+                                  onPressed: () =>
+                                      UtilFormMethod.showDialogMethod(
+                                          context,
+                                          counselorsToDisplay[index].uid,
+                                          counselorsToDisplay[index].name),
+                                  icon: const Icon(
+                                    Icons.add,
+                                    color: Colors.white, // Icon color
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
-                          child: IconButton(
-                            onPressed: () => UtilFormMethod.showDialogMethod(
-                                context,
-                                counselorsToDisplay[index].uid,
-                                counselorsToDisplay[index].name),
-                            icon: const Icon(
-                              Icons.add,
-                              color: Colors.white,
-                            ),
-                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   );
                 },
-              );
-            },
+              ),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
