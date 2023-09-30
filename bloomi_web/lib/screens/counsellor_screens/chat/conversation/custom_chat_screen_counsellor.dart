@@ -56,16 +56,15 @@ class CustomChatScreenCounsellor extends StatelessWidget {
                   if (snapshot.data!.docs.isEmpty) {
                     return Padding(
                       padding: const EdgeInsets.all(4.0),
-                      child: Container(
-                        width: (isMobile == false) ? width * 0.65 : width,
-                        height: height - 135,
-                        color: UtilConstants.whiteColor,
-                        child: const Column(
-                          children: [
-                            Expanded(child: SizedBox()),
-                            MessageTypingWidgetCounsellor(),
-                          ],
-                        ),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: (isMobile == false) ? width * 0.65 : width,
+                            height: height - 80,
+                            color: UtilConstants.whiteColor,
+                            child: const MessageTypingWidgetCounsellor(),
+                          ),
+                        ],
                       ),
                     );
                   }
@@ -87,7 +86,7 @@ class CustomChatScreenCounsellor extends StatelessWidget {
                     padding: const EdgeInsets.all(4.0),
                     child: Container(
                       width: (isMobile == false) ? width * 0.65 : width,
-                      height: height - 70,
+                      height: height - 82,
                       color: UtilConstants.whiteColor,
                       child: Column(
                         children: [

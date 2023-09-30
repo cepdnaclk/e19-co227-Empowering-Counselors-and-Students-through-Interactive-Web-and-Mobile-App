@@ -53,49 +53,50 @@ class _ConversationCounsellorState extends State<ConversationCounsellor>
       child: SafeArea(
         child: Column(
           children: [
-            // const HeaderWidgetCounsellor(isTrue: false),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: (width > 1000)
-                  ? Row(
-                      children: [
-                        AvailableChatCounsellor(
-                          height: heightFinal,
-                          width: widthFinal,
-                          isMobile: false,
-                        ),
-                        const SizedBox(width: 4),
-                        Consumer<UserChatProvider>(
-                          builder: (context, value, child) {
-                            Logger().e(value.getIndex);
-
-                            //----------------this is used to make when user dont have any convercation then show the empty screen----------------
-                            return (value.getIndex == -1)
-                                ? CustomChatScreenCounsellor(
-                                    width: widthFinal,
-                                    height: heightFinal - 8,
-                                    getIndex: value.getIndex,
-                                    isMobile: false,
-                                    conId: "")
-                                : CustomChatScreenCounsellor(
-                                    width: widthFinal,
-                                    height: heightFinal - 8,
-                                    getIndex: value.getIndex,
-                                    isMobile: false,
-                                    conId: value.getConversationModelNew.id);
-                          },
-                        )
-                      ],
-                    )
-                  : Column(
-                      children: [
-                        AvailableChatCounsellor(
-                            height: heightFinal - 70,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: (width > 1000)
+                    ? Row(
+                        children: [
+                          AvailableChatCounsellor(
+                            height: heightFinal,
                             width: widthFinal,
-                            isMobile: true),
-                        const SizedBox(width: 4),
-                      ],
-                    ),
+                            isMobile: false,
+                          ),
+                          const SizedBox(width: 4),
+                          Consumer<UserChatProvider>(
+                            builder: (context, value, child) {
+                              Logger().e(value.getIndex);
+
+                              //----------------this is used to make when user dont have any convercation then show the empty screen----------------
+                              return (value.getIndex == -1)
+                                  ? CustomChatScreenCounsellor(
+                                      width: widthFinal,
+                                      height: heightFinal,
+                                      getIndex: value.getIndex,
+                                      isMobile: false,
+                                      conId: "")
+                                  : CustomChatScreenCounsellor(
+                                      width: widthFinal,
+                                      height: heightFinal,
+                                      getIndex: value.getIndex,
+                                      isMobile: false,
+                                      conId: value.getConversationModelNew.id);
+                            },
+                          )
+                        ],
+                      )
+                    : Column(
+                        children: [
+                          AvailableChatCounsellor(
+                              height: heightFinal - 73,
+                              width: widthFinal,
+                              isMobile: true),
+                          const SizedBox(width: 4),
+                        ],
+                      ),
+              ),
             ),
             Footer(height: 55, width: width),
           ],

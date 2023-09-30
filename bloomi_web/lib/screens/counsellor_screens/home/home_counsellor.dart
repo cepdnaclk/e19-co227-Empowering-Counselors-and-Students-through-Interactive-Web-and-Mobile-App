@@ -1,12 +1,10 @@
 import 'package:bloomi_web/components/dropdown_menu_items.dart';
 import 'package:bloomi_web/screens/counsellor_screens/calender/calendar_home.dart';
 import 'package:bloomi_web/screens/counsellor_screens/chat/home/chat_counsellor.dart';
-
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard_home.dart';
-import 'package:bloomi_web/screens/counsellor_screens/profile/profile_home.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/notification_viewer.dart.dart';
-
-import 'package:bloomi_web/screens/home_screens/note/note.dart';
+import 'package:bloomi_web/screens/counsellor_screens/note/note.dart';
+import 'package:bloomi_web/screens/counsellor_screens/profile/profile_home.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -19,7 +17,7 @@ class HomeCounsellor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isSmallScreen = MediaQuery.of(context).size.width < 600;
+    final isSmallScreen = MediaQuery.of(context).size.width < 900;
     return Scaffold(
       key: _key,
       appBar: isSmallScreen
@@ -118,35 +116,14 @@ class HomeCounsellor extends StatelessWidget {
                     icon: Icons.person,
                   ),
                 ),
-                const SizedBox(width: 25)
               ],
-              bottom: const PreferredSize(
-                preferredSize:
-                    Size.fromHeight(5), // Adjust the height as needed
-                child: SizedBox(), // This is an empty widget
-              ),
             ),
       drawer: ExampleSidebarX(controller: _controller),
       body: Row(
         children: [
-
-          ExampleSidebarX(controller: _controller),
-
-          Container(
-            decoration: BoxDecoration(
-              border: Border(
-                top: BorderSide(
-                  //color: Colors.white,
-                  color: UtilConstants
-                      .homeBackgroundColor, // Add your desired color here
-                  width: 2.0, // Adjust the width as needed
-                ),
-              ),
-            ),
-            child:
-                isSmallScreen ? null : ExampleSidebarX(controller: _controller),
-          ),
-
+          isSmallScreen
+              ? const SizedBox()
+              : ExampleSidebarX(controller: _controller),
           Expanded(
             child: Center(
               child: _ScreensExample(
@@ -194,7 +171,7 @@ class ExampleSidebarX extends StatelessWidget {
             color: actionColor.withOpacity(0.37),
           ),
           gradient: const LinearGradient(
-            colors: [UtilConstants.primaryColor, white],
+            colors: [canvasColor, white],
           ),
           boxShadow: [
             BoxShadow(
@@ -238,6 +215,10 @@ class ExampleSidebarX extends StatelessWidget {
           icon: Icons.calendar_month_outlined,
           label: 'Calender',
         ),
+        const SidebarXItem(
+          icon: Icons.calendar_month_outlined,
+          label: 'Profile',
+        ),
       ],
     );
   }
@@ -263,10 +244,12 @@ class _ScreensExample extends StatelessWidget {
           case 1:
             return const ChatCounsellor();
           case 2:
-            //return const Note();
-            return const ProfileHome();
+            return const NoteCounsellor();
+
           case 3:
             return const CalendarHome();
+          case 4:
+            return const ProfileHome();
 
           default:
             return const Text('');
