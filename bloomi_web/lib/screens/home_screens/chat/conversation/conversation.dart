@@ -47,57 +47,54 @@ class _ConversationState extends State<Conversation>
         }
       },
       child: SafeArea(
-        child: Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: (width > 1000)
-                      ? Row(
-                          children: [
-                            AvailableChat(
-                              isMobile: false,
-                              height: heightFinal,
-                              width: widthFinal,
-                            ),
-                            const SizedBox(width: 4),
-                            Consumer<UserChatProvider>(
-                              builder: (context, value, child) {
-                                Logger().e(value.getIndex);
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: (width > 1000)
+                    ? Row(
+                        children: [
+                          AvailableChat(
+                            isMobile: false,
+                            height: heightFinal,
+                            width: widthFinal,
+                          ),
+                          const SizedBox(width: 4),
+                          Consumer<UserChatProvider>(
+                            builder: (context, value, child) {
+                              Logger().e(value.getIndex);
 
-                                //----------------this is used to make when user dont have any convercation then show the empty screen----------------
-                                return (value.getIndex == -1)
-                                    ? CustomChatScreen(
-                                        isMobile: false,
-                                        width: widthFinal,
-                                        height: heightFinal,
-                                        conId: "")
-                                    : CustomChatScreen(
-                                        isMobile: false,
-                                        width: widthFinal,
-                                        height: heightFinal,
-                                        conId:
-                                            value.getConversationModelNew.id);
-                              },
-                            )
-                          ],
-                        )
-                      : Column(
-                          children: [
-                            AvailableChat(
-                              isMobile: true,
-                              height: heightFinal - 70,
-                              width: widthFinal,
-                            ),
-                            const SizedBox(width: 4),
-                            // ChatScreenCustom(widthFinal: widthFinal, heightFinal: heightFinal)
-                          ],
-                        ),
-                ),
-                Footer(height: 55, width: width)
-              ],
-            ),
+                              //----------------this is used to make when user dont have any convercation then show the empty screen----------------
+                              return (value.getIndex == -1)
+                                  ? CustomChatScreen(
+                                      isMobile: false,
+                                      width: widthFinal,
+                                      height: heightFinal,
+                                      conId: "")
+                                  : CustomChatScreen(
+                                      isMobile: false,
+                                      width: widthFinal,
+                                      height: heightFinal,
+                                      conId: value.getConversationModelNew.id);
+                            },
+                          )
+                        ],
+                      )
+                    : Column(
+                        children: [
+                          AvailableChat(
+                            isMobile: true,
+                            height: heightFinal,
+                            width: widthFinal,
+                          ),
+                          const SizedBox(width: 4),
+                          // ChatScreenCustom(widthFinal: widthFinal, heightFinal: heightFinal)
+                        ],
+                      ),
+              ),
+              Footer(height: 55, width: width)
+            ],
           ),
         ),
       ),

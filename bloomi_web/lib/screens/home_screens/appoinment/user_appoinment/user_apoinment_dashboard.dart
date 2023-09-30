@@ -12,29 +12,6 @@ class UserAppointmentDashboard extends StatefulWidget {
 }
 
 class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
-  Color getAppointmentStateColor(String state) {
-    if (state == 'Pending') {
-      return Colors.orange;
-    } else if (state == 'Confirmed') {
-      return Colors.red;
-    } else {
-      return Colors.green;
-    }
-  }
-
-  Widget buildRichText(String text, {Color? color, FontWeight? fontWeight}) {
-    return Text.rich(
-      TextSpan(
-        text: text,
-        style: TextStyle(
-          fontSize: 16,
-          color: color ?? Colors.black,
-          fontWeight: fontWeight ?? FontWeight.normal,
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;

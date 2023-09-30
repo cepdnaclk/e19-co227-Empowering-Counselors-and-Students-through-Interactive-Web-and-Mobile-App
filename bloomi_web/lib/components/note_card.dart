@@ -65,7 +65,7 @@ class _NoteCardState extends State<NoteCard> {
               itemBuilder: (context, index) {
                 return Container(
                   padding: const EdgeInsets.all(15),
-                  margin: const EdgeInsets.all(15),
+                  margin: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: UtilConstants.whiteColor,
