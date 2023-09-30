@@ -16,17 +16,13 @@ import 'package:bloomi_web/components/homepage_quote.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: UtilConstants.homePageBackgroundColor,
       body: SingleChildScrollView(
@@ -47,28 +43,24 @@ class _HomePageState extends State<HomePage> {
                         height: 30,
                       ),
                       SizedBox(
-                        width: 600.0,
+                        width: screenWidth < 600 ? screenWidth : 600.0,
                         height: 50,
                         child: DefaultTextStyle(
-                          style: const TextStyle(
-                            fontSize: 30.0,
-                            fontFamily: 'Times New Roman',
+                          style: TextStyle(
+                            fontSize: screenWidth < 600 ? 30.0 : 50.0,
+                            fontFamily:
+                                'YourCustomFont', // Replace with your font family
                           ),
                           child: ShaderMask(
                             shaderCallback: (Rect bounds) {
                               return const LinearGradient(
                                 colors: [
-                                  Colors.pink,
+                                  Color.fromARGB(255, 5, 61, 106),
                                   Colors.blue,
-                                  Colors.green,
-                                  Colors.lightGreen,
+                                  Color.fromARGB(255, 113, 108, 205),
+                                  Colors.blueGrey,
                                 ],
-                                stops: [
-                                  0.0,
-                                  0.33,
-                                  0.67,
-                                  1.0
-                                ], // Adjust stops to control the gradient positions
+                                stops: [0.0, 0.33, 0.67, 1.0],
                               ).createShader(bounds);
                             },
                             child: AnimatedTextKit(
@@ -76,20 +68,20 @@ class _HomePageState extends State<HomePage> {
                                 TypewriterAnimatedText(
                                   'WELCOME TO BLOOMi',
                                   textAlign: TextAlign.center,
-                                  speed: const Duration(milliseconds: 200),
-                                  textStyle: const TextStyle(
-                                    fontSize: 50,
+                                  speed: const Duration(milliseconds: 300),
+                                  textStyle: TextStyle(
+                                    fontSize: screenWidth < 700 ? 25.0 : 40.0,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
-                                    shadows: [
+                                    shadows: const [
                                       Shadow(
                                         blurRadius: 5.0,
                                         color: Colors.black,
-                                        offset: Offset(1, 10),
+                                        offset: Offset(1, 6),
                                       ),
                                     ],
                                   ),
-                                  cursor: '|',
+                                  cursor: '',
                                 ),
                               ],
                             ),
@@ -107,21 +99,24 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Expanded(
                                 child: Card(
+                                  elevation: 5,
                                   child: CardWidgetNature(
                                     items: ItemClass(
-                                        title: '"The Healing Power of Nature."',
-                                        imagePath: UtilConstants
-                                            .natureHealingImagePath),
+                                      title: '"The Healing Power of Nature."',
+                                      imagePath:
+                                          UtilConstants.natureHealingImagePath,
+                                    ),
                                   ),
                                 ),
                               ),
                               Expanded(
                                 child: Card(
+                                  elevation: 5,
                                   child: CardWidgetDiamond(
                                     items: ItemClass(
-                                        title: '"Shine like a Bright Diamond."',
-                                        imagePath:
-                                            UtilConstants.diamondImagePath),
+                                      title: '"Shine like a Bright Diamond."',
+                                      imagePath: UtilConstants.diamondImagePath,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -131,23 +126,25 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Expanded(
                                 child: Card(
+                                  elevation: 5,
                                   child: CardWidgetTravel(
                                     items: ItemClass(
-                                        title:
-                                            '"Exploration allows serenity to flourish."',
-                                        imagePath:
-                                            UtilConstants.travelImagePath),
+                                      title:
+                                          '"Exploration allows serenity to flourish."',
+                                      imagePath: UtilConstants.travelImagePath,
+                                    ),
                                   ),
                                 ),
                               ),
                               Expanded(
                                 child: Card(
+                                  elevation: 5,
                                   child: CardWidgetFriend(
                                     items: ItemClass(
-                                        title:
-                                            '"Good friends make life beautiful."',
-                                        imagePath:
-                                            UtilConstants.friendsImagePath),
+                                      title:
+                                          '"Good friends make life beautiful."',
+                                      imagePath: UtilConstants.friendsImagePath,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -170,22 +167,25 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Expanded(
                             child: Card(
+                              elevation: 5,
                               child: CardWidgetYoga(
                                 items: ItemClass(
-                                    title:
-                                        "\"Yoga: A journey within to find tranquility and nurture mental health.\"",
-                                    imagePath: UtilConstants.yogaImagePath),
+                                  title:
+                                      "\"Yoga: A journey within to find tranquility and nurture mental health.\"",
+                                  imagePath: UtilConstants.yogaImagePath,
+                                ),
                               ),
                             ),
                           ),
                           Expanded(
                             child: Card(
+                              elevation: 5,
                               child: CardWidgetGardening(
                                 items: ItemClass(
-                                    title:
-                                        '"Gardening is a living art, where patience is the canvas and nature is the masterpiece."',
-                                    imagePath:
-                                        UtilConstants.gardeningImagePath),
+                                  title:
+                                      '"Gardening is a living art, where patience is the canvas and nature is the masterpiece."',
+                                  imagePath: UtilConstants.gardeningImagePath,
+                                ),
                               ),
                             ),
                           ),
@@ -200,21 +200,25 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Expanded(
                             child: Card(
+                              elevation: 5,
                               child: CardWidgetRead(
                                 items: ItemClass(
-                                    title:
-                                        '"Books: where every page turns into an unforgettable adventure."',
-                                    imagePath: UtilConstants.readImagePath),
+                                  title:
+                                      '"Books: where every page turns into an unforgettable adventure."',
+                                  imagePath: UtilConstants.readImagePath,
+                                ),
                               ),
                             ),
                           ),
                           Expanded(
                             child: Card(
+                              elevation: 5,
                               child: CardWidgetWild(
                                 items: ItemClass(
-                                    title:
-                                        '"Watching wildlife: where peace meets the wild."',
-                                    imagePath: UtilConstants.wildImagePath3),
+                                  title:
+                                      '"Watching wildlife: where peace meets the wild."',
+                                  imagePath: UtilConstants.wildImagePath3,
+                                ),
                               ),
                             ),
                           ),
@@ -224,21 +228,25 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Expanded(
                             child: Card(
+                              elevation: 5,
                               child: CardWidgetMusic(
                                 items: ItemClass(
-                                    title:
-                                        '"Music: soothes the soul, a balm for a weary mind."',
-                                    imagePath: UtilConstants.musicImagePath1),
+                                  title:
+                                      '"Music: soothes the soul, a balm for a weary mind."',
+                                  imagePath: UtilConstants.musicImagePath1,
+                                ),
                               ),
                             ),
                           ),
                           Expanded(
                             child: Card(
+                              elevation: 5,
                               child: CardWidgetCook(
                                 items: ItemClass(
-                                    title:
-                                        '"Cooking: A meditative escape where stress dissolves in the flavors, offering relaxation for the soul."',
-                                    imagePath: UtilConstants.cookingImagePath1),
+                                  title:
+                                      '"Cooking: A meditative escape where stress dissolves in the flavors, offering relaxation for the soul."',
+                                  imagePath: UtilConstants.cookingImagePath1,
+                                ),
                               ),
                             ),
                           ),
@@ -254,7 +262,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            Footer(height: 55, width: width)
+            Footer(height: 55, width: screenWidth)
           ],
         ),
       ),

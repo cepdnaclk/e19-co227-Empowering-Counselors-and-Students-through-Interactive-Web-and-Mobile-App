@@ -90,7 +90,7 @@ class _ConversationCounsellorState extends State<ConversationCounsellor>
                     : Column(
                         children: [
                           AvailableChatCounsellor(
-                              height: heightFinal - 73,
+                              height: heightFinal,
                               width: widthFinal,
                               isMobile: true),
                           const SizedBox(width: 4),

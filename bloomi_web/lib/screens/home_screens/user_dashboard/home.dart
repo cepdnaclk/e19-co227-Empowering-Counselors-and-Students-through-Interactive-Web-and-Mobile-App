@@ -24,12 +24,20 @@ class Home extends StatelessWidget {
       appBar: isSmallScreen
           ? AppBar(
               backgroundColor: canvasColor,
-              title: const Text('BLOOMI'),
+              title: const Text('BLOOMI',
+                  style: TextStyle(
+                    color: white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  )),
               leading: IconButton(
                 onPressed: () {
                   _key.currentState?.openDrawer();
                 },
-                icon: const Icon(Icons.menu),
+                icon: const Icon(
+                  Icons.menu,
+                  color: UtilConstants.whiteColor,
+                ),
               ),
             )
           : AppBar(
