@@ -3,6 +3,7 @@ import 'package:bloomi_web/controllers/chat_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
+import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/chat_list_view_counsellor.dart';
 import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/custom_chat_view.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
@@ -71,42 +72,62 @@ class AvailableChatCounsellor extends StatelessWidget {
                     _list.add(model);
                   }
 
-                  return ListView.separated(
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: InkWell(
-                            onTap: () {
-                              try {
-                                Provider.of<UserChatProvider>(context,
-                                        listen: false)
-                                    .changeIndex(index);
-                                Provider.of<UserChatProvider>(context,
-                                        listen: false)
-                                    .changeConversationModelNew(_list[index]);
-                                isMobile
-                                    ? UtilFunction.navigateForward(
-                                        context,
-                                        CustomChatView(
-                                            width: width, height: height))
-                                    : null;
-                              } catch (e) {
-                                Logger().e(e);
-                              }
+                  return Column(
+                    children: [
+                      Expanded(
+                        child: ListView.separated(
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: InkWell(
+                                  onTap: () {
+                                    try {
+                                      Provider.of<UserChatProvider>(context,
+                                              listen: false)
+                                          .changeIndex(index);
+                                      Provider.of<UserChatProvider>(context,
+                                              listen: false)
+                                          .changeConversationModelNew(
+                                              _list[index]);
+                                      isMobile
+                                          ? UtilFunction.navigateForward(
+                                              context,
+                                              CustomChatView(
+                                                  width: width, height: height))
+                                          : null;
+                                    } catch (e) {
+                                      Logger().e(e);
+                                    }
+                                  },
+                                  child: ConversationTile(
+                                    conversationModel: _list[index],
+                                  ),
+                                ),
+                              );
                             },
-                            child: ConversationTile(
-                              conversationModel: _list[index],
+                            separatorBuilder: (context, index) {
+                              return const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                child: SizedBox(height: 2),
+                              );
+                            },
+                            itemCount: _list.length),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const ChatListViewCounsellor();
+                              },
                             ),
-                          ),
-                        );
-                      },
-                      separatorBuilder: (context, index) {
-                        return const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: SizedBox(height: 2),
-                        );
-                      },
-                      itemCount: _list.length);
+                          );
+                        },
+                        child: const Text("Available Counselors"),
+                      ),
+                    ],
+                  );
                 },
               );
             },
