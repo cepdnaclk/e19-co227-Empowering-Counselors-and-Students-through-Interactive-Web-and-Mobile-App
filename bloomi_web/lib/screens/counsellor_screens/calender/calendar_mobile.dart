@@ -1,5 +1,5 @@
 import 'package:bloomi_web/components/calender.dart';
-import 'package:bloomi_web/screens/counsellor_screens/calender/AddFreeDays.dart';
+import 'package:bloomi_web/screens/counsellor_screens/calender/add_free_days.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
