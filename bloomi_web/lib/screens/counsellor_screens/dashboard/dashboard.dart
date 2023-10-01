@@ -30,6 +30,7 @@ class _DashboardState extends State<Dashboard> {
 
   // This list holds the data for the list view
   //List<Map<String, dynamic>> _foundUsers = [];
+
   List<UserModel> _foundUsers = [];
   final List<UserModel> _selectedUser = [];
   bool _isSearchBarTapped = false; // Added flag
