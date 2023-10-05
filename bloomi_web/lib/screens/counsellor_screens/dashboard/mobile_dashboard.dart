@@ -1,11 +1,12 @@
+import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
-import 'package:bloomi_web/providers/users/user_provider.dart';
-import 'package:bloomi_web/screens/counsellor_screens/dashboard/list_view.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
+
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-import 'package:bloomi_web/utils/util_form_method.dart';
+
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -21,8 +22,6 @@ class _DashboardMobileState extends State<DashboardMobile> {
   final List<UserModel> _allUsers = [];
 
   List<UserModel> _foundUsers = [];
-  final List<UserModel> _selectedUser = [];
-  // Added flag
 
   @override
   void initState() {
@@ -59,22 +58,22 @@ class _DashboardMobileState extends State<DashboardMobile> {
 
     return SafeArea(
       child: SingleChildScrollView(
-        child: Stack(
+        child: Column(
           children: [
             Material(
               borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
               ),
-              color: canvasColor,
+              color: UtilConstants.canvasColor,
               child: Container(
                 width: width,
-                height: 150,
+                height: 135,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      canvasColor,
-                      actionColor,
+                      UtilConstants.canvasColor,
+                      UtilConstants.actionColor,
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -110,14 +109,15 @@ class _DashboardMobileState extends State<DashboardMobile> {
                                     Text(
                                       "Hi, ${value.counsellorModel!.name} !",
                                       style: const TextStyle(
-                                          fontSize: 20, color: white),
+                                          fontSize: 20,
+                                          color: UtilConstants.whiteColor),
                                     ),
                                   ],
                                 );
                               },
                             ),
                           ),
-                          const SizedBox(height: 30),
+                          const SizedBox(height: 20),
                           Container(
                             alignment: Alignment.center,
                             margin: const EdgeInsets.only(
@@ -130,11 +130,11 @@ class _DashboardMobileState extends State<DashboardMobile> {
                             width: width * 0.6,
                             height: 35,
                             decoration: BoxDecoration(
-                              color: white,
+                              color: UtilConstants.whiteColor,
                               borderRadius: BorderRadius.circular(10),
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
-                                  color: Colors.grey,
+                                  color: UtilConstants.greyColor,
                                   blurRadius: 6,
                                 ),
                               ],
@@ -143,14 +143,15 @@ class _DashboardMobileState extends State<DashboardMobile> {
                               onChanged: (value) {
                                 _runFilter(value);
                               },
-                              decoration: const InputDecoration(
+                              decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Search here ",
-                                hintStyle:
-                                    TextStyle(color: Colors.grey, fontSize: 15),
+                                hintStyle: TextStyle(
+                                    color: UtilConstants.greyColor,
+                                    fontSize: 15),
                                 prefixIcon: Icon(
                                   Icons.search,
-                                  color: Colors.grey,
+                                  color: UtilConstants.greyColor,
                                   size: 20,
                                 ),
                               ),
@@ -163,17 +164,8 @@ class _DashboardMobileState extends State<DashboardMobile> {
                 ),
               ),
             ),
-            /*Padding(
-              padding: EdgeInsets.only(top: height / 2.5, bottom: 10),
-              child: Container(
-                  alignment: Alignment.topCenter,
-                  width: width,
-                  height: MediaQuery.of(context).size.width < 450 ? 100 : 300,
-                  child: Image.asset(UtilConstants.counsellingImagePath,
-                      fit: BoxFit.cover)),
-            ),*/
             Padding(
-              padding: EdgeInsets.only(left: 10, right: 10, top: height / 3),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
               child: StreamBuilder(
                 stream: AuthController().getUsers(),
                 builder: (context, snapshot) {
@@ -191,11 +183,6 @@ class _DashboardMobileState extends State<DashboardMobile> {
                     );
                   }
 
-                  if (snapshot.data!.docs.isEmpty) {
-                    return const Center(
-                      child: Text("No Student found"),
-                    );
-                  }
                   Logger().i(snapshot.data!.docs.length);
 
                   //-------------clear the list before adding new data----------------
@@ -209,82 +196,93 @@ class _DashboardMobileState extends State<DashboardMobile> {
                     _allUsers.add(model);
                   }
 
-                  return Column(
-                    children: [
-                      _foundUsers.isNotEmpty
-                          ? ListView.builder(
-                              shrinkWrap: true,
-                              physics: const ScrollPhysics(),
-                              itemCount: _foundUsers.length,
-                              itemBuilder: (context, index) => InkWell(
-                                onTap: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return SizedBox(
-                                        width:
-                                            200, // Adjust the width to your preference
-                                        height:
-                                            400, // Adjust the height to your preference
-                                        child: UserDetailsDialog(
-                                          uId: _foundUsers[index]
-                                              .uid, // Replace with the actual user ID
-                                          userName: _foundUsers[index]
-                                              .name, // Replace with the actual username
-                                        ),
+                  return SizedBox(
+                    height: 300,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          _foundUsers.isNotEmpty
+                              ? ListView.builder(
+                                  shrinkWrap: true,
+                                  physics: const ScrollPhysics(),
+                                  itemCount: _foundUsers.length,
+                                  itemBuilder: (context, index) => InkWell(
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return SizedBox(
+                                            width:
+                                                100, // Adjust the width to your preference
+                                            height:
+                                                200, // Adjust the height to your preference
+                                            child: UserDetailsDialog(
+                                              uId: _foundUsers[index]
+                                                  .uid, // Replace with the actual user ID
+                                              userName: _foundUsers[index]
+                                                  .name, // Replace with the actual username
+                                            ),
+                                          );
+                                        },
                                       );
                                     },
-                                  );
-                                },
-                                child: Card(
-                                  key: ValueKey(_foundUsers[index].uid),
-                                  color: UtilConstants.lightgreyColor,
-                                  elevation: 4,
-                                  margin: const EdgeInsets.symmetric(
-                                      vertical: 5, horizontal: 10),
-                                  child: ListTile(
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        vertical: 0, horizontal: 10),
-                                    leading: CircleAvatar(
-                                      radius: 18,
-                                      backgroundImage:
-                                          NetworkImage(_allUsers[index].imgUrl),
-                                    ),
-                                    title: Text(
-                                      _foundUsers[index].name,
-                                      style: const TextStyle(
-                                          fontSize: 16), // Adjust the font size
-                                    ),
-                                    subtitle: Text(
-                                      _foundUsers[index].email,
-                                      style: TextStyle(fontSize: 14),
+                                    child: Card(
+                                      key: ValueKey(_foundUsers[index].uid),
+                                      color: UtilConstants.lightgreyColor,
+                                      elevation: 4,
+                                      margin: const EdgeInsets.symmetric(
+                                          vertical: 5, horizontal: 10),
+                                      child: ListTile(
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                vertical: 0, horizontal: 10),
+                                        leading: CircleAvatar(
+                                          radius: 18,
+                                          backgroundImage: NetworkImage(
+                                              _allUsers[index].imgUrl),
+                                        ),
+                                        title: Text(
+                                          _foundUsers[index].name,
+                                          style: const TextStyle(
+                                              fontSize:
+                                                  16), // Adjust the font size
+                                        ),
+                                        subtitle: Text(
+                                          _foundUsers[index].email,
+                                          style: const TextStyle(fontSize: 14),
+                                        ),
+                                      ),
                                     ),
                                   ),
+                                )
+                              : const Center(
+                                  child: Text(
+                                    'No students found',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
                                 ),
-                              ),
-                            )
-                          : const Center(
-                              child: Text(
-                                'No results found',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ),
-                    ],
+                        ],
+                      ),
+                    ),
                   );
                 },
               ),
             ),
+            Text(
+              "Your Next Appointment",
+              style: TextStyle(
+                fontSize: 18,
+                color: UtilConstants.canvasColor.withOpacity(0.8),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 20),
+            const NextAppointment(),
+            const SizedBox(height: 20),
+            Footer(height: 55, width: width),
           ],
         ),
       ),
     );
   }
 }
-
-const primaryColor = Color(0xFF2E2E48);
-const canvasColor = Color(0xFF272643);
-const scaffoldBackgroundColor = Color(0xFF464667);
-const accentCanvasColor = Color(0xFF3E3E61);
-const white = Colors.white;
-final actionColor = const Color.fromARGB(255, 50, 50, 132).withOpacity(0.6);
-final divider = Divider(color: white.withOpacity(0.3), height: 1);
