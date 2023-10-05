@@ -25,6 +25,13 @@ class UtilConstants {
   static Color homepageQuoteShadowColor =
       const Color.fromARGB(255, 155, 154, 154).withOpacity(0.8);
 
+//-------------------topBar / Drawer-------------------
+  static Color canvasColor = const Color(0xFF272643);
+  static Color scaffoldBackgroundColor = const Color(0xFF464667);
+  static Color accentCanvasColor = const Color(0xFF3E3E61);
+  static Color actionColor =
+      const Color.fromARGB(255, 50, 50, 132).withOpacity(0.6);
+
   //--------------------Gradient Shader--------------------
   static Shader get gradientShader => LinearGradient(
           colors: [primaryColor, pinkColor, greenColor, lightRedColor])
@@ -83,6 +90,7 @@ class UtilConstants {
 
   //-----------------------Color palette----------------------
   static Color marinerColor = const Color(0xff2F76BA);
+  static Color footerColor = Color.fromARGB(255, 17, 64, 107);
   static Color tropicalBlurColor = const Color(0xffD1E5FA);
 
   //-----------------------const dimensions desktop version----------------------

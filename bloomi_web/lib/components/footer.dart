@@ -17,6 +17,7 @@ class Footer extends StatelessWidget {
     return Container(
         height: height,
         width: width,
+        //color: UtilConstants.footerColor,
         color: UtilConstants.marinerColor,
         child: Center(
           child: CustomText(

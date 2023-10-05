@@ -1,6 +1,9 @@
+import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_form_method.dart';
 import 'package:flutter/material.dart';
@@ -53,152 +56,153 @@ class _DashboardTabletState extends State<DashboardTablet> {
 
     return SafeArea(
       child: SingleChildScrollView(
-        child: Stack(
+        child: Column(
           children: [
-            Column(
-              children: [
-                Material(
+            Material(
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+              color: UtilConstants.canvasColor,
+              child: Container(
+                width: width,
+                height: 150,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      UtilConstants.canvasColor,
+                      UtilConstants.actionColor,
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
                   borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20),
                   ),
-                  color: canvasColor,
-                  child: Container(
-                    width: width,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          canvasColor,
-                          actionColor,
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Align(
-                          alignment: Alignment.center,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10, top: 20),
-                                child: Consumer<CounsellorRegistrationProvider>(
-                                  builder: (context, value, child) {
-                                    return Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        CircleAvatar(
-                                          backgroundImage: NetworkImage(
-                                              value.counsellorModel!.imgUrl),
-                                          radius: (20),
-                                        ),
-                                        const SizedBox(
-                                          width: 20,
-                                        ),
-                                        Text(
-                                          "Hi, ${value.counsellorModel!.name} !",
-                                          style: const TextStyle(
-                                              fontSize: 20, color: white),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                ),
-                              ),
-                              const SizedBox(height: 30),
-                              Container(
-                                alignment: Alignment.center,
-                                margin: const EdgeInsets.only(
-                                  right: 35,
-                                  left: 35,
-                                ),
-                                padding: const EdgeInsets.only(
-                                  bottom: 3,
-                                ),
-                                width: width * 0.6,
-                                height: 35,
-                                decoration: BoxDecoration(
-                                  color: white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: const [
-                                    BoxShadow(
-                                      color: Colors.grey,
-                                      blurRadius: 6,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, top: 20),
+                            child: Consumer<CounsellorRegistrationProvider>(
+                              builder: (context, value, child) {
+                                return Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundImage: NetworkImage(
+                                          value.counsellorModel!.imgUrl),
+                                      radius: (20),
+                                    ),
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      "Hi, ${value.counsellorModel!.name} !",
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          color: UtilConstants.whiteColor),
                                     ),
                                   ],
+                                );
+                              },
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          Container(
+                            alignment: Alignment.center,
+                            margin: const EdgeInsets.only(
+                              right: 35,
+                              left: 35,
+                            ),
+                            padding: const EdgeInsets.only(
+                              bottom: 3,
+                            ),
+                            width: width * 0.6,
+                            height: 35,
+                            decoration: BoxDecoration(
+                              color: UtilConstants.whiteColor,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: UtilConstants.greyColor,
+                                  blurRadius: 6,
                                 ),
-                                child: TextFormField(
-                                  onChanged: (value) {
-                                    _runFilter(value);
-                                  },
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Search here ",
-                                    hintStyle: TextStyle(
-                                        color: Colors.grey, fontSize: 15),
-                                    prefixIcon: Icon(
-                                      Icons.search,
-                                      color: Colors.grey,
-                                      size: 20,
-                                    ),
-                                  ),
+                              ],
+                            ),
+                            child: TextFormField(
+                              onChanged: (value) {
+                                _runFilter(value);
+                              },
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "Search here ",
+                                hintStyle: TextStyle(
+                                    color: UtilConstants.greyColor,
+                                    fontSize: 15),
+                                prefixIcon: Icon(
+                                  Icons.search,
+                                  color: UtilConstants.greyColor,
+                                  size: 20,
                                 ),
                               ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: StreamBuilder(
-                    stream: AuthController().getUsers(),
-                    builder: (context, snapshot) {
-                      //-------if the snapshot error occurs, show error message-------
-                      if (snapshot.hasError) {
-                        return const Center(
-                          child: Text("Something went wrong"),
-                        );
-                      }
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              child: StreamBuilder(
+                stream: AuthController().getUsers(),
+                builder: (context, snapshot) {
+                  //-------if the snapshot error occurs, show error message-------
+                  if (snapshot.hasError) {
+                    return const Center(
+                      child: Text("Something went wrong"),
+                    );
+                  }
 
-                      //-------if the snapshot is waiting, show progress indicator-------
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      }
+                  //-------if the snapshot is waiting, show progress indicator-------
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
 
-                      if (snapshot.data!.docs.isEmpty) {
-                        return const Center(
-                          child: Text("No Student found"),
-                        );
-                      }
-                      Logger().i(snapshot.data!.docs.length);
+                  if (snapshot.data!.docs.isEmpty) {
+                    return const Center(
+                      child: Text("No Student found"),
+                    );
+                  }
+                  Logger().i(snapshot.data!.docs.length);
 
-                      //-------------clear the list before adding new data----------------
-                      _allUsers.clear();
+                  //-------------clear the list before adding new data----------------
+                  _allUsers.clear();
 
-                      //-----------------read the document list from snapshot and map to model and add to list----------------
-                      for (var e in snapshot.data!.docs) {
-                        Map<String, dynamic> data =
-                            e.data() as Map<String, dynamic>;
-                        var model = UserModel.fromJson(data);
-                        _allUsers.add(model);
-                      }
+                  //-----------------read the document list from snapshot and map to model and add to list----------------
+                  for (var e in snapshot.data!.docs) {
+                    Map<String, dynamic> data =
+                        e.data() as Map<String, dynamic>;
+                    var model = UserModel.fromJson(data);
+                    _allUsers.add(model);
+                  }
 
-                      return Column(
+                  return SizedBox(
+                    height: 350,
+                    child: SingleChildScrollView(
+                      child: Column(
                         children: [
                           _foundUsers.isNotEmpty
                               ? ListView.builder(
@@ -208,10 +212,17 @@ class _DashboardTabletState extends State<DashboardTablet> {
                                   itemBuilder: (context, index) =>
                                       GestureDetector(
                                     onTap: () {
-                                      UtilFormMethod.showDialogMethod(
-                                          context,
-                                          _foundUsers[index].uid,
-                                          _foundUsers[index].name);
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return UserDetailsDialog(
+                                            uId: _foundUsers[index]
+                                                .uid, // Replace with the actual user ID
+                                            userName: _foundUsers[index]
+                                                .name, // Replace with the actual username
+                                          );
+                                        },
+                                      );
                                     },
                                     child: Card(
                                       key: ValueKey(_foundUsers[index].uid),
@@ -230,13 +241,13 @@ class _DashboardTabletState extends State<DashboardTablet> {
                                         ),
                                         title: Text(
                                           _foundUsers[index].name,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize:
                                                   16), // Adjust the font size
                                         ),
                                         subtitle: Text(
                                           _foundUsers[index].email,
-                                          style: TextStyle(fontSize: 14),
+                                          style: const TextStyle(fontSize: 14),
                                         ),
                                       ),
                                     ),
@@ -247,23 +258,27 @@ class _DashboardTabletState extends State<DashboardTablet> {
                                   style: TextStyle(fontSize: 16),
                                 ),
                         ],
-                      );
-                    },
-                  ),
-                ),
-              ],
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
+            Text(
+              "Your Next Appointment",
+              style: TextStyle(
+                fontSize: 25,
+                color: UtilConstants.actionColor.withOpacity(0.9),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 20),
+            const NextAppointment(),
+            const SizedBox(height: 20),
+            Footer(height: 55, width: width),
           ],
         ),
       ),
     );
   }
 }
-
-const primaryColor = Color(0xFF2E2E48);
-const canvasColor = Color(0xFF272643);
-const scaffoldBackgroundColor = Color(0xFF464667);
-const accentCanvasColor = Color(0xFF3E3E61);
-const white = Colors.white;
-final actionColor = const Color.fromARGB(255, 50, 50, 132).withOpacity(0.6);
-final divider = Divider(color: white.withOpacity(0.3), height: 1);
