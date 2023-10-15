@@ -22,7 +22,7 @@
 ---
 
 ## Introduction
-![](https://github.com/cepdnaclk/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App/blob/main/docs/counselling.jpeg)
+
 Welcome to **BLOOMi**! *BLOOMi* is a comprehensive project focused on the development and deployment of a mobile app and web app designed to empower both counselors and students. The project aims to enhance the counseling process through an interactive digital platform. By leveraging the capabilities of these apps, counselors can effectively engage with students, providing guidance and support in a more dynamic and accessible manner. Simultaneously, students benefit from a user-friendly interface that facilitates communication, resource-sharing, and personalized assistance. Through its innovative approach, *Bloomi* fosters an environment conducive to improved counseling experiences and enriched student development.
 
 
