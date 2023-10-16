@@ -1,9 +1,9 @@
-import 'package:bloomi_web/components/conversation_tile.dart';
 import 'package:bloomi_web/controllers/chat_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
 import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/chat_list_view_counsellor.dart';
+import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/conversation_tile_coun.dart';
 import 'package:bloomi_web/screens/counsellor_screens/chat/conversation/custom_chat_view.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
@@ -39,6 +39,8 @@ class AvailableChatCounsellor extends StatelessWidget {
                 stream: ChatController()
                     .getConversationCounsellor(value.counsellorModel!.uid),
                 builder: (context, snapshot) {
+                  Logger().e(snapshot.data!.docs.length);
+
                   //-------if the snapshot error occurs, show error message-------
                   if (snapshot.hasError) {
                     return const Center(
@@ -100,7 +102,7 @@ class AvailableChatCounsellor extends StatelessWidget {
                                       Logger().e(e);
                                     }
                                   },
-                                  child: ConversationTile(
+                                  child: ConversationTileCoun(
                                     conversationModel: _list[index],
                                   ),
                                 ),
@@ -124,7 +126,7 @@ class AvailableChatCounsellor extends StatelessWidget {
                             ),
                           );
                         },
-                        child: const Text("Available Counselors"),
+                        child: const Text("Available Users"),
                       ),
                     ],
                   );

@@ -10,6 +10,7 @@ class CustomTextFeild extends StatelessWidget {
   final double lableFontSize;
   final TextEditingController textEditingController;
   final Widget? icon;
+  final int maxLine;
 
   const CustomTextFeild({
     super.key,
@@ -21,14 +22,16 @@ class CustomTextFeild extends StatelessWidget {
     this.fontSize = 14,
     this.lableFontSize = 15,
     this.icon,
+    this.maxLine = 1,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      height: height,
+      // height: height,
       child: TextField(
+        maxLines: maxLine,
         style: TextStyle(
           fontSize: fontSize,
         ),

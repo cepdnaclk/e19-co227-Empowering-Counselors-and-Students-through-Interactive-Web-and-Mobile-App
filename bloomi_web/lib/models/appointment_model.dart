@@ -12,6 +12,7 @@ class AppointmentModel {
   String date;
   String time;
   String status;
+  String note;
 
   AppointmentModel({
     required this.id,
@@ -24,6 +25,7 @@ class AppointmentModel {
     required this.date,
     required this.time,
     required this.status,
+    required this.note,
   });
 
   factory AppointmentModel.fromJson(Map<String, dynamic> json) =>

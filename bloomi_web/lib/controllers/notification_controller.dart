@@ -16,6 +16,7 @@ class NotificationController {
     String time,
     String status,
     BuildContext context,
+    String note,
   ) async {
     try {
       String appointmentId = notification.doc().id;
@@ -29,6 +30,7 @@ class NotificationController {
         'date': date,
         'time': time,
         'status': status,
+        'note': note,
       }).then((value) => Logger().i("Notification Added"));
     } catch (e) {
       Logger().e(e);

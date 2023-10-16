@@ -20,7 +20,7 @@ class UtilFormMethod {
         return Center(
           child: Container(
               width: 600,
-              height: 500,
+              height: 600,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(2.0),
               ),
@@ -44,6 +44,12 @@ class UtilFormMethod {
                                 const CustomDatePicker(),
                                 const SizedBox(height: 10),
                                 const CustomTimePicker(),
+                                const SizedBox(height: 10),
+                                FormInputWeb(
+                                  "Enter the Note",
+                                  textEditingController: appointment.note,
+                                  maxLine: 4,
+                                ),
                               ],
                             );
                           },
@@ -67,17 +73,20 @@ class UtilFormMethod {
                                     value.getDateTime.toString(),
                                     value.getTimeOfDay.format(context),
                                     "Pending",
+                                    value.note.text,
                                   )
                                       .then((value1) {
                                     value3.saveNotification(
-                                        context,
-                                        value2.userModel!.uid,
-                                        counselorId,
-                                        value2.userModel!.name,
-                                        counselorName,
-                                        value.getDateTime.toString(),
-                                        value.getTimeOfDay.format(context),
-                                        "Pending");
+                                      context,
+                                      value2.userModel!.uid,
+                                      counselorId,
+                                      value2.userModel!.name,
+                                      counselorName,
+                                      value.getDateTime.toString(),
+                                      value.getTimeOfDay.format(context),
+                                      "Pending",
+                                      value.note.text,
+                                    );
                                   });
                                 } catch (e) {
                                   Logger().e(e);
@@ -99,7 +108,7 @@ class UtilFormMethod {
                               child: value.isLoading
                                   ? const CircularProgressIndicator.adaptive()
                                   : const CustomText(
-                                      "Save Note",
+                                      "Add Appointment",
                                       fontColor: UtilConstants.blackColor,
                                       fontSize: 15,
                                     ),

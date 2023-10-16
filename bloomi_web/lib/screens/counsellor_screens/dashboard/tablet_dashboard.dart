@@ -5,7 +5,6 @@ import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart'
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-import 'package:bloomi_web/utils/util_form_method.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';

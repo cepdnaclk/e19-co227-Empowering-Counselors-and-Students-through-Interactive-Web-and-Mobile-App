@@ -10,6 +10,7 @@ class NotificationModel {
   String date;
   String time;
   String status;
+  String note;
 
   NotificationModel({
     required this.id,
@@ -20,6 +21,7 @@ class NotificationModel {
     required this.date,
     required this.time,
     required this.status,
+    required this.note,
   });
 
   factory NotificationModel.fromJson(Map<String, dynamic> json) =>

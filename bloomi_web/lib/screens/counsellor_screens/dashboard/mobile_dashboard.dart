@@ -3,10 +3,8 @@ import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
-
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -54,7 +52,6 @@ class _DashboardMobileState extends State<DashboardMobile> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.width;
 
     return SafeArea(
       child: SingleChildScrollView(

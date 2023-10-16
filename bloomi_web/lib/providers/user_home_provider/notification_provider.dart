@@ -7,14 +7,16 @@ import 'package:logger/logger.dart';
 class NotificationProvider extends ChangeNotifier {
   //------------------------ SAVE Notification ------------------------
   Future<void> saveNotification(
-      BuildContext context,
-      String studentId,
-      String counselorId,
-      String studentName,
-      String counselorName,
-      String date,
-      String time,
-      String status) async {
+    BuildContext context,
+    String studentId,
+    String counselorId,
+    String studentName,
+    String counselorName,
+    String date,
+    String time,
+    String status,
+    String note,
+  ) async {
     try {
       if (studentId.isNotEmpty &&
           counselorId.isNotEmpty &&
@@ -32,6 +34,7 @@ class NotificationProvider extends ChangeNotifier {
           time,
           status,
           context,
+          note,
         );
         notifyListeners();
       } else {

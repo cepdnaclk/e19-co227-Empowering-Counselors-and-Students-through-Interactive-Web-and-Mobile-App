@@ -2,6 +2,7 @@ import 'package:bloomi_web/controllers/appoinment_controller.dart';
 import 'package:bloomi_web/controllers/notification_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
+import 'package:bloomi_web/providers/counselor/counsellor_appointment_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -91,7 +92,22 @@ class UtilFormMethodNotification {
                                     Text(
                                         'Appointment Time: ${list[index].time}'),
                                     Text(
+                                        'Appointment Notes: ${list[index].note}'),
+                                    Text(
                                         'Appointment state: ${list[index].status}'),
+                                    const SizedBox(height: 10),
+                                    TextField(
+                                      controller: Provider.of<
+                                                  CounsellorAppointmentProvider>(
+                                              context,
+                                              listen: false)
+                                          .note,
+                                      maxLines: 5,
+                                      decoration: const InputDecoration(
+                                        hintText: 'Enter the note',
+                                        border: OutlineInputBorder(),
+                                      ),
+                                    )
                                   ],
                                 ),
                                 trailing: Row(
@@ -106,16 +122,27 @@ class UtilFormMethodNotification {
                                       },
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          NotificationController()
-                                              .updateNotificationState(
-                                            list[index].id,
-                                            'Approved',
-                                          );
+                                          try {
+                                            NotificationController()
+                                                .updateNotificationState(
+                                              list[index].id,
+                                              'Approved',
+                                            );
 
-                                          AppointmentController()
-                                              .updateAppointmentState(
+                                            AppointmentController()
+                                                .updateAppointmentState(
+                                                    value.counsellorModel!.uid,
+                                                    'Approved');
+                                          } catch (e) {
+                                            Logger().e(e);
+                                          }
+
+                                          Provider.of<CounsellorAppointmentProvider>(
+                                                  context,
+                                                  listen: false)
+                                              .changeAppointment(
                                                   value.counsellorModel!.uid,
-                                                  'Approved');
+                                                  context);
                                         },
                                         style: ButtonStyle(
                                           backgroundColor: MaterialStateProperty
