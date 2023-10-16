@@ -225,7 +225,7 @@ To create a user-friendly mobile application that connects students with qualifi
 
 ## Getting Started
 
-Please follow the installation and usage instructions provided in the [Documentation](./docs).
+Please follow the installation and usage instructions provided in the [Documentation](https://cepdnaclk.github.io/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App/docs).
 
 
 ## contact 
