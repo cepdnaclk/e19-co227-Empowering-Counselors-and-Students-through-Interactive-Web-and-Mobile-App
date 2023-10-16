@@ -28,16 +28,16 @@
 
 Welcome to **BLOOMi**! *BLOOMi* is a comprehensive project focused on developing and deploying a mobile app and web app designed to empower counselors and students. The project aims to enhance the counseling process through an interactive digital platform. By leveraging the capabilities of these apps, counselors can effectively engage with students, providing guidance and support in a more dynamic and accessible manner. Simultaneously, students benefit from a user-friendly interface that facilitates communication, resource-sharing, and personalized assistance. Through its innovative approach, *Bloomi* fosters an environment conducive to improved counseling experiences and enriched student development.
 
----
+
 ## Objectives
 
 The objective of BLOOMi is to provide accessible and personalized counseling services for university students, promoting their mental well-being and academic success. Through our user-friendly platform and strategic partnerships, we aim to enhance the student experience and empower them to thrive in their educational journey.
 
----
+
 ## High-level Solution Architecture
 
 
-#### Utilizing Flutter and Firebase, involves the following components:
+##### Utilizing Flutter and Firebase, involves the following components:
 
 **Flutter Framework:** The front end of the mobile application is built using the Flutter framework, which allows for cross-platform development. Flutter provides a rich set of UI components and facilitates seamless integration with Firebase.
 
@@ -51,7 +51,7 @@ The objective of BLOOMi is to provide accessible and personalized counseling ser
 
 **Push Notifications:** Firebase Cloud Messaging (FCM) is utilized to implement push notifications, enabling timely communication and updates for users. Students can receive notifications for appointment reminders, counselor responses, and important announcements.
 
----
+
 ## Software Design
 
 
@@ -162,11 +162,10 @@ The objective of BLOOMi is to provide accessible and personalized counseling ser
     - Messaging and notification tools for sending important updates or alerts to users and counselors.
 #image for admin interface
 
----
+
 ## Key Features
 
-
-**For Students:**
+**Student's Interface:**
 
 1. **User Profile:** Allow students to create and edit their profiles, including personal details and academic information.
 
@@ -179,7 +178,7 @@ The objective of BLOOMi is to provide accessible and personalized counseling ser
 5. **Resources and Content Library:** Offer a repository of educational resources and articles related to academics, careers, and personal development.
 
 
-**For Counselors:**
+**Counselor's Interface:**
 
 1. **Counselor Profile:** Allow counselors to create and manage their profiles, showcasing their qualifications, expertise, and availability.
 
@@ -194,7 +193,7 @@ The objective of BLOOMi is to provide accessible and personalized counseling ser
 6. **Resource Sharing:** Allow counselors to share resources and articles with students during sessions.
 
 
-**For Administrators:**
+**Administrator's Interface:**
 
 1. **User Management:** Tools for managing user accounts, including the ability to create, edit, and deactivate profiles.
 
@@ -208,7 +207,7 @@ The objective of BLOOMi is to provide accessible and personalized counseling ser
 
 6. **System Settings:** The ability to configure and customize platform settings, including notification settings, email templates, and system messages.
 
----
+
 ## Why Bloomi 
 
 1. **Convenience:** Allows students and counselors to connect and communicate without the need for physical presence. 
@@ -237,24 +236,24 @@ The objective of BLOOMi is to provide accessible and personalized counseling ser
 
 14. **Quality Assurance:** Maintain and improve the quality of counseling services by facilitating feedback, reviews, and monitoring of counselor performance.
 
----
+
 ## Getting Started
 
 Please follow the installation and usage instructions provided in the [Documentation](https://cepdnaclk.github.io/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App/docs).
 
----
+
 ## contact 
 
 Feel free to contact us for more details!
 
----
+
 ## Team
 -  E/19/017 Amanda W. S. [email](mailto:e19017@eng.pdn.ac.lk)
 -  E/19/087 Dissanayaka M.A.S.R. [email](mailto:e19087@eng.pdn.ac.lk)
 -  E/19/260 Neranji W.K.G.A.G. [email](mailto:e19260@eng.pdn.ac.lk)
 -  E/19/465 Dilshan R.M.S. [email](mailto:e19465@eng.pdn.ac.lk)
 
----
+
 ## Links
 
 - [Project Repository](https://github.com/cepdnaclk/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App)
