@@ -8,11 +8,6 @@
 ![Logo](./counselling.jpeg)
 
 
-## Team
--  E/19/017 Amanda W. S. [email](mailto:e19017@eng.pdn.ac.lk)
--  E/19/087 Dissanayaka M.A.S.R. [email](mailto:e19087@eng.pdn.ac.lk)
--  E/19/260 Neranji W.K.G.A.G. [email](mailto:e19260@eng.pdn.ac.lk)
--  E/19/465 Dilshan R.M.S. [email](mailto:e19465@eng.pdn.ac.lk)
 
 
 ## Table of Contents
@@ -24,7 +19,7 @@
 6. [Why Use Our Software](#why-use-our-software)
 7. [Getting Started](#getting-started)
 8. [Contact](#contact)
-9. [Team](#team)
+9. [Team](#Team)
 10. [Links](#links)
 
 ---
@@ -33,14 +28,17 @@
 
 Welcome to **BLOOMi**! *BLOOMi* is a comprehensive project focused on the development and deployment of a mobile app and web app designed to empower both counselors and students. The project aims to enhance the counseling process through an interactive digital platform. By leveraging the capabilities of these apps, counselors can effectively engage with students, providing guidance and support in a more dynamic and accessible manner. Simultaneously, students benefit from a user-friendly interface that facilitates communication, resource-sharing, and personalized assistance. Through its innovative approach, *Bloomi* fosters an environment conducive to improved counseling experiences and enriched student development.
 
+
 ## Objectives
 
 To create a user-friendly mobile application that connects students with qualified counselors, mentors, and advisors, facilitating academic, career, and personal development support, while ensuring user privacy and convenience.
+
 
 ## Highlevel Solution Architecture
 #image for high level architecture
 
 ## Software Design
+
 
 ### User Interface for Students
 
@@ -77,6 +75,7 @@ To create a user-friendly mobile application that connects students with qualifi
 #image for user dashboard
 
 ### User Interface for Counselors
+
 
 1. **Counselor Profile:**
     counselors can view and edit their profile information, including name, credentials, profile picture, contact details, and specialization.
@@ -116,7 +115,9 @@ To create a user-friendly mobile application that connects students with qualifi
 
 #images for counselor ui
 
+
 ###  User Interface for Admin
+
 
 1. **Dashboard:**
    provides an overview of key platform metrics, such as the number of active users, recent activities, and system health indicators.
@@ -146,7 +147,9 @@ To create a user-friendly mobile application that connects students with qualifi
     - Messaging and notification tools for sending important updates or alerts to users and counselors.
 #image for admin interface
 
+
 ## Key Features
+
 
 **For Students:**
 
@@ -159,6 +162,7 @@ To create a user-friendly mobile application that connects students with qualifi
 4. **Appointments and Scheduling:** Allow students to book counseling sessions, view upcoming appointments, and receive reminders.
 
 5. **Resources and Content Library:** Offer a repository of educational resources and articles related to academics, careers, and personal development.
+
 
 **For Counselors:**
 
@@ -174,6 +178,7 @@ To create a user-friendly mobile application that connects students with qualifi
 
 6. **Resource Sharing:** Allow counselors to share resources and articles with students during sessions.
 
+
 **For Administrators:**
 
 1. **User Management:** Tools for managing user accounts, including the ability to create, edit, and deactivate profiles.
@@ -187,6 +192,7 @@ To create a user-friendly mobile application that connects students with qualifi
 5. **User Role Management:** The ability to create, edit, or delete user roles and assign permissions.
 
 6. **System Settings:** The ability to configure and customize platform settings, including notification settings, email templates, and system messages.
+
 
 ## Why Use Our Software
 
@@ -216,13 +222,22 @@ To create a user-friendly mobile application that connects students with qualifi
 
 14. **Quality Assurance:** maintain and improve the quality of counseling services by facilitating feedback, reviews, and monitoring of counselor performance.
 
+
 ## Getting Started
 
 Please follow the installation and usage instructions provided in the [Documentation](./docs).
 
+
 ## contact 
 
 Feel free to contact us for more details!
+
+## Team
+-  E/19/017 Amanda W. S. [email](mailto:e19017@eng.pdn.ac.lk)
+-  E/19/087 Dissanayaka M.A.S.R. [email](mailto:e19087@eng.pdn.ac.lk)
+-  E/19/260 Neranji W.K.G.A.G. [email](mailto:e19260@eng.pdn.ac.lk)
+-  E/19/465 Dilshan R.M.S. [email](mailto:e19465@eng.pdn.ac.lk)
+
 
 ## Links
 
