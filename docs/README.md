@@ -57,34 +57,34 @@ The objective of BLOOMi is to provide accessible and personalized counseling ser
 
 ### User Interface for Students
 
-1. **User Profile:**
+**User Profile:**
    students can view and edit their profile information, including name, profile picture, contact details, and academic information.
    
-2. **Dashboard:**
+**Dashboard:**
    provides an overview of upcoming appointments, messages, and important notifications.
 
-3. **Search and Connect:**
+**Search and Connect:**
    feature to find counselors based on various criteria, such as specialization or availability, and a button to initiate connections or schedule appointments.
 
-4. **Messaging System:**
+**Messaging System:**
   enables students to communicate securely and directly with their counselors, share documents or images, and receive notifications for new messages.
 
-5. **Appointments and Scheduling:**
+**Appointments and Scheduling:**
    allows students to book appointments with counselors, view upcoming sessions, and receive reminders.
 
-6. **Resources and Content Library:**
+**Resources and Content Library:**
    Access to a library of educational resources, articles, videos, and documents that can aid students in their academic and personal development.
 
-7. **Notifications:**
+**Notifications:**
   keep students informed about important updates, upcoming appointments, or new messages.
 
-8. **Settings:**
+**Settings:**
    students can customize their app preferences, including notification settings, privacy controls, and profile details.
 
-9. **Logout/Sign Out:**
+**Logout/Sign Out:**
     securely log out of the app when needed.
 
-10. **Privacy and Security:**
+**Privacy and Security:**
     Clear information on how user data is handled and what security measures are in place to protect their privacy.
    
 #image for user dashboard
@@ -92,40 +92,40 @@ The objective of BLOOMi is to provide accessible and personalized counseling ser
 ### User Interface for Counselors
 
 
-1. **Counselor Profile:**
+**Counselor Profile:**
     counselors can view and edit their profile information, including name, credentials, profile picture, contact details, and specialization.
 
-2. **Dashboard:**
+**Dashboard:**
     provides an overview of upcoming counseling sessions, messages, and important notifications.
 
-3. **Appointments and Calendar:**
+**Appointments and Calendar:**
    allows counselors to view upcoming sessions, manage their availability, and access detailed information about each session.
 
-4. **Student Management:**
+**Student Management:**
    search and manage students they are currently counseling, including access to student profiles and session history.
 
-5. **Messaging System:**
+**Messaging System:**
    enables counselors to communicate securely and directly with students, share documents or resources, and receive notifications for new messages.
 
-6. **Session Notes and Documentation:**
+**Session Notes and Documentation:**
   take session notes, record progress, and access past session records for each student.
 
-7. **Resources and Content Library:**
+**Resources and Content Library:**
    library of educational resources, articles, videos, and documents that can be shared with students during counseling sessions.
 
-8. **Appointment Scheduling:**
+**Appointment Scheduling:**
    availability of the counselors, accept or decline appointment requests, and manage their counseling schedule.
 
-9. **Notifications:**
+**Notifications:**
     keep counselors informed about upcoming appointments, new messages, and other important updates.
 
-10. **Settings:**
+**Settings:**
     An area where counselors can customize their app preferences, including notification settings, privacy controls, and profile details.
 
-12. **Privacy and Security:**
+**Privacy and Security:**
     Clear information on how user data is handled and what security measures are in place to protect counselor and student privacy.
 
-13. **Analytics and Reports:**
+**Analytics and Reports:**
     Tools to access reports and analytics related to counseling sessions, student progress, and app usage statistics.
 
 #images for counselor ui
@@ -134,31 +134,31 @@ The objective of BLOOMi is to provide accessible and personalized counseling ser
 ###  User Interface for Admin
 
 
-1. **Dashboard:**
+**Dashboard:**
    provides an overview of key platform metrics, such as the number of active users, recent activities, and system health indicators.
 
-2. **User Management:**
+**User Management:**
    manage user accounts, including the ability to view, create, edit, and deactivate counselor and student profiles.
 
-3. **Feedback and Review Management:**
+**Feedback and Review Management:**
    review and manage feedback and reviews submitted by students and counselors to ensure quality control.
 
-4. **Security and Privacy Controls:**
+**Security and Privacy Controls:**
    manage user data security and privacy, including the ability to set and enforce privacy policies and data retention rules.
 
-8. **Analytics and Reporting:**
+**Analytics and Reporting:**
    generating and viewing reports and analytics related to platform usage, counselor performance, and user feedback.
 
-9. **User Role Management:**
+**User Role Management:**
    capability to create, edit, or delete user roles (e.g., admin, counselor, student) and assign permissions.
 
-10. **System Settings:**
+**System Settings:**
     ability to configure and customize platform settings, such as notification settings, email templates, and system messages.
 
-11. **User Activity Logs:**
+**User Activity Logs:**
     - Access to logs of user activity on the platform for auditing and troubleshooting purposes.
 
-12. **Communication Tools:**
+**Communication Tools:**
     - Messaging and notification tools for sending important updates or alerts to users and counselors.
 #image for admin interface
 
@@ -167,74 +167,74 @@ The objective of BLOOMi is to provide accessible and personalized counseling ser
 
 **Student's Interface:**
 
-1. **User Profile:** Allow students to create and edit their profiles, including personal details and academic information.
+**User Profile:** Allow students to create and edit their profiles, including personal details and academic information.
 
-2. **Search and Connect:** Enable students to search for counselors based on specialization and availability and initiate connections or schedule appointments.
+**Search and Connect:** Enable students to search for counselors based on specialization and availability and initiate connections or schedule appointments.
 
-3. **Messaging System:** Provide a secure and direct messaging platform for communication with counselors.
+**Messaging System:** Provide a secure and direct messaging platform for communication with counselors.
 
-4. **Appointments and Scheduling:** Allow students to book counseling sessions, view upcoming appointments, and receive reminders.
+**Appointments and Scheduling:** Allow students to book counseling sessions, view upcoming appointments, and receive reminders.
 
-5. **Resources and Content Library:** Offer a repository of educational resources and articles related to academics, careers, and personal development.
+**Resources and Content Library:** Offer a repository of educational resources and articles related to academics, careers, and personal development.
 
 
 **Counselor's Interface:**
 
-1. **Counselor Profile:** Allow counselors to create and manage their profiles, showcasing their qualifications, expertise, and availability.
+*Counselor Profile:* Allow counselors to create and manage their profiles, showcasing their qualifications, expertise, and availability.
 
-2. **Appointment Management:** Provide tools for counselors to set their availability, accept or decline appointment requests, and manage their counseling schedule.
+**Appointment Management:** Provide tools for counselors to set their availability, accept or decline appointment requests, and manage their counseling schedule.
 
-3. **Student Management:** Allow counselors to view and manage their students, access session records, and track progress.
+**Student Management:** Allow counselors to view and manage their students, access session records, and track progress.
 
-4. **Messaging System:** Offer a secure and direct messaging platform for communication with students.
+**Messaging System:** Offer a secure and direct messaging platform for communication with students.
 
-5. **Session Notes and Documentation:** Enable counselors to take session notes, record progress, and maintain session history.
+**Session Notes and Documentation:** Enable counselors to take session notes, record progress, and maintain session history.
 
-6. **Resource Sharing:** Allow counselors to share resources and articles with students during sessions.
+**Resource Sharing:** Allow counselors to share resources and articles with students during sessions.
 
 
 **Administrator's Interface:**
 
-1. **User Management:** Tools for managing user accounts, including the ability to create, edit, and deactivate profiles.
+**User Management:** Tools for managing user accounts, including the ability to create, edit, and deactivate profiles.
 
-2. **Content Management:** A content management system to moderate and organize platform content and resources.
+**Content Management:** A content management system to moderate and organize platform content and resources.
 
-3. **Analytics and Reporting:** Access to reports and analytics related to platform usage, counselor performance, and user feedback.
+**Analytics and Reporting:** Access to reports and analytics related to platform usage, counselor performance, and user feedback.
 
-4. **Security and Privacy Controls:** Features to manage user data security and privacy, including setting and enforcing privacy policies and data retention rules.
+**Security and Privacy Controls:** Features to manage user data security and privacy, including setting and enforcing privacy policies and data retention rules.
 
-5. **User Role Management:** The ability to create, edit, or delete user roles and assign permissions.
+**User Role Management:** The ability to create, edit, or delete user roles and assign permissions.
 
-6. **System Settings:** The ability to configure and customize platform settings, including notification settings, email templates, and system messages.
+**System Settings:** The ability to configure and customize platform settings, including notification settings, email templates, and system messages.
 
 
 ## Why Bloomi 
 
-1. **Convenience:** Allows students and counselors to connect and communicate without the need for physical presence. 
+**Convenience:** Allows students and counselors to connect and communicate without the need for physical presence. 
 
-2. **Accessibility:** Students can access counseling services from the comfort of their own devices, whether it's a computer, tablet, or smartphone, making counseling more accessible to a broader audience.
+**Accessibility:** Students can access counseling services from the comfort of their own devices, whether it's a computer, tablet, or smartphone, making counseling more accessible to a broader audience.
 
-3. **Scheduling Flexibility:** typically includes scheduling features that enable students to book counseling sessions at times that suit them, promoting flexibility and accessibility.
+**Scheduling Flexibility:** typically includes scheduling features that enable students to book counseling sessions at times that suit them, promoting flexibility and accessibility.
 
-4. **Privacy and Confidentiality:** can provide secure and private communication channels for counseling, ensuring that students' sensitive information remains confidential.
+**Privacy and Confidentiality:** can provide secure and private communication channels for counseling, ensuring that students' sensitive information remains confidential.
 
-5. **Resource Sharing:** includes libraries of resources and articles that counselors can share with students to support their academic and personal development.
+**Resource Sharing:** includes libraries of resources and articles that counselors can share with students to support their academic and personal development.
 
-6. **Efficient Communication:** Messaging and notification features enable real-time and asynchronous communication between students and counselors, allowing them to exchange information and resources efficiently.
+**Efficient Communication:** Messaging and notification features enable real-time and asynchronous communication between students and counselors, allowing them to exchange information and resources efficiently.
 
-7. **Session Documentation:** often includes features for taking session notes, recording progress, and maintaining session history, which can be beneficial for tracking student development and counseling effectiveness.
+**Session Documentation:** often includes features for taking session notes, recording progress, and maintaining session history, which can be beneficial for tracking student development and counseling effectiveness.
 
-8. **Analytics and Reporting:** Administrators can access reports and analytics to gain insights into the effectiveness of counseling services, which can guide improvements and adjustments.
+**Analytics and Reporting:** Administrators can access reports and analytics to gain insights into the effectiveness of counseling services, which can guide improvements and adjustments.
 
-9. **Scale and Reach:** Software can support a broader reach, allowing universities to offer counseling services to a larger number of students, even beyond their physical locations.
+**Scale and Reach:** Software can support a broader reach, allowing universities to offer counseling services to a larger number of students, even beyond their physical locations.
 
-11. **Efficiency and Productivity:** can streamline administrative tasks and communication, making it easier for counselors to manage their schedules and focus on counseling rather than administrative work.
+**Efficiency and Productivity:** can streamline administrative tasks and communication, making it easier for counselors to manage their schedules and focus on counseling rather than administrative work.
 
-12. **Customization:** can be tailored to meet the specific needs and objectives of university or counseling organizations, allowing for a personalized user experience.
+**Customization:** can be tailored to meet the specific needs and objectives of university or counseling organizations, allowing for a personalized user experience.
 
-13. **Security and Compliance:** designed with robust security features to protect sensitive user data and ensure compliance with privacy regulations.
+**Security and Compliance:** designed with robust security features to protect sensitive user data and ensure compliance with privacy regulations.
 
-14. **Quality Assurance:** Maintain and improve the quality of counseling services by facilitating feedback, reviews, and monitoring of counselor performance.
+**Quality Assurance:** Maintain and improve the quality of counseling services by facilitating feedback, reviews, and monitoring of counselor performance.
 
 
 ## Getting Started
