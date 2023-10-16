@@ -5,6 +5,7 @@ import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart'
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
 
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
+import 'package:bloomi_web/screens/counsellor_screens/home/notification_viewer.dart.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 
 import 'package:flutter/material.dart';
@@ -54,7 +55,6 @@ class _DashboardMobileState extends State<DashboardMobile> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.width;
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -101,7 +101,7 @@ class _DashboardMobileState extends State<DashboardMobile> {
                                     CircleAvatar(
                                       backgroundImage: NetworkImage(
                                           value.counsellorModel!.imgUrl),
-                                      radius: (20),
+                                      radius: (18),
                                     ),
                                     const SizedBox(
                                       width: 20,
@@ -109,9 +109,42 @@ class _DashboardMobileState extends State<DashboardMobile> {
                                     Text(
                                       "Hi, ${value.counsellorModel!.name} !",
                                       style: const TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 18,
                                           color: UtilConstants.whiteColor),
                                     ),
+                                    Spacer(),
+                                    InkWell(
+                                      onTap: () {
+                                        UtilFormMethodNotification
+                                            .showDialogMethod(context);
+                                      },
+                                      child: Stack(
+                                        children: [
+                                          const Icon(Icons.notifications,
+                                              size: 24,
+                                              color: UtilConstants.whiteColor),
+                                          Positioned(
+                                            right: -0.6,
+                                            top: -2,
+                                            child: Container(
+                                              padding: const EdgeInsets.all(4),
+                                              decoration: const BoxDecoration(
+                                                color: Colors.red,
+                                                shape: BoxShape.circle,
+                                              ),
+                                              child: const Text(
+                                                '.',
+                                                style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontSize: 11,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(width: 5),
                                   ],
                                 );
                               },
@@ -125,7 +158,8 @@ class _DashboardMobileState extends State<DashboardMobile> {
                               left: 35,
                             ),
                             padding: const EdgeInsets.only(
-                              bottom: 3,
+                              bottom: 8,
+                              top: 5,
                             ),
                             width: width * 0.6,
                             height: 35,
@@ -148,11 +182,11 @@ class _DashboardMobileState extends State<DashboardMobile> {
                                 hintText: "Search here ",
                                 hintStyle: TextStyle(
                                     color: UtilConstants.greyColor,
-                                    fontSize: 15),
+                                    fontSize: 13),
                                 prefixIcon: Icon(
                                   Icons.search,
                                   color: UtilConstants.greyColor,
-                                  size: 20,
+                                  size: 18,
                                 ),
                               ),
                             ),
@@ -231,7 +265,7 @@ class _DashboardMobileState extends State<DashboardMobile> {
                                       color: UtilConstants.lightgreyColor,
                                       elevation: 4,
                                       margin: const EdgeInsets.symmetric(
-                                          vertical: 5, horizontal: 10),
+                                          vertical: 4, horizontal: 10),
                                       child: ListTile(
                                         contentPadding:
                                             const EdgeInsets.symmetric(
@@ -245,11 +279,11 @@ class _DashboardMobileState extends State<DashboardMobile> {
                                           _foundUsers[index].name,
                                           style: const TextStyle(
                                               fontSize:
-                                                  16), // Adjust the font size
+                                                  15), // Adjust the font size
                                         ),
                                         subtitle: Text(
                                           _foundUsers[index].email,
-                                          style: const TextStyle(fontSize: 14),
+                                          style: const TextStyle(fontSize: 13),
                                         ),
                                       ),
                                     ),
