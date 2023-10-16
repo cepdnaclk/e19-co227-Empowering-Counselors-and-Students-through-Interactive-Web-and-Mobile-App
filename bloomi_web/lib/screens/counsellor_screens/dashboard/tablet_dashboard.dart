@@ -4,8 +4,8 @@ import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
+import 'package:bloomi_web/screens/counsellor_screens/home/notification_viewer.dart.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-import 'package:bloomi_web/utils/util_form_method.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -93,25 +93,85 @@ class _DashboardTabletState extends State<DashboardTablet> {
                             padding: const EdgeInsets.only(left: 10, top: 20),
                             child: Consumer<CounsellorRegistrationProvider>(
                               builder: (context, value, child) {
-                                return Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    CircleAvatar(
-                                      backgroundImage: NetworkImage(
-                                          value.counsellorModel!.imgUrl),
-                                      radius: (20),
-                                    ),
-                                    const SizedBox(
-                                      width: 20,
-                                    ),
-                                    Text(
-                                      "Hi, ${value.counsellorModel!.name} !",
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          color: UtilConstants.whiteColor),
-                                    ),
-                                  ],
-                                );
+                                return (width < 900)
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          CircleAvatar(
+                                            backgroundImage: NetworkImage(
+                                                value.counsellorModel!.imgUrl),
+                                            radius: (20),
+                                          ),
+                                          const SizedBox(
+                                            width: 20,
+                                          ),
+                                          Text(
+                                            "Hi, ${value.counsellorModel!.name} !",
+                                            style: const TextStyle(
+                                                fontSize: 20,
+                                                color:
+                                                    UtilConstants.whiteColor),
+                                          ),
+                                          Spacer(),
+                                          InkWell(
+                                            onTap: () {
+                                              UtilFormMethodNotification
+                                                  .showDialogMethod(context);
+                                            },
+                                            child: Stack(
+                                              children: [
+                                                const Icon(Icons.notifications,
+                                                    size: 24,
+                                                    color: UtilConstants
+                                                        .whiteColor),
+                                                Positioned(
+                                                  right: -0.6,
+                                                  top: -2,
+                                                  child: Container(
+                                                    padding:
+                                                        const EdgeInsets.all(4),
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      color: Colors.red,
+                                                      shape: BoxShape.circle,
+                                                    ),
+                                                    child: const Text(
+                                                      '.',
+                                                      style: TextStyle(
+                                                        color: Colors.red,
+                                                        fontSize: 11,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(width: 10),
+                                        ],
+                                      )
+                                    : Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          CircleAvatar(
+                                            backgroundImage: NetworkImage(
+                                                value.counsellorModel!.imgUrl),
+                                            radius: (20),
+                                          ),
+                                          const SizedBox(
+                                            width: 20,
+                                          ),
+                                          Text(
+                                            "Hi, ${value.counsellorModel!.name} !",
+                                            style: const TextStyle(
+                                                fontSize: 20,
+                                                color:
+                                                    UtilConstants.whiteColor),
+                                          ),
+                                        ],
+                                      );
                               },
                             ),
                           ),

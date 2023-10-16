@@ -90,7 +90,7 @@ class UtilConstants {
 
   //-----------------------Color palette----------------------
   static Color marinerColor = const Color(0xff2F76BA);
-  static Color footerColor = Color.fromARGB(255, 17, 64, 107);
+  static Color footerColor = const Color.fromARGB(255, 17, 64, 107);
   static Color tropicalBlurColor = const Color(0xffD1E5FA);
 
   //-----------------------const dimensions desktop version----------------------

@@ -165,7 +165,7 @@ class _DashboardDesktopState extends State<DashboardDesktop> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10, right: 10, top: 20),
+              padding: const EdgeInsets.only(left: 10, right: 10, top: 20),
               child: StreamBuilder(
                 stream: AuthController().getUsers(),
                 builder: (context, snapshot) {
@@ -202,7 +202,7 @@ class _DashboardDesktopState extends State<DashboardDesktop> {
                   }
 
                   return SizedBox(
-                    height: 400,
+                    height: 300,
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
