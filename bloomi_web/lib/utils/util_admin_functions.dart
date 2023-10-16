@@ -16,12 +16,13 @@ class AdminFunctions {
   //--------------------Datacolumns---------------------------
   static DataColumn customDataColumns(String text) {
     return DataColumn(
+        onSort: (columnIndex, ascending) {},
         label: Text(
-      text,
-      style: TextStyle(
-        color: Colors.blue.shade300,
-        fontSize: 18,
-      ),
-    ));
+          text,
+          style: TextStyle(
+            color: Colors.blue.shade300,
+            fontSize: 18,
+          ),
+        ));
   }
 }

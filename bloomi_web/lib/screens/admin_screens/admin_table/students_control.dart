@@ -20,88 +20,92 @@ class _StudentControlState extends State<StudentControl> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: StreamBuilder(
-                  stream: AuthController().getUsers(),
-                  builder: (context, snapshot) {
-                    //-------if the snapshot error occurs, show error message-------
-                    if (snapshot.hasError) {
-                      return const Center(
-                        child: Text("Something went wrong"),
-                      );
-                    }
+        scrollDirection: Axis.horizontal,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Center(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: StreamBuilder(
+                    stream: AuthController().getUsers(),
+                    builder: (context, snapshot) {
+                      //-------if the snapshot error occurs, show error message-------
+                      if (snapshot.hasError) {
+                        return const Center(
+                          child: Text("Something went wrong"),
+                        );
+                      }
 
-                    //-------if the snapshot is waiting, show progress indicator-------
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
+                      //-------if the snapshot is waiting, show progress indicator-------
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
 
-                    if (snapshot.data!.docs.isEmpty) {
-                      return const Center(
-                        child: Text("No Users found"),
-                      );
-                    }
+                      if (snapshot.data!.docs.isEmpty) {
+                        return const Center(
+                          child: Text("No Users found"),
+                        );
+                      }
 
-                    Logger().i(snapshot.data!.docs.length);
+                      Logger().i(snapshot.data!.docs.length);
 
-                    //-------------clear the list before adding new data----------------
-                    _list.clear();
+                      //-------------clear the list before adding new data----------------
+                      _list.clear();
 
-                    //-----------------read the document list from snapshot and map to model and add to list----------------
-                    for (var e in snapshot.data!.docs) {
-                      Map<String, dynamic> data =
-                          e.data() as Map<String, dynamic>;
-                      var model = UserModel.fromJson(data);
-                      _list.add(model);
-                    }
+                      //-----------------read the document list from snapshot and map to model and add to list----------------
+                      for (var e in snapshot.data!.docs) {
+                        Map<String, dynamic> data =
+                            e.data() as Map<String, dynamic>;
+                        var model = UserModel.fromJson(data);
+                        _list.add(model);
+                      }
 
-                    return DataTable(
-                        sortColumnIndex: 0,
-                        sortAscending: true,
-                        dataRowMinHeight: 50,
-                        dataRowMaxHeight: 60,
-                        dataTextStyle: TextStyle(
-                          color: Colors.grey.shade900,
-                        ),
-                        columns: [
-                          AdminFunctions.customDataColumns('Name'),
-                          AdminFunctions.customDataColumns('Email'),
-                          AdminFunctions.customDataColumns('Contacts'),
-                          AdminFunctions.customDataColumns('Faculty'),
-                          AdminFunctions.customDataColumns('Department'),
-                          AdminFunctions.customDataColumns('Year'),
-                        ],
-                        rows: List.generate(
-                          _list.length,
-                          (index) {
-                            return DataRow(
-                              cells: [
-                                AdminFunctions.customDatacells(
-                                    _list[index].name),
-                                AdminFunctions.customDatacells(
-                                    _list[index].email),
-                                AdminFunctions.customDatacells(
-                                    _list[index].phone),
-                                AdminFunctions.customDatacells(
-                                    _list[index].faculty),
-                                AdminFunctions.customDatacells(
-                                    _list[index].department),
-                                AdminFunctions.customDatacells(
-                                    _list[index].year),
-                              ],
-                            );
-                          },
-                        ));
-                  },
-                ),
-              )
-            ],
+                      return DataTable(
+                          sortColumnIndex: 0,
+                          sortAscending: true,
+                          dataRowMinHeight: 50,
+                          dataRowMaxHeight: 60,
+                          dataTextStyle: TextStyle(
+                            color: Colors.grey.shade900,
+                          ),
+                          columns: [
+                            AdminFunctions.customDataColumns('Name'),
+                            AdminFunctions.customDataColumns('Email'),
+                            AdminFunctions.customDataColumns('Contacts'),
+                            AdminFunctions.customDataColumns('Faculty'),
+                            AdminFunctions.customDataColumns('Department'),
+                            AdminFunctions.customDataColumns('Year'),
+                          ],
+                          rows: List.generate(
+                            _list.length,
+                            (index) {
+                              return DataRow(
+                                cells: [
+                                  AdminFunctions.customDatacells(
+                                      _list[index].name),
+                                  AdminFunctions.customDatacells(
+                                      _list[index].email),
+                                  AdminFunctions.customDatacells(
+                                      _list[index].phone),
+                                  AdminFunctions.customDatacells(
+                                      _list[index].faculty),
+                                  AdminFunctions.customDatacells(
+                                      _list[index].department),
+                                  AdminFunctions.customDatacells(
+                                      _list[index].year),
+                                ],
+                              );
+                            },
+                          ));
+                    },
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
