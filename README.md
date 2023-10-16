@@ -1,36 +1,38 @@
+
+
+[comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
+
+# Empowering Counselors and Students through Interactive Web and Mobile App
+
 ---
-# Project and Title
-Project: CO227 Project
-Title: BLOOMi
+
+![](https://github.com/cepdnaclk/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App/blob/main/docs/counselling.jpeg)
+
+
+## Team
+-  E/19/087 Dissanayaka M.A.S.R. [email](mailto:e19087@eng.pdn.ac.lk)
+-  E/19/260 Neranji W.K.G.A.G. [email](mailto:e19260@eng.pdn.ac.lk)
+-  E/19/465 Dilshan R.M.S. [email](mailto:e19465@eng.pdn.ac.lk)
+-  E/19/017 Amanda W. S. [email](mailto:e19017@eng.pdn.ac.lk)
+
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Links](#links)
+
 ---
 
-# BLOOMi
+## Introduction
 
-## Empowering Counselors and Students through Interactive Web and Mobile App
-
-Welcome to BLOOMi, where the future of educational counseling begins!
-
-![BLOOMi Animation](url_to_your_animated_gif.gif)
-
-BLOOMi is a revolutionary web and mobile app designed to bridge the gap between counselors and students, making educational guidance more accessible and engaging.
-
-### Features
-
-- **Easy Appointments**: Seamlessly schedule counseling sessions at your convenience.
-- **Resource Hub**: Access a rich library of articles, videos, and tools for personal and academic growth.
-- **Interactive Workshops**: Participate in virtual workshops that focus on essential skills.
-- **Progress Tracking**: Set goals, track progress, and celebrate your achievements.
-- **Direct Messaging**: Connect with counselors through secure and private messaging.
-
-Experience the future of educational support with BLOOMi. Join us on this exciting journey!
-
-## Getting Started
-
-1. Clone the repository.
-2. Follow the installation guide in the `docs` folder to set up BLOOMi.
-3. Start empowering students and counselors alike!
+Welcome to **BLOOMi**! *BLOOMi* is a comprehensive project focused on the development and deployment of a mobile app and web app designed to empower both counselors and students. The project aims to enhance the counseling process through an interactive digital platform. By leveraging the capabilities of these apps, counselors can effectively engage with students, providing guidance and support in a more dynamic and accessible manner. Simultaneously, students benefit from a user-friendly interface that facilitates communication, resource-sharing, and personalized assistance. Through its innovative approach, *Bloomi* fosters an environment conducive to improved counseling experiences and enriched student development.
 
 
+## Links
+
+- [Project Repository](https://github.com/cepdnaclk/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App)
+- [Project Page](https://cepdnaclk.github.io/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App/)
+- [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
+- [University of Peradeniya](https://eng.pdn.ac.lk/)
 
 
-
+[//]: # (Please refer this to learn more about Markdown syntax)
+[//]: # (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
