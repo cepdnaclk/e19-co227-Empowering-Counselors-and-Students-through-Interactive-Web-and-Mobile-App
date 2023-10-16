@@ -147,9 +147,11 @@ class _UserListViewState extends State<UserListView> {
                             ),
                             child: IconButton(
                               onPressed: () => UtilFormMethod.showDialogMethod(
-                                  context,
-                                  usersToDisplay[index].uid,
-                                  usersToDisplay[index].name),
+                                context,
+                                usersToDisplay[index].uid,
+                                usersToDisplay[index].name,
+                                usersToDisplay[index].email,
+                              ),
                               icon: const Icon(
                                 Icons.add,
                                 color: Colors.white,

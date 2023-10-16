@@ -186,9 +186,11 @@ class _CounselorListViewState extends State<CounselorListView> {
                                 child: IconButton(
                                   onPressed: () =>
                                       UtilFormMethod.showDialogMethod(
-                                          context,
-                                          counselorsToDisplay[index].uid,
-                                          counselorsToDisplay[index].name),
+                                    context,
+                                    counselorsToDisplay[index].uid,
+                                    counselorsToDisplay[index].name,
+                                    counselorsToDisplay[index].email,
+                                  ),
                                   icon: const Icon(
                                     Icons.add,
                                     color: Colors.white, // Icon color

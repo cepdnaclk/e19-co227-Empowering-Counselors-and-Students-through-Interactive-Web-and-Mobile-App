@@ -86,10 +86,11 @@ class ChatController {
       .where('users', arrayContainsAny: [currentUserId]).snapshots();
 
   //-------------retrieve and listen to the conversation real-time-----------------
-  Stream<QuerySnapshot> getConversationCounsellor(String currentUserId) =>
-      conversations
-          .orderBy('createdAt', descending: true)
-          .where('users', arrayContainsAny: [currentUserId]).snapshots();
+  Stream<QuerySnapshot> getConversationCounsellor(String userId) {
+    return conversations
+        .orderBy('createdAt', descending: true)
+        .where('users', arrayContainsAny: [userId]).snapshots();
+  }
 
   //-------------send message-----------------
   CollectionReference messages =

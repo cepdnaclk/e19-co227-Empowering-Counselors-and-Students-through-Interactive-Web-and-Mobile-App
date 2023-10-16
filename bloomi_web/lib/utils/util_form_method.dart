@@ -2,6 +2,7 @@ import 'package:bloomi_web/components/custom_date_picker.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/components/custom_time_picker.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
+import 'package:bloomi_web/controllers/send_email_controller.dart';
 import 'package:bloomi_web/providers/user_home_provider/appointment_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/notification_provider.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
@@ -12,8 +13,8 @@ import 'package:provider/provider.dart';
 
 class UtilFormMethod {
   //---------------------------method to show dialog box input feild---------------------------
-  static showDialogMethod(
-      BuildContext context, String counselorId, String counselorName) {
+  static showDialogMethod(BuildContext context, String counselorId,
+      String counselorName, String counsellorEmail) {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -75,19 +76,33 @@ class UtilFormMethod {
                                     "Pending",
                                     value.note.text,
                                   )
-                                      .then((value1) {
-                                    value3.saveNotification(
-                                      context,
-                                      value2.userModel!.uid,
-                                      counselorId,
-                                      value2.userModel!.name,
-                                      counselorName,
-                                      value.getDateTime.toString(),
-                                      value.getTimeOfDay.format(context),
-                                      "Pending",
-                                      value.note.text,
+                                      .then(
+                                    (value1) {
+                                      value3.saveNotification(
+                                        context,
+                                        value2.userModel!.uid,
+                                        counselorId,
+                                        value2.userModel!.name,
+                                        counselorName,
+                                        value.getDateTime.toString(),
+                                        value.getTimeOfDay.format(context),
+                                        "Pending",
+                                        value.note.text,
+                                      );
+                                    },
+                                  );
+
+                                  try {
+                                    SendEmailController().sendEmail(
+                                      name: value2.userModel!.name,
+                                      email: counsellorEmail,
+                                      subject: "Appointment Request",
+                                      message: value.note.text,
+                                      reciverName: counselorName,
                                     );
-                                  });
+                                  } catch (e) {
+                                    Logger().e(e);
+                                  }
                                 } catch (e) {
                                   Logger().e(e);
                                 }

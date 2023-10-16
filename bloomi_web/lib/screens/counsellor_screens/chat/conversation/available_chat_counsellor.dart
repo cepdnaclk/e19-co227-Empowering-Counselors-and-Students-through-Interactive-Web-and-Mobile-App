@@ -13,11 +13,11 @@ import 'package:provider/provider.dart';
 
 class AvailableChatCounsellor extends StatelessWidget {
   AvailableChatCounsellor({
-    super.key,
+    Key? key,
     required this.height,
     required this.width,
     required this.isMobile,
-  });
+  }) : super(key: key);
 
   final double height;
   final double width;
@@ -39,9 +39,8 @@ class AvailableChatCounsellor extends StatelessWidget {
                 stream: ChatController()
                     .getConversationCounsellor(value.counsellorModel!.uid),
                 builder: (context, snapshot) {
-                  Logger().e(snapshot.data!.docs.length);
-
                   //-------if the snapshot error occurs, show error message-------
+
                   if (snapshot.hasError) {
                     return const Center(
                       child: Text("Something went wrong"),
@@ -56,8 +55,25 @@ class AvailableChatCounsellor extends StatelessWidget {
                   }
 
                   if (snapshot.data!.docs.isEmpty) {
-                    return const Center(
-                      child: Text("No conversation found"),
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Center(
+                          child: Text("No conversation found"),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const ChatListViewCounsellor();
+                                },
+                              ),
+                            );
+                          },
+                          child: const Text("Available Users"),
+                        ),
+                      ],
                     );
                   }
 

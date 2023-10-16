@@ -43,10 +43,9 @@ class ConversationTileCoun extends StatelessWidget {
               Row(
                 children: [
                   ConversationImage(
-                    imagePath: (value.counsellorModel!.uid ==
-                            conversationModel.usersArray[0].uid)
-                        ? conversationModel.usersArray[1].img
-                        : conversationModel.usersArray[0].img,
+                    imagePath: conversationModel.usersArray
+                        .firstWhere((e) => e.uid != value.counsellorModel!.uid)
+                        .img,
                   ),
                   const SizedBox(width: 20),
                   Column(
@@ -55,23 +54,13 @@ class ConversationTileCoun extends StatelessWidget {
                       Row(
                         children: [
                           CustomText(
-                            (value.counsellorModel!.uid ==
-                                    conversationModel.usersArray[0].uid)
-                                ? conversationModel.usersArray[1].name
-                                : conversationModel.usersArray[0].name,
+                            conversationModel.usersArray
+                                .firstWhere(
+                                    (e) => e.uid != value.counsellorModel!.uid)
+                                .name,
                             fontSize: 18,
                             fontColor: UtilConstants.blackColor,
                           ),
-                          const SizedBox(width: 5),
-                          Icon(Icons.circle_rounded,
-                              size: 8,
-                              color: ((value.counsellorModel!.uid ==
-                                          conversationModel.usersArray[0].uid)
-                                      ? conversationModel.usersArray[1].isOnline
-                                      : conversationModel
-                                          .usersArray[0].isOnline)
-                                  ? UtilConstants.greenColor
-                                  : UtilConstants.greyColor)
                         ],
                       ),
                       CustomText(
