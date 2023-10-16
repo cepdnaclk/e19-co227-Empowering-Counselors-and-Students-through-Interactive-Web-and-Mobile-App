@@ -1,11 +1,11 @@
 
 
-[comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
+[comment]: # "This is the standard layout for the project, but you can clean this and use your template"
 
 # Empowering Counselors and Students through Interactive Web and Mobile App
 
 ---
-![Logo](./counselling.jpeg)
+![Logo](./counselling.png)
 
 
 
@@ -13,29 +13,48 @@
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Objectives](#objectives)
-3. [Highlevel Solution Architecture](#highlevel-solution-architecture)
+3. [Highlevel Solution Architecture](#high-level-solution-architecture)
 4. [Software Design](#software-design)
 5. [Key Features](#key-features)
 6. [Why Use Our Software](#why-use-our-software)
 7. [Getting Started](#getting-started)
 8. [Contact](#contact)
-9. [Team](#Team)
+9. [Team](#team)
 10. [Links](#links)
 
 ---
 
 ## Introduction
 
-Welcome to **BLOOMi**! *BLOOMi* is a comprehensive project focused on the development and deployment of a mobile app and web app designed to empower both counselors and students. The project aims to enhance the counseling process through an interactive digital platform. By leveraging the capabilities of these apps, counselors can effectively engage with students, providing guidance and support in a more dynamic and accessible manner. Simultaneously, students benefit from a user-friendly interface that facilitates communication, resource-sharing, and personalized assistance. Through its innovative approach, *Bloomi* fosters an environment conducive to improved counseling experiences and enriched student development.
+Welcome to **BLOOMi**! *BLOOMi* is a comprehensive project focused on developing and deploying a mobile app and web app designed to empower counselors and students. The project aims to enhance the counseling process through an interactive digital platform. By leveraging the capabilities of these apps, counselors can effectively engage with students, providing guidance and support in a more dynamic and accessible manner. Simultaneously, students benefit from a user-friendly interface that facilitates communication, resource-sharing, and personalized assistance. Through its innovative approach, *Bloomi* fosters an environment conducive to improved counseling experiences and enriched student development.
 
 
 ## Objectives
 
-To create a user-friendly mobile application that connects students with qualified counselors, mentors, and advisors, facilitating academic, career, and personal development support, while ensuring user privacy and convenience.
+The objective of BLOOMi is to provide accessible and personalized counseling services for university students, promoting their mental well-being and academic success. Through our user-friendly platform and strategic partnerships, we aim to enhance the student experience and empower them to thrive in their educational journey.
 
 
-## Highlevel Solution Architecture
-#image for high level architecture
+## High-level Solution Architecture
+
+#### Utilizing Flutter and Firebase, involves the following components:
+
+Flutter Framework:
+> The front end of the mobile application is built using the Flutter framework, which allows for cross-platform development. Flutter provides a rich set of UI components and facilitates seamless integration with Firebase.
+
+Firebase Authentication: 
+> Firebase Authentication is used for user authentication and login functionality. It provides secure authentication methods, including email/password, social media logins, and single sign-on options.
+
+Firebase Realtime Database: 
+> Firebase Realtime Database is utilized to store and retrieve real-time data. It enables efficient data synchronization between the client-side app and the server, facilitating seamless communication between students and counselors.
+
+Firebase Cloud Firestore: 
+> Firestore is a NoSQL document database provided by Firebase. It is used for storing structured data, such as user profiles, counselor information, appointment details, and chat messages. Firestore offers scalability, real-time updates, and offline support.
+
+Chat Functionality: 
+> The chat feature is implemented using Firebase Cloud Firestore's real-time capabilities. It allows students and counselors to engage in real-time conversations, exchanging messages securely within the app.
+
+Push Notifications: 
+> Firebase Cloud Messaging (FCM) is utilized to implement push notifications, enabling timely communication and updates for users. Students can receive notifications for appointment reminders, counselor responses, and important announcements.
 
 ## Software Design
 
