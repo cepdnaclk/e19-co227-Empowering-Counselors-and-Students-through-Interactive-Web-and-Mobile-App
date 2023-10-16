@@ -218,7 +218,7 @@ To create a user-friendly mobile application that connects students with qualifi
 
 ## Getting Started
 
-Please follow the installation and usage instructions provided in the [Documentation](/docs).
+Please follow the installation and usage instructions provided in the [Documentation](./docs).
 
 ## contact 
 
