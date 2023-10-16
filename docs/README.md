@@ -6,7 +6,7 @@
 
 ---
 
-![](https://github.com/cepdnaclk/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App/blob/main/docs/counselling.jpeg)
+![Logo](https://github.com/cepdnaclk/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App/blob/main/docs/counselling.jpeg)
 
 
 ## Team
