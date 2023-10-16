@@ -1,6 +1,7 @@
 import 'package:bloomi_web/components/chat_list_view_user.dart';
 import 'package:bloomi_web/components/conversation_image.dart';
 import 'package:bloomi_web/components/custom_text.dart';
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
@@ -26,14 +27,17 @@ class ChatHeaderCounsellorWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Consumer<UserChatProvider>(
-            builder: (context, value, child) {
+          Consumer2<UserChatProvider, CounsellorRegistrationProvider>(
+            builder: (context, value, value2, child) {
               return Row(
                 children: [
                   ConversationImage(
                     imagePath: (value.getIndex == -1)
                         ? UtilConstants.dummyProfileUrl
-                        : value.getConversationModelNew.usersArray[1].img,
+                        : (value2.counsellorModel!.uid ==
+                                value.getConversationModelNew.usersArray[1].uid)
+                            ? value.getConversationModelNew.usersArray[0].img
+                            : value.getConversationModelNew.usersArray[1].img,
                   ),
                   const SizedBox(width: 20),
                   Column(
@@ -43,7 +47,13 @@ class ChatHeaderCounsellorWidget extends StatelessWidget {
                       CustomText(
                         (value.getIndex == -1)
                             ? ""
-                            : value.getConversationModelNew.usersArray[1].name,
+                            : (value2.counsellorModel!.uid ==
+                                    value.getConversationModelNew.usersArray[1]
+                                        .uid)
+                                ? value
+                                    .getConversationModelNew.usersArray[0].name
+                                : value
+                                    .getConversationModelNew.usersArray[1].name,
                         fontSize: 20,
                         fontColor: UtilConstants.blackColor,
                       ),
@@ -51,8 +61,13 @@ class ChatHeaderCounsellorWidget extends StatelessWidget {
                         (value.getIndex == -1)
                             ? ""
                             : UtilFunction.getTimeAgo(
-                                value.getConversationModelNew.usersArray[1]
-                                    .lastSeen,
+                                (value2.counsellorModel!.uid ==
+                                        value.getConversationModelNew
+                                            .usersArray[1].uid)
+                                    ? value.getConversationModelNew
+                                        .usersArray[0].lastSeen
+                                    : value.getConversationModelNew
+                                        .usersArray[1].lastSeen,
                               ),
                         fontSize: 10,
                         fontColor: UtilConstants.blackColor,
@@ -62,11 +77,30 @@ class ChatHeaderCounsellorWidget extends StatelessWidget {
                   const SizedBox(width: 4),
                   (value.getIndex == -1)
                       ? const Text("")
-                      : Icon(
-                          Icons.circle_rounded,
-                          color: UtilConstants.greenColor,
-                          size: 10,
-                        )
+                      : (value2.counsellorModel!.uid ==
+                              value.getConversationModelNew.usersArray[1].uid)
+                          ? value.getConversationModelNew.usersArray[1].isOnline
+                              ? Icon(
+                                  Icons.circle_rounded,
+                                  color: UtilConstants.greenColor,
+                                  size: 10,
+                                )
+                              : Icon(
+                                  Icons.circle_rounded,
+                                  color: UtilConstants.greyColor,
+                                  size: 10,
+                                )
+                          : value.getConversationModelNew.usersArray[0].isOnline
+                              ? Icon(
+                                  Icons.circle_rounded,
+                                  color: UtilConstants.greenColor,
+                                  size: 10,
+                                )
+                              : Icon(
+                                  Icons.circle_rounded,
+                                  color: UtilConstants.greyColor,
+                                  size: 10,
+                                )
                 ],
               );
             },

@@ -3,11 +3,9 @@ import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
-
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/notification_viewer.dart.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';

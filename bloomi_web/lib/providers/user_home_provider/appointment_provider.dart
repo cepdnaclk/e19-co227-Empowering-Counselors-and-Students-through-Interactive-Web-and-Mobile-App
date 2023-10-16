@@ -7,6 +7,7 @@ import 'package:logger/logger.dart';
 class AppointmentProvider extends ChangeNotifier {
   //------------------------ TEXT EDITING CONTROLLER ------------------------
   final TextEditingController _name = TextEditingController();
+  final TextEditingController _note = TextEditingController();
   DateTime _dateTime = DateTime.now();
   TimeOfDay _timeOfDay = TimeOfDay.now();
 
@@ -14,6 +15,7 @@ class AppointmentProvider extends ChangeNotifier {
   TextEditingController get name => _name;
   DateTime get getDateTime => _dateTime;
   TimeOfDay get getTimeOfDay => _timeOfDay;
+  TextEditingController get note => _note;
 
   //------------------------ SETTERS ------------------------
   void setDateTime(DateTime dateTime) {
@@ -28,6 +30,11 @@ class AppointmentProvider extends ChangeNotifier {
 
   void setTimeOfDay(TimeOfDay timeOfDay) {
     _timeOfDay = timeOfDay;
+    notifyListeners();
+  }
+
+  void setNoteText(String note) {
+    _note.text = note;
     notifyListeners();
   }
 
@@ -53,7 +60,8 @@ class AppointmentProvider extends ChangeNotifier {
       String studentFaculty,
       String date,
       String time,
-      String status) async {
+      String status,
+      String note) async {
     try {
       if (studentId.isNotEmpty &&
           counselorId.isNotEmpty &&
@@ -76,6 +84,7 @@ class AppointmentProvider extends ChangeNotifier {
           date,
           time,
           status,
+          note,
         );
         notifyListeners();
         setIsLoading(false);

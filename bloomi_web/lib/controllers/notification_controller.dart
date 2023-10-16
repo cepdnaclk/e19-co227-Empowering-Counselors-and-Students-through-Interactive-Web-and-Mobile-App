@@ -16,6 +16,7 @@ class NotificationController {
     String time,
     String status,
     BuildContext context,
+    String note,
   ) async {
     try {
       String appointmentId = notification.doc().id;
@@ -29,6 +30,7 @@ class NotificationController {
         'date': date,
         'time': time,
         'status': status,
+        'note': note,
       }).then((value) => Logger().i("Notification Added"));
     } catch (e) {
       Logger().e(e);
@@ -50,7 +52,7 @@ class NotificationController {
   }
 
   //------------------------ UPDATE NOTIFICATION ------------------------
-  void updateNotificationState(String uid, String newState) async {
+  void deleteNotificationState(String uid, String newState) async {
     try {
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection('notification')
@@ -58,7 +60,7 @@ class NotificationController {
           .get();
 
       for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
-        await documentSnapshot.reference.update({'status': newState});
+        await documentSnapshot.reference.delete();
       }
     } catch (e) {
       Logger().e(e);
@@ -70,6 +72,8 @@ class NotificationController {
       notification.where('studentId', isEqualTo: studentId).snapshots();
 
   //-------------GET NOTIFICATION ACORDING TO COUNSELLOR ID-----------------
+  CollectionReference appointments =
+      FirebaseFirestore.instance.collection('appointments');
   Stream<QuerySnapshot> getNotificationByCounsellorId(String counsellorId) =>
-      notification.where('counselorId', isEqualTo: counsellorId).snapshots();
+      appointments.where('counselorId', isEqualTo: counsellorId).snapshots();
 }
