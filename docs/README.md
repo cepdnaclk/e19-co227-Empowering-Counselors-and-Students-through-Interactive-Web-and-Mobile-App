@@ -36,8 +36,9 @@ The objective of BLOOMi is to provide accessible and personalized counseling ser
 
 ## High-level Solution Architecture
 
+![dataflow](./DataFlow.png)
 
-##### Utilizing Flutter and Firebase, involves the following components:
+#### Utilizing Flutter and Firebase, involves the following components:
 
 **Flutter Framework:** The front end of the mobile application is built using the Flutter framework, which allows for cross-platform development. Flutter provides a rich set of UI components and facilitates seamless integration with Firebase.
 
