@@ -6,8 +6,7 @@
 
 ---
 
-![](https://github.com/cepdnaclk/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App/blob/main/docs/counselling.jpeg)
-
+![](https://github.com/cepdnaclk/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App/blob/main/docs/counselling.png)
 
 ## Team
 -  E/19/087 Dissanayaka M.A.S.R. [email](mailto:e19087@eng.pdn.ac.lk)
