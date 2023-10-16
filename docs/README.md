@@ -16,7 +16,7 @@
 3. [Highlevel Solution Architecture](#high-level-solution-architecture)
 4. [Software Design](#software-design)
 5. [Key Features](#key-features)
-6. [Why Use Our Software](#why-use-our-software)
+6. [Why Bloomi](#why-bloomi)
 7. [Getting Started](#getting-started)
 8. [Contact](#contact)
 9. [Team](#team)
@@ -28,34 +28,30 @@
 
 Welcome to **BLOOMi**! *BLOOMi* is a comprehensive project focused on developing and deploying a mobile app and web app designed to empower counselors and students. The project aims to enhance the counseling process through an interactive digital platform. By leveraging the capabilities of these apps, counselors can effectively engage with students, providing guidance and support in a more dynamic and accessible manner. Simultaneously, students benefit from a user-friendly interface that facilitates communication, resource-sharing, and personalized assistance. Through its innovative approach, *Bloomi* fosters an environment conducive to improved counseling experiences and enriched student development.
 
-
+---
 ## Objectives
 
 The objective of BLOOMi is to provide accessible and personalized counseling services for university students, promoting their mental well-being and academic success. Through our user-friendly platform and strategic partnerships, we aim to enhance the student experience and empower them to thrive in their educational journey.
 
-
+---
 ## High-level Solution Architecture
+
 
 #### Utilizing Flutter and Firebase, involves the following components:
 
-Flutter Framework:
-> The front end of the mobile application is built using the Flutter framework, which allows for cross-platform development. Flutter provides a rich set of UI components and facilitates seamless integration with Firebase.
+**Flutter Framework:** The front end of the mobile application is built using the Flutter framework, which allows for cross-platform development. Flutter provides a rich set of UI components and facilitates seamless integration with Firebase.
 
-Firebase Authentication: 
-> Firebase Authentication is used for user authentication and login functionality. It provides secure authentication methods, including email/password, social media logins, and single sign-on options.
+**Firebase Authentication:** Firebase Authentication is used for user authentication and login functionality. It provides secure authentication methods, including email/password, social media logins, and single sign-on options.
 
-Firebase Realtime Database: 
-> Firebase Realtime Database is utilized to store and retrieve real-time data. It enables efficient data synchronization between the client-side app and the server, facilitating seamless communication between students and counselors.
+**Firebase Realtime Database:** Firebase Realtime Database is utilized to store and retrieve real-time data. It enables efficient data synchronization between the client-side app and the server, facilitating seamless communication between students and counselors.
 
-Firebase Cloud Firestore: 
-> Firestore is a NoSQL document database provided by Firebase. It is used for storing structured data, such as user profiles, counselor information, appointment details, and chat messages. Firestore offers scalability, real-time updates, and offline support.
+**Firebase Cloud Firestore:** Firestore is a NoSQL document database provided by Firebase. It is used for storing structured data, such as user profiles, counselor information, appointment details, and chat messages. Firestore offers scalability, real-time updates, and offline support.
 
-Chat Functionality: 
-> The chat feature is implemented using Firebase Cloud Firestore's real-time capabilities. It allows students and counselors to engage in real-time conversations, exchanging messages securely within the app.
+**Chat Functionality:** The chat feature is implemented using Firebase Cloud Firestore's real-time capabilities. It allows students and counselors to engage in real-time conversations, exchanging messages securely within the app.
 
-Push Notifications: 
-> Firebase Cloud Messaging (FCM) is utilized to implement push notifications, enabling timely communication and updates for users. Students can receive notifications for appointment reminders, counselor responses, and important announcements.
+**Push Notifications:** Firebase Cloud Messaging (FCM) is utilized to implement push notifications, enabling timely communication and updates for users. Students can receive notifications for appointment reminders, counselor responses, and important announcements.
 
+---
 ## Software Design
 
 
@@ -166,7 +162,7 @@ Push Notifications:
     - Messaging and notification tools for sending important updates or alerts to users and counselors.
 #image for admin interface
 
-
+---
 ## Key Features
 
 
@@ -212,10 +208,10 @@ Push Notifications:
 
 6. **System Settings:** The ability to configure and customize platform settings, including notification settings, email templates, and system messages.
 
+---
+## Why Bloomi 
 
-## Why Use Our Software
-
-1. **Convenience:** allow students and counselors to connect and communicate without the need for physical presence. 
+1. **Convenience:** Allows students and counselors to connect and communicate without the need for physical presence. 
 
 2. **Accessibility:** Students can access counseling services from the comfort of their own devices, whether it's a computer, tablet, or smartphone, making counseling more accessible to a broader audience.
 
@@ -231,33 +227,34 @@ Push Notifications:
 
 8. **Analytics and Reporting:** Administrators can access reports and analytics to gain insights into the effectiveness of counseling services, which can guide improvements and adjustments.
 
-9. **Scale and Reach:** Software can support a broader reach, allowing university to offer counseling services to a larger number of students, even beyond their physical locations.
+9. **Scale and Reach:** Software can support a broader reach, allowing universities to offer counseling services to a larger number of students, even beyond their physical locations.
 
-11. **Efficiency and Productivity:**can streamline administrative tasks and communication, making it easier for counselors to manage their schedules and focus on counseling rather than administrative work.
+11. **Efficiency and Productivity:** can streamline administrative tasks and communication, making it easier for counselors to manage their schedules and focus on counseling rather than administrative work.
 
 12. **Customization:** can be tailored to meet the specific needs and objectives of university or counseling organizations, allowing for a personalized user experience.
 
 13. **Security and Compliance:** designed with robust security features to protect sensitive user data and ensure compliance with privacy regulations.
 
-14. **Quality Assurance:** maintain and improve the quality of counseling services by facilitating feedback, reviews, and monitoring of counselor performance.
+14. **Quality Assurance:** Maintain and improve the quality of counseling services by facilitating feedback, reviews, and monitoring of counselor performance.
 
-
+---
 ## Getting Started
 
 Please follow the installation and usage instructions provided in the [Documentation](https://cepdnaclk.github.io/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App/docs).
 
-
+---
 ## contact 
 
 Feel free to contact us for more details!
 
+---
 ## Team
 -  E/19/017 Amanda W. S. [email](mailto:e19017@eng.pdn.ac.lk)
 -  E/19/087 Dissanayaka M.A.S.R. [email](mailto:e19087@eng.pdn.ac.lk)
 -  E/19/260 Neranji W.K.G.A.G. [email](mailto:e19260@eng.pdn.ac.lk)
 -  E/19/465 Dilshan R.M.S. [email](mailto:e19465@eng.pdn.ac.lk)
 
-
+---
 ## Links
 
 - [Project Repository](https://github.com/cepdnaclk/e19-co227-Empowering-Counselors-and-Students-through-Interactive-Web-and-Mobile-App)
