@@ -1,8 +1,9 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:bloomi_web/controllers/calender_controller.dart';
-import 'package:bloomi_web/controllers/meeting_controller.dart';
+import 'package:bloomi_web/providers/user_home_provider/calender_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class Calendar extends StatefulWidget {
@@ -59,7 +60,7 @@ class _CalendarState extends State<Calendar> {
                     calendarController.view = calenderView;
                   });
                 },
-                child: const Text("Year View")),
+                child: const Text("Day View")),
           ],
         ),
         Expanded(
@@ -67,7 +68,8 @@ class _CalendarState extends State<Calendar> {
             view: calenderView,
             controller: calendarController,
             initialSelectedDate: DateTime.now(),
-            dataSource: MeetingDataSource(_getDataSource()),
+            dataSource: MeetingDataSource(
+                Provider.of<CalendarProvider>(context).meetings),
             monthViewSettings: const MonthViewSettings(
               appointmentDisplayMode: MonthAppointmentDisplayMode.appointment,
               showAgenda: true,
@@ -81,20 +83,5 @@ class _CalendarState extends State<Calendar> {
         ),
       ],
     ));
-  }
-
-  List<Meeting> _getDataSource() {
-    final List<Meeting> meetings = <Meeting>[];
-    final DateTime today = DateTime.now();
-    final DateTime startTime = DateTime(today.year, today.month, today.day, 9);
-    final DateTime endTime = startTime.add(const Duration(hours: 2));
-    meetings.add(
-      Meeting('Conference', startTime, endTime, false),
-    );
-    meetings.add(
-      Meeting('Conference', startTime, endTime, false),
-    );
-
-    return meetings;
   }
 }
