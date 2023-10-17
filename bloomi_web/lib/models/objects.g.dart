@@ -57,6 +57,26 @@ Map<String, dynamic> _$AppointmentModelToJson(AppointmentModel instance) =>
       'note': instance.note,
     };
 
+CalenderModel _$CalenderModelFromJson(Map<String, dynamic> json) =>
+    CalenderModel(
+      eventName: json['eventName'] as String,
+      date: DateTime.parse(json['date'] as String),
+      time: DateTime.parse(json['time'] as String),
+      isAllDay: json['isAllDay'] as bool,
+      studentName: json['studentName'] as String,
+      studentEmail: json['studentEmail'] as String,
+    );
+
+Map<String, dynamic> _$CalenderModelToJson(CalenderModel instance) =>
+    <String, dynamic>{
+      'eventName': instance.eventName,
+      'date': instance.date.toIso8601String(),
+      'time': instance.time.toIso8601String(),
+      'isAllDay': instance.isAllDay,
+      'studentName': instance.studentName,
+      'studentEmail': instance.studentEmail,
+    };
+
 ChatModel _$ChatModelFromJson(Map<String, dynamic> json) => ChatModel(
       uid: json['uid'] as String,
       name: json['name'] as String,

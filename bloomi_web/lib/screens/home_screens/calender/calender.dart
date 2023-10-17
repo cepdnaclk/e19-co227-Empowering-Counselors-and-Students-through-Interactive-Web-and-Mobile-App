@@ -65,7 +65,7 @@ class CalenderUser extends StatelessWidget {
                 );
               },
             ),
-            const Calender(),
+            const Calendar(),
           ],
         ),
       ),
