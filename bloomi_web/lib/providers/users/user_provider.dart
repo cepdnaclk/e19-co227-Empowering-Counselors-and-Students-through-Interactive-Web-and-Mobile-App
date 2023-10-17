@@ -3,6 +3,7 @@ import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
+import 'package:bloomi_web/providers/user_home_provider/appointment_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/home/adminui.dart';
 import 'package:bloomi_web/screens/auth_screens/login/login.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/home_counsellor.dart';
@@ -43,6 +44,8 @@ class UserProvider extends ChangeNotifier {
           if (userModel != null) {
             //----------to start fetching user additional data----------
             await startFetchUserAdditionalData(user.uid);
+            await Provider.of<AppointmentProvider>(context, listen: false)
+                .startFetchAppointmentData(user.uid);
             UtilFunction.navigateForward(context, Home());
 
             //----------if user is counsellor, navigate to counsellor home page----------
@@ -51,6 +54,8 @@ class UserProvider extends ChangeNotifier {
             await Provider.of<CounsellorRegistrationProvider>(context,
                     listen: false)
                 .startFetchCounsellorAdditionalData(user.uid);
+            await Provider.of<AppointmentProvider>(context, listen: false)
+                .startFetchAppointmentData(user.uid);
             UtilFunction.navigateForward(context, HomeCounsellor());
 
             //----------if user is admin, navigate to admin home page----------

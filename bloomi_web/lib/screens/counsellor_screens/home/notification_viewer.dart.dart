@@ -99,10 +99,9 @@ class UtilFormMethodNotification {
                                     const SizedBox(height: 10),
                                     TextField(
                                       controller: Provider.of<
-                                                  CounsellorAppointmentProvider>(
-                                              context,
-                                              listen: false)
-                                          .note,
+                                          CounsellorAppointmentProvider>(
+                                        context,
+                                      ).note,
                                       maxLines: 5,
                                       decoration: const InputDecoration(
                                         hintText: 'Enter the note',
@@ -143,27 +142,18 @@ class UtilFormMethodNotification {
                                                   listen: false)
                                               .changeAppointment(
                                                   value.counsellorModel!.uid,
-                                                  context);
-
-                                          SendEmailController().sendEmailToUser(
-                                              name: list[index].studentName,
-                                              email: list[index].studentEmail,
-                                              message: (Provider.of<
-                                                              CounsellorAppointmentProvider>(
-                                                          context,
-                                                          listen: false)
-                                                      .note
-                                                      .text
-                                                      .isNotEmpty)
-                                                  ? Provider.of<
-                                                              CounsellorAppointmentProvider>(
-                                                          context,
-                                                          listen: false)
-                                                      .note
-                                                      .text
-                                                  : "No notes",
-                                              reciverName:
-                                                  list[index].counselorName);
+                                                  context)
+                                              .then((value2) {
+                                            SendEmailController()
+                                                .sendEmailToUser(
+                                                    name:
+                                                        list[index].studentName,
+                                                    email: list[index]
+                                                        .studentEmail,
+                                                    message: value2!,
+                                                    reciverName: list[index]
+                                                        .counselorName);
+                                          });
                                         },
                                         style: ButtonStyle(
                                           backgroundColor: MaterialStateProperty

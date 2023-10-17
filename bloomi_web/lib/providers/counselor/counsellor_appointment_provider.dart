@@ -15,15 +15,17 @@ class CounsellorAppointmentProvider extends ChangeNotifier {
 
   //------------------------ CHANGE APPOINTMENT ------------------------
 
-  Future<void> changeAppointment(String uid, BuildContext context) async {
+  Future<String?> changeAppointment(String uid, BuildContext context) async {
     try {
       AppointmentController().updateNoteState(uid, note.text);
       notifyListeners();
-      _note.clear();
       UtilMethodForgotPassword.customDialogBox(
           context, "Success", "Approdved Successfully");
+
+      return note.text;
     } catch (e) {
       Logger().e(e);
+      return null;
     }
   }
 }
