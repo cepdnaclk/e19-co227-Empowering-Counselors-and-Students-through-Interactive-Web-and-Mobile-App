@@ -24,6 +24,9 @@ class UtilConstants {
       const Color.fromARGB(255, 177, 223, 220).withOpacity(0.6);
   static Color homepageQuoteShadowColor =
       const Color.fromARGB(255, 155, 154, 154).withOpacity(0.8);
+  static const Color contentColorCyan = Color(0xFF50E4FF);
+  static const Color contentColorBlue = Color(0xFF2196F3);
+  static const Color mainGridLineColor = Colors.white10;
 
 //-------------------topBar / Drawer-------------------
   static Color canvasColor = const Color(0xFF272643);
