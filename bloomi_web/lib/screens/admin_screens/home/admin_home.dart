@@ -1,4 +1,5 @@
 import 'package:bloomi_web/components/custom_text.dart';
+import 'package:bloomi_web/screens/admin_screens/admin%20charts/count_chart.dart';
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/indicatorwidget.dart';
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/line_bar_chart.dart';
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/pie_data.dart';
@@ -99,6 +100,7 @@ class _AdminHomeState extends State<AdminHome> {
                     DetailedLinebar(),
                   ],
                 ),
+                CountChart(),
               ],
             ),
           ],

@@ -8,8 +8,7 @@ class IndicatorWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: PieData.data
           .map((data) => Container(
-              child: buildIndicator(
-                  color: data.color, text: data.name, isSquare: true)))
+              child: buildIndicator(color: data.color, text: data.name)))
           .toList(),
     );
   }
