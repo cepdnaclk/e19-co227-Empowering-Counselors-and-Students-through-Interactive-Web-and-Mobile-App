@@ -58,12 +58,22 @@ class CounselorForm {
                           .email,
                 ),
                 SizedBox(height: heightone * 0.01),
-                FormInputWeb(
-                  "Password",
-                  obscure: true,
-                  textEditingController:
-                      Provider.of<CounsellorRegistrationProvider>(context)
-                          .password,
+                Consumer<CounsellorRegistrationProvider>(
+                  builder: (context, value, child) {
+                    return FormInputWeb(
+                      "Password",
+                      textEditingController: value.password,
+                      obscure: value.isObscure ? true : false,
+                      icon: InkWell(
+                        onTap: () {
+                          value.setIsObscure(false);
+                        },
+                        child: value.isObscure
+                            ? const Icon(Icons.visibility_off, size: 18)
+                            : const Icon(Icons.visibility, size: 18),
+                      ),
+                    );
+                  },
                 ),
                 SizedBox(height: heightone * 0.01),
                 FormInputWeb(

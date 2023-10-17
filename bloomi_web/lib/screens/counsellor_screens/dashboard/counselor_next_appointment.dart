@@ -33,7 +33,7 @@ class _NextAppointmentState extends State<NextAppointment> {
     return Padding(
       padding: width < 480
           ? const EdgeInsets.symmetric(horizontal: 20)
-          : const EdgeInsets.symmetric(horizontal: 50),
+          : const EdgeInsets.symmetric(horizontal: 60),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
@@ -42,7 +42,9 @@ class _NextAppointmentState extends State<NextAppointment> {
         elevation: 10,
         shadowColor: UtilConstants.greyColor.withOpacity(0.4),
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: width < 480
+              ? const EdgeInsets.symmetric(horizontal: 20, vertical: 20)
+              : const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
