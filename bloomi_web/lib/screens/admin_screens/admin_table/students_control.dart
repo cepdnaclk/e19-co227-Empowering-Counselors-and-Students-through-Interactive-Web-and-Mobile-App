@@ -15,10 +15,10 @@ class _StudentControlState extends State<StudentControl> {
   List<bool> isRowHovered = [];
   List<bool> isRowHoveredDeleted = [];
   final List<UserModel> _list = [];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue.shade50,
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -62,7 +62,6 @@ class _StudentControlState extends State<StudentControl> {
                     }
 
                     return DataTable(
-                        sortColumnIndex: 0,
                         sortAscending: true,
                         dataRowMinHeight: 50,
                         dataRowMaxHeight: 60,
