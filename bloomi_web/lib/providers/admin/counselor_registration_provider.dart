@@ -186,6 +186,7 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
   ) async {
     try {
       if (email.isNotEmpty && password.isNotEmpty && name.isNotEmpty) {
+        Logger().e("User not found..................");
         setIsLoading(true);
         await CounsellorController()
             .updateCounsellor(

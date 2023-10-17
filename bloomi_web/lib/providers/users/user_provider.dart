@@ -47,7 +47,6 @@ class UserProvider extends ChangeNotifier {
             await startFetchUserAdditionalData(user.uid);
             await Provider.of<AppointmentProvider>(context, listen: false)
                 .fetchAllAppointments(user.uid);
-            UtilFunction.navigateForward(context, Home());
 
             try {
               await Provider.of<CalendarProvider>(context, listen: false)
@@ -55,6 +54,13 @@ class UserProvider extends ChangeNotifier {
             } catch (e) {
               Logger().e(e);
             }
+            // try {
+            //   GoogleCalenderController().getAuth();
+            // } catch (e) {
+            //   Logger().e(e);
+            // }
+
+            UtilFunction.navigateForward(context, Home());
 
             //----------if user is counsellor, navigate to counsellor home page----------
           } else if (counsellorModel != null) {
