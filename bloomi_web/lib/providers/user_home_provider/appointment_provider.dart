@@ -1,4 +1,5 @@
 import 'package:bloomi_web/controllers/appoinment_controller.dart';
+import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/utils/util_method.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -106,6 +107,30 @@ class AppointmentProvider extends ChangeNotifier {
     } catch (e) {
       Logger().e(e);
       setIsLoading(false);
+    }
+  }
+
+  //-----------------------To fetch additional data---------------------
+
+  AppointmentModel? _appointmentModel;
+
+  AppointmentModel? get appointmentModel => _appointmentModel;
+  Future<AppointmentModel?> startFetchAppointmentData(String uid) async {
+    try {
+      AppointmentModel? appointmentModel =
+          await AppointmentController().fetchAppointmentData(uid);
+      if (appointmentModel != null) {
+        _appointmentModel = appointmentModel;
+        notifyListeners();
+        Logger().e(appointmentModel.counselorId);
+        return appointmentModel;
+      } else {
+        Logger().i("User not found");
+        return null;
+      }
+    } catch (e) {
+      Logger().e(e);
+      return null;
     }
   }
 }
