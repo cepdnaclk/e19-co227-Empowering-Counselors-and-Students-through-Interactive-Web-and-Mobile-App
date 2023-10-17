@@ -68,23 +68,28 @@ class AppointmentController {
     }
   }
 
-  Future<AppointmentModel?> fetchAppointmentData(String uid) async {
+  //------------------------ FETCH ALL APPOINTMENTS ------------------------
+  Future<List<AppointmentModel>?> fetchAllAppointments(String uid) async {
     try {
+      Logger().e(uid);
       QuerySnapshot querySnapshot =
-          await appointments.where('counselorId', isEqualTo: uid).get();
+          await appointments.where('studentId', isEqualTo: uid).get();
 
       Logger().i(querySnapshot.docs.length);
 
       if (querySnapshot.docs.isNotEmpty) {
-        final appointmentData =
-            querySnapshot.docs.first.data() as Map<String, dynamic>;
+        List<AppointmentModel> appointmentModels = [];
 
-        AppointmentModel appointmentModel =
-            AppointmentModel.fromJson(appointmentData);
+        for (QueryDocumentSnapshot doc in querySnapshot.docs) {
+          final appointmentData = doc.data() as Map<String, dynamic>;
+          AppointmentModel appointmentModel =
+              AppointmentModel.fromJson(appointmentData);
 
-        Logger().i(appointmentModel.counselorName);
+          Logger().i(appointmentModel.counselorName);
+          appointmentModels.add(appointmentModel);
+        }
 
-        return appointmentModel;
+        return appointmentModels;
       } else {
         return null;
       }

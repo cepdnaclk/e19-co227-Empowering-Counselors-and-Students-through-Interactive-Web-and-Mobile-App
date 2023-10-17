@@ -40,7 +40,7 @@ class _CounselorCalendarMobileState extends State<CounselorCalendarMobile> {
                 ),
               ),
               //const SizedBox(height: 5),
-              const Calender(),
+              const Calendar(),
             ]),
           ),
         ),

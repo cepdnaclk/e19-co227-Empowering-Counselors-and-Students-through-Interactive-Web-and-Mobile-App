@@ -44,7 +44,7 @@ class _NoteState extends State<Note> {
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: const Calender(),
+                    child: const Calendar(),
                   ),
                   Padding(
                     padding:
@@ -78,7 +78,7 @@ class _NoteState extends State<Note> {
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: const Calender(),
+                    child: const Calendar(),
                   ),
                   Padding(
                     padding:
@@ -112,12 +112,12 @@ class _NoteState extends State<Note> {
                               vertical: 20, horizontal: 20),
                           padding: const EdgeInsets.all(10),
                           width: width * 0.3,
-                          height: height * 0.8,
+                          height: height * 0.75,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(color: Colors.black),
                           ),
-                          child: const Calender(),
+                          child: const Calendar(),
                         ),
                       ),
                       Padding(
@@ -127,13 +127,13 @@ class _NoteState extends State<Note> {
                               vertical: 20, horizontal: 20),
                           color: UtilConstants.lightgreyColor,
                           width: width * 0.5,
-                          height: height * 0.8,
+                          height: height * 0.75,
                           child: const NoteCard(),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: height * 0.02),
+                  SizedBox(height: height * 0.11),
                   Footer(height: 55, width: width)
                 ],
               ),

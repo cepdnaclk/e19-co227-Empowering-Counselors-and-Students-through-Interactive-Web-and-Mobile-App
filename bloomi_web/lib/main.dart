@@ -9,6 +9,7 @@ import 'package:bloomi_web/providers/counselor/counsellor_appointment_provider.d
 import 'package:bloomi_web/providers/nav_provider/admin_nav_provider.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/appointment_provider.dart';
+import 'package:bloomi_web/providers/user_home_provider/calender_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/note_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/notification_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/user_chat.dart';
@@ -42,6 +43,7 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (_) => AppointmentProvider()),
       ChangeNotifierProvider(create: (_) => NotificationProvider()),
       ChangeNotifierProvider(create: (_) => CounsellorAppointmentProvider()),
+      ChangeNotifierProvider(create: (_) => CalendarProvider()),
     ],
     child: const MyApp(),
   ));
