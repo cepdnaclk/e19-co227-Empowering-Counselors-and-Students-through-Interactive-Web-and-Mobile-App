@@ -44,7 +44,7 @@ class _NoteCounsellorState extends State<NoteCounsellor> {
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: const Calender(),
+                    child: const Calendar(),
                   ),
                   Padding(
                     padding:
@@ -78,7 +78,7 @@ class _NoteCounsellorState extends State<NoteCounsellor> {
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: const Calender(),
+                    child: const Calendar(),
                   ),
                   Padding(
                     padding:
@@ -117,7 +117,7 @@ class _NoteCounsellorState extends State<NoteCounsellor> {
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(color: Colors.black),
                           ),
-                          child: const Calender(),
+                          child: const Calendar(),
                         ),
                       ),
                       Padding(

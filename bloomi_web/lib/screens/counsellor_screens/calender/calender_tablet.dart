@@ -20,7 +20,7 @@ class _CounselorCalendarTabletState extends State<CounselorCalendarTablet> {
           padding: const EdgeInsets.all(10.0),
           child: Stack(children: [
             const SizedBox(height: 10),
-            const Calender(),
+            const Calendar(),
             Align(
               alignment: Alignment.topRight,
               child: SizedBox(
