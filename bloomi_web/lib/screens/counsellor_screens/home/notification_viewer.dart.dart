@@ -1,7 +1,9 @@
 import 'package:bloomi_web/controllers/appoinment_controller.dart';
 import 'package:bloomi_web/controllers/notification_controller.dart';
+import 'package:bloomi_web/controllers/send_email_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
+import 'package:bloomi_web/providers/counselor/counsellor_appointment_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +11,7 @@ import 'package:provider/provider.dart';
 class UtilFormMethodNotification {
   //---------------------------method to show dialog box input field---------------------------
   static showDialogMethod(BuildContext context) {
-    List<NotificationModel> list = [];
+    List<AppointmentModel> list = [];
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -68,7 +70,7 @@ class UtilFormMethodNotification {
                           for (var e in snapshot.data!.docs) {
                             Map<String, dynamic> data =
                                 e.data() as Map<String, dynamic>;
-                            var model = NotificationModel.fromJson(data);
+                            var model = AppointmentModel.fromJson(data);
                             list.add(model);
                           }
 
@@ -91,7 +93,22 @@ class UtilFormMethodNotification {
                                     Text(
                                         'Appointment Time: ${list[index].time}'),
                                     Text(
+                                        'Appointment Notes: ${list[index].note}'),
+                                    Text(
                                         'Appointment state: ${list[index].status}'),
+                                    const SizedBox(height: 10),
+                                    TextField(
+                                      controller: Provider.of<
+                                                  CounsellorAppointmentProvider>(
+                                              context,
+                                              listen: false)
+                                          .note,
+                                      maxLines: 5,
+                                      decoration: const InputDecoration(
+                                        hintText: 'Enter the note',
+                                        border: OutlineInputBorder(),
+                                      ),
+                                    )
                                   ],
                                 ),
                                 trailing: Row(
@@ -106,16 +123,47 @@ class UtilFormMethodNotification {
                                       },
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          NotificationController()
-                                              .updateNotificationState(
-                                            list[index].id,
-                                            'Approved',
-                                          );
+                                          try {
+                                            NotificationController()
+                                                .deleteNotificationState(
+                                              list[index].id,
+                                              'Approved',
+                                            );
 
-                                          AppointmentController()
-                                              .updateAppointmentState(
+                                            AppointmentController()
+                                                .updateAppointmentState(
+                                                    value.counsellorModel!.uid,
+                                                    'Approved');
+                                          } catch (e) {
+                                            Logger().e(e);
+                                          }
+
+                                          Provider.of<CounsellorAppointmentProvider>(
+                                                  context,
+                                                  listen: false)
+                                              .changeAppointment(
                                                   value.counsellorModel!.uid,
-                                                  'Approved');
+                                                  context);
+
+                                          SendEmailController().sendEmailToUser(
+                                              name: list[index].studentName,
+                                              email: list[index].studentEmail,
+                                              message: (Provider.of<
+                                                              CounsellorAppointmentProvider>(
+                                                          context,
+                                                          listen: false)
+                                                      .note
+                                                      .text
+                                                      .isNotEmpty)
+                                                  ? Provider.of<
+                                                              CounsellorAppointmentProvider>(
+                                                          context,
+                                                          listen: false)
+                                                      .note
+                                                      .text
+                                                  : "No notes",
+                                              reciverName:
+                                                  list[index].counselorName);
                                         },
                                         style: ButtonStyle(
                                           backgroundColor: MaterialStateProperty
@@ -156,11 +204,6 @@ class UtilFormMethodNotification {
                                       },
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          NotificationController()
-                                              .updateNotificationState(
-                                            list[index].id,
-                                            'Declined',
-                                          );
                                           AppointmentController()
                                               .updateAppointmentState(
                                                   value.counsellorModel!.uid,

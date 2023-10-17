@@ -51,8 +51,25 @@ class AvailableChat extends StatelessWidget {
                 }
 
                 if (snapshot.data!.docs.isEmpty) {
-                  return const Center(
-                    child: Text("No conversation found"),
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Center(
+                        child: Text("No conversation found"),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const ChatListViewUser();
+                              },
+                            ),
+                          );
+                        },
+                        child: const Text("Available Counselors"),
+                      ),
+                    ],
                   );
                 }
 

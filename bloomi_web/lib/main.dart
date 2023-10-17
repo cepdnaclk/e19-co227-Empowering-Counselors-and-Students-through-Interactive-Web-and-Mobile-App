@@ -5,6 +5,7 @@ import 'package:bloomi_web/providers/auth/forgot_password_provider.dart';
 import 'package:bloomi_web/providers/auth/google_auth_provider.dart';
 import 'package:bloomi_web/providers/auth/login_provider.dart';
 import 'package:bloomi_web/providers/auth/signup_provider.dart';
+import 'package:bloomi_web/providers/counselor/counsellor_appointment_provider.dart';
 import 'package:bloomi_web/providers/nav_provider/admin_nav_provider.dart';
 import 'package:bloomi_web/providers/nav_provider/navigation_provider.dart';
 import 'package:bloomi_web/providers/user_home_provider/appointment_provider.dart';
@@ -40,6 +41,7 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (_) => NoteProvider()),
       ChangeNotifierProvider(create: (_) => AppointmentProvider()),
       ChangeNotifierProvider(create: (_) => NotificationProvider()),
+      ChangeNotifierProvider(create: (_) => CounsellorAppointmentProvider()),
     ],
     child: const MyApp(),
   ));
@@ -57,7 +59,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // home: const Adminpanel());
+      // home: AdminPanel()
       home: const ResponsiveLayout(
         mobileBody: SplashScreenMobile(),
         tabletBody: SplashScreenTablet(),

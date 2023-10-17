@@ -19,6 +19,7 @@ class AppointmentController {
     String date,
     String time,
     String status,
+    String note,
   ) async {
     try {
       String appointmentId = appointments.doc().id;
@@ -34,6 +35,7 @@ class AppointmentController {
         'date': date,
         'time': time,
         'status': status,
+        'note': note,
       }).then((value) {
         UtilMethod.customDialogBox(
           context,
@@ -59,6 +61,22 @@ class AppointmentController {
 
       for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
         await documentSnapshot.reference.update({'status': newState});
+      }
+    } catch (e) {
+      Logger().e(e);
+    }
+  }
+
+  //------------------------ UPDATE APPOINTMENT STATUS ------------------------
+  void updateNoteState(String uid, String newNote) async {
+    try {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('appointments')
+          .where('counselorId', isEqualTo: uid)
+          .get();
+
+      for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
+        await documentSnapshot.reference.update({'note': newNote});
       }
     } catch (e) {
       Logger().e(e);

@@ -39,6 +39,7 @@ AppointmentModel _$AppointmentModelFromJson(Map<String, dynamic> json) =>
       date: json['date'] as String,
       time: json['time'] as String,
       status: json['status'] as String,
+      note: json['note'] as String,
     );
 
 Map<String, dynamic> _$AppointmentModelToJson(AppointmentModel instance) =>
@@ -53,6 +54,7 @@ Map<String, dynamic> _$AppointmentModelToJson(AppointmentModel instance) =>
       'date': instance.date,
       'time': instance.time,
       'status': instance.status,
+      'note': instance.note,
     };
 
 ChatModel _$ChatModelFromJson(Map<String, dynamic> json) => ChatModel(
@@ -166,6 +168,7 @@ NotificationModel _$NotificationModelFromJson(Map<String, dynamic> json) =>
       date: json['date'] as String,
       time: json['time'] as String,
       status: json['status'] as String,
+      note: json['note'] as String,
     );
 
 Map<String, dynamic> _$NotificationModelToJson(NotificationModel instance) =>
@@ -178,6 +181,7 @@ Map<String, dynamic> _$NotificationModelToJson(NotificationModel instance) =>
       'date': instance.date,
       'time': instance.time,
       'status': instance.status,
+      'note': instance.note,
     };
 
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(

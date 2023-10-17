@@ -1,14 +1,14 @@
 import 'package:bloomi_web/components/conversation_image.dart';
 import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/models/objects.dart';
-import 'package:bloomi_web/providers/users/user_provider.dart';
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ConversationTile extends StatelessWidget {
-  const ConversationTile({
+class ConversationTileCoun extends StatelessWidget {
+  const ConversationTileCoun({
     super.key,
     required this.conversationModel,
   });
@@ -35,7 +35,7 @@ class ConversationTile extends StatelessWidget {
         ],
         color: UtilConstants.whiteColor,
       ),
-      child: Consumer<UserProvider>(
+      child: Consumer<CounsellorRegistrationProvider>(
         builder: (context, value, child) {
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,10 +43,9 @@ class ConversationTile extends StatelessWidget {
               Row(
                 children: [
                   ConversationImage(
-                    imagePath: (value.userModel!.uid ==
-                            conversationModel.usersArray[0].uid)
-                        ? conversationModel.usersArray[1].img
-                        : conversationModel.usersArray[0].img,
+                    imagePath: conversationModel.usersArray
+                        .firstWhere((e) => e.uid != value.counsellorModel!.uid)
+                        .img,
                   ),
                   const SizedBox(width: 20),
                   Column(
@@ -55,23 +54,13 @@ class ConversationTile extends StatelessWidget {
                       Row(
                         children: [
                           CustomText(
-                            (value.userModel!.uid ==
-                                    conversationModel.usersArray[0].uid)
-                                ? conversationModel.usersArray[1].name
-                                : conversationModel.usersArray[0].name,
+                            conversationModel.usersArray
+                                .firstWhere(
+                                    (e) => e.uid != value.counsellorModel!.uid)
+                                .name,
                             fontSize: 18,
                             fontColor: UtilConstants.blackColor,
                           ),
-                          const SizedBox(width: 5),
-                          Icon(Icons.circle_rounded,
-                              size: 8,
-                              color: ((value.userModel!.uid ==
-                                          conversationModel.usersArray[0].uid)
-                                      ? conversationModel.usersArray[1].isOnline
-                                      : conversationModel
-                                          .usersArray[0].isOnline)
-                                  ? UtilConstants.greenColor
-                                  : UtilConstants.greyColor)
                         ],
                       ),
                       CustomText(
