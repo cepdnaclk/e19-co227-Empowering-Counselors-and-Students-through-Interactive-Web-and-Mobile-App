@@ -26,6 +26,7 @@ class _AdminControlState extends State<AdminControl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue.shade50,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -73,7 +74,6 @@ class _AdminControlState extends State<AdminControl> {
                           }
 
                           return DataTable(
-                              sortColumnIndex: 0,
                               sortAscending: true,
                               dataRowMinHeight: 50,
                               dataRowMaxHeight: 60,
