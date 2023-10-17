@@ -12,11 +12,12 @@ class AdminHome extends StatefulWidget {
 }
 
 class _AdminHomeState extends State<AdminHome> {
+  int touchedIndex = -1; // Initialize touchedIndex here
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final isSmallScreen =
-        screenSize.width < 600; // Adjust the breakpoint as needed
+    final isSmallScreen = screenSize.width < 600;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -24,57 +25,70 @@ class _AdminHomeState extends State<AdminHome> {
           children: [
             const SizedBox(width: 20), // Adjust spacing
 
-            Expanded(
-              child: Column(
-                children: [
-                  const SizedBox(height: 20),
-                  const CustomText("Welcome to the Admin Dashboard"),
-                  const SizedBox(height: 20),
-                  Card(
-                    child: Container(
-                      width: isSmallScreen ? screenSize.width : 400,
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                height: isSmallScreen ? 150 : 200,
-                                width: isSmallScreen ? 150 : 200,
-                                child: PieChart(
-                                  PieChartData(
-                                    borderData: FlBorderData(
-                                      border: Border.all(
-                                        style: BorderStyle.solid,
-                                      ),
+            Column(
+              children: [
+                const SizedBox(height: 20),
+                const CustomText("Welcome to the Admin Dashboard"),
+                const SizedBox(height: 20),
+                Card(
+                  child: Container(
+                    width: isSmallScreen ? screenSize.width : 400,
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              height: isSmallScreen ? 150 : 200,
+                              width: isSmallScreen ? 150 : 200,
+                              child: PieChart(
+                                PieChartData(
+                                  borderData: FlBorderData(
+                                    border: Border.all(
+                                      style: BorderStyle.solid,
                                     ),
-                                    sectionsSpace: 0,
-                                    centerSpaceRadius: 40,
-                                    sections: getSections(),
                                   ),
+                                  sectionsSpace: 0,
+                                  centerSpaceRadius: 40,
+                                  sections: getSections(),
+                                  pieTouchData: PieTouchData(touchCallback:
+                                      (FlTouchEvent event,
+                                          PieTouchResponse? pieTouchResponse) {
+                                    setState(() {
+                                      if (pieTouchResponse == null ||
+                                          pieTouchResponse.touchedSection ==
+                                              null) {
+                                        touchedIndex = -1;
+                                      } else {
+                                        touchedIndex = pieTouchResponse
+                                            .touchedSection!
+                                            .touchedSectionIndex;
+                                      }
+                                    });
+                                  }),
                                 ),
                               ),
-                              if (!isSmallScreen) const SizedBox(width: 30),
-                              IndicatorWidget(),
-                            ],
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(bottom: 8.0),
-                            child: Text(
-                              'Representation of Percentages of Users',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w100,
-                                fontSize: 14,
-                                color: Colors.black,
-                              ),
-                              textAlign: TextAlign.center,
                             ),
+                            if (!isSmallScreen) const SizedBox(width: 30),
+                            IndicatorWidget(),
+                          ],
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(bottom: 8.0),
+                          child: Text(
+                            'Representation of Percentages of Users',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w100,
+                              fontSize: 14,
+                              color: Colors.black,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
@@ -85,15 +99,19 @@ class _AdminHomeState extends State<AdminHome> {
   List<PieChartSectionData> getSections() => PieData.data
       .asMap()
       .map<int, PieChartSectionData>((index, data) {
+        final isTouched = index == touchedIndex;
+        final double fontSize = isTouched ? 25 : 16;
+        final double radius = isTouched ? 60 : 50;
         final value = PieChartSectionData(
           color: data.color,
           value: data.percentage,
           title: '${data.percentage}%',
-          titleStyle: const TextStyle(
-            fontSize: 16,
+          titleStyle: TextStyle(
+            fontSize: fontSize,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.white,
           ),
+          radius: radius,
         );
 
         return MapEntry(index, value);
