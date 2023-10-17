@@ -1,4 +1,5 @@
 import 'package:bloomi_web/components/dropdown_menu_items.dart';
+import 'package:bloomi_web/screens/counsellor_screens/calender/calendar_home.dart';
 import 'package:bloomi_web/screens/counsellor_screens/chat/home/chat_counsellor.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard_home.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/notification_viewer.dart.dart';
@@ -212,6 +213,10 @@ class ExampleSidebarX extends StatelessWidget {
         ),
         const SidebarXItem(
           icon: Icons.calendar_month_outlined,
+          label: 'Calender',
+        ),
+        const SidebarXItem(
+          icon: Icons.calendar_month_outlined,
           label: 'Profile',
         ),
       ],
@@ -242,6 +247,8 @@ class _ScreensExample extends StatelessWidget {
             return const NoteCounsellor();
 
           case 3:
+            return const CalendarHome();
+          case 4:
             return const ProfileHome();
 
           default:
