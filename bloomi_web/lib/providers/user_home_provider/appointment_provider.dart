@@ -110,22 +110,25 @@ class AppointmentProvider extends ChangeNotifier {
     }
   }
 
-  //-----------------------To fetch additional data---------------------
+  //-----------------------To fetch all appointments---------------------
 
-  AppointmentModel? _appointmentModel;
+  List<AppointmentModel>? _appointmentModels;
 
-  AppointmentModel? get appointmentModel => _appointmentModel;
-  Future<AppointmentModel?> startFetchAppointmentData(String uid) async {
+  List<AppointmentModel>? get appointmentModels => _appointmentModels;
+
+  Future<List<AppointmentModel>?> fetchAllAppointments(String uid) async {
     try {
-      AppointmentModel? appointmentModel =
-          await AppointmentController().fetchAppointmentData(uid);
-      if (appointmentModel != null) {
-        _appointmentModel = appointmentModel;
+      List<AppointmentModel>? appointmentModels = await AppointmentController()
+          .fetchAllAppointments(
+              uid); // Assuming you have a method to fetch all appointments
+
+      if (appointmentModels!.isNotEmpty) {
+        _appointmentModels = appointmentModels;
         notifyListeners();
-        Logger().e(appointmentModel.counselorId);
-        return appointmentModel;
+
+        return appointmentModels;
       } else {
-        Logger().i("User not found");
+        Logger().i("No appointments found");
         return null;
       }
     } catch (e) {
