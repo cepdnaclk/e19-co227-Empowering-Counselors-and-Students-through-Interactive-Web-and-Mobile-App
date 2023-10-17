@@ -1,3 +1,4 @@
+import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/utils/util_method.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -64,6 +65,32 @@ class AppointmentController {
       }
     } catch (e) {
       Logger().e(e);
+    }
+  }
+
+  Future<AppointmentModel?> fetchAppointmentData(String uid) async {
+    try {
+      QuerySnapshot querySnapshot =
+          await appointments.where('counselorId', isEqualTo: uid).get();
+
+      Logger().i(querySnapshot.docs.length);
+
+      if (querySnapshot.docs.isNotEmpty) {
+        final appointmentData =
+            querySnapshot.docs.first.data() as Map<String, dynamic>;
+
+        AppointmentModel appointmentModel =
+            AppointmentModel.fromJson(appointmentData);
+
+        Logger().i(appointmentModel.counselorName);
+
+        return appointmentModel;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      Logger().e(e);
+      return null;
     }
   }
 
