@@ -1,10 +1,9 @@
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/indicatorwidget.dart';
-import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class CountChart extends StatefulWidget {
-  CountChart({super.key});
+  const CountChart({super.key});
   final Color leftBarColor = Colors.yellow;
   final Color middleBarColor = Colors.green;
 
@@ -127,7 +126,7 @@ class CountChartState extends State<CountChart> {
                 ],
               ),
             ),
-            IndicatorWidget(),
+            const IndicatorWidget(),
           ],
         ),
       ),

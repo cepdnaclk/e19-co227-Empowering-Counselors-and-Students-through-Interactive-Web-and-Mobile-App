@@ -1,3 +1,4 @@
+import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/screens/counsellor_screens/profile/profile_panel.dart';
 import 'package:bloomi_web/screens/counsellor_screens/profile/top_background.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
@@ -8,7 +9,8 @@ class ProfileMobileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    double width = MediaQuery.of(context).size.width;
+    return Scaffold(
 
         /// background color
         backgroundColor: UtilConstants.whiteColor,
@@ -16,15 +18,16 @@ class ProfileMobileScreen extends StatelessWidget {
         /// if is it Mobile. don't use SafeArea
         body: SafeArea(
             child: Stack(children: [
-          TopBackground(),
-          SingleChildScrollView(
+          const TopBackground(),
+          const SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   ProfilePanle(),
                 ]),
-          )
+          ),
+          Footer(height: 55, width: width),
         ])));
   }
 }

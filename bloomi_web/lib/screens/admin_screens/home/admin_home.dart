@@ -75,7 +75,7 @@ class _AdminHomeState extends State<AdminHome> {
                                   ),
                                 ),
                                 if (!isSmallScreen) const SizedBox(width: 30),
-                                IndicatorWidget(),
+                                const IndicatorWidget(),
                               ],
                             ),
                             const Padding(
@@ -100,7 +100,7 @@ class _AdminHomeState extends State<AdminHome> {
                     DetailedLinebar(),
                   ],
                 ),
-                CountChart(),
+                const CountChart(),
               ],
             ),
           ],

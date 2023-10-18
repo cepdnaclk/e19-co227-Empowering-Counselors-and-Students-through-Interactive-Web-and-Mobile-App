@@ -123,6 +123,7 @@ class _CounselorProfileState extends State<CounselorProfile> {
                                   width > 750
                                       ? const SizedBox(width: 74)
                                       : const SizedBox(width: 60),
+                                  // ignore: prefer_interpolation_to_compose_strings
                                   Text(": " + values[1],
                                       style: TextStyle(
                                           fontSize: width > 750 ? 16 : 12)),
@@ -136,6 +137,7 @@ class _CounselorProfileState extends State<CounselorProfile> {
                                           fontSize: width > 750 ? 16 : 12)),
                                   const SizedBox(width: 10),
                                   Text(
+                                    // ignore: prefer_interpolation_to_compose_strings
                                     ": " + values[2],
                                     style: TextStyle(
                                         fontSize: width > 750 ? 16 : 12),
@@ -151,6 +153,7 @@ class _CounselorProfileState extends State<CounselorProfile> {
                                       ? const SizedBox(width: 62)
                                       : const SizedBox(width: 49),
                                   Text(
+                                    // ignore: prefer_interpolation_to_compose_strings
                                     ": " + values[3],
                                     style: TextStyle(
                                         fontSize: width > 750 ? 16 : 12),
@@ -166,6 +169,7 @@ class _CounselorProfileState extends State<CounselorProfile> {
                                       ? const SizedBox(width: 31)
                                       : const SizedBox(width: 26),
                                   Text(
+                                    // ignore: prefer_interpolation_to_compose_strings
                                     ": " + values[4],
                                     style: TextStyle(
                                         fontSize: width > 750 ? 16 : 12),
@@ -175,28 +179,6 @@ class _CounselorProfileState extends State<CounselorProfile> {
                               const SizedBox(width: 5),
                             ],
                           ),
-                          /*for (int x = 1; x < len - 1; x++)
-                            Row(
-                              children: [
-                                Text(
-                                  keys[x],
-                                  style:
-                                      TextStyle(fontSize: width > 750 ? 16 : 12),
-                                ),
-                                const SizedBox(width: 5),
-                                Text(
-                                  ":",
-                                  style:
-                                      TextStyle(fontSize: width > 750 ? 16 : 12),
-                                ),
-                                const SizedBox(width: 5),
-                                Text(
-                                  values[x],
-                                  style:
-                                      TextStyle(fontSize: width > 750 ? 16 : 12),
-                                ),
-                              ],
-                            ),*/
                         ],
                       ),
                     ],
