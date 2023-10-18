@@ -11,16 +11,17 @@ class DetailedLinebar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size.width;
-
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Container(
-              height: screenSize / 3,
-              width: screenSize / 3,
+            const SizedBox(
+              height: 15,
+            ),
+            SizedBox(
+              height: 300,
+              width: 600,
               child: LineChart(
                 LineChartData(
                   maxX: 8,

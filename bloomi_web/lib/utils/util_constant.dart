@@ -27,6 +27,9 @@ class UtilConstants {
   static const Color contentColorCyan = Color(0xFF50E4FF);
   static const Color contentColorBlue = Color(0xFF2196F3);
   static const Color mainGridLineColor = Colors.white10;
+  static const Color primary = contentColorCyan;
+  static const Color contentColorGreen = Color(0xFF3BFF49);
+  static const Color contentColorPink = Color(0xFFFF3AF2);
 
 //-------------------topBar / Drawer-------------------
   static Color canvasColor = const Color(0xFF272643);
