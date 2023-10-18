@@ -1,4 +1,5 @@
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/indicatorwidget.dart';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -52,8 +53,17 @@ class CountChartState extends State<CountChart> {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Row(
+        child: Column(
           children: [
+
+            Row(
+              children: [
+                Container(
+                  width: 300,
+                  height: 300,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+
             SizedBox(
               width: 400,
               height: 400,
@@ -63,70 +73,57 @@ class CountChartState extends State<CountChart> {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      makeTransactionsIcon(),
+                      Expanded(
+                        child: BarChart(
+                          BarChartData(
+                            barTouchData: BarTouchData(
+                              touchTooltipData: BarTouchTooltipData(
+                                tooltipBgColor: Colors.grey,
+                                getTooltipItem: (a, b, c, d) => null,
+                              ),
+                            ),
+                            titlesData: FlTitlesData(
+                              show: true,
+                              rightTitles: const AxisTitles(
+                                sideTitles: SideTitles(showTitles: false),
+                              ),
+                              topTitles: const AxisTitles(
+                                sideTitles: SideTitles(showTitles: false),
+                              ),
+                              bottomTitles: AxisTitles(
+                                sideTitles: SideTitles(
+                                  showTitles: true,
+                                  getTitlesWidget: bottomTitles,
+                                  reservedSize: 42,
+                                ),
+                              ),
+                            ),
+                            borderData: FlBorderData(
+                              show: false,
+                            ),
+                            barGroups: showingBarGroups,
+                            gridData: const FlGridData(show: false),
+                          ),
+                        ),
+                      ),
                       const SizedBox(
-                        width: 38,
-                      ),
-                      const Text(
-                        'User',
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 45, 4, 226),
-                            fontSize: 22),
-                      ),
-                      const SizedBox(
-                        width: 4,
-                      ),
-                      const Text(
-                        'Registrations',
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 45, 4, 226),
-                            fontSize: 16),
+                        height: 12,
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 38,
-                  ),
-                  Expanded(
-                    child: BarChart(
-                      BarChartData(
-                        barTouchData: BarTouchData(
-                          touchTooltipData: BarTouchTooltipData(
-                            tooltipBgColor: Colors.grey,
-                            getTooltipItem: (a, b, c, d) => null,
-                          ),
-                        ),
-                        titlesData: FlTitlesData(
-                          show: true,
-                          rightTitles: const AxisTitles(
-                            sideTitles: SideTitles(showTitles: false),
-                          ),
-                          topTitles: const AxisTitles(
-                            sideTitles: SideTitles(showTitles: false),
-                          ),
-                          bottomTitles: AxisTitles(
-                            sideTitles: SideTitles(
-                              showTitles: true,
-                              getTitlesWidget: bottomTitles,
-                              reservedSize: 42,
-                            ),
-                          ),
-                        ),
-                        borderData: FlBorderData(
-                          show: false,
-                        ),
-                        barGroups: showingBarGroups,
-                        gridData: const FlGridData(show: false),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                ],
-              ),
+                ),
+                IndicatorWidget(),
+              ],
             ),
-            IndicatorWidget(),
+            const Text(
+              'Number of Registration of Users Over Time',
+              style: TextStyle(
+                fontWeight: FontWeight.w100,
+                fontSize: 14,
+                color: Color.fromARGB(255, 54, 53, 53),
+              ),
+              textAlign: TextAlign.center,
+            )
           ],
         ),
       ),
