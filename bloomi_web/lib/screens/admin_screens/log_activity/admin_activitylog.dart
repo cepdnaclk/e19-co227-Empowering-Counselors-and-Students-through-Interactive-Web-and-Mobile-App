@@ -1,5 +1,8 @@
 import 'package:bloomi_web/components/custom_text.dart';
+import 'package:bloomi_web/controllers/admin_controller.dart';
+import 'package:bloomi_web/models/objects.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class AdminActivityLog extends StatefulWidget {
   const AdminActivityLog({super.key});
@@ -9,72 +12,71 @@ class AdminActivityLog extends StatefulWidget {
 }
 
 class _AdminActivityLogState extends State<AdminActivityLog> {
-  final histories = [
-    "Administrator John Smith created a new user account for User123.",
-    "Administrator Jane Doe deleted User456's account.",
-    "Admin Susan Johnson initiated a password reset for User789.",
-    "Admin Mark Anderson updated User101's role to 'Manager'.",
-    "Admin Sarah Williams edited document 'ProjectReport.doc'.",
-    "Administrator Michael Brown approved 'Blog Post #3' for publication.",
-    "Admin Mary Davis modified the email notification settings.",
-    "Admin Chris White applied system updates and patches on 2023-09-13.",
-    "Admin Login: Failed login attempt by UserX on 2023-09-10.",
-    "Admin George Martin granted 'Read-Only' access to UserY for the Sales Reports folder.",
-    "Admin Emily Green encountered an error while processing a customer's payment on 2023-09-05.",
-    "Administrator Robert Turner temporarily suspended UserZ due to a violation of company policies.",
-    "Admin Rachel Harris updated customer records: Added new contact details for CustomerA.",
-    "Admin Alert: Server disk space reached critical levels. Admin team notified.",
-    "Admin Backup: Full system backup completed successfully on 2023-09-01.",
-    "Admin API Access: UserM accessed the API and retrieved customer data.",
-    "UserN logged in from IP address 192.168.1.100 on 2023-09-12 at 10:30 AM.",
-  ];
-
-  final times = [
-    "2023-09-08 15:45",
-    "2023-09-09 09:30",
-    "2023-09-10 14:15",
-    "2023-09-11 11:20",
-    "2023-09-12 16:00",
-    "2023-09-13 10:05",
-    "2023-09-14 13:55",
-    "2023-09-13 18:30",
-    "2023-09-10 08:45",
-    "2023-09-15 12:10",
-    "2023-09-05 17:25",
-    "2023-09-06 14:50",
-    "2023-09-07 09:15",
-    "2023-09-04 22:30",
-    "2023-09-01 02:00",
-    "2023-09-02 19:45",
-    "2023-09-12 10:30",
-  ];
+  final List<ActivityLog> _list = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue.shade50,
-      body: ListView.builder(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        shrinkWrap: true,
-        itemCount: histories.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(
-              histories[index],
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w200,
-              ),
-            ),
-            leading: const Icon(
-              Icons.add_task,
-              color: Color.fromARGB(255, 25, 27, 175),
-            ),
-            trailing: CustomText(
-              times[index],
-              fontSize: 15,
-              fontColor: const Color.fromARGB(255, 48, 72, 150),
-            ),
+      body: StreamBuilder(
+        stream: AdminController().getAllActivityLog(),
+        builder: (context, snapshot) {
+          //-------if the snapshot error occurs, show error message-------
+          if (snapshot.hasError) {
+            return const Center(
+              child: Text("Something went wrong"),
+            );
+          }
+
+          //-------if the snapshot is waiting, show progress indicator-------
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          if (snapshot.data!.docs.isEmpty) {
+            return const Center(
+              child: Text("No Activity found"),
+            );
+          }
+
+          Logger().i(snapshot.data!.docs.length);
+
+          //-------------clear the list before adding new data----------------
+          _list.clear();
+
+          //-----------------read the document list from snapshot and map to model and add to list----------------
+          for (var e in snapshot.data!.docs) {
+            Map<String, dynamic> data = e.data() as Map<String, dynamic>;
+            var model = ActivityLog.fromJson(data);
+            _list.add(model);
+          }
+
+          return ListView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            shrinkWrap: true,
+            itemCount: _list.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(
+                  "Administrator ${_list[index].adminName}  ${_list[index].change} a new user account for ${_list[index].userName}.",
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w200,
+                  ),
+                ),
+                leading: const Icon(
+                  Icons.add_task,
+                  color: Color.fromARGB(255, 25, 27, 175),
+                ),
+                trailing: CustomText(
+                  _list[index].dateTime.toString().substring(0, 16),
+                  fontSize: 15,
+                  fontColor: const Color.fromARGB(255, 48, 72, 150),
+                ),
+              );
+            },
           );
         },
       ),

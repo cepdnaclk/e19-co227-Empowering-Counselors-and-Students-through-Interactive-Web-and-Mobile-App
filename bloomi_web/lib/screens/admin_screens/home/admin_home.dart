@@ -2,6 +2,7 @@ import 'package:bloomi_web/components/custom_text.dart';
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/count_chart.dart';
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/indicatorwidget.dart';
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/line_bar_chart.dart';
+import 'package:bloomi_web/screens/admin_screens/admin%20charts/line_chart.dart';
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/pie_data.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -34,73 +35,91 @@ class _AdminHomeState extends State<AdminHome> {
                 const SizedBox(height: 20),
                 Row(
                   children: [
-                    Card(
-                      child: Container(
-                        width: isSmallScreen ? screenSize.width : 400,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Row(
+                    Column(
+                      children: [
+                        Card(
+                          child: SizedBox(
+                            width: isSmallScreen ? screenSize.width : 450,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Container(
-                                  height: isSmallScreen ? 150 : 200,
-                                  width: isSmallScreen ? 150 : 200,
-                                  child: PieChart(
-                                    PieChartData(
-                                      borderData: FlBorderData(
-                                        border: Border.all(
-                                          style: BorderStyle.solid,
+                                Row(
+                                  children: [
+                                    const SizedBox(height: 20),
+                                    SizedBox(
+                                      height: isSmallScreen ? 150 : 300,
+                                      width: isSmallScreen ? 150 : 300,
+                                      child: PieChart(
+                                        PieChartData(
+                                          borderData: FlBorderData(
+                                            border: Border.all(
+                                              style: BorderStyle.solid,
+                                            ),
+                                          ),
+                                          sectionsSpace: 0,
+                                          centerSpaceRadius: 40,
+                                          sections: getSections(),
+                                          pieTouchData: PieTouchData(
+                                              touchCallback:
+                                                  (FlTouchEvent event,
+                                                      PieTouchResponse?
+                                                          pieTouchResponse) {
+                                            setState(() {
+                                              if (pieTouchResponse == null ||
+                                                  pieTouchResponse
+                                                          .touchedSection ==
+                                                      null) {
+                                                touchedIndex = -1;
+                                              } else {
+                                                touchedIndex = pieTouchResponse
+                                                    .touchedSection!
+                                                    .touchedSectionIndex;
+                                              }
+                                            });
+                                          }),
                                         ),
                                       ),
-                                      sectionsSpace: 0,
-                                      centerSpaceRadius: 40,
-                                      sections: getSections(),
-                                      pieTouchData: PieTouchData(touchCallback:
-                                          (FlTouchEvent event,
-                                              PieTouchResponse?
-                                                  pieTouchResponse) {
-                                        setState(() {
-                                          if (pieTouchResponse == null ||
-                                              pieTouchResponse.touchedSection ==
-                                                  null) {
-                                            touchedIndex = -1;
-                                          } else {
-                                            touchedIndex = pieTouchResponse
-                                                .touchedSection!
-                                                .touchedSectionIndex;
-                                          }
-                                        });
-                                      }),
                                     ),
+                                    IndicatorWidget(),
+                                  ],
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(bottom: 8.0),
+                                  child: Text(
+                                    'Representation of Percentages of Users',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w100,
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                    ),
+                                    textAlign: TextAlign.center,
                                   ),
                                 ),
-                                if (!isSmallScreen) const SizedBox(width: 30),
-                                const IndicatorWidget(),
+                                const SizedBox(height: 20),
                               ],
                             ),
-                            const Padding(
-                              padding: EdgeInsets.only(bottom: 8.0),
-                              child: Text(
-                                'Representation of Percentages of Users',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w100,
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        const CountChart(),
+                      ],
                     ),
                     const SizedBox(
-                      width: 15,
+                      width: 30,
                     ),
-                    DetailedLinebar(),
+                    Column(
+                      children: [
+                        DetailedLinebar(),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        const LineChartSample1(),
+                      ],
+                    ),
                   ],
                 ),
-                const CountChart(),
               ],
             ),
           ],

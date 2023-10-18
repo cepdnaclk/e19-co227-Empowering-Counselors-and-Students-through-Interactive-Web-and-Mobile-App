@@ -136,7 +136,23 @@ class _AdminControlState extends State<AdminControl> {
                                                       context,
                                                       'Warning!',
                                                       'Do You Want to delete?',
-                                                      onOkPressed: () {},
+                                                      onOkPressed: () {
+                                                        value
+                                                            .saveActivityLog(
+                                                                context,
+                                                                value
+                                                                    .adminModel!
+                                                                    .name,
+                                                                _list[index]
+                                                                    .name,
+                                                                "Deleted",
+                                                                DateTime.now())
+                                                            .then((value3) {
+                                                          value.deleteAdmin(
+                                                              _list[index].uid,
+                                                              context);
+                                                        });
+                                                      },
                                                       onCancelPressed: () {},
                                                     );
                                                   }),

@@ -1,7 +1,9 @@
 import 'package:bloomi_web/components/custom_control_buttons.dart';
 import 'package:bloomi_web/controllers/counsellor_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
+import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
+import 'package:bloomi_web/screens/admin_screens/registration%20_forms/counsellor_update_form.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/counselorform.dart';
 import 'package:bloomi_web/utils/util_admin_functions.dart';
 import 'package:bloomi_web/utils/util_method.dart';
@@ -26,8 +28,9 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Consumer<CounsellorRegistrationProvider>(
-              builder: (context, value, child) {
+            Consumer2<CounsellorRegistrationProvider,
+                AdminRegistrationProvider>(
+              builder: (context, value, value2, child) {
                 return Padding(
                   padding: const EdgeInsets.all(20),
                   child: Center(
@@ -111,9 +114,11 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                               color: Colors.greenAccent,
                                               basiccolor: Colors.grey.shade50,
                                               onPressed: () {
-                                                CounselorForm
-                                                    .counselorregistrationform(
-                                                        context);
+                                                CounselorUpdateForm
+                                                    .counselorUpdateform(
+                                                  context,
+                                                  _list[index].uid,
+                                                );
                                               },
                                             ),
                                             const SizedBox(
@@ -129,7 +134,21 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                                     'Warning!',
                                                     'Do You want to delete?',
                                                     onCancelPressed: () {},
-                                                    onOkPressed: () {});
+                                                    onOkPressed: () {
+                                                  value2
+                                                      .saveActivityLog(
+                                                          context,
+                                                          value2
+                                                              .adminModel!.name,
+                                                          _list[index].name,
+                                                          "Deleted",
+                                                          DateTime.now())
+                                                      .then((value3) {
+                                                    value.counsellorDelete(
+                                                        _list[index].uid,
+                                                        context);
+                                                  });
+                                                });
                                               },
                                             ),
                                           ],

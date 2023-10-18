@@ -85,6 +85,14 @@ class AdminUpdateForm {
 
                             context,
                           );
+
+                          value.saveActivityLog(
+                            context,
+                            value.adminModel!.name,
+                            value.name.text,
+                            "Update",
+                            DateTime.now(),
+                          );
                         } catch (e) {
                           Logger().e(e);
                         }
