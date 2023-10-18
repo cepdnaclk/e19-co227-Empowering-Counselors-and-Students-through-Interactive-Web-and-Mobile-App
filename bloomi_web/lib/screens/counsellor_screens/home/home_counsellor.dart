@@ -216,7 +216,7 @@ class ExampleSidebarX extends StatelessWidget {
           label: 'Calender',
         ),
         const SidebarXItem(
-          icon: Icons.calendar_month_outlined,
+          icon: Icons.person_2_outlined,
           label: 'Profile',
         ),
       ],

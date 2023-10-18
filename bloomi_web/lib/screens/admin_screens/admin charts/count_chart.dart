@@ -1,5 +1,4 @@
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/indicatorwidget.dart';
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -58,46 +57,51 @@ class CountChartState extends State<CountChart> {
             Row(
               children: [
                 SizedBox(
-                  width: 300,
-                  height: 300,
+                  width: 400,
+                  height: 400,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      Expanded(
-                        child: BarChart(
-                          BarChartData(
-                            barTouchData: BarTouchData(
-                              touchTooltipData: BarTouchTooltipData(
-                                tooltipBgColor: Colors.grey,
-                                getTooltipItem: (a, b, c, d) => null,
-                              ),
-                            ),
-                            titlesData: FlTitlesData(
-                              show: true,
-                              rightTitles: const AxisTitles(
-                                sideTitles: SideTitles(showTitles: false),
-                              ),
-                              topTitles: const AxisTitles(
-                                sideTitles: SideTitles(showTitles: false),
-                              ),
-                              bottomTitles: AxisTitles(
-                                sideTitles: SideTitles(
-                                  showTitles: true,
-                                  getTitlesWidget: bottomTitles,
-                                  reservedSize: 42,
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Expanded(
+                            child: BarChart(
+                              BarChartData(
+                                barTouchData: BarTouchData(
+                                  touchTooltipData: BarTouchTooltipData(
+                                    tooltipBgColor: Colors.grey,
+                                    getTooltipItem: (a, b, c, d) => null,
+                                  ),
                                 ),
+                                titlesData: FlTitlesData(
+                                  show: true,
+                                  rightTitles: const AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false),
+                                  ),
+                                  topTitles: const AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false),
+                                  ),
+                                  bottomTitles: AxisTitles(
+                                    sideTitles: SideTitles(
+                                      showTitles: true,
+                                      getTitlesWidget: bottomTitles,
+                                      reservedSize: 42,
+                                    ),
+                                  ),
+                                ),
+                                borderData: FlBorderData(
+                                  show: false,
+                                ),
+                                barGroups: showingBarGroups,
+                                gridData: const FlGridData(show: false),
                               ),
                             ),
-                            borderData: FlBorderData(
-                              show: false,
-                            ),
-                            barGroups: showingBarGroups,
-                            gridData: const FlGridData(show: false),
                           ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 12,
+                          const SizedBox(
+                            height: 12,
+                          ),
+                        ],
                       ),
                     ],
                   ),

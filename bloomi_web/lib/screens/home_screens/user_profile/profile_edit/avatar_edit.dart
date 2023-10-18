@@ -1,22 +1,22 @@
-import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
+import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/screens/counsellor_screens/profile/profile_edit/image_picker_panel.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 
-class ProfileImage extends StatelessWidget {
-  const ProfileImage({Key? key}) : super(key: key);
+class ProfileImageUser extends StatelessWidget {
+  const ProfileImageUser({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Consumer<CounsellorRegistrationProvider>(
-        builder: (context, value, child) {
+    return Consumer<UserProvider>(builder: (context, value, child) {
       return Stack(
         children: [
           CircleAvatar(
             radius: width < 480 ? 50 : 90,
-            backgroundImage: NetworkImage(value.counsellorModel!.imgUrl),
+            backgroundImage: NetworkImage(value.userModel!.imgUrl),
           ),
           Positioned(
             bottom: 0,

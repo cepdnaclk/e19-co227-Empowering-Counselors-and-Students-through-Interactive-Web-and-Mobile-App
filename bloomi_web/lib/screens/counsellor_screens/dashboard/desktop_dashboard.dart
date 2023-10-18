@@ -335,7 +335,8 @@ class _DashboardDesktopState extends State<DashboardDesktop> {
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 140, 159, 169),
+                                  color:
+                                      const Color.fromARGB(255, 140, 159, 169),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 width: 200,

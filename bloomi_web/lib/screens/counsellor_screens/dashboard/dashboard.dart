@@ -63,18 +63,11 @@ class _DashboardState extends State<Dashboard> {
     });
   }
 
-  void _closeDropdown() {
-    setState(() {
-      _isSearchBarTapped = false;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     final currentWidth = mediaQueryData.size.width;
     final currentHeight = mediaQueryData.size.height;
-    print(currentWidth);
 
     return StreamBuilder(
         stream: AuthController().getUsers(),

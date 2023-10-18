@@ -1,33 +1,32 @@
-import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
-import 'package:bloomi_web/screens/counsellor_screens/profile/profile_edit/profile_edit_form.dart';
+import 'package:bloomi_web/providers/users/user_provider.dart';
+import 'package:bloomi_web/screens/home_screens/user_profile/profile_edit/profile_edit_form.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CounselorProfile extends StatefulWidget {
-  const CounselorProfile({Key? key}) : super(key: key);
+class UserProfile extends StatefulWidget {
+  const UserProfile({Key? key}) : super(key: key);
 
   @override
-  State<CounselorProfile> createState() => _CounselorProfileState();
+  State<UserProfile> createState() => _UserProfileState();
 }
 
-class _CounselorProfileState extends State<CounselorProfile> {
+class _UserProfileState extends State<UserProfile> {
   final List<String> keys = [];
   final List values = [];
   late int len;
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CounsellorRegistrationProvider>(
-        builder: (context, value, child) {
+    return Consumer<UserProvider>(builder: (context, value, child) {
       Map<String, dynamic> profileDetails = {
-        "name": value.counsellorModel!.name,
-        "Email": value.counsellorModel!.email,
-        "PhoneNumber": value.counsellorModel!.phone,
-        "Faculty": value.counsellorModel!.faculty,
-        "Credentials": value.counsellorModel!.userCredential,
-        "imageUrl": value.counsellorModel!.imgUrl,
+        "name": value.userModel!.name,
+        "Email": value.userModel!.email,
+        "PhoneNumber": value.userModel!.phone,
+        "Faculty": value.userModel!.faculty,
+        "Credentials": value.userModel!.userCredential,
+        "imageUrl": value.userModel!.imgUrl,
       };
 
       for (var entry in profileDetails.entries) {
@@ -85,7 +84,7 @@ class _CounselorProfileState extends State<CounselorProfile> {
                         onPressed: () {
                           UtilFunction.navigateForward(
                             context,
-                            const CounselorEditForm(),
+                            const UserEditForm(),
                           );
                         },
                         child: const Text('Edit'))
@@ -154,6 +153,23 @@ class _CounselorProfileState extends State<CounselorProfile> {
                                   Text(
                                     // ignore: prefer_interpolation_to_compose_strings
                                     " :   " + values[3],
+                                    style: TextStyle(
+                                        fontSize: width > 750 ? 16 : 12),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  Text(keys[4],
+                                      style: TextStyle(
+                                          fontSize: width > 750 ? 16 : 12)),
+                                  width > 750
+                                      ? const SizedBox(width: 31)
+                                      : const SizedBox(width: 26),
+                                  Text(
+                                    // ignore: prefer_interpolation_to_compose_strings
+                                    " :   " + values[4],
                                     style: TextStyle(
                                         fontSize: width > 750 ? 16 : 12),
                                   ),

@@ -113,7 +113,7 @@ class _DashboardTabletState extends State<DashboardTablet> {
                                                 color:
                                                     UtilConstants.whiteColor),
                                           ),
-                                          Spacer(),
+                                          const Spacer(),
                                           InkWell(
                                             onTap: () {
                                               UtilFormMethodNotification
@@ -148,7 +148,7 @@ class _DashboardTabletState extends State<DashboardTablet> {
                                               ],
                                             ),
                                           ),
-                                          SizedBox(width: 10),
+                                          const SizedBox(width: 10),
                                         ],
                                       )
                                     : Row(

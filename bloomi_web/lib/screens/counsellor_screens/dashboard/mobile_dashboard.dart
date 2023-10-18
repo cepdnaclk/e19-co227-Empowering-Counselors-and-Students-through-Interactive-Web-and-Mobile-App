@@ -142,7 +142,7 @@ class _DashboardMobileState extends State<DashboardMobile> {
                                         ],
                                       ),
                                     ),
-                                    SizedBox(width: 5),
+                                    const SizedBox(width: 5),
                                   ],
                                 );
                               },

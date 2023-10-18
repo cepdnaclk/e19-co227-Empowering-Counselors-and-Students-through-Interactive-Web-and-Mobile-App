@@ -71,7 +71,7 @@ class _DesktopState extends State<Desktop> {
                           shadows: [
                             Shadow(
                               color: Colors.grey.withOpacity(0.5),
-                              offset: Offset(2, 2),
+                              offset: const Offset(2, 2),
                               blurRadius: 4,
                             ),
                           ],
@@ -110,13 +110,13 @@ class _DesktopState extends State<Desktop> {
                                         shadows: [
                                           Shadow(
                                             color: Colors.grey.withOpacity(0.5),
-                                            offset: Offset(2, 2),
+                                            offset: const Offset(2, 2),
                                             blurRadius: 4,
                                           ),
                                         ],
                                       ),
                                     ),
-                                    SizedBox(height: 20),
+                                    const SizedBox(height: 20),
                                     Text(
                                       "10",
                                       style: TextStyle(
@@ -124,7 +124,7 @@ class _DesktopState extends State<Desktop> {
                                         shadows: [
                                           Shadow(
                                             color: Colors.grey.withOpacity(0.5),
-                                            offset: Offset(2, 2),
+                                            offset: const Offset(2, 2),
                                             blurRadius: 4,
                                           ),
                                         ],
@@ -153,13 +153,13 @@ class _DesktopState extends State<Desktop> {
                                         shadows: [
                                           Shadow(
                                             color: Colors.grey.withOpacity(0.5),
-                                            offset: Offset(2, 2),
+                                            offset: const Offset(2, 2),
                                             blurRadius: 4,
                                           ),
                                         ],
                                       ),
                                     ),
-                                    SizedBox(height: 20),
+                                    const SizedBox(height: 20),
                                     Text(
                                       "10",
                                       style: TextStyle(
@@ -167,7 +167,7 @@ class _DesktopState extends State<Desktop> {
                                         shadows: [
                                           Shadow(
                                             color: Colors.grey.withOpacity(0.5),
-                                            offset: Offset(2, 2),
+                                            offset: const Offset(2, 2),
                                             blurRadius: 4,
                                           ),
                                         ],
@@ -198,7 +198,7 @@ class _DesktopState extends State<Desktop> {
                                       shadows: [
                                         Shadow(
                                           color: Colors.grey.withOpacity(0.5),
-                                          offset: Offset(2, 2),
+                                          offset: const Offset(2, 2),
                                           blurRadius: 4,
                                         ),
                                       ],
@@ -213,7 +213,7 @@ class _DesktopState extends State<Desktop> {
                       ],
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,

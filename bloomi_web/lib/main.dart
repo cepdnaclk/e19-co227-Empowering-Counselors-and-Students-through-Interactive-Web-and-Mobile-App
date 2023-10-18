@@ -61,7 +61,6 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // home: AdminPanel()
       home: const ResponsiveLayout(
         mobileBody: SplashScreenMobile(),
         tabletBody: SplashScreenTablet(),
