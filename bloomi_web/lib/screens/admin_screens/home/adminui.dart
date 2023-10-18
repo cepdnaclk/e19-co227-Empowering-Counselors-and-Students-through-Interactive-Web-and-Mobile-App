@@ -179,7 +179,7 @@ class ExampleSidebarX extends StatelessWidget {
           label: 'Home',
         ),
         const SidebarXItem(
-          icon: Icons.search,
+          icon: Icons.person_2_outlined,
           label: 'Student',
         ),
         const SidebarXItem(
@@ -187,11 +187,11 @@ class ExampleSidebarX extends StatelessWidget {
           label: 'Counselor',
         ),
         const SidebarXItem(
-          icon: Icons.favorite,
+          icon: Icons.admin_panel_settings_outlined,
           label: 'Admin',
         ),
         const SidebarXItem(
-          icon: Icons.local_activity,
+          icon: Icons.access_time,
           label: 'Activity Log',
         ),
         SidebarXItem(

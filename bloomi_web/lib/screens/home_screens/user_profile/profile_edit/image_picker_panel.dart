@@ -1,12 +1,10 @@
 import 'dart:async';
-
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 class ImagePick extends StatefulWidget {
@@ -27,7 +25,7 @@ class _ImagePickState extends State<ImagePick> {
     if (file != null) {
       return await file.readAsBytes();
     }
-    Logger().e("No images selected");
+    print("No images selected");
   }
 
   void selectImage() async {

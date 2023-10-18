@@ -17,7 +17,6 @@ class ProfileTabDesktopScreenUser extends StatelessWidget {
           const Expanded(
             child: Stack(
               children: [
-                //TopBackground(),
                 SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(

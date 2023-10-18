@@ -219,7 +219,7 @@ class _DesktopState extends State<Desktop> {
                     children: [
                       SizedBox(
                         height: height * 0.764,
-                        width: width / 3,
+                        width: width / 3.5,
                         child: Column(
                           children: [
                             Container(

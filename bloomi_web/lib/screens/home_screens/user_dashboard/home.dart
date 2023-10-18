@@ -5,7 +5,7 @@ import 'package:bloomi_web/screens/home_screens/note/note.dart';
 import 'package:bloomi_web/screens/home_screens/relax/relax.dart';
 import 'package:bloomi_web/screens/home_screens/user_dashboard/home_page.dart';
 import 'package:bloomi_web/screens/home_screens/user_dashboard/notification.dart';
-import 'package:bloomi_web/screens/home_screens/user_profile/profile.dart';
+import 'package:bloomi_web/screens/home_screens/user_profile/profile_home.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -211,7 +211,7 @@ class ExampleSidebarX extends StatelessWidget {
           label: 'Relax',
         ),
         const SidebarXItem(
-          icon: Icons.music_note,
+          icon: Icons.person_2_outlined,
           label: 'Profile',
         ),
       ],
@@ -246,7 +246,7 @@ class _ScreensExample extends StatelessWidget {
             return const Relax();
 
           case 5:
-            return const UserProfile();
+            return const ProfileHome();
 
           default:
             return const Text('');
