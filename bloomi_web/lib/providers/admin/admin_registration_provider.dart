@@ -234,4 +234,45 @@ class AdminRegistrationProvider extends ChangeNotifier {
       Logger().e(e);
     }
   }
+
+  //------------------------ SAVE ActivityLog ------------------------
+  Future<void> saveActivityLog(
+    BuildContext context,
+    String adminName,
+    String userName,
+    String change,
+    DateTime dateTime,
+  ) async {
+    try {
+      if (adminName.isNotEmpty && userName.isNotEmpty && change.isNotEmpty) {
+        setIsLoading(true);
+        await AdminController().saveActivityLog(
+          context,
+          adminName,
+          userName,
+          change,
+          dateTime,
+        );
+        notifyListeners();
+        setIsLoading(false);
+      } else {
+        UtilMethod.customDialogBox(
+          context,
+          "Error",
+          "Please fill all the fields",
+          onOkPressed: () {},
+          onCancelPressed: () {},
+        );
+        setIsLoading(false);
+      }
+
+      // Clear text fields after saving
+      name.clear();
+
+      setIsLoading(false);
+    } catch (e) {
+      Logger().e(e);
+      setIsLoading(false);
+    }
+  }
 }

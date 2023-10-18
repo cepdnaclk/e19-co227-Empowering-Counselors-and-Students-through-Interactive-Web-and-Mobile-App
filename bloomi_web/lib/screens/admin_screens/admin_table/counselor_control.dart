@@ -1,6 +1,7 @@
 import 'package:bloomi_web/components/custom_control_buttons.dart';
 import 'package:bloomi_web/controllers/counsellor_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
+import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/counsellor_update_form.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/counselorform.dart';
@@ -27,8 +28,9 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Consumer<CounsellorRegistrationProvider>(
-              builder: (context, value, child) {
+            Consumer2<CounsellorRegistrationProvider,
+                AdminRegistrationProvider>(
+              builder: (context, value, value2, child) {
                 return Padding(
                   padding: const EdgeInsets.all(20),
                   child: Center(
@@ -136,6 +138,12 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                                   value.counsellorDelete(
                                                       _list[index].uid,
                                                       context);
+                                                  value2.saveActivityLog(
+                                                      context,
+                                                      value2.adminModel!.name,
+                                                      value.name.text,
+                                                      "Deleted",
+                                                      DateTime.now());
                                                 });
                                               },
                                             ),

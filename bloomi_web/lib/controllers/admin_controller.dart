@@ -227,8 +227,40 @@ class AdminController {
     }
   }
 
+  //----------------------saving activityLog data in cloud firestore---------------------
+
+  CollectionReference activityLog =
+      FirebaseFirestore.instance.collection('activity_log');
+  Future<void> saveActivityLog(
+    BuildContext context,
+    String adminName,
+    String userName,
+    String change,
+    DateTime dateTime,
+  ) async {
+    try {
+      String appoactivityLogId = activityLog.doc().id;
+
+      return activityLog.add({
+        'id': appoactivityLogId,
+        'adminName': adminName,
+        'userName': userName,
+        'change': change,
+        'dateTime': dateTime,
+      }).then((value) {
+        Logger().e("Activity Log Added");
+        // ignore: invalid_return_type_for_catch_error
+      }).catchError((error) => Logger().e("Failed to add Appointment: $error"));
+    } catch (e) {
+      Logger().e(e);
+    }
+  }
+
   //------------------------ GET All Admins ------------------------
   Stream<QuerySnapshot> getAdmins() => admins.snapshots();
+
+  //------------------------ GET All activitylogs ------------------------
+  Stream<QuerySnapshot> getAllActivityLog() => activityLog.snapshots();
 
   //-------------retrieve and listen to the admin real-time-----------------
   Stream<QuerySnapshot> getAdminAdditional() => additionalAdmin.snapshots();

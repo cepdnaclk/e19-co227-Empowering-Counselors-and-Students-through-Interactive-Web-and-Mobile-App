@@ -140,6 +140,13 @@ class _AdminControlState extends State<AdminControl> {
                                                         value.deleteAdmin(
                                                             _list[index].uid,
                                                             context);
+                                                        value.saveActivityLog(
+                                                            context,
+                                                            value.adminModel!
+                                                                .name,
+                                                            value.name.text,
+                                                            "Deleted",
+                                                            DateTime.now());
                                                       },
                                                       onCancelPressed: () {},
                                                     );
