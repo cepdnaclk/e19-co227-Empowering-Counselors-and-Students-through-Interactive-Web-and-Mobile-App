@@ -1,4 +1,5 @@
 import 'package:bloomi_web/responsive/responsive_layout.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/desktop.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/desktop_dashboard.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/mobile_dashboard.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/tablet_dashboard.dart';
@@ -19,7 +20,7 @@ class _DashboardHomeState extends State<DashboardHome> {
       body: ResponsiveLayout(
           mobileBody: DashboardMobile(),
           tabletBody: DashboardTablet(),
-          desktopBody: DashboardDesktop()),
+          desktopBody: Desktop()),
     );
   }
 }
