@@ -197,7 +197,7 @@ class AdminController {
           email: email,
           phone: phone,
           credential: userCredential,
-          userType: userType,
+          userType: 'Admin',
           imgUrl: ""));
 
       saveUserAdditionalData(ChatModel(
@@ -208,7 +208,7 @@ class AdminController {
           lastSeen: DateTime.now().toString(),
           isOnline: true,
           token: "",
-          userType: userType));
+          userType: 'Admin'));
     } on FirebaseAuthException catch (e) {
       UtilMethod.customDialogBox(context, "Error", e.code);
       Logger().e(e);

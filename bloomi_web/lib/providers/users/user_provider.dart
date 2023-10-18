@@ -65,8 +65,12 @@ class UserProvider extends ChangeNotifier {
             await Provider.of<AppointmentProvider>(context, listen: false)
                 .fetchAllAppointments(user.uid);
 
-            await Provider.of<CalendarProvider>(context, listen: false)
-                .getDataSource(context);
+            try {
+              await Provider.of<CalendarProvider>(context, listen: false)
+                  .getDataSource(context);
+            } catch (e) {
+              Logger().e(e);
+            }
             UtilFunction.navigateForward(context, HomeCounsellor());
 
             //----------if user is admin, navigate to admin home page----------
