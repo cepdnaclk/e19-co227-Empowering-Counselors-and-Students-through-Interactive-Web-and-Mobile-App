@@ -2,6 +2,7 @@ import 'package:bloomi_web/components/custom_control_buttons.dart';
 import 'package:bloomi_web/controllers/admin_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
+import 'package:bloomi_web/screens/admin_screens/registration%20_forms/admin_update_form.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/adminform.dart';
 import 'package:bloomi_web/utils/util_admin_functions.dart';
 import 'package:bloomi_web/utils/util_method.dart';
@@ -114,9 +115,12 @@ class _AdminControlState extends State<AdminControl> {
                                                   basiccolor:
                                                       Colors.grey.shade50,
                                                   onPressed: () {
-                                                    AdminForm
-                                                        .adminregistrationform(
-                                                            context, 'Update');
+                                                    AdminUpdateForm
+                                                        .adminUpdateform(
+                                                      context,
+                                                      'Update',
+                                                      _list[index].uid,
+                                                    );
                                                   }),
                                               const SizedBox(
                                                 width: 10,

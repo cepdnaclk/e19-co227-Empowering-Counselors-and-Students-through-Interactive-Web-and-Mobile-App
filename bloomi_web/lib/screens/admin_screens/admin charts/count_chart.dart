@@ -54,7 +54,7 @@ class CountChartState extends State<CountChart> {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            Container(
+            SizedBox(
               width: 400,
               height: 400,
               child: Column(
