@@ -1,6 +1,5 @@
 import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/screens/counsellor_screens/profile/profile_panel.dart';
-import 'package:bloomi_web/screens/counsellor_screens/profile/top_background.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 

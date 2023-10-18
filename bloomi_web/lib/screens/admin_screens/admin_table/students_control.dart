@@ -18,7 +18,7 @@ class _StudentControlState extends State<StudentControl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade50,
+      // backgroundColor: Colors.blue.shade50,
       body: SingleChildScrollView(
         child: Center(
           child: Column(

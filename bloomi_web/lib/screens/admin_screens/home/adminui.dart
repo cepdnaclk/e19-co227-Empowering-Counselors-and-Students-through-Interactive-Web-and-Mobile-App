@@ -54,23 +54,7 @@ class AdminPanel extends StatelessWidget {
                     color: white,
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.settings,
-                    color: white,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    AuthController.signOutUser();
-                  },
-                  icon: const Icon(
-                    Icons.logout,
-                    color: white,
-                  ),
-                ),
-                const SizedBox(width: 5),
+                const SizedBox(width: 10),
                 Consumer<AdminRegistrationProvider>(
                   builder: (context, value, child) {
                     // Return a widget from the builder function.
@@ -89,7 +73,7 @@ class AdminPanel extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(
-                          width: 2,
+                          width: 20,
                         ),
                         Text(
                           value.adminModel!.name,
@@ -105,6 +89,7 @@ class AdminPanel extends StatelessWidget {
                     );
                   },
                 ),
+                const SizedBox(width: 5),
               ],
             ),
       drawer: ExampleSidebarX(controller: _controller),
@@ -195,15 +180,15 @@ class ExampleSidebarX extends StatelessWidget {
         ),
         const SidebarXItem(
           icon: Icons.search,
-          label: 'Student Control',
+          label: 'Student',
         ),
         const SidebarXItem(
           icon: Icons.people,
-          label: 'Counselor Control',
+          label: 'Counselor',
         ),
         const SidebarXItem(
           icon: Icons.favorite,
-          label: 'Admin Control',
+          label: 'Admin',
         ),
         const SidebarXItem(
           icon: Icons.local_activity,

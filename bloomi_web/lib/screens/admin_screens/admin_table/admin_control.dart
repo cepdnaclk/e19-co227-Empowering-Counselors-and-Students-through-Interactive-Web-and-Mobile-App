@@ -2,8 +2,8 @@ import 'package:bloomi_web/components/custom_control_buttons.dart';
 import 'package:bloomi_web/controllers/admin_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
+import 'package:bloomi_web/screens/admin_screens/registration%20_forms/admin_form.dart';
 import 'package:bloomi_web/screens/admin_screens/registration%20_forms/admin_update_form.dart';
-import 'package:bloomi_web/screens/admin_screens/registration%20_forms/adminform.dart';
 import 'package:bloomi_web/utils/util_admin_functions.dart';
 import 'package:bloomi_web/utils/util_method.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class _AdminControlState extends State<AdminControl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade50,
+      // backgroundColor: Colors.blue.shade50,
       body: SingleChildScrollView(
         child: Column(
           children: [

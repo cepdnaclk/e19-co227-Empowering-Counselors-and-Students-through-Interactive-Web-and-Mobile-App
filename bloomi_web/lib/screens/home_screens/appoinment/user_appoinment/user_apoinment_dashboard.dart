@@ -1,7 +1,6 @@
 import 'package:bloomi_web/components/counselor_list_view.dart';
 import 'package:bloomi_web/components/custom_card_widget.dart';
 import 'package:bloomi_web/components/footer.dart';
-import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
 class UserAppointmentDashboard extends StatefulWidget {
@@ -164,16 +163,16 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 20),
-                    Align(
+                    const SizedBox(height: 20),
+                    const Align(
                       alignment: Alignment.topLeft,
                       child: SizedBox(
                         height: 400,
                         child: CounselorListView(),
                       ),
                     ),
-                    SizedBox(height: 30),
-                    Text(
+                    const SizedBox(height: 30),
+                    const Text(
                       "Your Appointments",
                       style: TextStyle(
                         fontSize: 25,
@@ -181,8 +180,8 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 20),
-                    CustomCardWidget(),
+                    const SizedBox(height: 20),
+                    const CustomCardWidget(),
                   ],
                 ),
               ),

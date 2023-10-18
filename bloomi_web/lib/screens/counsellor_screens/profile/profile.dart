@@ -126,7 +126,7 @@ class _CounselorProfileState extends State<CounselorProfile> {
                                           fontSize: width > 750 ? 16 : 12)),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              const SizedBox(height: 8),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
@@ -142,7 +142,7 @@ class _CounselorProfileState extends State<CounselorProfile> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              const SizedBox(height: 8),
                               Row(
                                 children: [
                                   Text(keys[3],
@@ -159,7 +159,7 @@ class _CounselorProfileState extends State<CounselorProfile> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              const SizedBox(height: 8),
                               Row(
                                 children: [
                                   Text(keys[4],
