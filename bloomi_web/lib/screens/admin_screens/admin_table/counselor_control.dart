@@ -135,15 +135,19 @@ class _CounselorcontrolState extends State<Counselorcontrol> {
                                                     'Do You want to delete?',
                                                     onCancelPressed: () {},
                                                     onOkPressed: () {
-                                                  value.counsellorDelete(
-                                                      _list[index].uid,
-                                                      context);
-                                                  value2.saveActivityLog(
-                                                      context,
-                                                      value2.adminModel!.name,
-                                                      value.name.text,
-                                                      "Deleted",
-                                                      DateTime.now());
+                                                  value2
+                                                      .saveActivityLog(
+                                                          context,
+                                                          value2
+                                                              .adminModel!.name,
+                                                          _list[index].name,
+                                                          "Deleted",
+                                                          DateTime.now())
+                                                      .then((value3) {
+                                                    value.counsellorDelete(
+                                                        _list[index].uid,
+                                                        context);
+                                                  });
                                                 });
                                               },
                                             ),

@@ -137,16 +137,21 @@ class _AdminControlState extends State<AdminControl> {
                                                       'Warning!',
                                                       'Do You Want to delete?',
                                                       onOkPressed: () {
-                                                        value.deleteAdmin(
-                                                            _list[index].uid,
-                                                            context);
-                                                        value.saveActivityLog(
-                                                            context,
-                                                            value.adminModel!
-                                                                .name,
-                                                            value.name.text,
-                                                            "Deleted",
-                                                            DateTime.now());
+                                                        value
+                                                            .saveActivityLog(
+                                                                context,
+                                                                value
+                                                                    .adminModel!
+                                                                    .name,
+                                                                _list[index]
+                                                                    .name,
+                                                                "Deleted",
+                                                                DateTime.now())
+                                                            .then((value3) {
+                                                          value.deleteAdmin(
+                                                              _list[index].uid,
+                                                              context);
+                                                        });
                                                       },
                                                       onCancelPressed: () {},
                                                     );

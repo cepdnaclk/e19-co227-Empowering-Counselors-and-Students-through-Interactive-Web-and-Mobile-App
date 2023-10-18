@@ -60,7 +60,7 @@ class _AdminActivityLogState extends State<AdminActivityLog> {
             itemBuilder: (context, index) {
               return ListTile(
                 title: Text(
-                  "Administrator ${_list[index].adminName} created a new user account for ${_list[index].userName}.",
+                  "Administrator ${_list[index].adminName}  ${_list[index].change} a new user account for ${_list[index].userName}.",
                   style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w200,
