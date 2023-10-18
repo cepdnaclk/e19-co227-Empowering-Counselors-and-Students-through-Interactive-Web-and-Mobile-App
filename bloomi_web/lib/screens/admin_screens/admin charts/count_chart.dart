@@ -58,7 +58,7 @@ class CountChartState extends State<CountChart> {
 
             Row(
               children: [
-                Container(
+                SizedBox(
                   width: 300,
                   height: 300,
                   child: Column(
@@ -112,7 +112,7 @@ class CountChartState extends State<CountChart> {
                     ],
                   ),
                 ),
-                IndicatorWidget(),
+                const IndicatorWidget(),
               ],
             ),
             const Text(

@@ -168,10 +168,10 @@ class LineChartSample1 extends StatefulWidget {
   const LineChartSample1({super.key});
 
   @override
-  State<StatefulWidget> createState() => LineChart_();
+  State<StatefulWidget> createState() => LineChartTwo();
 }
 
-class LineChart_ extends State<LineChartSample1> {
+class LineChartTwo extends State<LineChartSample1> {
   late bool isShowingMainData;
 
   @override
@@ -190,11 +190,11 @@ class LineChart_ extends State<LineChartSample1> {
               ),
               Row(
                 children: [
-                  Container(height: 250, width: 450, child: const _LineChart()),
+                  const SizedBox(height: 250, width: 450, child: _LineChart()),
                   const SizedBox(
                     width: 20,
                   ),
-                  Container(
+                  SizedBox(
                     height: 200,
                     width: 120,
                     child: Column(

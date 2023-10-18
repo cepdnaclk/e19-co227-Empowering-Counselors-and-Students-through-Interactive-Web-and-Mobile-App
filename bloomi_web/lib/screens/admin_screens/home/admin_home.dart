@@ -38,15 +38,15 @@ class _AdminHomeState extends State<AdminHome> {
                     Column(
                       children: [
                         Card(
-                          child: Container(
+                          child: SizedBox(
                             width: isSmallScreen ? screenSize.width : 450,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Row(
                                   children: [
-                                    SizedBox(height: 20),
-                                    Container(
+                                    const SizedBox(height: 20),
+                                    SizedBox(
                                       height: isSmallScreen ? 150 : 300,
                                       width: isSmallScreen ? 150 : 300,
                                       child: PieChart(
@@ -95,7 +95,7 @@ class _AdminHomeState extends State<AdminHome> {
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                               ],
                             ),
                           ),
@@ -103,7 +103,7 @@ class _AdminHomeState extends State<AdminHome> {
                         const SizedBox(
                           height: 15,
                         ),
-                        CountChart(),
+                        const CountChart(),
                       ],
                     ),
                     const SizedBox(
@@ -115,7 +115,7 @@ class _AdminHomeState extends State<AdminHome> {
                         const SizedBox(
                           height: 15,
                         ),
-                        LineChartSample1(),
+                        const LineChartSample1(),
                       ],
                     ),
                   ],
