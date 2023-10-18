@@ -223,4 +223,15 @@ class AdminRegistrationProvider extends ChangeNotifier {
       setIsLoading(false);
     }
   }
+
+  //-----------------------Delete Admin---------------------
+  Future<void> deleteAdmin(String uid, BuildContext context) async {
+    try {
+      await AdminController().deleteAdminData(uid).then((value) {
+        UtilMethod.customDialogBox(context, "Success", "Deleted Successfully!");
+      });
+    } catch (e) {
+      Logger().e(e);
+    }
+  }
 }
