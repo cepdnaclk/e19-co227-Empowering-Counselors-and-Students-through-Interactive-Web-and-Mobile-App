@@ -101,38 +101,6 @@ class CounsellorController {
         .catchError((error) => Logger().e("Failed to add user: $error"));
   }
 
-  //-----------------------To Update counsellor---------------------
-  Future<void> updateCounsellor(
-    String email,
-    String password,
-    String name,
-    String phone,
-    String faculty,
-    String userCredential,
-    String userType,
-    BuildContext context,
-    String uId,
-    String imgUrl,
-  ) async {
-    try {
-      String id = counsellor.doc().id;
-      await updateCounsellorData(CounsellorModel(
-          uid: id,
-          name: name,
-          email: email,
-          phone: phone,
-          faculty: faculty,
-          userCredential: userCredential,
-          userType: userType,
-          imgUrl: imgUrl));
-    } on FirebaseAuthException catch (e) {
-      UtilMethod.customDialogBox(context, "Error", e.code);
-      Logger().e(e);
-    } catch (e) {
-      Logger().e(e);
-    }
-  }
-
   //----------------------Update Counsellor data in cloud firestore---------------------
   Future<void> updateCounsellorData(CounsellorModel counsellorModel) {
     return counsellor
@@ -149,6 +117,15 @@ class CounsellorController {
         })
         .then((value) => Logger().i("User Updated"))
         .catchError((error) => Logger().e("Failed to update user: $error"));
+  }
+
+  //----------------------delete Counsellor data in cloud firestore---------------------
+  Future<void> deleteCounsellorData(String uId) {
+    return counsellor
+        .doc(uId)
+        .delete()
+        .then((value) => Logger().i("User Deleted"))
+        .catchError((error) => Logger().e("Failed to Delete user: $error"));
   }
 
   //-----------------------fetch admin data from database---------------------

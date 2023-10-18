@@ -109,8 +109,18 @@ class AdminController {
           'userType': adminModel.userType,
           'imgUrl': UtilConstants.dummyProfileUrl,
         })
-        .then((value) => Logger().i("User Added"))
-        .catchError((error) => Logger().e("Failed to add user: $error"));
+        .then((value) => Logger().i("User updated"))
+        .catchError((error) => Logger().e("Failed to update user: $error"));
+  }
+
+  //----------------------update Admin data in cloud firestore---------------------
+
+  Future<void> deleteAdminData(String uid) {
+    return admins
+        .doc(uid)
+        .delete()
+        .then((value) => Logger().i("User deleted"))
+        .catchError((error) => Logger().e("Failed to delete user: $error"));
   }
 
   //-----------------------fetch admin data from database---------------------
