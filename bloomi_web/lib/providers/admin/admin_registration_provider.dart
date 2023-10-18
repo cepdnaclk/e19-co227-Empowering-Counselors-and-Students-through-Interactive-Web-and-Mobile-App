@@ -243,6 +243,10 @@ class AdminRegistrationProvider extends ChangeNotifier {
     String change,
     DateTime dateTime,
   ) async {
+    Logger().e(adminName);
+    Logger().e(userName);
+    Logger().e(change);
+    Logger().e(dateTime);
     try {
       if (adminName.isNotEmpty && userName.isNotEmpty && change.isNotEmpty) {
         setIsLoading(true);
@@ -259,7 +263,7 @@ class AdminRegistrationProvider extends ChangeNotifier {
         UtilMethod.customDialogBox(
           context,
           "Error",
-          "Please fill all the fields",
+          "Something went wrong!",
           onOkPressed: () {},
           onCancelPressed: () {},
         );
