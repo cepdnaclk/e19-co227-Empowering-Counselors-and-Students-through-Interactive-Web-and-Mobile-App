@@ -1,11 +1,11 @@
 import 'package:bloomi_web/components/footer.dart';
-import 'package:bloomi_web/screens/counsellor_screens/profile/profile_panel.dart';
-import 'package:bloomi_web/screens/counsellor_screens/profile/top_background.dart';
+import 'package:bloomi_web/screens/home_screens/user_profile/profile_panel.dart';
+
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
-class ProfileMobileScreen extends StatelessWidget {
-  const ProfileMobileScreen({super.key});
+class ProfileMobileScreenUser extends StatelessWidget {
+  const ProfileMobileScreenUser({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,5 @@
-import 'package:bloomi_web/screens/counsellor_screens/profile/profile_card.dart';
-import 'package:bloomi_web/screens/counsellor_screens/profile/profile_edit/avatar_edit.dart';
+import 'package:bloomi_web/screens/home_screens/user_profile/profile_card.dart';
+import 'package:bloomi_web/screens/home_screens/user_profile/profile_edit/avatar_edit.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +31,8 @@ class ProfilePanle extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(alignment: Alignment.center, child: const ProfileImage()),
+            Container(
+                alignment: Alignment.center, child: const ProfileImageUser()),
             const ProfileCard(),
           ],
         ),
