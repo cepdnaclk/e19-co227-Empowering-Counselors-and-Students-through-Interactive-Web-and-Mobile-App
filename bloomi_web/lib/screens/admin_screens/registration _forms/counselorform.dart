@@ -116,6 +116,13 @@ class CounselorForm {
                           "",
                           false,
                         );
+                        value2.saveActivityLog(
+                          context,
+                          value2.adminModel!.name,
+                          value.name.text,
+                          "Update",
+                          DateTime.now(),
+                        );
                       },
                       child: FormButtonWeb(
                         "Register",
