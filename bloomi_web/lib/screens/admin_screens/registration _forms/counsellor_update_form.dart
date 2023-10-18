@@ -5,6 +5,7 @@ import 'package:bloomi_web/components/form_heading.dart';
 import 'package:bloomi_web/components/form_input_web.dart';
 import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
+import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,8 +21,8 @@ List<String> faculty = [
   'Faculty of Management',
 ];
 
-class CounselorForm {
-  static counselorregistrationform(BuildContext context) {
+class CounselorUpdateForm {
+  static counselorUpdateform(BuildContext context, String uid) {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -39,7 +40,7 @@ class CounselorForm {
                   padding: EdgeInsets.only(top: 10.0),
                   child: Center(
                     child: FormHeading(
-                      "Add Counselor",
+                      "Update Counselor",
                       color: Colors.grey,
                     ),
                   ),
@@ -105,7 +106,7 @@ class CounselorForm {
                   builder: (context, value, value2, child) {
                     return InkWell(
                       onTap: () {
-                        value.signUpCounsellor(
+                        value.updateCounselor(
                           value.name.text,
                           value.email.text,
                           value.password.text,
@@ -113,8 +114,8 @@ class CounselorForm {
                           value.faculty,
                           value.credentials.text,
                           context,
-                          "",
-                          false,
+                          uid,
+                          UtilConstants.dummyProfileUrl,
                         );
                         value2.saveActivityLog(
                           context,
@@ -125,7 +126,7 @@ class CounselorForm {
                         );
                       },
                       child: FormButtonWeb(
-                        "Register",
+                        "Update",
                         isLoading: value.isLoading,
                       ),
                     );

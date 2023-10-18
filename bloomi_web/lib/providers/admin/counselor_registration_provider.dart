@@ -188,18 +188,15 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
       if (email.isNotEmpty && password.isNotEmpty && name.isNotEmpty) {
         setIsLoading(true);
         await CounsellorController()
-            .updateCounsellor(
-          name,
-          email,
-          password,
-          phone,
-          faculty,
-          credential,
-          userType,
-          context,
-          uId,
-          imgUrl,
-        )
+            .updateCounsellorData(CounsellorModel(
+                uid: uId,
+                name: name,
+                email: email,
+                phone: phone,
+                faculty: faculty,
+                userCredential: credential,
+                userType: userType,
+                imgUrl: imgUrl))
             .then((value) {
           UtilMethod.customDialogBox(
               context, "Success", "Counsellor Updated Successfully");
@@ -219,6 +216,19 @@ class CounsellorRegistrationProvider extends ChangeNotifier {
     } catch (e) {
       Logger().e(e);
       setIsLoading(false);
+    }
+  }
+
+  //----------------------Counsellor delete---------------------
+
+  Future<void> counsellorDelete(String uId, BuildContext context) async {
+    try {
+      await CounsellorController().deleteCounsellorData(uId).then((value) {
+        UtilMethod.customDialogBox(
+            context, "Success", "Counsellor Deleted Successfully");
+      });
+    } catch (e) {
+      Logger().e(e);
     }
   }
 

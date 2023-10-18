@@ -6,6 +6,21 @@ part of 'objects.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+ActivityLog _$ActivityLogFromJson(Map<String, dynamic> json) => ActivityLog(
+      adminName: json['adminName'] as String,
+      userName: json['userName'] as String,
+      change: json['change'] as String,
+      dateTime: ActivityLog._dateTimeFromJson(json['dateTime'] as Timestamp),
+    );
+
+Map<String, dynamic> _$ActivityLogToJson(ActivityLog instance) =>
+    <String, dynamic>{
+      'adminName': instance.adminName,
+      'userName': instance.userName,
+      'change': instance.change,
+      'dateTime': instance.dateTime.toIso8601String(),
+    };
+
 AdminModel _$AdminModelFromJson(Map<String, dynamic> json) => AdminModel(
       uid: json['uid'] as String,
       name: json['name'] as String,
