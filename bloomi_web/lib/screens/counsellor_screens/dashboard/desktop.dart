@@ -52,11 +52,10 @@ class _DesktopState extends State<Desktop> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
-            //mainAxisAlignment: MainAxisAlignment.start,
-            //crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -406,11 +405,11 @@ class _DesktopState extends State<Desktop> {
                   ),
                 ],
               ),
-              Footer(height: 55, width: width)
             ],
           ),
         ),
       ),
+      bottomNavigationBar: Footer(height: 55, width: width),
     );
   }
 }

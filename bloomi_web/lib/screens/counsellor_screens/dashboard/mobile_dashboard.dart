@@ -110,7 +110,7 @@ class _DashboardMobileState extends State<DashboardMobile> {
                                           fontSize: 18,
                                           color: UtilConstants.whiteColor),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     InkWell(
                                       onTap: () {
                                         UtilFormMethodNotification

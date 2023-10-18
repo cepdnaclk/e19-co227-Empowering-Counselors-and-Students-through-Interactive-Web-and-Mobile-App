@@ -324,7 +324,7 @@ class _DashboardDesktopState extends State<DashboardDesktop> {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       SizedBox(height: 20),
-                                      Text("10"), // get from DB
+                                      Text("1"), // get from DB
                                     ],
                                   ),
                                 ),

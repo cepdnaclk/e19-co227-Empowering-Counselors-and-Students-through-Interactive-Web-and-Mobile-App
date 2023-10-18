@@ -17,7 +17,7 @@ class _AdminActivityLogState extends State<AdminActivityLog> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade50,
+      // backgroundColor: Colors.blue.shade50,
       body: StreamBuilder(
         stream: AdminController().getAllActivityLog(),
         builder: (context, snapshot) {

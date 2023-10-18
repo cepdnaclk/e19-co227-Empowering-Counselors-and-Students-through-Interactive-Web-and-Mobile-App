@@ -1,10 +1,9 @@
 import 'package:bloomi_web/controllers/appoinment_controller.dart';
-
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class UserDetailsDialog extends StatelessWidget {
   final String uId;
@@ -195,8 +194,8 @@ class UserDetailsDialog extends StatelessWidget {
 
       return list;
     } catch (e) {
-      print(e);
-      throw e;
+      Logger().e(e);
+      rethrow;
     }
   }
 }

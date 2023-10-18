@@ -125,7 +125,7 @@ class _UserProfileState extends State<UserProfile> {
                                           fontSize: width > 750 ? 16 : 12)),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              const SizedBox(height: 8),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
@@ -141,7 +141,7 @@ class _UserProfileState extends State<UserProfile> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              const SizedBox(height: 8),
                               Row(
                                 children: [
                                   Text(keys[3],
@@ -158,7 +158,7 @@ class _UserProfileState extends State<UserProfile> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              const SizedBox(height: 8),
                               Row(
                                 children: [
                                   Text(keys[4],
@@ -175,7 +175,7 @@ class _UserProfileState extends State<UserProfile> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              const SizedBox(height: 8),
                               Row(
                                 children: [
                                   Text(keys[4],
