@@ -24,103 +24,116 @@ class _AdminHomeState extends State<AdminHome> {
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: Row(
+        child: Column(
           children: [
-            const SizedBox(width: 20), // Adjust spacing
-
-            Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 20),
-                const CustomText("Welcome to the Admin Dashboard"),
-                const SizedBox(height: 20),
-                Row(
+                const SizedBox(width: 20), // Adjust spacing
+
+                Column(
                   children: [
-                    Column(
+                    const SizedBox(height: 20),
+                    const CustomText(
+                      "Welcome to the Admin Dashboard",
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
                       children: [
-                        Card(
-                          child: SizedBox(
-                            width: isSmallScreen ? screenSize.width : 450,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Row(
+                        Column(
+                          children: [
+                            Card(
+                              child: SizedBox(
+                                width: isSmallScreen ? screenSize.width : 450,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    const SizedBox(height: 20),
-                                    SizedBox(
-                                      height: isSmallScreen ? 150 : 300,
-                                      width: isSmallScreen ? 150 : 300,
-                                      child: PieChart(
-                                        PieChartData(
-                                          borderData: FlBorderData(
-                                            border: Border.all(
-                                              style: BorderStyle.solid,
-                                            ),
-                                          ),
-                                          sectionsSpace: 0,
-                                          centerSpaceRadius: 40,
-                                          sections: getSections(),
-                                          pieTouchData: PieTouchData(
-                                              touchCallback:
-                                                  (FlTouchEvent event,
+                                    Row(
+                                      children: [
+                                        const SizedBox(height: 20),
+                                        SizedBox(
+                                          height: isSmallScreen ? 150 : 300,
+                                          width: isSmallScreen ? 150 : 300,
+                                          child: PieChart(
+                                            PieChartData(
+                                              borderData: FlBorderData(
+                                                border: Border.all(
+                                                  style: BorderStyle.solid,
+                                                ),
+                                              ),
+                                              sectionsSpace: 0,
+                                              centerSpaceRadius: 40,
+                                              sections: getSections(),
+                                              pieTouchData: PieTouchData(
+                                                  touchCallback: (FlTouchEvent
+                                                          event,
                                                       PieTouchResponse?
                                                           pieTouchResponse) {
-                                            setState(() {
-                                              if (pieTouchResponse == null ||
-                                                  pieTouchResponse
-                                                          .touchedSection ==
-                                                      null) {
-                                                touchedIndex = -1;
-                                              } else {
-                                                touchedIndex = pieTouchResponse
-                                                    .touchedSection!
-                                                    .touchedSectionIndex;
-                                              }
-                                            });
-                                          }),
+                                                setState(() {
+                                                  if (pieTouchResponse ==
+                                                          null ||
+                                                      pieTouchResponse
+                                                              .touchedSection ==
+                                                          null) {
+                                                    touchedIndex = -1;
+                                                  } else {
+                                                    touchedIndex =
+                                                        pieTouchResponse
+                                                            .touchedSection!
+                                                            .touchedSectionIndex;
+                                                  }
+                                                });
+                                              }),
+                                            ),
+                                          ),
                                         ),
+                                        const IndicatorWidget(),
+                                      ],
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(bottom: 8.0),
+                                      child: Text(
+                                        'Representation of Percentages of Users',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w100,
+                                          fontSize: 14,
+                                          color: Colors.black,
+                                        ),
+                                        textAlign: TextAlign.center,
                                       ),
                                     ),
-                                    IndicatorWidget(),
+                                    const SizedBox(height: 20),
                                   ],
                                 ),
-                                const Padding(
-                                  padding: EdgeInsets.only(bottom: 8.0),
-                                  child: Text(
-                                    'Representation of Percentages of Users',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w100,
-                                      fontSize: 14,
-                                      color: Colors.black,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                                const SizedBox(height: 20),
-                              ],
+                              ),
                             ),
-                          ),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            const CountChart(),
+                          ],
                         ),
                         const SizedBox(
-                          height: 15,
+                          width: 30,
                         ),
-                        const CountChart(),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 30,
-                    ),
-                    Column(
-                      children: [
-                        DetailedLinebar(),
-                        const SizedBox(
-                          height: 15,
+                        Column(
+                          children: [
+                            DetailedLinebar(),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            const LineChartSample1(),
+                          ],
                         ),
-                        const LineChartSample1(),
                       ],
                     ),
                   ],
                 ),
+                // Adjust spacing
               ],
+            ),
+            const SizedBox(
+              height: 50,
             ),
           ],
         ),
