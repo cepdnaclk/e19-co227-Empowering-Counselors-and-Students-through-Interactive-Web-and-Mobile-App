@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
-class AdminForm {
-  static adminregistrationform(BuildContext context, String heading) {
+class AdminUpdateForm {
+  static adminUpdateform(BuildContext context, String heading, String id) {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -74,16 +74,18 @@ class AdminForm {
                     return InkWell(
                       onTap: () async {
                         try {
-                          value.signUpAdmin(
-                              value.name.text,
-                              value.email.text,
-                              value.password.text,
-                              value.phoneNumber.text,
-                              // value.faculty,
-                              value.credentials.text,
-                              context,
-                              "",
-                              false);
+                          value.updateAdmin(
+                            id,
+                            value.name.text,
+                            value.email.text,
+                            value.password.text,
+                            value.phoneNumber.text,
+                            // value.faculty,
+                            value.credentials.text,
+
+                            context,
+                          );
+
                           value.saveActivityLog(
                             context,
                             value.adminModel!.name,
@@ -96,7 +98,7 @@ class AdminForm {
                         }
                       },
                       child: FormButtonWeb(
-                        "Register",
+                        "Update",
                         isLoading: value.isLoading,
                       ),
                     );

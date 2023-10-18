@@ -223,4 +223,60 @@ class AdminRegistrationProvider extends ChangeNotifier {
       setIsLoading(false);
     }
   }
+
+  //-----------------------Delete Admin---------------------
+  Future<void> deleteAdmin(String uid, BuildContext context) async {
+    try {
+      await AdminController().deleteAdminData(uid).then((value) {
+        UtilMethod.customDialogBox(context, "Success", "Deleted Successfully!");
+      });
+    } catch (e) {
+      Logger().e(e);
+    }
+  }
+
+  //------------------------ SAVE ActivityLog ------------------------
+  Future<void> saveActivityLog(
+    BuildContext context,
+    String adminName,
+    String userName,
+    String change,
+    DateTime dateTime,
+  ) async {
+    Logger().e(adminName);
+    Logger().e(userName);
+    Logger().e(change);
+    Logger().e(dateTime);
+    try {
+      if (adminName.isNotEmpty && userName.isNotEmpty && change.isNotEmpty) {
+        setIsLoading(true);
+        await AdminController().saveActivityLog(
+          context,
+          adminName,
+          userName,
+          change,
+          dateTime,
+        );
+        notifyListeners();
+        setIsLoading(false);
+      } else {
+        UtilMethod.customDialogBox(
+          context,
+          "Error",
+          "Something went wrong!",
+          onOkPressed: () {},
+          onCancelPressed: () {},
+        );
+        setIsLoading(false);
+      }
+
+      // Clear text fields after saving
+      name.clear();
+
+      setIsLoading(false);
+    } catch (e) {
+      Logger().e(e);
+      setIsLoading(false);
+    }
+  }
 }
