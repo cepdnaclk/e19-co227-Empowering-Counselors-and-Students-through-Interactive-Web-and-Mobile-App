@@ -55,7 +55,6 @@ class CountChartState extends State<CountChart> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-
             Row(
               children: [
                 SizedBox(
@@ -63,15 +62,6 @@ class CountChartState extends State<CountChart> {
                   height: 300,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
-
-            SizedBox(
-              width: 400,
-              height: 400,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Expanded(
                         child: BarChart(
