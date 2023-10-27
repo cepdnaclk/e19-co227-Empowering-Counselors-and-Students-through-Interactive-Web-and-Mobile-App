@@ -405,11 +405,14 @@ class _DesktopState extends State<Desktop> {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 50,
+              ),
+              Footer(height: 55, width: width),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: Footer(height: 55, width: width),
     );
   }
 }
