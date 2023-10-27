@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+//ignore_for_file: use_build_context_synchronously
 
 import 'package:bloomi_web/controllers/chat_controller.dart';
 import 'package:bloomi_web/controllers/counsellor_controller.dart';
