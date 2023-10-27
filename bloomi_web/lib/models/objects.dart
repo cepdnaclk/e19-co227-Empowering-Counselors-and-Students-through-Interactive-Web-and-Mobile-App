@@ -10,6 +10,7 @@ part 'calender_model.dart';
 part 'chat_model.dart';
 part 'conversation_model.dart';
 part 'counsellor_model.dart';
+part 'count_model.dart';
 part 'message_model.dart';
 part 'note_model.dart';
 part 'notification_model.dart';

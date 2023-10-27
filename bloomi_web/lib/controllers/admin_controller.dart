@@ -142,30 +142,30 @@ class AdminController {
     }
   }
 
-  // List<AdminModel>? allAdmin;
+  List<AdminModel>? allAdmin = [];
 
-  // List<AdminModel>? get admin => allAdmin;
-  // //-----------------------fetch admin data from database---------------------
-  // Future<List<AdminModel>?> fetchAllAdminData() async {
-  //   try {
-  //     //-------firebase quary to fetch admin data from database--------
-  //     QuerySnapshot querySnapshot = await admins.get();
+  List<AdminModel>? get admin => allAdmin;
+  //-----------------------fetch admin data from database---------------------
+  Future<List<AdminModel>?> fetchAllAdminData() async {
+    try {
+      //-------firebase quary to fetch admin data from database--------
+      QuerySnapshot querySnapshot = await admins.get();
 
-  //     Logger().i(querySnapshot.docs.length);
+      Logger().i(querySnapshot.docs.length);
 
-  //     for (var e in querySnapshot.docs) {
-  //       AdminModel admin =
-  //           AdminModel.fromJson(e.data() as Map<String, dynamic>);
+      for (var e in querySnapshot.docs) {
+        AdminModel admins =
+            AdminModel.fromJson(e.data() as Map<String, dynamic>);
 
-  //       allAdmin!.add(admin);
-  //     }
+        allAdmin!.add(admins);
+      }
 
-  //     return allAdmin;
-  //   } catch (e) {
-  //     Logger().e(e);
-  //     return null;
-  //   }
-  // }
+      return allAdmin;
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
 
   //----------------------saving admin additional data in cloud firestore---------------------
 

@@ -208,6 +208,31 @@ class AuthController {
     }
   }
 
+  //-----------------------fetch user data from database---------------------
+  List<UserModel>? allUser = [];
+
+  List<UserModel>? get user => allUser;
+
+  Future<List<UserModel>?> fetchAllUserData() async {
+    try {
+      //-------firebase quary to fetch admin data from database--------
+      QuerySnapshot querySnapshot = await users.get();
+
+      Logger().i(querySnapshot.docs.length);
+
+      for (var e in querySnapshot.docs) {
+        UserModel users = UserModel.fromJson(e.data() as Map<String, dynamic>);
+
+        allUser!.add(users);
+      }
+
+      return allUser;
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
   //-----------------------To signin with google User---------------------
 
   Future<UserCredential?> signInWithGoogle() async {
