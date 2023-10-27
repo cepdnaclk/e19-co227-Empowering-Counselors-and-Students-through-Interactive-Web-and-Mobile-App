@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
+import 'package:bloomi_web/controllers/admin_controller.dart';
 import 'package:bloomi_web/controllers/auth_controller.dart';
+import 'package:bloomi_web/controllers/counsellor_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
@@ -76,6 +78,10 @@ class UserProvider extends ChangeNotifier {
             //----------if user is admin, navigate to admin home page----------
           } else if (adminModel != null) {
             await startFetchUserAdditionalData(user.uid);
+            await startFetchAdmins();
+            await startFetchUsers();
+            await startFetchCounsellors();
+            await setPercentages();
             UtilFunction.navigateForward(context, AdminPanel());
           }
         } catch (e) {
@@ -96,6 +102,69 @@ class UserProvider extends ChangeNotifier {
         return userModel;
       } else {
         Logger().i("User not found");
+        return null;
+      }
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
+  //-----------------------to fetch all admins-----------------------
+  List<AdminModel>? allAdmin;
+
+  List<AdminModel>? get admin => allAdmin;
+
+  Future<List<AdminModel>?> startFetchAdmins() async {
+    try {
+      allAdmin = await AdminController().fetchAllAdminData();
+      if (allAdmin!.isNotEmpty) {
+        notifyListeners();
+        return allAdmin;
+      } else {
+        Logger().i("Admin data not found");
+        return null;
+      }
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
+  //-----------------------to fetch all counsellor-----------------------
+  List<CounsellorModel>? allCounsellor;
+
+  List<CounsellorModel>? get counsellors => allCounsellor;
+
+  Future<List<CounsellorModel>?> startFetchCounsellors() async {
+    try {
+      allCounsellor = await CounsellorController().fetchAllCounsellorData();
+      if (allCounsellor!.isNotEmpty) {
+        notifyListeners();
+        return allCounsellor;
+      } else {
+        Logger().i("Admin data not found");
+        return null;
+      }
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
+  //-----------------------to fetch all users-----------------------
+  List<UserModel>? userModelAll;
+
+  List<UserModel>? get userAll => userModelAll;
+
+  Future<List<UserModel>?> startFetchUsers() async {
+    try {
+      userModelAll = await AuthController().fetchAllUserData();
+      if (allAdmin!.isNotEmpty) {
+        notifyListeners();
+        return userModelAll;
+      } else {
+        Logger().i("Admin data not found");
         return null;
       }
     } catch (e) {
@@ -133,6 +202,35 @@ class UserProvider extends ChangeNotifier {
     Logger().e(val);
     try {
       AuthController().updateOnlineState(userModel!.uid, val);
+    } catch (e) {
+      Logger().e(e);
+    }
+  }
+
+  //-----------------------set count---------------------
+  List<double> percentages = [];
+
+  Future<void> setPercentages() async {
+    try {
+      if (userAll!.isNotEmpty && counsellors!.isNotEmpty && admin!.isNotEmpty) {
+        double userPer = (userAll!.length /
+                (userAll!.length + counsellors!.length + admin!.length)) *
+            100;
+        double counsellorPer = (counsellors!.length /
+                (userAll!.length + counsellors!.length + admin!.length)) *
+            100;
+        double adminPer = (admin!.length /
+                (userAll!.length + counsellors!.length + admin!.length)) *
+            100;
+
+        percentages.add(userPer);
+        percentages.add(counsellorPer);
+        percentages.add(adminPer);
+        notifyListeners();
+        Logger().e(percentages);
+      }
+
+      Logger().e(percentages);
     } catch (e) {
       Logger().e(e);
     }

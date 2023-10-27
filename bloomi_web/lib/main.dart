@@ -66,6 +66,7 @@ class MyApp extends StatelessWidget {
         tabletBody: SplashScreenTablet(),
         desktopBody: SplashDesktop(),
       ),
+      // home: AdminPanel(),
     );
   }
 }
