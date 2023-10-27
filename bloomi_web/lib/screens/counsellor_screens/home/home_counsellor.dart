@@ -1,11 +1,14 @@
 import 'package:bloomi_web/components/dropdown_menu_items.dart';
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/screens/counsellor_screens/chat/home/chat_counsellor.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/dashboard_home.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/notification_viewer.dart.dart';
 import 'package:bloomi_web/screens/counsellor_screens/note/note.dart';
 import 'package:bloomi_web/screens/counsellor_screens/profile/profile_home.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
+import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 class HomeCounsellor extends StatelessWidget {
@@ -102,18 +105,74 @@ class HomeCounsellor extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(width: 35),
-                Container(
-                  decoration: BoxDecoration(
-                    color: canvasColor,
-                    borderRadius: BorderRadius.circular(50),
+                const SizedBox(width: 15),
+                InkWell(
+                  onTap: () {
+                    UtilFunction.navigateForward(
+                        context, const ChatCounsellor());
+                  },
+                  child: Stack(
+                    children: [
+                      const Icon(Icons.message, size: 24, color: Colors.white),
+                      Positioned(
+                        right: -0.6,
+                        top: -2,
+                        child: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: const BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Text(
+                            '.',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 11,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  alignment: Alignment.center,
-                  width: 24,
-                  height: 24, // Adjust the width to your preference.
-                  child: const DropDownMenuItems(
-                    icon: Icons.person,
-                  ),
+                ),
+                const SizedBox(width: 15),
+                Consumer<CounsellorRegistrationProvider>(
+                  builder: (BuildContext context, value, Widget? child) {
+                    return Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: canvasColor,
+                            borderRadius: BorderRadius.circular(50),
+                            image: DecorationImage(
+                              image:
+                                  NetworkImage(value.counsellorModel!.imgUrl),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          alignment: Alignment.center,
+                          width: 24,
+                          height: 24, // Adjust the width to your preference.
+                          child: const DropDownMenuItems(
+                            icon: Icons.person,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          value.counsellorModel!.name,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: UtilConstants.whiteColor,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                      ],
+                    );
+                  },
                 ),
                 const SizedBox(width: 10),
               ],
@@ -204,10 +263,6 @@ class ExampleSidebarX extends StatelessWidget {
           onTap: () {},
         ),
         const SidebarXItem(
-          icon: Icons.chat,
-          label: 'Chat',
-        ),
-        const SidebarXItem(
           icon: Icons.note_add,
           label: 'Note',
         ),
@@ -238,11 +293,9 @@ class _ScreensExample extends StatelessWidget {
             return const DashboardHome();
 
           case 1:
-            return const ChatCounsellor();
-          case 2:
             return const NoteCounsellor();
 
-          case 3:
+          case 2:
             return const ProfileHome();
 
           default:
