@@ -1,6 +1,7 @@
 import 'package:bloomi_web/responsive/responsive_layout.dart';
-import 'package:bloomi_web/screens/counsellor_screens/profile/profile_mobile_screen.dart';
-import 'package:bloomi_web/screens/counsellor_screens/profile/profile_tab_desktop.dart';
+import 'package:bloomi_web/screens/counsellor_screens/profile/mobile/profile_mobile_screen.dart';
+import 'package:bloomi_web/screens/counsellor_screens/profile/desktop/profile_desktop_screen.dart';
+import 'package:bloomi_web/screens/counsellor_screens/profile/tablet/profile_tablet_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -17,8 +18,8 @@ class _ProfileHomeState extends State<ProfileHome> {
     return const Scaffold(
       body: ResponsiveLayout(
           mobileBody: ProfileMobileScreen(),
-          tabletBody: ProfileTabDesktopScreen(),
-          desktopBody: ProfileTabDesktopScreen()),
+          tabletBody: ProfileTabletScreen(),
+          desktopBody: ProfileDesktopScreen()),
     );
   }
 }
