@@ -20,13 +20,13 @@ class _AcceptedAppointmentsState extends State<AcceptedAppointments> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      color: UtilConstants.whiteColor,
+      color: Color.fromARGB(255, 186, 200, 225),
       elevation: 10,
       shadowColor: UtilConstants.greyColor.withOpacity(0.8),
       child: Padding(
         padding: width < 480
             ? const EdgeInsets.symmetric(horizontal: 10, vertical: 20)
-            : const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+            : const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
