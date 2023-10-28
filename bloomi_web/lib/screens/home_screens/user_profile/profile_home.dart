@@ -2,6 +2,7 @@ import 'package:bloomi_web/responsive/responsive_layout.dart';
 
 import 'package:bloomi_web/screens/home_screens/user_profile/profile_mobile_screen.dart';
 import 'package:bloomi_web/screens/home_screens/user_profile/profile_tab_desktop.dart';
+import 'package:bloomi_web/screens/home_screens/user_profile/tablet/profile_tablet_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -18,8 +19,8 @@ class _ProfileHomeState extends State<ProfileHome> {
     return const Scaffold(
       body: ResponsiveLayout(
           mobileBody: ProfileMobileScreenUser(),
-          tabletBody: ProfileTabDesktopScreenUser(),
-          desktopBody: ProfileTabDesktopScreenUser()),
+          tabletBody: ProfileTabletScreenUser(),
+          desktopBody: ProfileDesktopScreenUser()),
     );
   }
 }
