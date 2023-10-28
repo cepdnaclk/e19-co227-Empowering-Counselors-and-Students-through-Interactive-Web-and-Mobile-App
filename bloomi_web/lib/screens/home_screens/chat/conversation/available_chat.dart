@@ -73,16 +73,16 @@ class AvailableChat extends StatelessWidget {
                   );
                 }
 
-                Logger().i(snapshot.data!.docs.length);
-
                 _list.clear();
 
                 for (var e in snapshot.data!.docs) {
                   Map<String, dynamic> data = e.data() as Map<String, dynamic>;
                   var model = ConversationModel.fromJson(data);
+                  Logger().e(e.data());
                   _list.add(model);
                 }
-
+                Logger().e(_list.length);
+                Logger().e("HIIIIIIIII");
                 return Column(
                   children: [
                     Expanded(
