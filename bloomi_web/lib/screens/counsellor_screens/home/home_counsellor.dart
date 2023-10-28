@@ -19,12 +19,12 @@ class HomeCounsellor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isSmallScreen = MediaQuery.of(context).size.width < 900;
+    final isSmallScreen = MediaQuery.of(context).size.width < 1000;
     return Scaffold(
       key: _key,
       appBar: isSmallScreen
           ? AppBar(
-              backgroundColor: white,
+              backgroundColor: UtilConstants.canvasColor,
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -37,7 +37,7 @@ class HomeCounsellor extends StatelessWidget {
                   const Text(
                     'BLOOMI',
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -50,13 +50,13 @@ class HomeCounsellor extends StatelessWidget {
                 },
                 icon: const Icon(
                   Icons.menu,
-                  color: white,
+                  color: Colors.white,
                 ),
               ),
             )
           : AppBar(
               automaticallyImplyLeading: false,
-              backgroundColor: white,
+              backgroundColor: UtilConstants.canvasColor,
               title: Row(
                 children: [
                   Image.asset(
@@ -83,7 +83,7 @@ class HomeCounsellor extends StatelessWidget {
                   child: Stack(
                     children: [
                       const Icon(Icons.notifications,
-                          size: 24, color: Colors.black),
+                          size: 24, color: Colors.white),
                       Positioned(
                         right: -0.6,
                         top: -2,
@@ -113,7 +113,7 @@ class HomeCounsellor extends StatelessWidget {
                   },
                   child: Stack(
                     children: [
-                      const Icon(Icons.message, size: 24, color: Colors.black),
+                      const Icon(Icons.message, size: 24, color: Colors.white),
                       Positioned(
                         right: -0.6,
                         top: -2,
@@ -166,7 +166,7 @@ class HomeCounsellor extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: UtilConstants.blackColor,
+                            color: UtilConstants.whiteColor,
                           ),
                         ),
                         const SizedBox(width: 10),

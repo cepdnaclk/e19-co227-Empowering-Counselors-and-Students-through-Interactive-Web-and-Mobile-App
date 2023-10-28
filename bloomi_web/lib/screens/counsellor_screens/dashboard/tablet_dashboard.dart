@@ -3,7 +3,9 @@ import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/accepted_appointments_card.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/all_appointments_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/goto_all_appointment_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/pending_appointments_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/notification_viewer.dart.dart';
@@ -326,24 +328,78 @@ class _DashboardTabletState extends State<DashboardTablet> {
                 },
               ),
             ),
-            Text(
-              "Your Next Appointment",
-              style: TextStyle(
-                fontSize: 25,
-                color: UtilConstants.actionColor.withOpacity(0.9),
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 20),
             const NextAppointment(),
             const SizedBox(height: 20),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                PendingAppointments(),
-                AcceptedAppointments(),
-              ],
-            ),
+            width < 750
+                ? Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: (Column(
+                      children: [
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            PendingAppointments(),
+                            AcceptedAppointments(),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: width - 40,
+                              height: 60,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  // Navigate to all appointments page
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return const AllAppointments();
+                                  }));
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    foregroundColor: UtilConstants.whiteColor,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    backgroundColor: const Color.fromARGB(
+                                        255, 155, 172, 187) // Button color
+                                    ),
+                                child: const Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Go to All Appointments",
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black, // Text color
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward,
+                                      size: 18,
+                                      color: Colors.black,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    )),
+                  )
+                : const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        PendingAppointments(),
+                        AcceptedAppointments(),
+                        GoToAllAppointments(),
+                      ],
+                    ),
+                  ),
             const SizedBox(height: 20),
             Footer(height: 55, width: width),
           ],

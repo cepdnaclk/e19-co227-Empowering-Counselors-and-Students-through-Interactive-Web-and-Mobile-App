@@ -2,6 +2,7 @@ import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/accepted_appointments_card.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/all_appointments_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/pending_appointments_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
@@ -60,9 +61,10 @@ class _DesktopState extends State<Desktop> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 children: [
+                  //Dashboard row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,63 +89,95 @@ class _DesktopState extends State<Desktop> {
                       ),
                     ],
                   ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  //all below contain in a row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                  width: width * 0.5,
-                                  child: const NextAppointment()),
-                              /*Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    
-                                    
-                                    NextAppointment(),
-                                    SizedBox(height: 15),
-                                  ]),*/
-                            ],
-                          ),
-                          const SizedBox(height: 30),
-                          SizedBox(
-                            width: width * 0.5,
-                            child: const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            //next appointment row
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                PendingAppointments(),
-                                AcceptedAppointments(),
+                                SizedBox(
+                                    width: width * 0.5,
+                                    child: const NextAppointment()),
                               ],
                             ),
-                          ),
-                          const SizedBox(height: 30),
-                          GestureDetector(
-                            onTap: () {
-                              // Navigate to the next page here
-                            },
-                            child: Container(
-                              width: width * 0.4,
-                              height: 30,
-                              alignment: Alignment.center,
-                              color: UtilConstants
-                                  .canvasColor, // Replace with your desired color
-                              child: Text(
-                                "Go to All Appointments",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white, // Text color
+                            const SizedBox(height: 30),
+                            //two cards row
+                            SizedBox(
+                              width: width * 0.5,
+                              child: const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    PendingAppointments(),
+                                    Spacer(),
+                                    AcceptedAppointments(),
+                                  ],
                                 ),
                               ),
                             ),
-                          )
-                        ],
+                            const SizedBox(height: 30),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: width * 0.5 - 40,
+                                    height: 50,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        // Navigate to all appointments page
+                                        Navigator.push(context,
+                                            MaterialPageRoute(
+                                                builder: (context) {
+                                          return const AllAppointments();
+                                        }));
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                          foregroundColor:
+                                              UtilConstants.whiteColor,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          backgroundColor: const Color.fromARGB(
+                                              255,
+                                              155,
+                                              172,
+                                              187) // Button color
+                                          ),
+                                      child: const Text(
+                                        "Go to All Appointments",
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color.fromARGB(
+                                              255, 0, 0, 0), // Text color
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                          ],
+                        ),
                       ),
                       Expanded(
                         child: Column(
