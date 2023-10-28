@@ -265,30 +265,35 @@ class UserProvider extends ChangeNotifier {
       allChatModel = await AuthController().fetchUserAdditionalAllData();
       if (allChatModel!.isNotEmpty) {
         for (var e in allChatModel!) {
-          if (e.userType == 'users') {
-            if ((e.month == DateTime.now().month) &&
-                (e.day == DateTime.now().day)) {
-              userCount[6] += 1;
-            } else if ((e.month == DateTime.now().month) &&
-                (e.day == (DateTime.now().day - 1))) {
-              userCount[5] += 1;
-            } else if ((e.month == DateTime.now().month) &&
-                (e.day == (DateTime.now().day - 2))) {
-              userCount[4] += 1;
-            } else if ((e.month == DateTime.now().month) &&
-                (e.day == (DateTime.now().day - 3))) {
-              userCount[3] += 1;
-            } else if ((e.month == DateTime.now().month) &&
-                (e.day == (DateTime.now().day - 4))) {
-              userCount[2] += 1;
-            } else if ((e.month == DateTime.now().month) &&
-                (e.day == (DateTime.now().day - 5))) {
-              userCount[1] += 1;
-            } else if ((e.month == DateTime.now().month) &&
-                (e.day == (DateTime.now().day - 6))) {
-              userCount[0] += 1;
-            }
-          } else if (e.userType == 'counsellors') {
+          if ((e.month == DateTime.now().month) &&
+              (e.day == DateTime.now().day)) {
+            userCount[6] += 1;
+          } else if ((e.month == DateTime.now().month) &&
+              (e.day == (DateTime.now().day - 1))) {
+            userCount[5] += 1;
+          } else if ((e.month == DateTime.now().month) &&
+              (e.day == (DateTime.now().day - 2))) {
+            userCount[4] += 1;
+          } else if ((e.month == DateTime.now().month) &&
+              (e.day == (DateTime.now().day - 3))) {
+            userCount[3] += 1;
+          } else if ((e.month == DateTime.now().month) &&
+              (e.day == (DateTime.now().day - 4))) {
+            userCount[2] += 1;
+          } else if ((e.month == DateTime.now().month) &&
+              (e.day == (DateTime.now().day - 5))) {
+            userCount[1] += 1;
+          } else if ((e.month == DateTime.now().month) &&
+              (e.day == (DateTime.now().day - 6))) {
+            userCount[0] += 1;
+          }
+        }
+
+        allChatModel!.clear();
+        allChatModel =
+            await CounsellorController().fetchCounsellorAdditionalAllData();
+        if (allChatModel!.isNotEmpty) {
+          for (var e in allChatModel!) {
             if ((e.month == DateTime.now().month) &&
                 (e.day == DateTime.now().day)) {
               counsellorCount[6] += 1;
@@ -311,7 +316,13 @@ class UserProvider extends ChangeNotifier {
                 (e.day == (DateTime.now().day - 6))) {
               counsellorCount[0] += 1;
             }
-          } else if (e.userType == 'admins') {
+          }
+        }
+
+        allChatModel!.clear();
+        allChatModel = await AdminController().fetchAdminAdditionalAllData();
+        if (allChatModel!.isNotEmpty) {
+          for (var e in allChatModel!) {
             if ((e.month == DateTime.now().month) &&
                 (e.day == DateTime.now().day)) {
               adminCount[6] += 1;

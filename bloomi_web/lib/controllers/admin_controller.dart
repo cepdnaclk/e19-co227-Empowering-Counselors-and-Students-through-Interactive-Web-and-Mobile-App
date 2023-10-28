@@ -267,6 +267,32 @@ class AdminController {
     }
   }
 
+  //-----------------------fetch user additional all data from database---------------------
+  List<ChatModel>? allChatModel = [];
+
+  List<ChatModel>? get chatModel => allChatModel;
+  Future<List<ChatModel>?> fetchAdminAdditionalAllData() async {
+    try {
+      allChatModel!.clear();
+      //-------firebase quary to fetch user data from database--------
+      QuerySnapshot querySnapshot = await additionalAdmin.get();
+
+      Logger().e(querySnapshot.docs.length);
+
+      //-------mapping user data to user model--------
+      for (var e in querySnapshot.docs) {
+        ChatModel chats = ChatModel.fromJson(e.data() as Map<String, dynamic>);
+
+        allChatModel!.add(chats);
+      }
+
+      return allChatModel;
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
   //------------------------ GET All Admins ------------------------
   Stream<QuerySnapshot> getAdmins() => admins.snapshots();
 

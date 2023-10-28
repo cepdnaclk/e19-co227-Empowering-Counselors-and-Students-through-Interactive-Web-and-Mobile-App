@@ -154,7 +154,8 @@ class _AdminHomeState extends State<AdminHome> {
         final value = PieChartSectionData(
           color: data.color,
           value: Provider.of<UserProvider>(context).percentages[index],
-          title: '${Provider.of<UserProvider>(context).percentages[index]}%',
+          title:
+              '${(Provider.of<UserProvider>(context).percentages[index]).toInt()}%',
           titleStyle: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.bold,

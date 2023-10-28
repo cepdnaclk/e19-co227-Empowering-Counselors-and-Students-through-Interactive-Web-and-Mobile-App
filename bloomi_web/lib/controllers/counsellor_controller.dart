@@ -223,6 +223,31 @@ class CounsellorController {
         .catchError((error) => Logger().e("Failed to add user: $error"));
   }
 
+  //-----------------------fetch user additional all data from database---------------------
+  List<ChatModel>? allChatModel = [];
+
+  List<ChatModel>? get chatModel => allChatModel;
+  Future<List<ChatModel>?> fetchCounsellorAdditionalAllData() async {
+    try {
+      allChatModel!.clear();
+      //-------firebase quary to fetch user data from database--------
+      QuerySnapshot querySnapshot = await additionalCounsellor.get();
+
+      Logger().e(querySnapshot.docs.length);
+      //-------mapping user data to user model--------
+      for (var e in querySnapshot.docs) {
+        ChatModel chats = ChatModel.fromJson(e.data() as Map<String, dynamic>);
+
+        allChatModel!.add(chats);
+      }
+      Logger().e(allChatModel!.length);
+      return allChatModel;
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
   //-----------------------update the current online state and lastseen---------------------
   Future<void> updateOnlineStateCounsellor(String uid, bool isOnline) async {
     await additionalCounsellor
