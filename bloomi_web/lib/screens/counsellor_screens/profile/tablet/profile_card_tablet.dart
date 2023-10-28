@@ -9,7 +9,7 @@ class ProfileCardTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 40),
-      padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+      padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
       decoration: BoxDecoration(
           color: UtilConstants.whiteColor,
           borderRadius: BorderRadius.circular(20),

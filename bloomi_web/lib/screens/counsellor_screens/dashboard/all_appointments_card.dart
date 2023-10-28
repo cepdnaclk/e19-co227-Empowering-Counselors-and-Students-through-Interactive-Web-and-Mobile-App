@@ -1,14 +1,14 @@
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
-class NextAppointment extends StatefulWidget {
-  const NextAppointment({Key? key}) : super(key: key);
+class AllAppointments extends StatefulWidget {
+  const AllAppointments({Key? key}) : super(key: key);
 
   @override
-  State<NextAppointment> createState() => _NextAppointmentState();
+  State<AllAppointments> createState() => _AllAppointmentsState();
 }
 
-Map<String, dynamic> nextAppointment = {
+Map<String, dynamic> All = {
   "name": "Sajani",
   "email": "e19000@eng.pdn.ac.lk",
   "date": "12 / 10 / 2023",
@@ -26,7 +26,7 @@ Color getAppointmentStateColor(String state) {
   }
 }
 
-class _NextAppointmentState extends State<NextAppointment> {
+class _AllAppointmentsState extends State<AllAppointments> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -82,15 +82,15 @@ class _NextAppointmentState extends State<NextAppointment> {
               const SizedBox(height: 10),
               Text(
                 // ignore: prefer_interpolation_to_compose_strings
-                "Student Name: ${nextAppointment["name"]}",
+                "Student Name: ${All["name"]}",
                 style: TextStyle(fontSize: width < 480 ? 14.0 : 16.0),
               ),
               Text(
-                "Appointment Date: ${nextAppointment["date"].toString().substring(0, 10)}",
+                "Appointment Date: ${All["date"].toString().substring(0, 10)}",
                 style: TextStyle(fontSize: width < 480 ? 14.0 : 16.0),
               ),
               Text(
-                "Appointment Time: ${nextAppointment["time"]}",
+                "Appointment Time: ${All["time"]}",
                 style: TextStyle(fontSize: width < 480 ? 14.0 : 16.0),
               ),
               const SizedBox(height: 8),
@@ -101,12 +101,12 @@ class _NextAppointmentState extends State<NextAppointment> {
                     height: 10,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: getAppointmentStateColor(nextAppointment["state"]),
+                      color: getAppointmentStateColor(All["state"]),
                     ),
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    nextAppointment["state"],
+                    All["state"],
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: width < 480 ? 14.0 : 16.0,

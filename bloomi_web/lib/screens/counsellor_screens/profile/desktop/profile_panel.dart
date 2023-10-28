@@ -20,9 +20,12 @@ class ProfilePanle extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         gradient: LinearGradient(
-          colors: [UtilConstants.canvasColor, UtilConstants.greyColor],
+          colors: [
+            UtilConstants.canvasColor,
+            const Color.fromARGB(255, 167, 167, 188)
+          ],
           begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
+          end: Alignment.bottomLeft,
         ),
       ),
       child: Row(
