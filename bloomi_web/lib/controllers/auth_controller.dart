@@ -167,6 +167,7 @@ class AuthController {
   List<ChatModel>? get chatModel => allChatModel;
   Future<List<ChatModel>?> fetchUserAdditionalAllData() async {
     try {
+      allChatModel!.clear();
       //-------firebase quary to fetch user data from database--------
       QuerySnapshot querySnapshot = await additionalUsers.get();
 
