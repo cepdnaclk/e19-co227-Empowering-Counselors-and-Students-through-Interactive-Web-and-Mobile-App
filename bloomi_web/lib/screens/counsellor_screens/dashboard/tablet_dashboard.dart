@@ -2,7 +2,9 @@ import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/accepted_appointments_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/pending_appointments_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/notification_viewer.dart.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
@@ -66,7 +68,7 @@ class _DashboardTabletState extends State<DashboardTablet> {
               color: UtilConstants.canvasColor,
               child: Container(
                 width: width,
-                height: 150,
+                height: 180,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
@@ -334,6 +336,14 @@ class _DashboardTabletState extends State<DashboardTablet> {
             ),
             const SizedBox(height: 20),
             const NextAppointment(),
+            const SizedBox(height: 20),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                PendingAppointments(),
+                AcceptedAppointments(),
+              ],
+            ),
             const SizedBox(height: 20),
             Footer(height: 55, width: width),
           ],

@@ -14,13 +14,16 @@ class ProfilePanelTablet extends StatelessWidget {
     /*margin: EdgeInsets.fromLTRB(isMobile ? 15 : width / 10,
           isMobile ? 10 : 10, isMobile ? 15 : width / 10, 10),*/
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20),
       height: hight * 0.7,
       width: width * 0.7,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         gradient: LinearGradient(
-          colors: [UtilConstants.canvasColor, UtilConstants.greyColor],
+          colors: [
+            UtilConstants.canvasColor,
+            const Color.fromARGB(255, 167, 167, 188)
+          ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
