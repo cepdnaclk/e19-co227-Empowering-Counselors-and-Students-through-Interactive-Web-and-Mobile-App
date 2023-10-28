@@ -388,11 +388,8 @@ class _DesktopState extends State<Desktop> {
                 ],
               ),
             ),
-            Positioned(
-                bottom: 0,
-                left: 50,
-                right: 50,
-                child: Footer(height: 55, width: width)),
+            const SizedBox(height: 100),
+            Footer(height: 55, width: width)
           ],
         ),
       ),

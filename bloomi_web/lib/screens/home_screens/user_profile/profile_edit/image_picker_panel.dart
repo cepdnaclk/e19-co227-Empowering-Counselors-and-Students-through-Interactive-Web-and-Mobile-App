@@ -1,22 +1,24 @@
 import 'dart:async';
+
 import 'package:bloomi_web/components/form_button_web.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
-class ImagePick extends StatefulWidget {
-  const ImagePick({
+class ImagePickUser extends StatefulWidget {
+  const ImagePickUser({
     super.key,
   });
 
   @override
-  State<ImagePick> createState() => _ImagePickState();
+  State<ImagePickUser> createState() => _ImagePickUserState();
 }
 
-class _ImagePickState extends State<ImagePick> {
+class _ImagePickUserState extends State<ImagePickUser> {
   Uint8List? _image;
 
   Future pickImage(ImageSource source) async {
@@ -25,7 +27,7 @@ class _ImagePickState extends State<ImagePick> {
     if (file != null) {
       return await file.readAsBytes();
     }
-    print("No images selected");
+    Logger().e("No image selected");
   }
 
   void selectImage() async {

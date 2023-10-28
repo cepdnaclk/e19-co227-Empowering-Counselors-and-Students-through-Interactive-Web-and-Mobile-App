@@ -1,4 +1,4 @@
-import 'package:bloomi_web/controllers/auth_controller.dart';
+import 'package:bloomi_web/components/dropdown_menu_items.dart';
 import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_table/admin_control.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_table/counselor_control.dart';
@@ -6,7 +6,6 @@ import 'package:bloomi_web/screens/admin_screens/admin_table/students_control.da
 import 'package:bloomi_web/screens/admin_screens/home/admin_home.dart';
 import 'package:bloomi_web/screens/admin_screens/log_activity/admin_activitylog.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-import 'package:bloomi_web/utils/util_method.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -26,69 +25,118 @@ class AdminPanel extends StatelessWidget {
       appBar: isSmallScreen
           ? AppBar(
               backgroundColor: canvasColor,
-              title: const Text('BLOOMI'),
+              title: const Text('BLOOMI',
+                  style: TextStyle(
+                    color: white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  )),
               leading: IconButton(
                 onPressed: () {
                   _key.currentState?.openDrawer();
                 },
-                icon: const Icon(Icons.menu),
+                icon: const Icon(
+                  Icons.menu,
+                  color: UtilConstants.whiteColor,
+                ),
               ),
             )
           : AppBar(
               automaticallyImplyLeading: false,
               backgroundColor: canvasColor,
-              title: const Text(
-                'BLOOMI',
-                style: TextStyle(
-                  color: white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+              title: Row(
+                children: [
+                  Image.asset(
+                    UtilConstants.primaryImagePath,
+                    height: 40,
+                    width: 40,
+                  ),
+                  const SizedBox(width: 10),
+                  const Text(
+                    'BLOOMI',
+                    style: TextStyle(
+                      color: UtilConstants.contentColorCyan,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
               actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.notifications,
-                    color: white,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Consumer<AdminRegistrationProvider>(
-                  builder: (context, value, child) {
-                    // Return a widget from the builder function.
-                    return Row(
-                      children: [
-                        Container(
-                          width: 35,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
+                InkWell(
+                  onTap: () {
+                    // UserNotification.showDialogMethod(context);
+                  },
+                  child: Stack(
+                    children: [
+                      const Icon(Icons.notifications,
+                          size: 24, color: Colors.white),
+                      Positioned(
+                        right: -0.6,
+                        top: -2,
+                        child: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: const BoxDecoration(
+                            color: Colors.red,
                             shape: BoxShape.circle,
-                            image: DecorationImage(
-                              image: NetworkImage(value.adminModel!.imgUrl),
-                              fit: BoxFit.cover,
+                          ),
+                          child: const Text(
+                            '.',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 11,
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          value.adminModel!.name,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: UtilConstants.whiteColor,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 15),
+                Consumer<AdminRegistrationProvider>(
+                  builder: (BuildContext context, value, Widget? child) {
+                    return Container(
+                      padding: const EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 2,
+                              ),
+                              color: canvasColor,
+                              borderRadius: BorderRadius.circular(50),
+                              image: DecorationImage(
+                                image: NetworkImage(value.adminModel!.imgUrl),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            alignment: Alignment.center,
+                            width: 28,
+                            height: 28,
                           ),
-                        ),
-                        const SizedBox(width: 10),
-                      ],
+                          const SizedBox(width: 5),
+                          Container(
+                            alignment: Alignment.center,
+                            width: 24,
+                            height: 24,
+                            child: DropDownMenuItems(
+                              icon: Icons.arrow_drop_down,
+                              name: value.adminModel!.name,
+                              widget: AdminPanel(),
+                            ),
+                          ),
+                        ],
+                      ),
                     );
                   },
                 ),
-                const SizedBox(width: 5),
+                const SizedBox(width: 10)
               ],
             ),
       drawer: ExampleSidebarX(controller: _controller),
@@ -171,41 +219,41 @@ class ExampleSidebarX extends StatelessWidget {
         ),
       ),
       footerDivider: divider,
-      items: [
-        const SidebarXItem(
+      items: const [
+        SidebarXItem(
           icon: Icons.home,
           label: 'Home',
         ),
-        const SidebarXItem(
+        SidebarXItem(
           icon: Icons.person_2_outlined,
           label: 'Student',
         ),
-        const SidebarXItem(
+        SidebarXItem(
           icon: Icons.people,
           label: 'Counselor',
         ),
-        const SidebarXItem(
+        SidebarXItem(
           icon: Icons.admin_panel_settings_outlined,
           label: 'Admin',
         ),
-        const SidebarXItem(
+        SidebarXItem(
           icon: Icons.access_time,
           label: 'Activity Log',
         ),
-        SidebarXItem(
-            icon: Icons.logout,
-            label: 'Sign Out',
-            onTap: () {
-              UtilMethod.customDialogBox(
-                context,
-                'Sign Out',
-                'Do you Want to Sign Out?',
-                onOkPressed: () {
-                  AuthController.signOutUser();
-                },
-                onCancelPressed: () {},
-              );
-            }),
+        // SidebarXItem(
+        //     icon: Icons.logout,
+        //     label: 'Sign Out',
+        //     onTap: () {
+        //       UtilMethod.customDialogBox(
+        //         context,
+        //         'Sign Out',
+        //         'Do you Want to Sign Out?',
+        //         onOkPressed: () {
+        //           AuthController.signOutUser();
+        //         },
+        //         onCancelPressed: () {},
+        //       );
+        //     }),
       ],
     );
   }

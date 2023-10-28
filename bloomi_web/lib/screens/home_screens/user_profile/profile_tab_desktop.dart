@@ -1,6 +1,5 @@
 import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/screens/home_screens/user_profile/profile_panel.dart';
-
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -14,16 +13,14 @@ class ProfileDesktopScreenUser extends StatelessWidget {
       backgroundColor: UtilConstants.whiteColor,
       body: Column(
         children: [
-          const Expanded(
+          Expanded(
             child: Stack(
               children: [
                 SingleChildScrollView(
                   scrollDirection: Axis.vertical,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ProfilePanle(),
-                    ],
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 50),
+                    child: const ProfilePanle(),
                   ),
                 ),
               ],

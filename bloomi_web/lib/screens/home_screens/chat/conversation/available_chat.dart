@@ -81,8 +81,7 @@ class AvailableChat extends StatelessWidget {
                   Logger().e(e.data());
                   _list.add(model);
                 }
-                Logger().e(_list.length);
-                Logger().e("HIIIIIIIII");
+
                 return Column(
                   children: [
                     Expanded(

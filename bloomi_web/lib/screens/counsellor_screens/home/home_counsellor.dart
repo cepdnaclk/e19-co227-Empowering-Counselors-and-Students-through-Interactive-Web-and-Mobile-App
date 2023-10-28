@@ -24,39 +24,26 @@ class HomeCounsellor extends StatelessWidget {
       key: _key,
       appBar: isSmallScreen
           ? AppBar(
-              backgroundColor: UtilConstants.canvasColor,
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    UtilConstants.primaryImagePath,
-                    height: 40,
-                    width: 40,
-                  ),
-                  const SizedBox(width: 10),
-                  const Text(
-                    'BLOOMI',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
+              backgroundColor: canvasColor,
+              title: const Text('BLOOMI',
+                  style: TextStyle(
+                    color: white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  )),
               leading: IconButton(
                 onPressed: () {
                   _key.currentState?.openDrawer();
                 },
                 icon: const Icon(
                   Icons.menu,
-                  color: Colors.white,
+                  color: UtilConstants.whiteColor,
                 ),
               ),
             )
           : AppBar(
               automaticallyImplyLeading: false,
-              backgroundColor: UtilConstants.canvasColor,
+              backgroundColor: canvasColor,
               title: Row(
                 children: [
                   Image.asset(
@@ -138,43 +125,49 @@ class HomeCounsellor extends StatelessWidget {
                 const SizedBox(width: 15),
                 Consumer<CounsellorRegistrationProvider>(
                   builder: (BuildContext context, value, Widget? child) {
-                    return Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: canvasColor,
-                            borderRadius: BorderRadius.circular(50),
-                            image: DecorationImage(
-                              image:
-                                  NetworkImage(value.counsellorModel!.imgUrl),
-                              fit: BoxFit.cover,
+                    return Container(
+                      padding: const EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 2,
+                              ),
+                              color: canvasColor,
+                              borderRadius: BorderRadius.circular(50),
+                              image: DecorationImage(
+                                image:
+                                    NetworkImage(value.counsellorModel!.imgUrl),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            alignment: Alignment.center,
+                            width: 28,
+                            height: 28, // Adjust the width to your preference.
+                          ),
+                          const SizedBox(width: 5),
+                          Container(
+                            alignment: Alignment.center,
+                            width: 24,
+                            height: 24, // Adjust the width to your preference.
+                            child: DropDownMenuItems(
+                              icon: Icons.arrow_drop_down,
+                              name: value.counsellorModel!.name,
+                              widget: const ProfileHomeCounsellor(),
                             ),
                           ),
-                          alignment: Alignment.center,
-                          width: 24,
-                          height: 24, // Adjust the width to your preference.
-                          child: const DropDownMenuItems(
-                            icon: Icons.person,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          value.counsellorModel!.name,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: UtilConstants.whiteColor,
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                      ],
+                        ],
+                      ),
                     );
                   },
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 10)
               ],
             ),
       drawer: ExampleSidebarX(controller: _controller),
@@ -212,31 +205,31 @@ class ExampleSidebarX extends StatelessWidget {
       theme: SidebarXTheme(
         margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: canvasColor,
+          color: UtilConstants.canvasColor,
           borderRadius: BorderRadius.circular(20),
         ),
-        hoverColor: scaffoldBackgroundColor,
+        hoverColor: UtilConstants.scaffoldBackgroundColor,
         textStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
         selectedTextStyle: const TextStyle(color: Colors.white),
         itemTextPadding: const EdgeInsets.only(left: 30),
         selectedItemTextPadding: const EdgeInsets.only(left: 30),
         itemDecoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: canvasColor),
+          border: Border.all(color: UtilConstants.canvasColor),
         ),
         selectedItemDecoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: actionColor.withOpacity(0.37),
+            color: UtilConstants.actionColor.withOpacity(0.37),
           ),
-          gradient: const LinearGradient(
-            colors: [canvasColor, white],
+          gradient: LinearGradient(
+            colors: [UtilConstants.canvasColor, UtilConstants.whiteColor],
           ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.28),
               blurRadius: 30,
-            )
+            ),
           ],
         ),
         iconTheme: IconThemeData(
@@ -248,14 +241,14 @@ class ExampleSidebarX extends StatelessWidget {
           size: 20,
         ),
       ),
-      extendedTheme: const SidebarXTheme(
-        padding: EdgeInsets.only(top: 10),
+      extendedTheme: SidebarXTheme(
+        padding: const EdgeInsets.only(top: 10),
         width: 200,
         decoration: BoxDecoration(
-          color: canvasColor,
+          color: UtilConstants.canvasColor,
         ),
       ),
-      footerDivider: divider,
+      // footerDivider: UtilConstants.divider,
       items: [
         SidebarXItem(
           icon: Icons.home,
@@ -296,7 +289,7 @@ class _ScreensExample extends StatelessWidget {
             return const NoteCounsellor();
 
           case 2:
-            return const ProfileHome();
+            return const ProfileHomeCounsellor();
 
           default:
             return const Text('');
@@ -312,4 +305,4 @@ const scaffoldBackgroundColor = Color(0xFF464667);
 const accentCanvasColor = Color(0xFF3E3E61);
 const white = Colors.white;
 final actionColor = const Color.fromARGB(255, 50, 50, 132).withOpacity(0.6);
-final divider = Divider(color: white.withOpacity(0.3), height: 1);
+final divider = Divider(color: Colors.white.withOpacity(0.3), height: 1);

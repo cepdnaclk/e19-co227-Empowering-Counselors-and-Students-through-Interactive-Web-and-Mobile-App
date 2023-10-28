@@ -19,14 +19,20 @@ class ProfilePanle extends StatelessWidget {
         width: width * 0.9,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          gradient: LinearGradient(
-            colors: [
-              UtilConstants.canvasColor,
-              UtilConstants.greyColor
-            ], // Customize the colors as desired
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
+          // Customize the colors as desired
+
+          color: UtilConstants.whiteColor,
+          boxShadow: [
+            BoxShadow(
+              color: UtilConstants.lightblackColor,
+              blurRadius: 10.0,
+              spreadRadius: 1.0,
+              offset: const Offset(
+                5.0,
+                5.0,
+              ),
+            )
+          ],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
