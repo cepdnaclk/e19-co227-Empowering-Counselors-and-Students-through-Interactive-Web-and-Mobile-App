@@ -155,7 +155,7 @@ class _AdminHomeState extends State<AdminHome> {
           color: data.color,
           value: Provider.of<UserProvider>(context).percentages[index],
           title:
-              '${(Provider.of<UserProvider>(context).percentages[index]).toInt()}%',
+              '${(Provider.of<UserProvider>(context).percentages[index]).toDouble().toStringAsFixed(2)}%',
           titleStyle: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.bold,
