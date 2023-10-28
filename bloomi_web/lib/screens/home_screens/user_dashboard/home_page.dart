@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/components/homepage_card_widget_cooking.dart';
 import 'package:bloomi_web/components/homepage_card_widget_diamond.dart';
@@ -13,6 +12,7 @@ import 'package:bloomi_web/components/homepage_card_widget_wildlife.dart';
 import 'package:bloomi_web/components/homepage_card_widget_yoga.dart';
 import 'package:bloomi_web/components/homepage_class.dart';
 import 'package:bloomi_web/components/homepage_quote.dart';
+import 'package:bloomi_web/screens/home_screens/user_dashboard/image_slider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +28,8 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            const SizedBox(height: 20),
+            const ImageSlider(),
             Padding(
               padding: const EdgeInsets.only(
                 top: 10,
@@ -42,52 +44,52 @@ class HomePage extends StatelessWidget {
                       const SizedBox(
                         height: 30,
                       ),
-                      SizedBox(
-                        width: screenWidth < 600 ? screenWidth : 600.0,
-                        height: 50,
-                        child: DefaultTextStyle(
-                          style: TextStyle(
-                            fontSize: screenWidth < 600 ? 30.0 : 50.0,
-                            fontFamily:
-                                'YourCustomFont', // Replace with your font family
-                          ),
-                          child: ShaderMask(
-                            shaderCallback: (Rect bounds) {
-                              return const LinearGradient(
-                                colors: [
-                                  Color.fromARGB(255, 5, 61, 106),
-                                  Colors.blue,
-                                  Color.fromARGB(255, 113, 108, 205),
-                                  Colors.blueGrey,
-                                ],
-                                stops: [0.0, 0.33, 0.67, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: AnimatedTextKit(
-                              animatedTexts: [
-                                TypewriterAnimatedText(
-                                  'WELCOME TO BLOOMi',
-                                  textAlign: TextAlign.center,
-                                  speed: const Duration(milliseconds: 300),
-                                  textStyle: TextStyle(
-                                    fontSize: screenWidth < 700 ? 25.0 : 40.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                    shadows: const [
-                                      Shadow(
-                                        blurRadius: 5.0,
-                                        color: Colors.black,
-                                        offset: Offset(1, 6),
-                                      ),
-                                    ],
-                                  ),
-                                  cursor: '',
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                      // SizedBox(
+                      //   width: screenWidth < 600 ? screenWidth : 600.0,
+                      //   height: 50,
+                      //   child: DefaultTextStyle(
+                      //     style: TextStyle(
+                      //       fontSize: screenWidth < 600 ? 30.0 : 50.0,
+                      //       fontFamily:
+                      //           'YourCustomFont', // Replace with your font family
+                      //     ),
+                      // child: ShaderMask(
+                      //   shaderCallback: (Rect bounds) {
+                      //     return const LinearGradient(
+                      //       colors: [
+                      //         Color.fromARGB(255, 5, 61, 106),
+                      //         Colors.blue,
+                      //         Color.fromARGB(255, 113, 108, 205),
+                      //         Colors.blueGrey,
+                      //       ],
+                      //       stops: [0.0, 0.33, 0.67, 1.0],
+                      //     ).createShader(bounds);
+                      //   },
+                      //   child: AnimatedTextKit(
+                      //     animatedTexts: [
+                      //       TypewriterAnimatedText(
+                      //         'WELCOME TO BLOOMi',
+                      //         textAlign: TextAlign.center,
+                      //         speed: const Duration(milliseconds: 300),
+                      //         textStyle: TextStyle(
+                      //           fontSize: screenWidth < 700 ? 25.0 : 40.0,
+                      //           fontWeight: FontWeight.bold,
+                      //           color: Colors.white,
+                      //           shadows: const [
+                      //             Shadow(
+                      //               blurRadius: 5.0,
+                      //               color: Colors.black,
+                      //               offset: Offset(1, 6),
+                      //             ),
+                      //           ],
+                      //         ),
+                      //         cursor: '',
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      //   ),
+                      // ),
                       const HomePageQuote(
                         quoteTitle: "Counselling is your Safe Harbor",
                         quoteContent:

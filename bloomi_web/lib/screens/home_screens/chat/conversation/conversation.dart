@@ -34,8 +34,8 @@ class _ConversationState extends State<Conversation>
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    double widthFinal = (width > 1000) ? width - 220 : width;
-    double heightFinal = (width > 1000) ? height - 125 : height - 54;
+    double widthFinal = (width > 1000) ? width - 20 : width;
+    double heightFinal = (width > 1000) ? height : height - 54;
 
     return VisibilityDetector(
       key: const Key('conversation_key'),
