@@ -1,4 +1,5 @@
 import 'package:bloomi_web/components/dropdown_menu_items.dart';
+import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/screens/home_screens/appoinment/appointment.dart';
 import 'package:bloomi_web/screens/home_screens/chat/home/chat.dart';
 import 'package:bloomi_web/screens/home_screens/note/note.dart';
@@ -7,7 +8,9 @@ import 'package:bloomi_web/screens/home_screens/user_dashboard/home_page.dart';
 import 'package:bloomi_web/screens/home_screens/user_dashboard/notification.dart';
 import 'package:bloomi_web/screens/home_screens/user_profile/profile_home.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
+import 'package:bloomi_web/utils/util_function.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 class Home extends StatelessWidget {
@@ -55,7 +58,7 @@ class Home extends StatelessWidget {
                   const Text(
                     'BLOOMI',
                     style: TextStyle(
-                      color: white,
+                      color: UtilConstants.contentColorCyan,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -92,18 +95,72 @@ class Home extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(width: 35),
-                Container(
-                  decoration: BoxDecoration(
-                    color: canvasColor,
-                    borderRadius: BorderRadius.circular(50),
+                const SizedBox(width: 15),
+                InkWell(
+                  onTap: () {
+                    UtilFunction.navigateForward(context, const Chat());
+                  },
+                  child: Stack(
+                    children: [
+                      const Icon(Icons.message, size: 24, color: Colors.white),
+                      Positioned(
+                        right: -0.6,
+                        top: -2,
+                        child: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: const BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Text(
+                            '.',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 11,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  alignment: Alignment.center,
-                  width: 24,
-                  height: 24, // Adjust the width to your preference.
-                  child: const DropDownMenuItems(
-                    icon: Icons.person,
-                  ),
+                ),
+                const SizedBox(width: 15),
+                Consumer<UserProvider>(
+                  builder: (BuildContext context, value, Widget? child) {
+                    return Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: canvasColor,
+                            borderRadius: BorderRadius.circular(50),
+                            image: DecorationImage(
+                              image: NetworkImage(value.userModel!.imgUrl),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          alignment: Alignment.center,
+                          width: 24,
+                          height: 24, // Adjust the width to your preference.
+                          child: const DropDownMenuItems(
+                            icon: Icons.person,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          value.userModel!.name,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                      ],
+                    );
+                  },
                 ),
                 const SizedBox(width: 25)
               ],
@@ -199,10 +256,6 @@ class ExampleSidebarX extends StatelessWidget {
           label: 'Appointments',
         ),
         const SidebarXItem(
-          icon: Icons.chat,
-          label: 'Chat',
-        ),
-        const SidebarXItem(
           icon: Icons.note_add,
           label: 'Note',
         ),
@@ -237,15 +290,14 @@ class _ScreensExample extends StatelessWidget {
             return const HomePage();
           case 1:
             return const Appointment();
+
           case 2:
-            return const Chat();
-          case 3:
             return const Note();
 
-          case 4:
+          case 3:
             return const Relax();
 
-          case 5:
+          case 4:
             return const ProfileHome();
 
           default:
