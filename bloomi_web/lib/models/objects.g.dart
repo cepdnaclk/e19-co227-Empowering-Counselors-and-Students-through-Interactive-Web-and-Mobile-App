@@ -101,6 +101,8 @@ ChatModel _$ChatModelFromJson(Map<String, dynamic> json) => ChatModel(
       isOnline: json['isOnline'] as bool,
       token: json['token'] as String? ?? '',
       userType: json['userType'] as String,
+      month: json['month'] as int,
+      day: json['day'] as int,
     );
 
 Map<String, dynamic> _$ChatModelToJson(ChatModel instance) => <String, dynamic>{
@@ -110,6 +112,8 @@ Map<String, dynamic> _$ChatModelToJson(ChatModel instance) => <String, dynamic>{
       'img': instance.img,
       'lastSeen': instance.lastSeen,
       'isOnline': instance.isOnline,
+      'month': instance.month,
+      'day': instance.day,
       'token': instance.token,
       'userType': instance.userType,
     };
@@ -161,16 +165,14 @@ Map<String, dynamic> _$CounsellorModelToJson(CounsellorModel instance) =>
     };
 
 CountModel _$CountModelFromJson(Map<String, dynamic> json) => CountModel(
-      userCount: json['userCount'] as String,
-      counsellorCount: json['counsellorCount'] as String,
-      adminCount: json['adminCount'] as String,
+      date: json['date'] as int,
+      month: json['month'] as int,
     );
 
 Map<String, dynamic> _$CountModelToJson(CountModel instance) =>
     <String, dynamic>{
-      'userCount': instance.userCount,
-      'counsellorCount': instance.counsellorCount,
-      'adminCount': instance.adminCount,
+      'date': instance.date,
+      'month': instance.month,
     };
 
 MessageModel _$MessageModelFromJson(Map<String, dynamic> json) => MessageModel(

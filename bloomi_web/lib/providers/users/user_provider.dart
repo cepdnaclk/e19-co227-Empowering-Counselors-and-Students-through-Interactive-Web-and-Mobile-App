@@ -82,6 +82,8 @@ class UserProvider extends ChangeNotifier {
             await startFetchUsers();
             await startFetchCounsellors();
             await setPercentages();
+            await startFetchCount();
+            await startAllChatModelData();
             UtilFunction.navigateForward(context, AdminPanel());
           }
         } catch (e) {
@@ -173,11 +175,62 @@ class UserProvider extends ChangeNotifier {
     }
   }
 
+  //-----------------------to fetch count users-----------------------
+  List<CountModel>? countModel = [];
+
+  List<CountModel>? get count => countModel;
+
+  List<int> countList = [0, 0, 0, 0, 0, 0, 0];
+
+  Future<List<CountModel>?> startFetchCount() async {
+    try {
+      countModel!.clear();
+      countModel = await AuthController().fetchAllCount();
+      if (allAdmin!.isNotEmpty) {
+        notifyListeners();
+
+        for (var e in countModel!) {
+          if ((e.month == DateTime.now().month) &&
+              (e.date == DateTime.now().day)) {
+            countList[6] += 1;
+          } else if ((e.month == DateTime.now().month) &&
+              (e.date == (DateTime.now().day - 1))) {
+            countList[5] += 1;
+          } else if ((e.month == DateTime.now().month) &&
+              (e.date == (DateTime.now().day - 2))) {
+            countList[4] += 1;
+          } else if ((e.month == DateTime.now().month) &&
+              (e.date == (DateTime.now().day - 3))) {
+            countList[3] += 1;
+          } else if ((e.month == DateTime.now().month) &&
+              (e.date == (DateTime.now().day - 4))) {
+            countList[2] += 1;
+          } else if ((e.month == DateTime.now().month) &&
+              (e.date == (DateTime.now().day - 5))) {
+            countList[1] += 1;
+          } else if ((e.month == DateTime.now().month) &&
+              (e.date == (DateTime.now().day - 6))) {
+            countList[0] += 1;
+          }
+        }
+        Logger().e(countList);
+        return countModel;
+      } else {
+        Logger().i("Admin data not found");
+        return null;
+      }
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
   //-----------------------To fetch additional data---------------------
 
   ChatModel? _chatModel;
 
   ChatModel? get chatModel => _chatModel;
+
   Future<ChatModel?> startFetchUserAdditionalData(String uid) async {
     try {
       ChatModel? chatModel =
@@ -195,6 +248,108 @@ class UserProvider extends ChangeNotifier {
       Logger().e(e);
       return null;
     }
+  }
+
+  //-----------------------To fetch all additional data---------------------
+
+  List<ChatModel>? allChatModel = [];
+
+  List<ChatModel>? get allChatModels => allChatModel;
+
+  List<int> userCount = [0, 0, 0, 0, 0, 0, 0];
+  List<int> counsellorCount = [0, 0, 0, 0, 0, 0, 0];
+  List<int> adminCount = [0, 0, 0, 0, 0, 0, 0];
+  Future<ChatModel?> startAllChatModelData() async {
+    try {
+      allChatModel!.clear();
+      allChatModel = await AuthController().fetchUserAdditionalAllData();
+      if (allChatModel!.isNotEmpty) {
+        for (var e in allChatModel!) {
+          if (e.userType == 'users') {
+            if ((e.month == DateTime.now().month) &&
+                (e.day == DateTime.now().day)) {
+              userCount[6] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 1))) {
+              userCount[5] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 2))) {
+              userCount[4] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 3))) {
+              userCount[3] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 4))) {
+              userCount[2] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 5))) {
+              userCount[1] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 6))) {
+              userCount[0] += 1;
+            }
+          } else if (e.userType == 'counsellors') {
+            if ((e.month == DateTime.now().month) &&
+                (e.day == DateTime.now().day)) {
+              counsellorCount[6] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 1))) {
+              counsellorCount[5] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 2))) {
+              counsellorCount[4] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 3))) {
+              counsellorCount[3] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 4))) {
+              counsellorCount[2] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 5))) {
+              counsellorCount[1] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 6))) {
+              counsellorCount[0] += 1;
+            }
+          } else if (e.userType == 'admins') {
+            if ((e.month == DateTime.now().month) &&
+                (e.day == DateTime.now().day)) {
+              adminCount[6] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 1))) {
+              adminCount[5] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 2))) {
+              adminCount[4] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 3))) {
+              adminCount[3] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 4))) {
+              adminCount[2] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 5))) {
+              adminCount[1] += 1;
+            } else if ((e.month == DateTime.now().month) &&
+                (e.day == (DateTime.now().day - 6))) {
+              adminCount[0] += 1;
+            }
+          }
+        }
+
+        notifyListeners();
+        Logger().e(userCount);
+        Logger().e(counsellorCount);
+        Logger().e(adminCount);
+      } else {
+        Logger().i("User not found");
+        return null;
+      }
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+    return null;
   }
 
   //-----------------------To update current user online states---------------------

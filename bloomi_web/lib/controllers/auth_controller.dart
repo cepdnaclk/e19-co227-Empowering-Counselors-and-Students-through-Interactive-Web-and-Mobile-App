@@ -42,20 +42,24 @@ class AuthController {
                 year: year,
                 userCredential: userCredential,
                 userType: userType,
-                imgUrl: "") //save user data in cloud firestore
+                imgUrl: UtilConstants
+                    .dummyProfileUrl) //save user data in cloud firestore
             );
       }
 
       if (credential.user != null) {
         saveUserAdditionalData(ChatModel(
-            uid: credential.user!.uid,
-            name: name,
-            email: email,
-            img: "",
-            lastSeen: DateTime.now().toString(),
-            isOnline: true,
-            token: "",
-            userType: userType));
+          uid: credential.user!.uid,
+          name: name,
+          email: email,
+          img: UtilConstants.dummyProfileUrl,
+          lastSeen: DateTime.now().toString(),
+          isOnline: true,
+          token: "",
+          userType: userType,
+          month: DateTime.now().month,
+          day: DateTime.now().day,
+        ));
       }
 
       Logger().i(credential.user);
@@ -130,6 +134,8 @@ class AuthController {
           'isOnline': chatModel.isOnline,
           'token': chatModel.token,
           'userType': chatModel.userType,
+          'month': chatModel.month,
+          'day': chatModel.day,
         })
         .then((value) => Logger().i("User Added"))
         .catchError((error) => Logger().e("Failed to add user: $error"));
@@ -155,6 +161,30 @@ class AuthController {
     }
   }
 
+  //-----------------------fetch user additional all data from database---------------------
+  List<ChatModel>? allChatModel = [];
+
+  List<ChatModel>? get chatModel => allChatModel;
+  Future<List<ChatModel>?> fetchUserAdditionalAllData() async {
+    try {
+      //-------firebase quary to fetch user data from database--------
+      QuerySnapshot querySnapshot = await additionalUsers.get();
+
+      Logger().e(querySnapshot.docs.length);
+      //-------mapping user data to user model--------
+      for (var e in querySnapshot.docs) {
+        ChatModel chats = ChatModel.fromJson(e.data() as Map<String, dynamic>);
+
+        allChatModel!.add(chats);
+      }
+
+      return allChatModel;
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
   //-----------------------To SignOut user---------------------
   static Future<void> signOutUser() async {
     try {
@@ -167,14 +197,24 @@ class AuthController {
     }
   }
 
+  CollectionReference usersDataCount =
+      FirebaseFirestore.instance.collection('usersDataCount');
   //-----------------------To SignIn user---------------------
-  static Future<bool> signInUser(
+  Future<bool> signInUser(
       String email, String password, BuildContext context) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
+      usersDataCount
+          .add({
+            'date': DateTime.now().day,
+            'month': DateTime.now().month,
+          })
+          .then((value) => Logger().i("User Added"))
+          .catchError((error) => Logger().e("Failed to add user: $error"));
+
       Logger().i(credential.user);
 
       return true;
@@ -227,6 +267,32 @@ class AuthController {
       }
 
       return allUser;
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
+  //-----------------------fetch count from database---------------------
+  List<CountModel>? countModel = [];
+
+  List<CountModel>? get count => countModel;
+
+  Future<List<CountModel>?> fetchAllCount() async {
+    try {
+      //-------firebase quary to fetch admin data from database--------
+      QuerySnapshot querySnapshot = await usersDataCount.get();
+
+      Logger().i(querySnapshot.docs.length);
+
+      for (var e in querySnapshot.docs) {
+        CountModel count =
+            CountModel.fromJson(e.data() as Map<String, dynamic>);
+
+        countModel!.add(count);
+      }
+
+      return countModel;
     } catch (e) {
       Logger().e(e);
       return null;

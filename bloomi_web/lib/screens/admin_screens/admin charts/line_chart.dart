@@ -54,25 +54,25 @@ class _LineChart extends StatelessWidget {
     Widget text;
     switch (value.toInt()) {
       case 2:
-        text = const Text('MON', style: style);
+        text = Text('${DateTime.now().day - 6}', style: style);
         break;
       case 7:
-        text = const Text('TUE', style: style);
+        text = Text('${DateTime.now().day - 5}', style: style);
         break;
       case 12:
-        text = const Text('WED', style: style);
+        text = Text('${DateTime.now().day - 4}', style: style);
         break;
       case 17:
-        text = const Text('THU', style: style);
+        text = Text('${DateTime.now().day - 3}', style: style);
         break;
       case 22:
-        text = const Text('FRI', style: style);
+        text = Text('${DateTime.now().day - 2}', style: style);
         break;
       case 27:
-        text = const Text('SAT', style: style);
+        text = Text('${DateTime.now().day - 1}', style: style);
         break;
       case 32:
-        text = const Text('SUN', style: style);
+        text = Text('${DateTime.now().day}', style: style);
         break;
       default:
         text = const Text('');
