@@ -1,3 +1,4 @@
+import 'package:bloomi_web/screens/admin_screens/admin%20charts/indicatorwidget.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -100,7 +101,7 @@ class CountChartState extends State<CountChart> {
                     ],
                   ),
                 ),
-                // const IndicatorWidget(),
+                const IndicatorWidget(),
               ],
             ),
             const Text(
@@ -119,7 +120,15 @@ class CountChartState extends State<CountChart> {
   }
 
   Widget bottomTitles(double value, TitleMeta meta) {
-    final titles = <String>['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    final titles = <String>[
+      '${DateTime.now().day - 6}',
+      '${DateTime.now().day - 5}',
+      '${DateTime.now().day - 4}',
+      '${DateTime.now().day - 3}',
+      '${DateTime.now().day - 2}',
+      '${DateTime.now().day - 1}',
+      '${DateTime.now().day}'
+    ];
 
     final Widget text = Text(
       titles[value.toInt()],

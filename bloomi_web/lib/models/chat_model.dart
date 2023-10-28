@@ -8,6 +8,8 @@ class ChatModel {
   String img;
   String lastSeen;
   bool isOnline;
+  int month;
+  int day;
 
   @JsonKey(defaultValue: '')
   String token;
@@ -22,6 +24,8 @@ class ChatModel {
     required this.isOnline,
     required this.token,
     required this.userType,
+    required this.month,
+    required this.day,
   });
 
   // //-----------binding data from firestore to user model----------------

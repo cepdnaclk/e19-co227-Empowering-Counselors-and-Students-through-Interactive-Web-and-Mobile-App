@@ -1,9 +1,9 @@
 import 'package:bloomi_web/components/custom_text.dart';
+import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/count_chart.dart';
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/indicatorwidget.dart';
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/line_bar_chart.dart';
-import 'package:bloomi_web/screens/admin_screens/admin%20charts/line_chart.dart';
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/pie_data.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +22,7 @@ class _AdminHomeState extends State<AdminHome> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+    double width = MediaQuery.of(context).size.width;
     final isSmallScreen = screenSize.width < 600;
 
     return Scaffold(
@@ -40,9 +41,9 @@ class _AdminHomeState extends State<AdminHome> {
                       "Welcome to the Admin Dashboard",
                     ),
                     const SizedBox(height: 20),
-                    Row(
+                    Column(
                       children: [
-                        Column(
+                        Row(
                           children: [
                             Card(
                               child: SizedBox(
@@ -110,21 +111,21 @@ class _AdminHomeState extends State<AdminHome> {
                               ),
                             ),
                             const SizedBox(
-                              height: 15,
+                              width: 25,
                             ),
                             const CountChart(),
                           ],
                         ),
                         const SizedBox(
-                          width: 30,
+                          height: 25,
                         ),
                         Column(
                           children: [
                             DetailedLinebar(),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            const LineChartSample1(),
+                            // const SizedBox(
+                            //   height: 15,
+                            // ),
+                            // const LineChartSample1(),
                           ],
                         ),
                       ],
@@ -137,6 +138,7 @@ class _AdminHomeState extends State<AdminHome> {
             const SizedBox(
               height: 50,
             ),
+            Footer(height: 55, width: width)
           ],
         ),
       ),

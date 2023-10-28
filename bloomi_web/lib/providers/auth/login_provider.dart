@@ -58,7 +58,9 @@ class LoginProvider extends ChangeNotifier {
       if (email.isNotEmpty && password.isNotEmpty) {
         setIsLoading(true);
         // try {
-        await AuthController.signInUser(email, password, context).then((value) {
+        await AuthController()
+            .signInUser(email, password, context)
+            .then((value) {
           if (value == false) {
             checkUserExistence(email).then((value2) async {
               try {

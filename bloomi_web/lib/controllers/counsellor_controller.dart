@@ -36,14 +36,17 @@ class CounsellorController {
             imgUrl: ""));
 
         await saveUserAdditionalData(ChatModel(
-            uid: id,
-            name: name,
-            email: email,
-            img: "",
-            lastSeen: DateTime.now().toString(),
-            isOnline: true,
-            token: "",
-            userType: userType));
+          uid: id,
+          name: name,
+          email: email,
+          img: "",
+          lastSeen: DateTime.now().toString(),
+          isOnline: true,
+          token: "",
+          userType: userType,
+          month: DateTime.now().month,
+          day: DateTime.now().day,
+        ));
       } else {
         await saveCounsellorData(CounsellorModel(
             uid: uId,
@@ -56,14 +59,17 @@ class CounsellorController {
             imgUrl: ""));
 
         await saveUserAdditionalData(ChatModel(
-            uid: uId,
-            name: name,
-            email: email,
-            img: "",
-            lastSeen: DateTime.now().toString(),
-            isOnline: true,
-            token: "",
-            userType: userType));
+          uid: uId,
+          name: name,
+          email: email,
+          img: "",
+          lastSeen: DateTime.now().toString(),
+          isOnline: true,
+          token: "",
+          userType: userType,
+          month: DateTime.now().month,
+          day: DateTime.now().day,
+        ));
       }
     } on FirebaseAuthException catch (e) {
       UtilMethod.customDialogBox(
@@ -210,6 +216,8 @@ class CounsellorController {
           'isOnline': chatModel.isOnline,
           'token': chatModel.token,
           'userType': chatModel.userType,
+          'month': chatModel.month,
+          'day': chatModel.day,
         })
         .then((value) => Logger().i("User Added"))
         .catchError((error) => Logger().e("Failed to add user: $error"));

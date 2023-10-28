@@ -1,4 +1,3 @@
-import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/providers/admin/admin_registration_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/admin_table/admin_control.dart';
@@ -20,7 +19,7 @@ class AdminPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    // final width = MediaQuery.of(context).size.width;
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
     return Scaffold(
       key: _key,
@@ -105,7 +104,6 @@ class AdminPanel extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: Footer(height: 55, width: width),
     );
   }
 }

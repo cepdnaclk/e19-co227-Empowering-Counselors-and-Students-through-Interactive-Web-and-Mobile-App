@@ -33,14 +33,17 @@ class AdminController {
             imgUrl: ""));
 
         saveUserAdditionalData(ChatModel(
-            uid: id,
-            name: name,
-            email: email,
-            img: "",
-            lastSeen: DateTime.now().toString(),
-            isOnline: true,
-            token: "",
-            userType: userType));
+          uid: id,
+          name: name,
+          email: email,
+          img: UtilConstants.dummyProfileUrl,
+          lastSeen: DateTime.now().toString(),
+          isOnline: true,
+          token: "",
+          userType: userType,
+          month: DateTime.now().month,
+          day: DateTime.now().day,
+        ));
       } else {
         saveAdminData(AdminModel(
             uid: uId,
@@ -52,14 +55,17 @@ class AdminController {
             imgUrl: ""));
 
         saveUserAdditionalData(ChatModel(
-            uid: uId,
-            name: name,
-            email: email,
-            img: "",
-            lastSeen: DateTime.now().toString(),
-            isOnline: true,
-            token: "",
-            userType: userType));
+          uid: uId,
+          name: name,
+          email: email,
+          img: UtilConstants.dummyProfileUrl,
+          lastSeen: DateTime.now().toString(),
+          isOnline: true,
+          token: "",
+          userType: userType,
+          month: DateTime.now().month,
+          day: DateTime.now().day,
+        ));
       }
     } on FirebaseAuthException catch (e) {
       UtilMethod.customDialogBox(
@@ -184,6 +190,8 @@ class AdminController {
           'isOnline': chatModel.isOnline,
           'token': chatModel.token,
           'userType': chatModel.userType,
+          'month': chatModel.month,
+          'day': chatModel.day,
         })
         .then((value) => Logger().i("User Added"))
         .catchError((error) => Logger().e("Failed to add user: $error"));
@@ -211,14 +219,17 @@ class AdminController {
           imgUrl: ""));
 
       saveUserAdditionalData(ChatModel(
-          uid: uId,
-          name: name,
-          email: email,
-          img: "",
-          lastSeen: DateTime.now().toString(),
-          isOnline: true,
-          token: "",
-          userType: 'Admin'));
+        uid: uId,
+        name: name,
+        email: email,
+        img: UtilConstants.dummyProfileUrl,
+        lastSeen: DateTime.now().toString(),
+        isOnline: true,
+        token: "",
+        userType: 'Admin',
+        month: DateTime.now().month,
+        day: DateTime.now().day,
+      ));
     } on FirebaseAuthException catch (e) {
       UtilMethod.customDialogBox(context, "Error", e.code);
       Logger().e(e);

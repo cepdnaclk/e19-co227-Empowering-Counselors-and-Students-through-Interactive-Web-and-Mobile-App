@@ -2,14 +2,12 @@ part of 'objects.dart';
 
 @JsonSerializable(explicitToJson: true)
 class CountModel {
-  String userCount;
-  String counsellorCount;
-  String adminCount;
+  int date;
+  int month;
 
   CountModel({
-    required this.userCount,
-    required this.counsellorCount,
-    required this.adminCount,
+    required this.date,
+    required this.month,
   });
 
   // //-----------binding data from firestore to user model----------------
