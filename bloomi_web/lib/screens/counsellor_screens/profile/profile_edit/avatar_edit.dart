@@ -15,7 +15,7 @@ class ProfileImage extends StatelessWidget {
       return Stack(
         children: [
           CircleAvatar(
-            radius: width < 480 ? 50 : 90,
+            radius: width < 480 ? 50 : (width < 1000 ? 70 : 90),
             backgroundImage: NetworkImage(value.counsellorModel!.imgUrl),
           ),
           Positioned(

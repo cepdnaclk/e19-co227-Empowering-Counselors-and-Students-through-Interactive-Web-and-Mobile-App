@@ -128,7 +128,7 @@ class CounsellorController {
         .catchError((error) => Logger().e("Failed to Delete user: $error"));
   }
 
-  //-----------------------fetch admin data from database---------------------
+  //-----------------------fetch counsellor data from database---------------------
   Future<CounsellorModel?> fetchCounsellorData(String counsellorId) async {
     try {
       //-------firebase quary to fetch admin data from database--------
@@ -140,6 +140,32 @@ class CounsellorController {
           documentSnapshot.data() as Map<String, dynamic>);
 
       return counsellorModel;
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
+
+  //-----------------------fetch counsellor all data from database---------------------
+  List<CounsellorModel>? allCounsellor = [];
+
+  List<CounsellorModel>? get counsellors => allCounsellor;
+
+  Future<List<CounsellorModel>?> fetchAllCounsellorData() async {
+    try {
+      //-------firebase quary to fetch admin data from database--------
+      QuerySnapshot querySnapshot = await counsellor.get();
+
+      Logger().i(querySnapshot.docs.length);
+
+      for (var e in querySnapshot.docs) {
+        CounsellorModel counsellor =
+            CounsellorModel.fromJson(e.data() as Map<String, dynamic>);
+
+        allCounsellor!.add(counsellor);
+      }
+
+      return allCounsellor;
     } catch (e) {
       Logger().e(e);
       return null;

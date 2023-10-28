@@ -160,6 +160,19 @@ Map<String, dynamic> _$CounsellorModelToJson(CounsellorModel instance) =>
       'imgUrl': instance.imgUrl,
     };
 
+CountModel _$CountModelFromJson(Map<String, dynamic> json) => CountModel(
+      userCount: json['userCount'] as String,
+      counsellorCount: json['counsellorCount'] as String,
+      adminCount: json['adminCount'] as String,
+    );
+
+Map<String, dynamic> _$CountModelToJson(CountModel instance) =>
+    <String, dynamic>{
+      'userCount': instance.userCount,
+      'counsellorCount': instance.counsellorCount,
+      'adminCount': instance.adminCount,
+    };
+
 MessageModel _$MessageModelFromJson(Map<String, dynamic> json) => MessageModel(
       conId: json['conId'] as String,
       senderName: json['senderName'] as String,

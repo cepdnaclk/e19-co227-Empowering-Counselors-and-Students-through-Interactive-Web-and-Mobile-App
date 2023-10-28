@@ -1,4 +1,5 @@
 import 'package:bloomi_web/components/custom_text.dart';
+import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/count_chart.dart';
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/indicatorwidget.dart';
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/line_bar_chart.dart';
@@ -6,6 +7,7 @@ import 'package:bloomi_web/screens/admin_screens/admin%20charts/line_chart.dart'
 import 'package:bloomi_web/screens/admin_screens/admin%20charts/pie_data.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AdminHome extends StatefulWidget {
   const AdminHome({Key? key}) : super(key: key);
@@ -149,8 +151,8 @@ class _AdminHomeState extends State<AdminHome> {
         final double radius = isTouched ? 60 : 50;
         final value = PieChartSectionData(
           color: data.color,
-          value: data.percentage,
-          title: '${data.percentage}%',
+          value: Provider.of<UserProvider>(context).percentages[index],
+          title: '${Provider.of<UserProvider>(context).percentages[index]}%',
           titleStyle: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.bold,
