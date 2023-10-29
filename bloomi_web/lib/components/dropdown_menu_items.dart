@@ -1,12 +1,21 @@
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
+import 'package:bloomi_web/utils/util_function.dart';
+import 'package:bloomi_web/utils/util_method.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
 class DropDownMenuItems extends StatefulWidget {
-  const DropDownMenuItems({super.key, required this.icon});
+  const DropDownMenuItems({
+    super.key,
+    required this.icon,
+    required this.name,
+    required this.widget,
+  });
 
   final IconData icon;
+  final String name;
+  final Widget widget;
 
   @override
   State<DropDownMenuItems> createState() => _DropDownMenuItemsState();
@@ -20,17 +29,23 @@ class _DropDownMenuItemsState extends State<DropDownMenuItems> {
         customButton: Icon(
           widget.icon,
           size: 25,
-          color: UtilConstants.whiteColor,
+          color: UtilConstants.blackColor,
         ),
         items: [
           ...MenuItems.firstItems.map(
+            (item) => DropdownMenuItem<String>(
+              value: item,
+              child: MenuItems.buildItem(widget.name),
+            ),
+          ),
+          ...MenuItems.secondItems.map(
             (item) => DropdownMenuItem<String>(
               value: item,
               child: MenuItems.buildItem(item),
             ),
           ),
           const DropdownMenuItem<Divider>(enabled: false, child: Divider()),
-          ...MenuItems.secondItems.map(
+          ...MenuItems.thirdItems.map(
             (item) => DropdownMenuItem<String>(
               value: item,
               child: MenuItems.buildItem(item),
@@ -38,7 +53,11 @@ class _DropDownMenuItemsState extends State<DropDownMenuItems> {
           ),
         ],
         onChanged: (value) {
-          MenuItems.onChanged(context, value! as String);
+          MenuItems.onChanged(
+            context,
+            value! as String,
+            widget.widget,
+          );
         },
         dropdownStyleData: DropdownStyleData(
           width: 200,
@@ -51,9 +70,10 @@ class _DropDownMenuItemsState extends State<DropDownMenuItems> {
         ),
         menuItemStyleData: MenuItemStyleData(
           customHeights: [
-            ...List<double>.filled(MenuItems.firstItems.length, 48),
+            ...List<double>.filled(MenuItems.firstItems.length, 38),
+            ...List<double>.filled(MenuItems.secondItems.length, 38),
             5,
-            ...List<double>.filled(MenuItems.secondItems.length, 58),
+            ...List<double>.filled(MenuItems.thirdItems.length, 58),
           ],
           padding: const EdgeInsets.only(left: 20, right: 16),
         ),
@@ -63,8 +83,9 @@ class _DropDownMenuItemsState extends State<DropDownMenuItems> {
 }
 
 abstract class MenuItems {
-  static const List<String> firstItems = [home, settings];
-  static const List<String> secondItems = [logout];
+  static const List<String> firstItems = [home];
+  static const List<String> secondItems = [settings];
+  static const List<String> thirdItems = [logout];
 
   static const home = 'Sachith Dissanayaka';
 
@@ -89,17 +110,28 @@ abstract class MenuItems {
     );
   }
 
-  static void onChanged(BuildContext context, String item) {
+  static void onChanged(BuildContext context, String item, Widget? widget) {
     switch (item) {
       case MenuItems.home:
+
         //Do something
         break;
       case MenuItems.settings:
+        UtilFunction.navigateForward(context, widget!);
         //Do something
         break;
 
       case MenuItems.logout:
-        AuthController.signOutUser();
+        UtilMethod.customDialogBox(
+          context,
+          'Sign Out',
+          'Do you Want to Sign Out?',
+          onOkPressed: () {
+            AuthController.signOutUser();
+          },
+          onCancelPressed: () {},
+        );
+
         break;
     }
   }

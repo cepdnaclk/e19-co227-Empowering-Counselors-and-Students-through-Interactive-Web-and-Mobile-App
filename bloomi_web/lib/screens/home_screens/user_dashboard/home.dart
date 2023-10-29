@@ -127,42 +127,48 @@ class Home extends StatelessWidget {
                 const SizedBox(width: 15),
                 Consumer<UserProvider>(
                   builder: (BuildContext context, value, Widget? child) {
-                    return Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: canvasColor,
-                            borderRadius: BorderRadius.circular(50),
-                            image: DecorationImage(
-                              image: NetworkImage(value.userModel!.imgUrl),
-                              fit: BoxFit.cover,
+                    return Container(
+                      padding: const EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 2,
+                              ),
+                              color: canvasColor,
+                              borderRadius: BorderRadius.circular(50),
+                              image: DecorationImage(
+                                image: NetworkImage(value.userModel!.imgUrl),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            alignment: Alignment.center,
+                            width: 28,
+                            height: 28, // Adjust the width to your preference.
+                          ),
+                          const SizedBox(width: 5),
+                          Container(
+                            alignment: Alignment.center,
+                            width: 24,
+                            height: 24, // Adjust the width to your preference.
+                            child: DropDownMenuItems(
+                              icon: Icons.arrow_drop_down,
+                              name: value.userModel!.name,
+                              widget: const ProfileHomeUser(),
                             ),
                           ),
-                          alignment: Alignment.center,
-                          width: 24,
-                          height: 24, // Adjust the width to your preference.
-                          child: const DropDownMenuItems(
-                            icon: Icons.person,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          value.userModel!.name,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                      ],
+                        ],
+                      ),
                     );
                   },
                 ),
-                const SizedBox(width: 25)
+                const SizedBox(width: 10)
               ],
             ),
       drawer: ExampleSidebarX(controller: _controller),
@@ -263,10 +269,10 @@ class ExampleSidebarX extends StatelessWidget {
           icon: Icons.music_note,
           label: 'Relax',
         ),
-        const SidebarXItem(
-          icon: Icons.person_2_outlined,
-          label: 'Profile',
-        ),
+        // const SidebarXItem(
+        //   icon: Icons.person_2_outlined,
+        //   label: 'Profile',
+        // ),
       ],
     );
   }
@@ -297,8 +303,8 @@ class _ScreensExample extends StatelessWidget {
           case 3:
             return const Relax();
 
-          case 4:
-            return const ProfileHome();
+          // case 4:
+          //   return const ProfileHome();
 
           default:
             return const Text('');
