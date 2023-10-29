@@ -3,7 +3,7 @@ import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/accepted_appointments_card.dart';
-import 'package:bloomi_web/screens/counsellor_screens/dashboard/all_appointments_card.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/all_appointments_page.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/goto_all_appointment_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/pending_appointments_card.dart';
@@ -63,14 +63,14 @@ class _DashboardTabletState extends State<DashboardTablet> {
         child: Column(
           children: [
             Material(
-              borderRadius: const BorderRadius.only(
+              /*borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
-              ),
+              ),*/
               color: UtilConstants.canvasColor,
               child: Container(
                 width: width,
-                height: 180,
+                height: 150,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
@@ -80,10 +80,10 @@ class _DashboardTabletState extends State<DashboardTablet> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
-                  borderRadius: const BorderRadius.only(
+                  /*borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20),
-                  ),
+                  ),*/
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -97,85 +97,18 @@ class _DashboardTabletState extends State<DashboardTablet> {
                             padding: const EdgeInsets.only(left: 10, top: 20),
                             child: Consumer<CounsellorRegistrationProvider>(
                               builder: (context, value, child) {
-                                return (width < 900)
-                                    ? Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          CircleAvatar(
-                                            backgroundImage: NetworkImage(
-                                                value.counsellorModel!.imgUrl),
-                                            radius: (20),
-                                          ),
-                                          const SizedBox(
-                                            width: 20,
-                                          ),
-                                          Text(
-                                            "Hi, ${value.counsellorModel!.name} !",
-                                            style: const TextStyle(
-                                                fontSize: 20,
-                                                color:
-                                                    UtilConstants.whiteColor),
-                                          ),
-                                          const Spacer(),
-                                          InkWell(
-                                            onTap: () {
-                                              UtilFormMethodNotification
-                                                  .showDialogMethod(context);
-                                            },
-                                            child: Stack(
-                                              children: [
-                                                const Icon(Icons.notifications,
-                                                    size: 24,
-                                                    color: UtilConstants
-                                                        .whiteColor),
-                                                Positioned(
-                                                  right: -0.6,
-                                                  top: -2,
-                                                  child: Container(
-                                                    padding:
-                                                        const EdgeInsets.all(4),
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                      color: Colors.red,
-                                                      shape: BoxShape.circle,
-                                                    ),
-                                                    child: const Text(
-                                                      '.',
-                                                      style: TextStyle(
-                                                        color: Colors.red,
-                                                        fontSize: 11,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          const SizedBox(width: 10),
-                                        ],
-                                      )
-                                    : Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          CircleAvatar(
-                                            backgroundImage: NetworkImage(
-                                                value.counsellorModel!.imgUrl),
-                                            radius: (20),
-                                          ),
-                                          const SizedBox(
-                                            width: 20,
-                                          ),
-                                          Text(
-                                            "Hi, ${value.counsellorModel!.name} !",
-                                            style: const TextStyle(
-                                                fontSize: 20,
-                                                color:
-                                                    UtilConstants.whiteColor),
-                                          ),
-                                        ],
-                                      );
+                                return Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      "Hi, ${value.counsellorModel!.name} !",
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          color: UtilConstants.whiteColor),
+                                    ),
+                                  ],
+                                );
                               },
                             ),
                           ),
@@ -207,7 +140,7 @@ class _DashboardTabletState extends State<DashboardTablet> {
                               },
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Search here ",
+                                hintText: "Search Students here",
                                 hintStyle: TextStyle(
                                     color: UtilConstants.greyColor,
                                     fontSize: 15),
@@ -353,7 +286,7 @@ class _DashboardTabletState extends State<DashboardTablet> {
                                   // Navigate to all appointments page
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return const AllAppointments();
+                                    return const AllAppointmentsCounselor();
                                   }));
                                 },
                                 style: ElevatedButton.styleFrom(
