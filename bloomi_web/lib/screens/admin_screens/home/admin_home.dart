@@ -159,7 +159,7 @@ class _AdminHomeState extends State<AdminHome> {
           titleStyle: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 32, 32, 32),
+            color: Colors.white,
           ),
           radius: radius,
         );
