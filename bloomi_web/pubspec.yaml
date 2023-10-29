@@ -52,7 +52,7 @@ dependencies:
   date_field: ^3.0.5
   intl: ^0.18.1
   sidebarx: ^0.16.1
-  fl_chart: ^0.63.0
+  fl_chart: ^0.64.0
   firebase_dynamic_links: ^5.3.6
   timeago: ^3.5.0
   visibility_detector: ^0.4.0+2
@@ -65,6 +65,9 @@ dependencies:
   googleapis: ^11.4.0
   googleapis_auth: ^1.4.1
   carousel_slider: ^4.2.1
+  flutter_widget_from_html: ^0.14.5+1
+  fwfh_webview: ^0.14.2
+  
 
 dev_dependencies:
   flutter_test:
@@ -77,7 +80,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
