@@ -1,14 +1,16 @@
 import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/accepted_appointments_card.dart';
-import 'package:bloomi_web/screens/counsellor_screens/dashboard/all_appointments_card.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/all_appointments_page.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/pending_appointments_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 
 class Desktop extends StatefulWidget {
   const Desktop({super.key});
@@ -52,12 +54,11 @@ class _DesktopState extends State<Desktop> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: UtilConstants.whiteColor,
       body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
+        //physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             Padding(
@@ -71,8 +72,32 @@ class _DesktopState extends State<Desktop> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 5, left: 10),
-                        child: Text(
-                          "Dashboard",
+                        child: Consumer<CounsellorRegistrationProvider>(
+                          builder: (context, value, child) {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                const SizedBox(width: 8),
+                                Text(
+                                  "Hi, ${value.counsellorModel!.name} !",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      shadows: [
+                                        Shadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          offset: const Offset(2, 2),
+                                          blurRadius: 4,
+                                        ),
+                                      ],
+                                      fontSize: 22,
+                                      color: UtilConstants.actionColor
+                                          .withOpacity(0.9)),
+                                ),
+                              ],
+                            );
+                          },
+                        ), /*Text(
+                          "Hi ",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               shadows: [
@@ -85,99 +110,100 @@ class _DesktopState extends State<Desktop> {
                               fontSize: 30,
                               color:
                                   UtilConstants.actionColor.withOpacity(0.9)),
-                        ),
+                        ),*/
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  SizedBox(height: 10, width: width),
                   //all below contain in a row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      SingleChildScrollView(
-                        physics: const BouncingScrollPhysics(),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            //next appointment row
-                            Row(
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          //next appointment row
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                  width: width * 0.5,
+                                  child: const NextAppointment()),
+                            ],
+                          ),
+                          const SizedBox(height: 30),
+                          //two cards row
+                          SizedBox(
+                            width: width * 0.5,
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  PendingAppointments(),
+                                  Spacer(),
+                                  AcceptedAppointments(),
+                                ],
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                    width: width * 0.5,
-                                    child: const NextAppointment()),
-                              ],
-                            ),
-                            const SizedBox(height: 30),
-                            //two cards row
-                            SizedBox(
-                              width: width * 0.5,
-                              child: const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    PendingAppointments(),
-                                    Spacer(),
-                                    AcceptedAppointments(),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 30),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: width * 0.5 - 40,
-                                    height: 50,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        // Navigate to all appointments page
-                                        Navigator.push(context,
-                                            MaterialPageRoute(
-                                                builder: (context) {
-                                          return const AllAppointments();
-                                        }));
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                          foregroundColor:
-                                              UtilConstants.whiteColor,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          backgroundColor: const Color.fromARGB(
-                                              255,
-                                              155,
-                                              172,
-                                              187) // Button color
-                                          ),
-                                      child: const Text(
-                                        "Go to All Appointments",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color.fromARGB(
-                                              255, 0, 0, 0), // Text color
+                                  width: width * 0.5 - 40,
+                                  height: 60,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      // Navigate to all appointments page
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return const AllAppointmentsCounselor();
+                                      }));
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        foregroundColor:
+                                            UtilConstants.whiteColor,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
-                                      ),
+                                        backgroundColor: const Color.fromARGB(
+                                            255, 155, 172, 187) // Button color
+                                        ),
+                                    child: const Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Go to All Appointments",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color.fromARGB(
+                                                255, 0, 0, 0), // Text color
+                                          ),
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward,
+                                          size: 18,
+                                          color: Colors.black,
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: 20),
-                          ],
-                        ),
+                          ),
+                          const SizedBox(height: 30),
+                        ],
                       ),
                       Expanded(
                         child: Column(
@@ -185,7 +211,7 @@ class _DesktopState extends State<Desktop> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              height: height * 0.763,
+                              height: 550,
                               width: width / 3,
                               child: Column(
                                 children: [
@@ -266,7 +292,7 @@ class _DesktopState extends State<Desktop> {
                                         }
 
                                         return SizedBox(
-                                          height: height * 0.65,
+                                          height: 484,
                                           width: width / 3,
                                           child: SingleChildScrollView(
                                             child: Column(
@@ -388,7 +414,6 @@ class _DesktopState extends State<Desktop> {
                 ],
               ),
             ),
-            const SizedBox(height: 100),
             Footer(height: 55, width: width)
           ],
         ),
