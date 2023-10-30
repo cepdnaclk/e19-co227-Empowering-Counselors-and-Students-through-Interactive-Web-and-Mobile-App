@@ -1,5 +1,9 @@
+import 'package:bloomi_web/controllers/appoinment_controller.dart';
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NextAppointment extends StatefulWidget {
   const NextAppointment({super.key});
@@ -8,13 +12,7 @@ class NextAppointment extends StatefulWidget {
   State<NextAppointment> createState() => _NextAppointmentState();
 }
 
-Map<String, dynamic> nextAppointment = {
-  "name": "Sajani",
-  "email": "e19000@eng.pdn.ac.lk",
-  "date": "12 / 10 / 2023",
-  "time": "10:00 a.m.",
-  "state": "Confirmed",
-};
+Map<String, dynamic>? nextAppointment = {};
 
 Color getAppointmentStateColor(String state) {
   if (state == 'Pending') {
@@ -27,6 +25,35 @@ Color getAppointmentStateColor(String state) {
 }
 
 class _NextAppointmentState extends State<NextAppointment> {
+  /*@override
+  void initState() {
+    super.initState();
+    final provider =
+        Provider.of<CounsellorRegistrationProvider>(context, listen: false);
+    String counselorId = provider.counsellorModel!.uid;
+
+    // Call the getNearestAppointment method
+    Future<DocumentSnapshot<Map<String, dynamic>>?> appointmentsStream =
+        AppointmentController().getNearestAppointment(counselorId);
+
+    appointmentsStream.then((snapshot) {
+      if (snapshot != null) {
+        setState(() {
+          nextAppointment = snapshot as Map<String, dynamic>?;
+        });
+      } else {
+        // No appointment found
+        print('No appointment found.');
+      }
+    });
+  }*/
+
+  Map<String, dynamic>? nextAppointment = {
+    "name": "Saman",
+    "date": "2023 / 11 / 02",
+    "time": "10:00 AM",
+    "status": "Pending"
+  };
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -81,16 +108,19 @@ class _NextAppointmentState extends State<NextAppointment> {
               ),
               const SizedBox(height: 10),
               Text(
-                // ignore: prefer_interpolation_to_compose_strings
-                "Student Name: ${nextAppointment["name"]}",
+                "Student Name: ${nextAppointment?["name"] ?? "N/A"}",
+                style: TextStyle(fontSize: width < 480 ? 14.0 : 16.0),
+              ),
+              // Text(
+              //   "Appointment Date: ${nextAppointment?["date"] != null ? DateTime.parse(nextAppointment?["date"]).toString().substring(0, 10) : "N/A"}",
+              //   style: TextStyle(fontSize: width < 480 ? 14.0 : 16.0),
+              // ),
+              Text(
+                "Appointment Time: ${nextAppointment?["date"] ?? "N/A"}",
                 style: TextStyle(fontSize: width < 480 ? 14.0 : 16.0),
               ),
               Text(
-                "Appointment Date: ${nextAppointment["date"].toString().substring(0, 10)}",
-                style: TextStyle(fontSize: width < 480 ? 14.0 : 16.0),
-              ),
-              Text(
-                "Appointment Time: ${nextAppointment["time"]}",
+                "Appointment Time: ${nextAppointment?["time"] ?? "N/A"}",
                 style: TextStyle(fontSize: width < 480 ? 14.0 : 16.0),
               ),
               const SizedBox(height: 8),
@@ -101,12 +131,13 @@ class _NextAppointmentState extends State<NextAppointment> {
                     height: 10,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: getAppointmentStateColor(nextAppointment["state"]),
+                      color:
+                          getAppointmentStateColor(nextAppointment?["status"]),
                     ),
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    nextAppointment["state"],
+                    "${nextAppointment?["status"] ?? "N/A"}",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: width < 480 ? 14.0 : 16.0,
