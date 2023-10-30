@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 class Footer extends StatelessWidget {
   const Footer({
-    Key? key, // Fixed the syntax error here
+    super.key, // Fixed the syntax error here
     required this.height,
     required this.width,
-  }) : super(key: key);
+  });
 
   final double height;
   final double width;

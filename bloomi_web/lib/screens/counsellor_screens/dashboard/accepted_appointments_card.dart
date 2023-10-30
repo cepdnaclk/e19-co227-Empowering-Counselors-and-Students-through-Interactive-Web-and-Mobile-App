@@ -1,5 +1,10 @@
+import 'dart:async';
+
+import 'package:bloomi_web/controllers/appoinment_controller.dart';
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AcceptedAppointments extends StatefulWidget {
   const AcceptedAppointments({Key? key}) : super(key: key);
@@ -8,10 +13,29 @@ class AcceptedAppointments extends StatefulWidget {
   State<AcceptedAppointments> createState() => _AcceptedAppointmentsState();
 }
 
-//fetch no of accepted appointments
-int count = 0;
-
 class _AcceptedAppointmentsState extends State<AcceptedAppointments> {
+  int? count;
+
+  @override
+  void initState() {
+    super.initState();
+    count = 0;
+    fetchAppointmentsCount();
+  }
+
+  void fetchAppointmentsCount() {
+    final provider =
+        Provider.of<CounsellorRegistrationProvider>(context, listen: false);
+    Stream<int> appointmentsStream = AppointmentController()
+        .getApprovedCountByCounselorId(provider.counsellorModel!.uid);
+
+    appointmentsStream.listen((snapshot) {
+      setState(() {
+        count = snapshot;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -20,7 +44,7 @@ class _AcceptedAppointmentsState extends State<AcceptedAppointments> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      color: Color.fromARGB(255, 186, 200, 225),
+      color: const Color.fromARGB(255, 186, 200, 225),
       elevation: 10,
       shadowColor: UtilConstants.greyColor.withOpacity(0.8),
       child: Padding(
@@ -40,7 +64,7 @@ class _AcceptedAppointmentsState extends State<AcceptedAppointments> {
             ),
             const SizedBox(height: 8),
             Text(
-              "$count",
+              count?.toString() ?? '0',
               style: TextStyle(fontSize: width < 480 ? 13.0 : 16.0),
             ),
           ],

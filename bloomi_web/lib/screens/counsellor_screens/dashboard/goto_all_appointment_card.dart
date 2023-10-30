@@ -3,7 +3,7 @@ import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
 class GoToAllAppointments extends StatefulWidget {
-  const GoToAllAppointments({Key? key}) : super(key: key);
+  const GoToAllAppointments({super.key});
 
   @override
   State<GoToAllAppointments> createState() => _GoToAllAppointmentsState();

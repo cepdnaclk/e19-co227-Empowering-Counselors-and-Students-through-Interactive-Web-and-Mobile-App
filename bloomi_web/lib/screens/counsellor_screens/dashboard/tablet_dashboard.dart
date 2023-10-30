@@ -8,7 +8,6 @@ import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_a
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/goto_all_appointment_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/pending_appointments_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
-import 'package:bloomi_web/screens/counsellor_screens/home/notification_viewer.dart.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -197,7 +196,7 @@ class _DashboardTabletState extends State<DashboardTablet> {
                   }
 
                   return SizedBox(
-                    height: 350,
+                    height: 300,
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
@@ -261,22 +260,43 @@ class _DashboardTabletState extends State<DashboardTablet> {
                 },
               ),
             ),
-            const NextAppointment(),
-            const SizedBox(height: 20),
             width < 750
                 ? Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     child: (Column(
                       children: [
-                        const Row(
+                        NextAppointment(),
+                        SizedBox(height: 20),
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             PendingAppointments(),
                             AcceptedAppointments(),
                           ],
                         ),
-                        const SizedBox(height: 20),
-                        Row(
+                        SizedBox(height: 20),
+                        Center(
+                          child: Text(
+                            "All Appointment",
+                            style: TextStyle(
+                              fontSize: 22,
+                              color: UtilConstants.actionColor.withOpacity(0.9),
+                              fontWeight: FontWeight.bold,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: const Offset(2, 2),
+                                  blurRadius: 4,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 500,
+                          child: AllAppointmentsCounselor(),
+                        ),
+                        /*Row(
                           children: [
                             SizedBox(
                               width: width - 40,
@@ -318,18 +338,53 @@ class _DashboardTabletState extends State<DashboardTablet> {
                               ),
                             ),
                           ],
-                        )
+                        )*/
                       ],
                     )),
                   )
-                : const Padding(
+                : Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Column(
                       children: [
-                        PendingAppointments(),
-                        AcceptedAppointments(),
-                        GoToAllAppointments(),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  NextAppointment(),
+                                ],
+                              ),
+                            ),
+                            Column(
+                              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                PendingAppointments(),
+                                SizedBox(height: 35),
+                                AcceptedAppointments(),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 15),
+                        Center(
+                          child: Text(
+                            "All Appointment",
+                            style: TextStyle(
+                              fontSize: 22,
+                              color: UtilConstants.actionColor.withOpacity(0.9),
+                              fontWeight: FontWeight.bold,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: const Offset(2, 2),
+                                  blurRadius: 4,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                            height: 500, child: AllAppointmentsCounselor()),
                       ],
                     ),
                   ),

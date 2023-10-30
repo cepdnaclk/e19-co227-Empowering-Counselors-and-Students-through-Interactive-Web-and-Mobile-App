@@ -7,10 +7,10 @@ import 'package:provider/provider.dart';
 
 class ChatScreenMobile extends StatelessWidget {
   const ChatScreenMobile({
-    Key? key,
+    super.key,
     required this.widthFinal,
     required this.heightFinal,
-  }) : super(key: key);
+  });
 
   final double widthFinal;
   final double heightFinal;

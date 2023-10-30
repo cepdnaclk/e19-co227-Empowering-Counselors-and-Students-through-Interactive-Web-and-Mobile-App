@@ -2,7 +2,7 @@ import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 
 class NextAppointment extends StatefulWidget {
-  const NextAppointment({Key? key}) : super(key: key);
+  const NextAppointment({super.key});
 
   @override
   State<NextAppointment> createState() => _NextAppointmentState();
@@ -31,7 +31,7 @@ class _NextAppointmentState extends State<NextAppointment> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      //padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
@@ -42,7 +42,7 @@ class _NextAppointmentState extends State<NextAppointment> {
         child: Padding(
           padding: width < 480
               ? const EdgeInsets.symmetric(horizontal: 20, vertical: 20)
-              : const EdgeInsets.symmetric(horizontal: 50, vertical: 40),
+              : const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -50,7 +50,7 @@ class _NextAppointmentState extends State<NextAppointment> {
                 child: Text(
                   "Your Next Appointment",
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: width < 480 ? 18 : 22,
                     color: UtilConstants.actionColor.withOpacity(0.9),
                     fontWeight: FontWeight.bold,
                     shadows: [

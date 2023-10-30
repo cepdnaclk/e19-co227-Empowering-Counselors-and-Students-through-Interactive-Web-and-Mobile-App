@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CounselorProfile extends StatefulWidget {
-  const CounselorProfile({Key? key}) : super(key: key);
+  const CounselorProfile({super.key});
 
   @override
   State<CounselorProfile> createState() => _CounselorProfileState();

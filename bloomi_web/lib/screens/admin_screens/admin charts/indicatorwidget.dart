@@ -2,7 +2,7 @@ import 'package:bloomi_web/screens/admin_screens/admin%20charts/pie_data.dart';
 import 'package:flutter/material.dart';
 
 class IndicatorWidget extends StatelessWidget {
-  const IndicatorWidget({Key? key}) : super(key: key);
+  const IndicatorWidget({super.key});
   @override
   Widget build(BuildContext context) {
     return Column(

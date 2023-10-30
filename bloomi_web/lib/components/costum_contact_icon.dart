@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class CustomContactIcon extends StatelessWidget {
   const CustomContactIcon(
     this.text, {
-    Key? key,
+    super.key,
     required this.mediaQueryData,
     required this.icon,
     this.size = 50,
-  }) : super(key: key);
+  });
 
   final MediaQueryData mediaQueryData;
   final String text;

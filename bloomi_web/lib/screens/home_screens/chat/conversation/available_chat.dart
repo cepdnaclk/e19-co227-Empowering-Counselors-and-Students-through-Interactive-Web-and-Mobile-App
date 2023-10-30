@@ -13,11 +13,11 @@ import 'package:provider/provider.dart';
 
 class AvailableChat extends StatelessWidget {
   AvailableChat({
-    Key? key,
+    super.key,
     required this.height,
     required this.width,
     required this.isMobile,
-  }) : super(key: key);
+  });
 
   final double height;
   final double width;

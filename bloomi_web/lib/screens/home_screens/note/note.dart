@@ -15,7 +15,7 @@ class CalendarApp extends StatelessWidget {
 }
 
 class Note extends StatefulWidget {
-  const Note({Key? key}) : super(key: key);
+  const Note({super.key});
 
   @override
   State<Note> createState() => _NoteState();
