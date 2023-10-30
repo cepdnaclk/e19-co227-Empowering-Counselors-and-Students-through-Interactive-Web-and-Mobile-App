@@ -1,4 +1,5 @@
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
+import 'package:bloomi_web/providers/users/user_provider.dart';
 import 'package:bloomi_web/screens/counsellor_screens/profile/profile_edit/profile_edit_form.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:bloomi_web/utils/util_function.dart';
@@ -19,16 +20,48 @@ class _CounselorProfileState extends State<CounselorProfile> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CounsellorRegistrationProvider>(
-        builder: (context, value, child) {
+    /*return Consumer<UserProvider>(builder: (context, value, child) {
       Map<String, dynamic> profileDetails = {
-        "name": value.counsellorModel!.name,
-        "Email": value.counsellorModel!.email,
-        "PhoneNumber": value.counsellorModel!.phone,
-        "Faculty": value.counsellorModel!.faculty,
-        "Credentials": value.counsellorModel!.userCredential,
-        "imageUrl": value.counsellorModel!.imgUrl,
-      };
+        "name": value.userModel!.name,
+        "Email": value.userModel!.email,
+        "PhoneNumber": value.userModel!.phone,
+        "Faculty": value.userModel!.faculty,
+        "Credentials": value.userModel!.userCredential,
+        "imageUrl": value.userModel!.imgUrl,
+      };*/
+
+    return Consumer2<CounsellorRegistrationProvider, UserProvider>(
+        builder: (context, value1, value2, child) {
+      Map<String, dynamic> profileDetails;
+
+      if (value1.userType == "Counselor") {
+        profileDetails = {
+          "name": value1.counsellorModel!.name,
+          "Email": value1.counsellorModel!.email,
+          "PhoneNumber": value1.counsellorModel!.phone,
+          "Faculty": value1.counsellorModel!.faculty,
+          "Credentials": value1.counsellorModel!.userCredential,
+          "imageUrl": value1.counsellorModel!.imgUrl,
+        };
+      } else if (value2.userModel!.userType == "User") {
+        profileDetails = {
+          "name": value2.userModel!.name,
+          "Email": value2.userModel!.email,
+          "PhoneNumber": value2.userModel!.phone,
+          "Faculty": value2.userModel!.faculty,
+          "Credentials": value2.userModel!.userCredential,
+          "imageUrl": value2.userModel!.imgUrl,
+        };
+      } else {
+        profileDetails = {
+          "name": "",
+          "Email": "",
+          "PhoneNumber": "",
+          "Faculty": "",
+          "Credentials": "",
+          "imageUrl": "",
+        };
+      }
 
       for (var entry in profileDetails.entries) {
         final key = entry.key;

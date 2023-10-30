@@ -5,7 +5,6 @@ import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart'
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/accepted_appointments_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/all_appointments_page.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
-import 'package:bloomi_web/screens/counsellor_screens/dashboard/goto_all_appointment_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/pending_appointments_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
 import 'package:bloomi_web/utils/util_constant.dart';

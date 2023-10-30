@@ -266,4 +266,8 @@ class CounsellorController {
   //-------------retrieve and listen to the counselor real-time-----------------
   Stream<QuerySnapshot> getCounselorsAdditional() =>
       additionalCounsellor.snapshots();
+
+  //------GET NO OF COUNSELORS-------
+  Stream<int> getCounselorCount() =>
+      counsellor.snapshots().map((snapshot) => snapshot.docs.length);
 }
