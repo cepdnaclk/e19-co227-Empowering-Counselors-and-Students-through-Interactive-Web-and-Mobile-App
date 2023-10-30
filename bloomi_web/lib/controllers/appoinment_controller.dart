@@ -124,4 +124,22 @@ class AppointmentController {
   //-------------GET APPOINTMENT ACORDING TO UID-----------------
   Stream<QuerySnapshot> getAppointmentsByUid(String studentId) =>
       appointments.where('studentId', isEqualTo: studentId).snapshots();
+
+  //-------------GET APPOINTMENT ACORDING TO CounselorID-----------------
+  Stream<QuerySnapshot> getAppointmentsByCounselorid(String counselorId) =>
+      appointments.where('counselorId', isEqualTo: counselorId).snapshots();
+
+  //-------GET ACCEPTED APPOINTMENTS COUNT ACCORDING TO CounselorID------
+  Stream<int> getApprovedCountByCounselorId(String counselorId) => appointments
+      .where('counselorId', isEqualTo: counselorId)
+      .where('status', isEqualTo: "Approved")
+      .snapshots()
+      .map((snapshot) => snapshot.docs.length);
+
+  //-------GET PENDING APPOINTMENTS COUNT ACCORDING TO CounselorID------
+  Stream<int> getPendingCountByCounselorId(String counselorId) => appointments
+      .where('counselorId', isEqualTo: counselorId)
+      .where('status', isEqualTo: "Pending")
+      .snapshots()
+      .map((snapshot) => snapshot.docs.length);
 }

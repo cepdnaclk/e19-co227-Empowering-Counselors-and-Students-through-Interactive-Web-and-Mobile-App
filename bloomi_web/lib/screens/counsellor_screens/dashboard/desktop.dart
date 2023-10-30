@@ -71,13 +71,12 @@ class _DesktopState extends State<Desktop> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 5, left: 10),
+                        padding: const EdgeInsets.only(top: 5, left: 20),
                         child: Consumer<CounsellorRegistrationProvider>(
                           builder: (context, value, child) {
                             return Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                const SizedBox(width: 8),
                                 Text(
                                   "Hi, ${value.counsellorModel!.name} !",
                                   style: TextStyle(
@@ -96,21 +95,7 @@ class _DesktopState extends State<Desktop> {
                               ],
                             );
                           },
-                        ), /*Text(
-                          "Hi ",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              shadows: [
-                                Shadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  offset: const Offset(2, 2),
-                                  blurRadius: 4,
-                                ),
-                              ],
-                              fontSize: 30,
-                              color:
-                                  UtilConstants.actionColor.withOpacity(0.9)),
-                        ),*/
+                        ),
                       ),
                     ],
                   ),
@@ -124,15 +109,12 @@ class _DesktopState extends State<Desktop> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           //next appointment row
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                  width: width * 0.5,
-                                  child: const NextAppointment()),
-                            ],
-                          ),
+                          SizedBox(
+                              width: width * 0.5,
+                              child: const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                child: NextAppointment(),
+                              )),
                           const SizedBox(height: 30),
                           //two cards row
                           SizedBox(
@@ -140,7 +122,7 @@ class _DesktopState extends State<Desktop> {
                             child: const Padding(
                               padding: EdgeInsets.symmetric(horizontal: 20),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
+                                //mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   PendingAppointments(),
                                   Spacer(),
@@ -149,60 +131,7 @@ class _DesktopState extends State<Desktop> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 30),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  width: width * 0.5 - 40,
-                                  height: 60,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      // Navigate to all appointments page
-                                      Navigator.push(context,
-                                          MaterialPageRoute(builder: (context) {
-                                        return const AllAppointmentsCounselor();
-                                      }));
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        foregroundColor:
-                                            UtilConstants.whiteColor,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        backgroundColor: const Color.fromARGB(
-                                            255, 155, 172, 187) // Button color
-                                        ),
-                                    child: const Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "Go to All Appointments",
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            color: Color.fromARGB(
-                                                255, 0, 0, 0), // Text color
-                                          ),
-                                        ),
-                                        Icon(
-                                          Icons.arrow_forward,
-                                          size: 18,
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 30),
+                          //const SizedBox(height: 30),
                         ],
                       ),
                       Expanded(
@@ -211,14 +140,15 @@ class _DesktopState extends State<Desktop> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              height: 550,
+                              height: 419,
                               width: width / 3,
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Container(
                                     alignment: Alignment.center,
                                     margin: const EdgeInsets.only(
-                                        top: 0, left: 15, right: 15),
+                                        left: 15, right: 15),
                                     padding: const EdgeInsets.only(
                                       bottom: 3,
                                     ),
@@ -292,7 +222,7 @@ class _DesktopState extends State<Desktop> {
                                         }
 
                                         return SizedBox(
-                                          height: 484,
+                                          height: 374,
                                           width: width / 3,
                                           child: SingleChildScrollView(
                                             child: Column(
@@ -411,6 +341,24 @@ class _DesktopState extends State<Desktop> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 30),
+                  Text(
+                    "All Appointments",
+                    style: TextStyle(
+                      fontSize: 22,
+                      color: UtilConstants.actionColor.withOpacity(0.9),
+                      fontWeight: FontWeight.bold,
+                      shadows: [
+                        Shadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          offset: const Offset(2, 2),
+                          blurRadius: 4,
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const AllAppointmentsCounselor()
                 ],
               ),
             ),

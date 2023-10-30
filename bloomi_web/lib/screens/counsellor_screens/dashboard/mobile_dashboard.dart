@@ -2,7 +2,10 @@ import 'package:bloomi_web/components/footer.dart';
 import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/accepted_appointments_card.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/all_appointments_page.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/pending_appointments_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
 import 'package:bloomi_web/screens/counsellor_screens/home/notification_viewer.dart.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
@@ -66,7 +69,7 @@ class _DashboardMobileState extends State<DashboardMobile> {
               color: UtilConstants.canvasColor,
               child: Container(
                 width: width,
-                height: 135,
+                height: 120,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
@@ -96,64 +99,23 @@ class _DashboardMobileState extends State<DashboardMobile> {
                                 return Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    CircleAvatar(
-                                      backgroundImage: NetworkImage(
-                                          value.counsellorModel!.imgUrl),
-                                      radius: (18),
-                                    ),
-                                    const SizedBox(
-                                      width: 20,
-                                    ),
                                     Text(
                                       "Hi, ${value.counsellorModel!.name} !",
                                       style: const TextStyle(
-                                          fontSize: 18,
+                                          fontSize: 16,
                                           color: UtilConstants.whiteColor),
                                     ),
-                                    const Spacer(),
-                                    InkWell(
-                                      onTap: () {
-                                        UtilFormMethodNotification
-                                            .showDialogMethod(context);
-                                      },
-                                      child: Stack(
-                                        children: [
-                                          const Icon(Icons.notifications,
-                                              size: 24,
-                                              color: UtilConstants.whiteColor),
-                                          Positioned(
-                                            right: -0.6,
-                                            top: -2,
-                                            child: Container(
-                                              padding: const EdgeInsets.all(4),
-                                              decoration: const BoxDecoration(
-                                                color: Colors.red,
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: const Text(
-                                                '.',
-                                                style: TextStyle(
-                                                  color: Colors.red,
-                                                  fontSize: 11,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    const SizedBox(width: 5),
                                   ],
                                 );
                               },
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 15),
                           Container(
                             alignment: Alignment.center,
                             margin: const EdgeInsets.only(
-                              right: 35,
-                              left: 35,
+                              right: 30,
+                              left: 30,
                             ),
                             padding: const EdgeInsets.only(
                               bottom: 8,
@@ -167,7 +129,7 @@ class _DashboardMobileState extends State<DashboardMobile> {
                               boxShadow: [
                                 BoxShadow(
                                   color: UtilConstants.greyColor,
-                                  blurRadius: 6,
+                                  blurRadius: 3,
                                 ),
                               ],
                             ),
@@ -177,7 +139,7 @@ class _DashboardMobileState extends State<DashboardMobile> {
                               },
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Search here ",
+                                hintText: "Search students here ",
                                 hintStyle: TextStyle(
                                     color: UtilConstants.greyColor,
                                     fontSize: 13),
@@ -197,7 +159,7 @@ class _DashboardMobileState extends State<DashboardMobile> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
               child: StreamBuilder(
                 stream: AuthController().getUsers(),
                 builder: (context, snapshot) {
@@ -229,7 +191,7 @@ class _DashboardMobileState extends State<DashboardMobile> {
                   }
 
                   return SizedBox(
-                    height: 300,
+                    height: 280,
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
@@ -300,16 +262,29 @@ class _DashboardMobileState extends State<DashboardMobile> {
                 },
               ),
             ),
-            Text(
-              "Your Next Appointment",
-              style: TextStyle(
-                fontSize: 18,
-                color: UtilConstants.canvasColor.withOpacity(0.8),
-                fontWeight: FontWeight.bold,
+            const Padding(
+              padding: EdgeInsets.all(10),
+              child: NextAppointment(),
+            ),
+            //const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  PendingAppointments(),
+                  AcceptedAppointments(),
+                ],
               ),
             ),
-            const SizedBox(height: 20),
-            const NextAppointment(),
+
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: SizedBox(
+                height: 420,
+                child: AllAppointmentsCounselor(),
+              ),
+            ),
             const SizedBox(height: 20),
             Footer(height: 55, width: width),
           ],

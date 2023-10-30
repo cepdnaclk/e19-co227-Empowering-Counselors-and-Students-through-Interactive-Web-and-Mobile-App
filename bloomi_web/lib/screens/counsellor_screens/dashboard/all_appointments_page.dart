@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 
 class AllAppointmentsCounselor extends StatelessWidget {
   const AllAppointmentsCounselor({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   Color getAppointmentStateColor(String state) {
     if (state == 'Pending') {
@@ -52,14 +52,15 @@ class AllAppointmentsCounselor extends StatelessWidget {
           columns = 3;
         }
 
-        return Scaffold(
-          body: Padding(
-            padding: const EdgeInsets.all(20),
+        return SizedBox(
+          height: 500,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
             child: Consumer<CounsellorRegistrationProvider>(
               builder: (context, value, child) {
                 return StreamBuilder(
                   stream: AppointmentController()
-                      .getAppointmentsByUid(value.counsellorModel!.uid),
+                      .getAppointmentsByCounselorid(value.counsellorModel!.uid),
                   builder: (context, snapshot) {
                     if (snapshot.hasError) {
                       return const Center(
@@ -112,7 +113,7 @@ class AllAppointmentsCounselor extends StatelessWidget {
                               childAspectRatio: 1.0,
                               mainAxisSpacing: 8.0,
                               crossAxisSpacing: 8.0,
-                              mainAxisExtent: 192.0,
+                              mainAxisExtent: 190.0,
                             ),
                             itemBuilder: (BuildContext context, int index) {
                               return Card(
@@ -123,7 +124,8 @@ class AllAppointmentsCounselor extends StatelessWidget {
                                 elevation: 10,
                                 shadowColor: Colors.grey.withOpacity(0.4),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(20),
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 20, right: 20),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -132,7 +134,7 @@ class AllAppointmentsCounselor extends StatelessWidget {
                                         "Appointment Details",
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black,
-                                        fontSize: 18.0,
+                                        fontSize: 16.0,
                                       ),
                                       const Divider(
                                         thickness: 2,
@@ -141,16 +143,20 @@ class AllAppointmentsCounselor extends StatelessWidget {
                                       ),
                                       const SizedBox(height: 8),
                                       buildRichText(
-                                        "Counselor Name: ${list[index].studentName}",
-                                        fontSize: 16.0,
+                                        "Student Name: ${list[index].studentName}",
+                                        fontSize: 14.0,
                                       ),
                                       buildRichText(
                                         "Appointment Date: ${list[index].date.toString().substring(0, 10)}",
-                                        fontSize: 16.0,
+                                        fontSize: 14.0,
                                       ),
                                       buildRichText(
                                         "Appointment Time: ${list[index].time}",
-                                        fontSize: 16.0,
+                                        fontSize: 14.0,
+                                      ),
+                                      buildRichText(
+                                        "Appointment Note: ${list[index].note}",
+                                        fontSize: 14.0,
                                       ),
                                       const SizedBox(height: 8),
                                       Row(
@@ -170,7 +176,7 @@ class AllAppointmentsCounselor extends StatelessWidget {
                                             color: getAppointmentStateColor(
                                                 list[index].status),
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 16.0,
+                                            fontSize: 14.0,
                                           ),
                                         ],
                                       ),
