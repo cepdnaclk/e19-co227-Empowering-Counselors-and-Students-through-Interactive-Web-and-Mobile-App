@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AdminPanelDrawer extends StatelessWidget {
-  const AdminPanelDrawer({Key? key}) : super(key: key);
+  const AdminPanelDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {

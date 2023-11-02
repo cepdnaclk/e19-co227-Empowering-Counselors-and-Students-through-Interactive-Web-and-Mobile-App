@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CounsellorNavBar extends StatefulWidget {
-  const CounsellorNavBar({Key? key}) : super(key: key);
+  const CounsellorNavBar({super.key});
 
   @override
   State<CounsellorNavBar> createState() => _CounsellorNavBarState();

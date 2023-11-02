@@ -3,12 +3,10 @@ import 'package:bloomi_web/controllers/auth_controller.dart';
 import 'package:bloomi_web/models/objects.dart';
 import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/accepted_appointments_card.dart';
-import 'package:bloomi_web/screens/counsellor_screens/dashboard/all_appointments_card.dart';
+import 'package:bloomi_web/screens/counsellor_screens/dashboard/all_appointments_page.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/counselor_next_appointment.dart';
-import 'package:bloomi_web/screens/counsellor_screens/dashboard/goto_all_appointment_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/pending_appointments_card.dart';
 import 'package:bloomi_web/screens/counsellor_screens/dashboard/user_details_dialog.dart';
-import 'package:bloomi_web/screens/counsellor_screens/home/notification_viewer.dart.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -63,14 +61,14 @@ class _DashboardTabletState extends State<DashboardTablet> {
         child: Column(
           children: [
             Material(
-              borderRadius: const BorderRadius.only(
+              /*borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
-              ),
+              ),*/
               color: UtilConstants.canvasColor,
               child: Container(
                 width: width,
-                height: 180,
+                height: 150,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
@@ -80,10 +78,10 @@ class _DashboardTabletState extends State<DashboardTablet> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
-                  borderRadius: const BorderRadius.only(
+                  /*borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20),
-                  ),
+                  ),*/
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -97,85 +95,18 @@ class _DashboardTabletState extends State<DashboardTablet> {
                             padding: const EdgeInsets.only(left: 10, top: 20),
                             child: Consumer<CounsellorRegistrationProvider>(
                               builder: (context, value, child) {
-                                return (width < 900)
-                                    ? Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          CircleAvatar(
-                                            backgroundImage: NetworkImage(
-                                                value.counsellorModel!.imgUrl),
-                                            radius: (20),
-                                          ),
-                                          const SizedBox(
-                                            width: 20,
-                                          ),
-                                          Text(
-                                            "Hi, ${value.counsellorModel!.name} !",
-                                            style: const TextStyle(
-                                                fontSize: 20,
-                                                color:
-                                                    UtilConstants.whiteColor),
-                                          ),
-                                          const Spacer(),
-                                          InkWell(
-                                            onTap: () {
-                                              UtilFormMethodNotification
-                                                  .showDialogMethod(context);
-                                            },
-                                            child: Stack(
-                                              children: [
-                                                const Icon(Icons.notifications,
-                                                    size: 24,
-                                                    color: UtilConstants
-                                                        .whiteColor),
-                                                Positioned(
-                                                  right: -0.6,
-                                                  top: -2,
-                                                  child: Container(
-                                                    padding:
-                                                        const EdgeInsets.all(4),
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                      color: Colors.red,
-                                                      shape: BoxShape.circle,
-                                                    ),
-                                                    child: const Text(
-                                                      '.',
-                                                      style: TextStyle(
-                                                        color: Colors.red,
-                                                        fontSize: 11,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          const SizedBox(width: 10),
-                                        ],
-                                      )
-                                    : Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          CircleAvatar(
-                                            backgroundImage: NetworkImage(
-                                                value.counsellorModel!.imgUrl),
-                                            radius: (20),
-                                          ),
-                                          const SizedBox(
-                                            width: 20,
-                                          ),
-                                          Text(
-                                            "Hi, ${value.counsellorModel!.name} !",
-                                            style: const TextStyle(
-                                                fontSize: 20,
-                                                color:
-                                                    UtilConstants.whiteColor),
-                                          ),
-                                        ],
-                                      );
+                                return Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      "Hi, ${value.counsellorModel!.name} !",
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          color: UtilConstants.whiteColor),
+                                    ),
+                                  ],
+                                );
                               },
                             ),
                           ),
@@ -207,7 +138,7 @@ class _DashboardTabletState extends State<DashboardTablet> {
                               },
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Search here ",
+                                hintText: "Search Students here",
                                 hintStyle: TextStyle(
                                     color: UtilConstants.greyColor,
                                     fontSize: 15),
@@ -264,7 +195,7 @@ class _DashboardTabletState extends State<DashboardTablet> {
                   }
 
                   return SizedBox(
-                    height: 350,
+                    height: 300,
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
@@ -328,22 +259,43 @@ class _DashboardTabletState extends State<DashboardTablet> {
                 },
               ),
             ),
-            const NextAppointment(),
-            const SizedBox(height: 20),
             width < 750
                 ? Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     child: (Column(
                       children: [
-                        const Row(
+                        NextAppointment(),
+                        SizedBox(height: 20),
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             PendingAppointments(),
                             AcceptedAppointments(),
                           ],
                         ),
-                        const SizedBox(height: 20),
-                        Row(
+                        SizedBox(height: 20),
+                        Center(
+                          child: Text(
+                            "All Appointment",
+                            style: TextStyle(
+                              fontSize: 22,
+                              color: UtilConstants.actionColor.withOpacity(0.9),
+                              fontWeight: FontWeight.bold,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: const Offset(2, 2),
+                                  blurRadius: 4,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 500,
+                          child: AllAppointmentsCounselor(),
+                        ),
+                        /*Row(
                           children: [
                             SizedBox(
                               width: width - 40,
@@ -353,7 +305,7 @@ class _DashboardTabletState extends State<DashboardTablet> {
                                   // Navigate to all appointments page
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return const AllAppointments();
+                                    return const AllAppointmentsCounselor();
                                   }));
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -385,18 +337,53 @@ class _DashboardTabletState extends State<DashboardTablet> {
                               ),
                             ),
                           ],
-                        )
+                        )*/
                       ],
                     )),
                   )
-                : const Padding(
+                : Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Column(
                       children: [
-                        PendingAppointments(),
-                        AcceptedAppointments(),
-                        GoToAllAppointments(),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  NextAppointment(),
+                                ],
+                              ),
+                            ),
+                            Column(
+                              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                PendingAppointments(),
+                                SizedBox(height: 35),
+                                AcceptedAppointments(),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 15),
+                        Center(
+                          child: Text(
+                            "All Appointment",
+                            style: TextStyle(
+                              fontSize: 22,
+                              color: UtilConstants.actionColor.withOpacity(0.9),
+                              fontWeight: FontWeight.bold,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: const Offset(2, 2),
+                                  blurRadius: 4,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                            height: 500, child: AllAppointmentsCounselor()),
                       ],
                     ),
                   ),

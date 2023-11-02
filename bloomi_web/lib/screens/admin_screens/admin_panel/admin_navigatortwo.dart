@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 class TestingNavigator extends StatelessWidget {
-  TestingNavigator({Key? key}) : super(key: key);
+  TestingNavigator({super.key});
   final _key = GlobalKey<ScaffoldState>();
 
   @override

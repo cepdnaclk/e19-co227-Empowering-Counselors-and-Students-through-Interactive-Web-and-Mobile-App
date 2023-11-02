@@ -1,5 +1,8 @@
+import 'package:bloomi_web/controllers/appoinment_controller.dart';
+import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PendingAppointments extends StatefulWidget {
   const PendingAppointments({Key? key}) : super(key: key);
@@ -8,10 +11,29 @@ class PendingAppointments extends StatefulWidget {
   State<PendingAppointments> createState() => _PendingAppointmentsState();
 }
 
-//fetch no of pending appointments
-int count = 0;
-
 class _PendingAppointmentsState extends State<PendingAppointments> {
+  int? count;
+
+  @override
+  void initState() {
+    super.initState();
+    count = 0;
+    fetchAppointmentsCount();
+  }
+
+  void fetchAppointmentsCount() {
+    final provider =
+        Provider.of<CounsellorRegistrationProvider>(context, listen: false);
+    Stream<int> appointmentsStream = AppointmentController()
+        .getPendingCountByCounselorId(provider.counsellorModel!.uid);
+
+    appointmentsStream.listen((snapshot) {
+      setState(() {
+        count = snapshot;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -40,7 +62,7 @@ class _PendingAppointmentsState extends State<PendingAppointments> {
             ),
             const SizedBox(height: 8),
             Text(
-              "$count",
+              count?.toString() ?? '0',
               style: TextStyle(fontSize: width < 480 ? 13.0 : 16.0),
             ),
           ],

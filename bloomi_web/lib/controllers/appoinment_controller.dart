@@ -124,4 +124,67 @@ class AppointmentController {
   //-------------GET APPOINTMENT ACORDING TO UID-----------------
   Stream<QuerySnapshot> getAppointmentsByUid(String studentId) =>
       appointments.where('studentId', isEqualTo: studentId).snapshots();
+
+  //-------------GET APPOINTMENT ACORDING TO CounselorID-----------------
+  Stream<QuerySnapshot> getAppointmentsByCounselorid(String counselorId) =>
+      appointments.where('counselorId', isEqualTo: counselorId).snapshots();
+
+  //-------GET ACCEPTED APPOINTMENTS COUNT ACCORDING TO CounselorID------
+  Stream<int> getApprovedCountByCounselorId(String counselorId) => appointments
+      .where('counselorId', isEqualTo: counselorId)
+      .where('status', isEqualTo: "Approved")
+      .snapshots()
+      .map((snapshot) => snapshot.docs.length);
+
+  //-------GET PENDING APPOINTMENTS COUNT ACCORDING TO CounselorID------
+  Stream<int> getPendingCountByCounselorId(String counselorId) => appointments
+      .where('counselorId', isEqualTo: counselorId)
+      .where('status', isEqualTo: "Pending")
+      .snapshots()
+      .map((snapshot) => snapshot.docs.length);
+
+  //-------GET ACCEPTED APPOINTMENTS COUNT ACCORDING TO UserId------
+  Stream<int> getApprovedCountByUserId(String uid) => appointments
+      .where('studentId', isEqualTo: uid)
+      .where('status', isEqualTo: "Approved")
+      .snapshots()
+      .map((snapshot) => snapshot.docs.length);
+
+  //-------GET PENDING APPOINTMENTS COUNT ACCORDING TO UserId------
+  Stream<int> getPendingCountByUserId(String uid) => appointments
+      .where('studentId', isEqualTo: uid)
+      .where('status', isEqualTo: "Pending")
+      .snapshots()
+      .map((snapshot) => snapshot.docs.length);
+
+//----------------GET NEAREST APPOINTMENT----------------
+  Future<DocumentSnapshot<Map<String, dynamic>>?> getNearestAppointment(
+      String counselorId) async {
+    try {
+      // Get the current date and time
+      DateTime currentDate = DateTime.now();
+
+      // Query the Firestore collection to get the nearest appointment
+      QuerySnapshot<Map<String, dynamic>> querySnapshot =
+          await FirebaseFirestore.instance
+              .collection('appointments')
+              .where('counselorId', isEqualTo: counselorId)
+              .where('date', isGreaterThanOrEqualTo: currentDate)
+              .orderBy('date')
+              .limit(1)
+              .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        // Return the nearest appointment document
+        return querySnapshot.docs.first;
+      } else {
+        // Return null if no appointments found
+        return null;
+      }
+    } catch (e) {
+      // Handle any potential errors
+      print('Error fetching nearest appointment: $e');
+      return null;
+    }
+  }
 }

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AdminNavBar extends StatefulWidget {
-  const AdminNavBar({Key? key}) : super(key: key);
+  const AdminNavBar({super.key});
 
   @override
   State<AdminNavBar> createState() => _AdminNavBarState();

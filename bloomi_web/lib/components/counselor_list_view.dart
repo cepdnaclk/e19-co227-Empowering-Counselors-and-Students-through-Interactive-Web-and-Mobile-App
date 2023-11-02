@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 class CounselorListView extends StatefulWidget {
-  const CounselorListView({Key? key}) : super(key: key);
+  const CounselorListView({super.key});
 
   @override
   State<CounselorListView> createState() => _CounselorListViewState();

@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 
 class CustomCardWidget extends StatelessWidget {
   const CustomCardWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   Color getAppointmentStateColor(String state) {
     if (state == 'Pending') {

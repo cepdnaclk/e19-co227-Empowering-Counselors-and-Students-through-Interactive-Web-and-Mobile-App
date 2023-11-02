@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 class HomeCounsellor extends StatelessWidget {
-  HomeCounsellor({Key? key}) : super(key: key);
+  HomeCounsellor({super.key});
 
   final _controller = SidebarXController(selectedIndex: 0, extended: true);
   final _key = GlobalKey<ScaffoldState>();
@@ -25,12 +25,24 @@ class HomeCounsellor extends StatelessWidget {
       appBar: isSmallScreen
           ? AppBar(
               backgroundColor: canvasColor,
-              title: const Text('BLOOMI',
-                  style: TextStyle(
-                    color: white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  )),
+              title: Row(
+                children: [
+                  Image.asset(
+                    UtilConstants.primaryImagePath,
+                    height: 32,
+                    width: 32,
+                  ),
+                  const SizedBox(width: 5),
+                  const Text(
+                    'BLOOMI',
+                    style: TextStyle(
+                      color: UtilConstants.whiteColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
               leading: IconButton(
                 onPressed: () {
                   _key.currentState?.openDrawer();
@@ -40,6 +52,113 @@ class HomeCounsellor extends StatelessWidget {
                   color: UtilConstants.whiteColor,
                 ),
               ),
+              actions: [
+                InkWell(
+                  onTap: () {
+                    UtilFormMethodNotification.showDialogMethod(context);
+                  },
+                  child: Stack(
+                    children: [
+                      const Icon(Icons.notifications,
+                          size: 22, color: Colors.white),
+                      Positioned(
+                        right: -0.6,
+                        top: -2,
+                        child: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: const BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Text(
+                            '.',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 8,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 8),
+                InkWell(
+                  onTap: () {
+                    UtilFunction.navigateForward(
+                        context, const ChatCounsellor());
+                  },
+                  child: Stack(
+                    children: [
+                      const Icon(Icons.message, size: 22, color: Colors.white),
+                      Positioned(
+                        right: -0.6,
+                        top: -2,
+                        child: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: const BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Text(
+                            '.',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 8,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Consumer<CounsellorRegistrationProvider>(
+                  builder: (BuildContext context, value, Widget? child) {
+                    return Container(
+                      padding: const EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 2,
+                              ),
+                              color: canvasColor,
+                              borderRadius: BorderRadius.circular(50),
+                              image: DecorationImage(
+                                image:
+                                    NetworkImage(value.counsellorModel!.imgUrl),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            alignment: Alignment.center,
+                            width: 28,
+                            height: 28, // Adjust the width to your preference.
+                          ),
+                          const SizedBox(width: 5),
+                          Container(
+                            alignment: Alignment.center,
+                            width: 23,
+                            height: 23, // Adjust the width to your preference.
+                            child: DropDownMenuItems(
+                              icon: Icons.arrow_drop_down,
+                              name: value.counsellorModel!.name,
+                              widget: const ProfileHomeCounsellor(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(width: 10)
+              ],
             )
           : AppBar(
               automaticallyImplyLeading: false,
@@ -55,7 +174,7 @@ class HomeCounsellor extends StatelessWidget {
                   const Text(
                     'BLOOMI',
                     style: TextStyle(
-                      color: UtilConstants.contentColorCyan,
+                      color: UtilConstants.whiteColor,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -148,14 +267,14 @@ class HomeCounsellor extends StatelessWidget {
                               ),
                             ),
                             alignment: Alignment.center,
-                            width: 28,
-                            height: 28, // Adjust the width to your preference.
+                            width: 32,
+                            height: 32, // Adjust the width to your preference.
                           ),
                           const SizedBox(width: 5),
                           Container(
                             alignment: Alignment.center,
-                            width: 24,
-                            height: 24, // Adjust the width to your preference.
+                            width: 26,
+                            height: 26, // Adjust the width to your preference.
                             child: DropDownMenuItems(
                               icon: Icons.arrow_drop_down,
                               name: value.counsellorModel!.name,
@@ -191,10 +310,9 @@ class HomeCounsellor extends StatelessWidget {
 
 class ExampleSidebarX extends StatelessWidget {
   const ExampleSidebarX({
-    Key? key,
+    super.key,
     required SidebarXController controller,
-  })  : _controller = controller,
-        super(key: key);
+  })  : _controller = controller;
 
   final SidebarXController _controller;
 
@@ -270,9 +388,8 @@ class ExampleSidebarX extends StatelessWidget {
 
 class _ScreensExample extends StatelessWidget {
   const _ScreensExample({
-    Key? key,
     required this.controller,
-  }) : super(key: key);
+  });
 
   final SidebarXController controller;
 
