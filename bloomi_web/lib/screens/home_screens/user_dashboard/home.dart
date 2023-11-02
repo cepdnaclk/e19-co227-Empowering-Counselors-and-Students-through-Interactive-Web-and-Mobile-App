@@ -1,6 +1,5 @@
 import 'package:bloomi_web/components/dropdown_menu_items.dart';
 import 'package:bloomi_web/providers/users/user_provider.dart';
-import 'package:bloomi_web/screens/counsellor_screens/profile/profile_home.dart';
 import 'package:bloomi_web/screens/home_screens/appoinment/appointment.dart';
 import 'package:bloomi_web/screens/home_screens/calender/google_calender.dart';
 import 'package:bloomi_web/screens/home_screens/chat/home/chat.dart';
@@ -162,7 +161,7 @@ class Home extends StatelessWidget {
                             child: DropDownMenuItems(
                               icon: Icons.arrow_drop_down,
                               name: value.userModel!.name,
-                              widget: const ProfileHomeCounsellor(),
+                              widget: const ProfileHomeUser(),
                             ),
                           ),
                         ],
@@ -274,10 +273,6 @@ class ExampleSidebarX extends StatelessWidget {
           icon: Icons.calendar_month,
           label: 'Calendar',
         ),
-        const SidebarXItem(
-          icon: Icons.person_2,
-          label: 'Profile',
-        ),
       ],
     );
   }
@@ -307,13 +302,8 @@ class _ScreensExample extends StatelessWidget {
           case 3:
             return const Relax();
 
-
           case 4:
             return const GoogleCalender();
-
-        
-          case 5:
-            return const ProfileHomeCounsellor();
 
           default:
             return const Text('');
