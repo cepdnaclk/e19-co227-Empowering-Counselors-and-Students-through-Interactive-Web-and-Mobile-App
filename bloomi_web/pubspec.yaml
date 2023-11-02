@@ -67,6 +67,7 @@ dependencies:
   carousel_slider: ^4.2.1
   flutter_widget_from_html: ^0.14.5+1
   fwfh_webview: ^0.14.2
+  url_launcher: ^6.2.1
   
 
 dev_dependencies:
