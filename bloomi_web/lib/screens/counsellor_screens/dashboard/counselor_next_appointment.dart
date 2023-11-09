@@ -1,9 +1,5 @@
-import 'package:bloomi_web/controllers/appoinment_controller.dart';
-import 'package:bloomi_web/providers/admin/counselor_registration_provider.dart';
 import 'package:bloomi_web/utils/util_constant.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class NextAppointment extends StatefulWidget {
   const NextAppointment({super.key});

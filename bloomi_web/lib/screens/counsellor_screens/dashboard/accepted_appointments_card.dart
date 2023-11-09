@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AcceptedAppointments extends StatefulWidget {
-  const AcceptedAppointments({Key? key}) : super(key: key);
+  const AcceptedAppointments({super.key});
 
   @override
   State<AcceptedAppointments> createState() => _AcceptedAppointmentsState();
