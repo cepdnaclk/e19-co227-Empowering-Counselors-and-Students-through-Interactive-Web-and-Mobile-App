@@ -11,12 +11,14 @@ class AppointmentProvider extends ChangeNotifier {
   final TextEditingController _note = TextEditingController();
   DateTime _dateTime = DateTime.now();
   TimeOfDay _timeOfDay = TimeOfDay.now();
+  String selectedOption = "";
 
   //------------------------ GETTERS ------------------------
   TextEditingController get name => _name;
   DateTime get getDateTime => _dateTime;
   TimeOfDay get getTimeOfDay => _timeOfDay;
   TextEditingController get note => _note;
+  String get getSelectedOption => selectedOption;
 
   //------------------------ SETTERS ------------------------
   void setDateTime(DateTime dateTime) {
@@ -36,6 +38,11 @@ class AppointmentProvider extends ChangeNotifier {
 
   void setNoteText(String note) {
     _note.text = note;
+    notifyListeners();
+  }
+
+  void setSelectedOption(String option) {
+    selectedOption = option;
     notifyListeners();
   }
 

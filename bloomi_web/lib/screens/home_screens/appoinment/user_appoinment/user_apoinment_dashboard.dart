@@ -16,7 +16,7 @@ class _UserAppointmentDashboardState extends State<UserAppointmentDashboard> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    print(width);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
